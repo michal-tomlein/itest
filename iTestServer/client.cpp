@@ -1,6 +1,25 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "main_window.h"
 
-void Client::commonClientSetup(MainWindow * parent)
+void Client::init(MainWindow * parent)
 {
     c_score = 0;
     c_ready = false;
@@ -20,7 +39,7 @@ Client::Client(MainWindow * parent)
     c_socket = new QTcpSocket;
     c_number = 0;
     
-    commonClientSetup(parent);
+    init(parent);
 }
 
 Client::Client(MainWindow * parent, int number)
@@ -30,7 +49,7 @@ Client::Client(MainWindow * parent, int number)
     c_socket = new QTcpSocket;
     c_number = number;
     
-    commonClientSetup(parent);
+    init(parent);
 }
 
 Client::Client(MainWindow * parent, QString name)
@@ -40,7 +59,7 @@ Client::Client(MainWindow * parent, QString name)
     c_socket = new QTcpSocket;
     c_number = 0;
     
-    commonClientSetup(parent);
+    init(parent);
 }
 
 Client::Client(MainWindow * parent, QTcpSocket * socket)
@@ -50,7 +69,7 @@ Client::Client(MainWindow * parent, QTcpSocket * socket)
     c_socket = socket;
     c_number = 0;
     
-    commonClientSetup(parent);
+    init(parent);
 }
 
 Client::Client(MainWindow * parent, int number, QTcpSocket * socket)
@@ -60,7 +79,7 @@ Client::Client(MainWindow * parent, int number, QTcpSocket * socket)
     c_socket = socket;
     c_number = number;
     
-    commonClientSetup(parent);
+    init(parent);
 }
 
 Client::Client(MainWindow * parent, QString name, QTcpSocket * socket)
@@ -70,7 +89,7 @@ Client::Client(MainWindow * parent, QString name, QTcpSocket * socket)
     c_socket = socket;
     c_number = 0;
     
-    commonClientSetup(parent);
+    init(parent);
 }
 
 Client::Client(MainWindow * parent, int number, QString name, QTcpSocket * socket)
@@ -80,7 +99,7 @@ Client::Client(MainWindow * parent, int number, QString name, QTcpSocket * socke
     c_socket = socket;
     c_number = number;
     
-    commonClientSetup(parent);
+    init(parent);
 }
 
 Client::~Client()
@@ -144,76 +163,11 @@ void Client::loadResults(QString input)
         }
         if (item == NULL) { in.readLine(); in.readLine(); continue; }
         if (in.readLine() != "[Q_ANSWERED]") { return; }
-        switch (in.readLine().toInt()) {
-            case 0: ans = QuestionItem::None; break;
-            case 1: ans = QuestionItem::A; break;
-            case 2: ans = QuestionItem::B; break;
-            case 3: ans = QuestionItem::C; break;
-            case 4: ans = QuestionItem::D; break;
-            default: ans = QuestionItem::None; break;
-        }
-        switch (ans) {
-            case QuestionItem::None:
-            case QuestionItem::A:
-            case QuestionItem::B:
-            case QuestionItem::C:
-            case QuestionItem::D:
-                if (!item->hasCorrectAnswer()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::None, ans);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                } else if (item->isAnsACorrect()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::A, ans);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                } else if (item->isAnsBCorrect()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::B, ans);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                } else if (item->isAnsCCorrect()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::C, ans);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                } else if (item->isAnsDCorrect()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::D, ans);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                }
-                break;
-            default:
-                if (!item->hasCorrectAnswer()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::None, QuestionItem::None);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                } else if (item->isAnsACorrect()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::A, QuestionItem::None);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                } else if (item->isAnsBCorrect()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::B, QuestionItem::None);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                } else if (item->isAnsCCorrect()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::C, QuestionItem::None);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                } else if (item->isAnsDCorrect()) {
-                    QuestionAnswer qans(item->flag(), QuestionItem::D, QuestionItem::None);
-                    c_results->insert(item->name(), qans);
-                    if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
-                    else { item->addIncorrectAns(); }
-                }
-                break;
-        }
+        ans = (QuestionItem::Answer)in.readLine().toInt();
+        QuestionAnswer qans(item->flag(), item->correctAnswer(), ans);
+        c_results->insert(item->name(), qans);
+        if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
+        else { item->addIncorrectAns(); }
     } while (!in.atEnd());
     
     c_passed = c_parent->current_db_passmark.check(c_results, &c_parent->current_db_questions);
@@ -318,7 +272,8 @@ QuestionItem::Answer QuestionAnswer::correctAnswer() { return qa_correct_answer;
 
 bool QuestionAnswer::isAnsweredCorrectly()
 {
-    if (qa_answered == qa_correct_answer) { return true; }
+    if (qa_answered == QuestionItem::None && qa_correct_answer != QuestionItem::None) { return false; }
+    if ((qa_answered & qa_correct_answer) == qa_answered) { return true; }
     return false;
 }
 

@@ -1,3 +1,22 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "main_window.h"
 
 void MainWindow::browse_i()
@@ -12,7 +31,7 @@ void MainWindow::browse_o()
 
 void MainWindow::loadTest(QString input)
 {
-     QProgressDialog progress (this);
+     QProgressDialog progress(this);
      progress.setLabelText(tr("Loading test data..."));
      progress.setMinimum(0);
      progress.setMinimumDuration(0);
@@ -26,17 +45,20 @@ void MainWindow::loadTest(QString input)
      QuestionItem * item; QStringList answers; int test_qnum; QString test_time;
      QString db_use_groups = "false";
      // ------------------------------------------------------------------------
-     if (in.readLine() != "[ITEST_VERSION]")
-     { errorInvalidData(); return; }
+     if (in.readLine() != "[ITEST_VERSION]") { errorInvalidData(); return; }
      version = in.readLine().toFloat();
-     if (in.readLine() != "[ITEST_DB_VERSION]")
-     { errorInvalidData(); return; }
+     if (in.readLine() != "[ITEST_DB_VERSION]") { errorInvalidData(); return; }
      db_version = in.readLine().toFloat();
      if ((version > f_ver) && (db_version == f_itos_ver))
      { QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features.")); }
      if ((version > f_ver) && (db_version > f_itos_ver))
      { QMessageBox::critical(this, tr("iTest version notice"), tr("You need a newer version of iTest to open this database file.")); return; }
      if (db_version == 1.0) { errorInvalidData(); return; }
+     if (db_version < 1.27) {
+         current_db_multiple_ans_support = false;
+     } else {
+         current_db_multiple_ans_support = true;
+     }
      
      if (in.readLine() != "[DB_NAME]") { errorInvalidData(); return; }
      // Database name
@@ -116,29 +138,28 @@ void MainWindow::loadTest(QString input)
          // Answer A
          if (in.readLine() != "[Q_ANSA]") { errorInvalidData(); return; }
          answers << in.readLine();
-         //if (in.readLine() != "[Q_ANSA_C]") { errorInvalidData(); return; }
-         //answers << in.readLine();
-         answers << "false";
          // Answer B
          if (in.readLine() != "[Q_ANSB]") { errorInvalidData(); return; }
          answers << in.readLine();
-         //if (in.readLine() != "[Q_ANSB_C]") { errorInvalidData(); return; }
-         //answers << in.readLine();
-         answers << "false";
          // Answer C
          if (in.readLine() != "[Q_ANSC]") { errorInvalidData(); return; }
          answers << in.readLine();
-         //if (in.readLine() != "[Q_ANSC_C]") { errorInvalidData(); return; }
-         //answers << in.readLine();
-         answers << "false";
          // Answer D
          if (in.readLine() != "[Q_ANSD]") { errorInvalidData(); return; }
          answers << in.readLine();
-         //if (in.readLine() != "[Q_ANSD_C]") { errorInvalidData(); return; }
-         //answers << in.readLine();
-         answers << "false";
+         if (db_version > 1.25) {
+             // SVG
+             if (in.readLine() != "[Q_SVG]") { errorInvalidData(); return; }
+             int numsvgitems = in.readLine().toInt();
+             for (int g = 0; g < numsvgitems; ++g) {
+                 db_buffer = in.readLine();
+                 item->addSvgItem(db_buffer, in.readLine());
+             }
+         }
          // End
-         if (in.readLine() != "[Q_END]") { errorInvalidData(); return; }
+         if (db_version < 1.25) {
+             if (in.readLine() != "[Q_END]") { errorInvalidData(); return; }
+         }
          // Add map entry
          item->setAnswers(answers);
          current_db_questions << item;
@@ -164,7 +185,7 @@ void MainWindow::loadTest(QString input)
      ITW_test_date->setText(current_db_date);
      ITW_test_timestamp->setText(current_test_date);
      ITW_test_time->setText(test_time);
-     ITW_test_qnum->setText(QString("%1 of total %2").arg(current_test_qnum).arg(db_qnum));
+     ITW_test_qnum->setText(tr("%1 of total %2").arg(current_test_qnum).arg(db_qnum));
      QString pm_str = tr("Total");
      pm_str.append(QString(": %1;").arg(current_test_passmark.passMark()));
      for (int i = 0; i < current_test_passmark.count(); ++i) {
@@ -173,8 +194,6 @@ void MainWindow::loadTest(QString input)
      }
      ITW_test_passmark->setText(pm_str);
      ITW_test_comments->setHtml(current_db_comments);
-     infoTableWidget->setColumnWidth(0, infoTableWidget->geometry().width() - infoTableWidget->verticalHeader()->width() - 25);
-     infoTableWidget->setRowHeight(8, 200);
      infoTableWidget->setEnabled(true);
 	 
      progress.setValue(db_qnum);

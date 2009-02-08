@@ -1,3 +1,22 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "main_window.h"
 
 void MainWindow::setupSessionViewer()
@@ -5,7 +24,6 @@ void MainWindow::setupSessionViewer()
 	VSSCSGroupBox->setEnabled(false); enableVSSTools();
 	btnDetails->setEnabled(false);
 	QObject::connect(mainStackedWidget, SIGNAL(currentChanged(int)), this, SLOT(enableVSSTools()));
-	QObject::connect(VSSSplitter, SIGNAL(splitterMoved(int, int)), this, SLOT(updateVSSGeometry()));
 	QObject::connect(VSSLSListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(setCurrentSession(QListWidgetItem *)));
 	QObject::connect(VSSLASListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(setCurrentSession(QListWidgetItem *)));
 	QObject::connect(VSSLCListWidget, SIGNAL(currentTextChanged(QString)), this, SLOT(setCurrentStudent()));
@@ -21,12 +39,15 @@ void MainWindow::setupSessionViewer()
 	QObject::connect(btnDetails, SIGNAL(released()), this, SLOT(showPassMarkDetails()));
 	VSSLSListWidget->setSortingEnabled(true);
 	VSSLASListWidget->setSortingEnabled(true);
+	VSSPassMarkTableWidget->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
 	hideArchive();
 }
 
 void MainWindow::openArchive()
 {
-	QString buffer; QStringList bufferlist; ArchivedSession * archived_session; bool rearchive;
+	QString buffer; QStringList qa_flaglist; QStringList qa_multianslist;
+	bool qa_flaglist_found; bool qa_multianslist_found; QuestionItem * q_item;
+	ArchivedSession * archived_session; bool rearchive;
 	QSettings archive(QSettings::IniFormat, QSettings::UserScope, "Michal Tomlein", "iTest");
 	QStringList dbs = archive.value("databases").toStringList();
 	if (!dbs.contains(current_db_name)) { return; }
@@ -55,42 +76,41 @@ void MainWindow::openArchive()
 			}
 			rearchive = true;
 		}
-		buffer = archive.value(QString("%1/%2/QAFlags").arg(current_db_name).arg(sns.at(i))).toString();
 		int numres = 0; int x = 0;
 		for (int s = 0; s < archived_session->numStudents(); ++s) {
 			numres += archived_session->student(s)->results()->count();
 		}
-		bufferlist = buffer.split(";");
-		if (bufferlist.count() == numres) {
-			for (int s = 0; s < archived_session->numStudents(); ++s) {
-				QMapIterator<QString, QuestionAnswer> qa(*(archived_session->student(s)->results())); QuestionAnswer qans;
-				while (qa.hasNext()) { qa.next();
-					qans = qa.value();
-					qans.setFlag(bufferlist.at(x).toInt());
-					archived_session->student(s)->results()->insert(qa.key(), qans);
-					x++;
-				}
-			}
-		} else {
-			QuestionItem * item;
-			for (int s = 0; s < archived_session->numStudents(); ++s) {
-				QMapIterator<QString, QuestionAnswer> qa(*(archived_session->student(s)->results())); QuestionAnswer qans;
-				while (qa.hasNext()) { qa.next();
-					item = NULL; qans = qa.value();
-					QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
+		qa_flaglist = archive.value(QString("%1/%2/QAFlags").arg(current_db_name).arg(sns.at(i))).toString().split(";");
+		qa_multianslist = archive.value(QString("%1/%2/QACorrectAnswers").arg(current_db_name).arg(sns.at(i))).toString().split(";");
+		qa_flaglist_found = qa_flaglist.count() == numres;
+		qa_multianslist_found = qa_multianslist.count() == numres;
+		if (!qa_flaglist_found || !qa_multianslist_found) { rearchive = true; }
+		for (int s = 0; s < archived_session->numStudents(); ++s) {
+			QMapIterator<QString, QuestionAnswer> qa(*(archived_session->student(s)->results())); QuestionAnswer qans;
+			while (qa.hasNext()) { qa.next();
+				q_item = NULL; qans = qa.value();
+				if (qa_flaglist_found)
+				    { qans.setFlag(qa_flaglist.at(x).toInt()); }
+				if (qa_multianslist_found)
+				    { qans.setCorrectAnswer((QuestionItem::Answer)qa_multianslist.at(x).toInt()); }
+				if (!qa_flaglist_found || !qa_multianslist_found) {
+				    QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
 					while (q.hasNext()) { q.next();
-						if (q.value()->name() == qa.key()) { item = q.value(); break; }
+						if (q.value()->name() == qa.key()) { q_item = q.value(); break; }
 					}
-					if (item == NULL) {
-						qans.setFlag(-1);
-						archived_session->student(s)->results()->insert(qa.key(), qans);
+					if (q_item == NULL) {
+					    if (!qa_flaglist_found) {
+					        qans.setFlag(-1);
+					    }
 					} else {
-						qans.setFlag(item->flag());
-						archived_session->student(s)->results()->insert(qa.key(), qans);
+						if (!qa_flaglist_found) { qans.setFlag(q_item->flag()); }
+						if (!qa_multianslist_found)
+						    { qans.setCorrectAnswer(q_item->correctAnswer()); }
 					}
 				}
+				archived_session->student(s)->results()->insert(qa.key(), qans);
+				x++;
 			}
-			rearchive = true;
 		}
 		if (rearchive) { archived_session->archive(); }
 	}
@@ -178,14 +198,13 @@ void MainWindow::setCurrentSession(QListWidgetItem * item)
 	}
 	VSSClientsGroupBox->setEnabled(true); VSSLogGroupBox->setEnabled(true);
 	togglePrintEnabled(); enableVSSTools();
-	QTimer::singleShot(200, this, SLOT(updateVSSGeometry()));
 }
 
 void MainWindow::setCurrentStudent()
 {
 	if (VSSLCListWidget->currentIndex().isValid()) {
 		VSSSelectedClientGroupBox->setEnabled(true); clearVSSSC(); togglePrintEnabled();
-		VSSStackedWidget->setCurrentIndex(0); updateGeometry();
+		VSSStackedWidget->setCurrentIndex(0);
 		Student * student = current_db_students.value(VSSLCListWidget->currentItem());
 		VSSSCNameLabel->setText(student->name());
 		if (student->isReady()) {
@@ -201,18 +220,11 @@ void MainWindow::setCurrentStudent()
 	}
 }
 
-void MainWindow::updatePMDTWGeometry()
-{
-	VSSPassMarkTableWidget->resizeColumnsToContents();
-	VSSPassMarkTableWidget->setColumnWidth(0, VSSPassMarkTableWidget->width() - 25 - VSSPassMarkTableWidget->columnWidth(1));
-}
-
 void MainWindow::showPassMarkDetails()
 {
 	VSSStackedWidget->setCurrentIndex(1);
 	VSSLCListWidget->clearSelection();
 	VSSLCListWidget->setCurrentRow(-1);
-	updateGeometry();
 }
 
 void MainWindow::deleteLog()
@@ -234,7 +246,6 @@ void MainWindow::deleteLog()
     }
 	VSSLogGroupBox->setVisible(false); enableVSSTools();
 	setDatabaseModified();
-	QTimer::singleShot(200, this, SLOT(updateVSSGeometry()));
 }
 
 void MainWindow::archiveSession()
@@ -362,7 +373,6 @@ void MainWindow::copyFromArchive()
 	VSSClientsGroupBox->setEnabled(false); VSSLogGroupBox->setEnabled(false);
 	VSSSelectedClientGroupBox->setEnabled(false); clearVSSSC();
 	togglePrintEnabled(); enableVSSTools();
-	QTimer::singleShot(200, this, SLOT(updateVSSGeometry()));
 	for (int i = 0; i < VSSLSListWidget->count(); ++i) {
 		if (VSSLSListWidget->item(i)->data(Qt::UserRole).toDateTime() == current_db_session->dateTime())
 			{ delete VSSLSListWidget->item(i); }

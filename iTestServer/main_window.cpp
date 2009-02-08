@@ -1,3 +1,22 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "about_widget.h"
 #include "main_window.h"
 
@@ -6,21 +25,6 @@ void MainWindow::errorInvalidDBFile(QString parentFunction, QString fileName)
     QMessageBox::critical(this, parentFunction, tr("Invalid database file %1").arg(fileName));
 	this->setEnabled(true);
 }
-
-/*void MainWindow::errorInvalidTempFileFormat(QString parentFunction, QString fileName)
-{
-    QMessageBox::critical(this, parentFunction, tr("Invalid format of temporary file %1").arg(fileName));
-}
-
-void MainWindow::errorRWTempFile(QString parentFunction, QString rw, QString q_file_name, QFile& q_file)
-{
-    QMessageBox::critical(this, parentFunction, tr("Cannot %1 temporary file %2:\n%3.\nPlease do not use any special characters.\nIf this is the case, try again omitting these.").arg(rw).arg(q_file_name).arg(q_file.errorString()));
-}
-
-void MainWindow::errorInvalidTempFileFormat_SpecialChars(QString parentFunction, QString fileName)
-{
-    QMessageBox::critical(this, parentFunction, tr("Invalid format of temporary file %1\nPlease do not use any special characters.\nIf this is the case, try again omitting these.").arg(fileName));
-}*/
 
 void MainWindow::setProgress(int progress)
 {
@@ -70,6 +74,9 @@ void MainWindow::clearSQNoFlags()
     SQGroupLineEdit->clear();
     SQDifficultyComboBox->setCurrentIndex(0);
     SQQuestionTextEdit->clear();
+    for (int i = 0; SQSVGListWidget->count();) {
+        delete SQSVGListWidget->takeItem(i);
+    }
     SQAnswerALineEdit->clear();
     SQAnswerBLineEdit->clear();
     SQAnswerCLineEdit->clear();
@@ -177,6 +184,7 @@ void MainWindow::enableSQ()
 	actionApply->setEnabled(true);
 	actionDiscard->setEnabled(true);
     SQGroupBox->setEnabled(true);
+    menuAttachments->setEnabled(true);
 }
 
 void MainWindow::disableAll()
@@ -268,6 +276,7 @@ void MainWindow::disableSQ()
 	actionApply->setEnabled(false);
 	actionDiscard->setEnabled(false);
     SQGroupBox->setEnabled(false);
+    menuAttachments->setEnabled(false);
 }
 
 void MainWindow::enableLQTools()
@@ -329,13 +338,9 @@ MainWindow::MainWindow()
 #ifdef Q_WS_MAC
 	this->setUnifiedTitleAndToolBarOnMac(true);
 	//this->setAttribute(Qt::WA_MacBrushedMetal);
-	DBIGroupBox->setMinimumSize(649, 60);
-	DBIGroupBox->setMaximumSize(16777215, 60);
-	VSSCSGroupBox->setMinimumSize(0, 80);
-	VSSCSGroupBox->setMaximumSize(16777215, 80);
-	SMInfoGroupBox->setMinimumSize(0, 60);
-	SMInfoGroupBox->setMaximumSize(16777215, 60);
 #endif
+    SQQuestionTextEdit->setMinimumSize(0, 30);
+    SQSVGListWidget->setMinimumSize(0, 30);
 	progressBar = new QProgressBar(this);
 	progressBar->setTextVisible(false);
     progressBar->resize(QSize(30, 10));
@@ -346,14 +351,19 @@ MainWindow::MainWindow()
     progressBar->setVisible(false);
     LQFlagComboBox->setVisible(false);
     SQStatisticsLabel->setVisible(false);
+    currentSvgChanged();
 	btnApply = SQButtonBox->button(QDialogButtonBox::Apply);
+	btnApply->setText(tr("Apply"));
 	btnApply->setStatusTip(tr("Apply any changes you have made to the question"));
 	btnApply->setIcon(QIcon(QString::fromUtf8(":/images/images/button_ok.png")));
 	btnDiscard = SQButtonBox->button(QDialogButtonBox::Discard);
+	btnDiscard->setText(tr("Discard"));
 	btnDiscard->setStatusTip(tr("Discard any changes you have made to the question"));
 	btnDiscard->setIcon(QIcon(QString::fromUtf8(":/images/images/button_cancel.png")));
+	EFButtonBox->button(QDialogButtonBox::Apply)->setText(tr("Apply"));
 	EFButtonBox->button(QDialogButtonBox::Apply)->setStatusTip(tr("Apply any changes you have made to the flags"));
 	EFButtonBox->button(QDialogButtonBox::Apply)->setIcon(QIcon(QString::fromUtf8(":/images/images/button_ok.png")));
+	EFButtonBox->button(QDialogButtonBox::Discard)->setText(tr("Discard"));
 	EFButtonBox->button(QDialogButtonBox::Discard)->setStatusTip(tr("Discard any changes you have made to the flags"));
 	EFButtonBox->button(QDialogButtonBox::Discard)->setIcon(QIcon(QString::fromUtf8(":/images/images/button_cancel.png")));
     // Initialize variables ----------------------------------------------------
@@ -395,6 +405,17 @@ MainWindow::MainWindow()
     
     QObject::connect(actionFrom_A_to_Z, SIGNAL(triggered()), this, SLOT(sortQuestionsAscending()));
     QObject::connect(actionFrom_Z_to_A, SIGNAL(triggered()), this, SLOT(sortQuestionsDescending()));
+    
+    tbtnAddSVG->setDefaultAction(actionAdd_SVG);
+    tbtnRemoveSVG->setDefaultAction(actionRemove_SVG);
+    tbtnEditSVG->setDefaultAction(actionEdit_SVG);
+    tbtnExportSVG->setDefaultAction(actionExport_SVG);
+    QObject::connect(actionAdd_SVG, SIGNAL(triggered()), this, SLOT(addSvg()));
+    QObject::connect(actionRemove_SVG, SIGNAL(triggered()), this, SLOT(removeSvg()));
+    QObject::connect(actionEdit_SVG, SIGNAL(triggered()), this, SLOT(editSvg()));
+    QObject::connect(actionExport_SVG, SIGNAL(triggered()), this, SLOT(exportSvg()));
+    QObject::connect(SQSVGListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(previewSvg(QListWidgetItem *)));
+    QObject::connect(SQSVGListWidget, SIGNAL(currentTextChanged(QString)), this, SLOT(currentSvgChanged()));
     
     QObject::connect(actionMove_up, SIGNAL(triggered()), this, SLOT(moveUp()));
     QObject::connect(actionMove_down, SIGNAL(triggered()), this, SLOT(moveDown()));
@@ -446,12 +467,13 @@ MainWindow::MainWindow()
 	QObject::connect(http, SIGNAL(done(bool)), this, SLOT(httpRequestFinished(bool)));
 	QObject::connect(actionDocumentation, SIGNAL(triggered()), this, SLOT(openDocumentation()));
 	QObject::connect(SQStatisticsLabel, SIGNAL(linkActivated(QString)), this, SLOT(adjustQuestionDifficulty()));
+	QObject::connect(actionPrint_questions, SIGNAL(triggered()), this, SLOT(showPrintQuestionsDialogue()));
 	QObject::connect(actionOverall_statistics, SIGNAL(triggered()), this, SLOT(overallStatistics()));
 	QObject::connect(actionChange_language, SIGNAL(triggered()), this, SLOT(changeLanguage()));
+	
+	QObject::connect(mainStackedWidget, SIGNAL(currentChanged(int)), this, SLOT(togglePrintEnabled()));
     // Disable all -------------------------------------------------------------
     disableAll();
-    // Geometry ----------------------------------------------------------------
-	updateGeometry();
     // Load settings -----------------------------------------------------------
     loadSettings();
     // Text edit ---------------------------------------------------------------
@@ -504,6 +526,9 @@ void MainWindow::loadSettings()
     this->resize(settings.value("editor/size", this->size()).toSize());
     onInfoDisplayChange(settings.value("editor/showDBI", false).toBool());
     actionShow_hidden->setChecked(settings.value("editor/showHidden", false).toBool());
+    SQSplitter->restoreState(settings.value("editor/SQSplitterState").toByteArray());
+    VSSSplitter->restoreState(settings.value("editor/VSSSplitterState").toByteArray());
+    TSCustomServerPortSpinBox->setValue(settings.value("editor/customServerPort", 7777).toInt());
 }
 
 void MainWindow::saveSettings()
@@ -517,6 +542,9 @@ void MainWindow::saveSettings()
     settings.setValue("editor/size", this->size());
     settings.setValue("editor/showDBI", showInfoCheckBox->isChecked());
     settings.setValue("editor/showHidden", actionShow_hidden->isChecked());
+    settings.setValue("editor/SQSplitterState", SQSplitter->saveState());
+    settings.setValue("editor/VSSSplitterState", VSSSplitter->saveState());
+    settings.setValue("editor/customServerPort", TSCustomServerPortSpinBox->value());
 }
 
 void MainWindow::addRecent(QString name)
@@ -534,19 +562,19 @@ void MainWindow::setPage(QAction * act)
 {
     if (act == actionEdit_questions) {
         mainStackedWidget->setCurrentIndex(1); togglePrintEnabled();
-        updateGeometry(); enableEQTools();
+        enableEQTools();
     } else if (act == actionEdit_comments) {
         mainStackedWidget->setCurrentIndex(2); togglePrintEnabled();
-        updateGeometry(); disableEQTools();
+        disableEQTools();
     } else if (act == actionEdit_flags) {
         mainStackedWidget->setCurrentIndex(3); togglePrintEnabled();
-        updateGeometry(); disableEQTools(); updateFlagQnums();
+        disableEQTools(); updateFlagQnums();
     } else if (act == actionEdit_test) {
         mainStackedWidget->setCurrentIndex(4); togglePrintEnabled();
-        updateGeometry(); disableEQTools(); reloadAvailableItems();
+        disableEQTools(); reloadAvailableItems();
     } else if (act == actionSaved_sessions) {
         mainStackedWidget->setCurrentIndex(6); togglePrintEnabled();
-        updateGeometry(); disableEQTools();
+        disableEQTools();
     }
 }
 
@@ -554,51 +582,6 @@ void MainWindow::onInfoDisplayChange(bool show)
 {
     DBIGroupBox->setVisible(show);
     actionShow_DBI->setChecked(show); showInfoCheckBox->setChecked(show);
-    QTimer::singleShot(200, this, SLOT(updateGeometry()));
-}
-
-void MainWindow::updateGeometry()
-{
-#ifdef Q_WS_MAC
-    int h = statusbar->height(); int i = 20;
-#else
-    int h = menubar->height() + toolBar->height() + statusbar->height(); int i = 10;
-#endif
-    mainStackedWidget->setGeometry(0, 0, this->geometry().width(), this->geometry().height()-h);
-	welcomeGridLayout->setGeometry(0, 0, this->geometry().width(), this->geometry().height()-h);
-	mainGridLayout->setGeometry(0, 0, this->geometry().width(), this->geometry().height()-h);
-	LQGridLayout->setGeometry(0, i, LQGroupBox->geometry().width(), LQGroupBox->geometry().height()-i);
-	SQGridLayout->setGeometry(0, i, SQGroupBox->geometry().width(), SQGroupBox->geometry().height()-i);
-	DBIHorizontalLayout->setGeometry(0, i, DBIGroupBox->geometry().width(), DBIGroupBox->geometry().height()-i);
-	editCommentsGridLayout->setGeometry(0, 0, this->geometry().width(), this->geometry().height()-h);
-	editFlagsGridLayout->setGeometry(0, 0, this->geometry().width(), this->geometry().height()-h);
-	testSettingsGridLayout->setGeometry(0, 0, this->geometry().width(), this->geometry().height()-h);
-	TSAdvancedSetupGridLayout->setGeometry(0, i, TSAdvancedSetupGroupBox->geometry().width(), TSAdvancedSetupGroupBox->geometry().height()-i);
-	TSCommonSettingsGridLayout->setGeometry(0, 0, TSCommonSettingsGroupBox->geometry().width(), TSCommonSettingsGroupBox->geometry().height());
-	serverModeGridLayout->setGeometry(0, 0, this->geometry().width(), this->geometry().height()-h);
-	SMInfoGridLayout->setGeometry(0, i, SMInfoGroupBox->geometry().width(), SMInfoGroupBox->geometry().height()-i);
-	SMClientsGridLayout->setGeometry(0, i, SMClientsGroupBox->geometry().width(), SMClientsGroupBox->geometry().height()-i);
-	SMSelectedClientGridLayout->setGeometry(0, i, SMSelectedClientGroupBox->geometry().width(), SMSelectedClientGroupBox->geometry().height()-i);
-	SMLogGridLayout->setGeometry(0, i, SMLogGroupBox->geometry().width(), SMLogGroupBox->geometry().height()-i);
-	savedSessionsGridLayout->setGeometry(0, 0, this->geometry().width(), this->geometry().height()-h);
-	VSSLSGridLayout->setGeometry(0, i, VSSLSGroupBox->geometry().width(), VSSLSGroupBox->geometry().height()-i);
-	VSSCSGridLayout->setGeometry(0, i, VSSCSGroupBox->geometry().width(), VSSCSGroupBox->geometry().height()-i);
-	updateVSSGeometry(); updateTSTWGeometry(); updatePMDTWGeometry();
-}
-
-void MainWindow::updateVSSGeometry()
-{
-#ifdef Q_WS_MAC
-    int i = 20;
-#else
-    int i = 10;
-#endif
-	VSSClientsGridLayout->setGeometry(0, i, VSSClientsGroupBox->geometry().width(), VSSClientsGroupBox->geometry().height()-i);
-	VSSSelectedClientGroupBox->setGeometry(0, 0, VSSStackedWidget->geometry().width(), VSSStackedWidget->geometry().height());
-	VSSSelectedClientGridLayout->setGeometry(0, i, VSSSelectedClientGroupBox->geometry().width(), VSSSelectedClientGroupBox->geometry().height()-i);
-	VSSPassMarkDetailsGroupBox->setGeometry(0, 0, VSSStackedWidget->geometry().width(), VSSStackedWidget->geometry().height());
-	VSSPassMarkDetailsGridLayout->setGeometry(0, i, VSSPassMarkDetailsGroupBox->geometry().width(), VSSPassMarkDetailsGroupBox->geometry().height()-i);
-	VSSLogGridLayout->setGeometry(0, i, VSSLogGroupBox->geometry().width(), VSSLogGroupBox->geometry().height()-i);
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -612,12 +595,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
        saveSettings();
 	   event->accept();
     } else {event->ignore();}
-}
-
-void MainWindow::resizeEvent(QResizeEvent *event)
-{
-	updateGeometry();
-	event->accept();
 }
 
 void MainWindow::setDatabaseModified() { this->setWindowModified(true); }
@@ -715,10 +692,18 @@ void MainWindow::overallStatistics()
 	QGridLayout * stats_glayout = new QGridLayout(stats_widget);
 	QLabel * stats_label = new QLabel(stats_widget);
 	stats_glayout->addWidget(stats_label, 0, 0);
+	QHBoxLayout * stats_hlayout_search = new QHBoxLayout(stats_widget);
+	QLabel * stats_label_search = new QLabel(stats_widget);
+    stats_label_search->setText(tr("Search:"));
+	stats_hlayout_search->addWidget(stats_label_search);
+	stats_search = new ExtendedLineEdit(stats_widget);
+	QObject::connect(stats_search, SIGNAL(textChanged(const QString &)), this, SLOT(searchStatistics(const QString &)));
+	stats_hlayout_search->addWidget(stats_search);
+	stats_glayout->addLayout(stats_hlayout_search, 1, 0);
 	stats_tw = new QTableWidget(stats_widget);
-	stats_glayout->addWidget(stats_tw, 1, 0);
+	stats_glayout->addWidget(stats_tw, 2, 0);
 	QHBoxLayout * stats_hlayout = new QHBoxLayout(stats_widget);
-	stats_hlayout->setMargin(0); stats_glayout->setSpacing(6);
+	stats_hlayout->setMargin(0); stats_hlayout->setSpacing(6);
 	stats_hlayout->addStretch();
 	stats_btn_adjustall = new QPushButton (tr("Adjust all"), stats_widget);
 	QObject::connect(stats_btn_adjustall, SIGNAL(released()), this, SLOT(statsAdjustAll()));
@@ -728,7 +713,7 @@ void MainWindow::overallStatistics()
 	QObject::connect(stats_btn_close, SIGNAL(released()), stats_widget, SLOT(close()));
 	QObject::connect(stats_widget, SIGNAL(destroyed()), this, SLOT(statsWidgetClosed()));
 	stats_hlayout->addWidget(stats_btn_close);
-	stats_glayout->addLayout(stats_hlayout, 2, 0);
+	stats_glayout->addLayout(stats_hlayout, 3, 0);
 	stats_glayout->setMargin(6); stats_glayout->setSpacing(6);
 	btngrpStatsAdjust = new QButtonGroup(stats_widget);
 	QObject::connect(btngrpStatsAdjust, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(statsAdjust(QAbstractButton *)));
@@ -883,6 +868,207 @@ void MainWindow::statsWidgetClosed()
 	stats_lwmap.clear();
 }
 
+void MainWindow::searchStatistics(const QString & keyword)
+{
+    searchTableWidgetItems(keyword, stats_tw, stats_search);
+}
+
+void MainWindow::showPrintQuestionsDialogue()
+{
+	QWidget * printq_widget = new QWidget(this, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/);
+	printq_widget->setWindowModality(Qt::WindowModal);
+	printq_widget->setAttribute(Qt::WA_DeleteOnClose);
+	printq_widget->setWindowTitle(tr("%1 - Print questions - iTest").arg(current_db_name));
+	printq_widget->setMinimumSize(QSize(400, 300));
+	rbtngrpPrintqSelect = new QButtonGroup(printq_widget);
+	QObject::connect(rbtngrpPrintqSelect, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(togglePrintSelection(QAbstractButton *)));
+	QGridLayout * printq_glayout = new QGridLayout(printq_widget);
+		QHBoxLayout * printq_hlayout0 = new QHBoxLayout(printq_widget);
+		printq_hlayout0->setMargin(0); printq_hlayout0->setSpacing(6);
+			QLabel * printq_label = new QLabel(printq_widget);
+			printq_label->setText(tr("Select:"));
+		printq_hlayout0->addWidget(printq_label);
+			QRadioButton * printq_rbtn_flags = new QRadioButton(printq_widget);
+			printq_rbtn_flags->setText(tr("Flags"));
+			printq_rbtn_flags->setChecked(true);
+			rbtngrpPrintqSelect->addButton(printq_rbtn_flags);
+		printq_hlayout0->addWidget(printq_rbtn_flags);
+			QRadioButton * printq_rbtn_questions = new QRadioButton(printq_widget);
+			printq_rbtn_questions->setText(tr("Questions"));
+			printq_rbtn_flags->setChecked(false);
+			rbtngrpPrintqSelect->addButton(printq_rbtn_questions);
+		printq_hlayout0->addWidget(printq_rbtn_questions);
+		printq_hlayout0->addStretch();
+	printq_glayout->addLayout(printq_hlayout0, 0, 0);
+	    QHBoxLayout * printq_hlayout1 = new QHBoxLayout(printq_widget);
+	    printq_hlayout1->setMargin(0); printq_hlayout1->setSpacing(6);
+	        QVBoxLayout * printq_vlayout1 = new QVBoxLayout(printq_widget);
+	            QLabel * printq_label_do_not_print = new QLabel(printq_widget);
+	            printq_label_do_not_print->setText(tr("<b>Do not print:</b>"));
+	        printq_vlayout1->addWidget(printq_label_do_not_print);
+	            QHBoxLayout * printq_hlayout1_1 = new QHBoxLayout(printq_widget);
+	                QLabel * printq_label_search_excluded = new QLabel(printq_widget);
+	                printq_label_search_excluded->setText(tr("Search:"));
+	            printq_hlayout1_1->addWidget(printq_label_search_excluded);
+	                printq_search_excluded = new ExtendedLineEdit(printq_widget);
+	                QObject::connect(printq_search_excluded, SIGNAL(textChanged(const QString &)), this, SLOT(searchQuestionsNotToPrint(const QString &)));
+	            printq_hlayout1_1->addWidget(printq_search_excluded);
+	        printq_vlayout1->addLayout(printq_hlayout1_1);
+	            printq_excludelist = new QListWidget(printq_widget);
+	            QObject::connect(printq_excludelist, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(addQuestionToPrint()));
+	            QObject::connect(printq_excludelist, SIGNAL(currentTextChanged(QString)), this, SLOT(toggleAddRemoveQuestionToPrintEnabled()));
+	        printq_vlayout1->addWidget(printq_excludelist);
+	    printq_hlayout1->addLayout(printq_vlayout1);
+	        QVBoxLayout * printq_vlayout2 = new QVBoxLayout(printq_widget);
+	        printq_vlayout2->addStretch();
+	            printq_add = new QPushButton(printq_widget);
+	            printq_add->setIcon(QIcon(QString::fromUtf8(":/images/images/forward.png")));
+	            QObject::connect(printq_add, SIGNAL(released()), this, SLOT(addQuestionToPrint()));
+	        printq_vlayout2->addWidget(printq_add);
+	            printq_remove = new QPushButton(printq_widget);
+	            printq_remove->setIcon(QIcon(QString::fromUtf8(":/images/images/back.png")));
+	            QObject::connect(printq_remove, SIGNAL(released()), this, SLOT(removeQuestionToPrint()));
+	        printq_vlayout2->addWidget(printq_remove);
+	        printq_vlayout2->addStretch();
+	    printq_hlayout1->addLayout(printq_vlayout2);
+	        QVBoxLayout * printq_vlayout3 = new QVBoxLayout(printq_widget);
+	            QLabel * printq_label_print = new QLabel(printq_widget);
+	            printq_label_print->setText(tr("<b>Print:</b>"));
+	        printq_vlayout3->addWidget(printq_label_print);
+	            QHBoxLayout * printq_hlayout1_2 = new QHBoxLayout(printq_widget);
+	                QLabel * printq_label_search_included = new QLabel(printq_widget);
+	                printq_label_search_included->setText(tr("Search:"));
+	            printq_hlayout1_2->addWidget(printq_label_search_included);
+	                printq_search_included = new ExtendedLineEdit(printq_widget);
+	                QObject::connect(printq_search_included, SIGNAL(textChanged(const QString &)), this, SLOT(searchQuestionsToPrint(const QString &)));
+	            printq_hlayout1_2->addWidget(printq_search_included);
+	        printq_vlayout3->addLayout(printq_hlayout1_2);
+	            printq_includelist = new QListWidget(printq_widget);
+	            QObject::connect(printq_includelist, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(removeQuestionToPrint()));
+	            QObject::connect(printq_includelist, SIGNAL(currentTextChanged(QString)), this, SLOT(toggleAddRemoveQuestionToPrintEnabled()));
+	        printq_vlayout3->addWidget(printq_includelist);
+	    printq_hlayout1->addLayout(printq_vlayout3);
+	printq_glayout->addLayout(printq_hlayout1, 1, 0);
+	    QHBoxLayout * printq_hlayout2 = new QHBoxLayout(printq_widget);
+	    printq_hlayout2->setMargin(0); printq_hlayout2->setSpacing(6);
+			QPushButton * printq_btn_add_all = new QPushButton(printq_widget);
+			printq_btn_add_all->setText(tr("&Add all"));
+			QObject::connect(printq_btn_add_all, SIGNAL(released()), this, SLOT(addAllQuestionsToPrint()));
+		printq_hlayout2->addWidget(printq_btn_add_all);
+	    printq_hlayout2->addStretch();
+	        printq_btn_print = new QPushButton(tr("&Print"), printq_widget);
+	        QObject::connect(printq_btn_print, SIGNAL(released()), this, SLOT(printQuestions()));
+	        printq_btn_print->setEnabled(false);
+	    printq_hlayout2->addWidget(printq_btn_print);
+	        QPushButton * printq_btn_close = new QPushButton(tr("&Close"), printq_widget);
+	        QObject::connect(printq_btn_close, SIGNAL(released()), printq_widget, SLOT(close()));
+	    printq_hlayout2->addWidget(printq_btn_close);
+	printq_glayout->addLayout(printq_hlayout2, 2, 0);
+	    MTAdvancedGroupBox * printq_advanced = new MTAdvancedGroupBox(printq_widget);
+	        printq_advanced_statistics = new QCheckBox(tr("Print statistics"), printq_widget);
+	        printq_advanced_statistics->setChecked(true);
+	    printq_advanced->addWidget(printq_advanced_statistics, 0, 0);
+	        printq_advanced_formatting = new QCheckBox(tr("Print formatted questions"), printq_widget);
+	        printq_advanced_formatting->setChecked(true);
+	    printq_advanced->addWidget(printq_advanced_formatting, 1, 0);
+	        printq_advanced_test = new QCheckBox(tr("Print a test (do not highlight the correct answers)"), printq_widget);
+	        printq_advanced_test->setChecked(false);
+	        QObject::connect(printq_advanced_test, SIGNAL(toggled(bool)), printq_advanced_statistics, SLOT(setDisabled(bool)));
+	        QObject::connect(printq_advanced_test, SIGNAL(toggled(bool)), printq_advanced_formatting, SLOT(setDisabled(bool)));
+	    printq_advanced->addWidget(printq_advanced_test, 2, 0);
+	        printq_advanced_graphics = new QCheckBox(tr("Print graphics"), printq_widget);
+	        printq_advanced_graphics->setChecked(false);
+	    printq_advanced->addWidget(printq_advanced_graphics, 3, 0);
+	printq_glayout->addWidget(printq_advanced, 3, 0);
+	printq_glayout->setMargin(6); printq_glayout->setSpacing(6);
+	toggleAddRemoveQuestionToPrintEnabled();
+	QListWidgetItem * item;
+	for (int i = 0; i < 20; ++i) {
+		if (current_db_fe[i]) {
+			item = new QListWidgetItem(QString("%1 - %2").arg(i+1).arg(current_db_f[i]), printq_excludelist);
+			item->setData(Qt::UserRole, i);
+			setQuestionItemColour(item, i);
+		}
+	}
+	printq_widget->show();
+}
+
+void MainWindow::togglePrintSelection(QAbstractButton * rbtn)
+{
+	if (rbtn->text() == tr("Flags")) {
+		printq_excludelist->clear();
+		printq_includelist->clear();
+		printq_btn_print->setEnabled(false);
+		QListWidgetItem * item;
+		for (int i = 0; i < 20; ++i) {
+			if (current_db_fe[i]) {
+				item = new QListWidgetItem(QString("%1 - %2").arg(i+1).arg(current_db_f[i]), printq_excludelist);
+				item->setData(Qt::UserRole, i);
+				setQuestionItemColour(item, i);
+			}
+		}
+	} else if (rbtn->text() == tr("Questions")) {
+		printq_excludelist->clear();
+		printq_includelist->clear();
+		printq_btn_print->setEnabled(false);
+		QListWidgetItem * item;
+		for (int i = 0; i < LQListWidget->count(); ++i) {
+			if (!current_db_questions.value(LQListWidget->item(i))->isHidden() || actionShow_hidden->isChecked()) {
+				item = new QListWidgetItem(*LQListWidget->item(i));
+				item->setData(Qt::UserRole, i);
+				printq_excludelist->addItem(item);
+			}
+		}
+	}
+}
+
+void MainWindow::addQuestionToPrint()
+{
+    if (printq_excludelist->currentIndex().isValid()) {
+        printq_includelist->addItem(printq_excludelist->takeItem(printq_excludelist->currentRow()));
+        printq_btn_print->setEnabled(true);
+        toggleAddRemoveQuestionToPrintEnabled();
+    }
+}
+
+void MainWindow::removeQuestionToPrint()
+{
+    if (printq_includelist->currentIndex().isValid()) {
+        printq_excludelist->addItem(printq_includelist->takeItem(printq_includelist->currentRow()));
+        if (printq_includelist->count() <= 0) printq_btn_print->setEnabled(false);
+        toggleAddRemoveQuestionToPrintEnabled();
+    }
+}
+
+void MainWindow::addAllQuestionsToPrint()
+{
+	for (int i = 0; i < printq_excludelist->count();) {
+		printq_includelist->addItem(printq_excludelist->takeItem(i));
+		printq_btn_print->setEnabled(true);
+	}
+	toggleAddRemoveQuestionToPrintEnabled();
+}
+
+void MainWindow::searchQuestionsNotToPrint(const QString & keyword)
+{
+    searchListWidgetItems(keyword, printq_excludelist, printq_search_excluded);
+}
+
+void MainWindow::searchQuestionsToPrint(const QString & keyword)
+{
+    searchListWidgetItems(keyword, printq_includelist, printq_search_included);
+}
+
+void MainWindow::toggleAddRemoveQuestionToPrintEnabled()
+{
+    if (printq_excludelist->currentIndex().isValid()) {
+        printq_add->setEnabled(true);
+    } else { printq_add->setEnabled(false); }
+    if (printq_includelist->currentIndex().isValid()) {
+        printq_remove->setEnabled(true);
+    } else { printq_remove->setEnabled(false); }
+}
+
 void MainWindow::changeLanguage()
 {
 	QWidget * lang_widget = new QWidget(this, Qt::Dialog);
@@ -923,9 +1109,24 @@ void MainWindow::langChanged()
 	lang_widget->close();
 }
 
+void MainWindow::previewSvg(QListWidgetItem * item)
+{
+    SvgItem * svg_item = (SvgItem *)item;
+    if (!svg_item->isValid()) { return; }
+    QSvgWidget * svg_widget = new QSvgWidget;
+	svg_widget->setAttribute(Qt::WA_DeleteOnClose);
+	svg_widget->setWindowTitle(svg_item->text());
+	QSize minimum_size = svg_widget->sizeHint();
+	minimum_size.scale(128, 128, Qt::KeepAspectRatioByExpanding);
+	svg_widget->setMinimumSize(minimum_size);
+	svg_widget->load(svg_item->svg().toUtf8());
+	svg_widget->show();
+}
+
 void MainWindow::about()
 {
-    AboutWidget * itest_about = new AboutWidget(ver, QString("4.3.1"), QString("2007"));
+    AboutWidget * itest_about = new AboutWidget(ver, QString("4.3.2"), QString("2007"));
+	itest_about->setParent(this);
     itest_about->setWindowFlags(Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/ | Qt::WindowStaysOnTopHint);
 	itest_about->show();
 }

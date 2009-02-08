@@ -1,4 +1,25 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "main_window.h"
+
+#include <cmath>
 
 bool MainWindow::saveChangesBeforeProceeding(QString parentFunction, bool close)
 {
@@ -291,17 +312,13 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 	    QString db_date; QString db_comments; int db_qnum; bool db_fxxe[20];
 	    QString db_f[20]; QString q_file_name; QString db_ulsd; int s_lenum;
 	    QuestionItem * item; QStringList answers; int db_snum; int s_snum;
-		QStringList bufferlist; int ans_flag;
+		QStringList bufferlist; int ans_flag; SvgItem * svg;
 		QuestionItem::Answer c_ans; QuestionItem::Answer ans;
 	    // ---------------------------------------------------------------------
-		db_buffer = rfile.readLine();
-		if (db_buffer != "[ITEST_VERSION]") { throw xInvalidDBFile(); }
-		db_buffer = rfile.readLine();
-		version = db_buffer.toFloat();
-   		db_buffer = rfile.readLine();
-    	if (db_buffer != "[ITEST_DB_VERSION]") { throw xInvalidDBFile(); }
-    	db_buffer = rfile.readLine();
-    	db_version = db_buffer.toFloat();
+		if (rfile.readLine() != "[ITEST_VERSION]") { throw xInvalidDBFile(); }
+		version = rfile.readLine().toFloat();
+    	if (rfile.readLine() != "[ITEST_DB_VERSION]") { throw xInvalidDBFile(); }
+    	db_version = rfile.readLine().toFloat();
     	if ((version > f_ver) && (db_version == f_itdb_ver))
     	{ QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features.")); }
     	if ((version > f_ver) && (db_version > f_itdb_ver))
@@ -370,22 +387,22 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 			if (rfile.readLine() != "[Q_ANSA]") { throw xInvalidDBFile(); }
 			answers << rfile.readLine();
 			if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSA_C]") { throw xInvalidDBFile(); } }
-			answers << rfile.readLine();
+			item->setAnsACorrect(rfile.readLine() == "true");
 			// Answer B
 			if (rfile.readLine() != "[Q_ANSB]") { throw xInvalidDBFile(); }
 			answers << rfile.readLine();
 			if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSB_C]") { throw xInvalidDBFile(); } }
-			answers << rfile.readLine();
+			item->setAnsBCorrect(rfile.readLine() == "true");
 			// Answer C
 			if (rfile.readLine() != "[Q_ANSC]") { throw xInvalidDBFile(); }
 			answers << rfile.readLine();
 			if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSC_C]") { throw xInvalidDBFile(); } }
-			answers << rfile.readLine();
+			item->setAnsCCorrect(rfile.readLine() == "true");
 			// Answer D
 			if (rfile.readLine() != "[Q_ANSD]") { throw xInvalidDBFile(); }
 			answers << rfile.readLine();
 			if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSD_C]") { throw xInvalidDBFile(); } }
-			answers << rfile.readLine();
+			item->setAnsDCorrect(rfile.readLine() == "true");
 			// Statistics
 			if (db_version < 1.2) { if (rfile.readLine() != "[Q_ICNT]") { throw xInvalidDBFile(); } }
 			else { if (rfile.readLine() != "[Q_ICCNT]") { throw xInvalidDBFile(); } }
@@ -397,8 +414,20 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 				if (rfile.readLine() != "[Q_HID]") { throw xInvalidDBFile(); }
 				item->setHidden(rfile.readLine() == "true");
 			}
+			if (db_version > 1.25) {
+				// SVG
+				if (rfile.readLine() != "[Q_SVG]") { throw xInvalidDBFile(); }
+				int numsvgitems = rfile.readLine().toInt();
+				for (int g = 0; g < numsvgitems; ++g) {
+				    db_buffer = rfile.readLine();
+				    svg = new SvgItem(db_buffer, rfile.readLine());
+				    item->addSvgItem(svg);
+				}
+			}
 			// End
-			if (rfile.readLine() != "[Q_END]") { throw xInvalidDBFile(); }
+			if (db_version < 1.25) {
+			    if (rfile.readLine() != "[Q_END]") { throw xInvalidDBFile(); }
+			}
 			// Add map entry
 			item->setAnswers(answers);
 			QListWidgetItem * q_item = new QListWidgetItem (item->group().isEmpty() ? item->name() : QString("[%1] %2").arg(item->group()).arg(item->name()));
@@ -473,8 +502,13 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 							ans_flag = item->flag();
 						}
 					}
-					ans = (QuestionItem::Answer)rfile.readLine().toInt();
-					c_ans = (QuestionItem::Answer)rfile.readLine().toInt();
+					if (db_version < 1.27) {
+					    ans = QuestionItem::convertOldAnsNumber(rfile.readLine().toInt());
+					    c_ans = QuestionItem::convertOldAnsNumber(rfile.readLine().toInt());
+					} else {
+					    ans = (QuestionItem::Answer)rfile.readLine().toInt();
+					    c_ans = (QuestionItem::Answer)rfile.readLine().toInt();
+					}
 					QuestionAnswer qans(ans_flag, c_ans, ans);
 					results->insert(db_buffer, qans);
 				}
@@ -524,7 +558,7 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 	    statusBar()->showMessage(tr("Database open"), 10000);
 	    setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>
 	    actionEdit_questions->setChecked(true);
-		mainStackedWidget->setCurrentIndex(1); updateGeometry();
+		mainStackedWidget->setCurrentIndex(1);
 	    // ---------------------------------------------------------------------
 	    this->setEnabled(true);
 		// Load archived sessions
@@ -538,7 +572,7 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 		clearAll(); disableAll(); current_db_open = false;
 		this->setWindowTitle(tr("iTestServer"));
 		this->setWindowModified(false); setProgress(-1);
-		mainStackedWidget->setCurrentIndex(0); updateGeometry();
+		mainStackedWidget->setCurrentIndex(0);
 		this->setEnabled(true);
 	}
 }
@@ -552,7 +586,7 @@ void MainWindow::closeDB()
 	this->setWindowTitle(tr("iTestServer"));
 	this->setWindowModified(false);
 	setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	mainStackedWidget->setCurrentIndex(0); updateGeometry();
+	mainStackedWidget->setCurrentIndex(0);
 	statusBar()->showMessage(tr("Database closed"), 10000);
 	// -------------------------------------------------------------------------
 }

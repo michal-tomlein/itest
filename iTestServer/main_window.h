@@ -1,5 +1,25 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "ui_main_window_v2.h"
 #include "archived_session.h"
+#include "mtadvancedgroupbox.h"
 
 #include <QFile>
 #include <QInputDialog>
@@ -30,6 +50,8 @@
 #include <QTranslator>
 #include <QQueue>
 #include <QProcess>
+#include <QSvgWidget>
+#include <QUrl>
 
 #include <QtAlgorithms>
 
@@ -39,14 +61,12 @@ class MainWindow : public QMainWindow, private Ui::MainWindow
 
 public:
     MainWindow();
-
+    
 private slots:
     // UI-RELATED
     void varinit();
     void quit(); void about(); void addRecent(QString);
     void loadSettings(); void saveSettings();
-    void updateGeometry(); void updateVSSGeometry();
-    void updateTSTWGeometry(); void updatePMDTWGeometry();
     void onInfoDisplayChange(bool); void setPage(QAction *);
     bool saveChangesBeforeProceeding(QString, bool);
     void setProgress(int); void setNullProgress();
@@ -54,9 +74,9 @@ private slots:
     uint searchTableWidgetItems(QString, QTableWidget *, QLineEdit *);
     void checkForUpdates(); void httpRequestFinished(bool);
     void openDocumentation();
-    void statsWidgetClosed();
     void changeLanguage(); void langChanged();
     void hideArchive();
+    void previewSvg(QListWidgetItem *);
     // ENABLE
     void enableAll(); void enableSQ();
     void enableLQTools(); void enableEQTools();
@@ -73,27 +93,37 @@ private slots:
     void saveDB(QString, bool = false, bool = false);
     void save(); void saveAs(); void saveCopy(); void saveBackup();
     void setDatabaseModified();
+    // STATS
     void overallStatistics(); void statsAdjustAll();
-    void statsAdjust(QAbstractButton *);
+    void statsAdjust(QAbstractButton *); void statsWidgetClosed();
+    void searchStatistics(const QString &);
+    // PRINT QUESTIONS
+    void showPrintQuestionsDialogue();
+    void toggleAddRemoveQuestionToPrintEnabled();
+    void searchQuestionsNotToPrint(const QString &);
+    void searchQuestionsToPrint(const QString &);
+    void addQuestionToPrint(); void removeQuestionToPrint();
+    void addAllQuestionsToPrint();
+    void togglePrintSelection(QAbstractButton *);
     // FLAGS-RELATED
     void setupFlagsPage();
     void setFlags(); void loadFlags(); void applyFlags(); void discardFlags();
     void setFlagLineEditPalettes(); void updateFlags(QAbstractButton *);
     void updateFlagQnums(); void checkForUnflaggedQuestions();
-    QColor backgroundColourForFlag(int);
-    QColor foregroundColourForFlag(int, bool = false);
+    static QColor backgroundColourForFlag(int);
+    static QColor foregroundColourForFlag(int, bool = false);
     // CLEAR & REMOVE & SUBSTITUTE
     void clearAll(); void clearSQ(); void clearSQNoFlags(); void clearDBI();
-    void clearCurrentValues(); QString removeLineBreaks(QString);
-    void clearSMSC(); QString substituteHtmlTags(QString);
+    void clearCurrentValues(); static QString removeLineBreaks(QString);
+    void clearSMSC(); static QString substituteHtmlTags(QString);
     void clearSM(); void clearVSS(); void clearLQ();
     // QUESTION-RELATED
     void setCurrentQuestion();
     void addQuestion(); void deleteQuestion(); void duplicateQuestion();
     void applyQuestionChanges(); void discardQuestionChanges();
-    void setQuestionItemColour(QListWidgetItem *, int);
-    void setQuestionItemIcon(QListWidgetItem *, int);
-    QIcon iconForDifficulty(int);
+    static void setQuestionItemColour(QListWidgetItem *, int);
+    static void setQuestionItemIcon(QListWidgetItem *, int);
+    static QIcon iconForDifficulty(int);
     void sortQuestionsAscending(); void sortQuestionsDescending();
     void sortQuestions(Qt::SortOrder);
     void hideQuestion(); void hideQuestion(QListWidgetItem *, QuestionItem *);
@@ -103,6 +133,9 @@ private slots:
     void filterLQAction(QAction *); void filterLQSearch();
     void updateTestQnum(); void searchByGroup();
     uint numOccurrences(QString); uint replaceAllOccurrences(QString, QString);
+    void addSvg(); void removeSvg(); void exportSvg();
+    void editSvg(); void browseForSvg(); void applySvgChanges();
+    void currentSvgChanged();
     // SERVER-RELATED
     void setupServer(); void reloadAvailableItems(); void setMaximumQuestions();
     void searchAvailableItems(const QString &); void updateTestTime();
@@ -129,6 +162,8 @@ private slots:
     void print(); void quickPrint(); void togglePrintEnabled();
     void printAll(); void printSessionSummary();
     bool printSessionSummary(Session *, QPrinter *);
+    void printQuestions();
+    QString htmlForQuestion(QuestionItem *, QTextDocument &, bool = false, bool = true, bool = true, bool = false);
     // SESSIONVIEWER-RELATED
     void setupSessionViewer(); void setCurrentSession(QListWidgetItem *);
     void setCurrentStudent(); void selectSessionItem(QListWidgetItem *);
@@ -171,7 +206,6 @@ private:
     bool current_db_fe[20]; QString current_db_f[20];
     // UI-RELATED
     void closeEvent(QCloseEvent *);
-	void resizeEvent(QResizeEvent *);
 	QHttp * http; QBuffer * http_buffer;
 	// TEXTEDIT-RELATED
 	void mergeFormatOnWordOrSelection(const QTextCharFormat &format);
@@ -210,6 +244,23 @@ private:
 	QMap<QAbstractButton *, int> stats_twmap;
 	QMap<QAbstractButton *, int> stats_lwmap;
 	QButtonGroup * btngrpStatsAdjust;
+	ExtendedLineEdit * stats_search;
+	// PRINT QUESTIONS DIALOGUE
+	QListWidget * printq_excludelist;
+	QListWidget * printq_includelist;
+	ExtendedLineEdit * printq_search_excluded;
+	ExtendedLineEdit * printq_search_included;
+	QPushButton * printq_btn_print;
+	QPushButton * printq_add;
+	QPushButton * printq_remove;
+	QButtonGroup * rbtngrpPrintqSelect;
+	QCheckBox * printq_advanced_statistics;
+	QCheckBox * printq_advanced_formatting;
+	QCheckBox * printq_advanced_test;
+	QCheckBox * printq_advanced_graphics;
+	// EDIT SVG
+	QLineEdit * editsvg_lineedit_name;
+	QString editsvg_svgpath;
 	// LANG
 	QComboBox * langComboBox;
 	// FLAG-WIDGETS
@@ -217,7 +268,8 @@ private:
 	QCheckBox * EFFlagCheckBox[20];
 	QLabel * EFFlagQnumLabel[20];
 	// PALETTES
-	QPalette search_active_palette; QPalette search_noresults_palette;
+	QPalette search_active_palette;
+	QPalette search_noresults_palette;
 	// ITEST & DB VERSION & ENVIRONMENT VARIABLES
 	QString ver; float f_ver;
 	QString itdb_ver; float f_itdb_ver;

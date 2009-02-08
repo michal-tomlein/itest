@@ -1,3 +1,22 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "main_window.h"
 
 void MainWindow::connectSocket()
@@ -87,7 +106,11 @@ void MainWindow::sendResults()
             out << QString("[Q_NAME]\n");
             out << current_test_questions.value(LQListWidget->item(i))->name();
             out << QString("\n[Q_ANSWERED]\n");
-            out << QString("%1\n").arg(current_test_questions.value(LQListWidget->item(i))->answered());
+            if (current_db_multiple_ans_support) {
+                out << QString("%1\n").arg(current_test_questions.value(LQListWidget->item(i))->answered());
+            } else {
+                out << QString("%1\n").arg(QuestionItem::convertToOldAnsNumber(current_test_questions.value(LQListWidget->item(i))->answered()));
+            }
         }
         // ---------------------------------------------------------------------
         out.device()->seek(0);
@@ -119,7 +142,11 @@ void MainWindow::sendResults()
         sfile << "[Q_NAME]\n";
         sfile << current_test_questions.value(LQListWidget->item(i))->name();
         sfile << "\n[Q_ANSWERED]\n";
-        sfile << current_test_questions.value(LQListWidget->item(i))->answered();
+        if (current_db_multiple_ans_support) {
+            sfile << current_test_questions.value(LQListWidget->item(i))->answered();
+        } else {
+            sfile << QuestionItem::convertToOldAnsNumber(current_test_questions.value(LQListWidget->item(i))->answered());
+        }
         sfile << endl;
     }
 }
@@ -137,13 +164,10 @@ void MainWindow::readResults(QString input)
         }
         if (item == NULL) { in.readLine(); in.readLine(); continue; }
         if (in.readLine() != "[Q_C_ANS]") { return; }
-        switch (in.readLine().toInt()) {
-            case 0: break;
-            case 1: item->setAnsACorrect(true); break;
-            case 2: item->setAnsBCorrect(true); break;
-            case 3: item->setAnsCCorrect(true); break;
-            case 4: item->setAnsDCorrect(true); break;
-            default: break;
+        if (current_db_multiple_ans_support) {
+            item->setCorrectAnswers((QuestionItem::Answer)in.readLine().toInt());
+        } else {
+            item->setCorrectAnswers(QuestionItem::convertOldAnsNumber(in.readLine().toInt()));
         }
     } while (!in.atEnd());
     saveResults();
@@ -152,63 +176,20 @@ void MainWindow::readResults(QString input)
 void MainWindow::saveResults()
 {
     current_test_results->clear(); QuestionItem * item;
+    bool offline = rbtnFromFile->isChecked();
     for (int i = 0; i < LQListWidget->count(); ++i) {
         item = current_test_questions.value(LQListWidget->item(i));
-        switch (item->answered()) {
-            case QuestionItem::None:
-            case QuestionItem::A:
-            case QuestionItem::B:
-            case QuestionItem::C:
-            case QuestionItem::D:
-                if (!item->hasCorrectAnswer()) {
-                    QuestionAnswer qans (QuestionItem::None, item->answered());
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                } else if (item->isAnsACorrect()) {
-                    QuestionAnswer qans (QuestionItem::A, item->answered());
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                } else if (item->isAnsBCorrect()) {
-                    QuestionAnswer qans (QuestionItem::B, item->answered());
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                } else if (item->isAnsCCorrect()) {
-                    QuestionAnswer qans (QuestionItem::C, item->answered());
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                } else if (item->isAnsDCorrect()) {
-                    QuestionAnswer qans (QuestionItem::D, item->answered());
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                }
-                break;
-            default:
-                if (!item->hasCorrectAnswer()) {
-                    QuestionAnswer qans (QuestionItem::None, QuestionItem::None);
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                } else if (item->isAnsACorrect()) {
-                    QuestionAnswer qans (QuestionItem::A, QuestionItem::None);
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                } else if (item->isAnsBCorrect()) {
-                    QuestionAnswer qans (QuestionItem::B, QuestionItem::None);
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                } else if (item->isAnsCCorrect()) {
-                    QuestionAnswer qans (QuestionItem::C, QuestionItem::None);
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                } else if (item->isAnsDCorrect()) {
-                    QuestionAnswer qans (QuestionItem::D, QuestionItem::None);
-                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
-                    if (qans.isAnsweredCorrectly()) { current_test_score++; }
-                }
-                break;
+        if (offline) {
+            QuestionAnswer qans(QuestionItem::None, item->answered());
+            current_test_results->insert(LQListWidget->item(i)->text(), qans);
+        } else {
+            QuestionAnswer qans(item->correctAnswer(), item->answered());
+            current_test_results->insert(LQListWidget->item(i)->text(), qans);
+            if (qans.isAnsweredCorrectly()) { current_test_score++; }
         }
     }
     loadResults(current_test_results, resultsTableWidget);
-    scoreLabel->setText(tr("%1 out of %2 (%3)").arg(current_test_score).arg(LQListWidget->count()).arg(current_test_passmark.check(current_test_results, &current_test_questions) ? tr("PASSED") : tr("FAILED")));
+    if (!offline) scoreLabel->setText(tr("%1 out of %2 (%3)").arg(current_test_score).arg(LQListWidget->count()).arg(current_test_passmark.check(current_test_results, &current_test_questions) ? tr("PASSED") : tr("FAILED")));
 }
 
 void MainWindow::loadResults(QMap<QString, QuestionAnswer> * results, QTableWidget * tw)
@@ -216,37 +197,49 @@ void MainWindow::loadResults(QMap<QString, QuestionAnswer> * results, QTableWidg
     QMapIterator<QString, QuestionAnswer> i(*results); int row = 0;
     QTableWidgetItem * item; QuestionAnswer qans;
     tw->setRowCount(results->count());
+    QStringList bufferlist;
+    bool show_correct_answers = !rbtnFromFile->isChecked() && !hideCorrectAnswersCheckBox->isChecked();
+    if (show_correct_answers) {
+        tw->horizontalHeader()->showSection(1);
+        tw->horizontalHeader()->showSection(3);
+    } else {
+        tw->horizontalHeader()->hideSection(1);
+        tw->horizontalHeader()->hideSection(3);
+    }
     while (i.hasNext()) {
         i.next();
-        item = new QTableWidgetItem (i.key()); qans = i.value();
+        item = new QTableWidgetItem(i.key()); qans = i.value();
         tw->setItem(row, 0, item);
-        item = new QTableWidgetItem (qans.isAnsweredCorrectly() ? tr("yes") : tr("no"));
-        if (qans.isAnsweredCorrectly()) {
-            item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-            item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
-        } else {
-            item->setBackground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
-            item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        item = new QTableWidgetItem(show_correct_answers ? (qans.isAnsweredCorrectly() ? tr("yes") : tr("no")) : "");
+        if (show_correct_answers) {
+            if (qans.isAnsweredCorrectly()) {
+                item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
+                item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+            } else {
+                item->setBackground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
+                item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+            }
         }
         tw->setItem(row, 1, item);
         item = new QTableWidgetItem;
         switch (qans.answered()) {
             case QuestionItem::None: item->setText(tr("None")); break;
-            case QuestionItem::A: item->setText("A"); break;
-            case QuestionItem::B: item->setText("B"); break;
-            case QuestionItem::C: item->setText("C"); break;
-            case QuestionItem::D: item->setText("D"); break;
+            case QuestionItem::A: item->setText(tr("a)")); break;
+            case QuestionItem::B: item->setText(tr("b)")); break;
+            case QuestionItem::C: item->setText(tr("c)")); break;
+            case QuestionItem::D: item->setText(tr("d)")); break;
             default: item->setText(tr("None")); break;
         }
         tw->setItem(row, 2, item);
         item = new QTableWidgetItem;
-        switch (qans.correctAnswer()) {
-            case QuestionItem::None: item->setText(tr("None")); break;
-            case QuestionItem::A: item->setText("A"); break;
-            case QuestionItem::B: item->setText("B"); break;
-            case QuestionItem::C: item->setText("C"); break;
-            case QuestionItem::D: item->setText("D"); break;
-            default: item->setText(tr("None")); break;
+        if (show_correct_answers) {
+            bufferlist.clear();
+            if ((QuestionItem::A & qans.correctAnswer()) == QuestionItem::A) bufferlist << tr("a)");
+            if ((QuestionItem::B & qans.correctAnswer()) == QuestionItem::B) bufferlist << tr("b)");
+            if ((QuestionItem::C & qans.correctAnswer()) == QuestionItem::C) bufferlist << tr("c)");
+            if ((QuestionItem::D & qans.correctAnswer()) == QuestionItem::D) bufferlist << tr("d)");
+            if (bufferlist.count() > 0) { item->setText(bufferlist.join(", ")); }
+            else { item->setText(tr("None")); }
         }
         tw->setItem(row, 3, item);
         row++;

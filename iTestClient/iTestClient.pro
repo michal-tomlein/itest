@@ -5,18 +5,23 @@ FORMS        += main_window.ui \
 HEADERS      += main_window.h \
                 about_widget.h \
                 question_item.h \
-                pass_mark.h
+                pass_mark.h \
+                mtsplitter.h \
+                mtmultisvgwidget.h \
+                flowlayout.h
 RESOURCES    += resources.qrc \
                 i18n.qrc
 SOURCES      += main.cpp \
+                main_window.cpp \
                 database.cpp \
                 about_widget.cpp \
                 client.cpp \
                 question_item.cpp \
                 env_vars.cpp \
                 question_answer.cpp \
-                pass_mark.cpp
-QT           += network
+                pass_mark.cpp \
+                flowlayout.cpp
+QT           += network svg
 win32 {
 DESTDIR       = ../
 RC_FILE       = itestwri.rc
@@ -45,6 +50,7 @@ SOURCES      += ui_main_window.cpp \
                 ui_about_widget_v2.cpp
 }
 !macx {
+DESTDIR       = ../bin/
 OBJECTS_DIR   = .objects.unix/
 MOC_DIR       = .moc.unix/
 RCC_DIR       = .rcc.unix/
@@ -56,8 +62,9 @@ QMAKE_CXX     = apg++
 }
 }
 }
-TRANSLATIONS += i18n/Slovak.ts \
-                i18n/Russian.ts \
-                i18n/Turkish.ts \
-                i18n/Portuguese.ts
+TRANSLATIONS += i18n/iTestClient-Slovak.ts \
+                i18n/iTestClient-Russian.ts \
+                i18n/iTestClient-Turkish.ts \
+                i18n/iTestClient-Portuguese.ts \
+                i18n/iTestClient-Spanish.ts
 QMAKE_RESOURCE_FLAGS += -compress 9

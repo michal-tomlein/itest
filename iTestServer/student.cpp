@@ -1,3 +1,22 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "student.h"
 
 Student::Student()
@@ -93,28 +112,6 @@ void Student::setPassed(bool passed) { s_passed = passed; }
 
 bool Student::passed() { return s_passed; }
 
-/*bool Student::loadStudentData(QString input)
-{
-	QTextStream in(&input); QString buffer;
-	QuestionItem::Answer ans; QuestionItem::Answer c_ans;
-
-	if (in.readLine() != "[STUDENT]") { return false; }
-	s_name = in.readLine();
-	if (in.readLine() == "true") { s_ready = true; } else { s_ready = false; }
-	s_number = in.readLine().toInt();
-	s_score = in.readLine().toInt();
-	int numresults = in.readLine().toInt();
-	s_results->clear();
-	for (int i = 0; i < numresults; ++i) {
-		buffer = in.readLine();
-		ans = (QuestionItem::Answer)in.readLine().toInt();
-		c_ans = (QuestionItem::Answer)in.readLine().toInt();
-		QuestionAnswer qans (c_ans, ans);
-		s_results->insert(buffer, qans);
-	}
-	return true;
-}*/
-
 QString Student::studentData()
 {
 	QString out;
@@ -162,8 +159,8 @@ QString Student::studentArchiveData()
 	while (i.hasNext()) { i.next();
 		qans = i.value();
 		out.append(QString("\n%1").arg(i.key()));
-		out.append(QString("\n%1").arg(qans.answered()));
-		out.append(QString("\n%1").arg(qans.correctAnswer()));
+		out.append(QString("\n%1").arg(QuestionItem::convertToOldAnsNumber(qans.answered())));
+		out.append(QString("\n%1").arg(QuestionItem::convertToOldAnsNumber(qans.correctAnswer())));
 	}
 	return out;
 }

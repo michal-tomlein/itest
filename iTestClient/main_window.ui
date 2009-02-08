@@ -17,747 +17,604 @@
    <iconset resource="resources.qrc" >:/images/images/itestwri.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" >
-   <widget class="QStackedWidget" name="mainStackedWidget" >
-    <property name="geometry" >
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>801</width>
-      <height>611</height>
-     </rect>
-    </property>
-    <property name="sizePolicy" >
-     <sizepolicy vsizetype="Maximum" hsizetype="Maximum" >
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="currentIndex" >
+   <layout class="QGridLayout" >
+    <property name="leftMargin" >
      <number>0</number>
     </property>
-    <widget class="QWidget" name="mainPage" >
-     <widget class="QWidget" name="mainGridLayout" >
-      <property name="geometry" >
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>801</width>
-        <height>601</height>
-       </rect>
+    <property name="topMargin" >
+     <number>0</number>
+    </property>
+    <property name="rightMargin" >
+     <number>0</number>
+    </property>
+    <property name="bottomMargin" >
+     <number>0</number>
+    </property>
+    <item row="0" column="0" >
+     <widget class="QStackedWidget" name="mainStackedWidget" >
+      <property name="currentIndex" >
+       <number>0</number>
       </property>
-      <layout class="QGridLayout" >
-       <property name="leftMargin" >
-        <number>0</number>
-       </property>
-       <property name="topMargin" >
-        <number>0</number>
-       </property>
-       <property name="rightMargin" >
-        <number>0</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>0</number>
-       </property>
-       <property name="horizontalSpacing" >
-        <number>6</number>
-       </property>
-       <property name="verticalSpacing" >
-        <number>6</number>
-       </property>
-       <item row="0" column="0" >
-        <layout class="QVBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>10</number>
-         </property>
-         <property name="topMargin" >
-          <number>10</number>
-         </property>
-         <property name="rightMargin" >
-          <number>10</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>10</number>
-         </property>
-         <item>
-          <widget class="QRadioButton" name="rbtnNetwork" >
+      <widget class="QWidget" name="mainPage" >
+       <layout class="QVBoxLayout" >
+        <item>
+         <widget class="QRadioButton" name="rbtnNetwork" >
+          <property name="text" >
+           <string>Connect to an iTest server</string>
+          </property>
+          <property name="checked" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <property name="leftMargin" >
+           <number>0</number>
+          </property>
+          <property name="topMargin" >
+           <number>0</number>
+          </property>
+          <property name="rightMargin" >
+           <number>0</number>
+          </property>
+          <property name="bottomMargin" >
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_7" >
+            <property name="text" >
+             <string>&lt;b>Server name&lt;/b></string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="serverNameLineEdit" >
+            <property name="minimumSize" >
+             <size>
+              <width>0</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximumSize" >
+             <size>
+              <width>16777215</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_8" >
+            <property name="text" >
+             <string>&lt;b>Server port&lt;/b></string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="serverPortLineEdit" >
+            <property name="minimumSize" >
+             <size>
+              <width>0</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximumSize" >
+             <size>
+              <width>16777215</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbtnConnect" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="text" >
+             <string>Connect</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="resources.qrc" >:/images/images/connect.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle" >
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="rbtnFromFile" >
+          <property name="text" >
+           <string>Use an iTest database file</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label" >
+          <property name="text" >
+           <string>&lt;b>Database file path&lt;/b></string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <property name="leftMargin" >
+           <number>0</number>
+          </property>
+          <property name="topMargin" >
+           <number>0</number>
+          </property>
+          <property name="rightMargin" >
+           <number>0</number>
+          </property>
+          <property name="bottomMargin" >
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="DBPathLineEdit" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>0</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximumSize" >
+             <size>
+              <width>16777215</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbtnBrowse_DBPath" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="text" >
+             <string>Browse</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="resources.qrc" >:/images/images/folder_red.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle" >
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbtnLoad" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="text" >
+             <string>Load</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="resources.qrc" >:/images/images/reload.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle" >
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="Line" name="line_2" >
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2" >
+          <property name="text" >
+           <string>&lt;b>Save answers to&lt;/b></string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_9" >
+          <property name="text" >
+           <string>If connected to an iTest server, results will be sent automatically. You only need this file if there is no network available or in case of connection breakdown.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="useDefaultOutputCheckBox" >
+          <property name="toolTip" >
+           <string>$HOME/TestName-Date-SurnameName.itcl, where $HOME is the directory of the current user's profile on Windows and the home directory on Unix/Linux/Mac OS</string>
+          </property>
+          <property name="text" >
+           <string>Use default</string>
+          </property>
+          <property name="checked" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <property name="leftMargin" >
+           <number>0</number>
+          </property>
+          <property name="topMargin" >
+           <number>0</number>
+          </property>
+          <property name="rightMargin" >
+           <number>0</number>
+          </property>
+          <property name="bottomMargin" >
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="savePathLineEdit" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>0</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximumSize" >
+             <size>
+              <width>16777215</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbtnBrowse_savePath" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
+            <property name="text" >
+             <string>Browse</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="resources.qrc" >:/images/images/folder_red.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle" >
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="Line" name="line" >
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_10" >
+          <property name="text" >
+           <string>&lt;b>Other settings&lt;/b></string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="hideQuestionNamesCheckBox" >
+          <property name="text" >
+           <string>Hide question names, show numbers instead</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="hideCorrectAnswersCheckBox" >
+          <property name="text" >
+           <string>Do not show correct answers at the end of the test</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_4" >
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3" >
+          <property name="text" >
+           <string>&lt;b>Test information&lt;/b></string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="infoTableWidget" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <row>
            <property name="text" >
-            <string>Connect to an iTest server</string>
+            <string>Test name</string>
            </property>
-           <property name="checked" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <property name="leftMargin" >
-            <number>0</number>
-           </property>
-           <property name="topMargin" >
-            <number>0</number>
-           </property>
-           <property name="rightMargin" >
-            <number>0</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_7" >
-             <property name="text" >
-              <string>&lt;b>Server name&lt;/b></string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="serverNameLineEdit" >
-             <property name="minimumSize" >
-              <size>
-               <width>0</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>22</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType" >
-              <enum>QSizePolicy::Fixed</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_8" >
-             <property name="text" >
-              <string>&lt;b>Server port&lt;/b></string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="serverPortLineEdit" >
-             <property name="minimumSize" >
-              <size>
-               <width>0</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>22</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QToolButton" name="tbtnConnect" >
-             <property name="enabled" >
-              <bool>false</bool>
-             </property>
-             <property name="text" >
-              <string>Connect</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/connect.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>22</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="toolButtonStyle" >
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="rbtnFromFile" >
+          </row>
+          <row>
            <property name="text" >
-            <string>Use an iTest database file</string>
+            <string>Database date</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label" >
+          </row>
+          <row>
            <property name="text" >
-            <string>&lt;b>Database file path&lt;/b></string>
+            <string>Test date</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <property name="leftMargin" >
-            <number>0</number>
-           </property>
-           <property name="topMargin" >
-            <number>0</number>
-           </property>
-           <property name="rightMargin" >
-            <number>0</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLineEdit" name="DBPathLineEdit" >
-             <property name="enabled" >
-              <bool>false</bool>
-             </property>
-             <property name="minimumSize" >
-              <size>
-               <width>0</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>22</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QToolButton" name="tbtnBrowse_DBPath" >
-             <property name="enabled" >
-              <bool>false</bool>
-             </property>
-             <property name="text" >
-              <string>Browse</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/folder_red.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>22</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="toolButtonStyle" >
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QToolButton" name="tbtnLoad" >
-             <property name="enabled" >
-              <bool>false</bool>
-             </property>
-             <property name="text" >
-              <string>Load</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/reload.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>22</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="toolButtonStyle" >
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="Line" name="line_2" >
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_2" >
+          </row>
+          <row>
            <property name="text" >
-            <string>&lt;b>Save answers to&lt;/b></string>
+            <string>Test time</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_9" >
+          </row>
+          <row>
            <property name="text" >
-            <string>If connected to an iTest server, results will be sent automatically. You only need this file if there is no network available or in case of connection breakdown.</string>
+            <string>Number of questions</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="useDefaultOutputCheckBox" >
-           <property name="toolTip" >
-            <string>$HOME/TestName-Date-SurnameName.itcl, where $HOME is the directory of the current user's profile on Windows and the home directory on Unix/Linux/Mac OS</string>
-           </property>
+          </row>
+          <row>
            <property name="text" >
-            <string>Use default</string>
+            <string>Number of flags</string>
            </property>
-           <property name="checked" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <property name="leftMargin" >
-            <number>0</number>
-           </property>
-           <property name="topMargin" >
-            <number>0</number>
-           </property>
-           <property name="rightMargin" >
-            <number>0</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLineEdit" name="savePathLineEdit" >
-             <property name="enabled" >
-              <bool>false</bool>
-             </property>
-             <property name="minimumSize" >
-              <size>
-               <width>0</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>22</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QToolButton" name="tbtnBrowse_savePath" >
-             <property name="enabled" >
-              <bool>false</bool>
-             </property>
-             <property name="text" >
-              <string>Browse</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/folder_red.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>22</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="toolButtonStyle" >
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="Line" name="line" >
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_10" >
+          </row>
+          <row>
            <property name="text" >
-            <string>&lt;b>Other settings&lt;/b></string>
+            <string>Flag names</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="hideQuestionNamesCheckBox" >
+          </row>
+          <row>
            <property name="text" >
-            <string>Hide question names, show numbers instead</string>
+            <string>Pass mark</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="Line" name="line_4" >
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_3" >
+          </row>
+          <row>
            <property name="text" >
-            <string>&lt;b>Test information&lt;/b></string>
+            <string>Comments</string>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QTableWidget" name="infoTableWidget" >
-           <property name="enabled" >
-            <bool>false</bool>
+          </row>
+          <column>
+           <property name="text" >
+            <string>Data</string>
            </property>
-           <row>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_3" >
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <property name="leftMargin" >
+           <number>0</number>
+          </property>
+          <property name="topMargin" >
+           <number>0</number>
+          </property>
+          <property name="rightMargin" >
+           <number>0</number>
+          </property>
+          <property name="bottomMargin" >
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="tbtnQuit" >
             <property name="text" >
-             <string>Test name</string>
+             <string>Quit</string>
             </property>
-           </row>
-           <row>
+            <property name="icon" >
+             <iconset resource="resources.qrc" >:/images/images/quit.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle" >
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbtnAbout" >
             <property name="text" >
-             <string>Database date</string>
+             <string>About</string>
             </property>
-           </row>
-           <row>
+            <property name="icon" >
+             <iconset resource="resources.qrc" >:/images/images/contents.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle" >
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>701</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbtnGetReady" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
             <property name="text" >
-             <string>Test date</string>
+             <string>Ready</string>
             </property>
-           </row>
-           <row>
-            <property name="text" >
-             <string>Test time</string>
+            <property name="icon" >
+             <iconset resource="resources.qrc" >:/images/images/button_ok.png</iconset>
             </property>
-           </row>
-           <row>
-            <property name="text" >
-             <string>Number of questions</string>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
             </property>
-           </row>
-           <row>
-            <property name="text" >
-             <string>Number of flags</string>
+            <property name="toolButtonStyle" >
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
-           </row>
-           <row>
-            <property name="text" >
-             <string>Flag names</string>
-            </property>
-           </row>
-           <row>
-            <property name="text" >
-             <string>Pass mark</string>
-            </property>
-           </row>
-           <row>
-            <property name="text" >
-             <string>Comments</string>
-            </property>
-           </row>
-           <column>
-            <property name="text" >
-             <string>Data</string>
-            </property>
-           </column>
-          </widget>
-         </item>
-         <item>
-          <widget class="Line" name="line_3" >
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <property name="leftMargin" >
-            <number>0</number>
-           </property>
-           <property name="topMargin" >
-            <number>0</number>
-           </property>
-           <property name="rightMargin" >
-            <number>0</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QToolButton" name="tbtnQuit" >
-             <property name="text" >
-              <string>Quit</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/quit.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>22</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="toolButtonStyle" >
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QToolButton" name="tbtnAbout" >
-             <property name="text" >
-              <string>About</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/contents.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>22</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="toolButtonStyle" >
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>701</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QToolButton" name="tbtnGetReady" >
-             <property name="enabled" >
-              <bool>false</bool>
-             </property>
-             <property name="text" >
-              <string>Ready</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/button_ok.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>22</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="toolButtonStyle" >
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="startPage" >
-     <widget class="QWidget" name="startGridLayout" >
-      <property name="geometry" >
-       <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>741</width>
-        <height>551</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" >
-       <property name="leftMargin" >
-        <number>0</number>
-       </property>
-       <property name="topMargin" >
-        <number>0</number>
-       </property>
-       <property name="rightMargin" >
-        <number>0</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>0</number>
-       </property>
-       <property name="horizontalSpacing" >
-        <number>6</number>
-       </property>
-       <property name="verticalSpacing" >
-        <number>6</number>
-       </property>
-       <item row="0" column="2" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="1" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="1" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="2" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="0" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="0" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="0" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="2" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="1" >
-        <widget class="QFrame" name="welcomeFrame" >
-         <property name="minimumSize" >
-          <size>
-           <width>501</width>
-           <height>204</height>
-          </size>
-         </property>
-         <property name="maximumSize" >
-          <size>
-           <width>501</width>
-           <height>204</height>
-          </size>
-         </property>
-         <property name="frameShape" >
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow" >
-          <enum>QFrame::Raised</enum>
-         </property>
-         <widget class="QWidget" name="welcomeVerticalLayout" >
-          <property name="geometry" >
-           <rect>
-            <x>0</x>
-            <y>0</y>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="startPage" >
+       <layout class="QGridLayout" >
+        <item row="0" column="0" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="0" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="1" >
+         <widget class="QFrame" name="welcomeFrame" >
+          <property name="minimumSize" >
+           <size>
             <width>501</width>
-            <height>203</height>
-           </rect>
+            <height>204</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>501</width>
+            <height>204</height>
+           </size>
+          </property>
+          <property name="frameShape" >
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow" >
+           <enum>QFrame::Raised</enum>
           </property>
           <layout class="QVBoxLayout" >
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <property name="leftMargin" >
-            <number>10</number>
-           </property>
-           <property name="topMargin" >
-            <number>10</number>
-           </property>
-           <property name="rightMargin" >
-            <number>10</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>10</number>
-           </property>
            <item>
             <layout class="QHBoxLayout" >
              <property name="spacing" >
@@ -817,8 +674,8 @@
              </property>
              <property name="sizeHint" >
               <size>
-               <width>20</width>
-               <height>40</height>
+               <width>481</width>
+               <height>16</height>
               </size>
              </property>
             </spacer>
@@ -989,8 +846,8 @@
              </property>
              <property name="sizeHint" >
               <size>
-               <width>20</width>
-               <height>40</height>
+               <width>481</width>
+               <height>16</height>
               </size>
              </property>
             </spacer>
@@ -1067,599 +924,663 @@
            </item>
           </layout>
          </widget>
-        </widget>
-       </item>
-      </layout>
+        </item>
+        <item row="1" column="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="1" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="testPage" >
+       <layout class="QHBoxLayout" >
+        <item>
+         <widget class="MTSplitter" name="testPageSplitter" >
+          <property name="palette" >
+           <palette>
+            <active>
+             <colorrole role="Base" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Window" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>127</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="Base" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Window" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>127</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="Base" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>127</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Window" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>127</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="childrenCollapsible" >
+           <bool>false</bool>
+          </property>
+          <widget class="QWidget" name="layoutWidget_1" >
+           <layout class="QVBoxLayout" >
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <property name="leftMargin" >
+             <number>0</number>
+            </property>
+            <property name="topMargin" >
+             <number>0</number>
+            </property>
+            <property name="rightMargin" >
+             <number>0</number>
+            </property>
+            <property name="bottomMargin" >
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QListWidget" name="LQListWidget" >
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Expanding" hsizetype="Preferred" >
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize" >
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QProgressBar" name="progressBar" >
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize" >
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="value" >
+               <number>0</number>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignHCenter</set>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="layoutWidget_2" >
+           <layout class="QVBoxLayout" >
+            <item>
+             <widget class="MTSplitter" name="questionTextSvgSplitter" >
+              <property name="orientation" >
+               <enum>Qt::Vertical</enum>
+              </property>
+              <widget class="QTextBrowser" name="questionTextBrowser" />
+              <widget class="MTMultiSvgWidget" native="1" name="svgDisplayWidget" >
+               <property name="minimumSize" >
+                <size>
+                 <width>0</width>
+                 <height>59</height>
+                </size>
+               </property>
+              </widget>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" >
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <property name="leftMargin" >
+               <number>0</number>
+              </property>
+              <property name="topMargin" >
+               <number>0</number>
+              </property>
+              <property name="rightMargin" >
+               <number>0</number>
+              </property>
+              <property name="bottomMargin" >
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="rbtnAnswerA" >
+                <property name="text" >
+                 <string>a)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextBrowser" name="answerA_textBrowser" >
+                <property name="sizePolicy" >
+                 <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize" >
+                 <size>
+                  <width>16777215</width>
+                  <height>59</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" >
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <property name="leftMargin" >
+               <number>0</number>
+              </property>
+              <property name="topMargin" >
+               <number>0</number>
+              </property>
+              <property name="rightMargin" >
+               <number>0</number>
+              </property>
+              <property name="bottomMargin" >
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="rbtnAnswerB" >
+                <property name="text" >
+                 <string>b)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextBrowser" name="answerB_textBrowser" >
+                <property name="sizePolicy" >
+                 <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize" >
+                 <size>
+                  <width>16777215</width>
+                  <height>59</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" >
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <property name="leftMargin" >
+               <number>0</number>
+              </property>
+              <property name="topMargin" >
+               <number>0</number>
+              </property>
+              <property name="rightMargin" >
+               <number>0</number>
+              </property>
+              <property name="bottomMargin" >
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="rbtnAnswerC" >
+                <property name="text" >
+                 <string>c)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextBrowser" name="answerC_textBrowser" >
+                <property name="sizePolicy" >
+                 <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize" >
+                 <size>
+                  <width>16777215</width>
+                  <height>59</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" >
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <property name="leftMargin" >
+               <number>0</number>
+              </property>
+              <property name="topMargin" >
+               <number>0</number>
+              </property>
+              <property name="rightMargin" >
+               <number>0</number>
+              </property>
+              <property name="bottomMargin" >
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="rbtnAnswerD" >
+                <property name="text" >
+                 <string>d)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextBrowser" name="answerD_textBrowser" >
+                <property name="sizePolicy" >
+                 <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize" >
+                 <size>
+                  <width>16777215</width>
+                  <height>59</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" >
+              <item>
+               <widget class="QCheckBox" name="showRemainingTimeCheckBox" >
+                <property name="text" >
+                 <string>Show remaining time</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLCDNumber" name="remainingTimeLcdNumber" >
+                <property name="frameShape" >
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="segmentStyle" >
+                 <enum>QLCDNumber::Flat</enum>
+                </property>
+                <property name="intValue" stdset="0" >
+                 <number>60</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_minutes" >
+                <property name="text" >
+                 <string>minute(s)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QProgressBar" name="remainingTimeProgressBar" >
+                <property name="value" >
+                 <number>100</number>
+                </property>
+                <property name="textVisible" >
+                 <bool>false</bool>
+                </property>
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer>
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" >
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnLast" >
+                <property name="maximumSize" >
+                 <size>
+                  <width>16777215</width>
+                  <height>23</height>
+                 </size>
+                </property>
+                <property name="text" >
+                 <string>Last question</string>
+                </property>
+                <property name="icon" >
+                 <iconset resource="resources.qrc" >:/images/images/back.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnNext" >
+                <property name="maximumSize" >
+                 <size>
+                  <width>16777215</width>
+                  <height>23</height>
+                 </size>
+                </property>
+                <property name="text" >
+                 <string>Next question</string>
+                </property>
+                <property name="icon" >
+                 <iconset resource="resources.qrc" >:/images/images/forward.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnFinish" >
+                <property name="maximumSize" >
+                 <size>
+                  <width>16777215</width>
+                  <height>23</height>
+                 </size>
+                </property>
+                <property name="text" >
+                 <string>Finish</string>
+                </property>
+                <property name="icon" >
+                 <iconset resource="resources.qrc" >:/images/images/button_ok.png</iconset>
+                </property>
+                <property name="iconSize" >
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="resultsPage" >
+       <layout class="QGridLayout" >
+        <item row="0" column="0" >
+         <widget class="QLabel" name="label_12" >
+          <property name="text" >
+           <string>&lt;b>Name:&lt;/b></string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" >
+         <widget class="QLabel" name="nameLabel" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>313</width>
+            <height>16</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="0" >
+         <widget class="QLabel" name="label_11" >
+          <property name="text" >
+           <string>&lt;b>Score:&lt;/b></string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" >
+         <widget class="QLabel" name="scoreLabel" />
+        </item>
+        <item row="1" column="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>313</width>
+            <height>16</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0" colspan="3" >
+         <widget class="QLabel" name="label_13" >
+          <property name="text" >
+           <string>&lt;b>Results:&lt;/b></string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="3" >
+         <widget class="QTableWidget" name="resultsTableWidget" >
+          <column>
+           <property name="text" >
+            <string>Question</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Answered correctly</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Answer</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Correct answer</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="4" column="0" colspan="3" >
+         <layout class="QHBoxLayout" >
+          <item>
+           <widget class="QPushButton" name="btnNewTest" >
+            <property name="text" >
+             <string>New test</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="resources.qrc" >:/images/images/reload.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnQuit" >
+            <property name="text" >
+             <string>Quit</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="resources.qrc" >:/images/images/quit.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
-    </widget>
-    <widget class="QWidget" name="testPage" >
-     <widget class="QWidget" name="testGridLayout" >
-      <property name="geometry" >
-       <rect>
-        <x>21</x>
-        <y>20</y>
-        <width>941</width>
-        <height>561</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" >
-       <property name="leftMargin" >
-        <number>10</number>
-       </property>
-       <property name="topMargin" >
-        <number>10</number>
-       </property>
-       <property name="rightMargin" >
-        <number>10</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>10</number>
-       </property>
-       <property name="horizontalSpacing" >
-        <number>6</number>
-       </property>
-       <property name="verticalSpacing" >
-        <number>6</number>
-       </property>
-       <item row="0" column="0" >
-        <layout class="QVBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QListWidget" name="LQListWidget" >
-           <property name="sizePolicy" >
-            <sizepolicy vsizetype="Expanding" hsizetype="Fixed" >
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>111</width>
-             <height>16777215</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QProgressBar" name="progressBar" >
-           <property name="sizePolicy" >
-            <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize" >
-            <size>
-             <width>111</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="value" >
-            <number>0</number>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignHCenter</set>
-           </property>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="1" >
-        <layout class="QVBoxLayout" >
-         <item>
-          <widget class="QTextBrowser" name="questionTextBrowser" />
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <property name="leftMargin" >
-            <number>0</number>
-           </property>
-           <property name="topMargin" >
-            <number>0</number>
-           </property>
-           <property name="rightMargin" >
-            <number>0</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QRadioButton" name="rbtnAnswerA" >
-             <property name="text" >
-              <string>a)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTextBrowser" name="answerA_textBrowser" >
-             <property name="sizePolicy" >
-              <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>59</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <property name="leftMargin" >
-            <number>0</number>
-           </property>
-           <property name="topMargin" >
-            <number>0</number>
-           </property>
-           <property name="rightMargin" >
-            <number>0</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QRadioButton" name="rbtnAnswerB" >
-             <property name="text" >
-              <string>b)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTextBrowser" name="answerB_textBrowser" >
-             <property name="sizePolicy" >
-              <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>59</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <property name="leftMargin" >
-            <number>0</number>
-           </property>
-           <property name="topMargin" >
-            <number>0</number>
-           </property>
-           <property name="rightMargin" >
-            <number>0</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QRadioButton" name="rbtnAnswerC" >
-             <property name="text" >
-              <string>c)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTextBrowser" name="answerC_textBrowser" >
-             <property name="sizePolicy" >
-              <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>59</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <property name="leftMargin" >
-            <number>0</number>
-           </property>
-           <property name="topMargin" >
-            <number>0</number>
-           </property>
-           <property name="rightMargin" >
-            <number>0</number>
-           </property>
-           <property name="bottomMargin" >
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QRadioButton" name="rbtnAnswerD" >
-             <property name="text" >
-              <string>d)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTextBrowser" name="answerD_textBrowser" >
-             <property name="sizePolicy" >
-              <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>59</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <item>
-            <widget class="QCheckBox" name="showRemainingTimeCheckBox" >
-             <property name="text" >
-              <string>Show remaining time</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLCDNumber" name="remainingTimeLcdNumber" >
-             <property name="frameShape" >
-              <enum>QFrame::NoFrame</enum>
-             </property>
-             <property name="segmentStyle" >
-              <enum>QLCDNumber::Flat</enum>
-             </property>
-             <property name="intValue" stdset="0" >
-              <number>60</number>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_minutes" >
-             <property name="text" >
-              <string>minute(s)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QProgressBar" name="remainingTimeProgressBar" >
-             <property name="minimumSize" >
-              <size>
-               <width>200</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="value" >
-              <number>100</number>
-             </property>
-             <property name="textVisible" >
-              <bool>false</bool>
-             </property>
-             <property name="orientation" >
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation" >
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" >
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnLast" >
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>23</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Last question</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/back.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>20</width>
-               <height>20</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnNext" >
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>23</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Next question</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/forward.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>20</width>
-               <height>20</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="btnFinish" >
-             <property name="maximumSize" >
-              <size>
-               <width>16777215</width>
-               <height>23</height>
-              </size>
-             </property>
-             <property name="text" >
-              <string>Finish</string>
-             </property>
-             <property name="icon" >
-              <iconset resource="resources.qrc" >:/images/images/button_ok.png</iconset>
-             </property>
-             <property name="iconSize" >
-              <size>
-               <width>20</width>
-               <height>20</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="resultsPage" >
-     <widget class="QWidget" name="resultsGridLayout" >
-      <property name="geometry" >
-       <rect>
-        <x>40</x>
-        <y>30</y>
-        <width>651</width>
-        <height>461</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" >
-       <property name="leftMargin" >
-        <number>10</number>
-       </property>
-       <property name="topMargin" >
-        <number>10</number>
-       </property>
-       <property name="rightMargin" >
-        <number>10</number>
-       </property>
-       <property name="bottomMargin" >
-        <number>10</number>
-       </property>
-       <property name="horizontalSpacing" >
-        <number>6</number>
-       </property>
-       <property name="verticalSpacing" >
-        <number>6</number>
-       </property>
-       <item row="4" column="0" >
-        <layout class="QHBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="btnNewTest" >
-           <property name="text" >
-            <string>New test</string>
-           </property>
-           <property name="icon" >
-            <iconset resource="resources.qrc" >:/images/images/reload.png</iconset>
-           </property>
-           <property name="iconSize" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnQuit" >
-           <property name="text" >
-            <string>Quit</string>
-           </property>
-           <property name="icon" >
-            <iconset resource="resources.qrc" >:/images/images/quit.png</iconset>
-           </property>
-           <property name="iconSize" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="3" column="0" >
-        <widget class="QTableWidget" name="resultsTableWidget" >
-         <column>
-          <property name="text" >
-           <string>Question</string>
-          </property>
-         </column>
-         <column>
-          <property name="text" >
-           <string>Answered correctly</string>
-          </property>
-         </column>
-         <column>
-          <property name="text" >
-           <string>Answer</string>
-          </property>
-         </column>
-         <column>
-          <property name="text" >
-           <string>Correct answer</string>
-          </property>
-         </column>
-        </widget>
-       </item>
-       <item row="2" column="0" >
-        <widget class="QLabel" name="label_13" >
-         <property name="text" >
-          <string>&lt;b>Results:&lt;/b></string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" >
-        <layout class="QHBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_11" >
-           <property name="text" >
-            <string>&lt;b>Score:&lt;/b></string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="scoreLabel" />
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="0" >
-        <layout class="QHBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>0</number>
-         </property>
-         <property name="topMargin" >
-          <number>0</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="label_12" >
-           <property name="text" >
-            <string>&lt;b>Name:&lt;/b></string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="nameLabel" >
-           <property name="text" >
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MTSplitter</class>
+   <extends>QSplitter</extends>
+   <header>mtsplitter.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MTMultiSvgWidget</class>
+   <extends>QWidget</extends>
+   <header>mtmultisvgwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources.qrc" />
  </resources>
@@ -1789,6 +1710,22 @@
     <hint type="destinationlabel" >
      <x>352</x>
      <y>557</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbtnFromFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>hideCorrectAnswersCheckBox</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>404</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>404</x>
+     <y>319</y>
     </hint>
    </hints>
   </connection>

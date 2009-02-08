@@ -1,16 +1,20 @@
 <RCC>
     <qresource prefix="/images" >
         <file>images/archive.png</file>
+        <file>images/attachment.png</file>
         <file>images/back.png</file>
         <file>images/bottom.png</file>
         <file>images/button_cancel.png</file>
         <file>images/button_ok.png</file>
+        <file>images/clear.png</file>
         <file>images/client.png</file>
         <file>images/clients.png</file>
         <file>images/contents.png</file>
         <file>images/copy_from_archive.png</file>
         <file>images/copy_to_archive.png</file>
         <file>images/difficult.png</file>
+        <file>images/document-properties.png</file>
+        <file>images/document-save.png</file>
         <file>images/down.png</file>
         <file>images/easy.png</file>
         <file>images/edit.png</file>
@@ -33,6 +37,8 @@
         <file>images/itestserver32.png</file>
         <file>images/itestwri.png</file>
         <file>images/itestwri32.png</file>
+        <file>images/list-add.png</file>
+        <file>images/list-remove.png</file>
         <file>images/locale.png</file>
         <file>images/log.png</file>
         <file>images/medium.png</file>

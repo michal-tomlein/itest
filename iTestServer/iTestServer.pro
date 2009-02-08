@@ -9,7 +9,10 @@ HEADERS      += main_window.h \
                 student.h \
                 session.h \
                 archived_session.h \
-                pass_mark.h
+                pass_mark.h \
+                svg_item.h \
+                extendedlineedit.h \
+                mtadvancedgroupbox.h
 RESOURCES    += resources.qrc \
                 i18n.qrc
 SOURCES      += main.cpp \
@@ -28,8 +31,9 @@ SOURCES      += main.cpp \
                 student.cpp \
                 session.cpp \
                 archived_session.cpp \
-                pass_mark.cpp
-QT           += network
+                pass_mark.cpp \
+                svg_item.cpp
+QT           += network svg
 win32 {
 DESTDIR       = ../
 RC_FILE       = itest.rc
@@ -58,6 +62,7 @@ SOURCES      += ui_main_window_v2.cpp \
                 ui_about_widget_v2.cpp
 }
 !macx {
+DESTDIR       = ../bin/
 OBJECTS_DIR   = .objects.unix/
 MOC_DIR       = .moc.unix/
 RCC_DIR       = .rcc.unix/
@@ -69,8 +74,9 @@ QMAKE_CXX     = apg++
 }
 }
 }
-TRANSLATIONS += i18n/Slovak.ts \
-                i18n/Russian.ts \
-                i18n/Turkish.ts \
-                i18n/Portuguese.ts
+TRANSLATIONS += i18n/iTestServer-Slovak.ts \
+                i18n/iTestServer-Russian.ts \
+                i18n/iTestServer-Turkish.ts \
+                i18n/iTestServer-Portuguese.ts \
+                i18n/iTestServer-Spanish.ts
 QMAKE_RESOURCE_FLAGS += -compress 9

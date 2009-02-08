@@ -1,3 +1,22 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "main_window.h"
 
 void MainWindow::addQuestion()
@@ -7,10 +26,6 @@ void MainWindow::addQuestion()
     if (allright) {q_name = QInputDialog::getText(this, tr("Add question"), tr("Question name:"), QLineEdit::Normal, tr("### New question"), &ok);
     } else {q_name = QInputDialog::getText(this, tr("Add question"), tr("A question with this name already exists.\nPlease choose a different name:"), QLineEdit::Normal, tr("### Another question"), &ok);}
     if (!ok || q_name.isEmpty()) { return; }
-    /*for (int i = 0; i < LQListWidget->count(); ++i) {
-        if (LQListWidget->item(i)->text() == q_name)
-            { allright = false; goto addQuestion_start; }
-    }*/
     QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
     while (q.hasNext()) { q.next();
     	if (q.value()->name() == q_name) { allright = false; goto addQuestion_start; break; }
@@ -71,10 +86,6 @@ void MainWindow::duplicateQuestion()
         } else {new_q_name = QInputDialog::getText(this, tr("Duplicate question"), tr("A question with this name already exists.\nPlease choose a different name:"), QLineEdit::Normal, QString("%1 [%2]").arg(q_name).arg(copynum), &ok);}
         if (ok && !new_q_name.isEmpty())
         {   
-             /*for (int i = 0; i < LQListWidget->count(); ++i) {
-                 if (LQListWidget->item(i)->text() == new_q_name)
-                     { allright = false; copynum++; goto addQuestion_start; }
-             }*/
              QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
              while (q.hasNext()) { q.next();
              	if (q.value()->name() == new_q_name) { allright = false; copynum++; goto addQuestion_start; break; }
@@ -85,6 +96,7 @@ void MainWindow::duplicateQuestion()
                                                     item->difficulty(), 
                                                     item->text(), 
                                                     item->answers(),
+                                                    item->correctAnswers(),
                                                     item->incorrectAnsCount(),
                                                     item->correctAnsCount(),
                                                     item->isHidden());
@@ -134,6 +146,9 @@ void MainWindow::setCurrentQuestion()
             SQStatisticsLabel->setVisible(true);
         }
         actionHide->setChecked(item->isHidden());
+        for (int i = 0; i < item->numSvgItems(); ++i) {
+            SQSVGListWidget->addItem(new SvgItem(item->svgItem(i)->text(), item->svgItem(i)->svg()));
+        }
         current_db_question = item->name();
     } else {
     	disableSQ(); clearSQNoFlags(); disableLQTools();
@@ -177,9 +192,6 @@ void MainWindow::applyQuestionChanges()
     QString q_name = removeLineBreaks(SQQuestionNameLineEdit->text());
     if (current_db_question != q_name) {
         int n = 0;
-        /*for (int i = 0; i < LQListWidget->count(); ++i) {
-          if (LQListWidget->item(i)->text() == q_name) { n++; }
-        }*/
         QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
         while (q.hasNext()) { q.next();
         	if (q.value()->name() == q_name) { n++; }
@@ -229,6 +241,15 @@ void MainWindow::applyQuestionChanges()
     item->setAnsDCorrect(SQCorrectDCheckBox->isChecked());
     // hidden
     item->setHidden(actionHide->isChecked());
+    // svg
+    for (int i = 0; i < item->numSvgItems();) {
+        item->removeSvgItem(i);
+    }
+    SvgItem * svg_item;
+    for (int i = 0; i < SQSVGListWidget->count(); ++i) {
+        svg_item = (SvgItem *)SQSVGListWidget->item(i);
+        item->addSvgItem(new SvgItem(svg_item->text(), svg_item->svg()));
+    }
     // APPLY
     current_db_question = q_name;
     q_item->setText(item->group().isEmpty() ? q_name : QString("[%1] %2").arg(item->group()).arg(q_name));
@@ -522,4 +543,115 @@ uint MainWindow::replaceAllOccurrences(QString old_qname, QString new_qname)
         }
 	}
 	return n;
+}
+
+void MainWindow::addSvg()
+{
+    if (!LQListWidget->currentIndex().isValid()) { return; }
+    QString file_name = QFileDialog::getOpenFileName(this, tr("Add SVG"), "", tr("Scalable Vector Graphics (*.svg);;All files (*.*)"));
+	if (file_name.isEmpty()) { return; }
+	QFile file(file_name);
+	if (!file.open(QFile::ReadOnly | QFile::Text))
+	{ QMessageBox::critical(this, tr("Add SVG"), tr("Cannot read file %1:\n%2.").arg(file_name).arg(file.errorString())); return; }
+	QFileInfo file_info(file_name); bool ok;
+	QString svg_name = QInputDialog::getText(this, tr("Add SVG"), tr("Attachment name:"), QLineEdit::Normal, file_info.baseName(), &ok);
+	if (!ok || svg_name.isEmpty()) { return; }
+	QTextStream in(&file);
+	SvgItem * svg = new SvgItem(svg_name, in.readAll());
+	if (!svg->isValid()) { QMessageBox::critical(this, tr("Add SVG"), tr("Unable to parse file %1.").arg(file_name)); }
+	SQSVGListWidget->addItem(svg);
+}
+
+void MainWindow::removeSvg()
+{
+    if (!LQListWidget->currentIndex().isValid()) { return; }
+	if (!SQSVGListWidget->currentIndex().isValid()) { return; }
+	SvgItem * svg_item = (SvgItem *)SQSVGListWidget->currentItem();
+	switch (QMessageBox::information(this, tr("Remove SVG"), tr("Are you sure you want to remove attachment \"%1\"?").arg(svg_item->text()), tr("&Remove"), tr("Cancel"), 0, 1)) {
+        case 0: // Remove
+            break;
+        case 1: // Cancel
+            return; break;
+    }
+	delete svg_item;
+}
+
+void MainWindow::editSvg()
+{
+    if (!LQListWidget->currentIndex().isValid()) { return; }
+	if (!SQSVGListWidget->currentIndex().isValid()) { return; }
+	SvgItem * svg_item = (SvgItem *)SQSVGListWidget->currentItem();
+	QWidget * editsvg_widget = new QWidget(this, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/);
+	editsvg_widget->setWindowModality(Qt::WindowModal);
+	editsvg_widget->setAttribute(Qt::WA_DeleteOnClose);
+	editsvg_widget->setWindowTitle(tr("%1 - Edit SVG - iTest").arg(svg_item->text()));
+	editsvg_widget->setMinimumSize(QSize(200, 100));
+	QGridLayout * editsvg_glayout = new QGridLayout(editsvg_widget);
+	editsvg_glayout->setMargin(6); editsvg_glayout->setSpacing(6);
+	    QLabel * editsvg_label_name = new QLabel(tr("Attachment name:"), editsvg_widget);
+	editsvg_glayout->addWidget(editsvg_label_name, 0, 0);
+	    editsvg_lineedit_name = new QLineEdit(editsvg_widget);
+	    editsvg_lineedit_name->setText(svg_item->text());
+	editsvg_glayout->addWidget(editsvg_lineedit_name, 0, 1, 1, 2);
+	    QLabel * editsvg_label_svg = new QLabel(tr("Change SVG:"), editsvg_widget);
+	editsvg_glayout->addWidget(editsvg_label_svg, 1, 0);
+	    QPushButton * editsvg_btn_change = new QPushButton(tr("Browse"), editsvg_widget);
+	    QObject::connect(editsvg_btn_change, SIGNAL(released()), this, SLOT(browseForSvg()));
+	editsvg_glayout->addWidget(editsvg_btn_change, 1, 1);
+	    QDialogButtonBox * editsvg_buttonbox = new QDialogButtonBox(editsvg_widget);
+	    editsvg_buttonbox->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	    QObject::connect(editsvg_buttonbox, SIGNAL(accepted()), this, SLOT(applySvgChanges()));
+	    QObject::connect(editsvg_buttonbox, SIGNAL(rejected()), editsvg_widget, SLOT(close()));
+	editsvg_glayout->addWidget(editsvg_buttonbox, 2, 0, 1, 3);
+	editsvg_widget->show();
+}
+
+void MainWindow::browseForSvg()
+{
+    editsvg_svgpath = QFileDialog::getOpenFileName(this, tr("Change SVG"), "", tr("Scalable Vector Graphics (*.svg);;All files (*.*)"));
+}
+
+void MainWindow::applySvgChanges()
+{
+    if (editsvg_lineedit_name == NULL) { return; }
+    if (!LQListWidget->currentIndex().isValid()) { return; }
+	if (!SQSVGListWidget->currentIndex().isValid()) { return; }
+	SvgItem * svg_item = (SvgItem *)SQSVGListWidget->currentItem();
+    if (!editsvg_svgpath.isEmpty()) {
+        QFile file(editsvg_svgpath);
+	    if (!file.open(QFile::ReadOnly | QFile::Text))
+	    { QMessageBox::critical(this, tr("Change SVG"), tr("Cannot read file %1:\n%2.").arg(editsvg_svgpath).arg(file.errorString())); return; }
+        QTextStream in(&file);
+	    svg_item->setSvg(in.readAll());
+    }
+    svg_item->setText(editsvg_lineedit_name->text());
+    QWidget * editsvg_widget = (QWidget *)editsvg_lineedit_name->parent();
+    editsvg_widget->close();
+}
+
+void MainWindow::exportSvg()
+{
+    if (!LQListWidget->currentIndex().isValid()) { return; }
+	if (!SQSVGListWidget->currentIndex().isValid()) { return; }
+	SvgItem * svg_item = (SvgItem *)SQSVGListWidget->currentItem();
+	QString file_name = QFileDialog::getSaveFileName(this, tr("Export SVG"), QString("%1.svg").arg(svg_item->text()), tr("Scalable Vector Graphics (*.svg)"));
+	if (file_name.isEmpty()) { return; }
+	QFile file(file_name);
+	if (!file.open(QFile::WriteOnly | QFile::Text))
+    { QMessageBox::critical(this, tr("Export SVG"), tr("Cannot write file %1:\n%2.").arg(file_name).arg(file.errorString())); return; }
+    QTextStream out(&file);
+	out << svg_item->svg();
+}
+
+void MainWindow::currentSvgChanged()
+{
+	if (!SQSVGListWidget->currentIndex().isValid()) {
+	    actionRemove_SVG->setEnabled(false);
+	    actionEdit_SVG->setEnabled(false);
+	    actionExport_SVG->setEnabled(false);
+	} else {
+	    actionRemove_SVG->setEnabled(true);
+	    actionEdit_SVG->setEnabled(true);
+	    actionExport_SVG->setEnabled(true);
+	}
 }

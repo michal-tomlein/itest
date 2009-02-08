@@ -17,20 +17,37 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
-#ifndef ABOUT_WIDGET_H
-#define ABOUT_WIDGET_H
+#ifndef MTSPLITTER_H
+#define MTSPLITTER_H
 
-#include "ui_about_widget_v2.h"
+#include <QSplitter>
 
-#include <QResizeEvent>
-#include <QTimer>
-
-class AboutWidget : public QWidget, private Ui::AboutWidget
+class MTSplitter : public QSplitter
 {
     Q_OBJECT
 
 public:
-    AboutWidget(QString, QString, QString);
+    MTSplitter(QWidget * parent = 0):
+    QSplitter(parent) {};
+    MTSplitter(Qt::Orientation orientation, QWidget * parent = 0):
+    QSplitter(orientation, parent) {};
+
+public slots:
+    void moveSplitter(int pos) { QSplitter::moveSplitter(pos, 1); };
+    void moveSplitter(int pos, int index) { QSplitter::moveSplitter(pos, index); };
+    void moveLeft() { moveSplitter(0); };
+    void moveRight() {
+        switch (orientation()) {
+            case Qt::Horizontal: moveSplitter(width()); break;
+            case Qt::Vertical: moveSplitter(height()); break;
+        }
+    };
+    void moveToCentre() {
+        switch (orientation()) {
+            case Qt::Horizontal: moveSplitter(width()/2); break;
+            case Qt::Vertical: moveSplitter(height()/2); break;
+        }
+    };
 };
 
-#endif // ABOUT_WIDGET_H
+#endif // MTSPLITTER_H

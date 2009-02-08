@@ -17,13 +17,30 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
-#include "main_window.h"
+#ifndef SVG_ITEM_H
+#define SVG_ITEM_H
 
-void MainWindow::varinit()
+#include <QListWidgetItem>
+#include <QSvgRenderer>
+#include <QPainter>
+#include <QPixmap>
+
+class SvgItem : public QListWidgetItem
 {
-    // GLOBAL
-        // iTestClient version
-        ver = "1.3.0"; f_ver = 1.3;
-        // Supported iTest DB file version
-        itos_ver = "1.3"; f_itos_ver = 1.3;
-}
+public:
+    SvgItem();
+    SvgItem(QString);
+    SvgItem(QString, QString);
+
+public slots:
+    bool setSvg(QString);
+    QString svg();
+    void setText(QString str) { QListWidgetItem::setText(str.remove("\n")); };
+    bool isValid();
+
+private:
+    QString si_svg;
+    bool si_valid;
+};
+
+#endif // SVG_ITEM_H

@@ -1,17 +1,13 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.2.0                                                        *
- * Qt version:   4.3.1                                                        *
+ * Version:      1.3.0                                                        *
+ * Qt version:   4.3.2                                                        *
  * -------------------------------------------------------------------------- *
- * iTest is a Qt application consisting of a Database Editor and a Test       *
- * Writer designed for easy computerised examination.                         *
+ * iTest is a Qt application consisting of a Server and a Client designed for *
+ * easy computerised examination.                                             *
  * -------------------------------------------------------------------------- *
- * This programme is distributed under the terms of the GPL v2.               *
- * -------------------------------------------------------------------------- *
- * The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND,   *
- * INCLUDING THE WARRANTY OF DESIGN, MERCHANTIBILITY AND FITNESS FOR          *
- * A PARTICULAR PURPOSE.                                                      *
+ * iTest is distributed under the terms of the GPL v2, see details below.     *
  ******************************************************************************/
 
 #include <QApplication>
@@ -31,7 +27,7 @@ int main(int argc, char *argv[])
 	if (lang == "C") { lang = "English"; settings.setValue("lang", lang); }
 	if (lang != "English") {
 		QTranslator * translator = new QTranslator;
-		translator->load(QString(":/i18n/%1.qm").arg(lang.replace(" ", "_")));
+		translator->load(QString(":/i18n/iTestServer-%1.qm").arg(lang.replace(" ", "_")));
 		app.installTranslator(translator);
 	}
 
@@ -41,6 +37,21 @@ int main(int argc, char *argv[])
 }
 
 // ---------------------------- version changelog: -----------------------------
+/* version 1.3.0 - a major update
+                 - added Spanish translation
+                 - added SVG (scalable vector graphics) support, which means
+                   questions can now contain graphics
+                 - added the ability to print questions and tests (with or
+                   without graphics)
+                 - added multiple correct answers support
+                 - added search to the "overall statistics" dialogue
+                 - made the ui more flexible
+                 - many improvements in translations
+                 - new database format - older versions of iTest cannot open the
+                   new itdb 1.3 files, iTest 1.3 can still open older databases
+                 - upgraded from Qt 4.3.1 to Qt 4.3.2
+                 - numerous bug-fixes and more...
+*/
 /* version 1.2.0 - a major update
                  - renamed to iTestServer
                  - added Portuguese translation
@@ -58,15 +69,15 @@ int main(int argc, char *argv[])
                  - improved the comments editor (undo/redo)
                  - changed flag 1 colour to light green
                  - row height now calculated correctly in the "overall
-				   statistics" dialogue
-				 - fixed the "adjust difficulty" button - now the icon in the
-				   list of questions changes when difficulty changed
-				 - cleaned up the menus, improved their behaviour
-				 - code clean-up
-				 - new database format - older versions of iTest cannot open the
-				   new itdb 1.2 files, iTest 1.2 can still open older databases
+                   statistics" dialogue
+                 - fixed the "adjust difficulty" button - now the icon in the
+                   list of questions changes when difficulty changed
+                 - cleaned up the menus, improved their behaviour
+                 - code clean-up
+                 - new database format - older versions of iTest cannot open the
+                   new itdb 1.2 files, iTest 1.2 can still open older databases
                  - upgraded from Qt 4.3.0 to Qt 4.3.1
-				 - and more...
+                 - and more...
 */
 /* version 1.1.1 - a bug-fix release with some new features
                  - added Turkish translation
@@ -115,3 +126,22 @@ int main(int argc, char *argv[])
                  - made log export possible even from saved sessions
 */
 // version 1.0.0 - the first release
+
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/

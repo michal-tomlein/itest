@@ -1,3 +1,22 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "question_item.h"
 
 QuestionItem::QuestionItem()
@@ -7,7 +26,8 @@ QuestionItem::QuestionItem()
      q_group = "";
      q_difficulty = 0;
      q_text = "";
-     q_answers << "" << "false" << "" << "false" << "" << "false" << "" << "false";
+     q_answers << "" << "" << "" << "";
+     q_correctanswers = QuestionItem::None;
      q_incorrectanscount = 0;
      q_correctanscount = 0;
      q_hidden = false;
@@ -20,13 +40,14 @@ QuestionItem::QuestionItem(QString name)
      q_group = "";
      q_difficulty = 0;
      q_text = "";
-     q_answers << "" << "false" << "" << "false" << "" << "false" << "" << "false";
+     q_answers << "" << "" << "" << "";
+     q_correctanswers = QuestionItem::None;
      q_incorrectanscount = 0;
      q_correctanscount = 0;
      q_hidden = false;
 }
 
-QuestionItem::QuestionItem(QString name, int flag, QString group, int difficulty, QString text, QStringList answers, unsigned int inccount, unsigned int ccount, bool hidden)
+QuestionItem::QuestionItem(QString name, int flag, QString group, int difficulty, QString text, QStringList answers, QuestionItem::Answers correctanswers, unsigned int inccount, unsigned int ccount, bool hidden)
 {
      q_name = name;
      q_flag = flag;
@@ -34,9 +55,17 @@ QuestionItem::QuestionItem(QString name, int flag, QString group, int difficulty
      q_difficulty = difficulty;
      setText(text);
      q_answers = answers;
+     q_correctanswers = correctanswers;
      q_incorrectanscount = inccount;
      q_correctanscount = ccount;
      q_hidden = hidden;
+}
+
+QuestionItem::~QuestionItem()
+{
+	for (int i = 0; i < q_svgitems.count(); ++i) {
+		if (q_svgitems.at(i)) delete q_svgitems.at(i);
+	}
 }
 
 QString QuestionItem::name() { return q_name; }
@@ -51,35 +80,44 @@ QString QuestionItem::text() { return q_text; }
 
 QString QuestionItem::ansA() { return q_answers.at(0); }
 
-QString QuestionItem::ansB() { return q_answers.at(2); }
+QString QuestionItem::ansB() { return q_answers.at(1); }
 
-QString QuestionItem::ansC() { return q_answers.at(4); }
+QString QuestionItem::ansC() { return q_answers.at(2); }
 
-QString QuestionItem::ansD() { return q_answers.at(6); }
+QString QuestionItem::ansD() { return q_answers.at(3); }
+
+bool QuestionItem::isAnsCorrect(QuestionItem::Answer ans)
+{
+    return q_correctanswers.testFlag(ans);
+}
 
 bool QuestionItem::isAnsACorrect()
 {
-     if (q_answers.at(1) == "true") {return true;} else {return false;}
+    return q_correctanswers.testFlag(QuestionItem::A);
 }
 
 bool QuestionItem::isAnsBCorrect()
 {
-     if (q_answers.at(3) == "true") {return true;} else {return false;}
+    return q_correctanswers.testFlag(QuestionItem::B);
 }
 
 bool QuestionItem::isAnsCCorrect()
 {
-     if (q_answers.at(5) == "true") {return true;} else {return false;}
+    return q_correctanswers.testFlag(QuestionItem::C);
 }
 
 bool QuestionItem::isAnsDCorrect()
 {
-     if (q_answers.at(7) == "true") {return true;} else {return false;}
+    return q_correctanswers.testFlag(QuestionItem::D);
 }
 
 bool QuestionItem::isHidden() { return q_hidden; }
 
 QStringList QuestionItem::answers() { return q_answers; }
+
+QuestionItem::Answer QuestionItem::correctAnswer() { return QuestionItem::Answer((int)q_correctanswers); }
+
+QuestionItem::Answers QuestionItem::correctAnswers() { return q_correctanswers; }
 
 QString QuestionItem::allProperties()
 {
@@ -103,30 +141,37 @@ QString QuestionItem::allProperties()
     out.append("\n[Q_ANSA]\n");
     out.append(q_answers.at(0));
     out.append("\n");
-    out.append(q_answers.at(1));
+    out.append(isAnsACorrect() ? "true" : "false");
     // Q_ANSB
     out.append("\n[Q_ANSB]\n");
-    out.append(q_answers.at(2));
+    out.append(q_answers.at(1));
     out.append("\n");
-    out.append(q_answers.at(3));
+    out.append(isAnsBCorrect() ? "true" : "false");
     // Q_ANSC
     out.append("\n[Q_ANSC]\n");
-    out.append(q_answers.at(4));
+    out.append(q_answers.at(2));
     out.append("\n");
-    out.append(q_answers.at(5));
+    out.append(isAnsCCorrect() ? "true" : "false");
     // Q_ANSD
     out.append("\n[Q_ANSD]\n");
-    out.append(q_answers.at(6));
+    out.append(q_answers.at(3));
     out.append("\n");
-    out.append(q_answers.at(7));
+    out.append(isAnsDCorrect() ? "true" : "false");
     // STATISTICS
     out.append("\n[Q_ICCNT]\n");
     out.append(QString("%1\n%2").arg(q_incorrectanscount).arg(q_correctanscount));
     // Q_HIDDEN
     out.append("\n[Q_HID]\n");
     out.append(q_hidden ? "true" : "false");
-    // Q_END
-    out.append("\n[Q_END]");
+    // Q_SVG
+    out.append("\n[Q_SVG]\n");
+    out.append(QString("%1").arg(q_svgitems.count()));
+    for (int i = 0; i < q_svgitems.count(); ++i) {
+        out.append("\n");
+        out.append(q_svgitems.at(i)->text());
+        out.append("\n");
+        out.append(q_svgitems.at(i)->svg());
+    }
     return out;
 }
 
@@ -153,56 +198,18 @@ QString QuestionItem::allPublicProperties()
     out.append(q_answers.at(0));
     // Q_ANSB
     out.append("\n[Q_ANSB]\n");
-    out.append(q_answers.at(2));
+    out.append(q_answers.at(1));
     // Q_ANSC
     out.append("\n[Q_ANSC]\n");
-    out.append(q_answers.at(4));
+    out.append(q_answers.at(2));
     // Q_ANSD
     out.append("\n[Q_ANSD]\n");
-    out.append(q_answers.at(6));
-    // Q_END
-    out.append("\n[Q_END]");
+    out.append(q_answers.at(3));
+    // Q_SVG
+    out.append("\n[Q_SVG]\n");
+    out.append(QString("%1").arg(q_svgitems.count()));
     return out;
 }
-
-/*bool QuestionItem::allPropertiesToDataStream(QDataStream & out)
-{
-    // Q_NAME
-    out << QString("[Q_NAME]") << (quint16)0;
-    out << q_name << (quint16)0;
-    // Q_FLAG
-    out << QString("[Q_FLAG]") << (quint16)0;
-    out << QString("%1").arg(q_flag) << (quint16)0;
-    // Q_DIFFICULTY
-    out << QString("[Q_DIFFICULTY]") << (quint16)0;
-    out << QString("%1").arg(q_difficulty) << (quint16)0;
-    // Q_TEXT
-    out << QString("[Q_TEXT]") << (quint16)0;
-    out << q_text << (quint16)0;
-    // Q_ANSA
-    out << QString("[Q_ANSA]") << (quint16)0;
-    out << q_answers.at(0) << (quint16)0;
-    out << QString("[Q_ANSA_C]") << (quint16)0;
-    out << q_answers.at(1) << (quint16)0;
-    // Q_ANSB
-    out << QString("[Q_ANSB]") << (quint16)0;
-    out << q_answers.at(2) << (quint16)0;
-    out << QString("[Q_ANSB_C]") << (quint16)0;
-    out << q_answers.at(3) << (quint16)0;
-    // Q_ANSC
-    out << QString("[Q_ANSC]") << (quint16)0;
-    out << q_answers.at(4) << (quint16)0;
-    out << QString("[Q_ANSC_C]") << (quint16)0;
-    out << q_answers.at(5) << (quint16)0;
-    // Q_ANSD
-    out << QString("[Q_ANSD]") << (quint16)0;
-    out << q_answers.at(6) << (quint16)0;
-    out << QString("[Q_ANSD_C]") << (quint16)0;
-    out << q_answers.at(7) << (quint16)0;
-    // Q_END
-    out << QString("[Q_END]") << (quint16)0;
-    return true;
-}*/
 
 void QuestionItem::setName(QString name) { q_name = name; }
 
@@ -236,40 +243,49 @@ void QuestionItem::setText(QString text)
 
 void QuestionItem::setAnsA(QString ans) { q_answers.replace(0, ans); }
 
-void QuestionItem::setAnsB(QString ans) { q_answers.replace(2, ans); }
+void QuestionItem::setAnsB(QString ans) { q_answers.replace(1, ans); }
 
-void QuestionItem::setAnsC(QString ans) { q_answers.replace(4, ans); }
+void QuestionItem::setAnsC(QString ans) { q_answers.replace(2, ans); }
 
-void QuestionItem::setAnsD(QString ans) { q_answers.replace(6, ans); }
+void QuestionItem::setAnsD(QString ans) { q_answers.replace(3, ans); }
+
+void QuestionItem::setAnsCorrect(QuestionItem::Answers ans, bool correct)
+{
+    if (correct) { q_correctanswers |= ans; }
+    else { q_correctanswers &= ~ans; }
+}
 
 void QuestionItem::setAnsACorrect(bool correct)
 {
-     if (correct) {q_answers.replace(1, "true");} else {q_answers.replace(1, "false");}
+    if (correct) { q_correctanswers |= QuestionItem::A; }
+    else { q_correctanswers &= ~QuestionItem::A; }
 }
 
 void QuestionItem::setAnsBCorrect(bool correct)
 {
-     if (correct) {q_answers.replace(3, "true");} else {q_answers.replace(3, "false");}
+    if (correct) { q_correctanswers |= QuestionItem::B; }
+    else { q_correctanswers &= ~QuestionItem::B; }
 }
 
 void QuestionItem::setAnsCCorrect(bool correct)
 {
-     if (correct) {q_answers.replace(5, "true");} else {q_answers.replace(5, "false");}
+    if (correct) { q_correctanswers |= QuestionItem::C; }
+    else { q_correctanswers &= ~QuestionItem::C; }
 }
 
 void QuestionItem::setAnsDCorrect(bool correct)
 {
-     if (correct) {q_answers.replace(7, "true");} else {q_answers.replace(7, "false");}
+    if (correct) { q_correctanswers |= QuestionItem::D; }
+    else { q_correctanswers &= ~QuestionItem::D; }
 }
 
 void QuestionItem::setAnswers(QStringList answers) { q_answers = answers; }
 
+void QuestionItem::setCorrectAnswers(QuestionItem::Answers answers) { q_correctanswers = answers; }
+
 bool QuestionItem::hasCorrectAnswer()
 {
-    if ((q_answers.at(1) == "true") || (q_answers.at(3) == "true") ||
-        (q_answers.at(5) == "true") || (q_answers.at(7) == "true"))
-    { return true; }
-    return false;
+    return q_correctanswers != QuestionItem::None;
 }
 
 void QuestionItem::setIncorrectAnsCount(unsigned int count) { q_incorrectanscount = count; }
@@ -295,4 +311,38 @@ int QuestionItem::recommendedDifficulty()
     else if (ansratio > 0.5 && ansratio < 2.0) { return 1; }
     else if (ansratio >= 2.0) { return 2; }
     return -1;
+}
+
+void QuestionItem::addSvgItem(SvgItem * svg) { q_svgitems << svg; }
+
+bool QuestionItem::removeSvgItem(SvgItem * svg) { return q_svgitems.removeAll(svg) > 0; }
+
+SvgItem * QuestionItem::removeSvgItem(int i) { return q_svgitems.takeAt(i); }
+
+int QuestionItem::numSvgItems() { return q_svgitems.count(); }
+
+SvgItem * QuestionItem::svgItem(int i) { return q_svgitems.at(i); }
+
+QuestionItem::Answer QuestionItem::convertOldAnsNumber(int num)
+{
+    switch (num) {
+        case 0: return QuestionItem::None; break;
+        case 1: return QuestionItem::A; break;
+        case 2: return QuestionItem::B; break;
+        case 3: return QuestionItem::C; break;
+        case 4: return QuestionItem::D; break;
+    }
+    return (QuestionItem::Answer)num;
+}
+
+int QuestionItem::convertToOldAnsNumber(int num)
+{
+    switch (num) {
+        case 0: return 0; break;
+        case 1: return 1; break;
+        case 2: return 2; break;
+        case 4: return 3; break;
+        case 8: return 4; break;
+    }
+    return 0;
 }

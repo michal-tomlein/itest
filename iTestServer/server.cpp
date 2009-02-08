@@ -1,3 +1,22 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "main_window.h"
 
 void MainWindow::setupServer()
@@ -35,6 +54,7 @@ void MainWindow::setupServer()
     //TSIncludeListWidget->setDragDropMode(QAbstractItemView::InternalMove);
     TSIncludeTableWidget->verticalHeader()->hide();
     TSIncludeTableWidget->horizontalHeader()->hide();
+    TSIncludeTableWidget->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
     QObject::connect(TSMaxQnumCheckBox, SIGNAL(toggled(bool)), this, SLOT(setMaximumQuestions()));
     QObject::connect(TSGroupsCheckBox, SIGNAL(toggled(bool)), this, SLOT(updateTestQnum()));
     QObject::connect(TSQnumSpinBox, SIGNAL(valueChanged(int)), this, SLOT(updateTestTime()));
@@ -43,31 +63,7 @@ void MainWindow::setupServer()
     QObject::connect(rbtnQuestionTime, SIGNAL(toggled(bool)), this, SLOT(updateTestTime()));
     QObject::connect(TSTestTimeEdit, SIGNAL(timeChanged(QTime)), this, SLOT(updateTestTime()));
     QObject::connect(TSQuestionTimeEdit, SIGNAL(timeChanged(QTime)), this, SLOT(updateTestTime()));
-    /*rbtngrpTestTime = new QButtonGroup (this);
-    rbtngrpTestTime->addButton(rbtnTestTime);
-    rbtngrpTestTime->addButton(rbtnQuestionTime);
-    QObject::connect(rbtngrpTestTime, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(switchTestTimeSlotConnections(QAbstractButton *)));*/
-
-	QGridLayout * glayout = (QGridLayout *)TSCommonSettingsGridLayout->layout();
-	if (glayout != NULL) {
-		glayout->addWidget(TSTestNameLineEdit, 0, 2, 1, 3);
-		glayout->addWidget(TSGroupsCheckBox, 1, 1, 1, 4);
-	}
 }
-/*
-void MainWindow::switchTestTimeSlotConnections(QAbstractButton * rbtn)
-{
-	if (rbtn == rbtnTestTime) {
-		QObject::disconnect(TSTestTimeEdit, SIGNAL(timeChanged(QTime)), this, SLOT(updateTestTime()));
-		QObject::connect(TSTestTimeEdit, SIGNAL(timeChanged(QTime)), this, SLOT(updateTestTime()));
-		QObject::disconnect(TSQuestionTimeEdit, SIGNAL(timeChanged(QTime)), this, SLOT(updateTestTime()));
-	} else if (rbtn == rbtnQuestionTime) {
-		QObject::disconnect(TSTestTimeEdit, SIGNAL(timeChanged(QTime)), this, SLOT(updateTestTime()));
-		QObject::disconnect(TSQuestionTimeEdit, SIGNAL(timeChanged(QTime)), this, SLOT(updateTestTime()));
-		QObject::connect(TSQuestionTimeEdit, SIGNAL(timeChanged(QTime)), this, SLOT(updateTestTime()));
-	}
-}
-*/
 
 void MainWindow::setMaximumPassMark(int value)
 {
@@ -276,7 +272,6 @@ void MainWindow::addToList()
     	} else {
     		TSIncludeTableWidget->setRowHeight(TSIncludeTableWidget->rowCount() - 1, 16);
     	}
-    	updateTSTWGeometry();
     	delete lw_item;
         updateTestQnum();
         toggleAddRemoveEnabled();
@@ -316,7 +311,7 @@ void MainWindow::startServer()
     if ((time.hour() == 0) && (time.minute() == 0) && (time.second() == 0))
 		{ QMessageBox::critical(this, tr("iTestServer"), tr("Students will need at least one minute for the exam,\nalthough it is recommended to give them an hour.")); return; }
     
-    if (!tcpServer->listen() && !tcpServer->isListening()) {
+    if (!tcpServer->listen(QHostAddress::Any, TSCustomServerPortCheckBox->isChecked() ? TSCustomServerPortSpinBox->value() : 0) && !tcpServer->isListening()) {
         QMessageBox::critical(this, tr("iTestServer"), tr("Unable to start the server: %1.")
                          .arg(tcpServer->errorString()));
         tcpServer->close();
@@ -449,13 +444,23 @@ void MainWindow::startServer()
         	out.device()->seek(0);
         	out << (quint64)(ba.size() - sizeof(quint64));
         	current_db_test << ba;
+        	for (int s = 0; s < item->numSvgItems(); ++s) {
+        	    ba.clear();
+        	    out << (quint64)0;
+        	    out << item->svgItem(s)->text() << QString("\n");
+        	    out << item->svgItem(s)->svg() << QString("\n");
+        	    out.device()->seek(0);
+        	    out << (quint64)(ba.size() - sizeof(quint64));
+        	    current_db_test << ba;
+        	}
         }
         setProgress(((90/current_db_questions.size())*(i+1))+10); // PROGRESS >>
     }
     
     disableAll(); actionQuit->setEnabled(false);
     actionNew->setEnabled(false); actionOpen->setEnabled(false);
-    mainStackedWidget->setCurrentIndex(5); updateGeometry();
+    actionSave_session->setChecked(true);
+    mainStackedWidget->setCurrentIndex(5);
 
     SMIPortLabel->setText(tr("The server is running on port <b>%1</b>. "
                        "You may now run iTestClient on each client PC. "
@@ -640,6 +645,7 @@ void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> * results, QTab
     QMapIterator<QString, QuestionAnswer> i(*results); int row = 0;
     QTableWidgetItem * item; QuestionAnswer qans; QuestionItem * q_item;
     tw->setRowCount(results->count());
+    QStringList bufferlist;
     while (i.hasNext()) {
        i.next();
        item = new QTableWidgetItem (i.key()); qans = i.value();
@@ -667,22 +673,21 @@ void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> * results, QTab
        item = new QTableWidgetItem;
        switch (qans.answered()) {
           case QuestionItem::None: item->setText(tr("None")); break;
-          case QuestionItem::A: item->setText("A"); break;
-          case QuestionItem::B: item->setText("B"); break;
-          case QuestionItem::C: item->setText("C"); break;
-          case QuestionItem::D: item->setText("D"); break;
+          case QuestionItem::A: item->setText(tr("a)")); break;
+          case QuestionItem::B: item->setText(tr("b)")); break;
+          case QuestionItem::C: item->setText(tr("c)")); break;
+          case QuestionItem::D: item->setText(tr("d)")); break;
           default: item->setText(tr("None")); break;
        }
        tw->setItem(row, 2, item);
        item = new QTableWidgetItem;
-       switch (qans.correctAnswer()) {
-          case QuestionItem::None: item->setText(tr("None")); break;
-          case QuestionItem::A: item->setText("A"); break;
-          case QuestionItem::B: item->setText("B"); break;
-          case QuestionItem::C: item->setText("C"); break;
-          case QuestionItem::D: item->setText("D"); break;
-          default: item->setText(tr("None")); break;
-       }
+       bufferlist.clear();
+       if ((QuestionItem::A & qans.correctAnswer()) == QuestionItem::A) bufferlist << tr("a)");
+       if ((QuestionItem::B & qans.correctAnswer()) == QuestionItem::B) bufferlist << tr("b)");
+       if ((QuestionItem::C & qans.correctAnswer()) == QuestionItem::C) bufferlist << tr("c)");
+       if ((QuestionItem::D & qans.correctAnswer()) == QuestionItem::D) bufferlist << tr("d)");
+       if (bufferlist.count() > 0) { item->setText(bufferlist.join(", ")); }
+           else { item->setText(tr("None")); }
        tw->setItem(row, 3, item);
        row++;
     }
@@ -1004,12 +1009,20 @@ void MainWindow::enableSMTools()
 
 void MainWindow::togglePrintEnabled()
 {
-    if ((mainStackedWidget->currentIndex() == 5) && (SMLCListWidget->currentIndex().isValid())) {
+    if (mainStackedWidget->currentIndex() >= 1 && mainStackedWidget->currentIndex() <= 4) {
+        actionPrint_questions->setEnabled(true);
+        actionQuickPrint->setEnabled(false);
+        actionPrint->setEnabled(false);
+        actionPrint_session_summary->setEnabled(false);
+        actionPrint_all->setEnabled(false);
+    } else if ((mainStackedWidget->currentIndex() == 5) && (SMLCListWidget->currentIndex().isValid())) {
+        actionPrint_questions->setEnabled(false);
         actionQuickPrint->setEnabled(true);
         actionPrint->setEnabled(true);
         actionPrint_session_summary->setEnabled(false);
         actionPrint_all->setEnabled(false);
     } else if ((mainStackedWidget->currentIndex() == 6) && (VSSLCListWidget->currentIndex().isValid())) {
+        actionPrint_questions->setEnabled(true);
         actionQuickPrint->setEnabled(false);
         actionPrint->setEnabled(true);
         if (VSSCSGroupBox->isEnabled()) {
@@ -1018,6 +1031,7 @@ void MainWindow::togglePrintEnabled()
         if (VSSLCListWidget->count() > 0) { actionPrint_all->setEnabled(true); }
         else { actionPrint_all->setEnabled(false); }
     } else if ((mainStackedWidget->currentIndex() == 6) && (!VSSLCListWidget->currentIndex().isValid())) {
+        actionPrint_questions->setEnabled(true);
         actionQuickPrint->setEnabled(false);
         actionPrint->setEnabled(false);
         if (VSSCSGroupBox->isEnabled()) {
@@ -1026,6 +1040,7 @@ void MainWindow::togglePrintEnabled()
         if (VSSLCListWidget->count() > 0) { actionPrint_all->setEnabled(true); }
         else { actionPrint_all->setEnabled(false); }
     } else {
+        actionPrint_questions->setEnabled(false);
         actionQuickPrint->setEnabled(false);
         actionPrint->setEnabled(false);
         actionPrint_session_summary->setEnabled(false);
@@ -1047,17 +1062,4 @@ void MainWindow::clearSM()
 	rbtnTestTime->setChecked(true);
 	TSTestTimeEdit->setTime(QTime::QTime(0, 0));
 	TSQuestionTimeEdit->setTime(QTime::QTime(0, 0));
-}
-
-void MainWindow::updateTSTWGeometry()
-{
-    if (TSAdvancedSetupGroupBox->isChecked()) {
-        if (rbtnSelectFlags->isChecked()) {
-        	TSIncludeTableWidget->resizeColumnsToContents();
-        	TSIncludeTableWidget->setColumnWidth(0, TSIncludeTableWidget->width() - 25 - TSIncludeTableWidget->columnWidth(1));
-        } else if (rbtnSelectQuestions->isChecked()) {
-        	TSIncludeTableWidget->resizeColumnsToContents();
-        	TSIncludeTableWidget->setColumnWidth(0, TSIncludeTableWidget->width() - 25);
-        }
-    }
 }

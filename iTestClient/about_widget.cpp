@@ -1,10 +1,28 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "about_widget.h"
 
 AboutWidget::AboutWidget(QString ver, QString qtver, QString year)
 {
 	setupUi(this);
 	QObject::connect(btnClose, SIGNAL(released()), this, SLOT(close()));
-	QTimer::singleShot(200, this, SLOT(updateGeometry()));
 	QString about = "<p style=\"font-family: sans-serif; font-style:italic;\"><span style=\"font-size:12pt;\">iTest</span><br>";
 	about.append("<span style=\"font-size:8pt;\">");
     about.append(tr("Version"));
@@ -42,22 +60,4 @@ AboutWidget::AboutWidget(QString ver, QString qtver, QString year)
 	aboutQt.replace("font-size:8pt;", "font-size:10pt;");
 #endif
     aboutQtTextBrowser->setHtml(aboutQt);
-}
-
-void AboutWidget::updateGeometry()
-{
-	gridLayout->setGeometry(0, 0, this->geometry().width(), this->geometry().height());
-	if (tabWidget->currentIndex() == 0) {
-       aboutGridLayout->setGeometry(0, 0, aboutTab->geometry().width(), aboutTab->geometry().height());
-	   aboutQtGridLayout->setGeometry(0, 0, aboutTab->geometry().width(), aboutTab->geometry().height());
-    } else if (tabWidget->currentIndex() == 1) {
-	   aboutGridLayout->setGeometry(0, 0, aboutQtTab->geometry().width(), aboutQtTab->geometry().height());
-	   aboutQtGridLayout->setGeometry(0, 0, aboutQtTab->geometry().width(), aboutQtTab->geometry().height());
-    }
-}
-
-void AboutWidget::resizeEvent(QResizeEvent *event)
-{
-	updateGeometry();
-	event->accept();
 }

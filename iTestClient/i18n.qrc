@@ -1,8 +1,9 @@
 <!DOCTYPE RCC><RCC version="1.0">
     <qresource>
-        <file>i18n/Slovak.qm</file>
-        <file>i18n/Russian.qm</file>
-        <file>i18n/Turkish.qm</file>
-        <file>i18n/Portuguese.qm</file>
+        <file>i18n/iTestClient-Slovak.qm</file>
+        <file>i18n/iTestClient-Russian.qm</file>
+        <file>i18n/iTestClient-Turkish.qm</file>
+        <file>i18n/iTestClient-Portuguese.qm</file>
+        <file>i18n/iTestClient-Spanish.qm</file>
     </qresource>
 </RCC>

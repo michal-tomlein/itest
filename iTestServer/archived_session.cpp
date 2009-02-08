@@ -1,4 +1,25 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "main_window.h"
+
+#include <cmath>
 
 ArchivedSession::ArchivedSession(MainWindow * parent)
 {
@@ -48,7 +69,7 @@ void ArchivedSession::archive()
 	sns << session_title;
 	archive.setValue(QString("%1/sessions").arg(as_parent->current_db_name), sns);
 	QString data; QTextStream out(&data);
-	QString students_passed; QStringList qa_flaglist;
+	QString students_passed; QStringList qa_flaglist; QStringList qa_multianslist;
 	out << sessionArchiveData() << endl;
 	for (int s = 0; s < numStudents(); ++s) {
 		out << student(s)->studentArchiveData() << endl;
@@ -56,13 +77,14 @@ void ArchivedSession::archive()
 		QMapIterator<QString, QuestionAnswer> i(*(student(s)->results())); QuestionAnswer qans;
 		while (i.hasNext()) { i.next();
 			qans = i.value(); qa_flaglist << QString("%1").arg(qans.flag());
+			qa_multianslist << QString("%1").arg(qans.correctAnswer());
 		}
 	}
 	archive.setValue(QString("%1/%2").arg(as_parent->current_db_name).arg(session_title), data);
 	archive.setValue(QString("%1/%2/PassMark").arg(as_parent->current_db_name).arg(session_title), s_passmark.data());
 	archive.setValue(QString("%1/%2/StudentsPassed").arg(as_parent->current_db_name).arg(session_title), students_passed);
-	QString qa_flags = qa_flaglist.join(";");
-	archive.setValue(QString("%1/%2/QAFlags").arg(as_parent->current_db_name).arg(session_title), qa_flags);
+	archive.setValue(QString("%1/%2/QAFlags").arg(as_parent->current_db_name).arg(session_title), qa_flaglist.join(";"));
+	archive.setValue(QString("%1/%2/QACorrectAnswers").arg(as_parent->current_db_name).arg(session_title), qa_multianslist.join(";"));
 }
 
 void ArchivedSession::removeFromArchive()
@@ -112,8 +134,8 @@ void ArchivedSession::restore(QString input)
 		QMap<QString, QuestionAnswer> * results = new QMap<QString, QuestionAnswer>;
 		for (int a = 0; a < numresults; ++a) {
 			buffer = in.readLine();
-			ans = (QuestionItem::Answer)in.readLine().toInt();
-			c_ans = (QuestionItem::Answer)in.readLine().toInt();
+			ans = QuestionItem::convertOldAnsNumber(in.readLine().toInt());
+			c_ans = QuestionItem::convertOldAnsNumber(in.readLine().toInt());
 			QuestionAnswer qans(-1, c_ans, ans);
 			results->insert(buffer, qans);
 		}

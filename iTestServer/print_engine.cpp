@@ -1,3 +1,22 @@
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+********************************************************************/
+
 #include "main_window.h"
 
 bool MainWindow::loadPrinterSettings()
@@ -23,6 +42,7 @@ bool MainWindow::loadPrinterSettings()
 void MainWindow::savePrinterSettings()
 {
 	QSettings settings("Michal Tomlein", "iTest");
+	settings.remove("printer");
 	settings.setValue("printer/configured", printer_configured);
 	if (!printer_configured) return;
 	settings.setValue("printer/colorMode", printer_colorMode);
@@ -156,11 +176,12 @@ bool MainWindow::configurePrinter(bool review_config)
 {
 	if (!review_config) {
 		if (default_printer != NULL) delete default_printer;
-		default_printer = new QPrinter (QPrinter::HighResolution);
+		default_printer = new QPrinter(QPrinter::HighResolution);
 	} else {
 		if (!loadPrinterConfiguration()) return false;
+		default_printer->setOutputFileName("");
 	}
-	QPrintDialog * dialog = new QPrintDialog (default_printer, this);
+	QPrintDialog * dialog = new QPrintDialog(default_printer, this);
 	dialog->setWindowTitle(tr("Configure printer"));
 	if (dialog->exec() != QDialog::Accepted) return false;
 
@@ -185,7 +206,7 @@ bool MainWindow::configurePrinter(bool review_config)
 bool MainWindow::loadPrinterConfiguration()
 {
 	if (default_printer != NULL) delete default_printer;
-	default_printer = new QPrinter (QPrinter::HighResolution);
+	default_printer = new QPrinter(QPrinter::HighResolution);
 	default_printer->setColorMode((QPrinter::ColorMode)printer_colorMode);
 	default_printer->setDoubleSidedPrinting(printer_doubleSidedPrinting);
 	default_printer->setFontEmbeddingEnabled(printer_fontEmbeddingEnabled);
@@ -239,11 +260,6 @@ bool MainWindow::printStudentResults(Student * student, QPrinter * printer, QStr
 			out << "<div class=\"incorrect_qname\">" << endl;
 		}
 		item = NULL;
-		/*for (int n = 0; n < LQListWidget->count(); ++n) {
-			if (LQListWidget->item(n)->text() == i.key()) {
-				item = current_db_questions.value(LQListWidget->item(n)); break;
-			}
-		}*/
 		QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
 		while (q.hasNext()) { q.next();
 			if (q.value()->name() == i.key()) { item = q.value(); break; }
@@ -263,19 +279,19 @@ bool MainWindow::printStudentResults(Student * student, QPrinter * printer, QStr
 			out << "<div class=\"answer";
 			if (qans.answered() == QuestionItem::A) { out << " answered"; }
 			if (item->isAnsACorrect()) { out << " correct"; }
-			out << "\">\na) " << substituteHtmlTags(item->ansA()) << endl << "</div>" << endl;
+			out << "\">\n" << tr("a)") << " " << substituteHtmlTags(item->ansA()) << endl << "</div>" << endl;
 			out << "<div class=\"answer";
 			if (qans.answered() == QuestionItem::B) { out << " answered"; }
 			if (item->isAnsBCorrect()) { out << " correct"; }
-			out << "\">\nb) " << substituteHtmlTags(item->ansB()) << endl << "</div>" << endl;
+			out << "\">\n" << tr("b)") << " " << substituteHtmlTags(item->ansB()) << endl << "</div>" << endl;
 			out << "<div class=\"answer";
 			if (qans.answered() == QuestionItem::C) { out << " answered"; }
 			if (item->isAnsCCorrect()) { out << " correct"; }
-			out << "\">\nc) " << substituteHtmlTags(item->ansC()) << endl << "</div>" << endl;
+			out << "\">\n" << tr("c)") << " " << substituteHtmlTags(item->ansC()) << endl << "</div>" << endl;
 			out << "<div class=\"answer";
 			if (qans.answered() == QuestionItem::D) { out << " answered"; }
 			if (item->isAnsDCorrect()) { out << " correct"; }
-			out << "\">\nd) " << substituteHtmlTags(item->ansD()) << endl << "</div>" << endl;
+			out << "\">\n" << tr("d)") << " " << substituteHtmlTags(item->ansD()) << endl << "</div>" << endl;
 		} else {
 			out << substituteHtmlTags(i.key()) << endl << "</div>" << endl;
 			out << "<div class=\"question\">" << endl;
@@ -283,21 +299,21 @@ bool MainWindow::printStudentResults(Student * student, QPrinter * printer, QStr
 			out << "<div class=\"answer\">" << endl;
 			out << tr("Answered:");
 			switch (qans.answered()) {
-				case QuestionItem::None: out << " None; "; break;
-				case QuestionItem::A: out << " A; "; break;
-				case QuestionItem::B: out << " B; "; break;
-				case QuestionItem::C: out << " C; "; break;
-				case QuestionItem::D: out << " D; "; break;
-				default: out << " None; "; break;
+				case QuestionItem::None: out << " " << tr("None") << "; "; break;
+				case QuestionItem::A: out << " " << tr("a)") << "; "; break;
+				case QuestionItem::B: out << " " << tr("b)") << "; "; break;
+				case QuestionItem::C: out << " " << tr("c)") << "; "; break;
+				case QuestionItem::D: out << " " << tr("d)") << "; "; break;
+				default: out << " " << tr("None") << "; "; break;
 			}
 			out << tr("Correct answer:");
 			switch (qans.correctAnswer()) {
-				case QuestionItem::None: out << " None; "; break;
-				case QuestionItem::A: out << " A; "; break;
-				case QuestionItem::B: out << " B; "; break;
-				case QuestionItem::C: out << " C; "; break;
-				case QuestionItem::D: out << " D; "; break;
-				default: out << " None; "; break;
+				case QuestionItem::None: out << " " << tr("None") << "; "; break;
+				case QuestionItem::A: out << " " << tr("a)") << "; "; break;
+				case QuestionItem::B: out << " " << tr("b)") << "; "; break;
+				case QuestionItem::C: out << " " << tr("c)") << "; "; break;
+				case QuestionItem::D: out << " " << tr("d)") << "; "; break;
+				default: out << " " << tr("None") << "; "; break;
 			}
 			out << endl << "</div>" << endl;
 		}
@@ -318,12 +334,12 @@ void MainWindow::quickPrint()
     Client * client = current_db_clients.value(SMLCListWidget->currentItem());
     if (client == NULL) return;
     if (!printClientResults(client, default_printer)) {
-        QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 (%3) > failed to print the client's results (Server QuickPrint call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+        QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results (Server QuickPrint call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
         SMSLListWidget->insertItem(0, log_entry);
         log_entry->setBackground(QBrush::QBrush(QColor::QColor(200, 0, 0)));
         log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
     } else {
-        QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 (%3) > results printed successfully (Server QuickPrint call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+        QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully (Server QuickPrint call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
         SMSLListWidget->insertItem(0, log_entry);
         log_entry->setBackground(QBrush::QBrush(QColor::QColor(180, 255, 0)));
         log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
@@ -348,14 +364,14 @@ void MainWindow::print()
 	} else { return; }
 	if (student == NULL) return;
 
-	QPrinter * printer = new QPrinter (QPrinter::HighResolution);
-	QPrintDialog * dialog = new QPrintDialog (printer, this);
+	QPrinter * printer = new QPrinter(QPrinter::HighResolution);
+	QPrintDialog * dialog = new QPrintDialog(printer, this);
 	dialog->setWindowTitle(printdialog_caption);
 	if (dialog->exec() != QDialog::Accepted) return;
 
 	if (!printStudentResults(student, printer, session_name)) {
 		if (mainStackedWidget->currentIndex() == 5) {
-			QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 (%3) > failed to print the client's results (Server Print call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(student->number()).arg(student->name()));
+			QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results (Server Print call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(student->number()).arg(student->name()));
 			SMSLListWidget->insertItem(0, log_entry);
 			log_entry->setBackground(QBrush::QBrush(QColor::QColor(200, 0, 0)));
 			log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
@@ -364,7 +380,7 @@ void MainWindow::print()
         }
 	} else {
 		if (mainStackedWidget->currentIndex() == 5) {
-			QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 (%3) > results printed successfully (Server Print call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(student->number()).arg(student->name()));
+			QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully (Server Print call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(student->number()).arg(student->name()));
 			SMSLListWidget->insertItem(0, log_entry);
 			log_entry->setBackground(QBrush::QBrush(QColor::QColor(180, 255, 0)));
 			log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
@@ -381,8 +397,8 @@ void MainWindow::printAll()
 {
 	if (current_db_session == NULL) { return; }
 
-	QPrinter * printer = new QPrinter (QPrinter::HighResolution);
-	QPrintDialog * dialog = new QPrintDialog (printer, this);
+	QPrinter * printer = new QPrinter(QPrinter::HighResolution);
+	QPrintDialog * dialog = new QPrintDialog(printer, this);
 	dialog->setWindowTitle(tr("Print the results of all students"));
 	if (dialog->exec() != QDialog::Accepted) return;
 
@@ -405,8 +421,8 @@ void MainWindow::printSessionSummary()
 {
 	if (current_db_session == NULL) { return; }
 
-	QPrinter * printer = new QPrinter (QPrinter::HighResolution);
-	QPrintDialog * dialog = new QPrintDialog (printer, this);
+	QPrinter * printer = new QPrinter(QPrinter::HighResolution);
+	QPrintDialog * dialog = new QPrintDialog(printer, this);
 	dialog->setWindowTitle(tr("Print session summary"));
 	if (dialog->exec() != QDialog::Accepted) return;
 
@@ -480,6 +496,177 @@ bool MainWindow::printSessionSummary(Session * session, QPrinter * printer)
 	out << "</p></body></html>" << endl;
 	doc.setHtml(html); printer->setDocName(header); doc.print(printer);
 	return true;
+}
+
+void MainWindow::printQuestions()
+{
+	if (printq_includelist == NULL) { return; }
+
+	QPrinter * printer = new QPrinter(QPrinter::HighResolution);
+	QPrintDialog * dialog = new QPrintDialog(printer, this);
+	dialog->setWindowTitle(tr("Print questions"));
+	if (dialog->exec() != QDialog::Accepted) return;
+
+	QList<int> used_items;
+	for (int i = 0; i < printq_includelist->count(); ++i) {
+		used_items << printq_includelist->item(i)->data(Qt::UserRole).toInt();
+	}
+	bool select_flags = rbtngrpPrintqSelect->checkedButton()->text() == tr("Flags");
+	bool select_questions = rbtngrpPrintqSelect->checkedButton()->text() == tr("Questions");
+	bool formatted = printq_advanced_formatting->isChecked();
+	bool print_statistics = printq_advanced_statistics->isChecked();
+	bool test = printq_advanced_test->isChecked();
+	bool print_graphics = printq_advanced_graphics->isChecked();
+	if (test) { formatted = true; print_statistics = false; }
+
+	QTextDocument doc; QString html; QTextStream out(&html);
+	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
+	out << tr("Questions") << endl << "</title><style type=\"text/css\">" << endl;
+	out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
+	out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
+	out << ".bold_text { font-family: sans-serif; font-size: small; font-weight: bold; color: black; }" << endl;
+	out << ".answer { font-family: sans-serif; font-size: small; font-style: italic; color: black; }" << endl;
+	out << ".correct { font-weight: bold; }" << endl;
+	out << "</style></head><body>" << endl;
+	for (int i = 0; i < LQListWidget->count(); ++i) {
+		if (select_flags) {
+			if (used_items.contains(current_db_questions.value(LQListWidget->item(i))->flag())) {
+				out << htmlForQuestion(current_db_questions.value(LQListWidget->item(i)), doc, test, formatted, print_statistics, print_graphics);
+			}
+		} else if (select_questions) {
+			if (used_items.contains(i)) {
+				out << htmlForQuestion(current_db_questions.value(LQListWidget->item(i)), doc, test, formatted, print_statistics, print_graphics);
+			}
+		}
+	}
+	out << "</body></html>" << endl;
+	doc.setHtml(html); printer->setDocName(tr("Questions")); doc.print(printer);
+	delete printer;
+	return;
+}
+
+QString MainWindow::htmlForQuestion(QuestionItem * item, QTextDocument & doc, bool test, bool formatted, bool print_statistics, bool print_graphics)
+{
+    if (item == NULL) { return ""; }
+	QString html; QTextStream out(&html);
+	out << "<div class=\"heading\" align=\"center\">" << endl;
+	if (item->flag() >= 0 && item->flag() < 20) {
+		out << substituteHtmlTags(current_db_f[item->flag()]) << ": ";
+	}
+	if (!item->group().isEmpty()) {
+		out << "[" << substituteHtmlTags(item->group()) << "] ";
+	}
+	out << substituteHtmlTags(item->name()) << endl << "</div>" << endl;
+	if (!test) {
+	    out << "<table border=\"0\" width=\"100%\">" << endl;
+	    out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+	    out << tr("Name:") << "</div></td><td><div class=\"default_text\">" << endl;
+	    out << substituteHtmlTags(item->name()) << "</div></td></tr>" << endl;
+	    if (item->flag() >= 0 && item->flag() < 20) {
+	    	out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+	    	out << tr("Flag:") << "</div></td><td><div class=\"default_text\">" << endl;
+	    	out << substituteHtmlTags(current_db_f[item->flag()]) << "</div></td></tr>" << endl;
+	    }
+	    if (!item->group().isEmpty()) {
+	    	out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+	    	out << tr("Group:") << "</div></td><td><div class=\"default_text\">" << endl;
+	    	out << substituteHtmlTags(item->group()) << "</div></td></tr>" << endl;
+	    }
+	    out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+	    out << tr("Difficulty:") << "</div></td><td><div class=\"default_text\">" << endl;
+	    switch (item->difficulty()) {
+	    	case 0: out << tr("Easy"); break;
+	    	case 1: out << tr("Medium"); break;
+	    	case 2: out << tr("Difficult"); break;
+	    	default: out << tr("Unknown"); break;
+	    }
+	    out << "</div></td></tr>" << endl;
+	    if (item->numSvgItems() > 0 && !print_graphics) {
+	    	out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+	    	out << tr("Attachments (SVG):") << "</div></td><td><div class=\"default_text\">" << endl;
+	    	for (int i = 0; i < item->numSvgItems(); ++i) {
+	    	    out << substituteHtmlTags(item->svgItem(i)->text()) << "<b>; </b>";
+	    	}
+	    	out << "</div></td></tr>" << endl;
+	    }
+	    out << "</table>" << endl;
+	}
+	if (formatted) {
+	    out << item->text() << endl;
+	} else {
+	    QTextDocument doc; doc.setHtml(item->text());
+        out << substituteHtmlTags(doc.toPlainText()) << endl;
+	}
+	if (item->numSvgItems() > 0 && print_graphics) {
+	    out << "<table border=\"0\" width=\"100%\"><tr>" << endl;
+	    for (int i = 0; i < item->numSvgItems(); ++i) {
+	        QSvgRenderer svgrenderer(item->svgItem(i)->svg().toUtf8());
+            if (!svgrenderer.isValid()) { out << "<td></td>" << endl; continue; }
+            QSize svg_size = svgrenderer.defaultSize();
+            svg_size.scale(128, 128, Qt::KeepAspectRatio);
+            QPixmap pixmap(svg_size);
+            QPainter painter(&pixmap);
+            painter.save();
+            painter.setPen(Qt::NoPen);
+            painter.setBrush(QColor(Qt::white));
+            painter.drawRect(QRect(0, 0, svg_size.width(), svg_size.height()));
+            painter.restore();
+            svgrenderer.render(&painter);
+            QUrl resource_url(QString("%1-%2-%3.qpixmap").arg(item->name()).arg(i).arg(qrand()));
+            doc.addResource(QTextDocument::ImageResource, resource_url, pixmap);
+	        out << "<td align=\"center\"><img src=\"" << resource_url.toString(QUrl::None) << "\"></td>" << endl;
+	    }
+	    out << "</tr><tr>" << endl;
+	    for (int i = 0; i < item->numSvgItems(); ++i) {
+	        out << "<td align=\"center\"><div class=\"default_text\">";
+	        out << substituteHtmlTags(item->svgItem(i)->text()) << "</div></td>" << endl;
+	    }
+	    out << "</tr></table>" << endl;
+	}
+	if (!item->ansA().isEmpty() || item->isAnsACorrect()) {
+		out << "<div class=\"answer";
+		if (item->isAnsACorrect() && !test) { out << " correct"; }
+		out << "\">\n" << tr("a)") << " " << substituteHtmlTags(item->ansA()) << endl << "</div>" << endl;
+	}
+	if (!item->ansB().isEmpty() || item->isAnsBCorrect()) {
+		out << "<div class=\"answer";
+		if (item->isAnsBCorrect() && !test) { out << " correct"; }
+		out << "\">\n" << tr("b)") << " " << substituteHtmlTags(item->ansB()) << endl << "</div>" << endl;
+	}
+	if (!item->ansC().isEmpty() || item->isAnsCCorrect()) {
+		out << "<div class=\"answer";
+		if (item->isAnsCCorrect() && !test) { out << " correct"; }
+		out << "\">\n" << tr("c)") << " " << substituteHtmlTags(item->ansC()) << endl << "</div>" << endl;
+	}
+	if (!item->ansD().isEmpty() || item->isAnsDCorrect()) {
+		out << "<div class=\"answer";
+		if (item->isAnsDCorrect() && !test) { out << " correct"; }
+		out << "\">\n" << tr("d)") << " " << substituteHtmlTags(item->ansD()) << endl << "</div>" << endl;
+	}
+	if (print_statistics) {
+	    if (item->incorrectAnsCount() != 0 || item->correctAnsCount() != 0) {
+	        out << "<br><div class=\"bold_text\">" << tr("Statistics:") << "</div>" << endl;
+	        out << "<table border=\"0\" width=\"100%\">" << endl;
+	        out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
+	        out << tr("Number of correct answers:") << "</div></td><td><div class=\"default_text\">" << endl;
+	        out << item->correctAnsCount() << "</div></td></tr>" << endl;
+	        out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
+	        out << tr("Number of incorrect answers:") << "</div></td><td><div class=\"default_text\">" << endl;
+	        out << item->incorrectAnsCount() << "</div></td></tr>" << endl;
+	        out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
+	        out << tr("Calculated difficulty:") << "</div></td><td><div class=\"default_text\">" << endl;
+	        switch (item->recommendedDifficulty()) {
+	    	    case -1: out << tr("Unavailable"); break;
+	    	    case 0: out << tr("Easy"); break;
+	    	    case 1: out << tr("Medium"); break;
+	    	    case 2: out << tr("Difficult"); break;
+	    	    default: out << tr("Unavailable"); break;
+	        }
+	        out << "</div></td></tr></table>" << endl;
+	    }
+	}
+	out << "</p><hr noshade=\"noshade\" size=\"2\">" << endl;
+	return html;
 }
 
 QString MainWindow::substituteHtmlTags(QString str)
