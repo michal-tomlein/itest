@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -63,6 +63,9 @@ void MainWindow::setupFlagsPage()
     for (int i = 0; i < 20; ++i) {
         EFFlagLineEdit[i]->setStatusTip(tr("Type a name for flag %1").arg(i + 1));
         EFFlagCheckBox[i]->setStatusTip(tr("Check or uncheck this checkbox to enable or disable flag %1").arg(i + 1));
+#ifdef Q_WS_X11
+        EFFlagCheckBox[i]->setMaximumSize(22, 22);
+#endif
         fl[i]->setText(tr("Flag %1:").arg(i + 1));
         QObject::connect(EFFlagCheckBox[i], SIGNAL(toggled(bool)), EFFlagLineEdit[i], SLOT(setEnabled(bool)));
     }
@@ -162,6 +165,22 @@ void MainWindow::checkForUnflaggedQuestions()
             }
         }
     }
+}
+
+int MainWindow::qnumForFlag(int flag, bool use_groups)
+{
+    QuestionItem * qi; int qnum = 0; QSet<QString> groups;
+    for (int i = 0; i < LQListWidget->count(); ++i) {
+        qi = current_db_questions.value(LQListWidget->item(i));
+    	if (qi->flag() == flag) {
+    		if (use_groups) {
+    			if (qi->group().isEmpty()) { qnum++; }
+    			else { groups << qi->group(); }
+    		} else { qnum++; }
+    	}
+    }
+    qnum += groups.count();
+    return qnum;
 }
 
 void MainWindow::setFlagLineEditPalettes()

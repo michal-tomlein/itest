@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -34,7 +34,7 @@
 #include <QSvgWidget>
 #include <QSvgRenderer>
 
-#include "pass_mark.h"
+#include "question_widget.h"
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
@@ -66,14 +66,13 @@ private slots:
     void loadTest(QString); void loadFile(); void loadFile(QString);
     void randomlySelectQuestions();
     void updateTime();
-    void finish(); void sendResults(); void saveResults();
-    void loadResults(QMap<QString, QuestionAnswer> *, QTableWidget *);
-    void readResults(QString);
+    void finish(); void sendResults();
+    void readResults(QString); void loadResults(QTableWidget *);
     void newTest();
     // QUESTION-RELATED
     void setCurrentQuestion();
     void nextQuestion(); void lastQuestion();
-    void setQuestionAnswered(QAbstractButton *);
+    void setQuestionAnswered(Question::Answers);
     void previewSvg(QString);
 
 private:
@@ -83,12 +82,12 @@ private:
     QString current_db_comments;
     QList<QuestionItem *> current_db_questions;
     bool current_db_multiple_ans_support;
+    bool current_db_itdb1_4_support;
     // CURRENT TEST
     int current_test_qnum;
     QMap<QListWidgetItem *, QuestionItem *> current_test_questions;
-    QMap<QString, QuestionAnswer> * current_test_results;
     int current_test_time_remaining;
-    int current_test_score;
+    float current_test_score;
     bool current_test_results_sent;
     QString current_test_date;
     QString current_test_time_finished;

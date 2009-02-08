@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -59,9 +59,8 @@ int LogEntry::fgBlue() { return le_fgb; }
 Session::Session()
 {
 	s_name = tr("Undefined");
-	s_qnum = 0;
-	s_cqnum = 0;
-	s_passmark = 0;
+	s_maxscore = 0.0;
+	s_score = 0.0;
 	s_archived = false;
 }
 
@@ -69,13 +68,14 @@ Session::Session(ArchivedSession * archived_session)
 {
 	s_name = archived_session->s_name;
 	s_datetime = archived_session->s_datetime;
-	s_qnum = archived_session->s_qnum;
-	s_cqnum = archived_session->s_cqnum;
+	s_maxscore = archived_session->s_maxscore;
+	s_score = archived_session->s_score;
 	s_log = archived_session->s_log;
 	for (int i = 0; i < archived_session->s_students.count(); ++i) {
 		s_students << new Student(archived_session->s_students.at(i));
 	}
 	s_passmark = archived_session->s_passmark;
+    s_scoringsystem = archived_session->s_scoringsystem;
 	s_archived = false;
 }
 
@@ -120,28 +120,38 @@ LogEntry Session::logEntry(int i) { return s_log.at(i); }
 
 void Session::deleteLog() { s_log.clear(); }
 
-void Session::addStudent(Student * student)
-{
-	s_students << student;
-	if (student->isReady()) {
-		s_qnum += student->results()->count();
-		s_cqnum += student->score();
-	}
-}
+void Session::addStudent(Student * student) { s_students << student; }
 
 int Session::numStudents() { return s_students.count(); }
 
 Student * Session::student(int i) { return s_students.at(i); }
 
-uint Session::numQuestions() { return s_qnum; }
+long double Session::maximumScore() { return s_maxscore; }
 
-uint Session::numCorrect() { return s_cqnum; }
+long double Session::score() { return s_score; }
+
+int Session::average() { return s_maxscore != 0.0 ? (int)(100.0 * s_score / s_maxscore) : 100; }
 
 void Session::setPassMark(PassMark passmark) { s_passmark = passmark; }
 
 PassMark Session::passMark() { return s_passmark; }
 
 void Session::loadPassMark(QString str) { s_passmark.loadData(str); }
+
+void Session::setScoringSystem(ScoringSystem sys)
+{
+    s_scoringsystem = sys;
+    s_maxscore = 0.0; s_score = 0.0;
+    for (int i = 0; i < s_students.count(); ++i) {
+        s_students.at(i)->updateScore(s_scoringsystem);
+        if (s_students.at(i)->isReady()) {
+            s_maxscore += s_students.at(i)->maximumScore();
+            s_score += s_students.at(i)->score();
+        }
+    }
+}
+
+ScoringSystem Session::scoringSystem() { return s_scoringsystem; }
 
 QString Session::sessionData()
 {
@@ -152,7 +162,9 @@ QString Session::sessionData()
 	// S_DATETIME
 	out.append(dateTimeToString());
 	// S_PASSMARK
-	out.append(QString("\n%1").arg(s_passmark.data()));
+	out.append(QString("\n%1").arg(s_passmark.archiveData()));
+    // S_SCORINGSYSTEM
+    out.append(QString("\n%1").arg(s_scoringsystem.data()));
 	// S_SNUM
 	out.append(QString("\n%1").arg(s_students.count()));
 	// S_NUMLOGENTRIES
@@ -168,7 +180,11 @@ QString Session::sessionData()
 
 bool Session::mostPassed()
 {
-	return (s_cqnum >= (s_passmark.passMark() * s_students.count()));
+	int numpassed = 0;
+    for (int i = 0; i < s_students.count(); ++i) {
+        if (s_students.at(i)->passed()) { numpassed++; }
+    }
+    return numpassed >= (s_students.count() - numpassed);
 }
 
 bool Session::isArchived() { return s_archived; }

@@ -65,7 +65,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="label_7" >
+           <widget class="QLabel" name="label_server_name" >
             <property name="text" >
              <string>&lt;b>Server name&lt;/b></string>
             </property>
@@ -104,7 +104,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_8" >
+           <widget class="QLabel" name="label_server_port" >
             <property name="text" >
              <string>&lt;b>Server port&lt;/b></string>
             </property>
@@ -158,7 +158,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label_db_path" >
           <property name="text" >
            <string>&lt;b>Database file path&lt;/b></string>
           </property>
@@ -254,16 +254,19 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_2" >
+         <widget class="QLabel" name="label_itcl_path" >
           <property name="text" >
            <string>&lt;b>Save answers to&lt;/b></string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_9" >
+         <widget class="QLabel" name="label_itcl_path_note" >
           <property name="text" >
            <string>If connected to an iTest server, results will be sent automatically. You only need this file if there is no network available or in case of connection breakdown.</string>
+          </property>
+          <property name="wordWrap" >
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -348,7 +351,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_10" >
+         <widget class="QLabel" name="label_other_settings" >
           <property name="text" >
            <string>&lt;b>Other settings&lt;/b></string>
           </property>
@@ -376,7 +379,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_3" >
+         <widget class="QLabel" name="label_test_info" >
           <property name="text" >
            <string>&lt;b>Test information&lt;/b></string>
           </property>
@@ -596,18 +599,6 @@
         </item>
         <item row="1" column="1" >
          <widget class="QFrame" name="welcomeFrame" >
-          <property name="minimumSize" >
-           <size>
-            <width>501</width>
-            <height>204</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>501</width>
-            <height>204</height>
-           </size>
-          </property>
           <property name="frameShape" >
            <enum>QFrame::StyledPanel</enum>
           </property>
@@ -646,9 +637,14 @@
               </spacer>
              </item>
              <item>
-              <widget class="QLabel" name="label_4" >
+              <widget class="QLabel" name="label_welcome" >
+               <property name="font" >
+                <font>
+                 <pointsize>20</pointsize>
+                </font>
+               </property>
                <property name="text" >
-                <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:20pt;">Welcome!&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+                <string>Welcome!</string>
                </property>
               </widget>
              </item>
@@ -671,6 +667,9 @@
             <spacer>
              <property name="orientation" >
               <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType" >
+              <enum>QSizePolicy::Preferred</enum>
              </property>
              <property name="sizeHint" >
               <size>
@@ -711,7 +710,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="QLabel" name="label_6" >
+              <widget class="QLabel" name="label_your_name" >
                <property name="text" >
                 <string>Your name:</string>
                </property>
@@ -788,61 +787,22 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" >
-             <property name="spacing" >
-              <number>6</number>
+            <widget class="QLabel" name="label_ready_note" >
+             <property name="text" >
+              <string>When you are ready to begin the examination, click the Start button below.</string>
              </property>
-             <property name="leftMargin" >
-              <number>0</number>
+             <property name="alignment" >
+              <set>Qt::AlignCenter</set>
              </property>
-             <property name="topMargin" >
-              <number>0</number>
-             </property>
-             <property name="rightMargin" >
-              <number>0</number>
-             </property>
-             <property name="bottomMargin" >
-              <number>0</number>
-             </property>
-             <item>
-              <spacer>
-               <property name="orientation" >
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" >
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_5" >
-               <property name="text" >
-                <string>When you are ready to begin the examination, click the Start button below.</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer>
-               <property name="orientation" >
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" >
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
+            </widget>
            </item>
            <item>
             <spacer>
              <property name="orientation" >
               <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType" >
+              <enum>QSizePolicy::Preferred</enum>
              </property>
              <property name="sizeHint" >
               <size>
@@ -981,6 +941,9 @@
       </widget>
       <widget class="QWidget" name="testPage" >
        <layout class="QHBoxLayout" >
+        <property name="spacing" >
+         <number>6</number>
+        </property>
         <item>
          <widget class="MTSplitter" name="testPageSplitter" >
           <property name="palette" >
@@ -1115,6 +1078,9 @@
           </widget>
           <widget class="QWidget" name="layoutWidget_2" >
            <layout class="QVBoxLayout" >
+            <property name="spacing" >
+             <number>6</number>
+            </property>
             <item>
              <widget class="MTSplitter" name="questionTextSvgSplitter" >
               <property name="orientation" >
@@ -1132,175 +1098,13 @@
              </widget>
             </item>
             <item>
-             <layout class="QHBoxLayout" >
-              <property name="spacing" >
-               <number>6</number>
-              </property>
-              <property name="leftMargin" >
-               <number>0</number>
-              </property>
-              <property name="topMargin" >
-               <number>0</number>
-              </property>
-              <property name="rightMargin" >
-               <number>0</number>
-              </property>
-              <property name="bottomMargin" >
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QRadioButton" name="rbtnAnswerA" >
-                <property name="text" >
-                 <string>a)</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QTextBrowser" name="answerA_textBrowser" >
-                <property name="sizePolicy" >
-                 <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize" >
-                 <size>
-                  <width>16777215</width>
-                  <height>59</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-             </layout>
+             <widget class="AnswersView" native="1" name="answersView" />
             </item>
             <item>
              <layout class="QHBoxLayout" >
               <property name="spacing" >
                <number>6</number>
               </property>
-              <property name="leftMargin" >
-               <number>0</number>
-              </property>
-              <property name="topMargin" >
-               <number>0</number>
-              </property>
-              <property name="rightMargin" >
-               <number>0</number>
-              </property>
-              <property name="bottomMargin" >
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QRadioButton" name="rbtnAnswerB" >
-                <property name="text" >
-                 <string>b)</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QTextBrowser" name="answerB_textBrowser" >
-                <property name="sizePolicy" >
-                 <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize" >
-                 <size>
-                  <width>16777215</width>
-                  <height>59</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" >
-              <property name="spacing" >
-               <number>6</number>
-              </property>
-              <property name="leftMargin" >
-               <number>0</number>
-              </property>
-              <property name="topMargin" >
-               <number>0</number>
-              </property>
-              <property name="rightMargin" >
-               <number>0</number>
-              </property>
-              <property name="bottomMargin" >
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QRadioButton" name="rbtnAnswerC" >
-                <property name="text" >
-                 <string>c)</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QTextBrowser" name="answerC_textBrowser" >
-                <property name="sizePolicy" >
-                 <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize" >
-                 <size>
-                  <width>16777215</width>
-                  <height>59</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" >
-              <property name="spacing" >
-               <number>6</number>
-              </property>
-              <property name="leftMargin" >
-               <number>0</number>
-              </property>
-              <property name="topMargin" >
-               <number>0</number>
-              </property>
-              <property name="rightMargin" >
-               <number>0</number>
-              </property>
-              <property name="bottomMargin" >
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QRadioButton" name="rbtnAnswerD" >
-                <property name="text" >
-                 <string>d)</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QTextBrowser" name="answerD_textBrowser" >
-                <property name="sizePolicy" >
-                 <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize" >
-                 <size>
-                  <width>16777215</width>
-                  <height>59</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" >
               <item>
                <widget class="QCheckBox" name="showRemainingTimeCheckBox" >
                 <property name="text" >
@@ -1430,8 +1234,14 @@
       </widget>
       <widget class="QWidget" name="resultsPage" >
        <layout class="QGridLayout" >
+        <property name="horizontalSpacing" >
+         <number>6</number>
+        </property>
+        <property name="verticalSpacing" >
+         <number>6</number>
+        </property>
         <item row="0" column="0" >
-         <widget class="QLabel" name="label_12" >
+         <widget class="QLabel" name="label_results_name" >
           <property name="text" >
            <string>&lt;b>Name:&lt;/b></string>
           </property>
@@ -1444,21 +1254,8 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="2" >
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>313</width>
-            <height>16</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
         <item row="1" column="0" >
-         <widget class="QLabel" name="label_11" >
+         <widget class="QLabel" name="label_results_score" >
           <property name="text" >
            <string>&lt;b>Score:&lt;/b></string>
           </property>
@@ -1467,52 +1264,21 @@
         <item row="1" column="1" >
          <widget class="QLabel" name="scoreLabel" />
         </item>
-        <item row="1" column="2" >
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>313</width>
-            <height>16</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
         <item row="2" column="0" colspan="3" >
-         <widget class="QLabel" name="label_13" >
+         <widget class="QLabel" name="label_results" >
           <property name="text" >
            <string>&lt;b>Results:&lt;/b></string>
           </property>
          </widget>
         </item>
         <item row="3" column="0" colspan="3" >
-         <widget class="QTableWidget" name="resultsTableWidget" >
-          <column>
-           <property name="text" >
-            <string>Question</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>Answered correctly</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>Answer</string>
-           </property>
-          </column>
-          <column>
-           <property name="text" >
-            <string>Correct answer</string>
-           </property>
-          </column>
-         </widget>
+         <widget class="QTableWidget" name="resultsTableWidget" />
         </item>
         <item row="4" column="0" colspan="3" >
          <layout class="QHBoxLayout" >
+          <property name="spacing" >
+           <number>6</number>
+          </property>
           <item>
            <widget class="QPushButton" name="btnNewTest" >
             <property name="text" >
@@ -1560,6 +1326,19 @@
           </item>
          </layout>
         </item>
+        <item row="0" column="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>313</width>
+            <height>16</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -1578,6 +1357,12 @@
    <class>MTMultiSvgWidget</class>
    <extends>QWidget</extends>
    <header>mtmultisvgwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AnswersView</class>
+   <extends>QWidget</extends>
+   <header>answersview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
@@ -1724,8 +1509,40 @@
      <y>77</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>404</x>
-     <y>319</y>
+     <x>414</x>
+     <y>386</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbtnFromFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_results_score</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>407</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>31</x>
+     <y>47</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbtnFromFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>scoreLabel</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>407</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>60</x>
+     <y>47</y>
     </hint>
    </hints>
   </connection>

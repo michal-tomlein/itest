@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -20,78 +20,71 @@
 #ifndef QUESTION_ITEM_H
 #define QUESTION_ITEM_H
 
-#include <QString>
-#include <QStringList>
-#include <QTextDocument>
-
+#include "../shared/question.h"
 #include "svg_item.h"
 
-class QuestionItem
+class QuestionAnswer
 {
 public:
-    enum Answer { None = 0, A = 1, B = 2, C = 4, D = 8 };
-    Q_DECLARE_FLAGS(Answers, Answer)
-
-    QuestionItem();
-    QuestionItem(QString);
-    QuestionItem(QString, int, QString, int, QString, QStringList, Answers, unsigned int, unsigned int, bool);
-    ~QuestionItem();
-    
-    static QuestionItem::Answer convertOldAnsNumber(int);
-    static int convertToOldAnsNumber(int);
-
-public slots:
-    QString name();
-    int flag();
-    QString group();
-    int difficulty();
-    QString text();
-    QString ansA(); QString ansB(); QString ansC(); QString ansD();
-    bool isAnsCorrect(Answer);
-    bool isAnsACorrect(); bool isAnsBCorrect();
-    bool isAnsCCorrect(); bool isAnsDCorrect();
-    bool isHidden();
-    QStringList answers();
-    Answer correctAnswer();
-    Answers correctAnswers();
-    QString allProperties(); QString allPublicProperties();
-    void setName(QString);
-    void setFlag(int);
-    void setGroup(QString);
-    void setDifficulty(int);
-    void setText(QString);
-    void setAnsA(QString); void setAnsB(QString);
-    void setAnsC(QString); void setAnsD(QString);
-    void setAnsCorrect(Answers, bool);
-    void setAnsACorrect(bool); void setAnsBCorrect(bool);
-    void setAnsCCorrect(bool); void setAnsDCorrect(bool);
-    void setAnswers(QStringList);
-    void setCorrectAnswers(Answers);
-    bool hasCorrectAnswer();
-    void setIncorrectAnsCount(unsigned int);
-    void setCorrectAnsCount(unsigned int);
-    void setHidden(bool);
-    unsigned int incorrectAnsCount(); unsigned int correctAnsCount();
-    void addIncorrectAns(); void addCorrectAns();
-    int recommendedDifficulty();
-    void addSvgItem(SvgItem *);
-    bool removeSvgItem(SvgItem *); SvgItem * removeSvgItem(int);
-    int numSvgItems(); SvgItem * svgItem(int);
+    QuestionAnswer(Question::Answer /* correct */ = Question::None,
+                    Question::Answer /* ans */ = Question::None,
+                    int /* flag */ = -1,
+                    int /* difficulty */ = 0,
+                    Question::SelectionType /* type */ = Question::SingleSelection,
+                    QString /* explanation */ = QString());
+    void setAnswered(Question::Answer); Question::Answer answered();
+    void setCorrectAnswer(Question::Answer); Question::Answer correctAnswer();
+    float score(ScoringSystem);
+    float maximumScore(ScoringSystem);
+    void setFlag(int); int flag();
+    void setDifficulty(int); int difficulty();
+    void setSelectionType(Question::SelectionType); Question::SelectionType selectionType();
+    void setExplanation(QString); QString explanation();
 
 private:
-    QString q_name;
-    int q_flag;
-    QString q_group;
+    Question::Answer qa_answered;
+    Question::Answer qa_correct_answer;
+    int qa_flag;
     int q_difficulty;
-    QString q_text;
-    QStringList q_answers;
-    Answers q_correctanswers;
+    Question::SelectionType q_selectiontype;
+    QString qa_explanation;
+};
+
+class QuestionItem : public Question
+{
+public:
+    QuestionItem(QString /* name */ = QString(),
+                int /* flag */ = -1,
+                QString /* group */ = QString(),
+                int /* difficulty */ = 0,
+                QString /* text */ = QString(),
+                QStringList /* answers */ = QStringList() << QString() << QString() << QString() << QString(),
+                Answers /* correctanswers */ = None,
+                SelectionType /* selectiontype */ = SingleSelection,
+                QString /* explanation */ = QString(),
+                unsigned int /* inccount */ = 0,
+                unsigned int /* ccount */ = 0,
+                bool /* hidden */ = false,
+                QList<SvgItem *> /* svgs */ = QList<SvgItem *>(),
+                bool /* copysvgs */ = true);
+    ~QuestionItem();
+
+public slots:
+    bool isHidden(); void setHidden(bool);
+    unsigned int incorrectAnsCount(); void setIncorrectAnsCount(unsigned int);
+    unsigned int correctAnsCount(); void setCorrectAnsCount(unsigned int);
+    void addIncorrectAns(); void addCorrectAns();
+    void addSvgItem(SvgItem *);
+    bool removeSvgItem(SvgItem *); SvgItem * removeSvgItem(int);
+    int numSvgItems(); SvgItem * svgItem(int); QList<SvgItem *> svgItems();
+    int recommendedDifficulty();
+    QString allProperties(); QString allPublicProperties();
+
+private:
     unsigned int q_incorrectanscount;
     unsigned int q_correctanscount;
     bool q_hidden;
     QList<SvgItem *> q_svgitems;
 };
-
-Q_DECLARE_OPERATORS_FOR_FLAGS(QuestionItem::Answers)
 
 #endif // QUESTION_ITEM_H

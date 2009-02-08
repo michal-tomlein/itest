@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -23,21 +23,23 @@ void MainWindow::varinit()
 {
     // GLOBAL
         // iTestServer version
-        ver = "1.3.0"; f_ver = 1.3;
+        ver = "1.4.0"; f_ver = 1.4;
         // iTest ITDB file version
-        itdb_ver = "1.3"; f_itdb_ver = 1.3;
+        itdb_ver = "1.4"; f_itdb_ver = 1.4;
         // iTest ITOS file version
-        itos_ver = "1.3"; f_itos_ver = 1.3;
+        itos_ver = "1.4"; f_itos_ver = 1.4;
         // URLs
         itest_url = "itest.sourceforge.net";
-        docs_url = tr("http://itest.sourceforge.net/documentation/%1/en/").arg("1.3");
+        docs_url = tr("http://itest.sourceforge.net/documentation/%1/en/").arg("1.4");
         // i18n
-        itest_i18n.insert(tr("English"), "English");
-        itest_i18n.insert(tr("Slovak"), "Slovak");
-        itest_i18n.insert(tr("Russian"), "Russian");
-        itest_i18n.insert(tr("Turkish"), "Turkish");
-        itest_i18n.insert(tr("Portuguese"), "Portuguese");
-        itest_i18n.insert(tr("Spanish"), "Spanish");
+        QTranslator translator; translator.load(":/i18n/iTest-i18n.qm");
+        itest_i18n.insert("English", "English");
+        itest_i18n.insert(translator.translate("LanguageNames", "Slovak"), "Slovak");
+        itest_i18n.insert(translator.translate("LanguageNames", "Russian"), "Russian");
+        itest_i18n.insert(translator.translate("LanguageNames", "Turkish"), "Turkish");
+        itest_i18n.insert(translator.translate("LanguageNames", "Portuguese"), "Portuguese");
+        itest_i18n.insert(translator.translate("LanguageNames", "Spanish"), "Spanish");
+        itest_i18n.insert(translator.translate("LanguageNames", "Italian"), "Italian");
     // CURRENT_DB
         current_db_open = false;
 }

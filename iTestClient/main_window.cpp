@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -17,13 +17,14 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
-#include "about_widget.h"
+#include "../shared/about_widget.h"
 #include "main_window.h"
 
 MainWindow::MainWindow()
 {
     varinit();
     setupUi(this);
+    if (tr("LTR") == "RTL") { qApp->setLayoutDirection(Qt::RightToLeft); }
 
 #ifndef Q_WS_WIN
     testPageSplitter->setPalette(this->palette());
@@ -35,7 +36,6 @@ MainWindow::MainWindow()
     questionTextSvgSplitter->setCollapsible(0, false);
     questionTextSvgSplitter->setCollapsible(1, true);
     tcpSocket = new QTcpSocket(this);
-    current_test_results = new QMap<QString, QuestionAnswer>;
     progress_dialog = NULL;
     current_test_use_groups = false;
     current_connection_local = false;
@@ -74,12 +74,7 @@ MainWindow::MainWindow()
     rbtngrpInputType->addButton(rbtnFromFile);
     QObject::connect(rbtngrpInputType, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(toggleInputType(QAbstractButton *)));
 
-    rbtngrpAnswer = new QButtonGroup (this);
-    rbtngrpAnswer->addButton(rbtnAnswerA);
-    rbtngrpAnswer->addButton(rbtnAnswerB);
-    rbtngrpAnswer->addButton(rbtnAnswerC);
-    rbtngrpAnswer->addButton(rbtnAnswerD);
-    QObject::connect(rbtngrpAnswer, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(setQuestionAnswered(QAbstractButton *)));
+    QObject::connect(answersView, SIGNAL(buttonReleased(Question::Answers)), this, SLOT(setQuestionAnswered(Question::Answers)));
 
     for (int i = 0; i < 8; ++i) {infoTableWidget->setItem(i, 0, new QTableWidgetItem);}
     ITW_test_name = infoTableWidget->item(0, 0);
@@ -94,6 +89,9 @@ MainWindow::MainWindow()
     infoTableWidget->setCellWidget(8, 0, ITW_test_comments);
     infoTableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
     infoTableWidget->verticalHeader()->setResizeMode(8, QHeaderView::Stretch);
+    resultsTableWidget->setColumnCount(1);
+    resultsTableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    resultsTableWidget->horizontalHeader()->hide();
     
     loadSettings();
     
@@ -133,77 +131,35 @@ void MainWindow::saveSettings()
     settings.setValue("client/hideCorrectAnswers", hideCorrectAnswersCheckBox->isChecked());
 }
 
-void MainWindow::setQuestionAnswered(QAbstractButton * rbtn)
+void MainWindow::setQuestionAnswered(Question::Answers selected_answers)
 {
-    if (LQListWidget->currentIndex().isValid()) {
-        QuestionItem * item = current_test_questions.value(LQListWidget->currentItem());
-        if (rbtn == rbtnAnswerA) {
-            item->setAnswered(QuestionItem::A);
-        } else if (rbtn == rbtnAnswerB) {
-            item->setAnswered(QuestionItem::B);
-        } else if (rbtn == rbtnAnswerC) {
-            item->setAnswered(QuestionItem::C);
-        } else if (rbtn == rbtnAnswerD) {
-            item->setAnswered(QuestionItem::D);
-        } else {
-            item->setAnswered(QuestionItem::None);
-            LQListWidget->currentItem()->setBackground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
-            LQListWidget->currentItem()->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
-        }
-        if ((rbtn == rbtnAnswerA) || (rbtn == rbtnAnswerB) || (rbtn == rbtnAnswerC) || (rbtn == rbtnAnswerD)) {
-            LQListWidget->currentItem()->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-            LQListWidget->currentItem()->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
-            int progress = 0;
-            for (int i = 0; i < LQListWidget->count(); ++i) {
-                if (current_test_questions.value(LQListWidget->item(i))->answered() != QuestionItem::None) {
-                    progress++;
-                }
+    if (!LQListWidget->currentIndex().isValid()) { return; }
+    QuestionItem * item = current_test_questions.value(LQListWidget->currentItem());
+    item->setAnswered(selected_answers);
+    if (selected_answers == Question::None) {
+        LQListWidget->currentItem()->setBackground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
+        LQListWidget->currentItem()->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    } else {
+        LQListWidget->currentItem()->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
+        LQListWidget->currentItem()->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        int progress = 0;
+        for (int i = 0; i < LQListWidget->count(); ++i) {
+            if (current_test_questions.value(LQListWidget->item(i))->answered() != Question::None) {
+                progress++;
             }
-            progressBar->setValue(progress);
         }
-     }
+        progressBar->setValue(progress);
+    }
 }
 
 void MainWindow::setCurrentQuestion()
 {
      if (LQListWidget->currentIndex().isValid()) {
         questionTextBrowser->clear();
-        answerA_textBrowser->clear();
-        answerB_textBrowser->clear();
-        answerC_textBrowser->clear();
-        answerD_textBrowser->clear();
-        rbtnAnswerA->setEnabled(true);
-        rbtnAnswerB->setEnabled(true);
-        rbtnAnswerC->setEnabled(true);
-        rbtnAnswerD->setEnabled(true);
+        answersView->setEnabled(true);
         QuestionItem * item = current_test_questions.value(LQListWidget->currentItem());
         questionTextBrowser->setHtml(item->text());
-        answerA_textBrowser->setText(item->ansA());
-        answerB_textBrowser->setText(item->ansB());
-        answerC_textBrowser->setText(item->ansC());
-        answerD_textBrowser->setText(item->ansD());
-        switch (item->answered()) {
-            case QuestionItem::None:
-                rbtngrpAnswer->setExclusive(false);
-                rbtnAnswerA->setChecked(false);
-                rbtnAnswerB->setChecked(false);
-                rbtnAnswerC->setChecked(false);
-                rbtnAnswerD->setChecked(false);
-                rbtngrpAnswer->setExclusive(true);
-                break;
-            case QuestionItem::A:
-                rbtnAnswerA->setChecked(true);
-                break;
-            case QuestionItem::B:
-                rbtnAnswerB->setChecked(true);
-                break;
-            case QuestionItem::C:
-                rbtnAnswerC->setChecked(true);
-                break;
-            case QuestionItem::D:
-                rbtnAnswerD->setChecked(true);
-                break;
-        }
+        answersView->setAnswers(item->answers(), item->answered(), item->selectionType());
         svgDisplayWidget->clear();
         if (item->numSvgItems() > 0) {
             svgDisplayWidget->setVisible(true);
@@ -236,16 +192,11 @@ void MainWindow::setCurrentQuestion()
         }
      } else {
         questionTextBrowser->clear();
-        answerA_textBrowser->clear();
-        answerB_textBrowser->clear();
-        answerC_textBrowser->clear();
-        answerD_textBrowser->clear();
+        answersView->clear();
+        answersView->setEnabled(false);
+        svgDisplayWidget->clear();
         btnNext->setEnabled(false);
         btnLast->setEnabled(false);
-        rbtnAnswerA->setEnabled(false);
-        rbtnAnswerB->setEnabled(false);
-        rbtnAnswerC->setEnabled(false);
-        rbtnAnswerD->setEnabled(false);
      }
 }
 
@@ -298,7 +249,7 @@ void MainWindow::finish()
     current_test_results_sent = true;
     current_test_time_finished = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm");
     sendResults();
-    if (rbtnFromFile->isChecked()) { saveResults(); }
+    if (rbtnFromFile->isChecked()) { loadResults(resultsTableWidget); }
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -406,7 +357,7 @@ void MainWindow::newTest()
 	current_db_questions.clear();
 	current_test_qnum = 0;
 	current_test_questions.clear();
-	current_test_results->clear();
+	//current_test_results->clear();
 	current_test_time_remaining = 0;
 	current_test_score = 0;
 	current_test_results_sent = false;
@@ -448,6 +399,7 @@ void MainWindow::updateTime()
         current_test_results_sent = true;
         current_test_time_finished = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm");
         mainStackedWidget->setCurrentIndex(3); sendResults();
+        if (rbtnFromFile->isChecked()) { loadResults(resultsTableWidget); }
         QMessageBox::information(this, tr("Exam finished"), tr("You have run out of time. Your answers are being sent."));
     }
 }
@@ -460,7 +412,7 @@ void MainWindow::errorInvalidData()
 
 void MainWindow::about()
 {
-    AboutWidget * itest_about = new AboutWidget(ver, QString("4.3.2"), QString("2007"));
+    AboutWidget * itest_about = new AboutWidget(ver, QString("2008"));
 	itest_about->setParent(this);
     itest_about->setWindowFlags(Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/ | Qt::WindowStaysOnTopHint);
 	itest_about->show();

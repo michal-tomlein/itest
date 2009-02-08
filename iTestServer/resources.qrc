@@ -6,7 +6,11 @@
         <file>images/bottom.png</file>
         <file>images/button_cancel.png</file>
         <file>images/button_ok.png</file>
+        <file>images/class-add32.png</file>
+        <file>images/class-remove32.png</file>
+        <file>images/class32.png</file>
         <file>images/clear.png</file>
+        <file>images/clear_rtl.png</file>
         <file>images/client.png</file>
         <file>images/clients.png</file>
         <file>images/contents.png</file>
@@ -51,10 +55,14 @@
         <file>images/restore.png</file>
         <file>images/save_all.png</file>
         <file>images/savebackup.png</file>
+        <file>images/savedsession-add32.png</file>
+        <file>images/savedsession-remove32.png</file>
         <file>images/savedsessions32.png</file>
         <file>images/sort_ascending.png</file>
         <file>images/sort_descending.png</file>
         <file>images/statistics.png</file>
+        <file>images/student-add32.png</file>
+        <file>images/student-remove32.png</file>
         <file>images/top.png</file>
         <file>images/up.png</file>
     </qresource>

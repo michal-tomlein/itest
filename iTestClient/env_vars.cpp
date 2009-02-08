@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -23,7 +23,7 @@ void MainWindow::varinit()
 {
     // GLOBAL
         // iTestClient version
-        ver = "1.3.0"; f_ver = 1.3;
+        ver = "1.4.0"; f_ver = 1.4;
         // Supported iTest DB file version
-        itos_ver = "1.3"; f_itos_ver = 1.3;
+        itos_ver = "1.4"; f_itos_ver = 1.4;
 }

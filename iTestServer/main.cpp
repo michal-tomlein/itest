@@ -1,8 +1,8 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.3.0                                                        *
- * Qt version:   4.3.2                                                        *
+ * Version:      1.4.0                                                        *
+ * Qt version:   4.3.0 or higher required                                     *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Server and a Client designed for *
  * easy computerised examination.                                             *
@@ -37,6 +37,24 @@ int main(int argc, char *argv[])
 }
 
 // ---------------------------- version changelog: -----------------------------
+/* version 1.4.0 - a major update
+                 - added Italian translation
+                 - added the ability to create classes with students
+                 - added an advanced scoring system
+                 - added the ability to set the (minimum) number of questions in
+                   a test for each flag separately
+                 - added multiple choice questions support
+                 - added support for up to 9 answers and the ability to set
+                   this number for each question separately
+                 - advanced test printing options, random order of questions in
+                   each printout, the ability to print keys to tests
+                 - improved appearance under Mac OS X
+                 - new database format - older versions of iTest cannot open the
+                   new itdb 1.4 files, iTest 1.4 can still open older databases
+                 - code clean-up, code sharing with iTestClient
+                 - upgraded from Qt 4.3.2 to Qt 4.4.0
+                 - numerous bug-fixes and more...
+*/
 /* version 1.3.0 - a major update
                  - added Spanish translation
                  - added SVG (scalable vector graphics) support, which means
@@ -129,7 +147,7 @@ int main(int argc, char *argv[])
 
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence

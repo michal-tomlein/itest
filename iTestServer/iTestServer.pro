@@ -1,18 +1,30 @@
 CONFIG       += qt
 TEMPLATE      = app
 FORMS        += main_window_v2.ui \
-                about_widget_v2.ui
+                ../shared/about_widget_v2.ui \
+                session_wizard.ui
 HEADERS      += main_window.h \
-                about_widget.h \
+                ../shared/about_widget.h \
+                ../shared/question.h \
                 question_item.h \
                 client.h \
                 student.h \
                 session.h \
                 archived_session.h \
-                pass_mark.h \
+                ../shared/pass_mark.h \
                 svg_item.h \
                 extendedlineedit.h \
-                mtadvancedgroupbox.h
+                mtadvancedgroupbox.h \
+                mtspinbox.h \
+                class.h \
+                mtwidgetpalettes.h \
+                mtlistwidget.h \
+                mttablewidget.h \
+                session_wizard.h \
+                mttoolbutton.h \
+                mtprogressbar.h \
+                answersedit.h \
+                print_engine.h
 RESOURCES    += resources.qrc \
                 i18n.qrc
 SOURCES      += main.cpp \
@@ -21,7 +33,8 @@ SOURCES      += main.cpp \
                 questions.cpp \
                 text_formatting.cpp \
                 flags.cpp \
-                about_widget.cpp \
+                ../shared/about_widget.cpp \
+                ../shared/question.cpp \
                 question_item.cpp \
                 server.cpp \
                 client.cpp \
@@ -31,9 +44,14 @@ SOURCES      += main.cpp \
                 student.cpp \
                 session.cpp \
                 archived_session.cpp \
-                pass_mark.cpp \
-                svg_item.cpp
+                ../shared/pass_mark.cpp \
+                svg_item.cpp \
+                class.cpp \
+                class_viewer.cpp \
+                session_wizard.cpp \
+                answersedit.cpp
 QT           += network svg
+DEFINES      += ITESTSERVER
 win32 {
 DESTDIR       = ../
 RC_FILE       = itest.rc
@@ -43,7 +61,8 @@ RCC_DIR       = .rcc.win32/
 exists($(QTDIR)/bin/splitui.exe) {
 QMAKE_UIC     = splitui.exe
 SOURCES      += ui_main_window_v2.cpp \
-                ui_about_widget_v2.cpp
+                ui_about_widget_v2.cpp \
+                ui_session_wizard.cpp
 }
 }
 macx {
@@ -59,7 +78,8 @@ unix {
 exists(/usr/bin/splitui) {
 QMAKE_UIC     = splitui
 SOURCES      += ui_main_window_v2.cpp \
-                ui_about_widget_v2.cpp
+                ui_about_widget_v2.cpp \
+                ui_session_wizard.cpp
 }
 !macx {
 DESTDIR       = ../bin/
@@ -78,5 +98,6 @@ TRANSLATIONS += i18n/iTestServer-Slovak.ts \
                 i18n/iTestServer-Russian.ts \
                 i18n/iTestServer-Turkish.ts \
                 i18n/iTestServer-Portuguese.ts \
-                i18n/iTestServer-Spanish.ts
+                i18n/iTestServer-Spanish.ts \
+                i18n/iTestServer-Italian.ts
 QMAKE_RESOURCE_FLAGS += -compress 9

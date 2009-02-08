@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -53,7 +53,6 @@ void MainWindow::deleteQuestion()
             case 1: // Cancel
                 return; break;
         }
-        QString q_name = current_db_question;
         delete current_db_questions.value(LQListWidget->currentItem());
         current_db_questions.remove(LQListWidget->currentItem());
         delete LQListWidget->currentItem();
@@ -90,17 +89,20 @@ void MainWindow::duplicateQuestion()
              while (q.hasNext()) { q.next();
              	if (q.value()->name() == new_q_name) { allright = false; copynum++; goto addQuestion_start; break; }
              }
-             QuestionItem * new_item = new QuestionItem (new_q_name, 
-                                                    item->flag(), 
+             QuestionItem * new_item = new QuestionItem(new_q_name,
+                                                    item->flag(),
                                                     item->group(),
-                                                    item->difficulty(), 
-                                                    item->text(), 
+                                                    item->difficulty(),
+                                                    item->text(),
                                                     item->answers(),
                                                     item->correctAnswers(),
+                                                    item->selectionType(),
+                                                    item->explanation(),
                                                     item->incorrectAnsCount(),
                                                     item->correctAnsCount(),
-                                                    item->isHidden());
-             QListWidgetItem * new_q_item = new QListWidgetItem (new_item->group().isEmpty() ? new_q_name : QString("[%1] %2").arg(new_item->group()).arg(new_q_name));
+                                                    item->isHidden(),
+                                                    item->svgItems(), true);
+             QListWidgetItem * new_q_item = new QListWidgetItem(new_item->group().isEmpty() ? new_q_name : QString("[%1] %2").arg(new_item->group()).arg(new_q_name));
              current_db_questions.insert(new_q_item, new_item);
              setQuestionItemIcon(new_q_item, new_item->difficulty());
              setQuestionItemColour(new_q_item, new_item->flag());
@@ -115,7 +117,7 @@ void MainWindow::duplicateQuestion()
 void MainWindow::setCurrentQuestion()
 {
     if (LQListWidget->currentIndex().isValid()) {
-        enableSQ(); clearSQNoFlags(); enableLQTools();
+        setSQEnabled(true); clearSQNoFlags(); setLQToolsEnabled(true);
         QuestionItem * item = current_db_questions.value(LQListWidget->currentItem());
         SQQuestionNameLineEdit->setText(item->name());
         SQGroupLineEdit->setText(item->group());
@@ -123,14 +125,8 @@ void MainWindow::setCurrentQuestion()
         LQFlagComboBox->setCurrentIndex(current_db_flagentries.value(item->flag()));
         SQDifficultyComboBox->setCurrentIndex(item->difficulty());
         SQQuestionTextEdit->setHtml(item->text());
-        SQAnswerALineEdit->setText(item->ansA());
-        if (item->isAnsACorrect()) {SQCorrectACheckBox->setChecked( true );} else {SQCorrectACheckBox->setChecked( false );}
-        SQAnswerBLineEdit->setText(item->ansB());
-        if (item->isAnsBCorrect()) {SQCorrectBCheckBox->setChecked( true );} else {SQCorrectBCheckBox->setChecked( false );}
-        SQAnswerCLineEdit->setText(item->ansC());
-        if (item->isAnsCCorrect()) {SQCorrectCCheckBox->setChecked( true );} else {SQCorrectCCheckBox->setChecked( false );}
-        SQAnswerDLineEdit->setText(item->ansD());
-        if (item->isAnsDCorrect()) {SQCorrectDCheckBox->setChecked( true );} else {SQCorrectDCheckBox->setChecked( false );}
+        SQAnswersEdit->setAnswers(item->answers(), item->correctAnswers(), item->selectionType());
+        SQExplanationLineEdit->setText(item->explanation());
         if (item->incorrectAnsCount() == 0 && item->correctAnsCount() == 0) {
             SQStatisticsLabel->setVisible(false);
         } else {
@@ -151,7 +147,7 @@ void MainWindow::setCurrentQuestion()
         }
         current_db_question = item->name();
     } else {
-    	disableSQ(); clearSQNoFlags(); disableLQTools();
+        setSQEnabled(false); clearSQNoFlags(); setLQToolsEnabled(false);
     }
 }
 
@@ -227,19 +223,10 @@ void MainWindow::applyQuestionChanges()
     item->setFlag(q_flag);
     item->setDifficulty(SQDifficultyComboBox->currentIndex());
     item->setText(removeLineBreaks(SQQuestionTextEdit->toHtml()));
-    // ansa
-    item->setAnsA(removeLineBreaks(SQAnswerALineEdit->text()));
-    item->setAnsACorrect(SQCorrectACheckBox->isChecked());
-    // ansb
-    item->setAnsB(removeLineBreaks(SQAnswerBLineEdit->text()));
-    item->setAnsBCorrect(SQCorrectBCheckBox->isChecked());
-    // ansc
-    item->setAnsC(removeLineBreaks(SQAnswerCLineEdit->text()));
-    item->setAnsCCorrect(SQCorrectCCheckBox->isChecked());
-    // ansd
-    item->setAnsD(removeLineBreaks(SQAnswerDLineEdit->text()));
-    item->setAnsDCorrect(SQCorrectDCheckBox->isChecked());
-    // hidden
+    item->setAnswers(SQAnswersEdit->answers());
+    item->setCorrectAnswers(SQAnswersEdit->correctAnswers());
+    item->setSelectionType(SQAnswersEdit->selectionType());
+    item->setExplanation(removeLineBreaks(SQExplanationLineEdit->text()));
     item->setHidden(actionHide->isChecked());
     // svg
     for (int i = 0; i < item->numSvgItems();) {
@@ -345,7 +332,7 @@ void MainWindow::filterLQ(QAbstractButton * rbtn)
     if (keyword.isEmpty()) {
         LQSearchLineEdit->setPalette(qApp->palette());
     } else {
-        LQSearchLineEdit->setPalette(search_active_palette);
+        LQSearchLineEdit->setPalette(searchLineEditPalettes.search_active_palette);
     }
     int n = 0;
     if (rbtn == LQAllRadioButton) {
@@ -403,7 +390,7 @@ void MainWindow::filterLQ(QAbstractButton * rbtn)
         }
     }
     if ((!keyword.isEmpty()) && LQListWidget->count() != 0 && n == 0) {
-        LQSearchLineEdit->setPalette(search_noresults_palette);
+        LQSearchLineEdit->setPalette(searchLineEditPalettes.search_noresults_palette);
     }
 }
 
@@ -584,7 +571,11 @@ void MainWindow::editSvg()
 	QWidget * editsvg_widget = new QWidget(this, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/);
 	editsvg_widget->setWindowModality(Qt::WindowModal);
 	editsvg_widget->setAttribute(Qt::WA_DeleteOnClose);
-	editsvg_widget->setWindowTitle(tr("%1 - Edit SVG - iTest").arg(svg_item->text()));
+#ifdef Q_WS_MAC
+	editsvg_widget->setWindowTitle(tr("%1 - Edit SVG").arg(svg_item->text()));
+#else
+    editsvg_widget->setWindowTitle(tr("%1 - Edit SVG - iTest").arg(svg_item->text()));
+#endif
 	editsvg_widget->setMinimumSize(QSize(200, 100));
 	QGridLayout * editsvg_glayout = new QGridLayout(editsvg_widget);
 	editsvg_glayout->setMargin(6); editsvg_glayout->setSpacing(6);

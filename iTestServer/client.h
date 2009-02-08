@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -33,22 +33,6 @@
 
 class MainWindow;
 
-class QuestionAnswer
-{
-public:
-    QuestionAnswer();
-    QuestionAnswer(int, QuestionItem::Answer, QuestionItem::Answer);
-    void setAnswered(QuestionItem::Answer); QuestionItem::Answer answered();
-    void setCorrectAnswer(QuestionItem::Answer); QuestionItem::Answer correctAnswer();
-    bool isAnsweredCorrectly();
-    void setFlag(int); int flag();
-
-private:
-    QuestionItem::Answer qa_answered;
-    QuestionItem::Answer qa_correct_answer;
-    int qa_flag;
-};
-
 class Client : public QObject
 {
     Q_OBJECT
@@ -57,22 +41,16 @@ private:
     void init(MainWindow *);
 
 public:
-    Client(MainWindow *);
-    Client(MainWindow *, int);
-    Client(MainWindow *, QString);
-    Client(MainWindow *, QTcpSocket *);
-    Client(MainWindow *, int, QTcpSocket *);
-    Client(MainWindow *, QString, QTcpSocket *);
-    Client(MainWindow *, int, QString, QTcpSocket *);
+    Client(MainWindow *, QString, int = 0);
+    Client(MainWindow *, QTcpSocket *, int = 0);
     virtual ~Client();
 
 public slots:
     void setName(QString); QString name();
     void setNumber(int); int number();
     void setSocket(QTcpSocket *); QTcpSocket * socket();
-    void setScore(int); int score();
-    void setReady(bool); bool isReady();
-    void setResults(QMap<QString, QuestionAnswer> *);
+    float score(); float maximumScore();
+    bool isReady();
     QMap<QString, QuestionAnswer> * results();
     void setPassed(bool); bool passed();
     void loadResults(QString);
@@ -90,7 +68,8 @@ signals:
 private:
     QString c_name;
     QTcpSocket * c_socket;
-    int c_score;
+    float c_score;
+    float c_maxscore;
     bool c_ready;
     QMap<QString, QuestionAnswer> * c_results;
     bool c_passed;

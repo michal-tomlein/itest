@@ -1,0 +1,200 @@
+<ui version="4.0" >
+ <author>Michal Tomlein</author>
+ <class>SessionWizard</class>
+ <widget class="QDialog" name="SessionWizard" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>576</width>
+    <height>415</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Add session - iTestServer</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="resources.qrc" >:/images/images/class-add32.png</iconset>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="leftMargin" >
+    <number>6</number>
+   </property>
+   <property name="topMargin" >
+    <number>6</number>
+   </property>
+   <property name="rightMargin" >
+    <number>6</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>6</number>
+   </property>
+   <item row="0" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <item>
+      <widget class="QLabel" name="lblSession" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Preferred" hsizetype="Maximum" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>&lt;b>Session:&lt;/b></string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblSessionName" />
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="3" >
+    <layout class="QHBoxLayout" >
+     <item>
+      <widget class="QLabel" name="lblClass" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Preferred" hsizetype="Maximum" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>&lt;b>Class:&lt;/b></string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblClassName" />
+     </item>
+    </layout>
+   </item>
+   <item rowspan="3" row="1" column="0" colspan="2" >
+    <widget class="QListWidget" name="lwSessionStudents" >
+     <property name="sortingEnabled" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item rowspan="3" row="1" column="3" >
+    <widget class="QListWidget" name="lwClassStudents" >
+     <property name="sortingEnabled" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" >
+    <widget class="QPushButton" name="btnMatch" >
+     <property name="text" >
+      <string>Match</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0" colspan="4" >
+    <widget class="QTableWidget" name="twMatchedPairs" >
+     <column>
+      <property name="text" >
+       <string>Session</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Class</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="5" column="0" >
+    <widget class="QPushButton" name="btnSplit" >
+     <property name="text" >
+      <string>Split</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="2" colspan="2" >
+    <widget class="QDialogButtonBox" name="btnbxButtons" >
+     <property name="standardButtons" >
+      <set>QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <includes/>
+ <resources>
+  <include location="resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>btnbxButtons</sender>
+   <signal>accepted()</signal>
+   <receiver>SessionWizard</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>440</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>477</x>
+     <y>335</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnbxButtons</sender>
+   <signal>rejected()</signal>
+   <receiver>SessionWizard</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>532</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>548</x>
+     <y>361</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

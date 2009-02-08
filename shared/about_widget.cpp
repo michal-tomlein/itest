@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -19,7 +19,7 @@
 
 #include "about_widget.h"
 
-AboutWidget::AboutWidget(QString ver, QString qtver, QString year)
+AboutWidget::AboutWidget(QString ver, QString year)
 {
 	setupUi(this);
 	QObject::connect(btnClose, SIGNAL(released()), this, SLOT(close()));
@@ -46,7 +46,7 @@ AboutWidget::AboutWidget(QString ver, QString qtver, QString year)
 	QString aboutQt = "<p style=\"font-family: sans-serif; font-style:italic;\"><span style=\"font-size:12pt;\">";
     aboutQt.append(tr("About Qt"));
 	aboutQt.append("</span></p><p></p><p style=\"font-family: sans-serif; font-size:8pt; font-style:italic;\">");
-	aboutQt.append(tr("This programme uses Qt Open Source Edition version %1.").arg(qtver));
+	aboutQt.append(tr("This programme uses Qt Open Source Edition version %1.").arg(qVersion()));
 	aboutQt.append("</p><p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
 	aboutQt.append(tr("Qt is a C++ toolkit for cross-platform application development."));
 	aboutQt.append("</p><p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");

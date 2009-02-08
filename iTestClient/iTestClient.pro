@@ -1,27 +1,33 @@
 CONFIG       += qt
 TEMPLATE      = app
 FORMS        += main_window.ui \
-                about_widget_v2.ui
+                ../shared/about_widget_v2.ui
 HEADERS      += main_window.h \
-                about_widget.h \
+                ../shared/about_widget.h \
+                ../shared/question.h \
                 question_item.h \
-                pass_mark.h \
+                ../shared/pass_mark.h \
                 mtsplitter.h \
                 mtmultisvgwidget.h \
-                flowlayout.h
+                flowlayout.h \
+                question_widget.h \
+                answersview.h
 RESOURCES    += resources.qrc \
                 i18n.qrc
 SOURCES      += main.cpp \
                 main_window.cpp \
                 database.cpp \
-                about_widget.cpp \
+                ../shared/about_widget.cpp \
                 client.cpp \
+                ../shared/question.cpp \
                 question_item.cpp \
                 env_vars.cpp \
-                question_answer.cpp \
-                pass_mark.cpp \
-                flowlayout.cpp
+                ../shared/pass_mark.cpp \
+                flowlayout.cpp \
+                question_widget.cpp \
+                answersview.cpp
 QT           += network svg
+DEFINES      += ITESTCLIENT
 win32 {
 DESTDIR       = ../
 RC_FILE       = itestwri.rc
@@ -66,5 +72,6 @@ TRANSLATIONS += i18n/iTestClient-Slovak.ts \
                 i18n/iTestClient-Russian.ts \
                 i18n/iTestClient-Turkish.ts \
                 i18n/iTestClient-Portuguese.ts \
-                i18n/iTestClient-Spanish.ts
+                i18n/iTestClient-Spanish.ts \
+                i18n/iTestClient-Italian.ts
 QMAKE_RESOURCE_FLAGS += -compress 9

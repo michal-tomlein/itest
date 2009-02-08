@@ -1,8 +1,8 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.3.0                                                        *
- * Qt version:   4.3.2                                                        *
+ * Version:      1.4.0                                                        *
+ * Qt version:   4.3.0 or higher required                                     *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Server and a Client designed for *
  * easy computerised examination.                                             *
@@ -37,6 +37,15 @@ int main(int argc, char *argv[])
 }
 
 // ---------------------------- version changelog: -----------------------------
+/* version 1.4.0 - a major update
+                 - added Italian translation
+                 - added an advanced scoring system
+                 - added multiple choice questions support
+                 - added support for up to 9 answers
+                 - code clean-up, code sharing with iTestServer
+                 - upgraded from Qt 4.3.2 to Qt 4.4.0
+                 - numerous bug-fixes
+*/
 /* version 1.3.0 - a major update
                  - added Spanish translation
                  - added SVG (scalable vector graphics) support
@@ -79,7 +88,7 @@ int main(int argc, char *argv[])
 
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence

@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -19,46 +19,40 @@
 
 #include "question_item.h"
 
-QuestionItem::QuestionItem()
+QuestionItem::QuestionItem(QString name,
+                            int flag,
+                            QString group,
+                            int difficulty,
+                            QString text,
+                            QStringList answers,
+                            Question::Answers correctanswers,
+                            Question::SelectionType selectiontype,
+                            QString explanation,
+                            unsigned int inccount,
+                            unsigned int ccount,
+                            bool hidden,
+                            QList<SvgItem *> svgs,
+                            bool copysvgs)
 {
-     q_name = "";
-     q_flag = -1;
-     q_group = "";
-     q_difficulty = 0;
-     q_text = "";
-     q_answers << "" << "" << "" << "";
-     q_correctanswers = QuestionItem::None;
-     q_incorrectanscount = 0;
-     q_correctanscount = 0;
-     q_hidden = false;
-}
-
-QuestionItem::QuestionItem(QString name)
-{
-     q_name = name;
-     q_flag = -1;
-     q_group = "";
-     q_difficulty = 0;
-     q_text = "";
-     q_answers << "" << "" << "" << "";
-     q_correctanswers = QuestionItem::None;
-     q_incorrectanscount = 0;
-     q_correctanscount = 0;
-     q_hidden = false;
-}
-
-QuestionItem::QuestionItem(QString name, int flag, QString group, int difficulty, QString text, QStringList answers, QuestionItem::Answers correctanswers, unsigned int inccount, unsigned int ccount, bool hidden)
-{
-     q_name = name;
-     q_flag = flag;
-     q_group = group;
-     q_difficulty = difficulty;
-     setText(text);
-     q_answers = answers;
-     q_correctanswers = correctanswers;
-     q_incorrectanscount = inccount;
-     q_correctanscount = ccount;
-     q_hidden = hidden;
+    q_name = name;
+    q_flag = flag;
+    q_group = group;
+    q_difficulty = difficulty;
+    q_explanation = explanation;
+    q_selectiontype = selectiontype;
+    setText(text);
+    q_answers = answers;
+    q_correctanswers = correctanswers;
+    q_incorrectanscount = inccount;
+    q_correctanscount = ccount;
+    q_hidden = hidden;
+    if (copysvgs) {
+        for (int i = 0; i < svgs.count(); ++i) {
+            q_svgitems << new SvgItem(svgs.at(i)->text(), svgs.at(i)->svg());
+        }
+    } else {
+        q_svgitems = svgs;
+    }
 }
 
 QuestionItem::~QuestionItem()
@@ -68,56 +62,44 @@ QuestionItem::~QuestionItem()
 	}
 }
 
-QString QuestionItem::name() { return q_name; }
-
-int QuestionItem::flag() { return q_flag; }
-
-QString QuestionItem::group() { return q_group; }
-
-int QuestionItem::difficulty() { return q_difficulty; }
-
-QString QuestionItem::text() { return q_text; }
-
-QString QuestionItem::ansA() { return q_answers.at(0); }
-
-QString QuestionItem::ansB() { return q_answers.at(1); }
-
-QString QuestionItem::ansC() { return q_answers.at(2); }
-
-QString QuestionItem::ansD() { return q_answers.at(3); }
-
-bool QuestionItem::isAnsCorrect(QuestionItem::Answer ans)
-{
-    return q_correctanswers.testFlag(ans);
-}
-
-bool QuestionItem::isAnsACorrect()
-{
-    return q_correctanswers.testFlag(QuestionItem::A);
-}
-
-bool QuestionItem::isAnsBCorrect()
-{
-    return q_correctanswers.testFlag(QuestionItem::B);
-}
-
-bool QuestionItem::isAnsCCorrect()
-{
-    return q_correctanswers.testFlag(QuestionItem::C);
-}
-
-bool QuestionItem::isAnsDCorrect()
-{
-    return q_correctanswers.testFlag(QuestionItem::D);
-}
-
 bool QuestionItem::isHidden() { return q_hidden; }
 
-QStringList QuestionItem::answers() { return q_answers; }
+void QuestionItem::setHidden(bool hidden) { q_hidden = hidden; }
 
-QuestionItem::Answer QuestionItem::correctAnswer() { return QuestionItem::Answer((int)q_correctanswers); }
+unsigned int QuestionItem::incorrectAnsCount() { return q_incorrectanscount; }
 
-QuestionItem::Answers QuestionItem::correctAnswers() { return q_correctanswers; }
+void QuestionItem::setIncorrectAnsCount(unsigned int count) { q_incorrectanscount = count; }
+
+unsigned int QuestionItem::correctAnsCount() { return q_correctanscount; }
+
+void QuestionItem::setCorrectAnsCount(unsigned int count) { q_correctanscount = count; }
+
+void QuestionItem::addIncorrectAns() { q_incorrectanscount++; }
+
+void QuestionItem::addCorrectAns() { q_correctanscount++; }
+
+void QuestionItem::addSvgItem(SvgItem * svg) { q_svgitems << svg; }
+
+bool QuestionItem::removeSvgItem(SvgItem * svg) { return q_svgitems.removeAll(svg) > 0; }
+
+SvgItem * QuestionItem::removeSvgItem(int i) { return q_svgitems.takeAt(i); }
+
+int QuestionItem::numSvgItems() { return q_svgitems.count(); }
+
+SvgItem * QuestionItem::svgItem(int i) { return q_svgitems.at(i); }
+
+QList<SvgItem *> QuestionItem::svgItems() { return q_svgitems; }
+
+int QuestionItem::recommendedDifficulty()
+{
+    if (q_correctanscount == 0 && q_incorrectanscount == 0) { return -1; }
+    else if (q_correctanscount == 0 && q_incorrectanscount > 0) { return 2; }
+    long double ansratio = (long double)q_incorrectanscount / (long double)q_correctanscount;
+    if (ansratio <= 0.5) { return 0; }
+    else if (ansratio > 0.5 && ansratio < 2.0) { return 1; }
+    else if (ansratio >= 2.0) { return 2; }
+    return -1;
+}
 
 QString QuestionItem::allProperties()
 {
@@ -137,26 +119,18 @@ QString QuestionItem::allProperties()
     // Q_TEXT
     out.append("\n[Q_TEXT]\n");
     out.append(q_text);
-    // Q_ANSA
-    out.append("\n[Q_ANSA]\n");
-    out.append(q_answers.at(0));
-    out.append("\n");
-    out.append(isAnsACorrect() ? "true" : "false");
-    // Q_ANSB
-    out.append("\n[Q_ANSB]\n");
-    out.append(q_answers.at(1));
-    out.append("\n");
-    out.append(isAnsBCorrect() ? "true" : "false");
-    // Q_ANSC
-    out.append("\n[Q_ANSC]\n");
-    out.append(q_answers.at(2));
-    out.append("\n");
-    out.append(isAnsCCorrect() ? "true" : "false");
-    // Q_ANSD
-    out.append("\n[Q_ANSD]\n");
-    out.append(q_answers.at(3));
-    out.append("\n");
-    out.append(isAnsDCorrect() ? "true" : "false");
+    // Q_ANSWERS
+    out.append("\n[Q_ANS]\n");
+    out.append(QString("%1\n").arg(q_selectiontype));
+    out.append(QString("%1\n").arg(q_correctanswers));
+    out.append(QString("%1\n").arg(q_answers.count()));
+    for (int i = 0; i < q_answers.count(); ++i) {
+        out.append(q_answers.at(i));
+        out.append("\n");
+    }
+    // Q_EXPLANATION
+    out.append("[Q_EXPL]\n");
+    out.append(q_explanation);
     // STATISTICS
     out.append("\n[Q_ICCNT]\n");
     out.append(QString("%1\n%2").arg(q_incorrectanscount).arg(q_correctanscount));
@@ -193,156 +167,57 @@ QString QuestionItem::allPublicProperties()
     // Q_TEXT
     out.append("\n[Q_TEXT]\n");
     out.append(q_text);
-    // Q_ANSA
-    out.append("\n[Q_ANSA]\n");
-    out.append(q_answers.at(0));
-    // Q_ANSB
-    out.append("\n[Q_ANSB]\n");
-    out.append(q_answers.at(1));
-    // Q_ANSC
-    out.append("\n[Q_ANSC]\n");
-    out.append(q_answers.at(2));
-    // Q_ANSD
-    out.append("\n[Q_ANSD]\n");
-    out.append(q_answers.at(3));
+    // Q_ANSWERS
+    out.append("\n[Q_ANS]\n");
+    out.append(QString("%1\n").arg(q_selectiontype));
+    out.append(QString("%1\n").arg(q_answers.count()));
+    for (int i = 0; i < q_answers.count(); ++i) {
+        out.append(q_answers.at(i));
+        out.append("\n");
+    }
     // Q_SVG
-    out.append("\n[Q_SVG]\n");
+    out.append("[Q_SVG]\n");
     out.append(QString("%1").arg(q_svgitems.count()));
     return out;
 }
 
-void QuestionItem::setName(QString name) { q_name = name; }
-
-void QuestionItem::setFlag(int flag) { q_flag = flag; }
-
-void QuestionItem::setGroup(QString group) { q_group = group; }
-
-void QuestionItem::setDifficulty(int difficulty) { q_difficulty = difficulty; }
-
-void QuestionItem::setText(QString text)
+QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int flag, int difficulty, Question::SelectionType type, QString explanation)
 {
-	QTextDocument doc; doc.setHtml(text); QString final = text; QString lastgood; QTextDocument testdoc;
-	QStringList before; QString after = "font-size:10pt;";
-	before << "font-size:8.25pt;" << "font-size:8pt;" << "font-size:9pt;";
-	for (int b = 0; b < before.count(); ++b) {
-		int skip = 0; int c = text.count(before.at(b), Qt::CaseInsensitive);
-		for (int i = 0; i < c; ++i) {
-			lastgood = final;
-			if (final.contains(before.at(b), Qt::CaseInsensitive)) {
-				final.replace(final.indexOf(before.at(b), skip), before.at(b).count(), after);
-				testdoc.setHtml(final);
-				if (doc.toPlainText() != testdoc.toPlainText()) {
-					skip = final.indexOf(before.at(b), skip) + 10;
-					final = lastgood;
-				}
-			}
-		}
-	}
-	q_text = final;
+    qa_answered = ans;
+    qa_correct_answer = correct;
+    qa_flag = flag;
+    q_difficulty = difficulty;
+    q_selectiontype = type;
+    qa_explanation = explanation;
 }
 
-void QuestionItem::setAnsA(QString ans) { q_answers.replace(0, ans); }
+void QuestionAnswer::setAnswered(Question::Answer ans) { qa_answered = ans; }
 
-void QuestionItem::setAnsB(QString ans) { q_answers.replace(1, ans); }
+Question::Answer QuestionAnswer::answered() { return qa_answered; }
 
-void QuestionItem::setAnsC(QString ans) { q_answers.replace(2, ans); }
+void QuestionAnswer::setCorrectAnswer(Question::Answer ans) { qa_correct_answer = ans; }
 
-void QuestionItem::setAnsD(QString ans) { q_answers.replace(3, ans); }
+Question::Answer QuestionAnswer::correctAnswer() { return qa_correct_answer; }
 
-void QuestionItem::setAnsCorrect(QuestionItem::Answers ans, bool correct)
+/*bool QuestionAnswer::isAnsweredCorrectly()
 {
-    if (correct) { q_correctanswers |= ans; }
-    else { q_correctanswers &= ~ans; }
-}
+    if (qa_answered == Question::None && qa_correct_answer != Question::None) { return false; }
+    if ((qa_answered & qa_correct_answer) == qa_answered) { return true; }
+    return false;
+}*/
 
-void QuestionItem::setAnsACorrect(bool correct)
-{
-    if (correct) { q_correctanswers |= QuestionItem::A; }
-    else { q_correctanswers &= ~QuestionItem::A; }
-}
+void QuestionAnswer::setFlag(int flag) { qa_flag = flag; }
 
-void QuestionItem::setAnsBCorrect(bool correct)
-{
-    if (correct) { q_correctanswers |= QuestionItem::B; }
-    else { q_correctanswers &= ~QuestionItem::B; }
-}
+int QuestionAnswer::flag() { return qa_flag; }
 
-void QuestionItem::setAnsCCorrect(bool correct)
-{
-    if (correct) { q_correctanswers |= QuestionItem::C; }
-    else { q_correctanswers &= ~QuestionItem::C; }
-}
+void QuestionAnswer::setDifficulty(int difficulty) { q_difficulty = difficulty; }
 
-void QuestionItem::setAnsDCorrect(bool correct)
-{
-    if (correct) { q_correctanswers |= QuestionItem::D; }
-    else { q_correctanswers &= ~QuestionItem::D; }
-}
+int QuestionAnswer::difficulty() { return q_difficulty; }
 
-void QuestionItem::setAnswers(QStringList answers) { q_answers = answers; }
+void QuestionAnswer::setSelectionType(Question::SelectionType type) { q_selectiontype = type; }
 
-void QuestionItem::setCorrectAnswers(QuestionItem::Answers answers) { q_correctanswers = answers; }
+Question::SelectionType QuestionAnswer::selectionType() { return q_selectiontype; }
 
-bool QuestionItem::hasCorrectAnswer()
-{
-    return q_correctanswers != QuestionItem::None;
-}
+void QuestionAnswer::setExplanation(QString explanation) { qa_explanation = explanation; }
 
-void QuestionItem::setIncorrectAnsCount(unsigned int count) { q_incorrectanscount = count; }
-
-void QuestionItem::setCorrectAnsCount(unsigned int count) { q_correctanscount = count; }
-
-void QuestionItem::setHidden(bool hidden) { q_hidden = hidden; }
-
-unsigned int QuestionItem::incorrectAnsCount() { return q_incorrectanscount; }
-
-unsigned int QuestionItem::correctAnsCount() { return q_correctanscount; }
-
-void QuestionItem::addIncorrectAns() { q_incorrectanscount++; }
-
-void QuestionItem::addCorrectAns() { q_correctanscount++; }
-
-int QuestionItem::recommendedDifficulty()
-{
-    if (q_correctanscount == 0 && q_incorrectanscount == 0) { return -1; }
-    else if (q_correctanscount == 0 && q_incorrectanscount > 0) { return 2; }
-    long double ansratio = (long double)q_incorrectanscount / (long double)q_correctanscount;
-    if (ansratio <= 0.5) { return 0; }
-    else if (ansratio > 0.5 && ansratio < 2.0) { return 1; }
-    else if (ansratio >= 2.0) { return 2; }
-    return -1;
-}
-
-void QuestionItem::addSvgItem(SvgItem * svg) { q_svgitems << svg; }
-
-bool QuestionItem::removeSvgItem(SvgItem * svg) { return q_svgitems.removeAll(svg) > 0; }
-
-SvgItem * QuestionItem::removeSvgItem(int i) { return q_svgitems.takeAt(i); }
-
-int QuestionItem::numSvgItems() { return q_svgitems.count(); }
-
-SvgItem * QuestionItem::svgItem(int i) { return q_svgitems.at(i); }
-
-QuestionItem::Answer QuestionItem::convertOldAnsNumber(int num)
-{
-    switch (num) {
-        case 0: return QuestionItem::None; break;
-        case 1: return QuestionItem::A; break;
-        case 2: return QuestionItem::B; break;
-        case 3: return QuestionItem::C; break;
-        case 4: return QuestionItem::D; break;
-    }
-    return (QuestionItem::Answer)num;
-}
-
-int QuestionItem::convertToOldAnsNumber(int num)
-{
-    switch (num) {
-        case 0: return 0; break;
-        case 1: return 1; break;
-        case 2: return 2; break;
-        case 4: return 3; break;
-        case 8: return 4; break;
-    }
-    return 0;
-}
+QString QuestionAnswer::explanation() { return qa_explanation; }

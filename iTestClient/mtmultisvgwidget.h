@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -24,6 +24,7 @@
 #include <QScrollArea>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QTextDocument>
 
 #include "flowlayout.h"
 
@@ -49,7 +50,7 @@ public:
         if (!link) {
             label->setText(title);
         } else {
-            label->setText(QString("<a href=\"%1\">%2</a>").arg(msw_flayout->count()).arg(substituteHtmlTags(title)));
+            label->setText(QString("<a href=\"%1\">%2</a>").arg(msw_flayout->count()).arg(Qt::escape(title)));
             QObject::connect(label, SIGNAL(linkActivated(QString)), this, SLOT(emitTitleClicked(QString)));
         }
         label->setAlignment(Qt::AlignCenter);
@@ -74,14 +75,6 @@ signals:
 	void titleClicked(QString);
 
 private:
-	QString substituteHtmlTags(QString str) {
-		str.replace(QString("<"), QString("&lt;"));
-		str.replace(QString(">"), QString("&gt;"));
-//		str.replace(QString("\n"), QString("<br>"));
-		str.replace(QString("&"), QString("&amp;"));
-		return str;
-	};
-
     FlowLayout * msw_flayout;
 };
 

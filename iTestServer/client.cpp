@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -22,83 +22,34 @@
 void Client::init(MainWindow * parent)
 {
     c_score = 0;
+    c_maxscore = 0;
     c_ready = false;
     c_results = new QMap<QString, QuestionAnswer>;
     c_blocksize = 1;
     c_parent = parent;
     c_test_sent = false;
     c_passed = true;
-    
+
     QObject::connect(c_socket, SIGNAL(disconnected()), this, SLOT(socketDisconnected()));
 }
 
-Client::Client(MainWindow * parent)
-{
-    c_name = QObject::tr("Unknown");
-    c_identified = false;
-    c_socket = new QTcpSocket;
-    c_number = 0;
-    
-    init(parent);
-}
-
-Client::Client(MainWindow * parent, int number)
-{
-    c_name = QObject::tr("Unknown");
-    c_identified = false;
-    c_socket = new QTcpSocket;
-    c_number = number;
-    
-    init(parent);
-}
-
-Client::Client(MainWindow * parent, QString name)
+Client::Client(MainWindow * parent, QString name, int number)
 {
     c_name = name;
     c_identified = true;
     c_socket = new QTcpSocket;
-    c_number = 0;
-    
+    c_number = number;
+
     init(parent);
 }
 
-Client::Client(MainWindow * parent, QTcpSocket * socket)
+Client::Client(MainWindow * parent, QTcpSocket * socket, int number)
 {
-    c_name = QObject::tr("Unknown");
-    c_identified = false;
-    c_socket = socket;
-    c_number = 0;
-    
-    init(parent);
-}
-
-Client::Client(MainWindow * parent, int number, QTcpSocket * socket)
-{
-    c_name = QObject::tr("Unknown");
+    c_name = tr("Unknown");
     c_identified = false;
     c_socket = socket;
     c_number = number;
-    
-    init(parent);
-}
 
-Client::Client(MainWindow * parent, QString name, QTcpSocket * socket)
-{
-    c_name = name;
-    c_identified = true;
-    c_socket = socket;
-    c_number = 0;
-    
-    init(parent);
-}
-
-Client::Client(MainWindow * parent, int number, QString name, QTcpSocket * socket)
-{
-    c_name = name;
-    c_identified = true;
-    c_socket = socket;
-    c_number = number;
-    
     init(parent);
 }
 
@@ -128,19 +79,11 @@ QTcpSocket * Client::socket()
     return c_socket;
 }
 
-void Client::setScore(int score) { c_score = score; }
+float Client::score() { return c_score; }
 
-int Client::score() { return c_score; }
-
-void Client::setReady(bool ready) { c_ready = ready; }
+float Client::maximumScore() { return c_maxscore; }
 
 bool Client::isReady() { return c_ready; }
-
-void Client::setResults(QMap<QString, QuestionAnswer> * results)
-{
-    delete c_results;
-    c_results = results;
-}
 
 QMap<QString, QuestionAnswer> * Client::results() { return c_results; }
 
@@ -151,8 +94,8 @@ bool Client::passed() { return c_passed; }
 void Client::loadResults(QString input)
 {
     QTextStream in(&input); QString buffer; QuestionItem * item;
-    QuestionItem::Answer ans;
-    
+    Question::Answer ans; c_score = 0; c_maxscore = 0;
+
     do {
         item = NULL;
         if (in.readLine() != "[Q_NAME]") { return; }
@@ -163,14 +106,16 @@ void Client::loadResults(QString input)
         }
         if (item == NULL) { in.readLine(); in.readLine(); continue; }
         if (in.readLine() != "[Q_ANSWERED]") { return; }
-        ans = (QuestionItem::Answer)in.readLine().toInt();
-        QuestionAnswer qans(item->flag(), item->correctAnswer(), ans);
+        ans = (Question::Answer)in.readLine().toInt();
+        QuestionAnswer qans(item->correctAnswer(), ans, item->flag(), item->difficulty(), item->selectionType(), item->explanation());
         c_results->insert(item->name(), qans);
-        if (qans.isAnsweredCorrectly()) { c_score++; item->addCorrectAns(); }
+        c_score += qans.score(c_parent->current_db_scoringsystem);
+        c_maxscore += qans.maximumScore(c_parent->current_db_scoringsystem);
+        if (c_score > 0.0) { item->addCorrectAns(); }
         else { item->addIncorrectAns(); }
     } while (!in.atEnd());
-    
-    c_passed = c_parent->current_db_passmark.check(c_results, &c_parent->current_db_questions);
+
+    c_passed = c_parent->current_db_passmark.check(c_results, &c_parent->current_db_questions, c_parent->current_db_scoringsystem);
     c_ready = true;
     emit resultsLoaded(this);
 }
@@ -202,14 +147,14 @@ void Client::readClientFeedback()
 
     if (c_socket->bytesAvailable() < c_blocksize)
         return;
-        
+
     if (c_test_sent) { c_blocksize = 0; }
 
     QString received_string; QString buffer;
     do {
         in >> buffer; received_string.append(buffer);
     } while (!in.atEnd());
-    
+
     if (c_identified) {
         emit finished(this);
         loadResults(received_string);
@@ -247,36 +192,3 @@ void Client::displayError(QAbstractSocket::SocketError socketError)
                                      .arg(c_socket->errorString()));
     }
 }
-
-QuestionAnswer::QuestionAnswer()
-{
-    qa_answered = QuestionItem::None;
-    qa_correct_answer = QuestionItem::None;
-    qa_flag = -1;
-}
-
-QuestionAnswer::QuestionAnswer(int flag, QuestionItem::Answer correct, QuestionItem::Answer ans)
-{
-    qa_answered = ans;
-    qa_correct_answer = correct;
-    qa_flag = flag;
-}
-
-void QuestionAnswer::setAnswered(QuestionItem::Answer ans) { qa_answered = ans; }
-
-QuestionItem::Answer QuestionAnswer::answered() { return qa_answered; }
-
-void QuestionAnswer::setCorrectAnswer(QuestionItem::Answer ans) { qa_correct_answer = ans; }
-
-QuestionItem::Answer QuestionAnswer::correctAnswer() { return qa_correct_answer; }
-
-bool QuestionAnswer::isAnsweredCorrectly()
-{
-    if (qa_answered == QuestionItem::None && qa_correct_answer != QuestionItem::None) { return false; }
-    if ((qa_answered & qa_correct_answer) == qa_answered) { return true; }
-    return false;
-}
-
-void QuestionAnswer::setFlag(int flag) { qa_flag = flag; }
-
-int QuestionAnswer::flag() { return qa_flag; }

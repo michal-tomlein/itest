@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -17,20 +17,31 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
-#ifndef ABOUT_WIDGET_H
-#define ABOUT_WIDGET_H
+#ifndef SESSION_WIZARD_H
+#define SESSION_WIZARD_H
 
-#include "ui_about_widget_v2.h"
+#include "ui_session_wizard.h"
+#include "class.h"
 
-#include <QResizeEvent>
-#include <QTimer>
+#include <QHeaderView>
 
-class AboutWidget : public QWidget, private Ui::AboutWidget
+class SessionWizard : public QDialog, private Ui::SessionWizard
 {
     Q_OBJECT
 
 public:
-    AboutWidget(QString, QString, QString);
+    SessionWizard(Session *, Class *, QWidget * = 0, Qt::WindowFlags = 0);
+
+    int numMatchedPairs();
+    int studentNumberInSession(int);
+    int studentNumberInClass(int);
+
+private slots:
+    void match();
+    void split();
+
+    void toggleMatchEnabled();
+    void toggleSplitEnabled();
 };
 
-#endif // ABOUT_WIDGET_H
+#endif // SESSION_WIZARD_H

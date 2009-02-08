@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2007 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -25,7 +25,7 @@
 #include <QDateTime>
 #include <QColor>
 
-#include "pass_mark.h"
+#include "../shared/pass_mark.h"
 
 class LogEntry
 {
@@ -61,8 +61,9 @@ public slots:
     void addLogEntry(int, int, int, int, int, int, QString);
     int numLogEntries(); LogEntry logEntry(int); void deleteLog();
     void addStudent(Student *); int numStudents(); Student * student(int);
-    uint numQuestions(); uint numCorrect();
+    long double maximumScore(); long double score(); int average();
     void setPassMark(PassMark); PassMark passMark(); void loadPassMark(QString);
+    void setScoringSystem(ScoringSystem); ScoringSystem scoringSystem();
     QString sessionData();
     bool mostPassed(); bool isArchived();
     void destruct();
@@ -70,12 +71,13 @@ public slots:
 private:
     QString s_name;
     QDateTime s_datetime;
-    uint s_qnum;
-    uint s_cqnum;
+    long double s_maxscore;
+    long double s_score;
     QList<LogEntry> s_log;
     QList<Student *> s_students;
     bool s_archived;
     PassMark s_passmark;
+    ScoringSystem s_scoringsystem;
 
     friend class ArchivedSession;
 };
