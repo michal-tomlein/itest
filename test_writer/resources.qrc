@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/images" >
+        <file>images/back.png</file>
+        <file>images/button_cancel.png</file>
+        <file>images/button_ok.png</file>
+        <file>images/connect.png</file>
+        <file>images/contents.png</file>
+        <file>images/fileclose.png</file>
+        <file>images/fileopen.png</file>
+        <file>images/flag.png</file>
+        <file>images/folder_red.png</file>
+        <file>images/forward.png</file>
+        <file>images/itest.png</file>
+        <file>images/itestwri.png</file>
+        <file>images/player_play.png</file>
+        <file>images/qt4.png</file>
+        <file>images/quit.png</file>
+        <file>images/reload.png</file>
+    </qresource>
+</RCC>

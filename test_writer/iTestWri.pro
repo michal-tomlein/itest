@@ -1,33 +1,22 @@
 CONFIG       += qt
 TEMPLATE      = app
-FORMS        += main_window_v2.ui \
+FORMS        += main_window.ui \
                 about_widget_v2.ui
 HEADERS      += main_window.h \
                 about_widget.h \
-                question_item.h \
-                client.h \
-                student.h \
-                session.h
+                question_item.h
 RESOURCES    += resources.qrc \
                 i18n.qrc
 SOURCES      += main.cpp \
-                main_window.cpp \
                 database.cpp \
-                questions.cpp \
-                text_formatting.cpp \
-                flags.cpp \
                 about_widget.cpp \
-                question_item.cpp \
-                server.cpp \
                 client.cpp \
+                question_item.cpp \
                 env_vars.cpp \
-                print_engine.cpp \
-                session_viewer.cpp \
-                student.cpp \
-                session.cpp
+                question_answer.cpp
 QT           += network
 win32 {
-RC_FILE       = itest.rc
+RC_FILE       = itestwri.rc
 OBJECTS_DIR   = .objects.win32/
 MOC_DIR       = .moc.win32/
 RCC_DIR       = .rcc.win32/
