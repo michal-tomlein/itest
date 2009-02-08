@@ -1,7 +1,7 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.0.0                                                        *
+ * Version:      1.0.1                                                        *
  * Qt version:   4.2.2                                                        *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Database Editor and a Test       *
@@ -32,6 +32,7 @@ MainWindow::MainWindow()
 
     tcpSocket = new QTcpSocket(this);
     current_test_results = new QMap<QString, QuestionAnswer>;
+    progress_dialog = NULL;
 
     QObject::connect(tbtnQuit, SIGNAL(released()), this, SLOT(close()));
     QObject::connect(tbtnAbout, SIGNAL(released()), this, SLOT(about()));
@@ -48,7 +49,7 @@ MainWindow::MainWindow()
                      this, SLOT(enableConnectButton()));
     QObject::connect(DBPathLineEdit, SIGNAL(textChanged(const QString &)),
                      this, SLOT(enableLoadButton()));
-    QObject::connect(tbtnConnect, SIGNAL(released()), this, SLOT(connect()));
+    QObject::connect(tbtnConnect, SIGNAL(released()), this, SLOT(connectSocket()));
     QObject::connect(tcpSocket, SIGNAL(readyRead()), this, SLOT(readIncomingData()));
     QObject::connect(tcpSocket, SIGNAL(error(QAbstractSocket::SocketError)),
                      this, SLOT(displayError(QAbstractSocket::SocketError)));
@@ -364,4 +365,7 @@ void MainWindow::errorInvalidData()
 }
 
 // ---------------------------- version changelog: -----------------------------
-// version 1.0 - 
+/* version 1.0.1 - a bug-fix release
+                 - fixed segmentation fault when connecting
+*/
+// version 1.0.0 - the first release

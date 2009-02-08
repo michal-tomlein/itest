@@ -3,7 +3,7 @@
 bool MainWindow::loadPrinterSettings()
 {
 	QSettings settings("Michal Tomlein", "iTest");
-	printer_configured = settings.value("printer/configured").toBool();
+	printer_configured = settings.value("printer/configured", false).toBool();
 	printer_colorMode = settings.value("printer/colorMode").toInt();
 	printer_doubleSidedPrinting = settings.value("printer/doubleSidedPrinting").toBool();
 	printer_fontEmbeddingEnabled = settings.value("printer/fontEmbeddingEnabled").toBool();
@@ -427,7 +427,9 @@ bool MainWindow::printSessionSummary(Session * session, QPrinter * printer)
 	out << "<table border=\"0\" width=\"100%\"><tr><td width=\"60%\"><div class=\"bold_text\">" << endl;
 	out << tr("Average:") << endl;
 	out << "</div></td><td><div align=\"right\">" << endl;
-	out << "<table border=\"2\" width=\"100%\" height=\"20\"><tr><td bgcolor=\"yellowgreen\" width=\"" << int(100 * session->numCorrect() / session->numQuestions()) << "%\"></td>" << endl;
+	out << "<table border=\"2\" width=\"100%\" height=\"20\"><tr><td bgcolor=\"";
+	out << (session->mostPassed() ? "yellowgreen" : "#FF9419"); // "#456E0E" : "#CC6D00"
+	out << "\" width=\"" << int(100 * session->numCorrect() / session->numQuestions()) << "%\"></td>" << endl;
 	out << (int(100 * session->numCorrect() / session->numQuestions()) >= 100 ? "</tr>" : "<td></td></tr>") << "</table></div></td><td width=\"5%\" align=\"right\"><div class=\"default_text\">" << endl;
 	out << int(100 * session->numCorrect() / session->numQuestions()) << "%" << endl;
 	out << "</div></td></tr></table><br><div class=\"bold_text\">" << endl;
@@ -443,7 +445,9 @@ bool MainWindow::printSessionSummary(Session * session, QPrinter * printer)
         }
 		out << "</div></td><td><div align=\"right\">" << endl;
 		if (session->student(i)->isReady()) {
-            out << "<table border=\"2\" width=\"100%\" height=\"20\"><tr><td bgcolor=\"yellowgreen\" width=\"" << int(100 * session->student(i)->score() / session->student(i)->results()->count()) << "%\"></td>" << endl;
+            out << "<table border=\"2\" width=\"100%\" height=\"20\"><tr><td bgcolor=\"";
+			out << (session->passMark() <= session->student(i)->score() ? "yellowgreen" : "#FF9419");
+			out << "\" width=\"" << int(100 * session->student(i)->score() / session->student(i)->results()->count()) << "%\"></td>" << endl;
             out << (int(100 * session->student(i)->score() / session->student(i)->results()->count()) >= 100 ? "</tr>" : "<td></td></tr>") << "</table></div></td><td width=\"5%\" align=\"right\"><div class=\"default_text\">" << endl;
             out << int(100 * session->student(i)->score() / session->student(i)->results()->count()) << "%" << endl;
         } else {

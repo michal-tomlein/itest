@@ -42,7 +42,7 @@ void MainWindow::newDB()
     if (!file.open(QFile::WriteOnly | QFile::Text)) 
     {
 		QMessageBox::critical(this, tr("Create database file"), tr("Cannot write file %1:\n%2.").arg(saveDBName).arg(file.errorString()));
-		this->setWindowTitle(QString("iTest - Database Editor"));
+		this->setWindowTitle(tr("iTest - Database Editor"));
 		this->setEnabled(true); return;
     }
 	setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -68,7 +68,7 @@ void MainWindow::newDB()
     current_db_name = db_name;
     current_db_open = true;
     addRecent(saveDBName);
-    this->setWindowTitle(QString("%1[*] - iTest - Database Editor").arg(current_db_name));
+    this->setWindowTitle(tr("%1[*] - iTest - Database Editor").arg(current_db_name));
     this->setWindowModified(false);
     statusBar()->showMessage(tr("Ready"), 10000);
     setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -151,7 +151,7 @@ void MainWindow::saveDB(QString db_file_name)
     if (actionUse_last_save_date->isChecked()) {
 		DBIDateEdit->setDateTime(QDateTime::fromString(current_db_date, "yyyy.MM.dd-hh:mm"));
     }
-    this->setWindowTitle(QString("%1[*] - iTest - Database Editor").arg(current_db_name));
+    this->setWindowTitle(tr("%1[*] - iTest - Database Editor").arg(current_db_name));
     this->setWindowModified(false);
     statusBar()->showMessage(tr("Database saved"), 10000);
     setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -399,7 +399,7 @@ void MainWindow::openDB(QString openDBName)
     current_db_date = db_date;
     current_db_comments = db_comments;
     current_db_open = true;
-    this->setWindowTitle(QString("%1[*] - iTest - Database Editor").arg(current_db_name));
+    this->setWindowTitle(tr("%1[*] - iTest - Database Editor").arg(current_db_name));
     this->setWindowModified(false);
     statusBar()->showMessage(tr("Database open"), 10000);
     setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -416,7 +416,7 @@ void MainWindow::closeDB()
 	if (!cancelled) {
 	// Closing database --------------------------------------------------------
 	clearAll(); disableAll(); current_db_open = false;
-	this->setWindowTitle(QString("iTest - Database Editor"));
+	this->setWindowTitle(tr("iTest - Database Editor"));
 	this->setWindowModified(false);
 	setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	mainStackedWidget->setCurrentIndex(0); updateGeometry();

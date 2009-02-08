@@ -1,7 +1,7 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.0.0                                                        *
+ * Version:      1.0.1                                                        *
  * Qt version:   4.2.2                                                        *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Database Editor and a Test       *
@@ -36,4 +36,15 @@ int main(int argc, char *argv[])
 }
 
 // ---------------------------- version changelog: -----------------------------
-// version 1.0 - 
+/* version 1.0.1 - a bug-fix release
+                 - fixed off-line client import if a custom test name is used
+                 - test name used when exporting (off-line session; log)
+                 - fixed segmentation fault when starting a server session
+                 - fixed incorrect Slovak translations (window title and others)
+                 - bool Session::mostPassed()
+                 - printing: results progress bar colour auto-adjustment
+                 - fixed save session checkbox behaviour
+                 - fixed the "yyyy.MM.dd-hh:mm" vs. "yyyy.MM.dd-hh.mm" issue
+                 - made log export possible even from saved sessions
+*/
+// version 1.0.0 - the first release

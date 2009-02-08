@@ -43,6 +43,7 @@ public slots:
     uint numQuestions(); uint numCorrect();
     void setPassMark(int); int passMark();
     QString sessionData();
+    bool mostPassed();
 
 private:
     QString s_name;

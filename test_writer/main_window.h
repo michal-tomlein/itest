@@ -53,7 +53,7 @@ private slots:
     void enableInputTypeSelection();
     void disableInputTypeSelection();
     // SOCKET-RELATED
-    void connect();
+    void connectSocket();
     void readIncomingData();
     void displayError(QAbstractSocket::SocketError);
     // TEST-RELATED

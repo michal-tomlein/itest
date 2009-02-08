@@ -5305,7 +5305,7 @@
      <x>0</x>
      <y>0</y>
      <width>860</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuQuestion" >
@@ -5347,56 +5347,6 @@
     <addaction name="actionApply" />
     <addaction name="actionDiscard" />
    </widget>
-   <widget class="QMenu" name="menuServer" >
-    <property name="title" >
-     <string>&amp;Server</string>
-    </property>
-    <addaction name="actionStart_server" />
-    <addaction name="actionStop_server" />
-    <addaction name="separator" />
-    <addaction name="actionExport_test" />
-    <addaction name="actionAdd_offline_client" />
-    <addaction name="actionAdd_offline_clients" />
-    <addaction name="actionExport_log" />
-    <addaction name="separator" />
-    <addaction name="actionQuickPrint" />
-    <addaction name="actionPrint" />
-    <addaction name="separator" />
-    <addaction name="actionSave_session" />
-   </widget>
-   <widget class="QMenu" name="menuSession" >
-    <property name="title" >
-     <string>Sessio&amp;n</string>
-    </property>
-    <addaction name="separator" />
-    <addaction name="actionPrint" />
-    <addaction name="actionPrint_session_summary" />
-    <addaction name="actionPrint_all" />
-    <addaction name="separator" />
-    <addaction name="actionDelete_log" />
-    <addaction name="actionDelete_session" />
-   </widget>
-   <widget class="QMenu" name="menuHelp" >
-    <property name="title" >
-     <string>&amp;Help</string>
-    </property>
-    <addaction name="actionCheck_for_updates" />
-    <addaction name="separator" />
-    <addaction name="actionDocumentation" />
-    <addaction name="actionAbout" />
-   </widget>
-   <widget class="QMenu" name="menuFile" >
-    <property name="title" >
-     <string>&amp;File</string>
-    </property>
-    <addaction name="actionNew" />
-    <addaction name="actionOpen" />
-    <addaction name="actionSave" />
-    <addaction name="actionSave_as" />
-    <addaction name="separator" />
-    <addaction name="actionClose" />
-    <addaction name="actionQuit" />
-   </widget>
    <widget class="QMenu" name="menuDatabase" >
     <property name="title" >
      <string>&amp;Database</string>
@@ -5418,6 +5368,56 @@
     <addaction name="actionShow_DBI" />
     <addaction name="separator" />
     <addaction name="actionChange_language" />
+   </widget>
+   <widget class="QMenu" name="menuFile" >
+    <property name="title" >
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionNew" />
+    <addaction name="actionOpen" />
+    <addaction name="actionSave" />
+    <addaction name="actionSave_as" />
+    <addaction name="separator" />
+    <addaction name="actionClose" />
+    <addaction name="actionQuit" />
+   </widget>
+   <widget class="QMenu" name="menuHelp" >
+    <property name="title" >
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionCheck_for_updates" />
+    <addaction name="separator" />
+    <addaction name="actionDocumentation" />
+    <addaction name="actionAbout" />
+   </widget>
+   <widget class="QMenu" name="menuSession" >
+    <property name="title" >
+     <string>Sessio&amp;n</string>
+    </property>
+    <addaction name="actionPrint" />
+    <addaction name="actionPrint_session_summary" />
+    <addaction name="actionPrint_all" />
+    <addaction name="separator" />
+    <addaction name="actionExport_log" />
+    <addaction name="actionDelete_log" />
+    <addaction name="actionDelete_session" />
+   </widget>
+   <widget class="QMenu" name="menuServer" >
+    <property name="title" >
+     <string>&amp;Server</string>
+    </property>
+    <addaction name="actionStart_server" />
+    <addaction name="actionStop_server" />
+    <addaction name="separator" />
+    <addaction name="actionExport_test" />
+    <addaction name="actionAdd_offline_client" />
+    <addaction name="actionAdd_offline_clients" />
+    <addaction name="actionExport_log" />
+    <addaction name="separator" />
+    <addaction name="actionQuickPrint" />
+    <addaction name="actionPrint" />
+    <addaction name="separator" />
+    <addaction name="actionSave_session" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuView" />

@@ -658,7 +658,7 @@ bool MainWindow::addOfflineClient(QString file_name)
     rfile.setCodec("CP 1250");
     
     if (rfile.readLine() != "[TEST_NAME]") return false;
-    if (rfile.readLine() != current_db_name) return false;
+    if (rfile.readLine() != current_db_testname) return false;
     if (rfile.readLine() != "[TEST_TIMESTAMP]") return false;
     if (rfile.readLine() != current_db_testdate) return false;
     if (rfile.readLine() != "[TIME_FINISHED]") return false;
@@ -672,7 +672,7 @@ bool MainWindow::addOfflineClient(QString file_name)
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush::QBrush(QColor::QColor(0, 125, 163)));
     log_entry->setForeground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
-    updateLC(client);
+    updateLC(client); toggleSaveSessionEnabled();
     QObject::connect(client, SIGNAL(resultsLoaded(Client *)),
                   this, SLOT(clientResultsLoaded(Client *)));
     client->loadResults(rfile.readAll());
@@ -704,7 +704,8 @@ void MainWindow::addOfflineClients()
 
 void MainWindow::exportTest()
 {
-    QString save_file_name = QFileDialog::getSaveFileName(this, tr("Export test"), QString("%1-%2.itos").arg(current_db_name).arg(current_db_testdate), tr("iTest off-line test sessions (*.itos)"));
+	QString datetime = current_db_testdate; datetime.replace(13, 1, '.');
+    QString save_file_name = QFileDialog::getSaveFileName(this, tr("Export test"), QString("%1-%2.itos").arg(current_db_testname).arg(datetime), tr("iTest off-line test sessions (*.itos)"));
 	if (save_file_name.isNull() || save_file_name.isEmpty()) { return; }
 	QFile file(save_file_name);
 	if (!file.open(QFile::WriteOnly | QFile::Text)) 
@@ -738,8 +739,18 @@ Text
 </div>
 </body></html>
 */
-	QString timestamp = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh.mm");
-	QString save_file_name = QFileDialog::getSaveFileName(this, tr("Export server log"), QString("%1-%2.html").arg(current_db_name).arg(timestamp), tr("iTest Server logs (*.html)"));
+    QListWidget * lw; QString testname; QString datetime;
+    if (mainStackedWidget->currentIndex() == 5) {
+        lw = SMSLListWidget; testname = current_db_testname;
+        datetime = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh.mm");
+    } else if (mainStackedWidget->currentIndex() == 6) {
+        if (current_db_session == NULL) { return; }
+        lw = VSSSLListWidget; testname = current_db_session->name();
+        datetime = current_db_session->dateTimeToString();
+        datetime.replace(13, 1, '.');
+    } else { return; }
+	QString timestamp = datetime; timestamp.replace(13, 1, ':');
+	QString save_file_name = QFileDialog::getSaveFileName(this, tr("Export server log"), QString("%1-%2.html").arg(testname).arg(datetime), tr("iTest Server logs (*.html)"));
 	if (save_file_name.isNull() || save_file_name.isEmpty()) { return; }
 	QFile file(save_file_name);
 	if (!file.open(QFile::WriteOnly | QFile::Text)) 
@@ -751,19 +762,19 @@ Text
 	sfile.setCodec("CP 1250");
 	setProgress(0); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	sfile << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=windows-1250\"><title>" << endl;
-	sfile << tr("iTest Server Log") << " - " << current_db_name << " - ";
+	sfile << tr("iTest Server Log") << " - " << testname << " - ";
 	sfile << timestamp << endl << "</title></head><body>" << endl;
-	for (int i = 0; i < SMSLListWidget->count(); ++i) {
+	for (int i = 0; i < lw->count(); ++i) {
 		sfile << "<div style=\"background-color: rgb(";
-		sfile << SMSLListWidget->item(i)->background().color().red() << ", ";
-		sfile << SMSLListWidget->item(i)->background().color().green() << ", ";
-		sfile << SMSLListWidget->item(i)->background().color().blue() << "); ";
+		sfile << lw->item(i)->background().color().red() << ", ";
+		sfile << lw->item(i)->background().color().green() << ", ";
+		sfile << lw->item(i)->background().color().blue() << "); ";
 		sfile << "color: rgb(";
-		sfile << SMSLListWidget->item(i)->foreground().color().red() << ", ";
-		sfile << SMSLListWidget->item(i)->foreground().color().green() << ", ";
-		sfile << SMSLListWidget->item(i)->foreground().color().blue() << ")\">";
-		sfile << endl << SMSLListWidget->item(i)->text() << "\n</div>" << endl;
-		setProgress(100 / SMSLListWidget->count() * i); // PROGRESS >>>>>>>>>>>>
+		sfile << lw->item(i)->foreground().color().red() << ", ";
+		sfile << lw->item(i)->foreground().color().green() << ", ";
+		sfile << lw->item(i)->foreground().color().blue() << ")\">";
+		sfile << endl << lw->item(i)->text() << "\n</div>" << endl;
+		setProgress(100 / lw->count() * i); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>
 	}
 	sfile << "</body></html>" << endl;
 	setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>

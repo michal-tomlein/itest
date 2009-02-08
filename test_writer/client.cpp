@@ -1,6 +1,6 @@
 #include "main_window.h"
 
-void MainWindow::connect()
+void MainWindow::connectSocket()
 {
     disableInputTypeSelection();
     client_number = 0;
@@ -11,7 +11,7 @@ void MainWindow::connect()
     tcpSocket->abort();
     tcpSocket->connectToHost(serverNameLineEdit->text(),
                              serverPortLineEdit->text().toInt());
-    delete progress_dialog;
+    if (progress_dialog != NULL) delete progress_dialog;
     progress_dialog = new QProgressDialog (this);
     progress_dialog->setLabelText(tr("Retrieving test data..."));
     progress_dialog->setMinimum(0);

@@ -42,6 +42,7 @@ Session::Session()
 	s_name = tr("Undefined");
 	s_qnum = 0;
 	s_cqnum = 0;
+	s_passmark = 0;
 }
 
 Session::~Session()
@@ -122,4 +123,9 @@ QString Session::sessionData()
 		out.append(QString("\n%1").arg(log_entry.entryData()));
 	}
 	return out;
+}
+
+bool Session::mostPassed()
+{
+	return (s_cqnum >= (s_passmark * s_students.count()));
 }

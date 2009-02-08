@@ -294,6 +294,7 @@ MainWindow::MainWindow()
     setupUi(this);
 	http = new QHttp(this);
 	http_buffer = new QBuffer(this);
+	default_printer = NULL;
 	progressBar = new QProgressBar(this);
 	progressBar->setTextVisible(false);
     progressBar->resize(QSize(30, 10));

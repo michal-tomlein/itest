@@ -156,7 +156,7 @@
 %2.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="429"/>
+        <location filename="../main_window.cpp" line="430"/>
         <source>Ready</source>
         <translation>Pripravený</translation>
     </message>
@@ -278,12 +278,12 @@ Ak ste ich použili, skúste operáciu znova bez nich.</translation>
         <translation>Zahodiť akékoľvek zmeny v tejto otázke</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="313"/>
+        <location filename="../main_window.cpp" line="314"/>
         <source>Apply any changes you have made to the flags</source>
         <translation>Uložiť akékoľvek zmeny vo vlajkách</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="315"/>
+        <location filename="../main_window.cpp" line="316"/>
         <source>Discard any changes you have made to the flags</source>
         <translation>Zahodiť akékoľvek zmeny vo vlajkách</translation>
     </message>
@@ -298,42 +298,42 @@ Ak ste ich použili, skúste operáciu znova bez nich.</translation>
         <translation>iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="583"/>
+        <location filename="../main_window.cpp" line="584"/>
         <source>Failed to check for updates.</source>
         <translation>Nepodarilo sa skontrolovať aktualizácie.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="583"/>
+        <location filename="../main_window.cpp" line="584"/>
         <source>&amp;Try again</source>
         <translation>&amp;Skúsiť znovu</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="599"/>
+        <location filename="../main_window.cpp" line="600"/>
         <source>Your iTest is up-to-date.</source>
         <translation>Táto verzia programu iTest je aktuálna.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="603"/>
+        <location filename="../main_window.cpp" line="604"/>
         <source>iTest %1 is available now.</source>
         <translation>iTest vo verzii %1 je teraz dostupný.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="638"/>
+        <location filename="../main_window.cpp" line="639"/>
         <source>%1 - Overall statistics - iTest</source>
         <translation>%1 - Celková štatistika - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="648"/>
+        <location filename="../main_window.cpp" line="649"/>
         <source>Adjust all</source>
         <translation>Upraviť všetky</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="652"/>
+        <location filename="../main_window.cpp" line="653"/>
         <source>Close</source>
         <translation>Zatvoriť</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="664"/>
+        <location filename="../main_window.cpp" line="665"/>
         <source>&lt;b&gt;%1 questions with statistics found&lt;/b&gt;</source>
         <translation>&lt;b&gt;Bolo nájdených %1 otázok so štatistikami&lt;/b&gt;</translation>
     </message>
@@ -343,27 +343,27 @@ Ak ste ich použili, skúste operáciu znova bez nich.</translation>
         <translation>Meno otázky</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="670"/>
+        <location filename="../main_window.cpp" line="671"/>
         <source>Difficulty</source>
         <translation>Obtiažnosť</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="672"/>
+        <location filename="../main_window.cpp" line="673"/>
         <source>Calculated difficulty</source>
         <translation>Vypočítaná obtiažnosť</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="674"/>
+        <location filename="../main_window.cpp" line="675"/>
         <source>Number of correct answers</source>
         <translation>Počet správnych odpovedí</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="676"/>
+        <location filename="../main_window.cpp" line="677"/>
         <source>Number of incorrect answers</source>
         <translation>Počet nesprávnych odpovedí</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="731"/>
+        <location filename="../main_window.cpp" line="732"/>
         <source>Adjust difficulty</source>
         <translation>Upraviť obtiažnosť</translation>
     </message>
@@ -2512,7 +2512,7 @@ ale doporučuje sa im dať hodinu času.</translation>
     <message>
         <location filename="../server.cpp" line="409"/>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; Klient #%2 odpojený</translation>
+        <translation>%1 &gt; Klient #%2 pripojený</translation>
     </message>
     <message>
         <location filename="../server.cpp" line="433"/>
@@ -2670,27 +2670,27 @@ ale doporučuje sa im dať hodinu času.</translation>
         <translation>Naozaj chcete odstrániť sedenie &quot;%1 - %2&quot;?</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="823"/>
+        <location filename="../main_window.cpp" line="824"/>
         <source>Change language - iTest</source>
         <translation>Zmeniť jazyk - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="827"/>
+        <location filename="../main_window.cpp" line="828"/>
         <source>Select your preferred language</source>
         <translation>Vyberte váš jazyk</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="831"/>
+        <location filename="../main_window.cpp" line="832"/>
         <source>English</source>
         <translation>angličtina</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="835"/>
+        <location filename="../main_window.cpp" line="836"/>
         <source>Slovak</source>
         <translation>slovenčina</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="854"/>
+        <location filename="../main_window.cpp" line="855"/>
         <source>You need to restart iTest for the changes to apply.</source>
         <translation>Aby sa zmeny prejavili, je potrebné reštartovať iTest.</translation>
     </message>
@@ -2717,6 +2717,11 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <location filename="../main_window_v2.ui" line="5410"/>
         <source>&amp;View</source>
         <translation>&amp;Zobraziť</translation>
+    </message>
+    <message>
+        <location filename="../database.cpp" line="402"/>
+        <source>%1[*] - iTest - Database Editor</source>
+        <translation>%1[*] - iTest - Editor databáz</translation>
     </message>
 </context>
 <context>

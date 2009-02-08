@@ -78,7 +78,7 @@ void MainWindow::deleteLog()
 			return; break;
 	}
 	VSSSLListWidget->clear(); current_db_session->deleteLog();
-	VSSLogGroupBox->setVisible(false);
+	VSSLogGroupBox->setVisible(false); enableVSSTools();
 	setDatabaseModified();
 	QTimer::singleShot(200, this, SLOT(updateVSSGeometry()));
 }
@@ -139,15 +139,29 @@ void MainWindow::clearVSS()
 void MainWindow::enableVSSTools()
 {
     switch (mainStackedWidget->currentIndex()) {
+        case 5:
+            actionExport_log->setEnabled(true);
+            actionDelete_log->setEnabled(false);
+            actionDelete_session->setEnabled(false);
+            break;
         case 6:
-            if (VSSSLListWidget->count() > 0) {
-                actionDelete_log->setEnabled(true);
-            } else { actionDelete_log->setEnabled(false); }
             if (VSSCSGroupBox->isEnabled()) {
+                if (VSSSLListWidget->count() > 0) {
+                    actionExport_log->setEnabled(true);
+                    actionDelete_log->setEnabled(true);
+                } else {
+                    actionExport_log->setEnabled(false);
+                    actionDelete_log->setEnabled(false);
+                }
                 actionDelete_session->setEnabled(true);
-            } else { actionDelete_session->setEnabled(false); }
+            } else {
+                actionExport_log->setEnabled(false);
+                actionDelete_log->setEnabled(false);
+                actionDelete_session->setEnabled(false);
+            }
             break;
         default:
+            actionExport_log->setEnabled(false);
             actionDelete_log->setEnabled(false);
             actionDelete_session->setEnabled(false);
             break;
