@@ -1,7 +1,7 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.0.2                                                        *
+ * Version:      1.0.3                                                        *
  * Qt version:   4.2.2                                                        *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Database Editor and a Test       *
@@ -36,6 +36,10 @@ int main(int argc, char *argv[])
 }
 
 // ---------------------------- version changelog: -----------------------------
+/* version 1.0.3 - a bug-fix release
+                 - fixed opening of a database (had no visible effect unless you
+                   had more saved sessions than questions)
+*/
 /* version 1.0.2 - a bug-fix release
                  - fixed version number, now saved as a float
                  - fixed incorrect flags behaviour

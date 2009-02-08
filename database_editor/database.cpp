@@ -48,8 +48,8 @@ void MainWindow::newDB()
 	setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     QTextStream sfile(&file);
 	sfile.setCodec("CP 1250");
-	sfile << "[ITEST_VERSION]\n" << ver << endl;
-	sfile << "[ITEST_DB_VERSION]\n" << db_ver << endl;
+	sfile << "[ITEST_VERSION]\n" << f_ver << endl;
+	sfile << "[ITEST_DB_VERSION]\n" << f_db_ver << endl;
 	sfile << "[DB_NAME]\n" << db_name << endl;
 	sfile << "[DB_DATE]\n" << endl;
 	sfile << "[DB_DATE_ULSD]\ntrue" << endl;
@@ -115,8 +115,8 @@ void MainWindow::saveDB(QString db_file_name)
     setProgress(5); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     QTextStream sfile(&file); QString q_file_name;
 	sfile.setCodec("CP 1250");
-    sfile << "[ITEST_VERSION]\n" << ver << endl;
-    sfile << "[ITEST_DB_VERSION]\n" << db_ver << endl;
+    sfile << "[ITEST_VERSION]\n" << f_ver << endl;
+    sfile << "[ITEST_DB_VERSION]\n" << f_db_ver << endl;
     sfile << "[DB_NAME]\n" << db_name << endl;
     sfile << "[DB_DATE]\n" << db_date << endl;
     sfile << "[DB_DATE_ULSD]\n" << use_last_save_date << endl;
@@ -320,7 +320,7 @@ void MainWindow::openDB(QString openDBName)
 		setProgress((85/(i+1)*count)+10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>
     }
 	// Saved sessions
-    for (int i = 0; i < db_qnum; ++i) {
+    for (int i = 0; i < db_snum; ++i) {
 		if (rfile.atEnd()) { break; }
 		if (rfile.readLine() != "[SESSION]") { continue; }
 		Session * session = new Session;

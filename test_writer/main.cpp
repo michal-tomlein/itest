@@ -1,7 +1,7 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.0.2                                                        *
+ * Version:      1.0.3                                                        *
  * Qt version:   4.2.2                                                        *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Database Editor and a Test       *
@@ -365,6 +365,7 @@ void MainWindow::errorInvalidData()
 }
 
 // ---------------------------- version changelog: -----------------------------
+// version 1.0.3 - a bug-fix release
 // version 1.0.2 - a bug-fix release
 /* version 1.0.1 - a bug-fix release
                  - fixed segmentation fault when connecting
