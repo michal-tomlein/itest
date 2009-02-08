@@ -346,6 +346,27 @@
           </widget>
          </item>
          <item>
+          <widget class="QLabel" name="label_10" >
+           <property name="text" >
+            <string>&lt;b>Other settings&lt;/b></string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="hideQuestionNamesCheckBox" >
+           <property name="text" >
+            <string>Hide question names, show numbers instead</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_4" >
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QLabel" name="label_3" >
            <property name="text" >
             <string>&lt;b>Test information&lt;/b></string>

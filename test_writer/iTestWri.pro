@@ -38,4 +38,5 @@ MOC_DIR       = .moc.macx/
 RCC_DIR       = .rcc.macx/
 }
 DESTDIR       = ../
-TRANSLATIONS += i18n/Slovak.ts
+TRANSLATIONS += i18n/Slovak.ts \
+                i18n/Russian.ts

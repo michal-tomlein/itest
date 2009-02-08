@@ -38,6 +38,7 @@ void MainWindow::newDB()
     } else {
 		saveDBName = QFileDialog::getSaveFileName(this, tr("Create database file"), tr("untitled.itdb"), tr("iTest databases (*.itdb)"));
     }
+	if (saveDBName.isNull() || saveDBName.isEmpty()) { this->setEnabled(true); return; }
     QFile file(saveDBName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) 
     {
@@ -86,16 +87,76 @@ void MainWindow::save() { saveDB(current_db_file); }
 
 void MainWindow::saveAs()
 {
-    QString db_name = DBIDatabaseNameLineEdit->text();
-    QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save database"), QString("%1.itdb").arg(db_name), tr("iTest databases (*.itdb)"));
-    if (!saveDBName.isNull() || saveDBName.isEmpty()) { addRecent(saveDBName); saveDB(saveDBName); }
+	QString db_name = DBIDatabaseNameLineEdit->text();
+	QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save database"), QString("%1.itdb").arg(db_name), tr("iTest databases (*.itdb)"));
+	if (!saveDBName.isNull() || !saveDBName.isEmpty()) { addRecent(saveDBName); saveDB(saveDBName); }
 }
 
-void MainWindow::saveDB(QString db_file_name)
+void MainWindow::saveCopy()
+{
+	if (this->isWindowModified()) {
+		switch (QMessageBox::information(this, tr("Save a copy"), tr("It is necessary to save any changes you have made to the database before proceeding."), tr("&Save"), tr("Cancel"), 0, 1)) {
+			case 0: // Save
+				save(); break;
+			case 1: // Cancel
+				return; break;
+		}
+	}
+	QString db_name = DBIDatabaseNameLineEdit->text();
+	QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save a copy"), QString("%1.itdb").arg(db_name), tr("iTest databases (*.itdb)"));
+	if (!saveDBName.isNull() || !saveDBName.isEmpty())
+		{ addRecent(saveDBName); saveDB(saveDBName, true, false); }
+}
+
+void MainWindow::saveBackup()
+{
+	if (this->isWindowModified()) {
+		switch (QMessageBox::information(this, tr("Save a backup"), tr("It is necessary to save any changes you have made to the database before proceeding."), tr("&Save"), tr("Cancel"), 0, 1)) {
+			case 0: // Save
+				save(); break;
+			case 1: // Cancel
+				return; break;
+		}
+	}
+	QString db_name = DBIDatabaseNameLineEdit->text();
+	QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save a backup"), QString("%1.itdb").arg(db_name), tr("iTest databases (*.itdb)"));
+	if (!saveDBName.isNull() || !saveDBName.isEmpty())
+		{ addRecent(saveDBName); saveDB(saveDBName, true, true); }
+}
+
+void MainWindow::saveDB(QString db_file_name, bool savecopy, bool allsessions)
 {
     this->setEnabled(false); qApp->processEvents();
+	// Prepare
+	if (LQListWidget->currentIndex().isValid()) {
+		applyQuestionChanges();
+	}
     // Gather info
     QString db_name = DBIDatabaseNameLineEdit->text();
+	if (db_name != current_db_name) {
+		QSettings archive(QSettings::IniFormat, QSettings::UserScope, "Michal Tomlein", "iTest");
+		QStringList dbs, sns; QString buffer;
+		switch (QMessageBox::information(this, tr("iTest - Database Editor"), tr("Are you sure you want to change the database name?\nIf you do so, any archived sessions associated to this database\non other computers will not load, unless you change it back.\nThis computer's archive will be updated."), tr("&Change"), tr("Do &not change"), 0, 1)) {
+			case 0: // Change
+				dbs = archive.value("databases").toStringList();
+				if (!dbs.contains(current_db_name)) { break; }
+				dbs.removeAll(current_db_name);
+				dbs << db_name;
+				archive.setValue("databases", dbs);
+				sns = archive.value(QString("%1/sessions").arg(current_db_name)).toStringList();
+				archive.setValue(QString("%1/sessions").arg(db_name), sns);
+				for (int i = 0; i < sns.count(); ++i) {
+					buffer = archive.value(QString("%1/%2").arg(current_db_name).arg(sns.at(i))).toString();
+					archive.setValue(QString("%1/%2").arg(db_name).arg(sns.at(i)), buffer);
+				}
+				archive.remove(current_db_name);
+				break;
+			case 1: // Do not change
+				db_name = current_db_name;
+				DBIDatabaseNameLineEdit->setText(current_db_name);
+				break;
+		}
+	}
     QString use_last_save_date; QString db_date;
     if (actionUse_last_save_date->isChecked()) {
 		db_date = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm");
@@ -105,9 +166,19 @@ void MainWindow::saveDB(QString db_file_name)
 		use_last_save_date = "false";
     }
     QString db_comments = removeLineBreaks(ECTextEdit->toHtml());
+	QMap<QDateTime, Session *> sessions = current_db_sessions;
+	if (allsessions) {
+		QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
+		while (a.hasNext()) { a.next();
+			if (!sessions.contains(a.key())) {
+				sessions.insert(a.key(), a.value());
+			}
+		}
+	}
+	uint db_snum = (uint)sessions.size();
     // Save database -----------------------------------------------------------
     QFile file(db_file_name);
-    if (!file.open(QFile::WriteOnly | QFile::Text)) 
+    if (!file.open(QFile::WriteOnly | QFile::Text))
     {
 		QMessageBox::critical(this, tr("Save database"), tr("Cannot write file %1:\n%2.").arg(db_file_name).arg(file.errorString()));
 		this->setEnabled(true); return;
@@ -122,41 +193,56 @@ void MainWindow::saveDB(QString db_file_name)
     sfile << "[DB_DATE_ULSD]\n" << use_last_save_date << endl;
     sfile << "[DB_COMMENTS]\n" << db_comments << endl;
     sfile << "[DB_QNUM]\n" << current_db_questions.size() << endl;
-    sfile << "[DB_SNUM]\n" << current_db_sessions.size() << endl;
+    sfile << "[DB_SNUM]\n" << db_snum << endl;
     sfile << "[DB_FLAGS]" << endl;
-    for (int i = 0; i < 20; ++i) 
+    for (int i = 0; i < 20; ++i)
     {if (current_db_fe[i]) {sfile << "+";} else {sfile << "-";}} sfile << endl;
-    for (int i = 0; i < 20; ++i) 
+    for (int i = 0; i < 20; ++i)
     {sfile << "[DB_F" << i << "]" << endl; sfile << current_db_f[i] << endl;}
     sfile << "[DB_FLAGS_END]" << endl;
     setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    int count = current_db_questions.size() + current_db_sessions.size();
+    uint count = (uint)current_db_questions.size() + (uint)sessions.size();
     uint n = current_db_questions.size();
     for (int i = 0; i < LQListWidget->count(); ++i) {
 		sfile << current_db_questions.value(LQListWidget->item(i))->allProperties() << endl;
-		setProgress((90/(i+1)*count)+10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>
+		setProgress((90/(i+1)*count)+10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>
     }
-    QMapIterator<QDateTime, Session *> i(current_db_sessions);
+    QMapIterator<QDateTime, Session *> i(sessions);
     while (i.hasNext()) { i.next(); n++;
 		sfile << i.value()->sessionData() << endl;
 		for (int s = 0; s < i.value()->numStudents(); ++s) {
             sfile << i.value()->student(s)->studentData() << endl;
         }
-		setProgress((90/n*count)+10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+		setProgress((90/n*count)+10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     }
-    current_db_name = db_name;
-    current_db_date = db_date;
-    current_db_comments = db_comments;
-    current_db_file = db_file_name;
-    if (actionUse_last_save_date->isChecked()) {
-		DBIDateEdit->setDateTime(QDateTime::fromString(current_db_date, "yyyy.MM.dd-hh:mm"));
-    }
-    this->setWindowTitle(tr("%1[*] - iTest - Database Editor").arg(current_db_name));
-    this->setWindowModified(false);
-    statusBar()->showMessage(tr("Database saved"), 10000);
-    setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     // -------------------------------------------------------------------------
-    this->setEnabled(true);
+    while (!current_db_queued_sessions.isEmpty()) {
+        ArchivedSession * session = current_db_queued_sessions.dequeue();
+        if (session->status() == ArchivedSession::Remove) {
+            session->removeFromArchive();
+            session->destruct();
+            delete session;
+        } else if (session->status() == ArchivedSession::Archive) {
+            session->archive();
+            session->setStatus(ArchivedSession::Default);
+        }
+    }
+    // -------------------------------------------------------------------------
+	if (!savecopy) {
+		current_db_name = db_name;
+		current_db_date = db_date;
+		current_db_comments = db_comments;
+		current_db_file = db_file_name;
+		if (actionUse_last_save_date->isChecked()) {
+			DBIDateEdit->setDateTime(QDateTime::fromString(current_db_date, "yyyy.MM.dd-hh:mm"));
+		}
+	}
+	this->setWindowTitle(tr("%1[*] - iTest - Database Editor").arg(current_db_name));
+	this->setWindowModified(false);
+	statusBar()->showMessage(tr("Database saved"), 10000);
+	setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	// -------------------------------------------------------------------------
+	this->setEnabled(true);
 }
 
 void MainWindow::open()
@@ -407,13 +493,14 @@ void MainWindow::openDB(QString openDBName)
 	mainStackedWidget->setCurrentIndex(1); updateGeometry();
     // -------------------------------------------------------------------------
     this->setEnabled(true);
+	// Load archived sessions
+	openArchive();
 }
 
 void MainWindow::closeDB()
 {
 	// Save changes before proceeding?
-	bool cancelled = saveChangesBeforeProceeding(tr("Close database"), false);
-	if (!cancelled) {
+	if (saveChangesBeforeProceeding(tr("Close database"), false)) { return; }
 	// Closing database --------------------------------------------------------
 	clearAll(); disableAll(); current_db_open = false;
 	this->setWindowTitle(tr("iTest - Database Editor"));
@@ -422,5 +509,4 @@ void MainWindow::closeDB()
 	mainStackedWidget->setCurrentIndex(0); updateGeometry();
 	statusBar()->showMessage(tr("Database closed"), 10000);
 	// -------------------------------------------------------------------------
-	}
 }

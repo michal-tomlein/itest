@@ -1,4 +1,4 @@
-#include "session.h"
+#include "archived_session.h"
 
 LogEntry::LogEntry()
 {
@@ -43,13 +43,33 @@ Session::Session()
 	s_qnum = 0;
 	s_cqnum = 0;
 	s_passmark = 0;
+	s_archived = false;
+}
+
+Session::Session(ArchivedSession * archived_session)
+{
+	s_name = archived_session->s_name;
+	s_datetime = archived_session->s_datetime;
+	s_qnum = archived_session->s_qnum;
+	s_cqnum = archived_session->s_cqnum;
+	s_log = archived_session->s_log;
+	for (int i = 0; i < archived_session->s_students.count(); ++i) {
+		s_students << new Student(archived_session->s_students.at(i));
+	}
+	s_passmark = archived_session->s_passmark;
+	s_archived = false;
 }
 
 Session::~Session()
 {
 	for (int i = 0; i < s_students.count(); ++i) {
-		delete s_students.at(i);
+		if (s_students.at(i)) delete s_students.at(i);
 	}
+}
+
+void Session::destruct()
+{
+	s_students.clear();
 }
 
 void Session::setName(QString name) { s_name = name; }
@@ -129,3 +149,5 @@ bool Session::mostPassed()
 {
 	return (s_cqnum >= (s_passmark * s_students.count()));
 }
+
+bool Session::isArchived() { return s_archived; }

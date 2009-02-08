@@ -3,69 +3,59 @@
 <context>
     <name>AboutWidget</name>
     <message>
-        <location filename="../about_widget_v2.ui" line="108"/>
+        <location filename="../about_widget_v2.ui" line="113"/>
         <source>About iTest</source>
         <translation>O programe iTest</translation>
     </message>
     <message>
-        <location filename="../about_widget_v2.ui" line="71"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;About iTest&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;O programe iTest&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../about_widget_v2.ui" line="137"/>
+        <location filename="../about_widget_v2.ui" line="142"/>
         <source>About Qt</source>
         <translation>O Qt</translation>
     </message>
     <message>
-        <location filename="../about_widget_v2.ui" line="190"/>
+        <location filename="../about_widget_v2.ui" line="195"/>
         <source>Close</source>
         <translation>Zatvoriť</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="9"/>
-        <source>&lt;span style=&quot;font-size:8pt;&quot;&gt;Version %1&lt;/span&gt;&lt;/p&gt;</source>
-        <translation>&lt;span style=&quot;font-size:8pt;&quot;&gt;Verzia %1&lt;/span&gt;&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <location filename="../about_widget.cpp" line="11"/>
-        <source>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;iTest is a Qt application consisting of a Database Editor and a Test Writer designed for easy computerised examination.&lt;/p&gt;</source>
-        <translation>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;iTest je Qt program pozostávajúci z Editoru databáz a Testového klienta dizajnovaných pre jednoduché skúšanie pomocou počítača.&lt;/p&gt;</translation>
+        <location filename="../about_widget.cpp" line="10"/>
+        <source>Version</source>
+        <translation>Verzia</translation>
     </message>
     <message>
         <location filename="../about_widget.cpp" line="13"/>
-        <source>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;This programme is distributed under the terms of the GPL v2.&lt;/p&gt;</source>
-        <translation>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;Tento program je distribuovaný pod licenciou GPL v2.&lt;/p&gt;</translation>
+        <source>iTest is a Qt application consisting of a Database Editor and a Test Writer designed for easy computerised examination.</source>
+        <translation>iTest je Qt program pozostávajúci z Editoru databáz a Testového klienta dizajnovaných pre jednoduché skúšanie pomocou počítača.</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="17"/>
-        <source>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;/p&gt;</source>
-        <translation>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;Tento program je poskytovaný TAK AKO JE s ABSOLÚTNE ŽIADNOU ZÁRUKOU AKÉHOKOĽVEK DRUHU.&lt;/p&gt;</translation>
+        <location filename="../about_widget.cpp" line="16"/>
+        <source>This programme is distributed under the terms of the GPL v2.</source>
+        <translation>Tento program je distribuovaný pod licenciou GPL v2.</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="19"/>
-        <source>&lt;p style=&quot;font-family: sans-serif; font-style:italic;&quot;&gt;&lt;span style=&quot;font-size:12pt;&quot;&gt;About Qt&lt;/span&gt;&lt;/p&gt;</source>
-        <translation>&lt;p style=&quot;font-family: sans-serif; font-style:italic;&quot;&gt;&lt;span style=&quot;font-size:12pt;&quot;&gt;O Qt&lt;/span&gt;&lt;/p&gt;</translation>
+        <location filename="../about_widget.cpp" line="20"/>
+        <source>The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
+        <translation>Tento program je poskytovaný TAK AKO JE s ABSOLÚTNE ŽIADNOU ZÁRUKOU AKÉHOKOĽVEK DRUHU.</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="21"/>
-        <source>&lt;p style=&quot;font-family: sans-serif; font-size:8pt; font-style:italic;&quot;&gt;This program uses Qt Open Source Edition version %1.&lt;/p&gt;</source>
-        <translation>&lt;p style=&quot;font-family: sans-serif; font-size:8pt; font-style:italic;&quot;&gt;Tento program používa Qt Open Source Edition vo verzii %1.&lt;/p&gt;</translation>
+        <location filename="../about_widget.cpp" line="26"/>
+        <source>This programme uses Qt Open Source Edition version %1.</source>
+        <translation>Tento program používa Qt Open Source Edition vo verzii %1.</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="23"/>
-        <source>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;</source>
-        <translation>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;Qt je sada nástrojov na multiplatformový vývoj aplikácií v jazyku C++.&lt;/p&gt;</translation>
+        <location filename="../about_widget.cpp" line="28"/>
+        <source>Qt is a C++ toolkit for cross-platform application development.</source>
+        <translation>Qt je sada nástrojov na multiplatformový vývoj aplikácií v jazyku C++.</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="25"/>
-        <source>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.&lt;/p&gt;</source>
-        <translation>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;Qt umožňuje použitie jedného zdrojového kódu v systémoch MS Windows, Mac OS X, Linux a vo všetkých hlavných komerčných unixových variantách. Qt je tiež dostupné pre embedded zariadenia ako Qtopia Core.&lt;/p&gt;</translation>
+        <location filename="../about_widget.cpp" line="30"/>
+        <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
+        <translation>Qt umožňuje použitie jedného zdrojového kódu v systémoch MS Windows, Mac OS X, Linux a vo všetkých hlavných komerčných unixových variantách. Qt je tiež dostupné pre embedded zariadenia ako Qtopia Core.</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="27"/>
-        <source>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.&lt;/p&gt;</source>
-        <translation>&lt;p style=&quot;font-family: sans-serif; font-size:8pt;&quot;&gt;Qt je produkt spoločnosti Trolltech. Pozrite si &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; pre viac informácií.&lt;/p&gt;</translation>
+        <location filename="../about_widget.cpp" line="32"/>
+        <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
+        <translation>Qt je produkt spoločnosti Trolltech. Pozrite si &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; pre viac informácií.</translation>
     </message>
 </context>
 <context>
@@ -78,7 +68,7 @@
 %2.</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="479"/>
+        <location filename="../main_window.ui" line="500"/>
         <source>Ready</source>
         <translation>Pripravený</translation>
     </message>
@@ -110,57 +100,57 @@
         <translation>Na otvorenie tohto databázového súboru potrebujete novšiu verziu programu iTest.</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1208"/>
+        <location filename="../main_window.ui" line="1229"/>
         <source>a)</source>
         <translation>a)</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="956"/>
+        <location filename="../main_window.ui" line="977"/>
         <source>b)</source>
         <translation>b)</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1178"/>
+        <location filename="../main_window.ui" line="1199"/>
         <source>c)</source>
         <translation>c)</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1235"/>
+        <location filename="../main_window.ui" line="1256"/>
         <source>d)</source>
         <translation>d)</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="367"/>
+        <location filename="../main_window.ui" line="388"/>
         <source>Database date</source>
         <translation>Dátum</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1319"/>
+        <location filename="../main_window.ui" line="1340"/>
         <source>Answered correctly</source>
         <translation>Zodpovedané správne</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1324"/>
+        <location filename="../main_window.ui" line="1345"/>
         <source>Answer</source>
         <translation>Odpoveď</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1329"/>
+        <location filename="../main_window.ui" line="1350"/>
         <source>Correct answer</source>
         <translation>Správna odpoveď</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1337"/>
+        <location filename="../main_window.ui" line="1358"/>
         <source>&lt;b&gt;Results:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Výsledky:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1372"/>
+        <location filename="../main_window.ui" line="1393"/>
         <source>&lt;b&gt;Name:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Meno:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="397"/>
+        <location filename="../main_window.ui" line="418"/>
         <source>Comments</source>
         <translation>Poznámky</translation>
     </message>
@@ -224,11 +214,6 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation>Vyskytla sa nasledujúca chyba: %1.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="5"/>
-        <source>iTest databases (*.itos);;All files (*.*)</source>
-        <translation>Databázy iTest (*.itos);;All files (*.*)</translation>
-    </message>
-    <message>
         <location filename="../database.cpp" line="10"/>
         <source>Output file path</source>
         <translation>Cesta k výstupnému súboru</translation>
@@ -259,52 +244,52 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation>Generujem test...</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="218"/>
+        <location filename="../main.cpp" line="219"/>
         <source>Finish the exam</source>
         <translation>Ukončiť skúšku</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="218"/>
+        <location filename="../main.cpp" line="219"/>
         <source>Are you sure you want to finish? Once you click Finish there is no going back.</source>
         <translation>Naozaj chcete skončiť? Po kliknutí na &quot;Koniec&quot; sa už nedá vrátiť späť.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="218"/>
+        <location filename="../main.cpp" line="219"/>
         <source>&amp;Finish</source>
         <translation>&amp;Koniec</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="218"/>
+        <location filename="../main.cpp" line="219"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Zrušiť</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="303"/>
+        <location filename="../main.cpp" line="313"/>
         <source>Your name, please.</source>
         <translation>Vaše meno, prosím.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="303"/>
+        <location filename="../main.cpp" line="313"/>
         <source>You cannot proceed unless you give us your name.</source>
         <translation>Nemôžete pokračovať, kým neuvediete svoje meno.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="339"/>
+        <location filename="../main.cpp" line="349"/>
         <source>Exam finished</source>
         <translation>Skúška ukončená</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="339"/>
+        <location filename="../main.cpp" line="349"/>
         <source>You have run out of time. Your answers are being sent.</source>
         <translation>Váš čas vypršal. Vaše odpovede sa posielajú.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="362"/>
+        <location filename="../main.cpp" line="372"/>
         <source>iTest - Load test data</source>
         <translation>iTest - Načítať testové dáta</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="362"/>
+        <location filename="../main.cpp" line="372"/>
         <source>Invalid data received. There might be something wrong with the server.</source>
         <translation>Prijaté neplatné dáta. Možno niečo nie je v poriadku so serverom.</translation>
     </message>
@@ -369,109 +354,124 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation>Použiť štandardné nastavenie</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="351"/>
+        <location filename="../main_window.ui" line="372"/>
         <source>&lt;b&gt;Test information&lt;/b&gt;</source>
         <translation>&lt;b&gt;Informácie o teste&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="362"/>
+        <location filename="../main_window.ui" line="383"/>
         <source>Test name</source>
         <translation>Meno testu</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="372"/>
+        <location filename="../main_window.ui" line="393"/>
         <source>Test date</source>
         <translation>Dátum testu</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="377"/>
+        <location filename="../main_window.ui" line="398"/>
         <source>Test time</source>
         <translation>Čas na test</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="382"/>
+        <location filename="../main_window.ui" line="403"/>
         <source>Number of questions</source>
         <translation>Počet otázok</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="387"/>
+        <location filename="../main_window.ui" line="408"/>
         <source>Number of flags</source>
         <translation>Počet vlajok</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="392"/>
+        <location filename="../main_window.ui" line="413"/>
         <source>Flag names</source>
         <translation>Mená vlajok</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="402"/>
+        <location filename="../main_window.ui" line="423"/>
         <source>Data</source>
         <translation>Dáta</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1295"/>
+        <location filename="../main_window.ui" line="1316"/>
         <source>Quit</source>
         <translation>Koniec</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="444"/>
+        <location filename="../main_window.ui" line="465"/>
         <source>About</source>
         <translation>O programe</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="683"/>
+        <location filename="../main_window.ui" line="704"/>
         <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Welcome!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Vitajte!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="739"/>
+        <location filename="../main_window.ui" line="760"/>
         <source>Your name:</source>
         <translation>Vaše meno:</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="828"/>
+        <location filename="../main_window.ui" line="849"/>
         <source>When you are ready to begin the examination, click the Start button below.</source>
         <translation>Keď budete pripravení začať so skúškou, kliknite na tlačidlo Štart dole.</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="890"/>
+        <location filename="../main_window.ui" line="911"/>
         <source>Start</source>
         <translation>Štart</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="983"/>
+        <location filename="../main_window.ui" line="1004"/>
         <source>Show remaining time</source>
         <translation>Zobraziť zostávajúci čas</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1003"/>
+        <location filename="../main_window.ui" line="1024"/>
         <source>minute(s)</source>
         <translation>minút(a)</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1061"/>
+        <location filename="../main_window.ui" line="1082"/>
         <source>Last question</source>
         <translation>Predchádzajúca otázka</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1083"/>
+        <location filename="../main_window.ui" line="1104"/>
         <source>Next question</source>
         <translation>Ďalšia otázka</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1105"/>
+        <location filename="../main_window.ui" line="1126"/>
         <source>Finish</source>
         <translation>Koniec</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1314"/>
+        <location filename="../main_window.ui" line="1335"/>
         <source>Question</source>
         <translation>Otázka</translation>
     </message>
     <message>
-        <location filename="../main_window.ui" line="1352"/>
+        <location filename="../main_window.ui" line="1373"/>
         <source>&lt;b&gt;Score:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Skóre:&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../main_window.ui" line="351"/>
+        <source>&lt;b&gt;Other settings&lt;/b&gt;</source>
+        <translation>&lt;b&gt;Iné nastavenia&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../main_window.ui" line="358"/>
+        <source>Hide question names, show numbers instead</source>
+        <translation>Skryť mená otázok, zobraziť namiesto nich čísla</translation>
+    </message>
+    <message>
+        <location filename="../database.cpp" line="5"/>
+        <source>iTest off-line test sessions (*.itos);;All files (*.*)</source>
+        <translation>iTest off-line testové sedenia (*.itos);;Všetky súbory (*.*)</translation>
     </message>
 </context>
 </TS>

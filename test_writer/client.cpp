@@ -131,7 +131,7 @@ void MainWindow::readResults(QString input)
         if (in.readLine() != "[Q_NAME]") { return; }
         buffer = in.readLine(); item = NULL;
         for (int i = 0; i < LQListWidget->count(); ++i) {
-            if (LQListWidget->item(i)->text() == buffer) {
+            if (current_test_questions.value(LQListWidget->item(i))->name() == buffer) {
                 item = current_test_questions.value(LQListWidget->item(i)); break;
             }
         }
@@ -162,46 +162,46 @@ void MainWindow::saveResults()
             case QuestionItem::D:
                 if (!item->hasCorrectAnswer()) {
                     QuestionAnswer qans (QuestionItem::None, item->answered());
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 } else if (item->isAnsACorrect()) {
                     QuestionAnswer qans (QuestionItem::A, item->answered());
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 } else if (item->isAnsBCorrect()) {
                     QuestionAnswer qans (QuestionItem::B, item->answered());
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 } else if (item->isAnsCCorrect()) {
                     QuestionAnswer qans (QuestionItem::C, item->answered());
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 } else if (item->isAnsDCorrect()) {
                     QuestionAnswer qans (QuestionItem::D, item->answered());
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 }
                 break;
             default:
                 if (!item->hasCorrectAnswer()) {
                     QuestionAnswer qans (QuestionItem::None, QuestionItem::None);
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 } else if (item->isAnsACorrect()) {
                     QuestionAnswer qans (QuestionItem::A, QuestionItem::None);
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 } else if (item->isAnsBCorrect()) {
                     QuestionAnswer qans (QuestionItem::B, QuestionItem::None);
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 } else if (item->isAnsCCorrect()) {
                     QuestionAnswer qans (QuestionItem::C, QuestionItem::None);
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 } else if (item->isAnsDCorrect()) {
                     QuestionAnswer qans (QuestionItem::D, QuestionItem::None);
-                    current_test_results->insert(item->name(), qans);
+                    current_test_results->insert(LQListWidget->item(i)->text(), qans);
                     if (qans.isAnsweredCorrectly()) { current_test_score++; }
                 }
                 break;

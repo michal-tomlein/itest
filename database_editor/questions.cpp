@@ -144,7 +144,30 @@ void MainWindow::applyQuestionChanges()
         int n = 0;
         for (int i = 0; i < LQListWidget->count(); ++i) {
           if (LQListWidget->item(i)->text() == q_name) { n++; }
-        }; if (n > 0) {QMessageBox::critical(this, tr("Apply changes"), tr("A question with this name already exists.\nPlease choose a different name.")); return;}
+        }; if (n > 0) { QMessageBox::critical(this, tr("Apply changes"), tr("A question with this name already exists.\nPlease choose a different name.")); return; }
+		uint num_old = numOccurrences(current_db_question);
+		uint num_new = numOccurrences(q_name);
+		if (num_new != 0) {
+			switch (QMessageBox::information(this, tr("iTest - Database Editor"), tr("This new name has been used before.\n%1 occurrences of a question with this name found in the saved sessions.\nChanging the name to this one will cause that this question will be used\ninstead of the no longer existent old one.\n%2 occurrences of the old name will also be updated.\nAre you sure you want to change the name?").arg(num_new).arg(num_old), tr("&Change"), tr("Do &not change"), 0, 1)) {
+				case 0: // Change
+					replaceAllOccurrences(current_db_question, q_name);
+					break;
+				case 1: // Do not change
+					q_name = current_db_question;
+					SQQuestionNameLineEdit->setText(current_db_question);
+					break;
+			}
+		} else if (num_old != 0) {
+			switch (QMessageBox::information(this, tr("iTest - Database Editor"), tr("Are you sure you want to change the name of the question?\n%1 occurrences of this question found in the saved sessions.\nAll occurrences will be updated.").arg(num_old), tr("&Change"), tr("Do &not change"), 0, 1)) {
+				case 0: // Change
+					replaceAllOccurrences(current_db_question, q_name);
+					break;
+				case 1: // Do not change
+					q_name = current_db_question;
+					SQQuestionNameLineEdit->setText(current_db_question);
+					break;
+			}
+		}
      }
      // SAVE VALUES
      QListWidgetItem * q_item = LQListWidget->currentItem();
@@ -441,4 +464,47 @@ void MainWindow::adjustQuestionDifficulty()
 		SQDifficultyComboBox->setCurrentIndex(rdif);
 		setDatabaseModified();
 	}
+}
+
+uint MainWindow::numOccurrences(QString qname)
+{
+	uint n = 0;
+	QMapIterator<QDateTime, Session *> i(current_db_sessions);
+	while (i.hasNext()) { i.next();
+		for (int s = 0; s < i.value()->numStudents(); ++s) {
+			if (i.value()->student(s)->wasAsked(qname)) { n++; }
+		}
+	}
+	QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
+	while (a.hasNext()) { a.next();
+		for (int s = 0; s < a.value()->numStudents(); ++s) {
+			if (a.value()->student(s)->wasAsked(qname)) { n++; }
+		}
+	}
+	return n;
+}
+
+uint MainWindow::replaceAllOccurrences(QString old_qname, QString new_qname)
+{
+	uint n = 0, as = 0, x = 0;
+	QMapIterator<QDateTime, Session *> i(current_db_sessions);
+	while (i.hasNext()) { i.next();
+		for (int s = 0; s < i.value()->numStudents(); ++s) {
+			n += i.value()->student(s)->replaceOccurrences(old_qname, new_qname);
+		}
+	}
+	QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
+	while (a.hasNext()) { a.next();
+		as = 0;
+		for (int s = 0; s < a.value()->numStudents(); ++s) {
+			x = a.value()->student(s)->replaceOccurrences(old_qname, new_qname);
+			n += x; as += x;
+		}
+		if (as > 0) {
+            a.value()->setStatus(ArchivedSession::Archive);
+			current_db_queued_sessions.removeAll(a.value());
+			current_db_queued_sessions.enqueue(a.value());
+        }
+	}
+	return n;
 }

@@ -1,7 +1,7 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.0.3                                                        *
+ * Version:      1.1.0                                                        *
  * Qt version:   4.2.2                                                        *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Database Editor and a Test       *
@@ -36,6 +36,19 @@ int main(int argc, char *argv[])
 }
 
 // ---------------------------- version changelog: -----------------------------
+/* version 1.1.0 - a major update
+                 - added Russian translation
+                 - removed the ability to delete a session
+                 - added the ability to archive, restore and copy sessions
+                 - added the ability to save a copy and a backup copy
+                 - changes made to questions auto-applied when saving
+                 - the selected session now green in the list of saved sessions
+                 - decreased font size of printed exam results
+                 - items in the list of students now green if passed and orange
+                   if failed
+                 - warning when changing the name of the database or a question,
+                   occurrences in sessions and archived sessions auto-updated
+*/
 /* version 1.0.3 - a bug-fix release
                  - fixed opening of a database (had no visible effect unless you
                    had more saved sessions than questions)

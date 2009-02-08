@@ -1,7 +1,7 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.0.3                                                        *
+ * Version:      1.1.0                                                        *
  * Qt version:   4.2.2                                                        *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Database Editor and a Test       *
@@ -295,7 +295,16 @@ void MainWindow::about()
 
 void MainWindow::getReady()
 {
-    mainStackedWidget->setCurrentIndex(1);
+	if (hideQuestionNamesCheckBox->isChecked()) {
+		for (int i = 0; i < LQListWidget->count(); ++i) {
+			LQListWidget->item(i)->setText(QString("%1").arg(i + 1));
+		}
+	} else {
+		for (int i = 0; i < LQListWidget->count(); ++i) {
+			LQListWidget->item(i)->setText(current_test_questions.value(LQListWidget->item(i))->name());
+		}
+	}
+	mainStackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::start()
@@ -365,6 +374,10 @@ void MainWindow::errorInvalidData()
 }
 
 // ---------------------------- version changelog: -----------------------------
+/* version 1.1.0 - a major update
+                 - added Russian translation
+                 - added the ability to hide question names
+*/
 // version 1.0.3 - a bug-fix release
 // version 1.0.2 - a bug-fix release
 /* version 1.0.1 - a bug-fix release

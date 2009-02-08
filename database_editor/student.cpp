@@ -45,9 +45,18 @@ Student::Student(Client * client)
     s_results = new QMap<QString, QuestionAnswer> (*(client->results()));
 }
 
+Student::Student(Student * student)
+{
+    s_name = student->name();
+    s_number = student->number();
+    s_score = student->score();
+    s_ready = student->isReady();
+    s_results = new QMap<QString, QuestionAnswer> (*(student->results()));
+}
+
 Student::~Student()
 {
-    delete s_results;
+    if (s_results) delete s_results;
 }
 
 void Student::setName(QString name) { s_name = name; }
@@ -112,11 +121,28 @@ QString Student::studentData()
 	out.append(QString("%1").arg(s_results->count()));
 	// S_RESULTS
 	QMapIterator<QString, QuestionAnswer> i(*s_results); QuestionAnswer qans;
-	while (i.hasNext()) {
-		i.next(); qans = i.value();
+	while (i.hasNext()) { i.next();
+		qans = i.value();
 		out.append(QString("\n%1").arg(i.key()));
 		out.append(QString("\n%1").arg(qans.answered()));
 		out.append(QString("\n%1").arg(qans.correctAnswer()));
 	}
 	return out;
+}
+
+bool Student::wasAsked(QString qname)
+{
+	QMapIterator<QString, QuestionAnswer> i(*s_results);
+	while (i.hasNext()) { i.next();
+		if (i.key() == qname) { return true; }
+	}
+	return false;
+}
+
+uint Student::replaceOccurrences(QString old_qname, QString new_qname)
+{
+	QuestionAnswer qans = s_results->value(old_qname, QuestionAnswer());
+	uint n = s_results->remove(old_qname);
+	if (n > 0) { s_results->insert(new_qname, qans); }
+	return n;
 }

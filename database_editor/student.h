@@ -13,6 +13,7 @@ public:
     Student(QString);
     Student(int, QString);
     Student(Client *);
+    Student(Student *);
     virtual ~Student();
 
 public slots:
@@ -23,6 +24,7 @@ public slots:
     void setResults(QMap<QString, QuestionAnswer> *);
     QMap<QString, QuestionAnswer> * results();
     /*bool loadStudentData(QString);*/ QString studentData();
+    bool wasAsked(QString); uint replaceOccurrences(QString, QString);
 
 private:
     QString s_name;

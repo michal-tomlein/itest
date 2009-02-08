@@ -1,5 +1,5 @@
 #include "ui_main_window_v2.h"
-#include "session.h"
+#include "archived_session.h"
 
 #include <QFile>
 #include <QInputDialog>
@@ -14,7 +14,6 @@
 #include <QProgressBar>
 #include <QTimer>
 #include <QCloseEvent>
-#include <QSettings>
 #include <QMap>
 #include <QColorDialog>
 #include <QTcpServer>
@@ -28,6 +27,7 @@
 #include <QDesktopServices>
 #include <QHeaderView>
 #include <QTranslator>
+#include <QQueue>
 
 #include <QtAlgorithms>
 
@@ -47,11 +47,12 @@ private slots:
     void onInfoDisplayChange(bool); void setPage(QAction *);
     bool saveChangesBeforeProceeding(QString, bool);
     void setProgress(int); void setNullProgress();
-    void searchListWidgetItems(QString, QListWidget *, QLineEdit *);
+    uint searchListWidgetItems(QString, QListWidget *, QLineEdit *);
     void checkForUpdates(); void httpRequestFinished(bool);
     void openDocumentation();
     void statsWidgetClosed();
     void changeLanguage(); void langChanged();
+    void hideArchive();
     // ENABLE
     void enableAll(); void enableSQ();
     void enableLQTools(); void enableEQTools();
@@ -65,7 +66,8 @@ private slots:
     void newDB(); void closeDB();
     void openDB(QString); void open();
     void openRecent(); void openRecent(QListWidgetItem *);
-    void saveDB(QString); void save(); void saveAs();
+    void saveDB(QString, bool = false, bool = false);
+    void save(); void saveAs(); void saveCopy(); void saveBackup();
     void setDatabaseModified();
     void overallStatistics(); void statsAdjustAll();
     void statsAdjust(QAbstractButton *);
@@ -91,6 +93,7 @@ private slots:
     void filterLQ(QAbstractButton *); void filterLQFlagChanged();
     void filterLQAction(QAction *); void filterLQSearch();
     void updateTestQnum();
+    uint numOccurrences(QString); uint replaceAllOccurrences(QString, QString);
     // SERVER-RELATED
     void setupServer(); void reloadAvailableItems(); void setMaximumQuestions();
     void searchAvailableItems(const QString &); void updateTestTime();
@@ -118,10 +121,12 @@ private slots:
     bool printSessionSummary(Session *, QPrinter *);
     // SESSIONVIEWER-RELATED
     void setupSessionViewer(); void setCurrentSession(QListWidgetItem *);
-    void setCurrentStudent(); void clearVSSSC();
+    void setCurrentStudent(); void selectSessionItem(QListWidgetItem *);
     void loadStudentResults(QMap<QString, QuestionAnswer> *, QTableWidget *);
-    void deleteLog(); void deleteSession();
-    void searchVSSLS(const QString &);
+    void deleteLog(); void archiveSession(); void restoreSession();
+    void copyToArchive(); void copyFromArchive();
+    void searchVSSLS(const QString &); void clearVSSSC();
+    void openArchive();
     // ERROR MESSAGES
     void errorInvalidDBFile(QString, QString);
     void errorInvalidTempFileFormat(QString, QString);
@@ -145,9 +150,11 @@ private:
     QString current_db_question;
     QMap<QListWidgetItem *, QuestionItem *> current_db_questions;
     QMap<QDateTime, Session *> current_db_sessions;
+    QMap<QDateTime, ArchivedSession *> current_db_archivedsessions;
     QMap<QListWidgetItem *, Student *> current_db_students;
     QMap<int, int> current_db_flagentries;
     Session * current_db_session;
+    QQueue<ArchivedSession *> current_db_queued_sessions;
     // FLAGS
     bool current_db_fe[20]; QString current_db_f[20];
     // UI-RELATED
@@ -205,4 +212,6 @@ private:
 	QMap<QString, QString> itest_i18n;
 	// FRIENDS
 	friend class Client;
+	friend class Session;
+	friend class ArchivedSession;
 };

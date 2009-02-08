@@ -2,7 +2,7 @@
 
 void MainWindow::browse_i()
 {
-     DBPathLineEdit->setText(QFileDialog::getOpenFileName(this, tr("Open database file"), "", tr("iTest databases (*.itos);;All files (*.*)")));
+     DBPathLineEdit->setText(QFileDialog::getOpenFileName(this, tr("Open database file"), "", tr("iTest off-line test sessions (*.itos);;All files (*.*)")));
 }
 
 void MainWindow::browse_o()
@@ -214,7 +214,13 @@ void MainWindow::randomlySelectQuestions()
             rand = (qrand() + client_number) % current_db_questions.size();
         } while (randlist.contains(rand));
         randlist << rand;
-        QListWidgetItem * q_item = new QListWidgetItem (current_db_questions.at(rand)->name());
+        QListWidgetItem * q_item = new QListWidgetItem;
+        if (hideQuestionNamesCheckBox->isChecked()) {
+            q_item->setText(QString("%1").arg(LQListWidget->count() + 1));
+        } else {
+            q_item->setText(current_db_questions.at(rand)->name());
+        }
+        q_item->setData(Qt::UserRole, current_db_questions.at(rand)->name());
         LQListWidget->addItem(q_item);
         current_test_questions.insert(q_item, current_db_questions.at(rand));
         if ((current_db_questions.at(rand)->flag() >= 0) && (current_db_questions.at(rand)->flag() < 20)) {

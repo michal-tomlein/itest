@@ -219,11 +219,11 @@ bool MainWindow::printStudentResults(Student * student, QPrinter * printer, QStr
 	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=windows-1250\"><title>" << endl;
 	out << header << endl << "</title><style type=\"text/css\">" << endl;
 	out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
-	out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
-	out << ".correct_qname { font-family: sans-serif; font-size: small; font-weight: bold; color: rgb(69, 110, 14); }" << endl;
-	out << ".incorrect_qname { font-family: sans-serif; font-size: small; font-weight: bold; color: rgb(204, 109, 0); }" << endl;
-	out << ".question { font-family: sans-serif; font-size: small; color: black; }" << endl;
-	out << ".answer { font-family: sans-serif; font-size: small; font-style: italic; color: black; }" << endl;
+	out << ".default_text { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
+	out << ".correct_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(69, 110, 14); }" << endl;
+	out << ".incorrect_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(204, 109, 0); }" << endl;
+	out << ".question { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
+	out << ".answer { font-family: sans-serif; font-size: 7pt; font-style: italic; color: black; }" << endl;
 	out << ".answered { text-decoration: underline; }" << endl;
 	out << ".correct { font-weight: bold; }" << endl;
 	out << "</style></head><body>" << endl;

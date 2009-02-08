@@ -7,7 +7,8 @@ HEADERS      += main_window.h \
                 question_item.h \
                 client.h \
                 student.h \
-                session.h
+                session.h \
+                archived_session.h
 RESOURCES    += resources.qrc \
                 i18n.qrc
 SOURCES      += main.cpp \
@@ -24,7 +25,8 @@ SOURCES      += main.cpp \
                 print_engine.cpp \
                 session_viewer.cpp \
                 student.cpp \
-                session.cpp
+                session.cpp \
+                archived_session.cpp
 QT           += network
 win32 {
 RC_FILE       = itest.rc
@@ -49,4 +51,5 @@ MOC_DIR       = .moc.macx/
 RCC_DIR       = .rcc.macx/
 }
 DESTDIR       = ../
-TRANSLATIONS += i18n/Slovak.ts
+TRANSLATIONS += i18n/Slovak.ts \
+                i18n/Russian.ts

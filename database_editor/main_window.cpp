@@ -48,9 +48,13 @@ void MainWindow::clearCurrentValues()
     current_db_questions.clear();
     current_db_students.clear();
     QMapIterator<QDateTime, Session *> n(current_db_sessions);
-    while (n.hasNext()) { n.next(); delete n.value(); }
+    while (n.hasNext()) { n.next(); if (n.value()) delete n.value(); }
     current_db_sessions.clear();
+    QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
+    while (a.hasNext()) { a.next(); if (a.value()) delete a.value(); }
+    current_db_archivedsessions.clear();
     current_db_flagentries.clear();
+    current_db_queued_sessions.clear();
 }
 
 void MainWindow::clearSQ()
@@ -87,6 +91,8 @@ void MainWindow::enableAll()
 {
     actionSave->setEnabled(true);
     actionSave_as->setEnabled(true);
+	actionSave_a_copy->setEnabled(true);
+	actionSave_a_backup->setEnabled(true);
     actionClose->setEnabled(true);
     actionEdit_questions->setEnabled(true);
     actionEdit_test->setEnabled(true);
@@ -166,6 +172,8 @@ void MainWindow::disableAll()
 {
 	actionSave->setEnabled(false);
 	actionSave_as->setEnabled(false);
+	actionSave_a_copy->setEnabled(false);
+	actionSave_a_backup->setEnabled(false);
     actionClose->setEnabled(false);
     actionEdit_questions->setEnabled(false);
     actionEdit_test->setEnabled(false);
@@ -336,6 +344,8 @@ MainWindow::MainWindow()
     QObject::connect(btnOpenSelected, SIGNAL(released()), this, SLOT(openRecent()));
     QObject::connect(actionSave, SIGNAL(triggered()), this, SLOT(save()));
     QObject::connect(actionSave_as, SIGNAL(triggered()), this, SLOT(saveAs()));
+    QObject::connect(actionSave_a_copy, SIGNAL(triggered()), this, SLOT(saveCopy()));
+    QObject::connect(actionSave_a_backup, SIGNAL(triggered()), this, SLOT(saveBackup()));
     QObject::connect(actionClose, SIGNAL(triggered()), this, SLOT(closeDB()));
     QObject::connect(btnClose, SIGNAL(released()), this, SLOT(closeDB()));
     QObject::connect(actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
@@ -456,7 +466,7 @@ void MainWindow::loadSettings()
     if (!recent.isEmpty()) { recentDBsListWidget->addItems(recent); }
     this->move(settings.value("editor/pos", this->pos()).toPoint());
     this->resize(settings.value("editor/size", this->size()).toSize());
-    onInfoDisplayChange(settings.value("editor/showDBI", true).toBool());
+    onInfoDisplayChange(settings.value("editor/showDBI", false).toBool());
 }
 
 void MainWindow::saveSettings()
@@ -612,14 +622,14 @@ void MainWindow::openDocumentation()
     QDesktopServices ds; ds.openUrl(docs_url);
 }
 
-void MainWindow::searchListWidgetItems(QString keyword, QListWidget * lw, QLineEdit * le)
+uint MainWindow::searchListWidgetItems(QString keyword, QListWidget * lw, QLineEdit * le)
 {
 	if (keyword.isEmpty()) {
 		le->setPalette(qApp->palette());
 	} else {
 		le->setPalette(search_active_palette);
 	}
-	int n = 0;
+	uint n = 0;
 	for (int i = 0; i < lw->count(); ++i) {
 		if (lw->item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
 			lw->item(i)->setHidden(false); n++;
@@ -628,6 +638,7 @@ void MainWindow::searchListWidgetItems(QString keyword, QListWidget * lw, QLineE
 	if ((!keyword.isEmpty()) && lw->count() != 0 && n == 0) {
 		le->setPalette(search_noresults_palette);
 	}
+	return n;
 }
 
 void MainWindow::overallStatistics()
@@ -829,18 +840,26 @@ void MainWindow::changeLanguage()
 	lang_glayout->addWidget(lang_label, 0, 0);
 	rbtngrpLang = new QButtonGroup(lang_widget);
 	QRadioButton * lang_rbtn;
-	lang_rbtn = new QRadioButton(tr("English"), lang_widget);
+	// -------------------------------------------------------------------------
+    lang_rbtn = new QRadioButton(tr("English"), lang_widget);
 	lang_rbtn->setChecked(true);
 	rbtngrpLang->addButton(lang_rbtn);
 	lang_glayout->addWidget(lang_rbtn, 1, 0);
+	// -------------------------------------------------------------------------
 	lang_rbtn = new QRadioButton(tr("Slovak"), lang_widget);
 	lang_rbtn->setChecked(false);
 	rbtngrpLang->addButton(lang_rbtn);
 	lang_glayout->addWidget(lang_rbtn, 2, 0);
+	// -------------------------------------------------------------------------
+	lang_rbtn = new QRadioButton(tr("Russian"), lang_widget);
+	lang_rbtn->setChecked(false);
+	rbtngrpLang->addButton(lang_rbtn);
+	lang_glayout->addWidget(lang_rbtn, 3, 0);
+	// -------------------------------------------------------------------------
 	QDialogButtonBox * lang_buttonbox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	QObject::connect(lang_buttonbox, SIGNAL(accepted()), this, SLOT(langChanged()));
 	QObject::connect(lang_buttonbox, SIGNAL(rejected()), lang_widget, SLOT(close()));
-	lang_glayout->addWidget(lang_buttonbox, 3, 0);
+	lang_glayout->addWidget(lang_buttonbox, 4, 0);
 	lang_widget->show();
 }
 

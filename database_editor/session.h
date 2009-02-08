@@ -1,7 +1,6 @@
 #ifndef SESSION_H
 #define SESSION_H
 
-#include <QString>
 #include <QObject>
 #include <QList>
 #include <QDateTime>
@@ -25,12 +24,15 @@ private:
     QString le_text;
 };
 
+class ArchivedSession;
+
 class Session : public QObject
 {
     Q_OBJECT
 
 public:
     Session();
+    Session(ArchivedSession *);
     virtual ~Session();
 
 public slots:
@@ -43,7 +45,8 @@ public slots:
     uint numQuestions(); uint numCorrect();
     void setPassMark(int); int passMark();
     QString sessionData();
-    bool mostPassed();
+    bool mostPassed(); bool isArchived();
+    void destruct();
 
 private:
     QString s_name;
@@ -53,6 +56,9 @@ private:
     QList<LogEntry> s_log;
     QList<Student *> s_students;
     int s_passmark;
+    bool s_archived;
+
+    friend class ArchivedSession;
 };
 
 #endif // SESSION_H

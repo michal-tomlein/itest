@@ -172,8 +172,14 @@
            </item>
            <item row="1" column="0" >
             <widget class="QLabel" name="label_icon_text" >
+             <property name="font" >
+              <font>
+               <family>Sans Serif</family>
+               <pointsize>20</pointsize>
+              </font>
+             </property>
              <property name="text" >
-              <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Lucida Grande; font-size:13pt; font-weight:400; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:20pt;">iTest&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+              <string>iTest</string>
              </property>
              <property name="alignment" >
               <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -2007,9 +2013,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 1: </string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2019,9 +2022,6 @@
               <widget class="QLineEdit" name="Flag01LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 1</string>
                </property>
               </widget>
              </item>
@@ -2046,9 +2046,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 1</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2096,9 +2093,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 2: </string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2108,9 +2102,6 @@
               <widget class="QLineEdit" name="Flag02LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 2</string>
                </property>
               </widget>
              </item>
@@ -2135,9 +2126,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 2</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2185,9 +2173,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 3: </string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2197,9 +2182,6 @@
               <widget class="QLineEdit" name="Flag03LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 3</string>
                </property>
               </widget>
              </item>
@@ -2224,9 +2206,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 3</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2274,9 +2253,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 4: </string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2286,9 +2262,6 @@
               <widget class="QLineEdit" name="Flag04LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 4</string>
                </property>
               </widget>
              </item>
@@ -2313,9 +2286,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 4</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2363,9 +2333,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 5: </string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2375,9 +2342,6 @@
               <widget class="QLineEdit" name="Flag05LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 5</string>
                </property>
               </widget>
              </item>
@@ -2402,9 +2366,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 5</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2452,9 +2413,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 6: </string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2464,9 +2422,6 @@
               <widget class="QLineEdit" name="Flag06LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 6</string>
                </property>
               </widget>
              </item>
@@ -2491,9 +2446,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 6</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2541,9 +2493,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 7: </string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2553,9 +2502,6 @@
               <widget class="QLineEdit" name="Flag07LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 7</string>
                </property>
               </widget>
              </item>
@@ -2580,9 +2526,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 7</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2630,9 +2573,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 8: </string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2642,9 +2582,6 @@
               <widget class="QLineEdit" name="Flag08LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 8</string>
                </property>
               </widget>
              </item>
@@ -2669,9 +2606,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 8</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2719,9 +2653,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 9: </string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2731,9 +2662,6 @@
               <widget class="QLineEdit" name="Flag09LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 9</string>
                </property>
               </widget>
              </item>
@@ -2758,9 +2686,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 9</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2808,9 +2733,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 10:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -2820,9 +2742,6 @@
               <widget class="QLineEdit" name="Flag10LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 10</string>
                </property>
               </widget>
              </item>
@@ -2847,9 +2766,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 10</string>
                </property>
                <property name="text" >
                 <string/>
@@ -2989,9 +2905,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 11:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3001,9 +2914,6 @@
               <widget class="QLineEdit" name="Flag11LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 11</string>
                </property>
               </widget>
              </item>
@@ -3028,9 +2938,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 11</string>
                </property>
                <property name="text" >
                 <string/>
@@ -3078,9 +2985,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 12:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3090,9 +2994,6 @@
               <widget class="QLineEdit" name="Flag12LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 12</string>
                </property>
               </widget>
              </item>
@@ -3117,9 +3018,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 12</string>
                </property>
                <property name="text" >
                 <string/>
@@ -3167,9 +3065,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 13:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3179,9 +3074,6 @@
               <widget class="QLineEdit" name="Flag13LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 13</string>
                </property>
               </widget>
              </item>
@@ -3206,9 +3098,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 13</string>
                </property>
                <property name="text" >
                 <string/>
@@ -3256,9 +3145,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 14:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3268,9 +3154,6 @@
               <widget class="QLineEdit" name="Flag14LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 14</string>
                </property>
               </widget>
              </item>
@@ -3295,9 +3178,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 14</string>
                </property>
                <property name="text" >
                 <string/>
@@ -3345,9 +3225,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 15:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3357,9 +3234,6 @@
               <widget class="QLineEdit" name="Flag15LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 15</string>
                </property>
               </widget>
              </item>
@@ -3384,9 +3258,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 15</string>
                </property>
                <property name="text" >
                 <string/>
@@ -3434,9 +3305,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 16:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3446,9 +3314,6 @@
               <widget class="QLineEdit" name="Flag16LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 16</string>
                </property>
               </widget>
              </item>
@@ -3473,9 +3338,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 16</string>
                </property>
                <property name="text" >
                 <string/>
@@ -3523,9 +3385,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 17:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3535,9 +3394,6 @@
               <widget class="QLineEdit" name="Flag17LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 17</string>
                </property>
               </widget>
              </item>
@@ -3562,9 +3418,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 17</string>
                </property>
                <property name="text" >
                 <string/>
@@ -3612,9 +3465,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 18:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3624,9 +3474,6 @@
               <widget class="QLineEdit" name="Flag18LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 18</string>
                </property>
               </widget>
              </item>
@@ -3651,9 +3498,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 18</string>
                </property>
                <property name="text" >
                 <string/>
@@ -3701,9 +3545,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 19:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3713,9 +3554,6 @@
               <widget class="QLineEdit" name="Flag19LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 19</string>
                </property>
               </widget>
              </item>
@@ -3740,9 +3578,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 19</string>
                </property>
                <property name="text" >
                 <string/>
@@ -3790,9 +3625,6 @@
                  <height>0</height>
                 </size>
                </property>
-               <property name="text" >
-                <string>Flag 20:</string>
-               </property>
                <property name="alignment" >
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
@@ -3802,9 +3634,6 @@
               <widget class="QLineEdit" name="Flag20LineEdit" >
                <property name="enabled" >
                 <bool>false</bool>
-               </property>
-               <property name="statusTip" >
-                <string>Type a name for flag 20</string>
                </property>
               </widget>
              </item>
@@ -3829,9 +3658,6 @@
                  <width>16</width>
                  <height>16</height>
                 </size>
-               </property>
-               <property name="statusTip" >
-                <string>Check or uncheck this checkbox to enable or disable flag 20</string>
                </property>
                <property name="text" >
                 <string/>
@@ -4714,7 +4540,7 @@
              <rect>
               <x>0</x>
               <y>10</y>
-              <width>601</width>
+              <width>605</width>
               <height>70</height>
              </rect>
             </property>
@@ -4965,7 +4791,7 @@
                  </property>
                  <property name="maximumSize" >
                   <size>
-                   <width>80</width>
+                   <width>120</width>
                    <height>16777215</height>
                   </size>
                  </property>
@@ -5241,7 +5067,7 @@
           </size>
          </property>
          <property name="title" >
-          <string>Saved sessions</string>
+          <string>List of sessions</string>
          </property>
          <widget class="QWidget" name="VSSLSGridLayout" >
           <property name="geometry" >
@@ -5259,13 +5085,6 @@
            <property name="spacing" >
             <number>6</number>
            </property>
-           <item row="1" column="0" >
-            <widget class="QListWidget" name="VSSLSListWidget" >
-             <property name="statusTip" >
-              <string>Double click a session to view</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="0" >
             <layout class="QHBoxLayout" >
              <property name="margin" >
@@ -5290,6 +5109,27 @@
              </item>
             </layout>
            </item>
+           <item row="3" column="0" >
+            <widget class="QListWidget" name="VSSLASListWidget" >
+             <property name="statusTip" >
+              <string>Double click a session to view</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" >
+            <widget class="QListWidget" name="VSSLSListWidget" >
+             <property name="statusTip" >
+              <string>Double click a session to view</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" >
+            <widget class="QLabel" name="label_archived_sessions" >
+             <property name="text" >
+              <string>&lt;b>Archived sessions:&lt;/b></string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </widget>
@@ -5308,6 +5148,45 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuHelp" >
+    <property name="title" >
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionCheck_for_updates" />
+    <addaction name="separator" />
+    <addaction name="actionDocumentation" />
+    <addaction name="actionAbout" />
+   </widget>
+   <widget class="QMenu" name="menuSession" >
+    <property name="title" >
+     <string>Sessio&amp;n</string>
+    </property>
+    <addaction name="actionPrint" />
+    <addaction name="actionPrint_session_summary" />
+    <addaction name="actionPrint_all" />
+    <addaction name="separator" />
+    <addaction name="actionExport_log" />
+    <addaction name="actionDelete_log" />
+    <addaction name="separator" />
+    <addaction name="actionArchive_session" />
+    <addaction name="actionCopy_to_archive" />
+    <addaction name="actionRestore_session" />
+    <addaction name="actionCopy_from_archive" />
+   </widget>
+   <widget class="QMenu" name="menuView" >
+    <property name="title" >
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionEdit_questions" />
+    <addaction name="actionEdit_comments" />
+    <addaction name="actionEdit_flags" />
+    <addaction name="actionEdit_test" />
+    <addaction name="actionSaved_sessions" />
+    <addaction name="separator" />
+    <addaction name="actionShow_DBI" />
+    <addaction name="separator" />
+    <addaction name="actionChange_language" />
+   </widget>
    <widget class="QMenu" name="menuQuestion" >
     <property name="title" >
      <string>&amp;Question</string>
@@ -5347,61 +5226,6 @@
     <addaction name="actionApply" />
     <addaction name="actionDiscard" />
    </widget>
-   <widget class="QMenu" name="menuDatabase" >
-    <property name="title" >
-     <string>&amp;Database</string>
-    </property>
-    <addaction name="actionOverall_statistics" />
-    <addaction name="separator" />
-    <addaction name="actionUse_last_save_date" />
-   </widget>
-   <widget class="QMenu" name="menuView" >
-    <property name="title" >
-     <string>&amp;View</string>
-    </property>
-    <addaction name="actionEdit_questions" />
-    <addaction name="actionEdit_comments" />
-    <addaction name="actionEdit_flags" />
-    <addaction name="actionEdit_test" />
-    <addaction name="actionSaved_sessions" />
-    <addaction name="separator" />
-    <addaction name="actionShow_DBI" />
-    <addaction name="separator" />
-    <addaction name="actionChange_language" />
-   </widget>
-   <widget class="QMenu" name="menuFile" >
-    <property name="title" >
-     <string>&amp;File</string>
-    </property>
-    <addaction name="actionNew" />
-    <addaction name="actionOpen" />
-    <addaction name="actionSave" />
-    <addaction name="actionSave_as" />
-    <addaction name="separator" />
-    <addaction name="actionClose" />
-    <addaction name="actionQuit" />
-   </widget>
-   <widget class="QMenu" name="menuHelp" >
-    <property name="title" >
-     <string>&amp;Help</string>
-    </property>
-    <addaction name="actionCheck_for_updates" />
-    <addaction name="separator" />
-    <addaction name="actionDocumentation" />
-    <addaction name="actionAbout" />
-   </widget>
-   <widget class="QMenu" name="menuSession" >
-    <property name="title" >
-     <string>Sessio&amp;n</string>
-    </property>
-    <addaction name="actionPrint" />
-    <addaction name="actionPrint_session_summary" />
-    <addaction name="actionPrint_all" />
-    <addaction name="separator" />
-    <addaction name="actionExport_log" />
-    <addaction name="actionDelete_log" />
-    <addaction name="actionDelete_session" />
-   </widget>
    <widget class="QMenu" name="menuServer" >
     <property name="title" >
      <string>&amp;Server</string>
@@ -5418,6 +5242,28 @@
     <addaction name="actionPrint" />
     <addaction name="separator" />
     <addaction name="actionSave_session" />
+   </widget>
+   <widget class="QMenu" name="menuDatabase" >
+    <property name="title" >
+     <string>&amp;Database</string>
+    </property>
+    <addaction name="actionOverall_statistics" />
+    <addaction name="separator" />
+    <addaction name="actionUse_last_save_date" />
+   </widget>
+   <widget class="QMenu" name="menuFile" >
+    <property name="title" >
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionNew" />
+    <addaction name="actionOpen" />
+    <addaction name="actionSave" />
+    <addaction name="actionSave_as" />
+    <addaction name="actionSave_a_copy" />
+    <addaction name="actionSave_a_backup" />
+    <addaction name="separator" />
+    <addaction name="actionClose" />
+    <addaction name="actionQuit" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuView" />
@@ -6222,21 +6068,24 @@
     <string>Delete the log for the selected session</string>
    </property>
   </action>
-  <action name="actionDelete_session" >
+  <action name="actionArchive_session" >
    <property name="icon" >
-    <iconset resource="resources.qrc" >:/images/images/button_cancel.png</iconset>
+    <iconset resource="resources.qrc" >:/images/images/archive.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Delete session</string>
+    <string>&amp;Archive session</string>
+   </property>
+   <property name="iconText" >
+    <string>Archive session</string>
    </property>
    <property name="toolTip" >
-    <string>Delete the selected session</string>
+    <string>Archive the selected session</string>
    </property>
    <property name="statusTip" >
-    <string>Delete the selected session</string>
+    <string>Archive the selected session</string>
    </property>
    <property name="whatsThis" >
-    <string>Delete the selected session</string>
+    <string>Archive the selected session</string>
    </property>
   </action>
   <action name="actionDocumentation" >
@@ -6275,7 +6124,7 @@
   </action>
   <action name="actionPrint_all" >
    <property name="icon" >
-    <iconset resource="resources.qrc" >:/images/images/fileprint.png</iconset>
+    <iconset resource="resources.qrc" >:/images/images/print_folder.png</iconset>
    </property>
    <property name="text" >
     <string>Print &amp;all</string>
@@ -6339,6 +6188,91 @@
    </property>
    <property name="whatsThis" >
     <string>Change the language of the iTest interface</string>
+   </property>
+  </action>
+  <action name="actionRestore_session" >
+   <property name="icon" >
+    <iconset resource="resources.qrc" >:/images/images/restore.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Restore session</string>
+   </property>
+   <property name="toolTip" >
+    <string>Restore the selected session from the archive</string>
+   </property>
+   <property name="statusTip" >
+    <string>Restore the selected session from the archive</string>
+   </property>
+   <property name="whatsThis" >
+    <string>Restore the selected session from the archive</string>
+   </property>
+  </action>
+  <action name="actionCopy_to_archive" >
+   <property name="icon" >
+    <iconset resource="resources.qrc" >:/images/images/copy_to_archive.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Copy to archive</string>
+   </property>
+   <property name="toolTip" >
+    <string>Copy the selected session to the archive</string>
+   </property>
+   <property name="statusTip" >
+    <string>Copy the selected session to the archive</string>
+   </property>
+   <property name="whatsThis" >
+    <string>Copy the selected session to the archive</string>
+   </property>
+  </action>
+  <action name="actionCopy_from_archive" >
+   <property name="icon" >
+    <iconset resource="resources.qrc" >:/images/images/copy_from_archive.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Copy from archive</string>
+   </property>
+   <property name="toolTip" >
+    <string>Copy the selected session from the archive</string>
+   </property>
+   <property name="statusTip" >
+    <string>Copy the selected session from the archive</string>
+   </property>
+   <property name="whatsThis" >
+    <string>Copy the selected session from the archive</string>
+   </property>
+  </action>
+  <action name="actionSave_a_copy" >
+   <property name="icon" >
+    <iconset resource="resources.qrc" >:/images/images/save_all.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Save a copy</string>
+   </property>
+   <property name="toolTip" >
+    <string>Save a copy of the database</string>
+   </property>
+   <property name="statusTip" >
+    <string>Save a copy of the database</string>
+   </property>
+   <property name="whatsThis" >
+    <string>Save a copy of the database</string>
+   </property>
+  </action>
+  <action name="actionSave_a_backup" >
+   <property name="icon" >
+    <iconset resource="resources.qrc" >:/images/images/savebackup.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Save a backup</string>
+   </property>
+   <property name="toolTip" >
+    <string>Save a backup copy of the database with all the archived sessions</string>
+   </property>
+   <property name="statusTip" >
+    <string>Save a backup copy of the database with all the archived sessions</string>
+   </property>
+   <property name="whatsThis" >
+    <string>Save a backup copy of the database with all the archived sessions</string>
    </property>
   </action>
  </widget>

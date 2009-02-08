@@ -32,9 +32,21 @@ void MainWindow::setupFlagsPage()
     EFFlagQnumLabel[14] = FlagQnumLabel_14; EFFlagQnumLabel[15] = FlagQnumLabel_15;
     EFFlagQnumLabel[16] = FlagQnumLabel_16; EFFlagQnumLabel[17] = FlagQnumLabel_17;
     EFFlagQnumLabel[18] = FlagQnumLabel_18; EFFlagQnumLabel[19] = FlagQnumLabel_19;
+    QLabel * fl[20];
+    fl[0] = FlagLabel_1; fl[1] = FlagLabel_2; fl[2] = FlagLabel_3;
+    fl[3] = FlagLabel_4; fl[4] = FlagLabel_5; fl[5] = FlagLabel_6;
+    fl[6] = FlagLabel_7; fl[7] = FlagLabel_8; fl[8] = FlagLabel_9;
+    fl[9] = FlagLabel_10; fl[10] = FlagLabel_11; fl[11] = FlagLabel_12;
+    fl[12] = FlagLabel_13; fl[13] = FlagLabel_14; fl[14] = FlagLabel_15;
+    fl[15] = FlagLabel_16; fl[16] = FlagLabel_17; fl[17] = FlagLabel_18;
+    fl[18] = FlagLabel_19; fl[19] = FlagLabel_20;
     
-    for (int i = 0; i < 20; ++i)
-    {QObject::connect(EFFlagCheckBox[i], SIGNAL(toggled(bool)), EFFlagLineEdit[i], SLOT(setEnabled(bool)));}
+    for (int i = 0; i < 20; ++i) {
+        EFFlagLineEdit[i]->setStatusTip(tr("Type a name for flag %1").arg(i + 1));
+        EFFlagCheckBox[i]->setStatusTip(tr("Check or uncheck this checkbox to enable or disable flag %1").arg(i + 1));
+        fl[i]->setText(tr("Flag %1:").arg(i + 1));
+        QObject::connect(EFFlagCheckBox[i], SIGNAL(toggled(bool)), EFFlagLineEdit[i], SLOT(setEnabled(bool)));
+    }
     QObject::connect(EFButtonBox, SIGNAL(clicked(QAbstractButton *)), this, SLOT(updateFlags(QAbstractButton *)));
 }
 
