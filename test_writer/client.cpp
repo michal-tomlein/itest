@@ -110,7 +110,7 @@ void MainWindow::sendResults()
 		return;
 	}
 	QTextStream sfile(&file);
-	sfile.setCodec("CP 1250");
+	sfile.setCodec("UTF-8");
 	sfile << "[TEST_NAME]\n" << current_db_name << endl;
 	sfile << "[TEST_TIMESTAMP]\n" << current_test_date << endl;
 	sfile << "[TIME_FINISHED]\n" << current_test_time_finished << endl;

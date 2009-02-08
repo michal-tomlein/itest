@@ -35,7 +35,7 @@
     <message>
         <location filename="../about_widget.cpp" line="20"/>
         <source>The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
-        <translation>перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Констанин Макшин&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется &quot;как есть&quot; без каких-либо гарантий.</translation>
+        <translation>перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Константин Макшин&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется &quot;как есть&quot; без каких-либо гарантий.</translation>
     </message>
     <message>
         <location filename="../about_widget.cpp" line="26"/>

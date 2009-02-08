@@ -37,6 +37,7 @@ void MainWindow::loadTest(QString input)
      { QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features.")); }
      if ((version > f_ver) && (db_version > f_db_ver))
      { QMessageBox::critical(this, tr("iTest version notice"), tr("You need a newer version of iTest to open this database file.")); return; }
+     if (version == 1.0) { errorInvalidData(); return; }
      
      db_buffer = in.readLine(); if (db_buffer != "[DB_NAME]") { errorInvalidData(); return; }
      // Database name
@@ -184,7 +185,7 @@ void MainWindow::loadFile(QString file_name)
         return;
     }
     QTextStream rfile(&file);
-    rfile.setCodec("CP 1250");
+    rfile.setCodec("UTF-8");
     
     progress.setValue(1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     qApp->processEvents();

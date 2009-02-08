@@ -1,8 +1,8 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.1.0                                                        *
- * Qt version:   4.2.2                                                        *
+ * Version:      1.1.1                                                        *
+ * Qt version:   4.3.0                                                        *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Database Editor and a Test       *
  * Writer designed for easy computerised examination.                         *
@@ -23,7 +23,12 @@ int main(int argc, char *argv[])
 	QApplication app(argc, argv);
 
 	QSettings settings("Michal Tomlein", "iTest");
-	QString lang = settings.value("lang", "English").toString();
+	QString lang = settings.value("lang").toString();
+	if (lang.isEmpty()) {
+		lang = QLocale::languageToString(QLocale::system().language());
+		settings.setValue("lang", lang);
+	}
+	if (lang == "C") { lang = "English"; settings.setValue("lang", lang); }
 	if (lang != "English") {
 		QTranslator * translator = new QTranslator;
 		translator->load(QString(":/i18n/%1.qm").arg(lang));
@@ -36,6 +41,19 @@ int main(int argc, char *argv[])
 }
 
 // ---------------------------- version changelog: -----------------------------
+/* version 1.1.1 - a bug-fix release with some new features
+                 - added Turkish translation
+                 - if available, translation to the system language loaded by
+                   default
+                 - NEW ENCODING: UTF-8 - adds support for more languages and
+                   special characters
+                   - iTest 1.1.1 can still open old CP 1250 databases from older
+                     versions of iTest
+                   - older versions of iTest cannot open the new UTF-8 databases
+                     from iTest 1.1.1
+                 - upgraded from Qt 4.2.2 to Qt 4.3.0
+                 - printing: support for the & sign
+*/
 /* version 1.1.0 - a major update
                  - added Russian translation
                  - removed the ability to delete a session

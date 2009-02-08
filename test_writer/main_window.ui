@@ -27,9 +27,7 @@
      </rect>
     </property>
     <property name="sizePolicy" >
-     <sizepolicy>
-      <hsizetype>4</hsizetype>
-      <vsizetype>4</vsizetype>
+     <sizepolicy vsizetype="Maximum" hsizetype="Maximum" >
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
@@ -48,19 +46,40 @@
        </rect>
       </property>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>0</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
+        <number>0</number>
+       </property>
+       <property name="rightMargin" >
+        <number>0</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>0</number>
+       </property>
+       <property name="horizontalSpacing" >
+        <number>6</number>
+       </property>
+       <property name="verticalSpacing" >
         <number>6</number>
        </property>
        <item row="0" column="0" >
         <layout class="QVBoxLayout" >
-         <property name="margin" >
-          <number>10</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>10</number>
+         </property>
+         <property name="topMargin" >
+          <number>10</number>
+         </property>
+         <property name="rightMargin" >
+          <number>10</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>10</number>
          </property>
          <item>
           <widget class="QRadioButton" name="rbtnNetwork" >
@@ -74,11 +93,20 @@
          </item>
          <item>
           <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
            <property name="spacing" >
             <number>6</number>
+           </property>
+           <property name="leftMargin" >
+            <number>0</number>
+           </property>
+           <property name="topMargin" >
+            <number>0</number>
+           </property>
+           <property name="rightMargin" >
+            <number>0</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>0</number>
            </property>
            <item>
             <widget class="QLabel" name="label_7" >
@@ -182,11 +210,20 @@
          </item>
          <item>
           <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
            <property name="spacing" >
             <number>6</number>
+           </property>
+           <property name="leftMargin" >
+            <number>0</number>
+           </property>
+           <property name="topMargin" >
+            <number>0</number>
+           </property>
+           <property name="rightMargin" >
+            <number>0</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>0</number>
            </property>
            <item>
             <widget class="QLineEdit" name="DBPathLineEdit" >
@@ -289,11 +326,20 @@
          </item>
          <item>
           <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
            <property name="spacing" >
             <number>6</number>
+           </property>
+           <property name="leftMargin" >
+            <number>0</number>
+           </property>
+           <property name="topMargin" >
+            <number>0</number>
+           </property>
+           <property name="rightMargin" >
+            <number>0</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>0</number>
            </property>
            <item>
             <widget class="QLineEdit" name="savePathLineEdit" >
@@ -434,11 +480,20 @@
          </item>
          <item>
           <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
            <property name="spacing" >
             <number>6</number>
+           </property>
+           <property name="leftMargin" >
+            <number>0</number>
+           </property>
+           <property name="topMargin" >
+            <number>0</number>
+           </property>
+           <property name="rightMargin" >
+            <number>0</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>0</number>
            </property>
            <item>
             <widget class="QToolButton" name="tbtnQuit" >
@@ -531,10 +586,22 @@
        </rect>
       </property>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>0</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
+        <number>0</number>
+       </property>
+       <property name="rightMargin" >
+        <number>0</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>0</number>
+       </property>
+       <property name="horizontalSpacing" >
+        <number>6</number>
+       </property>
+       <property name="verticalSpacing" >
         <number>6</number>
        </property>
        <item row="0" column="2" >
@@ -671,19 +738,37 @@
            </rect>
           </property>
           <layout class="QVBoxLayout" >
-           <property name="margin" >
-            <number>10</number>
-           </property>
            <property name="spacing" >
             <number>6</number>
            </property>
+           <property name="leftMargin" >
+            <number>10</number>
+           </property>
+           <property name="topMargin" >
+            <number>10</number>
+           </property>
+           <property name="rightMargin" >
+            <number>10</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>10</number>
+           </property>
            <item>
             <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
              <property name="spacing" >
               <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
              </property>
              <item>
               <spacer>
@@ -735,11 +820,20 @@
            </item>
            <item>
             <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
              <property name="spacing" >
               <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
              </property>
              <item>
               <spacer>
@@ -778,11 +872,20 @@
            </item>
            <item>
             <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
              <property name="spacing" >
               <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
              </property>
              <item>
               <spacer>
@@ -824,11 +927,20 @@
            </item>
            <item>
             <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
              <property name="spacing" >
               <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
              </property>
              <item>
               <spacer>
@@ -880,11 +992,20 @@
            </item>
            <item>
             <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
              <property name="spacing" >
               <number>6</number>
+             </property>
+             <property name="leftMargin" >
+              <number>0</number>
+             </property>
+             <property name="topMargin" >
+              <number>0</number>
+             </property>
+             <property name="rightMargin" >
+              <number>0</number>
+             </property>
+             <property name="bottomMargin" >
+              <number>0</number>
              </property>
              <item>
               <spacer>
@@ -950,208 +1071,52 @@
      <widget class="QWidget" name="testGridLayout" >
       <property name="geometry" >
        <rect>
-        <x>0</x>
-        <y>10</y>
-        <width>884</width>
-        <height>509</height>
+        <x>21</x>
+        <y>20</y>
+        <width>941</width>
+        <height>561</height>
        </rect>
       </property>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>10</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
+        <number>10</number>
+       </property>
+       <property name="rightMargin" >
+        <number>10</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>10</number>
+       </property>
+       <property name="horizontalSpacing" >
         <number>6</number>
        </property>
-       <item row="2" column="1" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QRadioButton" name="rbtnAnswerB" >
-           <property name="text" >
-            <string>b)</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QTextBrowser" name="answerB_textBrowser" >
-           <property name="maximumSize" >
-            <size>
-             <width>16777215</width>
-             <height>59</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="5" column="1" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QCheckBox" name="showRemainingTimeCheckBox" >
-           <property name="text" >
-            <string>Show remaining time</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLCDNumber" name="remainingTimeLcdNumber" >
-           <property name="frameShape" >
-            <enum>QFrame::NoFrame</enum>
-           </property>
-           <property name="segmentStyle" >
-            <enum>QLCDNumber::Flat</enum>
-           </property>
-           <property name="intValue" stdset="0" >
-            <number>60</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_minutes" >
-           <property name="text" >
-            <string>minute(s)</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QProgressBar" name="remainingTimeProgressBar" >
-           <property name="minimumSize" >
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="value" >
-            <number>100</number>
-           </property>
-           <property name="textVisible" >
-            <bool>false</bool>
-           </property>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>421</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnLast" >
-           <property name="maximumSize" >
-            <size>
-             <width>16777215</width>
-             <height>23</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Last question</string>
-           </property>
-           <property name="icon" >
-            <iconset resource="resources.qrc" >:/images/images/back.png</iconset>
-           </property>
-           <property name="iconSize" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnNext" >
-           <property name="maximumSize" >
-            <size>
-             <width>16777215</width>
-             <height>23</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Next question</string>
-           </property>
-           <property name="icon" >
-            <iconset resource="resources.qrc" >:/images/images/forward.png</iconset>
-           </property>
-           <property name="iconSize" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnFinish" >
-           <property name="maximumSize" >
-            <size>
-             <width>16777215</width>
-             <height>23</height>
-            </size>
-           </property>
-           <property name="text" >
-            <string>Finish</string>
-           </property>
-           <property name="icon" >
-            <iconset resource="resources.qrc" >:/images/images/button_ok.png</iconset>
-           </property>
-           <property name="iconSize" >
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item rowspan="6" row="0" column="0" >
+       <property name="verticalSpacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
         <layout class="QVBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>0</number>
+         </property>
+         <property name="topMargin" >
+          <number>0</number>
+         </property>
+         <property name="rightMargin" >
+          <number>0</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QListWidget" name="LQListWidget" >
            <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>0</hsizetype>
-             <vsizetype>7</vsizetype>
+            <sizepolicy vsizetype="Expanding" hsizetype="Fixed" >
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -1166,6 +1131,12 @@
          </item>
          <item>
           <widget class="QProgressBar" name="progressBar" >
+           <property name="sizePolicy" >
+            <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="maximumSize" >
             <size>
              <width>111</width>
@@ -1185,87 +1156,307 @@
          </item>
         </layout>
        </item>
-       <item row="3" column="1" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QRadioButton" name="rbtnAnswerC" >
-           <property name="text" >
-            <string>c)</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QTextBrowser" name="answerC_textBrowser" >
-           <property name="maximumSize" >
-            <size>
-             <width>16777215</width>
-             <height>59</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
        <item row="0" column="1" >
-        <widget class="QTextBrowser" name="questionTextBrowser" />
-       </item>
-       <item row="1" column="1" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
+        <layout class="QVBoxLayout" >
          <item>
-          <widget class="QRadioButton" name="rbtnAnswerA" >
-           <property name="text" >
-            <string>a)</string>
-           </property>
-          </widget>
+          <widget class="QTextBrowser" name="questionTextBrowser" />
          </item>
          <item>
-          <widget class="QTextBrowser" name="answerA_textBrowser" >
-           <property name="maximumSize" >
-            <size>
-             <width>16777215</width>
-             <height>59</height>
-            </size>
+          <layout class="QHBoxLayout" >
+           <property name="spacing" >
+            <number>6</number>
            </property>
-          </widget>
+           <property name="leftMargin" >
+            <number>0</number>
+           </property>
+           <property name="topMargin" >
+            <number>0</number>
+           </property>
+           <property name="rightMargin" >
+            <number>0</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QRadioButton" name="rbtnAnswerA" >
+             <property name="text" >
+              <string>a)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextBrowser" name="answerA_textBrowser" >
+             <property name="sizePolicy" >
+              <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize" >
+              <size>
+               <width>16777215</width>
+               <height>59</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
-        </layout>
-       </item>
-       <item row="4" column="1" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
          <item>
-          <widget class="QRadioButton" name="rbtnAnswerD" >
-           <property name="text" >
-            <string>d)</string>
+          <layout class="QHBoxLayout" >
+           <property name="spacing" >
+            <number>6</number>
            </property>
-          </widget>
+           <property name="leftMargin" >
+            <number>0</number>
+           </property>
+           <property name="topMargin" >
+            <number>0</number>
+           </property>
+           <property name="rightMargin" >
+            <number>0</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QRadioButton" name="rbtnAnswerB" >
+             <property name="text" >
+              <string>b)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextBrowser" name="answerB_textBrowser" >
+             <property name="sizePolicy" >
+              <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize" >
+              <size>
+               <width>16777215</width>
+               <height>59</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
-          <widget class="QTextBrowser" name="answerD_textBrowser" >
-           <property name="maximumSize" >
-            <size>
-             <width>16777215</width>
-             <height>59</height>
-            </size>
+          <layout class="QHBoxLayout" >
+           <property name="spacing" >
+            <number>6</number>
            </property>
-          </widget>
+           <property name="leftMargin" >
+            <number>0</number>
+           </property>
+           <property name="topMargin" >
+            <number>0</number>
+           </property>
+           <property name="rightMargin" >
+            <number>0</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QRadioButton" name="rbtnAnswerC" >
+             <property name="text" >
+              <string>c)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextBrowser" name="answerC_textBrowser" >
+             <property name="sizePolicy" >
+              <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize" >
+              <size>
+               <width>16777215</width>
+               <height>59</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" >
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <property name="leftMargin" >
+            <number>0</number>
+           </property>
+           <property name="topMargin" >
+            <number>0</number>
+           </property>
+           <property name="rightMargin" >
+            <number>0</number>
+           </property>
+           <property name="bottomMargin" >
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QRadioButton" name="rbtnAnswerD" >
+             <property name="text" >
+              <string>d)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextBrowser" name="answerD_textBrowser" >
+             <property name="sizePolicy" >
+              <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize" >
+              <size>
+               <width>16777215</width>
+               <height>59</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" >
+           <item>
+            <widget class="QCheckBox" name="showRemainingTimeCheckBox" >
+             <property name="text" >
+              <string>Show remaining time</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLCDNumber" name="remainingTimeLcdNumber" >
+             <property name="frameShape" >
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="segmentStyle" >
+              <enum>QLCDNumber::Flat</enum>
+             </property>
+             <property name="intValue" stdset="0" >
+              <number>60</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_minutes" >
+             <property name="text" >
+              <string>minute(s)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QProgressBar" name="remainingTimeProgressBar" >
+             <property name="minimumSize" >
+              <size>
+               <width>200</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="value" >
+              <number>100</number>
+             </property>
+             <property name="textVisible" >
+              <bool>false</bool>
+             </property>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLast" >
+             <property name="maximumSize" >
+              <size>
+               <width>16777215</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="text" >
+              <string>Last question</string>
+             </property>
+             <property name="icon" >
+              <iconset resource="resources.qrc" >:/images/images/back.png</iconset>
+             </property>
+             <property name="iconSize" >
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnNext" >
+             <property name="maximumSize" >
+              <size>
+               <width>16777215</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="text" >
+              <string>Next question</string>
+             </property>
+             <property name="icon" >
+              <iconset resource="resources.qrc" >:/images/images/forward.png</iconset>
+             </property>
+             <property name="iconSize" >
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnFinish" >
+             <property name="maximumSize" >
+              <size>
+               <width>16777215</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="text" >
+              <string>Finish</string>
+             </property>
+             <property name="icon" >
+              <iconset resource="resources.qrc" >:/images/images/button_ok.png</iconset>
+             </property>
+             <property name="iconSize" >
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -1283,19 +1474,40 @@
        </rect>
       </property>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>10</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
+        <number>10</number>
+       </property>
+       <property name="rightMargin" >
+        <number>10</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>10</number>
+       </property>
+       <property name="horizontalSpacing" >
+        <number>6</number>
+       </property>
+       <property name="verticalSpacing" >
         <number>6</number>
        </property>
        <item row="4" column="0" >
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>0</number>
+         </property>
+         <property name="topMargin" >
+          <number>0</number>
+         </property>
+         <property name="rightMargin" >
+          <number>0</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>0</number>
          </property>
          <item>
           <spacer>
@@ -1361,11 +1573,20 @@
        </item>
        <item row="1" column="0" >
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>0</number>
+         </property>
+         <property name="topMargin" >
+          <number>0</number>
+         </property>
+         <property name="rightMargin" >
+          <number>0</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label_11" >
@@ -1381,11 +1602,20 @@
        </item>
        <item row="0" column="0" >
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="leftMargin" >
+          <number>0</number>
+         </property>
+         <property name="topMargin" >
+          <number>0</number>
+         </property>
+         <property name="rightMargin" >
+          <number>0</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label_12" >
@@ -1478,54 +1708,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>showRemainingTimeCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>remainingTimeLcdNumber</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>215</x>
-     <y>503</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>285</x>
-     <y>506</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>showRemainingTimeCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>remainingTimeProgressBar</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>215</x>
-     <y>503</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>548</x>
-     <y>505</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>showRemainingTimeCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>label_minutes</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>154</x>
-     <y>494</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>314</x>
-     <y>495</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>nameLineEdit</sender>
    <signal>textEdited(QString)</signal>
    <receiver>nameLabel</receiver>
@@ -1538,6 +1720,54 @@
     <hint type="destinationlabel" >
      <x>523</x>
      <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showRemainingTimeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>remainingTimeLcdNumber</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>192</x>
+     <y>556</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>291</x>
+     <y>557</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showRemainingTimeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>remainingTimeProgressBar</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>192</x>
+     <y>556</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>479</x>
+     <y>557</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showRemainingTimeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_minutes</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>192</x>
+     <y>556</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>352</x>
+     <y>557</y>
     </hint>
    </hints>
   </connection>

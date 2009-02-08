@@ -216,7 +216,7 @@ bool MainWindow::printStudentResults(Student * student, QPrinter * printer, QStr
 	QTextDocument doc; QString html; QTextStream out(&html);
 	QuestionItem * item; QTextDocument qdoc;
 	QString header = tr("Exam results"); header.append(QString(" - %1 - %2 - %3").arg(substituteHtmlTags(session_name)).arg(substituteHtmlTags(student->name())).arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm")));
-	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=windows-1250\"><title>" << endl;
+	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
 	out << header << endl << "</title><style type=\"text/css\">" << endl;
 	out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
 	out << ".default_text { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
@@ -292,9 +292,9 @@ bool MainWindow::printStudentResults(Student * student, QPrinter * printer, QStr
 		out << "</p>" << endl;
 	}
 	out << "<p class=\"default_text\" align=\"right\">" << endl;
-	out << "<b>" << tr("Total score:") << "</b> " << student->score();
-	out << " " << tr("out of") << " " << student->results()->count() << endl;
-	out << "</p></body></html>" << endl;
+	out << "<b>" << tr("Total score:") << "</b> ";
+	out << tr("%1 out of %2").arg(student->score()).arg(student->results()->count());
+	out << endl << "</p></body></html>" << endl;
 	doc.setHtml(html); printer->setDocName(header); doc.print(printer);
 	return true;
 }
@@ -413,7 +413,7 @@ bool MainWindow::printSessionSummary(Session * session, QPrinter * printer)
 	QTextDocument doc; QString html; QTextStream out(&html);
 	QString header = tr("Session statistics and summary");
 	header.append(QString(" - %1 - %2").arg(substituteHtmlTags(session->name())).arg(session->dateTimeToString()));
-	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=windows-1250\"><title>" << endl;
+	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
 	out << header << endl << "</title><style type=\"text/css\">" << endl;
 	out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
 	out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
@@ -465,5 +465,6 @@ QString MainWindow::substituteHtmlTags(QString str)
     str.replace(QString("<"), QString("&lt;"));
     str.replace(QString(">"), QString("&gt;"));
 //  str.replace(QString("\n"), QString("<br>"));
+	str.replace(QString("&"), QString("&amp;"));
     return str;
 }

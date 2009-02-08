@@ -2,5 +2,6 @@
     <qresource>
         <file>i18n/Slovak.qm</file>
         <file>i18n/Russian.qm</file>
+        <file>i18n/Turkish.qm</file>
     </qresource>
 </RCC>

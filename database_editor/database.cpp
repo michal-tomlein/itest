@@ -48,7 +48,7 @@ void MainWindow::newDB()
     }
 	setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     QTextStream sfile(&file);
-	sfile.setCodec("CP 1250");
+	sfile.setCodec("UTF-8");
 	sfile << "[ITEST_VERSION]\n" << f_ver << endl;
 	sfile << "[ITEST_DB_VERSION]\n" << f_db_ver << endl;
 	sfile << "[DB_NAME]\n" << db_name << endl;
@@ -185,7 +185,7 @@ void MainWindow::saveDB(QString db_file_name, bool savecopy, bool allsessions)
     }
     setProgress(5); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     QTextStream sfile(&file); QString q_file_name;
-	sfile.setCodec("CP 1250");
+	sfile.setCodec("UTF-8");
     sfile << "[ITEST_VERSION]\n" << f_ver << endl;
     sfile << "[ITEST_DB_VERSION]\n" << f_db_ver << endl;
     sfile << "[DB_NAME]\n" << db_name << endl;
@@ -271,7 +271,7 @@ void MainWindow::openRecent(QListWidgetItem * item)
     openDB(buffer);
 }
 
-void MainWindow::openDB(QString openDBName)
+void MainWindow::openDB(QString openDBName, bool useCP1250)
 {
     if (openDBName.isNull()) { return; }
     this->setEnabled(false); qApp->processEvents();
@@ -283,7 +283,8 @@ void MainWindow::openDB(QString openDBName)
     }
     setProgress(3); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     QTextStream rfile(&file);
-	rfile.setCodec("CP 1250");
+	if (useCP1250) { rfile.setCodec("CP 1250"); }
+	else { rfile.setCodec("UTF-8"); }
 
     QString db_buffer; float version; float db_version; QString db_name;
     QString db_date; QString db_comments; int db_qnum; bool db_fxxe[20];
@@ -306,6 +307,9 @@ void MainWindow::openDB(QString openDBName)
     { QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features.")); }
     if ((version > f_ver) && (db_version > f_db_ver))
     { QMessageBox::critical(this, tr("iTest version notice"), tr("You need a newer version of iTest to open this database file.")); this->setEnabled(true); return; }
+	if (!useCP1250) {
+		if (db_version == 1.0) { openDB(openDBName, true); return; }
+	}
 
     if (rfile.readLine() != "[DB_NAME]")
     { errorInvalidDBFile(tr("Open database"), openDBName); return; }

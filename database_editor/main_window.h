@@ -64,7 +64,7 @@ private slots:
     void disableSMSC();
     // DATABASE-RELATED
     void newDB(); void closeDB();
-    void openDB(QString); void open();
+    void openDB(QString, bool = false); void open();
     void openRecent(); void openRecent(QListWidgetItem *);
     void saveDB(QString, bool = false, bool = false);
     void save(); void saveAs(); void saveCopy(); void saveBackup();

@@ -1896,7 +1896,7 @@ a nastavte počet kópií pri každom spustení serveru.</translation>
     <message>
         <location filename="../print_engine.cpp" line="296"/>
         <source>out of</source>
-        <translation>z</translation>
+        <translation type="obsolete">z</translation>
     </message>
     <message>
         <location filename="../print_engine.cpp" line="308"/>
@@ -2340,12 +2340,12 @@ ale doporučuje sa im dať hodinu času.</translation>
         <translation>angličtina</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="849"/>
+        <location filename="../main_window.cpp" line="854"/>
         <source>Slovak</source>
         <translation>slovenčina</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="874"/>
+        <location filename="../main_window.cpp" line="879"/>
         <source>You need to restart iTest for the changes to apply.</source>
         <translation>Aby sa zmeny prejavili, je potrebné reštartovať iTest.</translation>
     </message>
@@ -2460,7 +2460,7 @@ Nájdených %1 výskytov starého mena v uložených sedeniach.
 Všetky budú aktualizované.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="854"/>
+        <location filename="../main_window.cpp" line="849"/>
         <source>Russian</source>
         <translation>ruština</translation>
     </message>
@@ -2523,6 +2523,11 @@ Všetky budú aktualizované.</translation>
         <location filename="../env_vars.cpp" line="12"/>
         <source>http://itest.sourceforge.net/documentation/1.1/en/</source>
         <translation>http://itest.sourceforge.net/documentation/1.1/sk/</translation>
+    </message>
+    <message>
+        <location filename="../main_window.cpp" line="859"/>
+        <source>Turkish</source>
+        <translation>turečtina</translation>
     </message>
 </context>
 <context>

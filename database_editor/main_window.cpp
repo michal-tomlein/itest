@@ -840,26 +840,18 @@ void MainWindow::changeLanguage()
 	lang_glayout->addWidget(lang_label, 0, 0);
 	rbtngrpLang = new QButtonGroup(lang_widget);
 	QRadioButton * lang_rbtn;
-	// -------------------------------------------------------------------------
-    lang_rbtn = new QRadioButton(tr("English"), lang_widget);
-	lang_rbtn->setChecked(true);
-	rbtngrpLang->addButton(lang_rbtn);
-	lang_glayout->addWidget(lang_rbtn, 1, 0);
-	// -------------------------------------------------------------------------
-	lang_rbtn = new QRadioButton(tr("Slovak"), lang_widget);
-	lang_rbtn->setChecked(false);
-	rbtngrpLang->addButton(lang_rbtn);
-	lang_glayout->addWidget(lang_rbtn, 2, 0);
-	// -------------------------------------------------------------------------
-	lang_rbtn = new QRadioButton(tr("Russian"), lang_widget);
-	lang_rbtn->setChecked(false);
-	rbtngrpLang->addButton(lang_rbtn);
-	lang_glayout->addWidget(lang_rbtn, 3, 0);
-	// -------------------------------------------------------------------------
+	QStringList langs(itest_i18n.values()); langs.sort();
+	for (int i = 0; i < langs.count(); ++i) {
+		lang_rbtn = new QRadioButton(tr(QByteArray().append(langs.at(i)).constData()), lang_widget);
+		if (langs.at(i) == "English") { lang_rbtn->setChecked(true); }
+		else { lang_rbtn->setChecked(false); }
+		rbtngrpLang->addButton(lang_rbtn);
+		lang_glayout->addWidget(lang_rbtn, i + 1, 0);
+	}
 	QDialogButtonBox * lang_buttonbox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	QObject::connect(lang_buttonbox, SIGNAL(accepted()), this, SLOT(langChanged()));
 	QObject::connect(lang_buttonbox, SIGNAL(rejected()), lang_widget, SLOT(close()));
-	lang_glayout->addWidget(lang_buttonbox, 4, 0);
+	lang_glayout->addWidget(lang_buttonbox, langs.count() + 1, 0);
 	lang_widget->show();
 }
 
@@ -880,7 +872,7 @@ void MainWindow::langChanged()
 
 void MainWindow::about()
 {
-    AboutWidget * itest_about = new AboutWidget(ver, QString("4.2.2"), QString("2007"));
+    AboutWidget * itest_about = new AboutWidget(ver, QString("4.3.0"), QString("2007"));
     itest_about->setWindowFlags(Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/ | Qt::WindowStaysOnTopHint);
 	itest_about->show();
 }

@@ -52,4 +52,6 @@ RCC_DIR       = .rcc.macx/
 }
 DESTDIR       = ../
 TRANSLATIONS += i18n/Slovak.ts \
-                i18n/Russian.ts
+                i18n/Russian.ts \
+                i18n/Turkish.ts
+QMAKE_RESOURCE_FLAGS += -compress 9
