@@ -150,7 +150,9 @@ void MainWindow::applyQuestionChanges()
      QListWidgetItem * q_item = LQListWidget->currentItem();
      QuestionItem * item = current_db_questions.value(q_item);
      item->setName(q_name);
-     item->setFlag(SQFlagComboBox->itemData(SQFlagComboBox->currentIndex()).toInt());
+     if (SQFlagComboBox->count() != 0) {
+        item->setFlag(SQFlagComboBox->itemData(SQFlagComboBox->currentIndex()).toInt());
+     } else { item->setFlag(-1); }
      item->setDifficulty(SQDifficultyComboBox->currentIndex());
      item->setText(removeLineBreaks(SQQuestionTextEdit->toHtml()));
      // ansa

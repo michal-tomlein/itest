@@ -1,15 +1,15 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.0.1                                                        *
+ * Version:      1.0.2                                                        *
  * Qt version:   4.2.2                                                        *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Database Editor and a Test       *
  * Writer designed for easy computerised examination.                         *
  * -------------------------------------------------------------------------- *
- * This program is distributed under the terms of the GPL v2.                 *
+ * This programme is distributed under the terms of the GPL v2.               *
  * -------------------------------------------------------------------------- *
- * The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND,     *
+ * The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND,   *
  * INCLUDING THE WARRANTY OF DESIGN, MERCHANTIBILITY AND FITNESS FOR          *
  * A PARTICULAR PURPOSE.                                                      *
  ******************************************************************************/
@@ -365,6 +365,7 @@ void MainWindow::errorInvalidData()
 }
 
 // ---------------------------- version changelog: -----------------------------
+// version 1.0.2 - a bug-fix release
 /* version 1.0.1 - a bug-fix release
                  - fixed segmentation fault when connecting
 */

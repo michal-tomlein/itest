@@ -104,7 +104,11 @@ void MainWindow::updateFlagQnums()
         buffer = label_text;
         buffer.append(QString("%1").arg(flag_qnum[i]));
         EFFlagQnumLabel[i]->setText(buffer);
-        if (flag_qnum[i] > 0) {EFFlagCheckBox[i]->setEnabled(false);}
+        if (flag_qnum[i] > 0) {
+            if (EFFlagCheckBox[i]->isChecked()) {
+                EFFlagCheckBox[i]->setEnabled(false);
+            }
+        }
         else {EFFlagCheckBox[i]->setEnabled(true);}
     }
 }
