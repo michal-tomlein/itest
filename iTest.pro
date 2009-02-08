@@ -1,2 +1,2 @@
 TEMPLATE = subdirs
-SUBDIRS += database_editor test_writer
+SUBDIRS += iTestServer iTestClient

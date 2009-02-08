@@ -3,26 +3,26 @@
 local qmakeOpts = [ "-config", "release" ]
 local makeTool = "make";
 
-printl("Entering directory: database_editor");
-chdir("database_editor");
+printl("Entering directory: iTestServer");
+chdir("iTestServer");
 
 printl("Running QMAKE");
 run("qmake", qmakeOpts);
 
 printl("Running LRELEASE (translations)");
-run("lrelease", [ "iTest.pro" ]);
+run("lrelease", [ "iTestServer.pro" ]);
 
-printl("Leaving directory: database_editor");
-printl("Entering directory: test_writer");
-chdir("../test_writer");
+printl("Leaving directory: iTestServer");
+printl("Entering directory: iTestClient");
+chdir("../iTestClient");
 
 printl("Running QMAKE");
 run("qmake", qmakeOpts);
 
 printl("Running LRELEASE (translations)");
-run("lrelease", [ "iTestWri.pro" ]);
+run("lrelease", [ "iTestClient.pro" ]);
 
-printl("Leaving directory: test_writer");
+printl("Leaving directory: iTestClient");
 chdir("..");
 
 printl("Running QMAKE");
