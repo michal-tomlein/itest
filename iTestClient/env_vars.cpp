@@ -23,7 +23,7 @@ void MainWindow::varinit()
 {
     // GLOBAL
         // iTestClient version
-        ver = "1.4.0"; f_ver = 1.4;
+        ver = "1.4.1"; f_ver = 1.41;
         // Supported iTest DB file version
-        itos_ver = "1.4"; f_itos_ver = 1.4;
+        itos_ver = "1.41"; f_itos_ver = 1.41;
 }

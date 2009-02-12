@@ -686,7 +686,7 @@ void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> * results, QTab
         item->setBackground(QBrush::QBrush(backgroundColourForFlag(qans.flag())));
         item->setForeground(QBrush::QBrush(foregroundColourForFlag(qans.flag())));
         tw->setItem(row, 0, item);
-        float score = qans.score(sys);
+        double score = qans.score(sys);
         item = new QTableWidgetItem(tr("%1 out of %2").arg(score).arg(qans.maximumScore(sys)));
         if (score > 0.0) {
             item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));

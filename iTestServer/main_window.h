@@ -264,9 +264,9 @@ private:
 	// PALETTES
 	SearchLineEditPalettes searchLineEditPalettes;
 	// ITEST & DB VERSION & ENVIRONMENT VARIABLES
-	QString ver; float f_ver;
-	QString itdb_ver; float f_itdb_ver;
-	QString itos_ver; float f_itos_ver;
+	QString ver; double f_ver;
+	QString itdb_ver; double f_itdb_ver;
+	QString itos_ver; double f_itos_ver;
 	QString itest_url; QString docs_url;
 	QMap<QString, QString> itest_i18n;
 	// EXCEPTIONS

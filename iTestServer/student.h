@@ -36,7 +36,7 @@ public slots:
     void setName(QString); QString name();
     void setNumber(int); int number();
     int numCorrectAnswers(ScoringSystem);
-    float score(); float maximumScore();
+    double score(); double maximumScore();
     void setReady(bool); bool isReady();
     void setResults(QMap<QString, QuestionAnswer> *);
     void updateScore(ScoringSystem);
@@ -48,8 +48,8 @@ public slots:
 
 private:
     QString s_name;
-    float s_score;
-    float s_maxscore;
+    double s_score;
+    double s_maxscore;
     bool s_ready;
     QMap<QString, QuestionAnswer> * s_results;
     int s_number;

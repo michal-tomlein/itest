@@ -582,7 +582,7 @@ void MainWindow::httpRequestFinished(bool error)
 	if (in.readLine() != "[iTest.current-version]") { error = true; goto httpRequestFinished_start; }
 	QString current_ver = in.readLine();
 	if (in.readLine() != "[iTest.current-version.float]") { error = true; goto httpRequestFinished_start; }
-	float f_current_ver = in.readLine().toFloat();
+	double f_current_ver = in.readLine().toDouble();
 	if (in.readLine() != "[iTest.release-notes]") { error = true; goto httpRequestFinished_start; }
 	QString release_notes;
 	while (!in.atEnd()) { release_notes.append(in.readLine()); }

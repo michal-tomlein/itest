@@ -79,9 +79,9 @@ QTcpSocket * Client::socket()
     return c_socket;
 }
 
-float Client::score() { return c_score; }
+double Client::score() { return c_score; }
 
-float Client::maximumScore() { return c_maxscore; }
+double Client::maximumScore() { return c_maxscore; }
 
 bool Client::isReady() { return c_ready; }
 

@@ -241,9 +241,9 @@ void ScoringSystem::loadData(QString str)
 	allowIncompleteAnswers = in.readLine() == "true";
 	QStringList bufferlist = in.readLine().split(";");
     for (int i = 0; i < 3; ++i) {
-        correctAnswer[i] = bufferlist.takeFirst().toFloat();
-        incorrectAnswer[i] = bufferlist.takeFirst().toFloat();
-        missingAnswer[i] = bufferlist.takeFirst().toFloat();
+        correctAnswer[i] = bufferlist.takeFirst().toDouble();
+        incorrectAnswer[i] = bufferlist.takeFirst().toDouble();
+        missingAnswer[i] = bufferlist.takeFirst().toDouble();
     }
 }
 
@@ -264,10 +264,10 @@ QString ScoringSystem::data()
 #endif
 
 #ifdef ITESTSERVER
-float QuestionAnswer::score(ScoringSystem q_scoringsystem)
+double QuestionAnswer::score(ScoringSystem q_scoringsystem)
 #endif
 #ifdef ITESTCLIENT
-float QuestionItem::score()
+double QuestionItem::score()
 #endif
 {
 #ifdef ITESTSERVER
@@ -278,7 +278,7 @@ float QuestionItem::score()
     int num_answers = q_answers.count();
 #endif
     if (q_scoringsystem.allowIncompleteAnswers && q_selectiontype == Question::MultiSelection) {
-        float score = 0.0;
+        double score = 0.0;
         if (q_correctanswers == Question::None && q_answer == Question::None) { score = q_scoringsystem.correctAnswer[q_difficulty]; }
         else {
             int numcorrect = 0; int max = 0;
@@ -290,7 +290,7 @@ float QuestionItem::score()
                 else if (!q_correctanswers.testFlag(Question::indexToAnswer(i)) && q_answer.testFlag(Question::indexToAnswer(i)))
                     { score += q_scoringsystem.incorrectAnswer[q_difficulty]; }
             }
-            if (max != 0) { score += q_scoringsystem.correctAnswer[q_difficulty] * (float)numcorrect / (float)max; }
+            if (max != 0) { score += q_scoringsystem.correctAnswer[q_difficulty] * (double)numcorrect / (double)max; }
         }
         return score;
     } else {
@@ -302,10 +302,10 @@ float QuestionItem::score()
 }
 
 #ifdef ITESTSERVER
-float QuestionAnswer::maximumScore(ScoringSystem q_scoringsystem)
+double QuestionAnswer::maximumScore(ScoringSystem q_scoringsystem)
 #endif
 #ifdef ITESTCLIENT
-float QuestionItem::maximumScore()
+double QuestionItem::maximumScore()
 #endif
 {
     return q_scoringsystem.correctAnswer[q_difficulty];

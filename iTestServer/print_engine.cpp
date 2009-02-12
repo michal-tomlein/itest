@@ -318,7 +318,7 @@ void PrintQuestionsDialogue::printQuestions()
     printq_parent->printQuestions(this);
 }
 
-int percentageFromValues(float, float, float);
+int percentageFromValues(double, double, double);
 QString htmlForProgressBar(int, bool);
 
 bool MainWindow::loadPrinterSettings()
@@ -1147,7 +1147,7 @@ QString MainWindow::htmlForClassMember(ClassMember * mem)
     return html;
 }
 
-int percentageFromValues(float minimum, float maximum, float value)
+int percentageFromValues(double minimum, double maximum, double value)
 {
     return (maximum - minimum) != 0.0 ? (int)(100 * (value - minimum) / (maximum - minimum)) : 100;
 }

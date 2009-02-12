@@ -87,7 +87,7 @@ private:
     int current_test_qnum;
     QMap<QListWidgetItem *, QuestionItem *> current_test_questions;
     int current_test_time_remaining;
-    float current_test_score;
+    double current_test_score;
     bool current_test_results_sent;
     QString current_test_date;
     QString current_test_time_finished;
@@ -121,5 +121,5 @@ private:
     QTableWidgetItem * ITW_test_passmark;
     QTextBrowser * ITW_test_comments;
     // ITEST & DB VERSION
-    QString ver; float f_ver; QString itos_ver; float f_itos_ver;
+    QString ver; double f_ver; QString itos_ver; double f_itos_ver;
 };

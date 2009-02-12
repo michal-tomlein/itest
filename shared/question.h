@@ -94,9 +94,9 @@ public:
 #ifdef ITESTSERVER
     QString data();
 #endif
-    float correctAnswer[3];
-    float incorrectAnswer[3];
-    float missingAnswer[3];
+    double correctAnswer[3];
+    double incorrectAnswer[3];
+    double missingAnswer[3];
     bool allowIncompleteAnswers;
 };
 

@@ -320,7 +320,7 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 		if (useCP1250) { rfile.setCodec("CP 1250"); }
 		else { rfile.setCodec("UTF-8"); }
 	
-	    QString db_buffer; float version; float db_version; QString db_name;
+	    QString db_buffer; double version; double db_version; QString db_name;
 	    QString db_date; QString db_comments; int db_qnum; bool db_fxxe[20];
 	    QString db_f[20]; QString q_file_name; QString db_ulsd; int s_lenum;
 	    QuestionItem * item; QStringList answers; int db_snum; int s_snum;
@@ -330,9 +330,9 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
         SvgItem * svg;
 	    // ---------------------------------------------------------------------
 		if (rfile.readLine() != "[ITEST_VERSION]") { throw xInvalidDBFile(); }
-		version = rfile.readLine().toFloat();
+		version = rfile.readLine().toDouble();
     	if (rfile.readLine() != "[ITEST_DB_VERSION]") { throw xInvalidDBFile(); }
-    	db_version = rfile.readLine().toFloat();
+    	db_version = rfile.readLine().toDouble();
     	if ((version > f_ver) && (db_version == f_itdb_ver))
     	{ QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features.")); }
     	if ((version > f_ver) && (db_version > f_itdb_ver))

@@ -153,7 +153,7 @@ void MainWindow::sendResults()
 
 void MainWindow::readResults(QString input)
 {
-    QTextStream in(&input); QString buffer; QuestionItem * item; float maxscore = 0.0;
+    QTextStream in(&input); QString buffer; QuestionItem * item; double maxscore = 0.0;
     do {
         if (in.readLine() != "[Q_NAME]") { return; }
         buffer = in.readLine(); item = NULL;

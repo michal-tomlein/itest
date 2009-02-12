@@ -76,9 +76,9 @@ int Student::numCorrectAnswers(ScoringSystem sys)
     return num;
 }
 
-float Student::score() { return s_score; }
+double Student::score() { return s_score; }
 
-float Student::maximumScore() { return s_maxscore; }
+double Student::maximumScore() { return s_maxscore; }
 
 void Student::setReady(bool ready) { s_ready = ready; }
 

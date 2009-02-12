@@ -31,7 +31,7 @@ public:
 
 public slots:
     Answers answered(); void setAnswered(Answers);
-    float score(); float maximumScore();
+    double score(); double maximumScore();
     void addSvgItem(QString, QString); int numSvgItems();
     QString svgName(int); QString svg(int);
     static ScoringSystem scoringSystem();

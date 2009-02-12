@@ -34,8 +34,8 @@ public:
                     QString /* explanation */ = QString());
     void setAnswered(Question::Answer); Question::Answer answered();
     void setCorrectAnswer(Question::Answer); Question::Answer correctAnswer();
-    float score(ScoringSystem);
-    float maximumScore(ScoringSystem);
+    double score(ScoringSystem);
+    double maximumScore(ScoringSystem);
     void setFlag(int); int flag();
     void setDifficulty(int); int difficulty();
     void setSelectionType(Question::SelectionType); Question::SelectionType selectionType();

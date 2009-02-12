@@ -23,11 +23,11 @@ void MainWindow::varinit()
 {
     // GLOBAL
         // iTestServer version
-        ver = "1.4.0"; f_ver = 1.4;
+        ver = "1.4.1"; f_ver = 1.41;
         // iTest ITDB file version
         itdb_ver = "1.4"; f_itdb_ver = 1.4;
         // iTest ITOS file version
-        itos_ver = "1.4"; f_itos_ver = 1.4;
+        itos_ver = "1.4.1"; f_itos_ver = 1.41;
         // URLs
         itest_url = "itest.sourceforge.net";
         docs_url = tr("http://itest.sourceforge.net/documentation/%1/en/").arg("1.4");

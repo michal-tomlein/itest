@@ -39,7 +39,7 @@ void MainWindow::loadTest(QString input)
 
     QTextStream in(&input);
 
-    QString db_buffer; float version; float db_version; QString db_name;
+    QString db_buffer; double version; double db_version; QString db_name;
     QString db_date; QString db_comments; int db_qnum; bool db_fxxe[20];
     QString db_f[20]; QString q_file_name; QString db_ulsd; QString test_date;
     QuestionItem * item; QStringList answers; int test_qnum; QString test_time;

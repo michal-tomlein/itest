@@ -109,7 +109,7 @@ void MainWindow::textFamily(const QString &f)
 void MainWindow::textSize(const QString &p)
 {
     QTextCharFormat fmt;
-    fmt.setFontPointSize(p.toFloat());
+    fmt.setFontPointSize(p.toDouble());
     mergeFormatOnWordOrSelection(fmt);
 }
 
