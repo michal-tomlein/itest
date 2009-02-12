@@ -7,5 +7,6 @@
         <file>i18n/iTestServer-Portuguese.qm</file>
         <file>i18n/iTestServer-Spanish.qm</file>
         <file>i18n/iTestServer-Italian.qm</file>
+        <file>i18n/iTestServer-Latvian.qm</file>
     </qresource>
 </RCC>

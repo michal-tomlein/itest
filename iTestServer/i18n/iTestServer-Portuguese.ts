@@ -184,6 +184,11 @@
         <source>Italian</source>
         <translation>Italiano</translation>
     </message>
+    <message>
+        <location filename="../env_vars.cpp" line="43"/>
+        <source>Latvian</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MTAdvancedGroupBox</name>
@@ -201,7 +206,7 @@
         <translation>Deseja gravar as alterações antes de proceder?</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3630"/>
+        <location filename="../ui_main_window_v2.cpp" line="3631"/>
         <source>&amp;Save</source>
         <translation>&amp;Gravar</translation>
     </message>
@@ -211,7 +216,7 @@
         <translation>&amp;Descartar</translation>
     </message>
     <message>
-        <location filename="../session_viewer.cpp" line="265"/>
+        <location filename="../session_viewer.cpp" line="268"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
@@ -221,7 +226,7 @@
         <translation>Nova base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4639"/>
+        <location filename="../ui_main_window_v2.cpp" line="4640"/>
         <source>Database name:</source>
         <translation>Nome da base de dados:</translation>
     </message>
@@ -268,7 +273,7 @@
         <translation type="obsolete">%1[*] - iTest - Editor de Bases de Dados</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="452"/>
+        <location filename="../main_window.cpp" line="453"/>
         <source>Ready</source>
         <translation>Pronto</translation>
     </message>
@@ -278,7 +283,7 @@
         <translation>Gravar base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4363"/>
+        <location filename="../ui_main_window_v2.cpp" line="4364"/>
         <source>Save a copy</source>
         <translation>Gravar uma cópia</translation>
     </message>
@@ -288,7 +293,7 @@
         <translation>É necessário gravar quisqueres alterações feitas à base de dados antes de proceder.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4379"/>
+        <location filename="../ui_main_window_v2.cpp" line="4380"/>
         <source>Save a backup</source>
         <translation>Gravar cópia de segurança</translation>
     </message>
@@ -430,102 +435,102 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>O ficheiro de base de dados %1 é inválido</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4004"/>
+        <location filename="../ui_main_window_v2.cpp" line="4005"/>
         <source>Apply any changes you have made to the question</source>
         <translation>Gravar quisqueres alterações feitas à questão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4021"/>
+        <location filename="../ui_main_window_v2.cpp" line="4022"/>
         <source>Discard any changes you have made to the question</source>
         <translation>Descartar todas as alterações feitas à questão</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="324"/>
+        <location filename="../main_window.cpp" line="325"/>
         <source>Apply any changes you have made to the flags</source>
         <translation>Gravar quaisqueres alterações feitas às categorias</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="327"/>
+        <location filename="../main_window.cpp" line="328"/>
         <source>Discard any changes you have made to the flags</source>
         <translation>Descartar quaisqueres alterações feitas às categorias</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3689"/>
+        <location filename="../ui_main_window_v2.cpp" line="3690"/>
         <source>Quit iTest</source>
         <translation>Encerrar o iTest</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4613"/>
+        <location filename="../ui_main_window_v2.cpp" line="4614"/>
         <source>iTest</source>
         <translation>iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="573"/>
+        <location filename="../main_window.cpp" line="574"/>
         <source>Failed to check for updates.</source>
         <translation>Não foi possível verificar a existência actualizações.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="573"/>
+        <location filename="../main_window.cpp" line="574"/>
         <source>&amp;Try again</source>
         <translation>&amp;Tentar novamente</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="589"/>
+        <location filename="../main_window.cpp" line="590"/>
         <source>Your iTest is up-to-date.</source>
         <translation>O sua versão do iTest é a mais actual.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="593"/>
+        <location filename="../main_window.cpp" line="594"/>
         <source>iTest %1 is available now.</source>
         <translation>A versão %1 do iTest já está disponível.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="613"/>
+        <location filename="../main_window.cpp" line="614"/>
         <source>%1 - Overall statistics - iTest</source>
         <translation>%1 - Estatísticas gerais - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="632"/>
+        <location filename="../main_window.cpp" line="633"/>
         <source>Adjust all</source>
         <translation>Ajustar todos</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="636"/>
+        <location filename="../main_window.cpp" line="637"/>
         <source>Close</source>
         <translation>Fechar</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="648"/>
+        <location filename="../main_window.cpp" line="649"/>
         <source>&lt;b&gt;%1 questions with statistics found&lt;/b&gt;</source>
         <translation>&lt;b&gt;%1 questões com estatísticas encontradas&lt;b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5330"/>
+        <location filename="../ui_main_window_v2.cpp" line="5333"/>
         <source>Question name</source>
         <translation>Nome da questão</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="654"/>
+        <location filename="../main_window.cpp" line="655"/>
         <source>Difficulty</source>
         <translation>Dificuldade</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="656"/>
+        <location filename="../main_window.cpp" line="657"/>
         <source>Calculated difficulty</source>
         <translation>Dificuldade calculada</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="658"/>
+        <location filename="../main_window.cpp" line="659"/>
         <source>Number of correct answers</source>
         <translation>Número de respostas correcta</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="660"/>
+        <location filename="../main_window.cpp" line="661"/>
         <source>Number of incorrect answers</source>
         <translation>Número de respostas incorrectas</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="717"/>
+        <location filename="../main_window.cpp" line="718"/>
         <source>Adjust difficulty</source>
         <translation>Ajustar dificuldade</translation>
     </message>
@@ -535,167 +540,167 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Desconhecido</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4756"/>
+        <location filename="../ui_main_window_v2.cpp" line="4757"/>
         <source>Easy</source>
         <translation>Fácil</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4757"/>
+        <location filename="../ui_main_window_v2.cpp" line="4758"/>
         <source>Medium</source>
         <translation>Médio</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4758"/>
+        <location filename="../ui_main_window_v2.cpp" line="4759"/>
         <source>Difficult</source>
         <translation>Difícil</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="808"/>
+        <location filename="../main_window.cpp" line="809"/>
         <source>Change language - iTest</source>
         <translation>Mudar língua - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="813"/>
+        <location filename="../main_window.cpp" line="814"/>
         <source>Select your preferred language</source>
         <translation>Seleccione a sua língua preferida</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="837"/>
+        <location filename="../main_window.cpp" line="838"/>
         <source>You need to restart iTest for the changes to apply.</source>
         <translation>O iTest precisa de ser re-iniciado para que as alterações tomem efeito.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4617"/>
+        <location filename="../ui_main_window_v2.cpp" line="4618"/>
         <source>Select a database you have used recently, create a new one or open another database.</source>
         <translation>Seleccione uma base de dados que usou recentemente, crie uma nova ou abra outra base de dados.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4614"/>
+        <location filename="../ui_main_window_v2.cpp" line="4615"/>
         <source>Recent databases</source>
         <translation>Bases de dados recentes</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4622"/>
+        <location filename="../ui_main_window_v2.cpp" line="4623"/>
         <source>Create a new database</source>
         <translation>Criar nova base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4625"/>
+        <location filename="../ui_main_window_v2.cpp" line="4626"/>
         <source>New</source>
         <translation>Novo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4628"/>
+        <location filename="../ui_main_window_v2.cpp" line="4629"/>
         <source>Open another database</source>
         <translation>Abrir outra base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4631"/>
+        <location filename="../ui_main_window_v2.cpp" line="4632"/>
         <source>Open other...</source>
         <translation>Abrir outra...</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4634"/>
+        <location filename="../ui_main_window_v2.cpp" line="4635"/>
         <source>Open the selected database from the list above</source>
         <translation>Abrir a base de dados seleccionada da lista</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4637"/>
+        <location filename="../ui_main_window_v2.cpp" line="4638"/>
         <source>Open selected</source>
         <translation>Abrir selecção</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4658"/>
+        <location filename="../ui_main_window_v2.cpp" line="4659"/>
         <source>List of questions</source>
         <translation>Lista de questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4691"/>
+        <location filename="../ui_main_window_v2.cpp" line="4692"/>
         <source>Select the flag to filter the list below</source>
         <translation>Seleccione a categoria que servirá de filtro na lista abaixo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4661"/>
+        <location filename="../ui_main_window_v2.cpp" line="4662"/>
         <source>Show all questions</source>
         <translation>Mostrar todas as questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4664"/>
+        <location filename="../ui_main_window_v2.cpp" line="4665"/>
         <source>All</source>
         <translation>Todos</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4667"/>
+        <location filename="../ui_main_window_v2.cpp" line="4668"/>
         <source>Show easy questions only</source>
         <translation>Mostras apenas as questões fáceis</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4673"/>
+        <location filename="../ui_main_window_v2.cpp" line="4674"/>
         <source>Show questions with medium difficulty only</source>
         <translation>Mostrar apenas as questões de dificuldade média</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4679"/>
+        <location filename="../ui_main_window_v2.cpp" line="4680"/>
         <source>Show difficult questions only</source>
         <translation>Mostrar apenas as questões difíceis</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4685"/>
+        <location filename="../ui_main_window_v2.cpp" line="4686"/>
         <source>Show questions with the selected flag only</source>
         <translation>Mostrar apenas as questões que correspondem à categoria seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4702"/>
+        <location filename="../ui_main_window_v2.cpp" line="4703"/>
         <source>Select a question to edit</source>
         <translation>Seleccione uma questão a editar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4707"/>
+        <location filename="../ui_main_window_v2.cpp" line="4708"/>
         <source>Add a question</source>
         <translation>Adicionar uma questão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4712"/>
+        <location filename="../ui_main_window_v2.cpp" line="4713"/>
         <source>Duplicate the selected question</source>
         <translation>Duplicar a questão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4717"/>
+        <location filename="../ui_main_window_v2.cpp" line="4718"/>
         <source>Delete the selected question</source>
         <translation>Apagar a questão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4722"/>
+        <location filename="../ui_main_window_v2.cpp" line="4723"/>
         <source>Move the selected question up</source>
         <translation>Mover a questão seleccionada para cima</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4727"/>
+        <location filename="../ui_main_window_v2.cpp" line="4728"/>
         <source>Move the selected question down</source>
         <translation>Mover a questão seleccionada para baixo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5475"/>
+        <location filename="../ui_main_window_v2.cpp" line="5478"/>
         <source>Search:</source>
         <translation>Procurar:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5478"/>
+        <location filename="../ui_main_window_v2.cpp" line="5481"/>
         <source>Type a keyword to filter the list below</source>
         <translation>Digite uma palavra-chave para filtar a lista</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4730"/>
+        <location filename="../ui_main_window_v2.cpp" line="4731"/>
         <source>Selected question</source>
         <translation>Questão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4731"/>
+        <location filename="../ui_main_window_v2.cpp" line="4732"/>
         <source>Question name:</source>
         <translation>Nome da questão:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4734"/>
+        <location filename="../ui_main_window_v2.cpp" line="4735"/>
         <source>Name of the selected question</source>
         <translation>Nome da questão seleccionada</translation>
     </message>
@@ -710,22 +715,22 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation type="obsolete">Correcto:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4737"/>
+        <location filename="../ui_main_window_v2.cpp" line="4738"/>
         <source>Flag:</source>
         <translation>Categoria:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4740"/>
+        <location filename="../ui_main_window_v2.cpp" line="4741"/>
         <source>Flag of the selected question</source>
         <translation>Categoria da questão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4755"/>
+        <location filename="../ui_main_window_v2.cpp" line="4756"/>
         <source>Difficulty:</source>
         <translation>Dificuldade:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4762"/>
+        <location filename="../ui_main_window_v2.cpp" line="4763"/>
         <source>Difficulty of the selected question</source>
         <translation>Dificuldade da questão seleccionada</translation>
     </message>
@@ -775,197 +780,197 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation type="obsolete">Resposta d) da pergunta seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4765"/>
+        <location filename="../ui_main_window_v2.cpp" line="4766"/>
         <source>Question:</source>
         <translation>Questão:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4922"/>
+        <location filename="../ui_main_window_v2.cpp" line="4924"/>
         <source>Undo</source>
         <translation>Desfazer</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../ui_main_window_v2.cpp" line="4925"/>
+        <location filename="../ui_main_window_v2.cpp" line="4927"/>
         <source>◄</source>
         <translation>◄</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4928"/>
+        <location filename="../ui_main_window_v2.cpp" line="4930"/>
         <source>Redo</source>
         <translation>Re-fazer</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../ui_main_window_v2.cpp" line="4931"/>
+        <location filename="../ui_main_window_v2.cpp" line="4933"/>
         <source>►</source>
         <translation>►</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4934"/>
+        <location filename="../ui_main_window_v2.cpp" line="4936"/>
         <source>Choose a font</source>
         <translation>Seleccione um tipo de letra</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4955"/>
+        <location filename="../ui_main_window_v2.cpp" line="4958"/>
         <source>Select text size</source>
         <translation>Seleccione o tamanho do texto</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4939"/>
+        <location filename="../ui_main_window_v2.cpp" line="4942"/>
         <source>8</source>
         <translation>8</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4940"/>
+        <location filename="../ui_main_window_v2.cpp" line="4943"/>
         <source>9</source>
         <translation>9</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4941"/>
+        <location filename="../ui_main_window_v2.cpp" line="4944"/>
         <source>10</source>
         <translation>10</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4942"/>
+        <location filename="../ui_main_window_v2.cpp" line="4945"/>
         <source>11</source>
         <translation>11</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4943"/>
+        <location filename="../ui_main_window_v2.cpp" line="4946"/>
         <source>12</source>
         <translation>12</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4944"/>
+        <location filename="../ui_main_window_v2.cpp" line="4947"/>
         <source>14</source>
         <translation>14</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4945"/>
+        <location filename="../ui_main_window_v2.cpp" line="4948"/>
         <source>16</source>
         <translation>16</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4946"/>
+        <location filename="../ui_main_window_v2.cpp" line="4949"/>
         <source>18</source>
         <translation>18</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4947"/>
+        <location filename="../ui_main_window_v2.cpp" line="4950"/>
         <source>20</source>
         <translation>20</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4960"/>
+        <location filename="../ui_main_window_v2.cpp" line="4963"/>
         <source>Bold</source>
         <translation>Negrito</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4963"/>
+        <location filename="../ui_main_window_v2.cpp" line="4966"/>
         <source>B</source>
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4966"/>
+        <location filename="../ui_main_window_v2.cpp" line="4969"/>
         <source>Italic</source>
         <translation>Itálico</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4969"/>
+        <location filename="../ui_main_window_v2.cpp" line="4972"/>
         <source>I</source>
         <translation>I</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4972"/>
+        <location filename="../ui_main_window_v2.cpp" line="4975"/>
         <source>Underlined</source>
         <translation>Sublinhado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4975"/>
+        <location filename="../ui_main_window_v2.cpp" line="4978"/>
         <source>U</source>
         <translation>S</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4978"/>
+        <location filename="../ui_main_window_v2.cpp" line="4981"/>
         <source>Text colour</source>
         <translation>Cor do texto</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4984"/>
+        <location filename="../ui_main_window_v2.cpp" line="4987"/>
         <source>Align left</source>
         <translation>Alinhar à esquerda</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4987"/>
+        <location filename="../ui_main_window_v2.cpp" line="4990"/>
         <source>L</source>
         <translation>E</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4990"/>
+        <location filename="../ui_main_window_v2.cpp" line="4993"/>
         <source>Align centre</source>
         <translation>Alinhar ao centro</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4993"/>
+        <location filename="../ui_main_window_v2.cpp" line="4996"/>
         <source>C</source>
         <translation>C</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4996"/>
+        <location filename="../ui_main_window_v2.cpp" line="4999"/>
         <source>Align right</source>
         <translation>Alinhar à direita</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4999"/>
+        <location filename="../ui_main_window_v2.cpp" line="5002"/>
         <source>R</source>
         <translation>D</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5002"/>
+        <location filename="../ui_main_window_v2.cpp" line="5005"/>
         <source>Justify</source>
         <translation>Justificar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5005"/>
+        <location filename="../ui_main_window_v2.cpp" line="5008"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4860"/>
+        <location filename="../ui_main_window_v2.cpp" line="4862"/>
         <source>Text of the selected question</source>
         <translation>Texto da questão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4919"/>
+        <location filename="../ui_main_window_v2.cpp" line="4921"/>
         <source>Statistics:</source>
         <translation>Estatísticas:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4638"/>
+        <location filename="../ui_main_window_v2.cpp" line="4639"/>
         <source>Database information</source>
         <translation>Informações sobre a base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4642"/>
+        <location filename="../ui_main_window_v2.cpp" line="4643"/>
         <source>Database name</source>
         <translation>Nome da base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4645"/>
+        <location filename="../ui_main_window_v2.cpp" line="4646"/>
         <source>Date:</source>
         <translation>Data:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4648"/>
+        <location filename="../ui_main_window_v2.cpp" line="4649"/>
         <source>Database date</source>
         <translation>Data da base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4651"/>
+        <location filename="../ui_main_window_v2.cpp" line="4652"/>
         <source>yyyy.MM.dd - hh:mm</source>
         <translation>dd.MM.yyyy - hh:mm</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4657"/>
+        <location filename="../ui_main_window_v2.cpp" line="4658"/>
         <source>Use last save date</source>
         <translation>Usar a última data gravada</translation>
     </message>
@@ -975,92 +980,92 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation type="obsolete">Mostrar ou esconder as informações da base de dados abaixo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3827"/>
+        <location filename="../ui_main_window_v2.cpp" line="3828"/>
         <source>Show database information</source>
         <translation>Mostrar as informações sobre a base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3672"/>
+        <location filename="../ui_main_window_v2.cpp" line="3673"/>
         <source>Close the open database</source>
         <translation>Fechar a base de dados aberta</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5008"/>
+        <location filename="../ui_main_window_v2.cpp" line="5011"/>
         <source>Use this field for your comments, notes, reminders...</source>
         <translation>Use este campo para comentários, notas ou lembretes...</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5033"/>
+        <location filename="../ui_main_window_v2.cpp" line="5036"/>
         <source>Flag name:</source>
         <translation>Nome da categoria:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5034"/>
+        <location filename="../ui_main_window_v2.cpp" line="5037"/>
         <source>Enabled:</source>
         <translation>Activo:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5054"/>
+        <location filename="../ui_main_window_v2.cpp" line="5057"/>
         <source>Number of questions with this flag: 0</source>
         <translation>Número de questões pertencentes a esta categoria: 0</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5055"/>
+        <location filename="../ui_main_window_v2.cpp" line="5058"/>
         <source>Advanced</source>
         <translation>Avançado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5059"/>
+        <location filename="../ui_main_window_v2.cpp" line="5062"/>
         <source>&lt;b&gt;Available:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Disponível:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5066"/>
+        <location filename="../ui_main_window_v2.cpp" line="5069"/>
         <source>&lt;b&gt;Used:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Usado:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5056"/>
+        <location filename="../ui_main_window_v2.cpp" line="5059"/>
         <source>Select:</source>
         <translation>Seleccionar:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5057"/>
+        <location filename="../ui_main_window_v2.cpp" line="5060"/>
         <source>Flags</source>
         <translation>Categorias</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5058"/>
+        <location filename="../ui_main_window_v2.cpp" line="5061"/>
         <source>Questions</source>
         <translation>Questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5156"/>
+        <location filename="../ui_main_window_v2.cpp" line="5159"/>
         <source>Set a custom test name</source>
         <translation>Definir um nome para o teste</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5183"/>
+        <location filename="../ui_main_window_v2.cpp" line="5186"/>
         <source>Time for the whole test</source>
         <translation>Tempo total para o teste</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5193"/>
+        <location filename="../ui_main_window_v2.cpp" line="5196"/>
         <source>HH:mm</source>
         <translation>HH:mm</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5179"/>
+        <location filename="../ui_main_window_v2.cpp" line="5182"/>
         <source>Time for:</source>
         <translation>Tempo para:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5178"/>
+        <location filename="../ui_main_window_v2.cpp" line="5181"/>
         <source>Pass mark:</source>
         <translation>Nota de aprovação:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5166"/>
+        <location filename="../ui_main_window_v2.cpp" line="5169"/>
         <source>Number of questions:</source>
         <translation>Número de questões:</translation>
     </message>
@@ -1070,62 +1075,62 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation type="obsolete">Especifique o número mínimo de questões certas para que o exame seja aprovado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5187"/>
+        <location filename="../ui_main_window_v2.cpp" line="5190"/>
         <source>one question</source>
         <translation>uma questão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5175"/>
+        <location filename="../ui_main_window_v2.cpp" line="5178"/>
         <source>Specify the number of questions</source>
         <translation>Especifique o número de questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5169"/>
+        <location filename="../ui_main_window_v2.cpp" line="5172"/>
         <source>Use the maximum number of questions possible</source>
         <translation>Usar o maior número possível de questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5172"/>
+        <location filename="../ui_main_window_v2.cpp" line="5175"/>
         <source>Maximum</source>
         <translation>Máximo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5190"/>
+        <location filename="../ui_main_window_v2.cpp" line="5193"/>
         <source>Time for one question (multiplied by the number of questions)</source>
         <translation>Tempo para cada questão (será multiplicado pelo pelo número de questões)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5208"/>
+        <location filename="../ui_main_window_v2.cpp" line="5211"/>
         <source>Proceed to testing mode using this computer as a server</source>
         <translation>Proceder para o modo de teste, usando este computador como servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5211"/>
+        <location filename="../ui_main_window_v2.cpp" line="5214"/>
         <source>Start server</source>
         <translation>Iniciar o servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5180"/>
+        <location filename="../ui_main_window_v2.cpp" line="5183"/>
         <source>the whole test</source>
         <translation>todo o teste</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5147"/>
+        <location filename="../ui_main_window_v2.cpp" line="5150"/>
         <source>Test name:</source>
         <translation>Nome do teste:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5150"/>
+        <location filename="../ui_main_window_v2.cpp" line="5153"/>
         <source>Enable setting a custom test name (if unchecked, database name will be used)</source>
         <translation>Permitir a introdução de um nome para os testes (o nome da base de dados será usada se esta opção estiver desactivada)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5200"/>
+        <location filename="../ui_main_window_v2.cpp" line="5203"/>
         <source>Custom</source>
         <translation>À medida</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5217"/>
+        <location filename="../ui_main_window_v2.cpp" line="5220"/>
         <source>Server information</source>
         <translation>Informações sobre o servidor</translation>
     </message>
@@ -1135,657 +1140,657 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation type="obsolete">O servidor está activo na porta *****. Pode agora executar o Escritor de Testes em cada computador cliente. Não desligue o Editor de Bases de Dados enquanto os exames estiverem a decorrer!</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5219"/>
+        <location filename="../ui_main_window_v2.cpp" line="5222"/>
         <source>List of clients</source>
         <translation>Lista de clientes</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5222"/>
+        <location filename="../ui_main_window_v2.cpp" line="5225"/>
         <source>Select a client to get more information</source>
         <translation>Para saber mais informações seleccione um cliente</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5225"/>
+        <location filename="../ui_main_window_v2.cpp" line="5228"/>
         <source>Selected client</source>
         <translation>Cliente seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5254"/>
+        <location filename="../ui_main_window_v2.cpp" line="5257"/>
         <source>The selected client&apos;s exam results</source>
         <translation>Resultados do exame do cliente seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5249"/>
+        <location filename="../ui_main_window_v2.cpp" line="5252"/>
         <source>Answered correctly</source>
         <translation>Respondido correctamente</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5332"/>
+        <location filename="../ui_main_window_v2.cpp" line="5335"/>
         <source>Answer</source>
         <translation>Resposta</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5365"/>
+        <location filename="../ui_main_window_v2.cpp" line="5368"/>
         <source>Correct answer</source>
         <translation>Resposta correcta</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5322"/>
+        <location filename="../ui_main_window_v2.cpp" line="5325"/>
         <source>&lt;b&gt;Total score:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Cotação total:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5243"/>
+        <location filename="../ui_main_window_v2.cpp" line="5246"/>
         <source>The selected client&apos;s total score</source>
         <translation>Cotação total do cliente seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5328"/>
+        <location filename="../ui_main_window_v2.cpp" line="5331"/>
         <source>Not ready yet</source>
         <translation>Pendente</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5453"/>
+        <location filename="../ui_main_window_v2.cpp" line="5456"/>
         <source>&lt;b&gt;Results:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Resultados:&lt;b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5233"/>
+        <location filename="../ui_main_window_v2.cpp" line="5236"/>
         <source>&lt;b&gt;Status:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Estado:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5236"/>
+        <location filename="../ui_main_window_v2.cpp" line="5239"/>
         <source>The selected client&apos;s status</source>
         <translation>Estado do cliente seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5239"/>
+        <location filename="../ui_main_window_v2.cpp" line="5242"/>
         <source>Disconnected</source>
         <translation>Desligado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5435"/>
+        <location filename="../ui_main_window_v2.cpp" line="5438"/>
         <source>&lt;b&gt;Name:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Nome:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5229"/>
+        <location filename="../ui_main_window_v2.cpp" line="5232"/>
         <source>The selected client&apos;s name</source>
         <translation>Nome do cliente seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5321"/>
+        <location filename="../ui_main_window_v2.cpp" line="5324"/>
         <source>Not identified yet</source>
         <translation>Por identificar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5374"/>
+        <location filename="../ui_main_window_v2.cpp" line="5377"/>
         <source>Server log</source>
         <translation>Registo do servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5281"/>
+        <location filename="../ui_main_window_v2.cpp" line="5284"/>
         <source>Selected session</source>
         <translation>Sessão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5282"/>
+        <location filename="../ui_main_window_v2.cpp" line="5285"/>
         <source>&lt;b&gt;Session name:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Nome da sessão:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5285"/>
+        <location filename="../ui_main_window_v2.cpp" line="5288"/>
         <source>Name of the selected session</source>
         <translation>Nome da sessão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5297"/>
+        <location filename="../ui_main_window_v2.cpp" line="5300"/>
         <source>&lt;b&gt;Date and time:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Data e hora:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5300"/>
+        <location filename="../ui_main_window_v2.cpp" line="5303"/>
         <source>Date and time of the selected session</source>
         <translation>Data e hora da sessão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5295"/>
+        <location filename="../ui_main_window_v2.cpp" line="5298"/>
         <source>Bad</source>
         <translation>Mau</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5296"/>
+        <location filename="../ui_main_window_v2.cpp" line="5299"/>
         <source>Good</source>
         <translation>Bom</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5306"/>
+        <location filename="../ui_main_window_v2.cpp" line="5309"/>
         <source>Average result of the selected session</source>
         <translation>Média dos resultados da sessão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5288"/>
+        <location filename="../ui_main_window_v2.cpp" line="5291"/>
         <source>&lt;b&gt;Pass mark:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Nota de aprovação:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5291"/>
+        <location filename="../ui_main_window_v2.cpp" line="5294"/>
         <source>The minimum number of correct answers to pass this exam</source>
         <translation>Número mínimo de questões certas para a que este exame seja aprovado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5446"/>
+        <location filename="../ui_main_window_v2.cpp" line="5449"/>
         <source>&lt;b&gt;Average:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Média:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5422"/>
+        <location filename="../ui_main_window_v2.cpp" line="5425"/>
         <source>List of students</source>
         <translation>Lista de estudantes</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5431"/>
+        <location filename="../ui_main_window_v2.cpp" line="5434"/>
         <source>Select a student to get more information</source>
         <translation>Para obter mais informações, seleccione um estudante</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5434"/>
+        <location filename="../ui_main_window_v2.cpp" line="5437"/>
         <source>Selected student</source>
         <translation>Estudante seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5336"/>
+        <location filename="../ui_main_window_v2.cpp" line="5339"/>
         <source>The selected student&apos;s exam results</source>
         <translation>Resultados do exame do estudante seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5325"/>
+        <location filename="../ui_main_window_v2.cpp" line="5328"/>
         <source>The selected student&apos;s total score</source>
         <translation>Cotação total do estudante seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5318"/>
+        <location filename="../ui_main_window_v2.cpp" line="5321"/>
         <source>The selected student&apos;s name</source>
         <translation>Nome do estudante seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5474"/>
+        <location filename="../ui_main_window_v2.cpp" line="5477"/>
         <source>List of sessions</source>
         <translation>Lista de sessões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5483"/>
+        <location filename="../ui_main_window_v2.cpp" line="5486"/>
         <source>Double click a session to view</source>
         <translation>Faça duplo-clique para ver a sessão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5275"/>
+        <location filename="../ui_main_window_v2.cpp" line="5278"/>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Sessões arquivadas&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5486"/>
+        <location filename="../ui_main_window_v2.cpp" line="5489"/>
         <source>&amp;Help</source>
         <translation>&amp;Ajuda</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5487"/>
+        <location filename="../ui_main_window_v2.cpp" line="5490"/>
         <source>Sessio&amp;n</source>
         <translation>Sessã&amp;o</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5488"/>
+        <location filename="../ui_main_window_v2.cpp" line="5491"/>
         <source>&amp;View</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5489"/>
+        <location filename="../ui_main_window_v2.cpp" line="5492"/>
         <source>&amp;Question</source>
         <translation>&amp;Questão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5493"/>
+        <location filename="../ui_main_window_v2.cpp" line="5496"/>
         <source>&amp;Sort questions</source>
         <translation>&amp;Ordenar questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5494"/>
+        <location filename="../ui_main_window_v2.cpp" line="5497"/>
         <source>&amp;Filter the list of questions</source>
         <translation>&amp;Filtrar a lista de questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5491"/>
+        <location filename="../ui_main_window_v2.cpp" line="5494"/>
         <source>&amp;Server</source>
         <translation>&amp;Servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5492"/>
+        <location filename="../ui_main_window_v2.cpp" line="5495"/>
         <source>&amp;Database</source>
         <translation>&amp;Base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5495"/>
+        <location filename="../ui_main_window_v2.cpp" line="5498"/>
         <source>&amp;File</source>
         <translation>&amp;Ficheiro</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3596"/>
+        <location filename="../ui_main_window_v2.cpp" line="3597"/>
         <source>&amp;New</source>
         <translation>&amp;Novo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3612"/>
+        <location filename="../ui_main_window_v2.cpp" line="3613"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3613"/>
+        <location filename="../ui_main_window_v2.cpp" line="3614"/>
         <source>&amp;Open</source>
         <translation>&amp;Abrir</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3626"/>
+        <location filename="../ui_main_window_v2.cpp" line="3627"/>
         <source>Open a database</source>
         <translation>Abrir base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3629"/>
+        <location filename="../ui_main_window_v2.cpp" line="3630"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3643"/>
+        <location filename="../ui_main_window_v2.cpp" line="3644"/>
         <source>Save the open database</source>
         <translation>Gravar a base de dados aberta</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3646"/>
+        <location filename="../ui_main_window_v2.cpp" line="3647"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3647"/>
+        <location filename="../ui_main_window_v2.cpp" line="3648"/>
         <source>Save &amp;as</source>
         <translation>Gravar &amp;como</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3655"/>
+        <location filename="../ui_main_window_v2.cpp" line="3656"/>
         <source>Save as</source>
         <translation>Gravar como</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3658"/>
+        <location filename="../ui_main_window_v2.cpp" line="3659"/>
         <source>Ctrl+Shift+S</source>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3659"/>
+        <location filename="../ui_main_window_v2.cpp" line="3660"/>
         <source>&amp;Close</source>
         <translation>&amp;Fechar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3675"/>
+        <location filename="../ui_main_window_v2.cpp" line="3676"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3676"/>
+        <location filename="../ui_main_window_v2.cpp" line="3677"/>
         <source>&amp;Quit</source>
         <translation>&amp;Sair</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3692"/>
+        <location filename="../ui_main_window_v2.cpp" line="3693"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3693"/>
+        <location filename="../ui_main_window_v2.cpp" line="3694"/>
         <source>&amp;Flags</source>
         <translation>&amp;Categorias</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3707"/>
+        <location filename="../ui_main_window_v2.cpp" line="3708"/>
         <source>Edit flags</source>
         <translation>Editar categorias</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3710"/>
+        <location filename="../ui_main_window_v2.cpp" line="3711"/>
         <source>&amp;Server mode</source>
         <translation>&amp;Servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3711"/>
+        <location filename="../ui_main_window_v2.cpp" line="3712"/>
         <source>Server mode</source>
         <translation>Servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3724"/>
+        <location filename="../ui_main_window_v2.cpp" line="3725"/>
         <source>Edit test settings and start the server</source>
         <translation>Editar as definições do teste e iniciar o servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3727"/>
+        <location filename="../ui_main_window_v2.cpp" line="3728"/>
         <source>&amp;About</source>
         <translation>Sob&amp;re</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3740"/>
+        <location filename="../ui_main_window_v2.cpp" line="3741"/>
         <source>About iTest</source>
         <translation>Sobre o iTest</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3743"/>
+        <location filename="../ui_main_window_v2.cpp" line="3744"/>
         <source>From &amp;A to Z</source>
         <translation>De &amp;A a Z</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3751"/>
+        <location filename="../ui_main_window_v2.cpp" line="3752"/>
         <source>Sort questions from A to Z</source>
         <translation>Ordenar as questões de A para Z</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3754"/>
+        <location filename="../ui_main_window_v2.cpp" line="3755"/>
         <source>Ctrl+Alt+Up</source>
         <translation>Ctrl+Alt+Cima</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3755"/>
+        <location filename="../ui_main_window_v2.cpp" line="3756"/>
         <source>From &amp;Z to A</source>
         <translation>De &amp;Z a A</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3763"/>
+        <location filename="../ui_main_window_v2.cpp" line="3764"/>
         <source>Sort questions from Z to A</source>
         <translation>Ordenar as questões de Z para A</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3766"/>
+        <location filename="../ui_main_window_v2.cpp" line="3767"/>
         <source>Ctrl+Alt+Down</source>
         <translation>Ctrl+Alt+Baixo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3767"/>
+        <location filename="../ui_main_window_v2.cpp" line="3768"/>
         <source>Show &amp;all questions</source>
         <translation>Mostrar &amp;todas as questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3784"/>
+        <location filename="../ui_main_window_v2.cpp" line="3785"/>
         <source>Show &amp;easy questions only</source>
         <translation>Mostrar apenas as questões &amp;fáceis</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3796"/>
+        <location filename="../ui_main_window_v2.cpp" line="3797"/>
         <source>Show questions with &amp;medium difficulty only</source>
         <translation>Mostrar apenas as questões de dificuldade &amp;média</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3807"/>
+        <location filename="../ui_main_window_v2.cpp" line="3808"/>
         <source>Show &amp;difficult questions only</source>
         <translation>Mostrar apenas as questões &amp;difíceis</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3819"/>
+        <location filename="../ui_main_window_v2.cpp" line="3820"/>
         <source>Show database &amp;information</source>
         <translation>Mostrar as &amp;informações sobre a base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3830"/>
+        <location filename="../ui_main_window_v2.cpp" line="3831"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3831"/>
+        <location filename="../ui_main_window_v2.cpp" line="3832"/>
         <source>Show questions with the selected &amp;flag only</source>
         <translation>Mostrar apenas as questões que correspondem à &amp;categoria seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3842"/>
+        <location filename="../ui_main_window_v2.cpp" line="3843"/>
         <source>Move &amp;up</source>
         <translation>Mover para &amp;cima</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3843"/>
+        <location filename="../ui_main_window_v2.cpp" line="3844"/>
         <source>Move up</source>
         <translation>Mover para baixo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3859"/>
+        <location filename="../ui_main_window_v2.cpp" line="3860"/>
         <source>Ctrl+Up</source>
         <translation>Ctrl+Up</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3860"/>
+        <location filename="../ui_main_window_v2.cpp" line="3861"/>
         <source>Move do&amp;wn</source>
         <translation>Mover para &amp;baixo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3876"/>
+        <location filename="../ui_main_window_v2.cpp" line="3877"/>
         <source>Ctrl+Down</source>
         <translation>Ctrl+Down</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3877"/>
+        <location filename="../ui_main_window_v2.cpp" line="3878"/>
         <source>Co&amp;mments</source>
         <translation>Come&amp;ntários</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3878"/>
+        <location filename="../ui_main_window_v2.cpp" line="3879"/>
         <source>Comments</source>
         <translation>Comentários</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3891"/>
+        <location filename="../ui_main_window_v2.cpp" line="3892"/>
         <source>Edit comments</source>
         <translation>Editar comentários</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3894"/>
+        <location filename="../ui_main_window_v2.cpp" line="3895"/>
         <source>&amp;Use last save date</source>
         <translation>&amp;Usar última data de gravação</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3905"/>
+        <location filename="../ui_main_window_v2.cpp" line="3906"/>
         <source>&amp;Add</source>
         <translation>&amp;Adicionar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4874"/>
+        <location filename="../ui_main_window_v2.cpp" line="4876"/>
         <source>Add</source>
         <translation>Adicionar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3922"/>
+        <location filename="../ui_main_window_v2.cpp" line="3923"/>
         <source>Ctrl+Alt+A</source>
         <translation>Ctrl+Alt+A</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3923"/>
+        <location filename="../ui_main_window_v2.cpp" line="3924"/>
         <source>Dupli&amp;cate</source>
         <translation>&amp;Duplicar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3939"/>
+        <location filename="../ui_main_window_v2.cpp" line="3940"/>
         <source>Ctrl+Alt+C</source>
         <translation>Ctrl+Alt+C</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3940"/>
+        <location filename="../ui_main_window_v2.cpp" line="3941"/>
         <source>&amp;Delete</source>
         <translation>Apa&amp;gar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3956"/>
+        <location filename="../ui_main_window_v2.cpp" line="3957"/>
         <source>Ctrl+Alt+D</source>
         <translation>Ctrl+Alt+D</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3957"/>
+        <location filename="../ui_main_window_v2.cpp" line="3958"/>
         <source>Move to &amp;top</source>
         <translation>Mover para o &amp;início</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3970"/>
+        <location filename="../ui_main_window_v2.cpp" line="3971"/>
         <source>Move the selected question to the top</source>
         <translation>Mover a questão seleccionada para o início</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3973"/>
+        <location filename="../ui_main_window_v2.cpp" line="3974"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3974"/>
+        <location filename="../ui_main_window_v2.cpp" line="3975"/>
         <source>Move to &amp;bottom</source>
         <translation>Mover para o &amp;fim</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3987"/>
+        <location filename="../ui_main_window_v2.cpp" line="3988"/>
         <source>Move the selected question to the bottom</source>
         <translation>Mover a questão seleccionada para o fim</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3990"/>
+        <location filename="../ui_main_window_v2.cpp" line="3991"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3991"/>
+        <location filename="../ui_main_window_v2.cpp" line="3992"/>
         <source>Appl&amp;y changes</source>
         <translation>Gra&amp;var as alterações</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4007"/>
+        <location filename="../ui_main_window_v2.cpp" line="4008"/>
         <source>Ctrl+Shift+A</source>
         <translation>Ctrl+Shift+A</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4008"/>
+        <location filename="../ui_main_window_v2.cpp" line="4009"/>
         <source>Di&amp;scard changes</source>
         <translation>D&amp;escartar as alterações</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4024"/>
+        <location filename="../ui_main_window_v2.cpp" line="4025"/>
         <source>Ctrl+Shift+D</source>
         <translation>Ctrl+Shift+D</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4025"/>
+        <location filename="../ui_main_window_v2.cpp" line="4026"/>
         <source>&amp;Questions</source>
         <translation>&amp;Questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4039"/>
+        <location filename="../ui_main_window_v2.cpp" line="4040"/>
         <source>Edit questions</source>
         <translation>Editar questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4042"/>
+        <location filename="../ui_main_window_v2.cpp" line="4043"/>
         <source>&amp;Add off-line client</source>
         <translation>&amp;Adicionar um cliente off-line</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4055"/>
+        <location filename="../ui_main_window_v2.cpp" line="4056"/>
         <source>Add off-line client</source>
         <translation>Adicionar um cliente off-line</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4058"/>
+        <location filename="../ui_main_window_v2.cpp" line="4059"/>
         <source>Stop se&amp;rver</source>
         <translation>&amp;Parar servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4071"/>
+        <location filename="../ui_main_window_v2.cpp" line="4072"/>
         <source>Stop the server and return to test settings</source>
         <translation>Parar o servidor e voltar às definições do teste</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4074"/>
+        <location filename="../ui_main_window_v2.cpp" line="4075"/>
         <source>S&amp;tart server</source>
         <translation>I&amp;niciar servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4090"/>
+        <location filename="../ui_main_window_v2.cpp" line="4091"/>
         <source>Export &amp;log</source>
         <translation>E&amp;xportar registo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4103"/>
+        <location filename="../ui_main_window_v2.cpp" line="4104"/>
         <source>Export server log</source>
         <translation>Exportar registo do servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4106"/>
+        <location filename="../ui_main_window_v2.cpp" line="4107"/>
         <source>Save sessio&amp;n</source>
         <translation>Gravar sessã&amp;o</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4107"/>
+        <location filename="../ui_main_window_v2.cpp" line="4108"/>
         <source>Save session</source>
         <translation>Gravar sessão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4120"/>
+        <location filename="../ui_main_window_v2.cpp" line="4121"/>
         <source>Save the current session for later viewing</source>
         <translation>Gravar a sessão que está em curso para ser visionada mais tarde</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4123"/>
+        <location filename="../ui_main_window_v2.cpp" line="4124"/>
         <source>&amp;QuickPrint</source>
         <translation>Impressão &amp;rápida</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4131"/>
+        <location filename="../ui_main_window_v2.cpp" line="4132"/>
         <source>Print the selected client&apos;s results using the current printer settings</source>
         <translation>Imprimir os resultados do cliente seleccionado usando as definições de impressão correntes</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4134"/>
+        <location filename="../ui_main_window_v2.cpp" line="4135"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4135"/>
+        <location filename="../ui_main_window_v2.cpp" line="4136"/>
         <source>&amp;Print</source>
         <translation>&amp;Imprimir</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4143"/>
+        <location filename="../ui_main_window_v2.cpp" line="4144"/>
         <source>Print the selected client&apos;s results</source>
         <translation>Imprimir os resultados do cliente seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4146"/>
+        <location filename="../ui_main_window_v2.cpp" line="4147"/>
         <source>Ctrl+Shift+P</source>
         <translation>Ctrl+Shift+P</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4147"/>
+        <location filename="../ui_main_window_v2.cpp" line="4148"/>
         <source>&amp;Export test</source>
         <translation>&amp;Exportar teste</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4160"/>
+        <location filename="../ui_main_window_v2.cpp" line="4161"/>
         <source>Export off-line test session</source>
         <translation>Exportar sessão de teste off-line</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4163"/>
+        <location filename="../ui_main_window_v2.cpp" line="4164"/>
         <source>Add off-line client&amp;s</source>
         <translation>Adicionar cliente&amp;s off-line</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4171"/>
+        <location filename="../ui_main_window_v2.cpp" line="4172"/>
         <source>Add off-line clients</source>
         <translation>Adicionar clientes off-line</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4174"/>
+        <location filename="../ui_main_window_v2.cpp" line="4175"/>
         <source>Save&amp;d sessions</source>
         <translation>Sessões grava&amp;das</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4187"/>
+        <location filename="../ui_main_window_v2.cpp" line="4188"/>
         <source>View saved test sessions</source>
         <translation>Ver as sessões de teste gravadas</translation>
     </message>
@@ -1795,127 +1800,127 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation type="obsolete">Apagar &amp;Registo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4203"/>
+        <location filename="../ui_main_window_v2.cpp" line="4204"/>
         <source>Delete the log for the selected session</source>
         <translation>Apagar o registo para a sessão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4206"/>
+        <location filename="../ui_main_window_v2.cpp" line="4207"/>
         <source>&amp;Archive session</source>
         <translation>&amp;Arquivar sessão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4207"/>
+        <location filename="../ui_main_window_v2.cpp" line="4208"/>
         <source>Archive session</source>
         <translation>Arquivar sessão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4220"/>
+        <location filename="../ui_main_window_v2.cpp" line="4221"/>
         <source>Archive the selected session</source>
         <translation>Arquivar a sessão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4223"/>
+        <location filename="../ui_main_window_v2.cpp" line="4224"/>
         <source>Documentation</source>
         <translation>Documentação</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4236"/>
+        <location filename="../ui_main_window_v2.cpp" line="4237"/>
         <source>View online documentation</source>
         <translation>Ver documentação on-line</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4239"/>
+        <location filename="../ui_main_window_v2.cpp" line="4240"/>
         <source>Check for updates</source>
         <translation>Procurar actualizações</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4252"/>
+        <location filename="../ui_main_window_v2.cpp" line="4253"/>
         <source>Check if there is a new version available online</source>
         <translation>Verificar se existe uma nova versão disponível on-line</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4255"/>
+        <location filename="../ui_main_window_v2.cpp" line="4256"/>
         <source>Print &amp;all</source>
         <translation>Imprimir &amp;todos</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4263"/>
+        <location filename="../ui_main_window_v2.cpp" line="4264"/>
         <source>Print the results of all students</source>
         <translation>Imprimir os resultados de todos os estudantes</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4266"/>
+        <location filename="../ui_main_window_v2.cpp" line="4267"/>
         <source>Print session &amp;summary</source>
         <translation>Imprimir um s&amp;umário da sessão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4270"/>
+        <location filename="../ui_main_window_v2.cpp" line="4271"/>
         <source>Print session summary</source>
         <translation>Imprimir um sumário da sessão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4280"/>
+        <location filename="../ui_main_window_v2.cpp" line="4281"/>
         <source>Print a summary and statistics for the selected session</source>
         <translation>Imprimir um sumário e estatísticas para a sessão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4283"/>
+        <location filename="../ui_main_window_v2.cpp" line="4284"/>
         <source>Overall statistics</source>
         <translation>Estatísticas gerais</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4296"/>
+        <location filename="../ui_main_window_v2.cpp" line="4297"/>
         <source>Show overall statistics about the difficulty of questions</source>
         <translation>Mostrar as estatísticas gerais sobre o grau de dificuldade das questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4299"/>
+        <location filename="../ui_main_window_v2.cpp" line="4300"/>
         <source>Change language</source>
         <translation>Mudar língua</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4312"/>
+        <location filename="../ui_main_window_v2.cpp" line="4313"/>
         <source>Change the language of the iTest interface</source>
         <translation>Mudar a língua do interface gráfico do iTest</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4315"/>
+        <location filename="../ui_main_window_v2.cpp" line="4316"/>
         <source>&amp;Restore session</source>
         <translation>&amp;Restaurar sessão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4328"/>
+        <location filename="../ui_main_window_v2.cpp" line="4329"/>
         <source>Restore the selected session from the archive</source>
         <translation>Restaurar a sessão seleccionada a partir do arquivo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4331"/>
+        <location filename="../ui_main_window_v2.cpp" line="4332"/>
         <source>Copy to archive</source>
         <translation>Copiar para o arquivo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4344"/>
+        <location filename="../ui_main_window_v2.cpp" line="4345"/>
         <source>Copy the selected session to the archive</source>
         <translation>Copiar a sessão seleccionada para o arquivo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4347"/>
+        <location filename="../ui_main_window_v2.cpp" line="4348"/>
         <source>Copy from archive</source>
         <translation>Copiar do arquivo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4360"/>
+        <location filename="../ui_main_window_v2.cpp" line="4361"/>
         <source>Copy the selected session from the archive</source>
         <translation>Copiar a sessão seleccionada do arquivo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4376"/>
+        <location filename="../ui_main_window_v2.cpp" line="4377"/>
         <source>Save a copy of the database</source>
         <translation>Gravar uma cópia da base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4392"/>
+        <location filename="../ui_main_window_v2.cpp" line="4393"/>
         <source>Save a backup copy of the database with all the archived sessions</source>
         <translation>Gravar uma cópia da base de dados com todas as sessões arquivadas</translation>
     </message>
@@ -2151,7 +2156,7 @@ número de cópias cada vez que iniciar o servidor.</translation>
         <translation>Repondido:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5120"/>
+        <location filename="../ui_main_window_v2.cpp" line="5123"/>
         <source>Correct answer:</source>
         <translation>Resposta correcta:</translation>
     </message>
@@ -2161,7 +2166,7 @@ número de cópias cada vez que iniciar o servidor.</translation>
         <translation>Cotação total:</translation>
     </message>
     <message>
-        <location filename="../session_viewer.cpp" line="247"/>
+        <location filename="../session_viewer.cpp" line="250"/>
         <source>%1 out of %2</source>
         <translation>%1 em %2</translation>
     </message>
@@ -2236,17 +2241,17 @@ número de cópias cada vez que iniciar o servidor.</translation>
         <translation>Estudantes:</translation>
     </message>
     <message>
-        <location filename="../session_viewer.cpp" line="245"/>
+        <location filename="../session_viewer.cpp" line="248"/>
         <source>%1 out of %2 (%3)</source>
         <translation>%1 em %2 (%3)</translation>
     </message>
     <message>
-        <location filename="../session_viewer.cpp" line="245"/>
+        <location filename="../session_viewer.cpp" line="248"/>
         <source>PASSED</source>
         <translation>APROVADO</translation>
     </message>
     <message>
-        <location filename="../session_viewer.cpp" line="245"/>
+        <location filename="../session_viewer.cpp" line="248"/>
         <source>FAILED</source>
         <translation>REPROVADO</translation>
     </message>
@@ -2333,7 +2338,7 @@ Escolha outro nome:</translation>
         <translation>Estatísticas: número de respostas &lt;b&gt;correctas&lt;/b&gt;: &lt;b&gt;%1&lt;/b&gt;; número de respostas &lt;b&gt;incorrectas&lt;/b&gt;: &lt;b&gt;%2&lt;/b&gt;; dificuldade: &lt;b&gt;%3&lt;/b&gt;; &lt;a href=&quot;adjust.difficulty&quot;&gt;ajustar dificuldade&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5443"/>
+        <location filename="../ui_main_window_v2.cpp" line="5446"/>
         <source>Apply changes</source>
         <translation>Gravar as alterações</translation>
     </message>
@@ -2595,12 +2600,12 @@ embore seja recomendado que o possam fazer numa hora.</translation>
         <translation>Registo do Servidor iTest</translation>
     </message>
     <message>
-        <location filename="../session_viewer.cpp" line="265"/>
+        <location filename="../session_viewer.cpp" line="268"/>
         <source>Delete log</source>
         <translation>Apagar registo</translation>
     </message>
     <message>
-        <location filename="../session_viewer.cpp" line="265"/>
+        <location filename="../session_viewer.cpp" line="268"/>
         <source>Are you sure you want to delete the log for session &quot;%1 - %2&quot;?</source>
         <translation>Deseja mesmo apagar o registo da sessão &quot;%1 - %2&quot;?</translation>
     </message>
@@ -2615,12 +2620,12 @@ embore seja recomendado que o possam fazer numa hora.</translation>
         <translation>http://itest.sourceforge.net/documentation/%1/en/</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5346"/>
+        <location filename="../ui_main_window_v2.cpp" line="5349"/>
         <source>Flag name</source>
         <translation>Nome da categoria</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5353"/>
+        <location filename="../ui_main_window_v2.cpp" line="5356"/>
         <source>Pass mark</source>
         <translation>Nota de aprovação</translation>
     </message>
@@ -2630,7 +2635,7 @@ embore seja recomendado que o possam fazer numa hora.</translation>
         <translation type="obsolete">Detalhes</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5350"/>
+        <location filename="../ui_main_window_v2.cpp" line="5353"/>
         <source>Pass mark details</source>
         <translation>Detalhes da nota de aprovação</translation>
     </message>
@@ -2640,57 +2645,57 @@ embore seja recomendado que o possam fazer numa hora.</translation>
         <translation>Total</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4754"/>
+        <location filename="../ui_main_window_v2.cpp" line="4755"/>
         <source>Search</source>
         <translation>Procurar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4403"/>
+        <location filename="../ui_main_window_v2.cpp" line="4404"/>
         <source>Show hidden questions</source>
         <translation>Mostrar questões escondidas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4406"/>
+        <location filename="../ui_main_window_v2.cpp" line="4407"/>
         <source>&amp;Hide</source>
         <translation>E&amp;sconder</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4419"/>
+        <location filename="../ui_main_window_v2.cpp" line="4420"/>
         <source>Hide the selected question</source>
         <translation>Esconder a questão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4422"/>
+        <location filename="../ui_main_window_v2.cpp" line="4423"/>
         <source>Ctrl+Alt+H</source>
         <translation>Ctrl+Alt+H</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4743"/>
+        <location filename="../ui_main_window_v2.cpp" line="4744"/>
         <source>Group:</source>
         <translation>Grupo:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4746"/>
+        <location filename="../ui_main_window_v2.cpp" line="4747"/>
         <source>Group of the selected question</source>
         <translation>Grupo da questão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4751"/>
+        <location filename="../ui_main_window_v2.cpp" line="4752"/>
         <source>Search the database for other questions in this group</source>
         <translation>Procurar outras questões pertencentes a este grupo na base de dados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5159"/>
+        <location filename="../ui_main_window_v2.cpp" line="5162"/>
         <source>Groups:</source>
         <translation>Grupos:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5162"/>
+        <location filename="../ui_main_window_v2.cpp" line="5165"/>
         <source>Allow one question per group to appear in one test only, i.e. choose one of the group randomly</source>
         <translation>Permitir apenas uma questão por grupo num só teste, ou seja, escolher uma aleatoriamente do grupo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5165"/>
+        <location filename="../ui_main_window_v2.cpp" line="5168"/>
         <source>Allow one question per group only</source>
         <translation>Permitir apenas uma questão por grupo</translation>
     </message>
@@ -2712,7 +2717,7 @@ Por favor escolha outro grupo.</translation>
         <translation type="obsolete">Executar o escritor de tested neste computador</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3595"/>
+        <location filename="../ui_main_window_v2.cpp" line="3596"/>
         <source>iTestServer</source>
         <translation>iTestServer</translation>
     </message>
@@ -2732,17 +2737,17 @@ Por favor escolha outro grupo.</translation>
         <translation type="obsolete">O servidor está activo na porta *****. Pode agora executar o iTestClient em cada computador cliente. Não desligue o iTestServer enquanto os exames estiverem a decorrer!</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4423"/>
+        <location filename="../ui_main_window_v2.cpp" line="4424"/>
         <source>Run iTestClient</source>
         <translation>Executar o iTestClient</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4436"/>
+        <location filename="../ui_main_window_v2.cpp" line="4437"/>
         <source>Run iTestClient on this computer</source>
         <translation>Executar o iTestClient neste computador</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5218"/>
+        <location filename="../ui_main_window_v2.cpp" line="5221"/>
         <source>The server is running on port &lt;b&gt;%1&lt;/b&gt;. You may now run iTestClient on each client PC. Do not quit iTestServer while testing!</source>
         <translation>O servidor está activo na porta &lt;b&gt;%1&lt;/b&gt;. Pode agora executar o iTestClient em cada computador cliente. Não desligue o iTestServer enquanto os exames estiverem a decorrer!</translation>
     </message>
@@ -2752,42 +2757,42 @@ Por favor escolha outro grupo.</translation>
         <translation>iTestServer - Parar o servidor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4792"/>
+        <location filename="../ui_main_window_v2.cpp" line="4794"/>
         <source>22</source>
         <translation>22</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4793"/>
+        <location filename="../ui_main_window_v2.cpp" line="4795"/>
         <source>24</source>
         <translation>24</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4794"/>
+        <location filename="../ui_main_window_v2.cpp" line="4796"/>
         <source>26</source>
         <translation>26</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4795"/>
+        <location filename="../ui_main_window_v2.cpp" line="4797"/>
         <source>28</source>
         <translation>28</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4796"/>
+        <location filename="../ui_main_window_v2.cpp" line="4798"/>
         <source>30</source>
         <translation>30</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4797"/>
+        <location filename="../ui_main_window_v2.cpp" line="4799"/>
         <source>36</source>
         <translation>36</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4798"/>
+        <location filename="../ui_main_window_v2.cpp" line="4800"/>
         <source>48</source>
         <translation>48</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4799"/>
+        <location filename="../ui_main_window_v2.cpp" line="4801"/>
         <source>96</source>
         <translation>96</translation>
     </message>
@@ -2832,82 +2837,82 @@ Por favor escolha outro grupo.</translation>
         <translation type="obsolete">Imprimir gráficos</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4863"/>
+        <location filename="../ui_main_window_v2.cpp" line="4865"/>
         <source>Attachments (SVG):</source>
         <translation>Anexos (SVG):</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4866"/>
+        <location filename="../ui_main_window_v2.cpp" line="4868"/>
         <source>Add SVG</source>
         <translation>Adicionar SVG</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4871"/>
+        <location filename="../ui_main_window_v2.cpp" line="4873"/>
         <source>Add an attachment</source>
         <translation>Adicionar um anexo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4877"/>
+        <location filename="../ui_main_window_v2.cpp" line="4879"/>
         <source>Remove SVG</source>
         <translation>Remover SVG</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4882"/>
+        <location filename="../ui_main_window_v2.cpp" line="4884"/>
         <source>Remove the selected attachment</source>
         <translation>Remover o anexo seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5473"/>
+        <location filename="../ui_main_window_v2.cpp" line="5476"/>
         <source>Remove</source>
         <translation>Remover</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4888"/>
+        <location filename="../ui_main_window_v2.cpp" line="4890"/>
         <source>Edit SVG</source>
         <translation>Editar SVG</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4893"/>
+        <location filename="../ui_main_window_v2.cpp" line="4895"/>
         <source>Edit the selected attachment</source>
         <translation>Editar o anexo seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4896"/>
+        <location filename="../ui_main_window_v2.cpp" line="4898"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4899"/>
+        <location filename="../ui_main_window_v2.cpp" line="4901"/>
         <source>Export SVG</source>
         <translation>Exportar SVG</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4904"/>
+        <location filename="../ui_main_window_v2.cpp" line="4906"/>
         <source>Export the selected attachment</source>
         <translation>Exportar o anexo seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4907"/>
+        <location filename="../ui_main_window_v2.cpp" line="4909"/>
         <source>Export</source>
         <translation>Exportar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4910"/>
+        <location filename="../ui_main_window_v2.cpp" line="4912"/>
         <source>Attachments of the selected question</source>
         <translation>Anexos da questão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5490"/>
+        <location filename="../ui_main_window_v2.cpp" line="5493"/>
         <source>Attachments</source>
         <translation>Anexos</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4439"/>
+        <location filename="../ui_main_window_v2.cpp" line="4440"/>
         <source>Print questions</source>
         <translation>Imprimir questões</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4452"/>
+        <location filename="../ui_main_window_v2.cpp" line="4453"/>
         <source>Select questions to print</source>
         <translation>Seleccionar as questões a imprimir</translation>
     </message>
@@ -2997,27 +3002,27 @@ Por favor escolha outro grupo.</translation>
         <translation>Scalable Vector Graphics (*.svg)</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="323"/>
+        <location filename="../main_window.cpp" line="324"/>
         <source>Apply</source>
         <translation>Aplicar</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="326"/>
+        <location filename="../main_window.cpp" line="327"/>
         <source>Discard</source>
         <translation>Descartar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5194"/>
+        <location filename="../ui_main_window_v2.cpp" line="5197"/>
         <source>Server port:</source>
         <translation>Porta do servidor:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5197"/>
+        <location filename="../ui_main_window_v2.cpp" line="5200"/>
         <source>Use a custom server port (if unchecked, a random port will be chosen)</source>
         <translation>Usar uma porta personalizada para o servidor (se não for seleccionada, uma porta será escolhida ao acaso)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5203"/>
+        <location filename="../ui_main_window_v2.cpp" line="5206"/>
         <source>Specify a custom server port</source>
         <translation>Especificar uma porta personalizada para o servidor</translation>
     </message>
@@ -3032,7 +3037,7 @@ Por favor escolha outro grupo.</translation>
         <translation type="obsolete">Espanhol</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4190"/>
+        <location filename="../ui_main_window_v2.cpp" line="4191"/>
         <source>&amp;Delete log</source>
         <translation>A&amp;pagar registo</translation>
     </message>
@@ -3042,7 +3047,7 @@ Por favor escolha outro grupo.</translation>
         <translation>Apagar</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4535"/>
+        <location filename="../ui_main_window_v2.cpp" line="4536"/>
         <source>Add class</source>
         <translation>Adicionar turma</translation>
     </message>
@@ -3062,7 +3067,7 @@ Por favor escolha outro grupo.</translation>
         <translation>Uma turma com este nome já existe. Por favor escolha outro nome.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4546"/>
+        <location filename="../ui_main_window_v2.cpp" line="4547"/>
         <source>Delete class</source>
         <translation>Apagar turma</translation>
     </message>
@@ -3072,7 +3077,7 @@ Por favor escolha outro grupo.</translation>
         <translation>Deseja mesmo apagar a turma &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4557"/>
+        <location filename="../ui_main_window_v2.cpp" line="4558"/>
         <source>Add student</source>
         <translation>Adicionar aluno</translation>
     </message>
@@ -3102,7 +3107,7 @@ Por favor escolha outro grupo.</translation>
         <translation>&amp;Escolher outro nome</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4568"/>
+        <location filename="../ui_main_window_v2.cpp" line="4569"/>
         <source>Delete student</source>
         <translation>Apagar aluno</translation>
     </message>
@@ -3112,7 +3117,7 @@ Por favor escolha outro grupo.</translation>
         <translation>Deseja mesmo apagar o aluno &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4590"/>
+        <location filename="../ui_main_window_v2.cpp" line="4591"/>
         <source>Delete session</source>
         <translation>Apagar sessão</translation>
     </message>
@@ -3127,177 +3132,177 @@ Por favor escolha outro grupo.</translation>
         <translation>Sessão inexistente. Talvez tenha sido arquivada noutro computador.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5377"/>
+        <location filename="../ui_main_window_v2.cpp" line="5380"/>
         <source>List of classes</source>
         <translation>Lista de turmas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5386"/>
+        <location filename="../ui_main_window_v2.cpp" line="5389"/>
         <source>Double click a class to view</source>
         <translation>Para ver a turma faça duplo-clique</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5389"/>
+        <location filename="../ui_main_window_v2.cpp" line="5392"/>
         <source>Selected class</source>
         <translation>Turma seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5390"/>
+        <location filename="../ui_main_window_v2.cpp" line="5393"/>
         <source>&lt;b&gt;Class name:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Nome da turma:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5396"/>
+        <location filename="../ui_main_window_v2.cpp" line="5399"/>
         <source>&lt;b&gt;First year:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Primeiro ano:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5402"/>
+        <location filename="../ui_main_window_v2.cpp" line="5405"/>
         <source>&lt;b&gt;Last year:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Último ano:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5408"/>
+        <location filename="../ui_main_window_v2.cpp" line="5411"/>
         <source>&lt;b&gt;Number of students:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Número de alunos:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5411"/>
+        <location filename="../ui_main_window_v2.cpp" line="5414"/>
         <source>Number of students in the selected class</source>
         <translation>Número de alunos na turma seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5414"/>
+        <location filename="../ui_main_window_v2.cpp" line="5417"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5415"/>
+        <location filename="../ui_main_window_v2.cpp" line="5418"/>
         <source>&lt;b&gt;Class average:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Média da turma:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5452"/>
+        <location filename="../ui_main_window_v2.cpp" line="5455"/>
         <source>0%</source>
         <translation>0%</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5449"/>
+        <location filename="../ui_main_window_v2.cpp" line="5452"/>
         <source>The selected student&apos;s average</source>
         <translation>Média do aluno seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5459"/>
+        <location filename="../ui_main_window_v2.cpp" line="5462"/>
         <source>List of results of the selected student</source>
         <translation>Lista de resultados do aluno seleccionado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5454"/>
+        <location filename="../ui_main_window_v2.cpp" line="5457"/>
         <source>Session</source>
         <translation>Sessão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5455"/>
+        <location filename="../ui_main_window_v2.cpp" line="5458"/>
         <source>Name</source>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5456"/>
+        <location filename="../ui_main_window_v2.cpp" line="5459"/>
         <source>Results</source>
         <translation>Resultados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5464"/>
+        <location filename="../ui_main_window_v2.cpp" line="5467"/>
         <source>Add the selected session from the list of sessions on the left to the list of results above</source>
         <translation>Adicionar a sessão seleccionada à esquerda à lista de resultados acima indicada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5467"/>
+        <location filename="../ui_main_window_v2.cpp" line="5470"/>
         <source>Add selected session</source>
         <translation>Adicionar sessão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5470"/>
+        <location filename="../ui_main_window_v2.cpp" line="5473"/>
         <source>Remove the selected session from the list of results</source>
         <translation>Remover a sessão seleccionada da lista de resultados</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5496"/>
+        <location filename="../ui_main_window_v2.cpp" line="5499"/>
         <source>&amp;Class</source>
         <translation>&amp;Turma</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4519"/>
+        <location filename="../ui_main_window_v2.cpp" line="4520"/>
         <source>&amp;Classes</source>
         <translation>&amp;Turmas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4532"/>
+        <location filename="../ui_main_window_v2.cpp" line="4533"/>
         <source>Edit classes</source>
         <translation>Editar turmas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4543"/>
+        <location filename="../ui_main_window_v2.cpp" line="4544"/>
         <source>Create a new class</source>
         <translation>Criar nova turma</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4554"/>
+        <location filename="../ui_main_window_v2.cpp" line="4555"/>
         <source>Delete the selected class</source>
         <translation>Apagar a turma seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4565"/>
+        <location filename="../ui_main_window_v2.cpp" line="4566"/>
         <source>Add a new student to the selected class</source>
         <translation>Adicionar um novo aluno à turma seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4576"/>
+        <location filename="../ui_main_window_v2.cpp" line="4577"/>
         <source>Delete the selected student from the selected class</source>
         <translation>Apagar o aluno seleccionado da turma seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4579"/>
+        <location filename="../ui_main_window_v2.cpp" line="4580"/>
         <source>Add session</source>
         <translation>Adicionar sessão</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4587"/>
+        <location filename="../ui_main_window_v2.cpp" line="4588"/>
         <source>Add a session to the selected class</source>
         <translation>Adicionar uma sessão à turma seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4598"/>
+        <location filename="../ui_main_window_v2.cpp" line="4599"/>
         <source>Delete the selected session from the selected class (the session will not be deleted from the database)</source>
         <translation>Apagar a sessão seleccionada da turma escolhida (a sessão não será removida da base de dados)</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="295"/>
+        <location filename="../main_window.cpp" line="296"/>
         <source>LTR</source>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="611"/>
+        <location filename="../main_window.cpp" line="612"/>
         <source>%1 - Overall statistics</source>
         <translation>%1 - Estatísticas gerais</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5393"/>
+        <location filename="../ui_main_window_v2.cpp" line="5396"/>
         <source>Name of the selected class (if you change this name, do not forget to click the Apply button on the right)</source>
         <translation>Nome da turma seleccionada (se modificar este nome, não se esqueça de clicar no botão Aplicar à direita)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5399"/>
+        <location filename="../ui_main_window_v2.cpp" line="5402"/>
         <source>The first year of the selected class (if you change this year, do not forget to click the Apply button on the right)</source>
         <translation>Primeiro ano da turma seleccionada (se modificar esta data, não se esqueça de clicar no botão Aplicar à direita)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5405"/>
+        <location filename="../ui_main_window_v2.cpp" line="5408"/>
         <source>The last year of the selected class (if you change this year, do not forget to click the Apply button on the right)</source>
         <translation>Último ano da turma seleccionada (se alterar esta data, não se esqueça de clicar no botão Aplicar à direita)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5438"/>
+        <location filename="../ui_main_window_v2.cpp" line="5441"/>
         <source>Name of the selected student (if you change this name, do not forget to click the Apply button on the right)</source>
         <translation>Nome do aluno seleccionado (se modificar este nome, não se esqueça de clicar no botão Aplicar à direita)</translation>
     </message>
@@ -3317,17 +3322,17 @@ Por favor escolha outro grupo.</translation>
         <translation>Deseja mesmo apagar a sessão &quot;%1&quot; da tabela de resultados do aluno seleccionado? A sessão não será apagada da base de dados.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4913"/>
+        <location filename="../ui_main_window_v2.cpp" line="4915"/>
         <source>Explanation:</source>
         <translation>Explicação:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4601"/>
+        <location filename="../ui_main_window_v2.cpp" line="4602"/>
         <source>Print class summary</source>
         <translation>Imprimir sumário da turma</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4609"/>
+        <location filename="../ui_main_window_v2.cpp" line="4610"/>
         <source>Print a summary for the selected class</source>
         <translation>Imprimir o sumário da turma seleccionada</translation>
     </message>
@@ -3372,92 +3377,92 @@ Por favor escolha outro grupo.</translation>
         <translation>Nota recebida:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4916"/>
+        <location filename="../ui_main_window_v2.cpp" line="4918"/>
         <source>A brief explanation of the selected question</source>
         <translation>Breve explicação da questão seleccionada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5370"/>
+        <location filename="../ui_main_window_v2.cpp" line="5373"/>
         <source>Scoring system</source>
         <translation>Systema de atribuição de notas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5079"/>
+        <location filename="../ui_main_window_v2.cpp" line="5082"/>
         <source>Allow giving points for partially correct answers (this affects multiple choice questions only)</source>
         <translation>Permitir a atribuição de pontos em respostas parcialmente correctas (apenas para questões de escolha multipla)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5082"/>
+        <location filename="../ui_main_window_v2.cpp" line="5085"/>
         <source>Allow partially correct answers</source>
         <translation>Permitir respostas parcialmente correctas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5083"/>
+        <location filename="../ui_main_window_v2.cpp" line="5086"/>
         <source>Separate settings for each difficulty level</source>
         <translation>Definições diferentes para cada nível de dificuldade</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5123"/>
+        <location filename="../ui_main_window_v2.cpp" line="5126"/>
         <source>Specify the amount of points given for a correct answer</source>
         <translation>Especificar o número de pontos atribuídos para respostas correctas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5126"/>
+        <location filename="../ui_main_window_v2.cpp" line="5129"/>
         <source>Incorrect answer:</source>
         <translation>Resposta errada:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5129"/>
+        <location filename="../ui_main_window_v2.cpp" line="5132"/>
         <source>Specify the amount of points taken for an incorrect answer</source>
         <translation>Especificar o número de pontos descontados a respostas erradas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5132"/>
+        <location filename="../ui_main_window_v2.cpp" line="5135"/>
         <source>Missing answer:</source>
         <translation>Sem resposta:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5135"/>
+        <location filename="../ui_main_window_v2.cpp" line="5138"/>
         <source>Specify the amount of points taken for each missing answer</source>
         <translation>Especificar o número de pontos descontados a cada questão sem resposta</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5214"/>
+        <location filename="../ui_main_window_v2.cpp" line="5217"/>
         <source>Specify the minimum number of correct answers (with score above 0) to pass the test</source>
         <translation>Número mínimo de respostas correctas (pontuação superior a 0) para ser aprovado</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5331"/>
+        <location filename="../ui_main_window_v2.cpp" line="5334"/>
         <source>Score</source>
         <translation>Nota</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5354"/>
+        <location filename="../ui_main_window_v2.cpp" line="5357"/>
         <source>Value</source>
         <translation>Valor</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5358"/>
+        <location filename="../ui_main_window_v2.cpp" line="5361"/>
         <source>Partially correct answers</source>
         <translation>Respostas parcialmente correctas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5366"/>
+        <location filename="../ui_main_window_v2.cpp" line="5369"/>
         <source>Incorrect answer</source>
         <translation>Resposta errada</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5367"/>
+        <location filename="../ui_main_window_v2.cpp" line="5370"/>
         <source>Missing answer</source>
         <translation>Sem resposta</translation>
     </message>
     <message>
-        <location filename="../session_viewer.cpp" line="226"/>
+        <location filename="../session_viewer.cpp" line="229"/>
         <source>allowed</source>
         <translation>permitido</translation>
     </message>
     <message>
-        <location filename="../session_viewer.cpp" line="226"/>
+        <location filename="../session_viewer.cpp" line="229"/>
         <source>disallowed</source>
         <translation>proibido</translation>
     </message>
@@ -3472,7 +3477,7 @@ Por favor escolha outro grupo.</translation>
         <translation>chave</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5074"/>
+        <location filename="../ui_main_window_v2.cpp" line="5077"/>
         <source>Number of questions</source>
         <translation>Número de questões</translation>
     </message>
@@ -3685,27 +3690,27 @@ Por favor escolha outro grupo.</translation>
 <context>
     <name>SessionWizard</name>
     <message>
-        <location filename="../ui_session_wizard.cpp" line="104"/>
+        <location filename="../ui_session_wizard.cpp" line="111"/>
         <source>Add session - iTestServer</source>
         <translation>Adicionar sessão - iTestServer</translation>
     </message>
     <message>
-        <location filename="../ui_session_wizard.cpp" line="105"/>
+        <location filename="../ui_session_wizard.cpp" line="112"/>
         <source>&lt;b&gt;Session:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Sessão:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_session_wizard.cpp" line="106"/>
+        <location filename="../ui_session_wizard.cpp" line="113"/>
         <source>&lt;b&gt;Class:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Turma:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_session_wizard.cpp" line="107"/>
+        <location filename="../ui_session_wizard.cpp" line="114"/>
         <source>Match</source>
         <translation>Equivalencia</translation>
     </message>
     <message>
-        <location filename="../ui_session_wizard.cpp" line="112"/>
+        <location filename="../ui_session_wizard.cpp" line="115"/>
         <source>Session</source>
         <translation>Sessão</translation>
     </message>
@@ -3715,7 +3720,7 @@ Por favor escolha outro grupo.</translation>
         <translation>Turma</translation>
     </message>
     <message>
-        <location filename="../ui_session_wizard.cpp" line="118"/>
+        <location filename="../ui_session_wizard.cpp" line="117"/>
         <source>Split</source>
         <translation>Separar</translation>
     </message>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="it_IT">
-<defaultcodec></defaultcodec>
 <context>
     <name>AboutWidget</name>
     <message>
@@ -128,7 +127,7 @@
         <translation type="obsolete">d)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="626"/>
+        <location filename="../ui_main_window.cpp" line="660"/>
         <source>iTestClient</source>
         <translation>iTestClient</translation>
     </message>
@@ -276,147 +275,147 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Ricevuti dati invalidi. Potrebbe esserci qualcosa di sbagliato nel server.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="627"/>
+        <location filename="../ui_main_window.cpp" line="661"/>
         <source>Connect to an iTest server</source>
         <translation>Connetti a un server iTest</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="628"/>
+        <location filename="../ui_main_window.cpp" line="662"/>
         <source>&lt;b&gt;Server name&lt;/b&gt;</source>
         <translation>&lt;b&gt;Nome Server&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="629"/>
+        <location filename="../ui_main_window.cpp" line="663"/>
         <source>&lt;b&gt;Server port&lt;/b&gt;</source>
         <translation>&lt;b&gt;Porta Server&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="630"/>
+        <location filename="../ui_main_window.cpp" line="664"/>
         <source>Connect</source>
         <translation>Connetti</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="631"/>
+        <location filename="../ui_main_window.cpp" line="665"/>
         <source>Use an iTest database file</source>
         <translation>Usa un File di Database iTest</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="632"/>
+        <location filename="../ui_main_window.cpp" line="666"/>
         <source>&lt;b&gt;Database file path&lt;/b&gt;</source>
         <translation>&lt;b&gt;Percorso File Database&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="639"/>
+        <location filename="../ui_main_window.cpp" line="677"/>
         <source>Browse</source>
         <translation>Cerca</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="634"/>
+        <location filename="../ui_main_window.cpp" line="668"/>
         <source>Load</source>
         <translation>Carica</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="635"/>
+        <location filename="../ui_main_window.cpp" line="669"/>
         <source>&lt;b&gt;Save answers to&lt;/b&gt;</source>
         <translation>&lt;b&gt;Salva Risposte in&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="636"/>
+        <location filename="../ui_main_window.cpp" line="670"/>
         <source>If connected to an iTest server, results will be sent automatically. You only need this file if there is no network available or in case of connection breakdown.</source>
         <translation>Se ti connetti ad un server iTest le risposte saranno inviate in automatico. Necessiterai di questo file solo in assenza di connessione o in caso di mancanza di connessione.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="637"/>
+        <location filename="../ui_main_window.cpp" line="673"/>
         <source>$HOME/TestName-Date-SurnameName.itcl, where $HOME is the directory of the current user&apos;s profile on Windows and the home directory on Unix/Linux/Mac OS</source>
         <translation>$HOME/NomeTest-Data-Cognome.itcl, dove $HOME è la directory dell&apos;utente di windows corrente e la home degli OS Unix/Linux/Mac OS</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="638"/>
+        <location filename="../ui_main_window.cpp" line="676"/>
         <source>Use default</source>
         <translation>Usa Predefiniti</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="640"/>
+        <location filename="../ui_main_window.cpp" line="678"/>
         <source>&lt;b&gt;Other settings&lt;/b&gt;</source>
         <translation>&lt;b&gt;Altre Opzioni&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="641"/>
+        <location filename="../ui_main_window.cpp" line="679"/>
         <source>Hide question names, show numbers instead</source>
         <translation>Nascondi Domande, mostra numeri</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="642"/>
+        <location filename="../ui_main_window.cpp" line="680"/>
         <source>Do not show correct answers at the end of the test</source>
         <translation>Non mostrare le risposte corrette alla fine del Test</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="643"/>
+        <location filename="../ui_main_window.cpp" line="681"/>
         <source>&lt;b&gt;Test information&lt;/b&gt;</source>
         <translation>&lt;b&gt;Informazioni sul Test&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="654"/>
+        <location filename="../ui_main_window.cpp" line="683"/>
         <source>Test name</source>
         <translation>Nome Test</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="658"/>
+        <location filename="../ui_main_window.cpp" line="684"/>
         <source>Database date</source>
         <translation>Data Database</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="662"/>
+        <location filename="../ui_main_window.cpp" line="685"/>
         <source>Test date</source>
         <translation>Data Test</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="666"/>
+        <location filename="../ui_main_window.cpp" line="686"/>
         <source>Test time</source>
         <translation>Ora Test</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="670"/>
+        <location filename="../ui_main_window.cpp" line="687"/>
         <source>Number of questions</source>
         <translation>Numero di Domande</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="674"/>
+        <location filename="../ui_main_window.cpp" line="688"/>
         <source>Number of flags</source>
         <translation>Nummero di Spunte</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="678"/>
+        <location filename="../ui_main_window.cpp" line="689"/>
         <source>Flag names</source>
         <translation>Nomi Spunta</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="682"/>
+        <location filename="../ui_main_window.cpp" line="690"/>
         <source>Pass mark</source>
         <translation>Contrassegno</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="686"/>
+        <location filename="../ui_main_window.cpp" line="691"/>
         <source>Comments</source>
         <translation>Commenti</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="648"/>
+        <location filename="../ui_main_window.cpp" line="682"/>
         <source>Data</source>
         <translation>Dati</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="705"/>
+        <location filename="../ui_main_window.cpp" line="709"/>
         <source>Quit</source>
         <translation>Esci</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="689"/>
+        <location filename="../ui_main_window.cpp" line="693"/>
         <source>About</source>
         <translation>Informazioni</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="690"/>
+        <location filename="../ui_main_window.cpp" line="694"/>
         <source>Ready</source>
         <translation>Pronto</translation>
     </message>
@@ -426,57 +425,57 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation type="obsolete">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Benvenuto!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="692"/>
+        <location filename="../ui_main_window.cpp" line="696"/>
         <source>Your name:</source>
         <translation>Il Tuo Nome:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="693"/>
+        <location filename="../ui_main_window.cpp" line="697"/>
         <source>When you are ready to begin the examination, click the Start button below.</source>
         <translation>Quando sei pronto ad iniziare il test, schiaccia il bottone Avvio qui sotto.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="694"/>
+        <location filename="../ui_main_window.cpp" line="698"/>
         <source>Start</source>
         <translation>Avvio</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="695"/>
+        <location filename="../ui_main_window.cpp" line="699"/>
         <source>Show remaining time</source>
         <translation>Mostra Tempo Rimasto</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="696"/>
+        <location filename="../ui_main_window.cpp" line="700"/>
         <source>minute(s)</source>
         <translation>minuti</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="697"/>
+        <location filename="../ui_main_window.cpp" line="701"/>
         <source>Last question</source>
         <translation>Ultima Domanda</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="698"/>
+        <location filename="../ui_main_window.cpp" line="702"/>
         <source>Next question</source>
         <translation>Prossima Domanda</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="699"/>
+        <location filename="../ui_main_window.cpp" line="703"/>
         <source>Finish</source>
         <translation>Finito</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="700"/>
+        <location filename="../ui_main_window.cpp" line="704"/>
         <source>&lt;b&gt;Name:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Nome:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="702"/>
+        <location filename="../ui_main_window.cpp" line="706"/>
         <source>&lt;b&gt;Score:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Punteggio:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="703"/>
+        <location filename="../ui_main_window.cpp" line="707"/>
         <source>&lt;b&gt;Results:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Risultato:&lt;/b&gt;</translation>
     </message>
@@ -501,7 +500,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation type="obsolete">Risposta Corretta</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="704"/>
+        <location filename="../ui_main_window.cpp" line="708"/>
         <source>New test</source>
         <translation>Nuovo Test</translation>
     </message>
@@ -511,7 +510,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="691"/>
+        <location filename="../ui_main_window.cpp" line="695"/>
         <source>Welcome!</source>
         <translation>Benvenuto!</translation>
     </message>

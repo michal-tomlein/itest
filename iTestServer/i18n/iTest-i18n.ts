@@ -26,5 +26,9 @@
         <source>Italian</source>
         <translation>Italiano</translation>
     </message>
+    <message>
+        <source>Latvian</source>
+        <translation>latviešu</translation>
+    </message>
 </context>
 </TS>
