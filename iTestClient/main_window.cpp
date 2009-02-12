@@ -296,6 +296,8 @@ void MainWindow::enableInputTypeSelection()
     rbtnNetwork->setEnabled(true);
     rbtnFromFile->setEnabled(true);
     toggleInputType(rbtnNetwork->isChecked() ? rbtnNetwork : rbtnFromFile);
+    hideQuestionNamesCheckBox->setEnabled(true);
+    hideCorrectAnswersCheckBox->setEnabled(true);
 }
 
 void MainWindow::disableInputTypeSelection()

@@ -46,9 +46,9 @@ void MainWindow::loadTest(QString input)
     QString db_use_groups = "false"; QStringList db_bufferlist;
     // ------------------------------------------------------------------------
     if (in.readLine() != "[ITEST_VERSION]") { errorInvalidData(); return; }
-    version = in.readLine().toFloat();
+    version = in.readLine().toDouble();
     if (in.readLine() != "[ITEST_DB_VERSION]") { errorInvalidData(); return; }
-    db_version = in.readLine().toFloat();
+    db_version = in.readLine().toDouble();
     if ((version > f_ver) && (db_version == f_itos_ver))
     { QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features.")); }
     if ((version > f_ver) && (db_version > f_itos_ver))
@@ -70,6 +70,16 @@ void MainWindow::loadTest(QString input)
         if (in.readLine() != "[TEST_GRPS]") { errorInvalidData(); return; }
         // Use groups
         db_use_groups = in.readLine();
+    }
+    if (db_version >= 1.41) {
+        if (in.readLine() != "[TEST_HIDE_QNAMES]") { errorInvalidData(); return; }
+        // Hide question names
+        hideQuestionNamesCheckBox->setChecked(in.readLine() == "true");
+        hideQuestionNamesCheckBox->setEnabled(false);
+        if (in.readLine() != "[TEST_HIDE_C_ANS]") { errorInvalidData(); return; }
+        // Hide correct answers
+        hideCorrectAnswersCheckBox->setChecked(in.readLine() == "true");
+        hideCorrectAnswersCheckBox->setEnabled(false);
     }
     if (in.readLine() != "[TEST_DATE]") { errorInvalidData(); return; }
     // Test date

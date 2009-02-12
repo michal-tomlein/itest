@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2009 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -136,16 +136,16 @@ void Client::readClientFeedback()
 
         quint64 current_entry;
         in >> current_entry;
-        if (current_entry < c_parent->current_db_test.count()) {
+        if (current_entry < (quint64)c_parent->current_db_test.count()) {
             c_socket->write(c_parent->current_db_test.at(current_entry));
         }
-        if (current_entry >= c_parent->current_db_test.count() - 1) {
+        if (current_entry >= (quint64)(c_parent->current_db_test.count() - 1)) {
             c_test_sent = true; c_blocksize = 0;
         }
         return;
     }
 
-    if (c_socket->bytesAvailable() < c_blocksize)
+    if ((quint64)c_socket->bytesAvailable() < c_blocksize)
         return;
 
     if (c_test_sent) { c_blocksize = 0; }

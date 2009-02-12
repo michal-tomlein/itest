@@ -64,7 +64,7 @@ void MainWindow::readIncomingData()
         in >> blocksize;
     }
 
-    if (tcpSocket->bytesAvailable() < blocksize)
+    if ((quint64)tcpSocket->bytesAvailable() < blocksize)
         return;
 
     if (!test_loaded) {

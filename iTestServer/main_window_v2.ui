@@ -12,7 +12,7 @@
   </property>
   <property name="minimumSize" >
    <size>
-    <width>780</width>
+    <width>790</width>
     <height>580</height>
    </size>
   </property>
@@ -24,14 +24,6 @@
     <normaloff>:/images/images/itest.png</normaloff>:/images/images/itest.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>84</y>
-     <width>860</width>
-     <height>579</height>
-    </rect>
-   </property>
    <layout class="QGridLayout" >
     <property name="margin" >
      <number>0</number>
@@ -42,14 +34,6 @@
        <number>0</number>
       </property>
       <widget class="QWidget" name="welcomePage" >
-       <property name="geometry" >
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>860</width>
-         <height>579</height>
-        </rect>
-       </property>
        <layout class="QGridLayout" >
         <item row="0" column="1" >
          <spacer>
@@ -256,14 +240,6 @@
        </layout>
       </widget>
       <widget class="QWidget" name="mainPage" >
-       <property name="geometry" >
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>860</width>
-         <height>579</height>
-        </rect>
-       </property>
        <layout class="QVBoxLayout" >
         <property name="margin" >
          <number>6</number>
@@ -1434,14 +1410,6 @@
        </layout>
       </widget>
       <widget class="QWidget" name="editCommentsPage" >
-       <property name="geometry" >
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>860</width>
-         <height>579</height>
-        </rect>
-       </property>
        <layout class="QVBoxLayout" >
         <property name="margin" >
          <number>6</number>
@@ -1833,14 +1801,6 @@
        </layout>
       </widget>
       <widget class="QWidget" name="editFlagsPage" >
-       <property name="geometry" >
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>860</width>
-         <height>579</height>
-        </rect>
-       </property>
        <layout class="QVBoxLayout" >
         <property name="margin" >
          <number>6</number>
@@ -3449,14 +3409,6 @@
        </layout>
       </widget>
       <widget class="QWidget" name="testSettingsPage" >
-       <property name="geometry" >
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>860</width>
-         <height>579</height>
-        </rect>
-       </property>
        <layout class="QGridLayout" >
         <property name="margin" >
          <number>6</number>
@@ -4451,20 +4403,48 @@
              </property>
             </widget>
            </item>
+           <item row="3" column="4" colspan="3" >
+            <widget class="QCheckBox" name="TSHideQuestionNamesCheckBox" >
+             <property name="statusTip" >
+              <string>Use this option if the names of your questions contain clues to their answers</string>
+             </property>
+             <property name="text" >
+              <string>Hide question names, show numbers instead</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="4" colspan="3" >
+            <widget class="QCheckBox" name="TSHideCorrectAnswersCheckBox" >
+             <property name="statusTip" >
+              <string>Do not show correct answers at the end of the test</string>
+             </property>
+             <property name="text" >
+              <string>Do not show correct answers at the end of the test</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3" >
+            <widget class="QLabel" name="label_other_settings" >
+             <property name="minimumSize" >
+              <size>
+               <width>130</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text" >
+              <string>Other settings:</string>
+             </property>
+             <property name="alignment" >
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="serverModePage" >
-       <property name="geometry" >
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>860</width>
-         <height>579</height>
-        </rect>
-       </property>
        <layout class="QVBoxLayout" >
         <property name="margin" >
          <number>6</number>
@@ -4693,14 +4673,6 @@
        </layout>
       </widget>
       <widget class="QWidget" name="savedSessionsPage" >
-       <property name="geometry" >
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>860</width>
-         <height>579</height>
-        </rect>
-       </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
          <number>6</number>
@@ -5004,14 +4976,6 @@
                   <number>0</number>
                  </property>
                  <widget class="QWidget" name="selectedStudentTab" >
-                  <property name="geometry" >
-                   <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>378</width>
-                    <height>243</height>
-                   </rect>
-                  </property>
                   <attribute name="title" >
                    <string>Selected student</string>
                   </attribute>
@@ -5122,14 +5086,6 @@
                   </layout>
                  </widget>
                  <widget class="QWidget" name="passMarkDetailsTab" >
-                  <property name="geometry" >
-                   <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>360</width>
-                    <height>252</height>
-                   </rect>
-                  </property>
                   <attribute name="title" >
                    <string>Pass mark</string>
                   </attribute>
@@ -5175,14 +5131,6 @@
                   </layout>
                  </widget>
                  <widget class="QWidget" name="scoringSystemTab" >
-                  <property name="geometry" >
-                   <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>378</width>
-                    <height>243</height>
-                   </rect>
-                  </property>
                   <attribute name="title" >
                    <string>Scoring system</string>
                   </attribute>
@@ -5377,14 +5325,6 @@
        </layout>
       </widget>
       <widget class="QWidget" name="classesPage" >
-       <property name="geometry" >
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>860</width>
-         <height>579</height>
-        </rect>
-       </property>
        <layout class="QGridLayout" >
         <property name="margin" >
          <number>6</number>
@@ -5529,7 +5469,7 @@
               <number>3000</number>
              </property>
              <property name="value" >
-              <number>2005</number>
+              <number>2007</number>
              </property>
             </widget>
            </item>
@@ -5555,7 +5495,7 @@
               <number>3000</number>
              </property>
              <property name="value" >
-              <number>2009</number>
+              <number>2011</number>
              </property>
             </widget>
            </item>
@@ -6183,25 +6123,8 @@
    <addaction name="menuClass" />
    <addaction name="menuHelp" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>663</y>
-     <width>860</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
+  <widget class="QStatusBar" name="statusbar" />
   <widget class="QToolBar" name="toolBar" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>22</y>
-     <width>860</width>
-     <height>62</height>
-    </rect>
-   </property>
    <property name="movable" >
     <bool>false</bool>
    </property>

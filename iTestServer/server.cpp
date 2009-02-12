@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2009 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -413,6 +413,8 @@ void MainWindow::startServer()
     out << QString("[DB_DATE]\n") << current_db_date << QString("\n");
     out << QString("[DB_DATE_ULSD]\n") << (actionUse_last_save_date->isChecked() ? QString("true\n") : QString("false\n"));
     out << QString("[TEST_GRPS]\n") << (TSGroupsCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
+    out << QString("[TEST_HIDE_QNAMES]\n") << (TSHideQuestionNamesCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
+    out << QString("[TEST_HIDE_C_ANS]\n") << (TSHideCorrectAnswersCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
     out << QString("[TEST_DATE]\n") << current_db_testdate << QString("\n");
     out << QString("[TEST_TIME]\n") << time.toString("HH:mm") << QString("\n");
     out << QString("[TEST_QNUM]\n") << QString("%1\n").arg(test_qnum);
@@ -989,5 +991,7 @@ void MainWindow::clearSM()
 	rbtnTestTime->setChecked(true);
 	TSTestTimeEdit->setTime(QTime::QTime(0, 0));
 	TSQuestionTimeEdit->setTime(QTime::QTime(0, 0));
+    TSHideQuestionNamesCheckBox->setChecked(false);
+    TSHideCorrectAnswersCheckBox->setChecked(false);
     TSScoringSystemGroupBox->setChecked(false);
 }
