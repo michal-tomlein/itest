@@ -36,7 +36,7 @@ public:
     Q_DECLARE_FLAGS(Answers, Answer)
     enum SelectionType { SingleSelection = 0, MultiSelection = 1 };
     Q_DECLARE_FLAGS(SelectionTypeFlag, SelectionType)
-    
+
     Question(QString = QString());
 
     static int answerToIndex(Answer);
@@ -60,8 +60,8 @@ public slots:
     QString answer(Answer); void setAnswer(Answer, QString);
     QString answerAtIndex(int); void setAnswerAtIndex(int, QString);
     void addAnswer(QString); int numAnswers();
-    bool isAnswerCorrect(Answer); bool isAnswerAtIndexCorrect(int);
-    void setAnswerCorrect(Answers, bool); bool hasCorrectAnswer();
+    bool hasCorrectAnswer(); bool isAnswerAtIndexCorrect(int);
+    bool isAnswerCorrect(Answer); void setAnswerCorrect(Answers, bool);
     QStringList answers(); void setAnswers(QStringList);
     Answer correctAnswer();
     Answers correctAnswers(); void setCorrectAnswers(Answers);

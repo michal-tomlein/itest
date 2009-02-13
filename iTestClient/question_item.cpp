@@ -28,7 +28,22 @@ QuestionItem::QuestionItem(QString name)
      q_answers << "" << "" << "" << "";
      q_correctanswers = Question::None;
      q_answer = Question::None;
+     for (int i = 0; i < 9; ++i) { q_ans_order << i; }
 }
+
+void QuestionItem::shuffleAnswers()
+{
+    q_ans_order.clear();
+    int rand;
+    for (int i = 0; i < q_answers.count(); ++i) {
+        do {
+            rand = qrand() % q_answers.count();
+        } while (q_ans_order.contains(rand));
+        q_ans_order << rand;
+    }
+}
+
+QList<int> QuestionItem::answerOrder() { return q_ans_order; }
 
 Question::Answers QuestionItem::answered() { return q_answer; }
 

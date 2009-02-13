@@ -148,12 +148,12 @@
         <translation>Testa datu ielāde...</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="55"/>
+        <location filename="../database.cpp" line="51"/>
         <source>iTest version notice</source>
         <translation>Informācija par iTest versiju</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="53"/>
+        <location filename="../database.cpp" line="49"/>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
@@ -162,29 +162,29 @@ Izvēlētā datu bāzes datne var tikt atvērta ar citu programmas versiju,
 bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="55"/>
+        <location filename="../database.cpp" line="51"/>
         <source>You need a newer version of iTest to open this database file.</source>
         <translation>Lai atvērtu šo datu bāzes datni, Jums būs nepieciešama jaunāka iTest versija.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="231"/>
+        <location filename="../database.cpp" line="246"/>
         <source>Reading database file...</source>
         <translation>Datu bāzes datnes lasīšana...</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="245"/>
+        <location filename="../database.cpp" line="260"/>
         <source>Open database</source>
         <translation>Atvērt datu bāzi</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="245"/>
+        <location filename="../database.cpp" line="260"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>Nevar nolasīt datni %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="267"/>
+        <location filename="../database.cpp" line="282"/>
         <source>Generating test...</source>
         <translation>Testa jautājumu lasīšana...</translation>
     </message>
@@ -209,22 +209,22 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <translation>&amp;Atcelt</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="330"/>
+        <location filename="../main_window.cpp" line="332"/>
         <source>Your name, please.</source>
         <translation>Jūsu vārds, lūdzu.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="330"/>
+        <location filename="../main_window.cpp" line="332"/>
         <source>You cannot proceed unless you give us your name.</source>
         <translation>Jūs nevarēsiet turpināt, ja nenorādīsiet savu vārdu.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="403"/>
+        <location filename="../main_window.cpp" line="405"/>
         <source>Exam finished</source>
         <translation>Eksāmens pabeigts</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="403"/>
+        <location filename="../main_window.cpp" line="405"/>
         <source>You have run out of time. Your answers are being sent.</source>
         <translation>Jūs iztērējāt atvēlēto laiku. Jūsu atbildes tika aizsūtitas.</translation>
     </message>
@@ -234,7 +234,7 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <translation type="obsolete">iTest - Ielādēt testa datus</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="409"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>Invalid data received. There might be something wrong with the server.</source>
         <translation>Saņemti nepareizi dati. Iespējamas kļūdas servera darbā.</translation>
     </message>
@@ -494,7 +494,7 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <translation>NAV NOKĀRTOTS</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="203"/>
+        <location filename="../database.cpp" line="218"/>
         <source>Total</source>
         <translation>Kopā</translation>
     </message>
@@ -514,7 +514,7 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <translation>iTestClient</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="409"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>iTestClient - Load test data</source>
         <translation>iTestClient - Testa datu ielāde</translation>
     </message>
@@ -539,7 +539,7 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <translation type="obsolete">D</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="202"/>
+        <location filename="../database.cpp" line="217"/>
         <source>%1 of total %2</source>
         <translation>%1 no %2</translation>
     </message>

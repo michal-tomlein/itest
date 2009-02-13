@@ -208,7 +208,7 @@ void MainWindow::saveDB(QString db_file_name, bool savecopy, bool allsessions)
 		this->setEnabled(true); return;
     }
     setProgress(5); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    QTextStream sfile(&file); QString q_file_name;
+    QTextStream sfile(&file);
 	sfile.setCodec("UTF-8");
     sfile << "[ITEST_VERSION]\n" << f_ver << endl;
     sfile << "[ITEST_DB_VERSION]\n" << f_itdb_ver << endl;
@@ -319,20 +319,13 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 	    QTextStream rfile(&file);
 		if (useCP1250) { rfile.setCodec("CP 1250"); }
 		else { rfile.setCodec("UTF-8"); }
-	
-	    QString db_buffer; double version; double db_version; QString db_name;
-	    QString db_date; QString db_comments; int db_qnum; bool db_fxxe[20];
-	    QString db_f[20]; QString q_file_name; QString db_ulsd; int s_lenum;
-	    QuestionItem * item; QStringList answers; int db_snum; int s_snum;
-		int db_cnum = 0; QStringList bufferlist; int ans_flag = -1;
-		Question::Answer c_ans; Question::Answer ans; int ans_dif = 0;
-        Question::SelectionType ans_selectiontype = Question::SingleSelection;
-        SvgItem * svg;
+
+	    QString db_buffer; QStringList bufferlist;
 	    // ---------------------------------------------------------------------
 		if (rfile.readLine() != "[ITEST_VERSION]") { throw xInvalidDBFile(); }
-		version = rfile.readLine().toDouble();
+		double version = rfile.readLine().toDouble();
     	if (rfile.readLine() != "[ITEST_DB_VERSION]") { throw xInvalidDBFile(); }
-    	db_version = rfile.readLine().toDouble();
+    	double db_version = rfile.readLine().toDouble();
     	if ((version > f_ver) && (db_version == f_itdb_ver))
     	{ QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features.")); }
     	if ((version > f_ver) && (db_version > f_itdb_ver))
@@ -343,22 +336,23 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 	
 	    if (rfile.readLine() != "[DB_NAME]") { throw xInvalidDBFile(); }
 	    // Database name
-	    db_name = rfile.readLine();
+	    QString db_name = rfile.readLine();
 	    if (rfile.readLine() != "[DB_DATE]") { throw xInvalidDBFile(); }
 	    // Database date
-	    db_date = rfile.readLine();
+	    QString db_date = rfile.readLine();
    		if (rfile.readLine() != "[DB_DATE_ULSD]") { throw xInvalidDBFile(); }
 		// Use last save date
-		db_ulsd = rfile.readLine();
+		bool db_ulsd = (rfile.readLine() == "true");
     	if (rfile.readLine() != "[DB_COMMENTS]") { throw xInvalidDBFile(); }
     	// Database comments
-    	db_comments = rfile.readLine();
+    	QString db_comments = rfile.readLine();
     	if (rfile.readLine() != "[DB_QNUM]") { throw xInvalidDBFile(); }
     	// Question number
-    	db_qnum = rfile.readLine().toInt();
+    	int db_qnum = rfile.readLine().toInt();
     	if (rfile.readLine() != "[DB_SNUM]") { throw xInvalidDBFile(); }
     	// Number of saved sessions
-    	db_snum = rfile.readLine().toInt();
+    	int db_snum = rfile.readLine().toInt();
+        int db_cnum = 0;
     	if (db_version >= 1.35) {
     	    if (rfile.readLine() != "[DB_CNUM]") { throw xInvalidDBFile(); }
     	    // Number of classes
@@ -366,13 +360,15 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
     	}
     	if (rfile.readLine() != "[DB_FLAGS]") { throw xInvalidDBFile(); }
     	setProgress(6); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    	// fxxe
+    	// Flags enabled
     	db_buffer = rfile.readLine();
+        bool db_fe[20];
     	for (int i = 0; i < 20; ++i) {
-			if (db_buffer.at(i) == '+') {db_fxxe[i] = true;} else if (db_buffer.at(i) == '-')
-			{db_fxxe[i] = false;} else { throw xInvalidDBFile(); }
+			if (db_buffer.at(i) == '+') {db_fe[i] = true;} else if (db_buffer.at(i) == '-')
+			{db_fe[i] = false;} else { throw xInvalidDBFile(); }
     	}
-    	// flags
+    	// Flags
+        QString db_f[20];
     	for (int i = 0; i < 20; ++i) {
 			if (rfile.readLine() != QString("[DB_F%1]").arg(i)) { throw xInvalidDBFile(); }
 			db_f[i] = rfile.readLine();
@@ -382,6 +378,7 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
     	setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		int count = db_qnum + db_snum;
     	// Questions
+        QuestionItem * item; QStringList answers;
     	for (int i = 0; i < db_qnum; ++i) {
 			answers.clear();
 			// Question name
@@ -451,8 +448,7 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 				int numsvgitems = rfile.readLine().toInt();
 				for (int g = 0; g < numsvgitems; ++g) {
 				    db_buffer = rfile.readLine();
-				    svg = new SvgItem(db_buffer, rfile.readLine());
-				    item->addSvgItem(svg);
+				    item->addSvgItem(new SvgItem(db_buffer, rfile.readLine()));
 				}
 			}
 			// End
@@ -470,6 +466,9 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 			setProgress((85/(i+1)*count)+10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>
 	    }
 		// Saved sessions
+        int ans_flag = -1; int ans_dif = 0;
+        Question::Answer c_ans; Question::Answer ans;
+        Question::SelectionType ans_selectiontype = Question::SingleSelection;
 	    for (int i = 0; i < db_snum; ++i) {
 			if (rfile.atEnd()) { break; }
 			if (rfile.readLine() != "[SESSION]") { continue; }
@@ -496,8 +495,8 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
                 db_buffer.append(rfile.readLine());
                 sys.loadData(db_buffer);
             }
-			s_snum = rfile.readLine().toInt();
-			s_lenum = rfile.readLine().toInt();
+			int s_snum = rfile.readLine().toInt();
+			int s_lenum = rfile.readLine().toInt();
 			for (int le = 0; le < s_lenum; ++le) {
 				bufferlist.clear();
 				bufferlist = rfile.readLine().split(';');
@@ -600,18 +599,12 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
     	// Set texts - DBI section
     	DBIDatabaseNameLineEdit->setText( db_name );
     	DBIDateEdit->setDateTime( QDateTime::fromString(db_date, "yyyy.MM.dd-hh:mm") );
-    	if (db_ulsd == "true") {
-			DBIUseLastSaveDateCheckBox->setChecked(true);
-			actionUse_last_save_date->setChecked(true);
-			DBIDateEdit->setEnabled(false);
-    	} else {
-			DBIUseLastSaveDateCheckBox->setChecked(false);
-			actionUse_last_save_date->setChecked(false);
-			DBIDateEdit->setEnabled(true);
-    	}
+        DBIUseLastSaveDateCheckBox->setChecked(db_ulsd);
+        actionUse_last_save_date->setChecked(db_ulsd);
+        DBIDateEdit->setEnabled(!db_ulsd);
     	ECTextEdit->setHtml( db_comments );
 	    // Set flags
-	    for (int i = 0; i < 20; ++i) {current_db_fe[i] = db_fxxe[i];}
+	    for (int i = 0; i < 20; ++i) {current_db_fe[i] = db_fe[i];}
 	    for (int i = 0; i < 20; ++i) {current_db_f[i] = db_f[i];}
 	    setProgress(97); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	    // Apply flags

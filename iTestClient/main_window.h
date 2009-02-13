@@ -93,6 +93,7 @@ private:
     QString current_test_time_finished;
     PassMark current_test_passmark;
     bool current_test_use_groups;
+    bool current_test_shuffle_answers;
     bool current_connection_local;
     // FLAGS
     bool current_db_fe[20]; QString current_db_f[20];

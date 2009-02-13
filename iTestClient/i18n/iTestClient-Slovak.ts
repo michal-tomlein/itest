@@ -78,7 +78,7 @@
         <translation>Pripravený</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="245"/>
+        <location filename="../database.cpp" line="260"/>
         <source>Open database</source>
         <translation>Otvoriť databázu</translation>
     </message>
@@ -88,19 +88,19 @@
         <translation>Otvoriť databázový súbor</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="245"/>
+        <location filename="../database.cpp" line="260"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>Nemôžem čítať súbor %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="55"/>
+        <location filename="../database.cpp" line="51"/>
         <source>iTest version notice</source>
         <translation>Upozornenie o verzii iTest</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="55"/>
+        <location filename="../database.cpp" line="51"/>
         <source>You need a newer version of iTest to open this database file.</source>
         <translation>Na otvorenie tohto databázového súboru potrebujete novšiu verziu programu iTest.</translation>
     </message>
@@ -180,7 +180,7 @@
         <translation type="obsolete">%1 z %2</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="53"/>
+        <location filename="../database.cpp" line="49"/>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
@@ -239,12 +239,12 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation>Načítavam testové dáta...</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="231"/>
+        <location filename="../database.cpp" line="246"/>
         <source>Reading database file...</source>
         <translation>Čítam databázový súbor...</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="267"/>
+        <location filename="../database.cpp" line="282"/>
         <source>Generating test...</source>
         <translation>Generujem test...</translation>
     </message>
@@ -269,22 +269,22 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation>&amp;Zrušiť</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="330"/>
+        <location filename="../main_window.cpp" line="332"/>
         <source>Your name, please.</source>
         <translation>Vaše meno, prosím.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="330"/>
+        <location filename="../main_window.cpp" line="332"/>
         <source>You cannot proceed unless you give us your name.</source>
         <translation>Nemôžete pokračovať, kým neuvediete svoje meno.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="403"/>
+        <location filename="../main_window.cpp" line="405"/>
         <source>Exam finished</source>
         <translation>Skúška ukončená</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="403"/>
+        <location filename="../main_window.cpp" line="405"/>
         <source>You have run out of time. Your answers are being sent.</source>
         <translation>Váš čas vypršal. Vaše odpovede sa posielajú.</translation>
     </message>
@@ -294,7 +294,7 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation type="obsolete">iTest - Načítať testové dáta</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="409"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>Invalid data received. There might be something wrong with the server.</source>
         <translation>Prijaté neplatné dáta. Možno niečo nie je v poriadku so serverom.</translation>
     </message>
@@ -494,7 +494,7 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation>NEUROBIL(A)</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="203"/>
+        <location filename="../database.cpp" line="218"/>
         <source>Total</source>
         <translation>Celkom</translation>
     </message>
@@ -514,7 +514,7 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation>iTestClient</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="409"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>iTestClient - Load test data</source>
         <translation>iTestClient - Načítať testové dáta</translation>
     </message>
@@ -539,7 +539,7 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation type="obsolete">D</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="202"/>
+        <location filename="../database.cpp" line="217"/>
         <source>%1 of total %2</source>
         <translation>%1 z %2</translation>
     </message>

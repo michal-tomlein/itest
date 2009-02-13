@@ -77,11 +77,11 @@ void QuestionWidget::init(QuestionItem * item, bool highlight_correct_answers)
     qw_lbl_question->setText(item->text());
     qw_lbl_explanation->setText(item->explanation());
     qw_lbl_explanation->setVisible(!item->explanation().isEmpty());
-    QFont font;
+    QFont font; QList<int> ans_order = item->answerOrder();
     for (int i = 0; i < qw_lbl_answers.count(); ++i) {
-        qw_lbl_answers.at(i)->setText(QString("%1 %2").arg(Question::indexToLabel(i + 1)).arg(item->answerAtIndex(i + 1)));
-        font.setBold(item->isAnswerAtIndexCorrect(i + 1) && highlight_correct_answers);
-        font.setUnderline(item->answered().testFlag(Question::indexToAnswer(i + 1)));
+        qw_lbl_answers.at(i)->setText(QString("%1 %2").arg(Question::indexToLabel(i + 1)).arg(item->answerAtIndex(ans_order.at(i) + 1)));
+        font.setBold(item->isAnswerAtIndexCorrect(ans_order.at(i) + 1) && highlight_correct_answers);
+        font.setUnderline(item->answered().testFlag(Question::indexToAnswer(ans_order.at(i) + 1)));
         qw_lbl_answers.at(i)->setFont(font);
     }
     for (int i = 0; i < item->numSvgItems(); ++i) {

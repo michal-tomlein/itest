@@ -158,12 +158,12 @@
         <translation>Cargando los datos del exámen...</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="55"/>
+        <location filename="../database.cpp" line="51"/>
         <source>iTest version notice</source>
         <translation>Anuncio de versión de iTest</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="53"/>
+        <location filename="../database.cpp" line="49"/>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
@@ -172,34 +172,34 @@ No obstante, esta versión es capaz de abrir el archivo de base de datos que ha 
 pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="55"/>
+        <location filename="../database.cpp" line="51"/>
         <source>You need a newer version of iTest to open this database file.</source>
         <translation>Necesita una nueva versión de iTest para abrir este archivo de base de datos.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="203"/>
+        <location filename="../database.cpp" line="218"/>
         <source>Total</source>
         <translation>Total</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="231"/>
+        <location filename="../database.cpp" line="246"/>
         <source>Reading database file...</source>
         <translation>Leyendo el archivo de base de datos...</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="245"/>
+        <location filename="../database.cpp" line="260"/>
         <source>Open database</source>
         <translation>Abrir base de datos</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="245"/>
+        <location filename="../database.cpp" line="260"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>No se puede leer el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="267"/>
+        <location filename="../database.cpp" line="282"/>
         <source>Generating test...</source>
         <translation>Generando exámen...</translation>
     </message>
@@ -224,32 +224,32 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>&amp;Cancelar</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="330"/>
+        <location filename="../main_window.cpp" line="332"/>
         <source>Your name, please.</source>
         <translation>Su nombre, por favor.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="330"/>
+        <location filename="../main_window.cpp" line="332"/>
         <source>You cannot proceed unless you give us your name.</source>
         <translation>No puede proceder al menos que especifique su nombre.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="403"/>
+        <location filename="../main_window.cpp" line="405"/>
         <source>Exam finished</source>
         <translation>Exámen finalizado</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="403"/>
+        <location filename="../main_window.cpp" line="405"/>
         <source>You have run out of time. Your answers are being sent.</source>
         <translation>Se ha quedado sin tiempo. Sus respuestas se están enviando.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="409"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>iTestClient - Load test data</source>
         <translation>iTestClient - Cargar datos del exámen</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="409"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>Invalid data received. There might be something wrong with the server.</source>
         <translation>Datos recibidos inválidos. Puede que haya algo erróneo en el servidor.</translation>
     </message>
@@ -499,7 +499,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>&lt;b&gt;Nombre:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="202"/>
+        <location filename="../database.cpp" line="217"/>
         <source>%1 of total %2</source>
         <translation>%1 del total %2</translation>
     </message>

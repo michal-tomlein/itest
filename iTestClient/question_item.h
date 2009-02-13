@@ -30,6 +30,7 @@ public:
     QuestionItem(QString = QString());
 
 public slots:
+    void shuffleAnswers(); QList<int> answerOrder();
     Answers answered(); void setAnswered(Answers);
     double score(); double maximumScore();
     void addSvgItem(QString, QString); int numSvgItems();
@@ -38,6 +39,7 @@ public slots:
     static void setScoringSystem(ScoringSystem);
 
 private:
+    QList<int> q_ans_order;
     Answers q_answer;
     QStringList q_svglist;
     QMap<QString, QString> q_svgmap;

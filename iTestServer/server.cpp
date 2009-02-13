@@ -413,6 +413,7 @@ void MainWindow::startServer()
     out << QString("[DB_DATE]\n") << current_db_date << QString("\n");
     out << QString("[DB_DATE_ULSD]\n") << (actionUse_last_save_date->isChecked() ? QString("true\n") : QString("false\n"));
     out << QString("[TEST_GRPS]\n") << (TSGroupsCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
+    out << QString("[TEST_SHUFFLE_ANS]\n") << (TSShuffleAnswersCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
     out << QString("[TEST_HIDE_QNAMES]\n") << (TSHideQuestionNamesCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
     out << QString("[TEST_HIDE_C_ANS]\n") << (TSHideCorrectAnswersCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
     out << QString("[TEST_DATE]\n") << current_db_testdate << QString("\n");
@@ -993,5 +994,6 @@ void MainWindow::clearSM()
 	TSQuestionTimeEdit->setTime(QTime::QTime(0, 0));
     TSHideQuestionNamesCheckBox->setChecked(false);
     TSHideCorrectAnswersCheckBox->setChecked(false);
+    TSShuffleAnswersCheckBox->setChecked(false);
     TSScoringSystemGroupBox->setChecked(false);
 }

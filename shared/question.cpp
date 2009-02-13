@@ -101,9 +101,9 @@ void Question::addAnswer(QString ans)
 
 int Question::numAnswers() { return q_answers.count(); }
 
-bool Question::isAnswerCorrect(Question::Answer ans)
+bool Question::hasCorrectAnswer()
 {
-    return q_correctanswers.testFlag(ans);
+    return q_correctanswers != Question::None;
 }
 
 bool Question::isAnswerAtIndexCorrect(int i)
@@ -111,15 +111,15 @@ bool Question::isAnswerAtIndexCorrect(int i)
     return q_correctanswers.testFlag(indexToAnswer(i));
 }
 
+bool Question::isAnswerCorrect(Question::Answer ans)
+{
+    return q_correctanswers.testFlag(ans);
+}
+
 void Question::setAnswerCorrect(Question::Answers ans, bool correct)
 {
     if (correct) { q_correctanswers |= ans; }
     else { q_correctanswers &= ~ans; }
-}
-
-bool Question::hasCorrectAnswer()
-{
-    return q_correctanswers != Question::None;
 }
 
 QStringList Question::answers() { return q_answers; }
