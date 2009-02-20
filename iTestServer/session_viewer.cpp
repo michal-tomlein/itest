@@ -181,7 +181,7 @@ void MainWindow::setCurrentSession(QListWidgetItem * item)
 	SVSelectedSessionWidget->setEnabled(true);
 	SVNameLabel->setText(session->name());
 	SVDateTimeLabel->setText(session->dateTimeToString());
-	SVPassMarkLabel->setText(QString("%1").arg(session->passMark().passMark()));
+	SVPassMarkLabel->setText(makeString(session->passMark().passMark()));
 	SVOverallResultsProgressBar->setMaximum((int)session->maximumScore());
 	SVOverallResultsProgressBar->setValue(session->score() > 0 ? (int)session->score() : 0);
     SVOverallResultsLabel->setText(QString("%1%").arg(session->average()));
@@ -209,12 +209,12 @@ void MainWindow::setCurrentSession(QListWidgetItem * item)
 		passMarkDetailsTab->setEnabled(true); QTableWidgetItem * item;
 		SVPassMarkTableWidget->setRowCount(session->passMark().count());
 		for (int i = 0; i < session->passMark().count(); ++i) {
-			if (session->passMark().condition(i) < 0 || session->passMark().condition(i) >= 20) { continue; }
+			if (session->passMark().condition(i) < 0 || session->passMark().condition(i) >= current_db_f.size()) { continue; }
 		    item = new QTableWidgetItem(QString("%1 - %2").arg(session->passMark().condition(i) + 1).arg(current_db_f[session->passMark().condition(i)]));
 		    item->setBackground(QBrush::QBrush(backgroundColourForFlag(session->passMark().condition(i))));
 		    item->setForeground(QBrush::QBrush(foregroundColourForFlag(session->passMark().condition(i))));
 		    SVPassMarkTableWidget->setItem(i, 0, item);
-		    item = new QTableWidgetItem(QString("%1").arg(session->passMark().value(i)));
+		    item = new QTableWidgetItem(makeString(session->passMark().value(i)));
 		    SVPassMarkTableWidget->setItem(i, 1, item);
 		    SVPassMarkTableWidget->setRowHeight(i, 16);
 		}
@@ -228,9 +228,9 @@ void MainWindow::setCurrentSession(QListWidgetItem * item)
     scoringSystemTab->setEnabled(true);
     SVScoringSystemTableWidget->item(0, 1)->setText(session->scoringSystem().allowIncompleteAnswers ? tr("allowed") : tr("disallowed"));
     for (int i = 0, n = 0; i < 3; ++i, n += 3) {
-        SVScoringSystemTableWidget->item(n + 1, 1)->setText(QString("%1").arg(session->scoringSystem().correctAnswer[i]));
-        SVScoringSystemTableWidget->item(n + 2, 1)->setText(QString("%1").arg(session->scoringSystem().incorrectAnswer[i]));
-        SVScoringSystemTableWidget->item(n + 3, 1)->setText(QString("%1").arg(session->scoringSystem().missingAnswer[i]));
+        SVScoringSystemTableWidget->item(n + 1, 1)->setText(makeString(session->scoringSystem().correctAnswer[i]));
+        SVScoringSystemTableWidget->item(n + 2, 1)->setText(makeString(session->scoringSystem().incorrectAnswer[i]));
+        SVScoringSystemTableWidget->item(n + 3, 1)->setText(makeString(session->scoringSystem().missingAnswer[i]));
     }
 	SVLCGroupBox->setEnabled(true); SVLogGroupBox->setEnabled(true);
 	togglePrintEnabled(); enableSVTools();

@@ -87,8 +87,7 @@ int PassMark::qnum(int i)
 bool PassMark::check(QMap<QString, QuestionAnswer> * answers, QMap<QListWidgetItem *, QuestionItem *> * questions, ScoringSystem sys)
 {
 	QuestionItem * item = NULL; QuestionAnswer ans;
-	int c_ans_count = 0; int c_ans[20];
-	for (int i = 0; i < 20; ++i) { c_ans[i] = 0; }
+	int c_ans_count = 0; QMap<int, int> c_ans;
 	QMapIterator<QString, QuestionAnswer> i(*answers);
 	while (i.hasNext()) { i.next();
 		item = NULL;
@@ -102,7 +101,7 @@ bool PassMark::check(QMap<QString, QuestionAnswer> * answers, QMap<QListWidgetIt
 		ans = i.value();
 		if (ans.score(sys) > 0.0) {
 			c_ans_count++;
-			if (item->flag() >= 0 && item->flag() < 20) { c_ans[item->flag()]++; }
+			if (item->flag() >= 0) { c_ans[item->flag()]++; }
 		}
 	}
 	if (c_ans_count < pm_mark) { return false; }
@@ -116,12 +115,11 @@ bool PassMark::check(QMap<QString, QuestionAnswer> * answers, QMap<QListWidgetIt
 #ifdef ITESTCLIENT
 bool PassMark::check(QList<QuestionItem *> questions)
 {
-	int c_ans_count = 0; int c_ans[20];
-	for (int i = 0; i < 20; ++i) { c_ans[i] = 0; }
+	int c_ans_count = 0; QMap<int, int> c_ans;
 	for (int i = 0; i < questions.count(); ++i) {
 		if (questions.at(i)->score() > 0.0) {
 			c_ans_count++;
-			if (questions.at(i)->flag() >= 0 && questions.at(i)->flag() < 20) { c_ans[questions.at(i)->flag()]++; }
+			if (questions.at(i)->flag() >= 0) { c_ans[questions.at(i)->flag()]++; }
 		}
 	}
 	if (c_ans_count < pm_mark) { return false; }

@@ -78,11 +78,11 @@ void ArchivedSession::archive()
 		QMapIterator<QString, QuestionAnswer> i(*(student(s)->results())); QuestionAnswer qans;
 		while (i.hasNext()) { i.next();
 			qans = i.value();
-            qa_flaglist << QString("%1").arg(qans.flag());
-            qa_anslist << QString("%1").arg(qans.answered());
-			qa_correctanslist << QString("%1").arg(qans.correctAnswer());
-            qa_diflist << QString("%1").arg(qans.difficulty());
-            qa_selectiontypelist << QString("%1").arg(qans.selectionType());
+            qa_flaglist << makeString(qans.flag());
+            qa_anslist << makeString(qans.answered());
+			qa_correctanslist << makeString(qans.correctAnswer());
+            qa_diflist << makeString(qans.difficulty());
+            qa_selectiontypelist << makeString(qans.selectionType());
 		}
 	}
 	archive.setValue(QString("%1/%2").arg(as_parent->current_db_name).arg(session_title), data);

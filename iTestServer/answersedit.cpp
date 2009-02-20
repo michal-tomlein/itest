@@ -29,7 +29,7 @@ QWidget(parent) {
     ans_correct = new QCheckBox(this);
     ans_correct->setStatusTip(tr("A checked checkbox indicates a correct answer"));
     ans_correct->setMaximumSize(ans_text->sizeHint().height(), ans_text->sizeHint().height());
-    ans_remove = new MTToolButton(this, QString("%1").arg(i));
+    ans_remove = new MTToolButton(this, makeString(i));
     ans_remove->setIcon(QIcon(QString::fromUtf8(":/images/images/list-remove.png")));
     ans_remove->setStatusTip(tr("Remove this answer"));
     ans_remove->setMaximumSize(ans_text->sizeHint().height(), ans_text->sizeHint().height());

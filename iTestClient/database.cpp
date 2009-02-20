@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2009 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -109,14 +109,14 @@ void MainWindow::loadTest(QString input)
     if (in.readLine() != "[DB_FLAGS]") { errorInvalidData(); return; }
     // Flags enabled
     db_buffer = in.readLine();
-    bool db_fe[20];
-    for (int i = 0; i < 20; ++i) {
+    QVector<bool> db_fe(db_buffer.length());
+    for (int i = 0; i < db_fe.size(); ++i) {
         if (db_buffer.at(i) == '+') { db_fe[i] = true; } else if (db_buffer.at(i) == '-')
         { db_fe[i] = false; } else { errorInvalidData(); return; }
     }
     // Flags
-    QString db_f[20];
-    for (int i = 0; i < 20; ++i) {
+    QVector<QString> db_f(db_buffer.length());
+    for (int i = 0; i < db_f.size(); ++i) {
         if (in.readLine() != QString("[DB_F%1]").arg(i)) { errorInvalidData(); return; }
         db_f[i] = in.readLine();
     }
@@ -196,8 +196,8 @@ void MainWindow::loadTest(QString input)
         qApp->processEvents();
     }
     // Set flags
-    for (int i = 0; i < 20; ++i) {current_db_fe[i] = db_fe[i];}
-    for (int i = 0; i < 20; ++i) {current_db_f[i] = db_f[i];}
+    current_db_fe = db_fe;
+    current_db_f = db_f;
     // Save values
     current_db_name = db_name;
     current_db_date = db_date;
@@ -218,7 +218,7 @@ void MainWindow::loadTest(QString input)
     QString pm_str = tr("Total");
     pm_str.append(QString(": %1;").arg(current_test_passmark.passMark()));
     for (int i = 0; i < current_test_passmark.count(); ++i) {
-        if (current_test_passmark.condition(i) < 0 && current_test_passmark.condition(i) >= 20) { continue; }
+        if (current_test_passmark.condition(i) < 0 && current_test_passmark.condition(i) >= current_db_f.size()) { continue; }
         pm_str.append(QString(" %1: %2;").arg(current_db_f[current_test_passmark.condition(i)]).arg(current_test_passmark.value(i)));
     }
     ITW_test_passmark->setText(pm_str);
@@ -299,7 +299,7 @@ void MainWindow::randomlySelectQuestions()
         q_item->setData(Qt::UserRole, current_db_questions.at(randlist.at(i))->name());
     	LQListWidget->addItem(q_item);
     	current_test_questions.insert(q_item, current_db_questions.at(randlist.at(i)));
-    	if ((current_db_questions.at(randlist.at(i))->flag() >= 0) && (current_db_questions.at(randlist.at(i))->flag() < 20)) {
+    	if ((current_db_questions.at(randlist.at(i))->flag() >= 0) && (current_db_questions.at(randlist.at(i))->flag() < current_db_f.size())) {
     		if (!flags.contains(current_db_f[current_db_questions.at(randlist.at(i))->flag()]))
                 { flags << current_db_f[current_db_questions.at(randlist.at(i))->flag()]; }
         }

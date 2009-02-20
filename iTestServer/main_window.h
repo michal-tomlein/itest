@@ -96,10 +96,11 @@ private slots:
     // PRINT QUESTIONS
     void showPrintQuestionsDialogue();
     // FLAGS-RELATED
-    void setupFlagsPage();
+    void addFlagItem(int); void removeFlagItem(int);
+    void setupFlagsPage(); void setFlagEnabled(QTreeWidgetItem *);
     void setFlags(); void loadFlags(); void applyFlags(); void discardFlags();
-    void setFlagLineEditPalettes(); void updateFlags(QAbstractButton *);
-    void updateFlagQnums(); void checkForUnflaggedQuestions();
+    void updateFlags(QAbstractButton *); void updateFlagQnums();
+    void checkForUnflaggedQuestions();
     int qnumForFlag(int, bool = false);
     static QColor backgroundColourForFlag(int);
     static QColor foregroundColourForFlag(int, bool = false);
@@ -182,7 +183,7 @@ private slots:
     void removeSessionFromMember();
     QDialog * createAddSessionDialogue(QString, MTListWidget * = NULL);
     // ERROR MESSAGES
-    void errorInvalidDBFile(QString, QString);
+    void errorInvalidDBFile(QString, QString, int);
     // TEXTEDIT-RELATED
     void setupTextEdits();
     void textBold(); void textUnderline(); void textItalic();
@@ -210,7 +211,7 @@ private:
     QQueue<ArchivedSession *> current_db_queued_sessions;
     PassMark current_db_passmark;
     // FLAGS
-    bool current_db_fe[20]; QString current_db_f[20];
+    QVector<bool> current_db_fe; QVector<QString> current_db_f;
     // UI-RELATED
     void closeEvent(QCloseEvent *);
 	QHttp * http; QBuffer * http_buffer;
@@ -258,9 +259,7 @@ private:
 	// LANG
 	QComboBox * langComboBox;
 	// FLAG-WIDGETS
-	QLineEdit * EFFlagLineEdit[20];
-	QCheckBox * EFFlagCheckBox[20];
-	QLabel * EFFlagQnumLabel[20];
+	QVector<QLineEdit *> EFFlagLineEdit;
 	// PALETTES
 	SearchLineEditPalettes searchLineEditPalettes;
 	// ITEST & DB VERSION & ENVIRONMENT VARIABLES
@@ -270,7 +269,13 @@ private:
 	QString itest_url; QString docs_url;
 	QMap<QString, QString> itest_i18n;
 	// EXCEPTIONS
-	class xInvalidDBFile {};
+	class xInvalidDBFile {
+    public:
+        xInvalidDBFile(int e): x_error(e) {};
+        int error() { return x_error; };
+    private:
+        int x_error;
+    };
 	// FRIENDS
 	friend class Client;
 	friend class Session;

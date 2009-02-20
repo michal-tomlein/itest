@@ -100,4 +100,6 @@ public:
     bool allowIncompleteAnswers;
 };
 
+#define makeString(a) QString("%1").arg(a)
+
 #endif // QUESTION_H

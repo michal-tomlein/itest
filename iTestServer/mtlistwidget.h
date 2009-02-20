@@ -44,9 +44,9 @@ public slots:
         }
         int n = 0;
         for (int i = 0; i < count(); ++i) {
-            if (this->item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
-                this->item(i)->setHidden(false); n++;
-            } else { this->item(i)->setHidden(true); }
+            if (item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
+                item(i)->setHidden(false); n++;
+            } else { item(i)->setHidden(true); }
         }
         if ((!keyword.isEmpty()) && count() != 0 && n == 0) {
             le->setPalette(searchLineEditPalettes.search_noresults_palette);
@@ -54,8 +54,7 @@ public slots:
         return n;
     };
     void highlightItem(int i) { highlightItem(item(i)); };
-    static void highlightItem(QListWidgetItem * item)
-    {
+    static void highlightItem(QListWidgetItem * item) {
         if (item == NULL) { return; }
         for (int i = 0; i < item->listWidget()->count(); ++i) {
             item->listWidget()->item(i)->setBackground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
@@ -73,7 +72,7 @@ public slots:
     int highlightedRow() { return row(highlightedItem()); };
     QListWidgetItem * highlightedItem() {
         for (int i = 0; i < count(); ++i) {
-            if (isItemHighlighted(i)) { return this->item(i); }
+            if (isItemHighlighted(i)) { return item(i); }
         }
         return NULL;
     };

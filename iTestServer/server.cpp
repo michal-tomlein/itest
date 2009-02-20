@@ -50,7 +50,6 @@ void MainWindow::setupServer()
     QObject::connect(TSExcludeListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(addToList()));
     QObject::connect(TSIncludeTableWidget, SIGNAL(itemDoubleClicked(QTableWidgetItem *)), this, SLOT(removeFromList()));
     TSExcludeListWidget->setDragDropMode(QAbstractItemView::InternalMove);
-    //TSIncludeListWidget->setDragDropMode(QAbstractItemView::InternalMove);
     TSIncludeTableWidget->verticalHeader()->hide();
     TSIncludeTableWidget->horizontalHeader()->hide();
     TSIncludeTableWidget->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
@@ -105,7 +104,7 @@ void MainWindow::reloadAvailableItems()
             TSIncludeTableWidget->horizontalHeader()->setResizeMode(2, QHeaderView::ResizeToContents);
             TSIncludeTableWidget->horizontalHeader()->show();
             QListWidgetItem * item;
-            for (int i = 0; i < 20; ++i) {
+            for (int i = 0; i < current_db_f.size(); ++i) {
                 if (current_db_fe[i]) {
                     item = new QListWidgetItem (QString("%1 - %2").arg(i+1).arg(current_db_f[i]), TSExcludeListWidget);
                     item->setData(Qt::UserRole, i);
@@ -423,11 +422,9 @@ void MainWindow::startServer()
     out << QString("\n[DB_COMMENTS]\n") << current_db_comments << QString("\n");
     out << QString("[DB_QNUM]\n") << QString("%1\n").arg(db_qnum);
     out << QString("[DB_FLAGS]\n");
-    for (int i = 0; i < 20; ++i)
-    {if (current_db_fe[i]) {out << QString("+");} else {out << QString("-");}}
+    for (int i = 0; i < current_db_f.size(); ++i) { out << QString(current_db_fe[i] ? "+" : "-"); }
     out << QString("\n");
-    for (int i = 0; i < 20; ++i)
-    {out << QString("[DB_F") << QString("%1").arg(i) << QString("]\n"); out << current_db_f[i] << QString("\n");}
+    for (int i = 0; i < current_db_f.size(); ++i) { out << QString("[DB_F%1]\n%2\n").arg(i).arg(current_db_f[i]); }
     out << QString("[DB_FLAGS_END]\n");
     out << current_db_passmark.data() << QString("\n");
     setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -548,7 +545,7 @@ void MainWindow::stopServer()
 void MainWindow::addClient()
 {
     QTcpSocket * clientConnection = tcpServer->nextPendingConnection();
-    Client * client = new Client (this, clientConnection);
+    Client * client = new Client(this, clientConnection);
     /*QObject::connect(clientConnection, SIGNAL(disconnected()),
                   clientConnection, SLOT(deleteLater()));*/
     QObject::connect(clientConnection, SIGNAL(readyRead()), client, SLOT(readClientFeedback()));
@@ -563,10 +560,10 @@ void MainWindow::addClient()
     QObject::connect(client, SIGNAL(disconnected(Client *)),
                   this, SLOT(clientDisconnected(Client *)));
 
-    QListWidgetItem * item = new QListWidgetItem (QString("%1").arg(SMLCListWidget->count()+1), SMLCListWidget);
+    QListWidgetItem * item = new QListWidgetItem(makeString(SMLCListWidget->count()+1), SMLCListWidget);
     current_db_clients.insert(item, client);
     client->setNumber(item->text().toInt());
-    QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 connected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(item->text()));
+    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 connected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(item->text()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
     log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
@@ -590,7 +587,7 @@ void MainWindow::addClient()
 
 void MainWindow::clientIdentified(Client * client)
 {
-    QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 identified as %3").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 identified as %3").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush::QBrush(QColor::QColor(17, 120, 122)));
     log_entry->setForeground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
@@ -601,7 +598,7 @@ void MainWindow::clientIdentified(Client * client)
 
 void MainWindow::clientFinished(Client * client)
 {
-    QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 (%3) finished the exam").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) finished the exam").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush::QBrush(QColor::QColor(255, 251, 0)));
     log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
@@ -609,7 +606,7 @@ void MainWindow::clientFinished(Client * client)
 
 void MainWindow::clientResultsLoaded(Client * client)
 {
-    QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 (%3) submitted results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) submitted results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush::QBrush(QColor::QColor(221, 255, 0)));
     log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
@@ -617,12 +614,12 @@ void MainWindow::clientResultsLoaded(Client * client)
     { setCurrentClient(); }
     updateLC(client); sendCorrectAnswers(client);
     if (!printClientResults(client, default_printer)) {
-        QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 (%3) > failed to print the client's results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+        QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
         SMSLListWidget->insertItem(0, log_entry);
         log_entry->setBackground(QBrush::QBrush(QColor::QColor(255, 0, 0)));
         log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
     } else {
-        QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 (%3) > results printed successfully").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+        QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
         SMSLListWidget->insertItem(0, log_entry);
         log_entry->setBackground(QBrush::QBrush(QColor::QColor(221, 255, 0)));
         log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
@@ -829,10 +826,10 @@ bool MainWindow::addOfflineClient(QString file_name)
     rfile.readLine();
     if (rfile.readLine() != "[CLIENT_NAME]") return false;
     Client * client = new Client (this, rfile.readLine());
-    QListWidgetItem * item = new QListWidgetItem (QString("%1").arg(SMLCListWidget->count()+1), SMLCListWidget);
+    QListWidgetItem * item = new QListWidgetItem(makeString(SMLCListWidget->count()+1), SMLCListWidget);
     current_db_clients.insert(item, client);
     client->setNumber(item->text().toInt()); item->setText(client->name());
-    QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Client #%2 (%3) added").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) added").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush::QBrush(QColor::QColor(0, 125, 163)));
     log_entry->setForeground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
@@ -955,7 +952,7 @@ void MainWindow::runTestWriter()
 #else
 	itw_file_name.replace(itw_file_name.lastIndexOf("iTestServer"), 11, "iTestClient");
 #endif
-	QStringList arguments; arguments << "-port" << QString("%1").arg(tcpServer->serverPort());
+	QStringList arguments; arguments << "-port" << makeString(tcpServer->serverPort());
 	QProcess * itw = new QProcess;
 	itw->start(itw_file_name, arguments);
 }

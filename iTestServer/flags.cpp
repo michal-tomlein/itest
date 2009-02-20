@@ -19,57 +19,50 @@
 
 #include "main_window.h"
 
+void MainWindow::addFlagItem(int i)
+{
+    QLineEdit * le = new QLineEdit(this);
+    le->setStatusTip(tr("Type a name for flag %1").arg(i + 1));
+    QPalette palette;
+    palette.setColor(QPalette::Active, QPalette::Base, backgroundColourForFlag(i));
+    palette.setColor(QPalette::Active, QPalette::Text, foregroundColourForFlag(i));
+    palette.setColor(QPalette::Inactive, QPalette::Base, backgroundColourForFlag(i));
+    palette.setColor(QPalette::Inactive, QPalette::Text, foregroundColourForFlag(i));
+    le->setPalette(palette);
+    EFFlagLineEdit << le;
+    QTreeWidgetItem * item = new QTreeWidgetItem(EFTreeWidget);
+    item->setText(0, makeString(i + 1));
+    item->setCheckState(0, Qt::Unchecked);
+    item->setStatusTip(0, tr("Check or uncheck this checkbox to enable or disable flag %1").arg(i + 1));
+    EFTreeWidget->setItemWidget(item, 1, le);
+    item->setText(2, "0");
+}
+
+void MainWindow::removeFlagItem(int i)
+{
+    delete EFTreeWidget->takeTopLevelItem(i);
+    delete EFFlagLineEdit[i];
+    EFFlagLineEdit.resize(EFFlagLineEdit.size() - 1);
+}
+
 void MainWindow::setupFlagsPage()
 {
-    EFFlagLineEdit[0] = Flag01LineEdit; EFFlagCheckBox[0] = Flag01CheckBox;
-    EFFlagLineEdit[1] = Flag02LineEdit; EFFlagCheckBox[1] = Flag02CheckBox;
-    EFFlagLineEdit[2] = Flag03LineEdit; EFFlagCheckBox[2] = Flag03CheckBox;
-    EFFlagLineEdit[3] = Flag04LineEdit; EFFlagCheckBox[3] = Flag04CheckBox;
-    EFFlagLineEdit[4] = Flag05LineEdit; EFFlagCheckBox[4] = Flag05CheckBox;
-    EFFlagLineEdit[5] = Flag06LineEdit; EFFlagCheckBox[5] = Flag06CheckBox;
-    EFFlagLineEdit[6] = Flag07LineEdit; EFFlagCheckBox[6] = Flag07CheckBox;
-    EFFlagLineEdit[7] = Flag08LineEdit; EFFlagCheckBox[7] = Flag08CheckBox;
-    EFFlagLineEdit[8] = Flag09LineEdit; EFFlagCheckBox[8] = Flag09CheckBox;
-    EFFlagLineEdit[9] = Flag10LineEdit; EFFlagCheckBox[9] = Flag10CheckBox;
-    EFFlagLineEdit[10] = Flag11LineEdit; EFFlagCheckBox[10] = Flag11CheckBox;
-    EFFlagLineEdit[11] = Flag12LineEdit; EFFlagCheckBox[11] = Flag12CheckBox;
-    EFFlagLineEdit[12] = Flag13LineEdit; EFFlagCheckBox[12] = Flag13CheckBox;
-    EFFlagLineEdit[13] = Flag14LineEdit; EFFlagCheckBox[13] = Flag14CheckBox;
-    EFFlagLineEdit[14] = Flag15LineEdit; EFFlagCheckBox[14] = Flag15CheckBox;
-    EFFlagLineEdit[15] = Flag16LineEdit; EFFlagCheckBox[15] = Flag16CheckBox;
-    EFFlagLineEdit[16] = Flag17LineEdit; EFFlagCheckBox[16] = Flag17CheckBox;
-    EFFlagLineEdit[17] = Flag18LineEdit; EFFlagCheckBox[17] = Flag18CheckBox;
-    EFFlagLineEdit[18] = Flag19LineEdit; EFFlagCheckBox[18] = Flag19CheckBox;
-    EFFlagLineEdit[19] = Flag20LineEdit; EFFlagCheckBox[19] = Flag20CheckBox;
-    EFFlagQnumLabel[0] = FlagQnumLabel_0; EFFlagQnumLabel[1] = FlagQnumLabel_1;
-    EFFlagQnumLabel[2] = FlagQnumLabel_2; EFFlagQnumLabel[3] = FlagQnumLabel_3;
-    EFFlagQnumLabel[4] = FlagQnumLabel_4; EFFlagQnumLabel[5] = FlagQnumLabel_5;
-    EFFlagQnumLabel[6] = FlagQnumLabel_6; EFFlagQnumLabel[7] = FlagQnumLabel_7;
-    EFFlagQnumLabel[8] = FlagQnumLabel_8; EFFlagQnumLabel[9] = FlagQnumLabel_9;
-    EFFlagQnumLabel[10] = FlagQnumLabel_10; EFFlagQnumLabel[11] = FlagQnumLabel_11;
-    EFFlagQnumLabel[12] = FlagQnumLabel_12; EFFlagQnumLabel[13] = FlagQnumLabel_13;
-    EFFlagQnumLabel[14] = FlagQnumLabel_14; EFFlagQnumLabel[15] = FlagQnumLabel_15;
-    EFFlagQnumLabel[16] = FlagQnumLabel_16; EFFlagQnumLabel[17] = FlagQnumLabel_17;
-    EFFlagQnumLabel[18] = FlagQnumLabel_18; EFFlagQnumLabel[19] = FlagQnumLabel_19;
-    QLabel * fl[20];
-    fl[0] = FlagLabel_1; fl[1] = FlagLabel_2; fl[2] = FlagLabel_3;
-    fl[3] = FlagLabel_4; fl[4] = FlagLabel_5; fl[5] = FlagLabel_6;
-    fl[6] = FlagLabel_7; fl[7] = FlagLabel_8; fl[8] = FlagLabel_9;
-    fl[9] = FlagLabel_10; fl[10] = FlagLabel_11; fl[11] = FlagLabel_12;
-    fl[12] = FlagLabel_13; fl[13] = FlagLabel_14; fl[14] = FlagLabel_15;
-    fl[15] = FlagLabel_16; fl[16] = FlagLabel_17; fl[17] = FlagLabel_18;
-    fl[18] = FlagLabel_19; fl[19] = FlagLabel_20;
-    
-    for (int i = 0; i < 20; ++i) {
-        EFFlagLineEdit[i]->setStatusTip(tr("Type a name for flag %1").arg(i + 1));
-        EFFlagCheckBox[i]->setStatusTip(tr("Check or uncheck this checkbox to enable or disable flag %1").arg(i + 1));
-#ifdef Q_WS_X11
-        EFFlagCheckBox[i]->setMaximumSize(22, 22);
-#endif
-        fl[i]->setText(tr("Flag %1:").arg(i + 1));
-        QObject::connect(EFFlagCheckBox[i], SIGNAL(toggled(bool)), EFFlagLineEdit[i], SLOT(setEnabled(bool)));
+    for (int i = 0; i < current_db_f.size(); ++i) {
+        addFlagItem(i);
     }
+    QObject::connect(EFTreeWidget, SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(setFlagEnabled(QTreeWidgetItem *)));
     QObject::connect(EFButtonBox, SIGNAL(clicked(QAbstractButton *)), this, SLOT(updateFlags(QAbstractButton *)));
+}
+
+void MainWindow::setFlagEnabled(QTreeWidgetItem * item)
+{
+    int i = item->text(0).toInt() - 1;
+    if (i >= 0 && i < EFFlagLineEdit.size()) {
+        EFFlagLineEdit[i]->setEnabled(item->checkState(0) == Qt::Checked);
+        if (i == EFFlagLineEdit.size() - 1 && item->checkState(0) == Qt::Checked) {
+            addFlagItem(i + 1);
+        }
+    }
 }
 
 void MainWindow::setFlags()
@@ -77,11 +70,11 @@ void MainWindow::setFlags()
 	 int q_flag_i = SQFlagComboBox->itemData(SQFlagComboBox->currentIndex()).toInt();
      SQFlagComboBox->clear(); LQFlagComboBox->clear();
      current_db_flagentries.clear();
-     for (int i = 0; i < 20; ++i) {
+     for (int i = 0; i < current_db_f.size(); ++i) {
         if (current_db_fe[i]) {
-            SQFlagComboBox->addItem(QString("%1 - %2").arg(i+1).arg(current_db_f[i]), i);
-            LQFlagComboBox->addItem(QString("%1 - %2").arg(i+1).arg(current_db_f[i]), i);
-            current_db_flagentries.insert(i, SQFlagComboBox->count()-1);
+            SQFlagComboBox->addItem(current_db_f[i], i);
+            LQFlagComboBox->addItem(current_db_f[i], i);
+            current_db_flagentries.insert(i, SQFlagComboBox->count() - 1);
         }
      }
      SQFlagComboBox->setCurrentIndex(current_db_flagentries.value(q_flag_i));
@@ -90,22 +83,35 @@ void MainWindow::setFlags()
 
 void MainWindow::loadFlags()
 {
-	for (int i = 0; i < 20; ++i)
-    {
-        if (current_db_fe[i]) {EFFlagCheckBox[i]->setChecked( true );}
-        else {EFFlagCheckBox[i]->setChecked( false );}
-	    EFFlagLineEdit[i]->setText( current_db_f[i] );
+	for (int i = 0; i < current_db_f.size(); ++i) {
+        if (i >= EFTreeWidget->topLevelItemCount()) { addFlagItem(i); }
+        EFTreeWidget->topLevelItem(i)->setCheckState(0, current_db_fe[i] ? Qt::Checked : Qt::Unchecked);
+	    EFFlagLineEdit[i]->setText(current_db_f[i]);
+    }
+    for (int i = EFTreeWidget->topLevelItemCount() - 1; i > current_db_f.size(); --i) {
+        removeFlagItem(i);
+    }
+    if (EFTreeWidget->topLevelItemCount() == current_db_f.size() + 1) {
+        EFTreeWidget->topLevelItem(current_db_f.size())->setCheckState(0, Qt::Unchecked);
+        EFFlagLineEdit[current_db_f.size()]->clear();
     }
 }
 
 void MainWindow::applyFlags()
 {
-    for (int i = 0; i < 20; ++i)
-    {
-        current_db_f[i] = EFFlagLineEdit[i]->text();
-        current_db_fe[i] = EFFlagCheckBox[i]->isChecked();
+    for (int i = EFTreeWidget->topLevelItemCount() - 1; i > 19; --i) {
+        if (EFTreeWidget->topLevelItem(i - 1)->checkState(0) == Qt::Unchecked && EFTreeWidget->topLevelItem(i)->checkState(0) == Qt::Unchecked) {
+            removeFlagItem(i);
+        } else { break; }
     }
-    setFlags(); updateFlagQnums();
+    current_db_f.resize(EFFlagLineEdit.size());
+    current_db_fe.resize(EFFlagLineEdit.size());
+    for (int i = 0; i < EFFlagLineEdit.size(); ++i) {
+        current_db_f[i] = EFFlagLineEdit[i]->text();
+        current_db_fe[i] = EFTreeWidget->topLevelItem(i)->checkState(0) == Qt::Checked;
+    }
+    setFlags();
+    updateFlagQnums();
     statusBar()->showMessage(tr("Flags saved"), 10000);
     setDatabaseModified();
 }
@@ -123,34 +129,22 @@ void MainWindow::updateFlags(QAbstractButton * btn)
 
 void MainWindow::updateFlagQnums()
 {
-    int flag_qnum [20];
-    for (int i = 0; i < 20; ++i) { flag_qnum[i] = 0; }
+    QMap<int, int> flag_qnum;
     QMapIterator<QListWidgetItem *, QuestionItem *> i(current_db_questions);
-    while (i.hasNext()) {
-        i.next();
-        if (i.value()->flag() >= 0 && i.value()->flag() < 20) {
-            flag_qnum[i.value()->flag()]++;
-        }
+    while (i.hasNext()) { i.next();
+        if (i.value()->flag() >= 0) { flag_qnum[i.value()->flag()]++; }
     }
-    QString label_text = tr("Number of questions with this flag: ");
-    QString buffer;
-    for (int i = 0; i < 20; ++i) {
-        buffer = label_text;
-        buffer.append(QString("%1").arg(flag_qnum[i]));
-        EFFlagQnumLabel[i]->setText(buffer);
-        if (flag_qnum[i] > 0) {
-            if (EFFlagCheckBox[i]->isChecked()) {
-                EFFlagCheckBox[i]->setEnabled(false);
-            }
-        }
-        else {EFFlagCheckBox[i]->setEnabled(true);}
+    for (int i = 0; i < EFTreeWidget->topLevelItemCount(); ++i) {
+        EFTreeWidget->topLevelItem(i)->setText(2, makeString(flag_qnum[i]));
+        EFTreeWidget->topLevelItem(i)->setDisabled(flag_qnum[i] > 0 && EFTreeWidget->topLevelItem(i)->checkState(0) == Qt::Checked);
+        if (i < current_db_f.size()) EFFlagLineEdit[i]->setText(current_db_f[i]);
     }
 }
 
 void MainWindow::checkForUnflaggedQuestions()
 {
     int numflags = 0; QuestionItem * item;
-    for (int i = 0; i < 20; ++i) { if (current_db_fe[i]) { numflags++; } }
+    for (int i = 0; i < current_db_f.size(); ++i) { if (current_db_fe[i]) { numflags++; } }
     if (numflags > 0) {
         for (int i = 0; i < LQListWidget->count(); ++i) {
             item = current_db_questions.value(LQListWidget->item(i));
@@ -183,21 +177,11 @@ int MainWindow::qnumForFlag(int flag, bool use_groups)
     return qnum;
 }
 
-void MainWindow::setFlagLineEditPalettes()
-{
-    for (int i = 0; i < 20; ++i) {
-    	QPalette palette;
-    	palette.setColor(QPalette::Active, QPalette::Base, backgroundColourForFlag(i));
-    	palette.setColor(QPalette::Active, QPalette::Text, foregroundColourForFlag(i));
-    	palette.setColor(QPalette::Inactive, QPalette::Base, backgroundColourForFlag(i));
-    	palette.setColor(QPalette::Inactive, QPalette::Text, foregroundColourForFlag(i));
-    	EFFlagLineEdit[i]->setPalette(palette);
-    }
-}
-
 QColor MainWindow::backgroundColourForFlag(int flag)
 {
 	switch (flag) {
+        case -1:
+            return QColor::QColor(255, 255, 255); break;
 		case 0: // 0: 255 255 255 - 0 0 0
 			return QColor::QColor(240, 255, 210); break;
 		case 1: // 1: 197 255 120 - 0 0 0
@@ -238,8 +222,8 @@ QColor MainWindow::backgroundColourForFlag(int flag)
 			return QColor::QColor(255, 251, 0); break;
 		case 19: // 19: 221 255 0 - 0 0 0
 			return QColor::QColor(221, 255, 0); break;
-		default:
-			return QColor::QColor(255, 255, 255); break;
+		default: // 20+: 173 217 255 - 0 0 0
+			return QColor::QColor(173, 217, 255); break;
 	}
 	return QColor::QColor(255, 255, 255);
 }

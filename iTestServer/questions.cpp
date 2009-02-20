@@ -37,7 +37,7 @@ void MainWindow::addQuestion()
     LQListWidget->addItem(q_item);
     setDatabaseModified();
     int numflags = 0;
-    for (int i = 0; i < 20; ++i) { if (current_db_fe[i]) { numflags++; } }
+    for (int i = 0; i < current_db_f.size(); ++i) { if (current_db_fe[i]) { numflags++; } }
     if (numflags > 0) {
         item->setFlag(SQFlagComboBox->itemData(0).toInt());
         setQuestionItemColour(q_item, item->flag());

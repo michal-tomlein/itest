@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2009 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -96,7 +96,7 @@ private:
     bool current_test_shuffle_answers;
     bool current_connection_local;
     // FLAGS
-    bool current_db_fe[20]; QString current_db_f[20];
+    QVector<bool> current_db_fe; QVector<QString> current_db_f;
     // UI-RELATED
     QTimer timer;
     void closeEvent(QCloseEvent*);

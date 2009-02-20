@@ -65,6 +65,7 @@ void MainWindow::newDB()
 		this->setWindowTitle(tr("iTestServer"));
 		this->setEnabled(true); return;
     }
+    clearAll();
 	setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     QTextStream sfile(&file);
 	sfile.setCodec("UTF-8");
@@ -79,11 +80,11 @@ void MainWindow::newDB()
 	sfile << "[DB_CNUM]\n0" << endl;
 	sfile << "[DB_FLAGS]" << endl;
 	sfile << "--------------------\n";
-	for (int i = 0; i < 20; ++i) {sfile << "[DB_F" << i << "]\n" << endl;}
+	for (int i = 0; i < current_db_f.size(); ++i) { sfile << "[DB_F" << i << "]\n" << endl; }
 	sfile << "[DB_FLAGS_END]";
 	setProgress(50); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     // APPLY
-    setAllEnabled(true); clearAll();
+    setAllEnabled(true);
     DBIDatabaseNameLineEdit->setText( db_name );
     current_db_file = saveDBName;
     current_db_name = db_name;
@@ -202,8 +203,7 @@ void MainWindow::saveDB(QString db_file_name, bool savecopy, bool allsessions)
 	uint db_snum = (uint)sessions.size();
     // Save database -----------------------------------------------------------
     QFile file(db_file_name);
-    if (!file.open(QFile::WriteOnly | QFile::Text))
-    {
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
 		QMessageBox::critical(this, tr("Save database"), tr("Cannot write file %1:\n%2.").arg(db_file_name).arg(file.errorString()));
 		this->setEnabled(true); return;
     }
@@ -220,10 +220,13 @@ void MainWindow::saveDB(QString db_file_name, bool savecopy, bool allsessions)
     sfile << "[DB_SNUM]\n" << db_snum << endl;
     sfile << "[DB_CNUM]\n" << current_db_classes.size() << endl;
     sfile << "[DB_FLAGS]" << endl;
-    for (int i = 0; i < 20; ++i)
-    {if (current_db_fe[i]) {sfile << "+";} else {sfile << "-";}} sfile << endl;
-    for (int i = 0; i < 20; ++i)
-    {sfile << "[DB_F" << i << "]" << endl; sfile << current_db_f[i] << endl;}
+    int num_flags = current_db_f.size();
+    if (num_flags > 20 && !current_db_fe[num_flags - 1]) num_flags--;
+    for (int i = 0; i < num_flags; ++i) { sfile << (current_db_fe[i] ? "+" : "-"); }
+    sfile << endl;
+    for (int i = 0; i < num_flags; ++i) {
+        sfile << "[DB_F" << i << "]\n" << current_db_f[i] << endl;
+    }
     sfile << "[DB_FLAGS_END]" << endl;
     setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     uint count = (uint)current_db_questions.size() + (uint)sessions.size();
@@ -322,9 +325,9 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 
 	    QString db_buffer; QStringList bufferlist;
 	    // ---------------------------------------------------------------------
-		if (rfile.readLine() != "[ITEST_VERSION]") { throw xInvalidDBFile(); }
+		if (rfile.readLine() != "[ITEST_VERSION]") { throw xInvalidDBFile(0); }
 		double version = rfile.readLine().toDouble();
-    	if (rfile.readLine() != "[ITEST_DB_VERSION]") { throw xInvalidDBFile(); }
+    	if (rfile.readLine() != "[ITEST_DB_VERSION]") { throw xInvalidDBFile(1); }
     	double db_version = rfile.readLine().toDouble();
     	if ((version > f_ver) && (db_version == f_itdb_ver))
     	{ QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features.")); }
@@ -334,47 +337,47 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 			if (db_version == 1.0) { openDB(openDBName, true); return; }
 		}
 	
-	    if (rfile.readLine() != "[DB_NAME]") { throw xInvalidDBFile(); }
+	    if (rfile.readLine() != "[DB_NAME]") { throw xInvalidDBFile(10); }
 	    // Database name
 	    QString db_name = rfile.readLine();
-	    if (rfile.readLine() != "[DB_DATE]") { throw xInvalidDBFile(); }
+	    if (rfile.readLine() != "[DB_DATE]") { throw xInvalidDBFile(12); }
 	    // Database date
 	    QString db_date = rfile.readLine();
-   		if (rfile.readLine() != "[DB_DATE_ULSD]") { throw xInvalidDBFile(); }
+   		if (rfile.readLine() != "[DB_DATE_ULSD]") { throw xInvalidDBFile(14); }
 		// Use last save date
 		bool db_ulsd = (rfile.readLine() == "true");
-    	if (rfile.readLine() != "[DB_COMMENTS]") { throw xInvalidDBFile(); }
+    	if (rfile.readLine() != "[DB_COMMENTS]") { throw xInvalidDBFile(16); }
     	// Database comments
     	QString db_comments = rfile.readLine();
-    	if (rfile.readLine() != "[DB_QNUM]") { throw xInvalidDBFile(); }
+    	if (rfile.readLine() != "[DB_QNUM]") { throw xInvalidDBFile(18); }
     	// Question number
     	int db_qnum = rfile.readLine().toInt();
-    	if (rfile.readLine() != "[DB_SNUM]") { throw xInvalidDBFile(); }
+    	if (rfile.readLine() != "[DB_SNUM]") { throw xInvalidDBFile(20); }
     	// Number of saved sessions
     	int db_snum = rfile.readLine().toInt();
         int db_cnum = 0;
     	if (db_version >= 1.35) {
-    	    if (rfile.readLine() != "[DB_CNUM]") { throw xInvalidDBFile(); }
+    	    if (rfile.readLine() != "[DB_CNUM]") { throw xInvalidDBFile(22); }
     	    // Number of classes
     	    db_cnum = rfile.readLine().toInt();
     	}
-    	if (rfile.readLine() != "[DB_FLAGS]") { throw xInvalidDBFile(); }
+    	if (rfile.readLine() != "[DB_FLAGS]") { throw xInvalidDBFile(50); }
     	setProgress(6); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     	// Flags enabled
     	db_buffer = rfile.readLine();
-        bool db_fe[20];
-    	for (int i = 0; i < 20; ++i) {
-			if (db_buffer.at(i) == '+') {db_fe[i] = true;} else if (db_buffer.at(i) == '-')
-			{db_fe[i] = false;} else { throw xInvalidDBFile(); }
+        QVector<bool> db_fe(db_buffer.length());
+    	for (int i = 0; i < db_fe.size(); ++i) {
+			if (db_buffer.at(i) == '+') { db_fe[i] = true; } else if (db_buffer.at(i) == '-')
+			{ db_fe[i] = false; } else { throw xInvalidDBFile(52); }
     	}
     	// Flags
-        QString db_f[20];
-    	for (int i = 0; i < 20; ++i) {
-			if (rfile.readLine() != QString("[DB_F%1]").arg(i)) { throw xInvalidDBFile(); }
+        QVector<QString> db_f(db_buffer.length());
+    	for (int i = 0; i < db_f.size(); ++i) {
+			if (rfile.readLine() != QString("[DB_F%1]").arg(i)) { throw xInvalidDBFile(54); }
 			db_f[i] = rfile.readLine();
     	}
     	// End of flags
-    	if (rfile.readLine() != "[DB_FLAGS_END]") { throw xInvalidDBFile(); }
+    	if (rfile.readLine() != "[DB_FLAGS_END]") { throw xInvalidDBFile(59); }
     	setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		int count = db_qnum + db_snum;
     	// Questions
@@ -382,69 +385,69 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
     	for (int i = 0; i < db_qnum; ++i) {
 			answers.clear();
 			// Question name
-			if (rfile.readLine() != "[Q_NAME]") { throw xInvalidDBFile(); }
+			if (rfile.readLine() != "[Q_NAME]") { throw xInvalidDBFile(100); }
 			item = new QuestionItem (rfile.readLine());
 			// Flag
-			if (rfile.readLine() != "[Q_FLAG]") { throw xInvalidDBFile(); }
+			if (rfile.readLine() != "[Q_FLAG]") { throw xInvalidDBFile(102); }
 			item->setFlag(rfile.readLine().toInt());
 			if (db_version >= 1.2) {
 				// Question group
-				if (rfile.readLine() != "[Q_GRP]") { throw xInvalidDBFile(); }
+				if (rfile.readLine() != "[Q_GRP]") { throw xInvalidDBFile(104); }
 				item->setGroup(rfile.readLine());
 			}
 			// Difficulty
-			if (db_version >= 1.2) { if (rfile.readLine() != "[Q_DIF]") { throw xInvalidDBFile(); } }
-			else { if (rfile.readLine() != "[Q_DIFFICULTY]") { throw xInvalidDBFile(); } }
+			if (db_version >= 1.2) { if (rfile.readLine() != "[Q_DIF]") { throw xInvalidDBFile(106); } }
+			else { if (rfile.readLine() != "[Q_DIFFICULTY]") { throw xInvalidDBFile(108); } }
 			item->setDifficulty(rfile.readLine().toInt());
 			// Question text
-			if (rfile.readLine() != "[Q_TEXT]") { throw xInvalidDBFile(); }
+			if (rfile.readLine() != "[Q_TEXT]") { throw xInvalidDBFile(110); }
 			item->setText(rfile.readLine());
             if (db_version >= 1.35) {
                 // Answers
-                if (rfile.readLine() != "[Q_ANS]") { throw xInvalidDBFile(); }
+                if (rfile.readLine() != "[Q_ANS]") { throw xInvalidDBFile(112); }
                 item->setSelectionType((Question::SelectionType)rfile.readLine().toInt());
                 item->setCorrectAnswers((Question::Answer)rfile.readLine().toInt());
                 int numanswers = rfile.readLine().toInt();
 				for (int a = 0; a < numanswers; ++a) { answers << rfile.readLine(); }
                 // Explanation
-                if (rfile.readLine() != "[Q_EXPL]") { throw xInvalidDBFile(); }
+                if (rfile.readLine() != "[Q_EXPL]") { throw xInvalidDBFile(114); }
                 item->setExplanation(rfile.readLine());
             } else {
                 // Answer A
-                if (rfile.readLine() != "[Q_ANSA]") { throw xInvalidDBFile(); }
+                if (rfile.readLine() != "[Q_ANSA]") { throw xInvalidDBFile(116); }
                 answers << rfile.readLine();
-                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSA_C]") { throw xInvalidDBFile(); } }
+                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSA_C]") { throw xInvalidDBFile(118); } }
                 item->setAnswerCorrect(Question::A, rfile.readLine() == "true");
                 // Answer B
-                if (rfile.readLine() != "[Q_ANSB]") { throw xInvalidDBFile(); }
+                if (rfile.readLine() != "[Q_ANSB]") { throw xInvalidDBFile(120); }
                 answers << rfile.readLine();
-                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSB_C]") { throw xInvalidDBFile(); } }
+                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSB_C]") { throw xInvalidDBFile(122); } }
                 item->setAnswerCorrect(Question::B, rfile.readLine() == "true");
                 // Answer C
-                if (rfile.readLine() != "[Q_ANSC]") { throw xInvalidDBFile(); }
+                if (rfile.readLine() != "[Q_ANSC]") { throw xInvalidDBFile(124); }
                 answers << rfile.readLine();
-                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSC_C]") { throw xInvalidDBFile(); } }
+                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSC_C]") { throw xInvalidDBFile(126); } }
                 item->setAnswerCorrect(Question::C, rfile.readLine() == "true");
                 // Answer D
-                if (rfile.readLine() != "[Q_ANSD]") { throw xInvalidDBFile(); }
+                if (rfile.readLine() != "[Q_ANSD]") { throw xInvalidDBFile(128); }
                 answers << rfile.readLine();
-                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSD_C]") { throw xInvalidDBFile(); } }
+                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSD_C]") { throw xInvalidDBFile(130); } }
                 item->setAnswerCorrect(Question::D, rfile.readLine() == "true");
             }
 			// Statistics
-			if (db_version < 1.2) { if (rfile.readLine() != "[Q_ICNT]") { throw xInvalidDBFile(); } }
-			else { if (rfile.readLine() != "[Q_ICCNT]") { throw xInvalidDBFile(); } }
+			if (db_version < 1.2) { if (rfile.readLine() != "[Q_ICNT]") { throw xInvalidDBFile(132); } }
+			else { if (rfile.readLine() != "[Q_ICCNT]") { throw xInvalidDBFile(134); } }
 			item->setIncorrectAnsCount(rfile.readLine().toUInt());
-			if (db_version < 1.2) { if (rfile.readLine() != "[Q_CCNT]") { throw xInvalidDBFile(); } }
+			if (db_version < 1.2) { if (rfile.readLine() != "[Q_CCNT]") { throw xInvalidDBFile(136); } }
 			item->setCorrectAnsCount(rfile.readLine().toUInt());
 			// Hidden
 			if (db_version >= 1.2) {
-				if (rfile.readLine() != "[Q_HID]") { throw xInvalidDBFile(); }
+				if (rfile.readLine() != "[Q_HID]") { throw xInvalidDBFile(138); }
 				item->setHidden(rfile.readLine() == "true");
 			}
 			if (db_version > 1.25) {
 				// SVG
-				if (rfile.readLine() != "[Q_SVG]") { throw xInvalidDBFile(); }
+				if (rfile.readLine() != "[Q_SVG]") { throw xInvalidDBFile(140); }
 				int numsvgitems = rfile.readLine().toInt();
 				for (int g = 0; g < numsvgitems; ++g) {
 				    db_buffer = rfile.readLine();
@@ -453,7 +456,7 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 			}
 			// End
 			if (db_version < 1.25) {
-			    if (rfile.readLine() != "[Q_END]") { throw xInvalidDBFile(); }
+			    if (rfile.readLine() != "[Q_END]") { throw xInvalidDBFile(199); }
 			}
 			// Add map entry
 			item->setAnswers(answers);
@@ -476,7 +479,7 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 	        session->setName(rfile.readLine());
 			session->setDateTimeFromString(rfile.readLine());
 			if (db_version >= 1.2) {
-				if (rfile.readLine() != "[PASSMARK]") { throw xInvalidDBFile(); }
+				if (rfile.readLine() != "[PASSMARK]") { throw xInvalidDBFile(202); }
 				PassMark pm(rfile.readLine().toInt());
 				int pm_count = rfile.readLine().toInt(); int pm_c, pm_v;
 				for (int i = 0; i < pm_count; ++i) {
@@ -604,8 +607,8 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
         DBIDateEdit->setEnabled(!db_ulsd);
     	ECTextEdit->setHtml( db_comments );
 	    // Set flags
-	    for (int i = 0; i < 20; ++i) {current_db_fe[i] = db_fe[i];}
-	    for (int i = 0; i < 20; ++i) {current_db_f[i] = db_f[i];}
+        current_db_fe = db_fe;
+        current_db_f = db_f;
 	    setProgress(97); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	    // Apply flags
 	   	setFlags(); loadFlags();
@@ -634,8 +637,8 @@ void MainWindow::openDB(QString openDBName, bool useCP1250)
 		// Load archived sessions
 		openArchive();
 	}
-	catch (xInvalidDBFile) {
-		errorInvalidDBFile(tr("Open database"), openDBName);
+	catch (xInvalidDBFile e) {
+		errorInvalidDBFile(tr("Open database"), openDBName, e.error());
 	}
 	catch (...) {
 		QMessageBox::critical(this, tr("iTestServer"), tr("Error opening database."));

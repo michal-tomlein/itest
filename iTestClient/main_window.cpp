@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2005-2008 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2009 Michal Tomlein (michal.tomlein@gmail.com)
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -373,7 +373,7 @@ void MainWindow::newTest()
 	progressBar->setValue(0);
 	resultsTableWidget->setRowCount(0);
 	mainStackedWidget->setCurrentIndex(0);
-	for (int i = 0; i < 20; ++i) { current_db_fe[i] = false; current_db_f[i].clear(); }
+	current_db_fe.clear(); current_db_f.clear();
 	if (rbtnNetwork->isChecked()) {
 		tcpSocket->disconnectFromHost();
 		current_connection_local = false;
@@ -414,7 +414,7 @@ void MainWindow::errorInvalidData()
 
 void MainWindow::about()
 {
-    AboutWidget * itest_about = new AboutWidget(ver, QString("2008"));
+    AboutWidget * itest_about = new AboutWidget(ver, QString("2009"));
 	itest_about->setParent(this);
     itest_about->setWindowFlags(Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/ | Qt::WindowStaysOnTopHint);
 	itest_about->show();
