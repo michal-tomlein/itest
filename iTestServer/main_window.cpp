@@ -22,7 +22,7 @@
 
 void MainWindow::errorInvalidDBFile(QString parentFunction, QString fileName, int error)
 {
-    QMessageBox::critical(this, parentFunction, tr("Invalid database file %1\nError %2.").arg(fileName).arg(error));
+    QMessageBox::critical(this, parentFunction, tr("Invalid database file: %1\nError %2.").arg(fileName).arg(error));
 	this->setEnabled(true);
 }
 
@@ -263,7 +263,7 @@ void MainWindow::togglePrintEnabled()
 {
     int i = mainStackedWidget->currentIndex();
     actionPrint_questions->setEnabled(i == EQ || i == EC || i == EF || i == ES || i == SV || i == CL);
-    actionQuickPrint->setEnabled(i == SM && SMLCListWidget->currentIndex().isValid());
+    actionQuickPrint->setEnabled(i == SM && !TSDoNotPrintResultsCheckBox->isChecked() && SMLCListWidget->currentIndex().isValid());
     actionPrint->setEnabled((i == SM && SMLCListWidget->currentIndex().isValid()) || (i == SV && SVLCListWidget->currentIndex().isValid()) || (i == CL && CLLSListWidget->highlightedRow() >= 0));
     actionPrint_session_summary->setEnabled(i == SV && SVSelectedSessionWidget->isEnabled());
     actionPrint_all->setEnabled((i == SV && SVLCListWidget->count() > 0) || (i == CL && CLLSListWidget->count() > 0));

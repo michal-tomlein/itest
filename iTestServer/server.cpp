@@ -322,24 +322,26 @@ void MainWindow::startServer()
 
     setProgress(2); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    if (!loadPrinterSettings()) {
-        switch (QMessageBox::information(this, tr("iTestServer"), tr("You have not configured the printer yet. Would you like to configure it now?"), tr("Con&figure"), tr("Cancel"), 0, 0)) {
-            case 0: // Configure
-                if (!configurePrinter(false)) { setProgress(-1); return; } break;
-            case 1: // Cancel
-                setProgress(-1); return; break;
-        }
-    } else {
-        QString printer_config;
-        if (printerConfiguration(printer_config)) {
-            switch (QMessageBox::information(this, tr("iTestServer"), tr("%1Current printer configuration:%2Would you like to review the configuration?%3").arg("<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body><p>").arg(printer_config).arg("</p></body></html>"), tr("&Review configuration"), tr("&Continue"), 0, 0)) {
-                case 0: // Review configuration
-                    if (!configurePrinter(true)) { setProgress(-1); return; } break;
-                case 1: // Continue
-                    if (!loadPrinterConfiguration()) { setProgress(-1); return; } break;
+    if (!TSDoNotPrintResultsCheckBox->isChecked()) {
+        if (!loadPrinterSettings()) {
+            switch (QMessageBox::information(this, tr("iTestServer"), tr("You have not configured the printer yet. Would you like to configure it now?"), tr("Con&figure"), tr("Cancel"), 0, 0)) {
+                case 0: // Configure
+                    if (!configurePrinter(false)) { setProgress(-1); return; } break;
+                case 1: // Cancel
+                    setProgress(-1); return; break;
             }
         } else {
-            QMessageBox::critical(this, tr("iTestServer"), tr("Unable to start the server: Invalid printer configuration.")); setProgress(-1); return;
+            QString printer_config;
+            if (printerConfiguration(printer_config)) {
+                switch (QMessageBox::information(this, tr("iTestServer"), tr("%1Current printer configuration:%2Would you like to review the configuration?%3").arg("<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body><p>").arg(printer_config).arg("</p></body></html>"), tr("&Review configuration"), tr("&Continue"), 0, 0)) {
+                    case 0: // Review configuration
+                        if (!configurePrinter(true)) { setProgress(-1); return; } break;
+                    case 1: // Continue
+                        if (!loadPrinterConfiguration()) { setProgress(-1); return; } break;
+                }
+            } else {
+                QMessageBox::critical(this, tr("iTestServer"), tr("Unable to start the server: Invalid printer configuration.")); setProgress(-1); return;
+            }
         }
     }
 
@@ -472,7 +474,7 @@ void MainWindow::startServer()
         }
         setProgress(((90/current_db_questions.size())*(i+1))+10); // PROGRESS >>
     }
-    
+
     setAllEnabled(false); actionQuit->setEnabled(false);
     actionNew->setEnabled(false); actionOpen->setEnabled(false);
     actionSave_session->setChecked(true);
@@ -613,16 +615,18 @@ void MainWindow::clientResultsLoaded(Client * client)
     if (current_db_clients.value(SMLCListWidget->currentItem()) == client)
     { setCurrentClient(); }
     updateLC(client); sendCorrectAnswers(client);
-    if (!printClientResults(client, default_printer)) {
-        QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
-        SMSLListWidget->insertItem(0, log_entry);
-        log_entry->setBackground(QBrush::QBrush(QColor::QColor(255, 0, 0)));
-        log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
-    } else {
-        QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
-        SMSLListWidget->insertItem(0, log_entry);
-        log_entry->setBackground(QBrush::QBrush(QColor::QColor(221, 255, 0)));
-        log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    if (!TSDoNotPrintResultsCheckBox->isChecked()) {
+        if (!printClientResults(client, default_printer)) {
+            QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+            SMSLListWidget->insertItem(0, log_entry);
+            log_entry->setBackground(QBrush::QBrush(QColor::QColor(255, 0, 0)));
+            log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        } else {
+            QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+            SMSLListWidget->insertItem(0, log_entry);
+            log_entry->setBackground(QBrush::QBrush(QColor::QColor(221, 255, 0)));
+            log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        }
     }
 }
 
@@ -989,6 +993,7 @@ void MainWindow::clearSM()
 	rbtnTestTime->setChecked(true);
 	TSTestTimeEdit->setTime(QTime::QTime(0, 0));
 	TSQuestionTimeEdit->setTime(QTime::QTime(0, 0));
+    TSDoNotPrintResultsCheckBox->setChecked(false);
     TSHideQuestionNamesCheckBox->setChecked(false);
     TSHideCorrectAnswersCheckBox->setChecked(false);
     TSShuffleAnswersCheckBox->setChecked(false);

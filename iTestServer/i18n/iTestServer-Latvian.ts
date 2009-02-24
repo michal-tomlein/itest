@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="lv_LV">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutWidget</name>
     <message>
@@ -206,7 +207,7 @@
         <translation>Saglabāt izmaiņas pirms turpināšanas?</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3639"/>
+        <location filename="../ui_main_window_v2.cpp" line="2814"/>
         <source>&amp;Save</source>
         <translation>&amp;Saglabāt</translation>
     </message>
@@ -226,7 +227,7 @@
         <translation>Jauna datu bāze</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4648"/>
+        <location filename="../ui_main_window_v2.cpp" line="3823"/>
         <source>Database name:</source>
         <translation>Datu bāzes nosaukums:</translation>
     </message>
@@ -246,7 +247,7 @@
         <translation>%1.itdb</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="146"/>
+        <location filename="../database.cpp" line="147"/>
         <source>iTest databases (*.itdb)</source>
         <translation>iTest datu bāzes (*.itdb)</translation>
     </message>
@@ -256,7 +257,7 @@
         <translation>bez_nosaukuma.itdb</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="922"/>
+        <location filename="../server.cpp" line="923"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>Nevar ierakstit datni %1:
@@ -273,7 +274,7 @@
         <translation type="obsolete">%1[*] - iTestServer - Datu bāzu redaktors</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="453"/>
+        <location filename="../main_window.cpp" line="458"/>
         <source>Ready</source>
         <translation>Gatavs</translation>
     </message>
@@ -283,7 +284,7 @@
         <translation>Saglabāt datu bāzi</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="163"/>
+        <location filename="../database.cpp" line="164"/>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
@@ -304,39 +305,39 @@ līdzkamēr bāzei netiks atjaunots tās iepriekšējais nosaukums.
         <translation>&amp;Nemainīt</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="275"/>
+        <location filename="../database.cpp" line="278"/>
         <source>Database saved</source>
         <translation>Datu bāze saglabāta</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="638"/>
+        <location filename="../database.cpp" line="641"/>
         <source>Open database</source>
         <translation>Atvērt datu bāzi</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="287"/>
+        <location filename="../database.cpp" line="290"/>
         <source>Open database file</source>
         <translation>Atvērt datu bāzes datni</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="287"/>
+        <location filename="../database.cpp" line="290"/>
         <source>iTest databases (*.itdb);;All files (*.*)</source>
         <translation>iTest datu bāzes (*.itdb);;Visas datnes (*.*)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="818"/>
+        <location filename="../server.cpp" line="819"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>Nav iespējams nolasīt datni %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="332"/>
+        <location filename="../database.cpp" line="335"/>
         <source>iTest version notice</source>
         <translation>Informācija par iTest versiju</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="330"/>
+        <location filename="../database.cpp" line="333"/>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
@@ -345,22 +346,22 @@ Izvēlētā datu bāzes datne var tikt atvērta ar šo programmas versiju,
 bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="332"/>
+        <location filename="../database.cpp" line="335"/>
         <source>You need a newer version of iTest to open this database file.</source>
         <translation>Lai atvērtu šo datu bāzes datni, Jums nepieciešama iTest jaunāka versija.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="628"/>
+        <location filename="../database.cpp" line="631"/>
         <source>Database open</source>
         <translation>Datu bāze ir atvērta</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="653"/>
+        <location filename="../database.cpp" line="656"/>
         <source>Close database</source>
         <translation>Aizvērt datu bāzi</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="660"/>
+        <location filename="../database.cpp" line="663"/>
         <source>Database closed</source>
         <translation>Datu bāze aizvērta</translation>
     </message>
@@ -375,24 +376,24 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation type="obsolete">Slovāku</translation>
     </message>
     <message>
-        <location filename="../flags.cpp" line="109"/>
+        <location filename="../flags.cpp" line="115"/>
         <source>Flags saved</source>
         <translation>Kategorijas ir saglabātas</translation>
     </message>
     <message>
-        <location filename="../flags.cpp" line="115"/>
+        <location filename="../flags.cpp" line="121"/>
         <source>Flags discarded</source>
         <translation>Kategorijas ir atceltas</translation>
     </message>
     <message>
         <location filename="../flags.cpp" line="135"/>
         <source>Number of questions with this flag: </source>
-        <translation>Jautājumu skaits šajā kategorijā: </translation>
+        <translation type="obsolete">Jautājumu skaits šajā kategorijā: </translation>
     </message>
     <message>
         <location filename="../main_window.cpp" line="25"/>
         <source>Invalid database file %1</source>
-        <translation>Datu bāzes nepareiza datne %1</translation>
+        <translation type="obsolete">Datu bāzes nepareiza datne %1</translation>
     </message>
     <message>
         <location filename="../main_window.cpp" line="12"/>
@@ -420,272 +421,272 @@ Lūdzu, neizmantojiet speciālos simbolus.
 Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4013"/>
+        <location filename="../ui_main_window_v2.cpp" line="3188"/>
         <source>Apply any changes you have made to the question</source>
         <translation>Pielietot visas jautājumā ieviestās izmaiņas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4030"/>
+        <location filename="../ui_main_window_v2.cpp" line="3205"/>
         <source>Discard any changes you have made to the question</source>
         <translation>Atcelt visas jautājumā ieviestās izmaiņas</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="325"/>
+        <location filename="../main_window.cpp" line="329"/>
         <source>Apply any changes you have made to the flags</source>
         <translation>Pielietot kategoriju izmaiņas</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="328"/>
+        <location filename="../main_window.cpp" line="332"/>
         <source>Discard any changes you have made to the flags</source>
         <translation>Atcelt kategoriju izmaiņas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3698"/>
+        <location filename="../ui_main_window_v2.cpp" line="2873"/>
         <source>Quit iTest</source>
         <translation>Iziet no iTest</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4622"/>
+        <location filename="../ui_main_window_v2.cpp" line="3797"/>
         <source>iTest</source>
         <translation>iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="574"/>
+        <location filename="../main_window.cpp" line="579"/>
         <source>Failed to check for updates.</source>
         <translation>Nevar pārbaudīt, vai ir atjaunojumi.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="574"/>
+        <location filename="../main_window.cpp" line="579"/>
         <source>&amp;Try again</source>
         <translation>&amp;Atkārtot mēģinājumu</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="590"/>
+        <location filename="../main_window.cpp" line="595"/>
         <source>Your iTest is up-to-date.</source>
         <translation>Jums ir visjaunākā iTest versija.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="594"/>
+        <location filename="../main_window.cpp" line="599"/>
         <source>iTest %1 is available now.</source>
         <translation>Pieejams iTest %1.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="614"/>
+        <location filename="../main_window.cpp" line="619"/>
         <source>%1 - Overall statistics - iTest</source>
         <translation>%1 - Kopējā statistika - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="633"/>
+        <location filename="../main_window.cpp" line="638"/>
         <source>Adjust all</source>
         <translation>Uzstādīt visu</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="637"/>
+        <location filename="../main_window.cpp" line="642"/>
         <source>Close</source>
         <translation>Aizvērt</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="649"/>
+        <location filename="../main_window.cpp" line="654"/>
         <source>&lt;b&gt;%1 questions with statistics found&lt;/b&gt;</source>
         <translation>&lt;b&gt;Atrasti %1 jautājumi ar statistiku&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5360"/>
+        <location filename="../ui_main_window_v2.cpp" line="4500"/>
         <source>Question name</source>
         <translation>Jautājuma nosaukums</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="655"/>
+        <location filename="../main_window.cpp" line="660"/>
         <source>Difficulty</source>
         <translation>Sarežģītība</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="657"/>
+        <location filename="../main_window.cpp" line="662"/>
         <source>Calculated difficulty</source>
         <translation>Izskaitļotā sarežģītība</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="659"/>
+        <location filename="../main_window.cpp" line="664"/>
         <source>Number of correct answers</source>
         <translation>Pareizo atbilžu skaits</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="661"/>
+        <location filename="../main_window.cpp" line="666"/>
         <source>Number of incorrect answers</source>
         <translation>Nepareizo atbilžu skaits</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="718"/>
+        <location filename="../main_window.cpp" line="723"/>
         <source>Adjust difficulty</source>
         <translation>Uzstādīt sarežģītību</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="799"/>
+        <location filename="../server.cpp" line="800"/>
         <source>Unknown</source>
         <translation>Nav zināms</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4765"/>
+        <location filename="../ui_main_window_v2.cpp" line="3940"/>
         <source>Easy</source>
         <translation>Viegli</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4766"/>
+        <location filename="../ui_main_window_v2.cpp" line="3941"/>
         <source>Medium</source>
         <translation>Viduvēji</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4767"/>
+        <location filename="../ui_main_window_v2.cpp" line="3942"/>
         <source>Difficult</source>
         <translation>Sarežģīti</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="809"/>
+        <location filename="../main_window.cpp" line="814"/>
         <source>Change language - iTest</source>
         <translation>Nomainīt valodu - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="814"/>
+        <location filename="../main_window.cpp" line="819"/>
         <source>Select your preferred language</source>
         <translation>Izvēlieties vēlamo valodu</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="838"/>
+        <location filename="../main_window.cpp" line="843"/>
         <source>You need to restart iTest for the changes to apply.</source>
         <translation>Jāpārstartē iTest izmaiņu pielietošanai.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4626"/>
+        <location filename="../ui_main_window_v2.cpp" line="3801"/>
         <source>Select a database you have used recently, create a new one or open another database.</source>
         <translation>Izvēlieties nesen izmantoto datu bāzi, radiet jaunu vai atveriet citu datu bāzi.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4623"/>
+        <location filename="../ui_main_window_v2.cpp" line="3798"/>
         <source>Recent databases</source>
         <translation>Nesen izmantotie</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4631"/>
+        <location filename="../ui_main_window_v2.cpp" line="3806"/>
         <source>Create a new database</source>
         <translation>Radīt jaunu datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4634"/>
+        <location filename="../ui_main_window_v2.cpp" line="3809"/>
         <source>New</source>
         <translation>Jauns</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4637"/>
+        <location filename="../ui_main_window_v2.cpp" line="3812"/>
         <source>Open another database</source>
         <translation>Atvērt datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4640"/>
+        <location filename="../ui_main_window_v2.cpp" line="3815"/>
         <source>Open other...</source>
         <translation>Atvērt citu...</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4643"/>
+        <location filename="../ui_main_window_v2.cpp" line="3818"/>
         <source>Open the selected database from the list above</source>
         <translation>Atvērt izvēlēto datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4646"/>
+        <location filename="../ui_main_window_v2.cpp" line="3821"/>
         <source>Open selected</source>
         <translation>Atvērt izvēlēto</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4667"/>
+        <location filename="../ui_main_window_v2.cpp" line="3842"/>
         <source>List of questions</source>
         <translation>Jautājumu saraksts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4700"/>
+        <location filename="../ui_main_window_v2.cpp" line="3875"/>
         <source>Select the flag to filter the list below</source>
         <translation>Izvēlieties kategoriju saraksta filtrācijai</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4670"/>
+        <location filename="../ui_main_window_v2.cpp" line="3845"/>
         <source>Show all questions</source>
         <translation>Parādīt visus jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4673"/>
+        <location filename="../ui_main_window_v2.cpp" line="3848"/>
         <source>All</source>
         <translation>Visi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4676"/>
+        <location filename="../ui_main_window_v2.cpp" line="3851"/>
         <source>Show easy questions only</source>
         <translation>Parādīt tikai vienkāršus jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4682"/>
+        <location filename="../ui_main_window_v2.cpp" line="3857"/>
         <source>Show questions with medium difficulty only</source>
         <translation>Parādīt tikai vidējas grūtību pakāpes jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4688"/>
+        <location filename="../ui_main_window_v2.cpp" line="3863"/>
         <source>Show difficult questions only</source>
         <translation>Parādīt tikai grūtus jautājumus </translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4694"/>
+        <location filename="../ui_main_window_v2.cpp" line="3869"/>
         <source>Show questions with the selected flag only</source>
         <translation>Parādīt tikai izvēlētās kategorijas jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4711"/>
+        <location filename="../ui_main_window_v2.cpp" line="3886"/>
         <source>Select a question to edit</source>
         <translation>Jautājuma izvēle rediģēšanai</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4716"/>
+        <location filename="../ui_main_window_v2.cpp" line="3891"/>
         <source>Add a question</source>
         <translation>Pievienot jautājumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4721"/>
+        <location filename="../ui_main_window_v2.cpp" line="3896"/>
         <source>Duplicate the selected question</source>
         <translation>Dublēt izvēlēto jautājumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4726"/>
+        <location filename="../ui_main_window_v2.cpp" line="3901"/>
         <source>Delete the selected question</source>
         <translation>Novākt izvēlēto jautājumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4731"/>
+        <location filename="../ui_main_window_v2.cpp" line="3906"/>
         <source>Move the selected question up</source>
         <translation>Pārvietot izvēlēto jautājumu uz augšu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4736"/>
+        <location filename="../ui_main_window_v2.cpp" line="3911"/>
         <source>Move the selected question down</source>
         <translation>Pārvietot izvēlēto jautājumu uz leju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5505"/>
+        <location filename="../ui_main_window_v2.cpp" line="4645"/>
         <source>Search:</source>
         <translation>Meklēšana:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5508"/>
+        <location filename="../ui_main_window_v2.cpp" line="4648"/>
         <source>Type a keyword to filter the list below</source>
         <translation>Ievadiet atslēgas vārdu saraksta filtrēšanai</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4739"/>
+        <location filename="../ui_main_window_v2.cpp" line="3914"/>
         <source>Selected question</source>
         <translation>Izvēlētais jautājums</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4740"/>
+        <location filename="../ui_main_window_v2.cpp" line="3915"/>
         <source>Question name:</source>
         <translation>Jautājuma nosaukums:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4743"/>
+        <location filename="../ui_main_window_v2.cpp" line="3918"/>
         <source>Name of the selected question</source>
         <translation>Izvēlētā jautājuma nosaukums</translation>
     </message>
@@ -700,22 +701,22 @@ Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</transl
         <translation type="obsolete">Pareizs:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4746"/>
+        <location filename="../ui_main_window_v2.cpp" line="3921"/>
         <source>Flag:</source>
         <translation>Kategorija:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4749"/>
+        <location filename="../ui_main_window_v2.cpp" line="3924"/>
         <source>Flag of the selected question</source>
         <translation>Izvēlētā jautājuma kategorija</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4764"/>
+        <location filename="../ui_main_window_v2.cpp" line="3939"/>
         <source>Difficulty:</source>
         <translation>Sarežģītība:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4771"/>
+        <location filename="../ui_main_window_v2.cpp" line="3946"/>
         <source>Difficulty of the selected question</source>
         <translation>Izvēlētā jautājuma grūtību pakāpe</translation>
     </message>
@@ -765,197 +766,197 @@ Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</transl
         <translation type="obsolete">Atbildes d) variants izvēlētajam jautājumam</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4774"/>
+        <location filename="../ui_main_window_v2.cpp" line="3949"/>
         <source>Question:</source>
         <translation>Jautājums:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4932"/>
+        <location filename="../ui_main_window_v2.cpp" line="4107"/>
         <source>Undo</source>
         <translation>Atcelt</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../ui_main_window_v2.cpp" line="4935"/>
+        <location filename="../ui_main_window_v2.cpp" line="4110"/>
         <source>◄</source>
         <translation>◄</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4938"/>
+        <location filename="../ui_main_window_v2.cpp" line="4113"/>
         <source>Redo</source>
         <translation>Atkārtot</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="../ui_main_window_v2.cpp" line="4941"/>
+        <location filename="../ui_main_window_v2.cpp" line="4116"/>
         <source>►</source>
         <translation>►</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4944"/>
+        <location filename="../ui_main_window_v2.cpp" line="4119"/>
         <source>Choose a font</source>
         <translation>Izvēlēties fontu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4966"/>
+        <location filename="../ui_main_window_v2.cpp" line="4141"/>
         <source>Select text size</source>
         <translation>Izvēlēties fonta izmēru</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4950"/>
+        <location filename="../ui_main_window_v2.cpp" line="4125"/>
         <source>8</source>
         <translation>8</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4951"/>
+        <location filename="../ui_main_window_v2.cpp" line="4126"/>
         <source>9</source>
         <translation>9</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4952"/>
+        <location filename="../ui_main_window_v2.cpp" line="4127"/>
         <source>10</source>
         <translation>10</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4953"/>
+        <location filename="../ui_main_window_v2.cpp" line="4128"/>
         <source>11</source>
         <translation>11</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4954"/>
+        <location filename="../ui_main_window_v2.cpp" line="4129"/>
         <source>12</source>
         <translation>12</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4955"/>
+        <location filename="../ui_main_window_v2.cpp" line="4130"/>
         <source>14</source>
         <translation>14</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4956"/>
+        <location filename="../ui_main_window_v2.cpp" line="4131"/>
         <source>16</source>
         <translation>16</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4957"/>
+        <location filename="../ui_main_window_v2.cpp" line="4132"/>
         <source>18</source>
         <translation>18</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4958"/>
+        <location filename="../ui_main_window_v2.cpp" line="4133"/>
         <source>20</source>
         <translation>20</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4971"/>
+        <location filename="../ui_main_window_v2.cpp" line="4146"/>
         <source>Bold</source>
         <translation>Pustreknais</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4974"/>
+        <location filename="../ui_main_window_v2.cpp" line="4149"/>
         <source>B</source>
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4977"/>
+        <location filename="../ui_main_window_v2.cpp" line="4152"/>
         <source>Italic</source>
         <translation>Kursīvs</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4980"/>
+        <location filename="../ui_main_window_v2.cpp" line="4155"/>
         <source>I</source>
         <translation>K</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4983"/>
+        <location filename="../ui_main_window_v2.cpp" line="4158"/>
         <source>Underlined</source>
         <translation>Pasvītrots</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4986"/>
+        <location filename="../ui_main_window_v2.cpp" line="4161"/>
         <source>U</source>
         <translation>U</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4989"/>
+        <location filename="../ui_main_window_v2.cpp" line="4164"/>
         <source>Text colour</source>
         <translation>Teksta krāsa</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4995"/>
+        <location filename="../ui_main_window_v2.cpp" line="4170"/>
         <source>Align left</source>
         <translation>Izlīdzināšana pa kreisi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4998"/>
+        <location filename="../ui_main_window_v2.cpp" line="4173"/>
         <source>L</source>
         <translation>L</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5001"/>
+        <location filename="../ui_main_window_v2.cpp" line="4176"/>
         <source>Align centre</source>
         <translation>Centrēšana</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5004"/>
+        <location filename="../ui_main_window_v2.cpp" line="4179"/>
         <source>C</source>
         <translation>C</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5007"/>
+        <location filename="../ui_main_window_v2.cpp" line="4182"/>
         <source>Align right</source>
         <translation>Izlīdzināšana pa labi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5010"/>
+        <location filename="../ui_main_window_v2.cpp" line="4185"/>
         <source>R</source>
         <translation>R</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5013"/>
+        <location filename="../ui_main_window_v2.cpp" line="4188"/>
         <source>Justify</source>
         <translation>Izlīdzināšana abās malās</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5016"/>
+        <location filename="../ui_main_window_v2.cpp" line="4191"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4870"/>
+        <location filename="../ui_main_window_v2.cpp" line="4045"/>
         <source>Text of the selected question</source>
         <translation>Izvēlētā jautājuma teksts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4929"/>
+        <location filename="../ui_main_window_v2.cpp" line="4104"/>
         <source>Statistics:</source>
         <translation>Statistika:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4647"/>
+        <location filename="../ui_main_window_v2.cpp" line="3822"/>
         <source>Database information</source>
         <translation>Informācija par datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4651"/>
+        <location filename="../ui_main_window_v2.cpp" line="3826"/>
         <source>Database name</source>
         <translation>Datu bāzes nosaukums</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4654"/>
+        <location filename="../ui_main_window_v2.cpp" line="3829"/>
         <source>Date:</source>
         <translation>Datums:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4657"/>
+        <location filename="../ui_main_window_v2.cpp" line="3832"/>
         <source>Database date</source>
         <translation>Datu bāzes datums</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4660"/>
+        <location filename="../ui_main_window_v2.cpp" line="3835"/>
         <source>yyyy.MM.dd - hh:mm</source>
         <translation>yyyy.MM.dd - hh:mm</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4666"/>
+        <location filename="../ui_main_window_v2.cpp" line="3841"/>
         <source>Use last save date</source>
         <translation>Izmantot pēdējās saglabāšanas datumu</translation>
     </message>
@@ -965,92 +966,92 @@ Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</transl
         <translation type="obsolete">Rādīt vai slēpt informāciju par datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3836"/>
+        <location filename="../ui_main_window_v2.cpp" line="3011"/>
         <source>Show database information</source>
         <translation>Rādīt informāciju par datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3681"/>
+        <location filename="../ui_main_window_v2.cpp" line="2856"/>
         <source>Close the open database</source>
         <translation>Aizvērt atvērto datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5019"/>
+        <location filename="../ui_main_window_v2.cpp" line="4194"/>
         <source>Use this field for your comments, notes, reminders...</source>
         <translation>Izmantot šo lauku komentāriem, piezīmēm, atgādinājumiem...</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="5044"/>
         <source>Flag name:</source>
-        <translation>Kategorijas nosaukums:</translation>
+        <translation type="obsolete">Kategorijas nosaukums:</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="5045"/>
         <source>Enabled:</source>
-        <translation>Uzstādīts:</translation>
+        <translation type="obsolete">Uzstādīts:</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="5065"/>
         <source>Number of questions with this flag: 0</source>
-        <translation>Jautājumu skaits šajā kategorijā: 0</translation>
+        <translation type="obsolete">Jautājumu skaits šajā kategorijā: 0</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5066"/>
+        <location filename="../ui_main_window_v2.cpp" line="4200"/>
         <source>Advanced</source>
         <translation>Papildus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5070"/>
+        <location filename="../ui_main_window_v2.cpp" line="4204"/>
         <source>&lt;b&gt;Available:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Pieejams:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5077"/>
+        <location filename="../ui_main_window_v2.cpp" line="4211"/>
         <source>&lt;b&gt;Used:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Izmantots:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5067"/>
+        <location filename="../ui_main_window_v2.cpp" line="4201"/>
         <source>Select:</source>
         <translation>Izvēlieties:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5068"/>
+        <location filename="../ui_main_window_v2.cpp" line="4202"/>
         <source>Flags</source>
         <translation>Kategorijas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5069"/>
+        <location filename="../ui_main_window_v2.cpp" line="4203"/>
         <source>Questions</source>
         <translation>Jautājumi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5167"/>
+        <location filename="../ui_main_window_v2.cpp" line="4301"/>
         <source>Set a custom test name</source>
         <translation>Izvēlēties testa nosaukumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5194"/>
+        <location filename="../ui_main_window_v2.cpp" line="4328"/>
         <source>Time for the whole test</source>
         <translation>Laiks visam testam</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5204"/>
+        <location filename="../ui_main_window_v2.cpp" line="4338"/>
         <source>HH:mm</source>
         <translation>HH:mm</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5190"/>
+        <location filename="../ui_main_window_v2.cpp" line="4324"/>
         <source>Time for:</source>
         <translation>Laiks:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5189"/>
+        <location filename="../ui_main_window_v2.cpp" line="4323"/>
         <source>Pass mark:</source>
         <translation>Pāriešanas iezīme:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5177"/>
+        <location filename="../ui_main_window_v2.cpp" line="4311"/>
         <source>Number of questions:</source>
         <translation>Jautājumu skaits:</translation>
     </message>
@@ -1060,62 +1061,62 @@ Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</transl
         <translation type="obsolete">Norādīt minimālo pareizo jautājumu skaitu eksāmena nokārtošanai</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5198"/>
+        <location filename="../ui_main_window_v2.cpp" line="4332"/>
         <source>one question</source>
         <translation>viens jautājums</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5186"/>
+        <location filename="../ui_main_window_v2.cpp" line="4320"/>
         <source>Specify the number of questions</source>
         <translation>Norādīt jautājumu skaitu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5180"/>
+        <location filename="../ui_main_window_v2.cpp" line="4314"/>
         <source>Use the maximum number of questions possible</source>
         <translation>Izmantot maksimāli iespējamo jautājumu skaitu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5183"/>
+        <location filename="../ui_main_window_v2.cpp" line="4317"/>
         <source>Maximum</source>
         <translation>Maksimums</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5201"/>
+        <location filename="../ui_main_window_v2.cpp" line="4335"/>
         <source>Time for one question (multiplied by the number of questions)</source>
         <translation>Laiks vienam jautājumam (reizināts ar jautājumu skaitu)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5219"/>
+        <location filename="../ui_main_window_v2.cpp" line="4353"/>
         <source>Proceed to testing mode using this computer as a server</source>
         <translation>Pāriet testēšanas režīmā izmantojot šo datoru kā serveri</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5222"/>
+        <location filename="../ui_main_window_v2.cpp" line="4356"/>
         <source>Start server</source>
         <translation>Startēt serveri</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5191"/>
+        <location filename="../ui_main_window_v2.cpp" line="4325"/>
         <source>the whole test</source>
         <translation>viss tests</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5158"/>
+        <location filename="../ui_main_window_v2.cpp" line="4292"/>
         <source>Test name:</source>
         <translation>Tests nosaukums:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5161"/>
+        <location filename="../ui_main_window_v2.cpp" line="4295"/>
         <source>Enable setting a custom test name (if unchecked, database name will be used)</source>
         <translation>Atļaut testa lietošanas nosaukumu (pēc noklusēšanas tiek izmantots datu bāzes nosaukums)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5211"/>
+        <location filename="../ui_main_window_v2.cpp" line="4345"/>
         <source>Custom</source>
         <translation>Lietotāja</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5247"/>
+        <location filename="../ui_main_window_v2.cpp" line="4387"/>
         <source>Server information</source>
         <translation>Informācija par serveri</translation>
     </message>
@@ -1125,657 +1126,657 @@ Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</transl
         <translation type="obsolete">Serveris izmanto portu ******. Tagad Jūs varat palaist testu rakstīšanas programmu uz klientu datoriem. Neaizveriet datu bāzes redaktoru testēšanas laikā!</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5249"/>
+        <location filename="../ui_main_window_v2.cpp" line="4389"/>
         <source>List of clients</source>
         <translation>Klientu saraksts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5252"/>
+        <location filename="../ui_main_window_v2.cpp" line="4392"/>
         <source>Select a client to get more information</source>
         <translation>Izvēlieties klientu lai iegūtu papildus informāciju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5255"/>
+        <location filename="../ui_main_window_v2.cpp" line="4395"/>
         <source>Selected client</source>
         <translation>Izvēlētais klients</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5284"/>
+        <location filename="../ui_main_window_v2.cpp" line="4424"/>
         <source>The selected client&apos;s exam results</source>
         <translation>Izvēlētā klienta testēšanas rezultāti</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="5279"/>
         <source>Answered correctly</source>
-        <translation>Pareizo atbilžu skaits</translation>
+        <translation type="obsolete">Pareizo atbilžu skaits</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5362"/>
+        <location filename="../ui_main_window_v2.cpp" line="4502"/>
         <source>Answer</source>
         <translation>Atbilde</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5395"/>
+        <location filename="../ui_main_window_v2.cpp" line="4535"/>
         <source>Correct answer</source>
         <translation>Pareiza atbilde</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5352"/>
+        <location filename="../ui_main_window_v2.cpp" line="4492"/>
         <source>&lt;b&gt;Total score:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Kopējais ballu skaits:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5273"/>
+        <location filename="../ui_main_window_v2.cpp" line="4413"/>
         <source>The selected client&apos;s total score</source>
         <translation>Izvēlētā klienta kopējais ballu skaits</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5358"/>
+        <location filename="../ui_main_window_v2.cpp" line="4498"/>
         <source>Not ready yet</source>
         <translation>Vēl nav gatavs</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5483"/>
+        <location filename="../ui_main_window_v2.cpp" line="4623"/>
         <source>&lt;b&gt;Results:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Rezultāti:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5263"/>
+        <location filename="../ui_main_window_v2.cpp" line="4403"/>
         <source>&lt;b&gt;Status:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Statuss:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5266"/>
+        <location filename="../ui_main_window_v2.cpp" line="4406"/>
         <source>The selected client&apos;s status</source>
         <translation>Izvēlētā klienta statuss</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5269"/>
+        <location filename="../ui_main_window_v2.cpp" line="4409"/>
         <source>Disconnected</source>
         <translation>Atslēgts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5465"/>
+        <location filename="../ui_main_window_v2.cpp" line="4605"/>
         <source>&lt;b&gt;Name:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Vārds:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5259"/>
+        <location filename="../ui_main_window_v2.cpp" line="4399"/>
         <source>The selected client&apos;s name</source>
         <translation>Izvēlētā klienta vārds</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5351"/>
+        <location filename="../ui_main_window_v2.cpp" line="4491"/>
         <source>Not identified yet</source>
         <translation>Nav noteikts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5404"/>
+        <location filename="../ui_main_window_v2.cpp" line="4544"/>
         <source>Server log</source>
         <translation>Servera žurnāls</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5311"/>
+        <location filename="../ui_main_window_v2.cpp" line="4451"/>
         <source>Selected session</source>
         <translation>Izvēlētā sesija</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5312"/>
+        <location filename="../ui_main_window_v2.cpp" line="4452"/>
         <source>&lt;b&gt;Session name:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Sesijas nosaukums:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5315"/>
+        <location filename="../ui_main_window_v2.cpp" line="4455"/>
         <source>Name of the selected session</source>
         <translation>Izvēlētās sesijas nosaukums</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5327"/>
+        <location filename="../ui_main_window_v2.cpp" line="4467"/>
         <source>&lt;b&gt;Date and time:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Datums un laiks:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5330"/>
+        <location filename="../ui_main_window_v2.cpp" line="4470"/>
         <source>Date and time of the selected session</source>
         <translation>Izvēlētās sesijas datums un laiks</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5325"/>
+        <location filename="../ui_main_window_v2.cpp" line="4465"/>
         <source>Bad</source>
         <translation>Slikti</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5326"/>
+        <location filename="../ui_main_window_v2.cpp" line="4466"/>
         <source>Good</source>
         <translation>Labi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5336"/>
+        <location filename="../ui_main_window_v2.cpp" line="4476"/>
         <source>Average result of the selected session</source>
         <translation>Izvēlētās sesijas vidējais rezultāts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5318"/>
+        <location filename="../ui_main_window_v2.cpp" line="4458"/>
         <source>&lt;b&gt;Pass mark:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Pāriešanas iezīme:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5321"/>
+        <location filename="../ui_main_window_v2.cpp" line="4461"/>
         <source>The minimum number of correct answers to pass this exam</source>
         <translation>Minimālais pareizo atbilžu skaits eksāmena nokārtošanai</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5476"/>
+        <location filename="../ui_main_window_v2.cpp" line="4616"/>
         <source>&lt;b&gt;Average:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Vidējais rezultāts:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5452"/>
+        <location filename="../ui_main_window_v2.cpp" line="4592"/>
         <source>List of students</source>
         <translation>Skolēnu saraksts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5461"/>
+        <location filename="../ui_main_window_v2.cpp" line="4601"/>
         <source>Select a student to get more information</source>
         <translation>Izvēlieties skolēnu papildus informācijas iegūšanai</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5464"/>
+        <location filename="../ui_main_window_v2.cpp" line="4604"/>
         <source>Selected student</source>
         <translation>Izvēlētais skolēns</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5366"/>
+        <location filename="../ui_main_window_v2.cpp" line="4506"/>
         <source>The selected student&apos;s exam results</source>
         <translation>Izvēlētā skolēna eksāmena rezultāti</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5355"/>
+        <location filename="../ui_main_window_v2.cpp" line="4495"/>
         <source>The selected student&apos;s total score</source>
         <translation>Izvēlētā skolēna kopējais rezultāts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5348"/>
+        <location filename="../ui_main_window_v2.cpp" line="4488"/>
         <source>The selected student&apos;s name</source>
         <translation>Izvēlētā skolēna vārds</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5504"/>
+        <location filename="../ui_main_window_v2.cpp" line="4644"/>
         <source>List of sessions</source>
         <translation>Sesiju skaits</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5513"/>
+        <location filename="../ui_main_window_v2.cpp" line="4653"/>
         <source>Double click a session to view</source>
         <translation>Dubultklikšķis uz sesijas lai to pārskatītu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5305"/>
+        <location filename="../ui_main_window_v2.cpp" line="4445"/>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Arhivētās sesijas:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5519"/>
+        <location filename="../ui_main_window_v2.cpp" line="4659"/>
         <source>&amp;Question</source>
         <translation>&amp;Jautājums</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5523"/>
+        <location filename="../ui_main_window_v2.cpp" line="4663"/>
         <source>&amp;Sort questions</source>
         <translation>&amp;Sašķirot jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5524"/>
+        <location filename="../ui_main_window_v2.cpp" line="4664"/>
         <source>&amp;Filter the list of questions</source>
         <translation>&amp;Filtrēt jautājumu sarakstu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5522"/>
+        <location filename="../ui_main_window_v2.cpp" line="4662"/>
         <source>&amp;Database</source>
         <translation>&amp;Datu bāze</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5518"/>
+        <location filename="../ui_main_window_v2.cpp" line="4658"/>
         <source>&amp;View</source>
         <translation>&amp;Skats</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5525"/>
+        <location filename="../ui_main_window_v2.cpp" line="4665"/>
         <source>&amp;File</source>
         <translation>&amp;Datne</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5516"/>
+        <location filename="../ui_main_window_v2.cpp" line="4656"/>
         <source>&amp;Help</source>
         <translation>&amp;Izziņa</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5521"/>
+        <location filename="../ui_main_window_v2.cpp" line="4661"/>
         <source>&amp;Server</source>
         <translation>&amp;Serveris</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5517"/>
+        <location filename="../ui_main_window_v2.cpp" line="4657"/>
         <source>Sessio&amp;n</source>
         <translation>&amp;Sesija</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3605"/>
+        <location filename="../ui_main_window_v2.cpp" line="2780"/>
         <source>&amp;New</source>
         <translation>&amp;Jauns</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3621"/>
+        <location filename="../ui_main_window_v2.cpp" line="2796"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3622"/>
+        <location filename="../ui_main_window_v2.cpp" line="2797"/>
         <source>&amp;Open</source>
         <translation>&amp;Atvērt</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3635"/>
+        <location filename="../ui_main_window_v2.cpp" line="2810"/>
         <source>Open a database</source>
         <translation>Atvērt datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3638"/>
+        <location filename="../ui_main_window_v2.cpp" line="2813"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3652"/>
+        <location filename="../ui_main_window_v2.cpp" line="2827"/>
         <source>Save the open database</source>
         <translation>Saglabāt atvēro datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3655"/>
+        <location filename="../ui_main_window_v2.cpp" line="2830"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3656"/>
+        <location filename="../ui_main_window_v2.cpp" line="2831"/>
         <source>Save &amp;as</source>
         <translation>Saglabāt &amp;kā</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3664"/>
+        <location filename="../ui_main_window_v2.cpp" line="2839"/>
         <source>Save as</source>
         <translation>Saglabāt datu bāzi ar jaunu nosaukumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3667"/>
+        <location filename="../ui_main_window_v2.cpp" line="2842"/>
         <source>Ctrl+Shift+S</source>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3668"/>
+        <location filename="../ui_main_window_v2.cpp" line="2843"/>
         <source>&amp;Close</source>
         <translation>&amp;Aizvērt</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3684"/>
+        <location filename="../ui_main_window_v2.cpp" line="2859"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3685"/>
+        <location filename="../ui_main_window_v2.cpp" line="2860"/>
         <source>&amp;Quit</source>
         <translation>&amp;Iziet</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3701"/>
+        <location filename="../ui_main_window_v2.cpp" line="2876"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3702"/>
+        <location filename="../ui_main_window_v2.cpp" line="2877"/>
         <source>&amp;Flags</source>
         <translation>&amp;Kategorijas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3716"/>
+        <location filename="../ui_main_window_v2.cpp" line="2891"/>
         <source>Edit flags</source>
         <translation>Rediģēt kategorijas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3719"/>
+        <location filename="../ui_main_window_v2.cpp" line="2894"/>
         <source>&amp;Server mode</source>
         <translation>&amp;Servera režīms</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3720"/>
+        <location filename="../ui_main_window_v2.cpp" line="2895"/>
         <source>Server mode</source>
         <translation>Servera režīms</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3733"/>
+        <location filename="../ui_main_window_v2.cpp" line="2908"/>
         <source>Edit test settings and start the server</source>
         <translation>Rediģēt teksta uzstādījumus un startēt serveri</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3736"/>
+        <location filename="../ui_main_window_v2.cpp" line="2911"/>
         <source>&amp;About</source>
         <translation>&amp;Par programmu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3749"/>
+        <location filename="../ui_main_window_v2.cpp" line="2924"/>
         <source>About iTest</source>
         <translation>Par iTest</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3752"/>
+        <location filename="../ui_main_window_v2.cpp" line="2927"/>
         <source>From &amp;A to Z</source>
         <translation>No &amp;A līdz Z</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3760"/>
+        <location filename="../ui_main_window_v2.cpp" line="2935"/>
         <source>Sort questions from A to Z</source>
         <translation>Sašķirot jautājumus no A līdz Z</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3763"/>
+        <location filename="../ui_main_window_v2.cpp" line="2938"/>
         <source>Ctrl+Alt+Up</source>
         <translation>Ctrl+Alt+Up</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3764"/>
+        <location filename="../ui_main_window_v2.cpp" line="2939"/>
         <source>From &amp;Z to A</source>
         <translation>No &amp;Z līdz A</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3772"/>
+        <location filename="../ui_main_window_v2.cpp" line="2947"/>
         <source>Sort questions from Z to A</source>
         <translation>Sašķirot jautājumus no Z līdz A </translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3775"/>
+        <location filename="../ui_main_window_v2.cpp" line="2950"/>
         <source>Ctrl+Alt+Down</source>
         <translation>Ctrl+Alt+Down</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3776"/>
+        <location filename="../ui_main_window_v2.cpp" line="2951"/>
         <source>Show &amp;all questions</source>
         <translation>Parādīt  &amp;visus jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3793"/>
+        <location filename="../ui_main_window_v2.cpp" line="2968"/>
         <source>Show &amp;easy questions only</source>
         <translation>Parādīt tikai &amp;vieglos jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3805"/>
+        <location filename="../ui_main_window_v2.cpp" line="2980"/>
         <source>Show questions with &amp;medium difficulty only</source>
         <translation>Parādīt tikai &amp;vidēji grūtus jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3816"/>
+        <location filename="../ui_main_window_v2.cpp" line="2991"/>
         <source>Show &amp;difficult questions only</source>
         <translation>Parādīt tikai &amp;grūtus jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3828"/>
+        <location filename="../ui_main_window_v2.cpp" line="3003"/>
         <source>Show database &amp;information</source>
         <translation>Parādīt &amp;informāciju par datu bāzi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3839"/>
+        <location filename="../ui_main_window_v2.cpp" line="3014"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3840"/>
+        <location filename="../ui_main_window_v2.cpp" line="3015"/>
         <source>Show questions with the selected &amp;flag only</source>
         <translation>Parādīt tikai izvēlētās &amp;kategorijas jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3851"/>
+        <location filename="../ui_main_window_v2.cpp" line="3026"/>
         <source>Move &amp;up</source>
         <translation>Pārvietot uz&amp;augšu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3852"/>
+        <location filename="../ui_main_window_v2.cpp" line="3027"/>
         <source>Move up</source>
         <translation>Pārvietot uz augšu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3868"/>
+        <location filename="../ui_main_window_v2.cpp" line="3043"/>
         <source>Ctrl+Up</source>
         <translation>Ctrl+Up</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3869"/>
+        <location filename="../ui_main_window_v2.cpp" line="3044"/>
         <source>Move do&amp;wn</source>
         <translation>Pārvietot uz&amp;leju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3885"/>
+        <location filename="../ui_main_window_v2.cpp" line="3060"/>
         <source>Ctrl+Down</source>
         <translation>Ctrl+Down</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3886"/>
+        <location filename="../ui_main_window_v2.cpp" line="3061"/>
         <source>Co&amp;mments</source>
         <translation>Ko&amp;mentāri</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3887"/>
+        <location filename="../ui_main_window_v2.cpp" line="3062"/>
         <source>Comments</source>
         <translation>Komentāri</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3900"/>
+        <location filename="../ui_main_window_v2.cpp" line="3075"/>
         <source>Edit comments</source>
         <translation>Rediģēt komentārus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3903"/>
+        <location filename="../ui_main_window_v2.cpp" line="3078"/>
         <source>&amp;Use last save date</source>
         <translation>&amp;Izmantot pēdējās saglabāšanas datumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3914"/>
+        <location filename="../ui_main_window_v2.cpp" line="3089"/>
         <source>&amp;Add</source>
         <translation>&amp;Pievienot</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4884"/>
+        <location filename="../ui_main_window_v2.cpp" line="4059"/>
         <source>Add</source>
         <translation>Pievienot</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3931"/>
+        <location filename="../ui_main_window_v2.cpp" line="3106"/>
         <source>Ctrl+Alt+A</source>
         <translation>Ctrl+Alt+A</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3932"/>
+        <location filename="../ui_main_window_v2.cpp" line="3107"/>
         <source>Dupli&amp;cate</source>
         <translation>Dub&amp;lēt</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3948"/>
+        <location filename="../ui_main_window_v2.cpp" line="3123"/>
         <source>Ctrl+Alt+C</source>
         <translation>Ctrl+Alt+C</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3949"/>
+        <location filename="../ui_main_window_v2.cpp" line="3124"/>
         <source>&amp;Delete</source>
         <translation>&amp;Nodzēst</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3965"/>
+        <location filename="../ui_main_window_v2.cpp" line="3140"/>
         <source>Ctrl+Alt+D</source>
         <translation>Ctrl+Alt+D</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3966"/>
+        <location filename="../ui_main_window_v2.cpp" line="3141"/>
         <source>Move to &amp;top</source>
         <translation>Nolikt kā &amp;pirmo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3979"/>
+        <location filename="../ui_main_window_v2.cpp" line="3154"/>
         <source>Move the selected question to the top</source>
         <translation>Pārvietot izvēlēto jautājumu pirmajā pozīcijā</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3982"/>
+        <location filename="../ui_main_window_v2.cpp" line="3157"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3983"/>
+        <location filename="../ui_main_window_v2.cpp" line="3158"/>
         <source>Move to &amp;bottom</source>
         <translation>Novietot kā &amp;pēdējo</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3996"/>
+        <location filename="../ui_main_window_v2.cpp" line="3171"/>
         <source>Move the selected question to the bottom</source>
         <translation>Pārvietot izvēlēto jautājumu uz apakšu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3999"/>
+        <location filename="../ui_main_window_v2.cpp" line="3174"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4000"/>
+        <location filename="../ui_main_window_v2.cpp" line="3175"/>
         <source>Appl&amp;y changes</source>
         <translation>&amp;Pielietot izmaiņas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4016"/>
+        <location filename="../ui_main_window_v2.cpp" line="3191"/>
         <source>Ctrl+Shift+A</source>
         <translation>Ctrl+Shift+A</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4017"/>
+        <location filename="../ui_main_window_v2.cpp" line="3192"/>
         <source>Di&amp;scard changes</source>
         <translation>&amp;Atcelt izmaiņas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4033"/>
+        <location filename="../ui_main_window_v2.cpp" line="3208"/>
         <source>Ctrl+Shift+D</source>
         <translation>Ctrl+Shift+D</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4034"/>
+        <location filename="../ui_main_window_v2.cpp" line="3209"/>
         <source>&amp;Questions</source>
         <translation>&amp;Jautājumi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4048"/>
+        <location filename="../ui_main_window_v2.cpp" line="3223"/>
         <source>Edit questions</source>
         <translation>Rediģēt jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4051"/>
+        <location filename="../ui_main_window_v2.cpp" line="3226"/>
         <source>&amp;Add off-line client</source>
         <translation>Pievienot off-line &amp;klientu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4064"/>
+        <location filename="../ui_main_window_v2.cpp" line="3239"/>
         <source>Add off-line client</source>
         <translation>Pievienot off-line klientu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4067"/>
+        <location filename="../ui_main_window_v2.cpp" line="3242"/>
         <source>Stop se&amp;rver</source>
         <translation>&amp;Apturēt serveri</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4080"/>
+        <location filename="../ui_main_window_v2.cpp" line="3255"/>
         <source>Stop the server and return to test settings</source>
         <translation>Apturēt serveri un atgriezties pie testa uzstādījumiem</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4083"/>
+        <location filename="../ui_main_window_v2.cpp" line="3258"/>
         <source>S&amp;tart server</source>
         <translation>&amp;Startēt serveri</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4099"/>
+        <location filename="../ui_main_window_v2.cpp" line="3274"/>
         <source>Export &amp;log</source>
         <translation>Eksportēt &amp;žurnālu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4112"/>
+        <location filename="../ui_main_window_v2.cpp" line="3287"/>
         <source>Export server log</source>
         <translation>Eksportēt servera žurnālu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4115"/>
+        <location filename="../ui_main_window_v2.cpp" line="3290"/>
         <source>Save sessio&amp;n</source>
         <translation>Saglabāt &amp;sesiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4116"/>
+        <location filename="../ui_main_window_v2.cpp" line="3291"/>
         <source>Save session</source>
         <translation>Saglabāt sesiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4129"/>
+        <location filename="../ui_main_window_v2.cpp" line="3304"/>
         <source>Save the current session for later viewing</source>
         <translation>Saglabāt sesiju vēlākai caurskatīšanai</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4132"/>
+        <location filename="../ui_main_window_v2.cpp" line="3307"/>
         <source>&amp;QuickPrint</source>
         <translation>&amp;Ātrā druka</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4140"/>
+        <location filename="../ui_main_window_v2.cpp" line="3315"/>
         <source>Print the selected client&apos;s results using the current printer settings</source>
         <translation>Izdrukāt izvēlētā klienta rezultātus izmantojot printera kārtējos uzstādījumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4143"/>
+        <location filename="../ui_main_window_v2.cpp" line="3318"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4144"/>
+        <location filename="../ui_main_window_v2.cpp" line="3319"/>
         <source>&amp;Print</source>
         <translation>&amp;Druka</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4152"/>
+        <location filename="../ui_main_window_v2.cpp" line="3327"/>
         <source>Print the selected client&apos;s results</source>
         <translation>Izdrukāt izvēlētā klienta rezultātus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4155"/>
+        <location filename="../ui_main_window_v2.cpp" line="3330"/>
         <source>Ctrl+Shift+P</source>
         <translation>Ctrl+Shift+P</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4156"/>
+        <location filename="../ui_main_window_v2.cpp" line="3331"/>
         <source>&amp;Export test</source>
         <translation>&amp;Eksportēt testu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4169"/>
+        <location filename="../ui_main_window_v2.cpp" line="3344"/>
         <source>Export off-line test session</source>
         <translation>Eksortēt testa off-line sesiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4172"/>
+        <location filename="../ui_main_window_v2.cpp" line="3347"/>
         <source>Add off-line client&amp;s</source>
         <translation>Pievienot off-line &amp;klientus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4180"/>
+        <location filename="../ui_main_window_v2.cpp" line="3355"/>
         <source>Add off-line clients</source>
         <translation>Pievienot off-line klientu rezultātus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4183"/>
+        <location filename="../ui_main_window_v2.cpp" line="3358"/>
         <source>Save&amp;d sessions</source>
         <translation>Sa&amp;glabātās sesijas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4196"/>
+        <location filename="../ui_main_window_v2.cpp" line="3371"/>
         <source>View saved test sessions</source>
         <translation>Pārskatīt testu saglabātās sesijas</translation>
     </message>
@@ -1785,97 +1786,97 @@ Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</transl
         <translation type="obsolete">&amp;Nodzēst žurnālu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4212"/>
+        <location filename="../ui_main_window_v2.cpp" line="3387"/>
         <source>Delete the log for the selected session</source>
         <translation>Nodzēst izvēlētās sesijas žurnālu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4215"/>
+        <location filename="../ui_main_window_v2.cpp" line="3390"/>
         <source>&amp;Archive session</source>
         <translation>&amp;Arhivēt sesiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4216"/>
+        <location filename="../ui_main_window_v2.cpp" line="3391"/>
         <source>Archive session</source>
         <translation>Arhivēt sesiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4229"/>
+        <location filename="../ui_main_window_v2.cpp" line="3404"/>
         <source>Archive the selected session</source>
         <translation>Arhivēt izvēlēto sesiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4232"/>
+        <location filename="../ui_main_window_v2.cpp" line="3407"/>
         <source>Documentation</source>
         <translation>Dokumentācija</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4245"/>
+        <location filename="../ui_main_window_v2.cpp" line="3420"/>
         <source>View online documentation</source>
         <translation>Skatīt dokumetāciju Internetā</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4248"/>
+        <location filename="../ui_main_window_v2.cpp" line="3423"/>
         <source>Check for updates</source>
         <translation>Pārbaudīt, vai ir atjauninājumi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4261"/>
+        <location filename="../ui_main_window_v2.cpp" line="3436"/>
         <source>Check if there is a new version available online</source>
         <translation>Pārbaudīt, vai ir programmas jaunāka versija</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4264"/>
+        <location filename="../ui_main_window_v2.cpp" line="3439"/>
         <source>Print &amp;all</source>
         <translation>&amp;Izdrukāt visu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4272"/>
+        <location filename="../ui_main_window_v2.cpp" line="3447"/>
         <source>Print the results of all students</source>
         <translation>Izdrukāt visu skolēnu rezultātus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4275"/>
+        <location filename="../ui_main_window_v2.cpp" line="3450"/>
         <source>Print session &amp;summary</source>
         <translation>Atskaites &amp;izdrukāšana</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4279"/>
+        <location filename="../ui_main_window_v2.cpp" line="3454"/>
         <source>Print session summary</source>
         <translation>Izdrukāt sesijas rezultātus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4289"/>
+        <location filename="../ui_main_window_v2.cpp" line="3464"/>
         <source>Print a summary and statistics for the selected session</source>
         <translation>Izdrukāt izvēlētās sesijas atskaites un statistiku</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4292"/>
+        <location filename="../ui_main_window_v2.cpp" line="3467"/>
         <source>Overall statistics</source>
         <translation>Kopējā statistika</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4305"/>
+        <location filename="../ui_main_window_v2.cpp" line="3480"/>
         <source>Show overall statistics about the difficulty of questions</source>
         <translation>Parādīt kopējo statistiku pēc jautājumu grūtības pakāpes</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4308"/>
+        <location filename="../ui_main_window_v2.cpp" line="3483"/>
         <source>Change language</source>
         <translation>Nomainīt valodu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4321"/>
+        <location filename="../ui_main_window_v2.cpp" line="3496"/>
         <source>Change the language of the iTest interface</source>
         <translation>Nomainīt iTest saskarnes valodu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4324"/>
+        <location filename="../ui_main_window_v2.cpp" line="3499"/>
         <source>&amp;Restore session</source>
         <translation>&amp;Atjaunot sesiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4337"/>
+        <location filename="../ui_main_window_v2.cpp" line="3512"/>
         <source>Restore the selected session from the archive</source>
         <translation>Atjaunot izvēlēto sesiju no arhīva</translation>
     </message>
@@ -2111,7 +2112,7 @@ kopiju skaitu pie katras servera startēšanas.</translation>
         <translation>Atbildēts:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5131"/>
+        <location filename="../ui_main_window_v2.cpp" line="4265"/>
         <source>Correct answer:</source>
         <translation>Pareizā atbilde:</translation>
     </message>
@@ -2293,7 +2294,7 @@ Lūdzu, izvēlieties jaunu nosaukumu:</translation>
         <translation>Statistika:  &lt;b&gt;pareizo&lt;/b&gt; atbilžu skaits: &lt;b&gt;%1&lt;/b&gt;; &lt;b&gt;nepareizo&lt;/b&gt; atilžu skaits: &lt;b&gt;%2&lt;/b&gt;; sarežģītība: &lt;b&gt;%3&lt;/b&gt;; &lt;a href=&quot;adjust.difficulty&quot;&gt;uzstādit sarežģītību&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5473"/>
+        <location filename="../ui_main_window_v2.cpp" line="4613"/>
         <source>Apply changes</source>
         <translation>Pielietot izmaiņas</translation>
     </message>
@@ -2339,34 +2340,34 @@ Tie visi tiks atjaunoti.</translation>
         <translation>Dati ir atcelti</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="214"/>
+        <location filename="../server.cpp" line="213"/>
         <source>maximum (%1)</source>
         <translation>maksimums (%1)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="302"/>
+        <location filename="../server.cpp" line="301"/>
         <source>It is necessary to save any changes you have made to the database before proceeding.</source>
         <translation>Turpināšanai nepieciešams saglabāt visas  izmaiņas datu bāzē.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="311"/>
+        <location filename="../server.cpp" line="310"/>
         <source>Invalid test name.</source>
         <translation>Nepareizs testa nosaukums.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="313"/>
+        <location filename="../server.cpp" line="312"/>
         <source>Invalid exam time.</source>
         <translation>Nepareizs ieskaites nosaukums.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="315"/>
+        <location filename="../server.cpp" line="314"/>
         <source>Students will need at least one minute for the exam,
 although it is recommended to give them an hour.</source>
         <translation>Skolēniem būs nepieciešama vismaz viena minūte ieskaitei,
 lai gan ieteikts dot vismaz stundu.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="319"/>
+        <location filename="../server.cpp" line="318"/>
         <source>Unable to start the server: %1.</source>
         <translation>Nevar startēt serveri: %1.</translation>
     </message>
@@ -2401,7 +2402,7 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation>Nevar startēt serveri: Nepareiza servera konfigurācija.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="401"/>
+        <location filename="../server.cpp" line="402"/>
         <source>Unable to start the server: Invalid server settings.</source>
         <translation>Nevar startēt serveri: Nepareiza servera konfigurācija.</translation>
     </message>
@@ -2416,32 +2417,32 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation type="obsolete">iTest - Servera apstādināšana</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="495"/>
+        <location filename="../server.cpp" line="494"/>
         <source>Are you sure you want to stop the server?</source>
         <translation>Esat pārliecināts(-a), ka gribat apstādināt serveri?</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="495"/>
+        <location filename="../server.cpp" line="494"/>
         <source>&amp;Stop</source>
         <translation>&amp;Apstādināt</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="569"/>
+        <location filename="../server.cpp" line="568"/>
         <source>%1 &gt; Client #%2 connected</source>
         <translation>%1 &gt; Klients Nr.%2 pieslēgts</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="593"/>
+        <location filename="../server.cpp" line="592"/>
         <source>%1 &gt; Client #%2 identified as %3</source>
         <translation>%1 &gt; Klients Nr.%2 noteikts kā %3</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="604"/>
+        <location filename="../server.cpp" line="603"/>
         <source>%1 &gt; Client #%2 (%3) finished the exam</source>
         <translation>%1 &gt; Klients Nr.%2 (%3) ir pabeidzis ieskaiti</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="612"/>
+        <location filename="../server.cpp" line="611"/>
         <source>%1 &gt; Client #%2 (%3) submitted results</source>
         <translation>%1 &gt; Klients Nr.%2 (%3) ir uzrādījis rezultātus</translation>
     </message>
@@ -2456,12 +2457,12 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation>%1 &gt; Klienta Nr.%2 (%3) &gt; rezultāti sekmīgi izdrukāti</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="637"/>
+        <location filename="../server.cpp" line="638"/>
         <source>%1 &gt; Client #%2 (%3) disconnected</source>
         <translation>%1 &gt; Klients Nr.%2 (%3) ir atslēgts</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="639"/>
+        <location filename="../server.cpp" line="640"/>
         <source>%1 &gt; Client #%2 disconnected</source>
         <translation>%1 &gt; Klients Nr.%2 ir atslēgts</translation>
     </message>
@@ -2481,82 +2482,82 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation type="obsolete">Nē</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="787"/>
+        <location filename="../server.cpp" line="788"/>
         <source>Performing a host name lookup</source>
         <translation>Tiek meklēts mezgla nosaukums</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="789"/>
+        <location filename="../server.cpp" line="790"/>
         <source>Connecting</source>
         <translation>Tiek veikta pieslēgšanās</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="791"/>
+        <location filename="../server.cpp" line="792"/>
         <source>Connected</source>
         <translation>Pieslēgts</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="793"/>
+        <location filename="../server.cpp" line="794"/>
         <source>Bound to an address and port</source>
         <translation>Veikta piesaiste pie adreses un porta</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="795"/>
+        <location filename="../server.cpp" line="796"/>
         <source>Closing</source>
         <translation>Aizvēršana</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="797"/>
+        <location filename="../server.cpp" line="798"/>
         <source>Listening</source>
         <translation>Savienojuma gaidīšana</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="805"/>
+        <location filename="../server.cpp" line="806"/>
         <source>iTest off-line client logs (*.itcl);;All files (*.*)</source>
         <translation>iTest off-line klientu žurnāli(*.itcl);;Visas datnes (*.*)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="808"/>
+        <location filename="../server.cpp" line="809"/>
         <source>Failed to add off-line client. Either this file contains client data of a different test session or it contains invalid data.</source>
         <translation>Nevar pievienot off-line klientu. Vai nu šī datne satur citas sesijas klienta datus, vai arī šī datne satur nepareizus datus.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="835"/>
+        <location filename="../server.cpp" line="836"/>
         <source>%1 &gt; Client #%2 (%3) added</source>
         <translation>%1 &gt; Pievienots klients Nr.%2 (%3)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="858"/>
+        <location filename="../server.cpp" line="859"/>
         <source>No iTest client logs found in the folder you selected.</source>
         <translation>Izvēlētajā mapē nav atrasts neviens klienta žurnāls.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="861"/>
+        <location filename="../server.cpp" line="862"/>
         <source>%1 &gt; Failed to add off-line client</source>
         <translation>%1 &gt; Nevar pievienot off-line klientu</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="877"/>
+        <location filename="../server.cpp" line="878"/>
         <source>Export test</source>
         <translation>Eksportēt testu</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="872"/>
+        <location filename="../server.cpp" line="873"/>
         <source>iTest off-line test sessions (*.itos)</source>
         <translation>iTest (*.itos) off-line testēšanas sesijas</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="892"/>
+        <location filename="../server.cpp" line="893"/>
         <source>Test exported</source>
         <translation>Tests ir eksportēts</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="917"/>
+        <location filename="../server.cpp" line="918"/>
         <source>iTest Server logs (*.html)</source>
         <translation>iTest (*.html) servera žurnāli</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="929"/>
+        <location filename="../server.cpp" line="930"/>
         <source>iTest Server Log</source>
         <translation>iTest servera žurnāls</translation>
     </message>
@@ -2581,57 +2582,57 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation type="obsolete">Krievu valoda</translation>
     </message>
     <message>
-        <location filename="../flags.cpp" line="64"/>
+        <location filename="../flags.cpp" line="25"/>
         <source>Type a name for flag %1</source>
         <translation>Ievadiet kategorijas %1nosaukumu</translation>
     </message>
     <message>
-        <location filename="../flags.cpp" line="65"/>
+        <location filename="../flags.cpp" line="36"/>
         <source>Check or uncheck this checkbox to enable or disable flag %1</source>
         <translation>Uzstādiet vai noņemiet šo pārslēdzēju kategorijas  %1 uzstādīšanai vai noņemšanai</translation>
     </message>
     <message>
         <location filename="../flags.cpp" line="69"/>
         <source>Flag %1:</source>
-        <translation>Kategorija %1:</translation>
+        <translation type="obsolete">Kategorija %1:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4372"/>
+        <location filename="../ui_main_window_v2.cpp" line="3547"/>
         <source>Save a copy</source>
         <translation>Saglabāt kopiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4388"/>
+        <location filename="../ui_main_window_v2.cpp" line="3563"/>
         <source>Save a backup</source>
         <translation>Saglabāt rezerves kopiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4340"/>
+        <location filename="../ui_main_window_v2.cpp" line="3515"/>
         <source>Copy to archive</source>
         <translation>Nokopēt arhīvā</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4353"/>
+        <location filename="../ui_main_window_v2.cpp" line="3528"/>
         <source>Copy the selected session to the archive</source>
         <translation>Nokopēt izvēlēto sesiju arhīvā</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4356"/>
+        <location filename="../ui_main_window_v2.cpp" line="3531"/>
         <source>Copy from archive</source>
         <translation>Nokopēt no arhīva</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4369"/>
+        <location filename="../ui_main_window_v2.cpp" line="3544"/>
         <source>Copy the selected session from the archive</source>
         <translation>Nokopēt izvēlēto sesiju no arhīva</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4385"/>
+        <location filename="../ui_main_window_v2.cpp" line="3560"/>
         <source>Save a copy of the database</source>
         <translation>Saglabāt datu bāzes kopiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4401"/>
+        <location filename="../ui_main_window_v2.cpp" line="3576"/>
         <source>Save a backup copy of the database with all the archived sessions</source>
         <translation>Saglabāt datu bāzes rezerves kopiju ar visām arhivētajām sesijām</translation>
     </message>
@@ -2646,7 +2647,7 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation type="obsolete">Turku valoda</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="641"/>
+        <location filename="../database.cpp" line="644"/>
         <source>Error opening database.</source>
         <translation>Kļūda atverot datu bāzi.</translation>
     </message>
@@ -2656,12 +2657,12 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation>http://itest.sourceforge.net/documentation/%1/lv/</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5376"/>
+        <location filename="../ui_main_window_v2.cpp" line="4516"/>
         <source>Flag name</source>
         <translation>Kategorijas nosaukums</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5383"/>
+        <location filename="../ui_main_window_v2.cpp" line="4523"/>
         <source>Pass mark</source>
         <translation>Pāriešanas vērtējums</translation>
     </message>
@@ -2671,7 +2672,7 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation type="obsolete">Sīkāk</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5380"/>
+        <location filename="../ui_main_window_v2.cpp" line="4520"/>
         <source>Pass mark details</source>
         <translation>Sīka informācija par pāriešanas vērtējumu</translation>
     </message>
@@ -2681,57 +2682,57 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation>Kopā</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4763"/>
+        <location filename="../ui_main_window_v2.cpp" line="3938"/>
         <source>Search</source>
         <translation>Meklēšana</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4412"/>
+        <location filename="../ui_main_window_v2.cpp" line="3587"/>
         <source>Show hidden questions</source>
         <translation>Parādīt slēptos jautājumus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4415"/>
+        <location filename="../ui_main_window_v2.cpp" line="3590"/>
         <source>&amp;Hide</source>
         <translation>&amp;Noslēpt</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4428"/>
+        <location filename="../ui_main_window_v2.cpp" line="3603"/>
         <source>Hide the selected question</source>
         <translation>Noslēpt izvēlēto jautājumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4431"/>
+        <location filename="../ui_main_window_v2.cpp" line="3606"/>
         <source>Ctrl+Alt+H</source>
         <translation>Ctrl+Alt+H</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4752"/>
+        <location filename="../ui_main_window_v2.cpp" line="3927"/>
         <source>Group:</source>
         <translation>Grupa:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4755"/>
+        <location filename="../ui_main_window_v2.cpp" line="3930"/>
         <source>Group of the selected question</source>
         <translation>Izvēlētā jautājuma grupa</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4760"/>
+        <location filename="../ui_main_window_v2.cpp" line="3935"/>
         <source>Search the database for other questions in this group</source>
         <translation>Meklēt datu bāzē citus jautājumus no šīs grupas</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5170"/>
+        <location filename="../ui_main_window_v2.cpp" line="4304"/>
         <source>Groups:</source>
         <translation>Grupas:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5173"/>
+        <location filename="../ui_main_window_v2.cpp" line="4307"/>
         <source>Allow one question per group to appear in one test only, i.e. choose one of the group randomly</source>
         <translation>Testēšanā izmantot pa vienam jautājumam no šīs grupas, t.i. izvēlēt vienu no grupām pēc gadījuma principa </translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5176"/>
+        <location filename="../ui_main_window_v2.cpp" line="4310"/>
         <source>Allow one question per group only</source>
         <translation>Izmantot tikai vienu jautājumu katrai grupai </translation>
     </message>
@@ -2753,7 +2754,7 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation type="obsolete">Startēt testu rakstīšanas programmu šim datoram</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="3604"/>
+        <location filename="../ui_main_window_v2.cpp" line="2779"/>
         <source>iTestServer</source>
         <translation>iTestServer</translation>
     </message>
@@ -2773,62 +2774,62 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation type="obsolete">Serveris izmanto portu ******. Tagad Jūs varat startēt iTestClient uz klientu datoriem. Neaizveriet iTestServer testēšanas laikā!</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4432"/>
+        <location filename="../ui_main_window_v2.cpp" line="3607"/>
         <source>Run iTestClient</source>
         <translation>Startēt iTestClient</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4445"/>
+        <location filename="../ui_main_window_v2.cpp" line="3620"/>
         <source>Run iTestClient on this computer</source>
         <translation>Startēt iTestClient šajā datorā</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5248"/>
+        <location filename="../ui_main_window_v2.cpp" line="4388"/>
         <source>The server is running on port &lt;b&gt;%1&lt;/b&gt;. You may now run iTestClient on each client PC. Do not quit iTestServer while testing!</source>
         <translation>Serveris izmanto portu &lt;b&gt;%1&lt;/b&gt;. Tagad Jūs varat startēt iTestClient uz klientu datoriem. Neaizveriet iTestServer testēšanas laikā!</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="495"/>
+        <location filename="../server.cpp" line="494"/>
         <source>iTestServer - Stop server</source>
         <translation>iTestServer - servera apstādināšana</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4802"/>
+        <location filename="../ui_main_window_v2.cpp" line="3977"/>
         <source>22</source>
         <translation>22</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4803"/>
+        <location filename="../ui_main_window_v2.cpp" line="3978"/>
         <source>24</source>
         <translation>24</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4804"/>
+        <location filename="../ui_main_window_v2.cpp" line="3979"/>
         <source>26</source>
         <translation>26</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4805"/>
+        <location filename="../ui_main_window_v2.cpp" line="3980"/>
         <source>28</source>
         <translation>28</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4806"/>
+        <location filename="../ui_main_window_v2.cpp" line="3981"/>
         <source>30</source>
         <translation>30</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4807"/>
+        <location filename="../ui_main_window_v2.cpp" line="3982"/>
         <source>36</source>
         <translation>36</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4808"/>
+        <location filename="../ui_main_window_v2.cpp" line="3983"/>
         <source>48</source>
         <translation>48</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4809"/>
+        <location filename="../ui_main_window_v2.cpp" line="3984"/>
         <source>96</source>
         <translation>96</translation>
     </message>
@@ -2873,82 +2874,82 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation type="obsolete">Grafikas druka</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4873"/>
+        <location filename="../ui_main_window_v2.cpp" line="4048"/>
         <source>Attachments (SVG):</source>
         <translation>Pielikumi (SVG):</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4876"/>
+        <location filename="../ui_main_window_v2.cpp" line="4051"/>
         <source>Add SVG</source>
         <translation>Pievienot SVG</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4881"/>
+        <location filename="../ui_main_window_v2.cpp" line="4056"/>
         <source>Add an attachment</source>
         <translation>Pievienot pielikumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4887"/>
+        <location filename="../ui_main_window_v2.cpp" line="4062"/>
         <source>Remove SVG</source>
         <translation>Nodzēst SVG</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4892"/>
+        <location filename="../ui_main_window_v2.cpp" line="4067"/>
         <source>Remove the selected attachment</source>
         <translation>Nodzēst izvēlēto pielikumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5503"/>
+        <location filename="../ui_main_window_v2.cpp" line="4643"/>
         <source>Remove</source>
         <translation>Nodzēst</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4898"/>
+        <location filename="../ui_main_window_v2.cpp" line="4073"/>
         <source>Edit SVG</source>
         <translation>Rediģēt SVG</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4903"/>
+        <location filename="../ui_main_window_v2.cpp" line="4078"/>
         <source>Edit the selected attachment</source>
         <translation>Rediģēt izvēlēto pielikumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4906"/>
+        <location filename="../ui_main_window_v2.cpp" line="4081"/>
         <source>Edit</source>
         <translation>Rediģēšana</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4909"/>
+        <location filename="../ui_main_window_v2.cpp" line="4084"/>
         <source>Export SVG</source>
         <translation>Eksportēt SVG</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4914"/>
+        <location filename="../ui_main_window_v2.cpp" line="4089"/>
         <source>Export the selected attachment</source>
         <translation>Eksportēt izdalīto pielikumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4917"/>
+        <location filename="../ui_main_window_v2.cpp" line="4092"/>
         <source>Export</source>
         <translation>Eksportēt</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4920"/>
+        <location filename="../ui_main_window_v2.cpp" line="4095"/>
         <source>Attachments of the selected question</source>
         <translation>Izdalītā jautājuma pielikumi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5520"/>
+        <location filename="../ui_main_window_v2.cpp" line="4660"/>
         <source>Attachments</source>
         <translation>Pielikumi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4448"/>
+        <location filename="../ui_main_window_v2.cpp" line="3623"/>
         <source>Print questions</source>
         <translation>Jautājumu druka</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4461"/>
+        <location filename="../ui_main_window_v2.cpp" line="3636"/>
         <source>Select questions to print</source>
         <translation>Izvēlēties jautājumus izdrukai</translation>
     </message>
@@ -3028,27 +3029,27 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>Mērogojamās vektorgrafikas datne (*.svg)</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="324"/>
+        <location filename="../main_window.cpp" line="328"/>
         <source>Apply</source>
         <translation>Pielietot</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="327"/>
+        <location filename="../main_window.cpp" line="331"/>
         <source>Discard</source>
         <translation>Atcelt</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5205"/>
+        <location filename="../ui_main_window_v2.cpp" line="4339"/>
         <source>Server port:</source>
         <translation>Servera ports:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5208"/>
+        <location filename="../ui_main_window_v2.cpp" line="4342"/>
         <source>Use a custom server port (if unchecked, a random port will be chosen)</source>
         <translation>Pielietot lietotāja porta uzstādijumus (ja noņemts - tiek izvēlēts gadījuma ports)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5214"/>
+        <location filename="../ui_main_window_v2.cpp" line="4348"/>
         <source>Specify a custom server port</source>
         <translation>Uzstādiet lietotāja portu</translation>
     </message>
@@ -3063,7 +3064,7 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation type="obsolete">Spāņu valoda</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4199"/>
+        <location filename="../ui_main_window_v2.cpp" line="3374"/>
         <source>&amp;Delete log</source>
         <translation>&amp;Nodzēst žurnālu</translation>
     </message>
@@ -3073,7 +3074,7 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>Nodzēst</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4544"/>
+        <location filename="../ui_main_window_v2.cpp" line="3719"/>
         <source>Add class</source>
         <translation>Pievienot klasi</translation>
     </message>
@@ -3093,7 +3094,7 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>Klase ar šo nosaukumu jau eksistē. Lūdzu,pievienojiet citu nosaukumu.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4555"/>
+        <location filename="../ui_main_window_v2.cpp" line="3730"/>
         <source>Delete class</source>
         <translation>Nodzēst klasi</translation>
     </message>
@@ -3103,7 +3104,7 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>Esat pārliecināts, ka gribat nodzēst klasi &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4566"/>
+        <location filename="../ui_main_window_v2.cpp" line="3741"/>
         <source>Add student</source>
         <translation>Pievienot skolēnu</translation>
     </message>
@@ -3133,7 +3134,7 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>&amp;Izvēlēties citu vārdu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4577"/>
+        <location filename="../ui_main_window_v2.cpp" line="3752"/>
         <source>Delete student</source>
         <translation>Dzēst skolēnu</translation>
     </message>
@@ -3143,7 +3144,7 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>Esat pārliecināts(-a), ka gribat dzēst šo skolēnu &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4599"/>
+        <location filename="../ui_main_window_v2.cpp" line="3774"/>
         <source>Delete session</source>
         <translation>Dzēst sesiju</translation>
     </message>
@@ -3158,147 +3159,147 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>Sesija nav atrast. Šī sesija var būt arhivēta citā datorā.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5407"/>
+        <location filename="../ui_main_window_v2.cpp" line="4547"/>
         <source>List of classes</source>
         <translation>Klašu saraksts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5416"/>
+        <location filename="../ui_main_window_v2.cpp" line="4556"/>
         <source>Double click a class to view</source>
         <translation>Izpildiet dubultklikšķi uz klases vai pārskatītu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5419"/>
+        <location filename="../ui_main_window_v2.cpp" line="4559"/>
         <source>Selected class</source>
         <translation>Izvēlētā klase</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5420"/>
+        <location filename="../ui_main_window_v2.cpp" line="4560"/>
         <source>&lt;b&gt;Class name:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Klases nosaukums:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5426"/>
+        <location filename="../ui_main_window_v2.cpp" line="4566"/>
         <source>&lt;b&gt;First year:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Pirmais gads:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5432"/>
+        <location filename="../ui_main_window_v2.cpp" line="4572"/>
         <source>&lt;b&gt;Last year:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Pēdējais gads:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5438"/>
+        <location filename="../ui_main_window_v2.cpp" line="4578"/>
         <source>&lt;b&gt;Number of students:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Skolēnu skaits:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5441"/>
+        <location filename="../ui_main_window_v2.cpp" line="4581"/>
         <source>Number of students in the selected class</source>
         <translation>Skolēnu skaits izvēlētajā klasē</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5444"/>
+        <location filename="../ui_main_window_v2.cpp" line="4584"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5445"/>
+        <location filename="../ui_main_window_v2.cpp" line="4585"/>
         <source>&lt;b&gt;Class average:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Vidējā balle:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5482"/>
+        <location filename="../ui_main_window_v2.cpp" line="4622"/>
         <source>0%</source>
         <translation>0%</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5479"/>
+        <location filename="../ui_main_window_v2.cpp" line="4619"/>
         <source>The selected student&apos;s average</source>
         <translation>Izvēlētā skolēna izvēlētā balle</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5489"/>
+        <location filename="../ui_main_window_v2.cpp" line="4629"/>
         <source>List of results of the selected student</source>
         <translation>Izvēlētā skolēna rezultātu saraksts</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5484"/>
+        <location filename="../ui_main_window_v2.cpp" line="4624"/>
         <source>Session</source>
         <translation>Sesija</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5485"/>
+        <location filename="../ui_main_window_v2.cpp" line="4625"/>
         <source>Name</source>
         <translation>Vārds</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5486"/>
+        <location filename="../ui_main_window_v2.cpp" line="4626"/>
         <source>Results</source>
         <translation>Rezultāti</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5494"/>
+        <location filename="../ui_main_window_v2.cpp" line="4634"/>
         <source>Add the selected session from the list of sessions on the left to the list of results above</source>
         <translation>Pievienot izvēlēto sesiju no sesiju saraksta pa kreisi uz rezultātu sarakstu augšā</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5497"/>
+        <location filename="../ui_main_window_v2.cpp" line="4637"/>
         <source>Add selected session</source>
         <translation>Pievienot izvēlēto sesiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5500"/>
+        <location filename="../ui_main_window_v2.cpp" line="4640"/>
         <source>Remove the selected session from the list of results</source>
         <translation>Novākt izvēlēto sesiju no rezultātu saraksta</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5526"/>
+        <location filename="../ui_main_window_v2.cpp" line="4666"/>
         <source>&amp;Class</source>
         <translation>&amp;Klase</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4528"/>
+        <location filename="../ui_main_window_v2.cpp" line="3703"/>
         <source>&amp;Classes</source>
         <translation>&amp;Klases</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4541"/>
+        <location filename="../ui_main_window_v2.cpp" line="3716"/>
         <source>Edit classes</source>
         <translation>Rediģēt klases</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4552"/>
+        <location filename="../ui_main_window_v2.cpp" line="3727"/>
         <source>Create a new class</source>
         <translation>Radīt jaunu klasi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4563"/>
+        <location filename="../ui_main_window_v2.cpp" line="3738"/>
         <source>Delete the selected class</source>
         <translation>Nodzēst izvēlēto klasi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4574"/>
+        <location filename="../ui_main_window_v2.cpp" line="3749"/>
         <source>Add a new student to the selected class</source>
         <translation>Pievienot jaunu skolēnu izvēlētajai klasei</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4585"/>
+        <location filename="../ui_main_window_v2.cpp" line="3760"/>
         <source>Delete the selected student from the selected class</source>
         <translation>Nodzēst izvēlēto skolēnu no izvēlētās klases</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4588"/>
+        <location filename="../ui_main_window_v2.cpp" line="3763"/>
         <source>Add session</source>
         <translation>Pievienot sesiju</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4596"/>
+        <location filename="../ui_main_window_v2.cpp" line="3771"/>
         <source>Add a session to the selected class</source>
         <translation>Pievienot sesiju izvēlētajai klasei</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4607"/>
+        <location filename="../ui_main_window_v2.cpp" line="3782"/>
         <source>Delete the selected session from the selected class (the session will not be deleted from the database)</source>
         <translation>Nodzēst izvēlēto sesiju no izvēlētās klases (sesija netiks nodzēsta no datu bāzes)</translation>
     </message>
@@ -3308,27 +3309,27 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="612"/>
+        <location filename="../main_window.cpp" line="617"/>
         <source>%1 - Overall statistics</source>
         <translation>%1 - Kopējā statistika</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5423"/>
+        <location filename="../ui_main_window_v2.cpp" line="4563"/>
         <source>Name of the selected class (if you change this name, do not forget to click the Apply button on the right)</source>
         <translation>Izvēlētās klases nosaukums (pēc izmainīšanas neaizmirstiet nospiest pogu &quot;Pielietot&quot; labajā pusē)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5429"/>
+        <location filename="../ui_main_window_v2.cpp" line="4569"/>
         <source>The first year of the selected class (if you change this year, do not forget to click the Apply button on the right)</source>
         <translation>Izvēlētās klases pirmais gads (pēc izmainīšanas neaizmirstiet nospiest pogu &quot;Pielietot&quot; labajā pusē)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5435"/>
+        <location filename="../ui_main_window_v2.cpp" line="4575"/>
         <source>The last year of the selected class (if you change this year, do not forget to click the Apply button on the right)</source>
         <translation>Izvēlētās klases pēdējais gads (pēc izmainīšanas neaizmirstiet nospiest pogu &quot;Pielietot&quot; labajā pusē)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5468"/>
+        <location filename="../ui_main_window_v2.cpp" line="4608"/>
         <source>Name of the selected student (if you change this name, do not forget to click the Apply button on the right)</source>
         <translation>Izvēlētā skolēna vārds (pēc izmainīšanas neaizmirstiet nopiest pogu &quot;Pielietot&quot; labajā pusē)</translation>
     </message>
@@ -3348,17 +3349,17 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>Esat pārliecināts(-a), ka gribat nodzēst sesiju &quot;%1&quot; no izvēlētā skolēna rezultātu tabulas? Sesija netiks nodzēsta no datu bāzes.</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4923"/>
+        <location filename="../ui_main_window_v2.cpp" line="4098"/>
         <source>Explanation:</source>
         <translation>Paskaidrojums:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4610"/>
+        <location filename="../ui_main_window_v2.cpp" line="3785"/>
         <source>Print class summary</source>
         <translation>Izdrukāt klases rezultātu kopsavilkumu</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4618"/>
+        <location filename="../ui_main_window_v2.cpp" line="3793"/>
         <source>Print a summary for the selected class</source>
         <translation>Izdrukāt izvēlētās klases rezultātu kopsavilkumu</translation>
     </message>
@@ -3403,82 +3404,82 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>Ar rezultātu:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="4926"/>
+        <location filename="../ui_main_window_v2.cpp" line="4101"/>
         <source>A brief explanation of the selected question</source>
         <translation>Izvēlētā jautājuma īss izskaidrojums</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5400"/>
+        <location filename="../ui_main_window_v2.cpp" line="4540"/>
         <source>Scoring system</source>
         <translation>Vērtēšanas sistēma</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5090"/>
+        <location filename="../ui_main_window_v2.cpp" line="4224"/>
         <source>Allow giving points for partially correct answers (this affects multiple choice questions only)</source>
         <translation>Aprēķināt balles par daļēji pareizām atbildēm (tikai jautājumiem ar daudzām izvēlēm)</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5093"/>
+        <location filename="../ui_main_window_v2.cpp" line="4227"/>
         <source>Allow partially correct answers</source>
         <translation>Ņemt vērā daļēji pareizas atbildes</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5094"/>
+        <location filename="../ui_main_window_v2.cpp" line="4228"/>
         <source>Separate settings for each difficulty level</source>
         <translation>Dažādi uzstādījumi katram grūtību līmenim</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5134"/>
+        <location filename="../ui_main_window_v2.cpp" line="4268"/>
         <source>Specify the amount of points given for a correct answer</source>
         <translation>Aprēķināmo ballu skaits par daļēji pareizu atbildi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5137"/>
+        <location filename="../ui_main_window_v2.cpp" line="4271"/>
         <source>Incorrect answer:</source>
         <translation>Nepareizā atbilde:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5140"/>
+        <location filename="../ui_main_window_v2.cpp" line="4274"/>
         <source>Specify the amount of points taken for an incorrect answer</source>
         <translation>Atskaitāmo ballu skaits par nepareizu atbildi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5143"/>
+        <location filename="../ui_main_window_v2.cpp" line="4277"/>
         <source>Missing answer:</source>
         <translation>Izlaistā atbilde:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5146"/>
+        <location filename="../ui_main_window_v2.cpp" line="4280"/>
         <source>Specify the amount of points taken for each missing answer</source>
         <translation>Atskaitāmo ballu skaits par izlaistu atbildi</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5225"/>
+        <location filename="../ui_main_window_v2.cpp" line="4359"/>
         <source>Specify the minimum number of correct answers (with score above 0) to pass the test</source>
         <translation>Minimālais pareizo atbilžu skaits (ar pieskaitāmajām ballēm vairāk kā nulle), kas nepieciešams testa sekmīgai iziešanai</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5361"/>
+        <location filename="../ui_main_window_v2.cpp" line="4501"/>
         <source>Score</source>
         <translation>Balles</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5384"/>
+        <location filename="../ui_main_window_v2.cpp" line="4524"/>
         <source>Value</source>
         <translation>Vērtība</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5388"/>
+        <location filename="../ui_main_window_v2.cpp" line="4528"/>
         <source>Partially correct answers</source>
         <translation>Daļēji pareizās atbildes</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5396"/>
+        <location filename="../ui_main_window_v2.cpp" line="4536"/>
         <source>Incorrect answer</source>
         <translation>Nepareiza atbilde</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5397"/>
+        <location filename="../ui_main_window_v2.cpp" line="4537"/>
         <source>Missing answer</source>
         <translation>Izlaista abilde</translation>
     </message>
@@ -3503,38 +3504,64 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>atslēga</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5085"/>
+        <location filename="../ui_main_window_v2.cpp" line="4219"/>
         <source>Number of questions</source>
         <translation>Jautājumu skaits</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5230"/>
+        <location filename="../ui_main_window_v2.cpp" line="4364"/>
         <source>Use this option if the names of your questions contain clues to their answers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5233"/>
+        <location filename="../ui_main_window_v2.cpp" line="4367"/>
         <source>Hide question names, show numbers instead</source>
         <translation>Noslēpt jautājumus, parādīt tikai jautājumu numurus</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5239"/>
+        <location filename="../ui_main_window_v2.cpp" line="4373"/>
         <source>Do not show correct answers at the end of the test</source>
         <translation>Nerādīt pareizās atbildes testa beigās</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5240"/>
+        <location filename="../ui_main_window_v2.cpp" line="4374"/>
         <source>Other settings:</source>
         <translation>Pārējie uzstādījumi:</translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5243"/>
+        <location filename="../ui_main_window_v2.cpp" line="4377"/>
         <source>Reorder answers randomly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui_main_window_v2.cpp" line="5246"/>
+        <location filename="../ui_main_window_v2.cpp" line="4380"/>
         <source>Shuffle answers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui_main_window_v2.cpp" line="4197"/>
+        <source>Flag</source>
+        <translation>Kategorija</translation>
+    </message>
+    <message>
+        <location filename="../ui_main_window_v2.cpp" line="4199"/>
+        <source>Number of questions with this flag</source>
+        <translation>Jautājumu skaits šajā kategorijā</translation>
+    </message>
+    <message>
+        <location filename="../ui_main_window_v2.cpp" line="4383"/>
+        <source>Do not print test results automatically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui_main_window_v2.cpp" line="4386"/>
+        <source>Do not print test results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main_window.cpp" line="25"/>
+        <source>Invalid database file: %1
+Error %2.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

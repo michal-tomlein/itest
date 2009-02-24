@@ -1,13 +1,15 @@
 #!/usr/bin/squirrelsh
 
-local qmakeOpts = [ "-config", "release" ]
+local qmakeOpts = [ "-config", "release" ];
 local makeTool = "make";
+
+if (platform() == "macosx") {
+	qmakeOpts.append("-spec");
+	qmakeOpts.append("macx-g++");
+}
 
 printl("Entering directory: iTestServer");
 chdir("iTestServer");
-
-printl("Running QMAKE");
-run("qmake", qmakeOpts);
 
 printl("Running LRELEASE (translations)");
 run("lrelease", [ "iTestServer.pro" ]);
@@ -15,9 +17,6 @@ run("lrelease", [ "iTestServer.pro" ]);
 printl("Leaving directory: iTestServer");
 printl("Entering directory: iTestClient");
 chdir("../iTestClient");
-
-printl("Running QMAKE");
-run("qmake", qmakeOpts);
 
 printl("Running LRELEASE (translations)");
 run("lrelease", [ "iTestClient.pro" ]);
@@ -41,7 +40,4 @@ case "win32-msvc2005":
 }
 
 printl("Running " + makeTool + " (compiling)");
-/* printl("If you use a different maketool");
-printl("and do not have MAKE installed,");
-printl("you may run it now."); */
 run(makeTool);
