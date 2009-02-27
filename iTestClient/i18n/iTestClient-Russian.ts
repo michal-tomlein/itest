@@ -23,26 +23,6 @@
         <translation>Версия</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="13"/>
-        <source>iTest is a Qt application consisting of a Database Editor and a Test Writer designed for easy computerised examination.</source>
-        <translation type="obsolete">iTest является приложением, использующим библиотеку Qt, состоящим из редактора баз данных и программы для написания тестов, и разработанным для упрощения проведения компьютеризованных экзаменов.</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="34"/>
-        <source>This programme is distributed under the terms of the GPL v2.</source>
-        <translation>Данная программа распространяется под лицензией GPL v2.</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="38"/>
-        <source>The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
-        <translation>перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Константин Макшин, Евгений Бурмистров&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется &quot;как есть&quot; без каких-либо гарантий.</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="49"/>
-        <source>This programme uses Qt Open Source Edition version %1.</source>
-        <translation>Данная программа использует библиотеку Qt Open Source Edition версии %1.</translation>
-    </message>
-    <message>
         <location filename="../../shared/about_widget.cpp" line="51"/>
         <source>Qt is a C++ toolkit for cross-platform application development.</source>
         <translation>Qt является инструментом для разработки кросс-платформенных приложений на C++.</translation>
@@ -61,6 +41,21 @@
         <location filename="../../shared/about_widget.cpp" line="31"/>
         <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
         <translation>iTest является приложением, использующим библиотеку Qt, состоящим из редактора баз данных(с функциями Сервера) и программы для написания тестов(Клиента), и разработанным для упрощения проведения компьютеризованных экзаменов.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="34"/>
+        <source>This program is distributed under the terms of the GPL v2.</source>
+        <translation>Данная программа распространяется под лицензией GPL v2.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="38"/>
+        <source>The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
+        <translation>перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Константин Макшин, Евгений Бурмистров&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется &quot;как есть&quot; без каких-либо гарантий.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="49"/>
+        <source>This program uses Qt Open Source Edition version %1.</source>
+        <translation>Данная программа использует библиотеку Qt Open Source Edition версии %1.</translation>
     </message>
 </context>
 <context>
@@ -81,31 +76,6 @@
 %2.</source>
         <translation>Невозможно записать файл %1:
 %2.</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="211"/>
-        <source>%1 out of %2</source>
-        <translation type="obsolete">%1 из %2</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="213"/>
-        <source>yes</source>
-        <translation type="obsolete">да</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="213"/>
-        <source>no</source>
-        <translation type="obsolete">нет</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="242"/>
-        <source>None</source>
-        <translation type="obsolete">Нет</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="725"/>
-        <source>iTest - Test Writer</source>
-        <translation type="obsolete">iTest - Написание теста</translation>
     </message>
     <message>
         <location filename="../client.cpp" line="202"/>
@@ -189,52 +159,47 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Формирование вопросов теста...</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>Finish the exam</source>
         <translation>Закончить экзамен</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>Are you sure you want to finish? Once you click Finish there is no going back.</source>
         <translation>Вы уверены, что хотите закончить? Данное действие нельзя отменить.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>&amp;Finish</source>
         <translation>&amp;Закончить</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Отмена</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="332"/>
+        <location filename="../main_window.cpp" line="338"/>
         <source>Your name, please.</source>
         <translation>Ваше имя.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="332"/>
+        <location filename="../main_window.cpp" line="338"/>
         <source>You cannot proceed unless you give us your name.</source>
         <translation>Вы не можете продолжить, пока не укажете своё имя.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>Exam finished</source>
         <translation>Экзамен завершён</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>You have run out of time. Your answers are being sent.</source>
         <translation>Вы исчерпали запас времени. Ваши ответы были отправлены.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="423"/>
-        <source>iTest - Load test data</source>
-        <translation type="obsolete">iTest - Загрузить данные теста</translation>
-    </message>
-    <message>
-        <location filename="../main_window.cpp" line="411"/>
+        <location filename="../main_window.cpp" line="417"/>
         <source>Invalid data received. There might be something wrong with the server.</source>
         <translation>Получены неправильные данные. Возможны сбои в работе сервера.</translation>
     </message>
@@ -374,11 +339,6 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Готов</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="777"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Welcome!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Добро пожаловать!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <location filename="../ui_main_window.cpp" line="696"/>
         <source>Your name:</source>
         <translation>Ваше имя:</translation>
@@ -392,11 +352,6 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <location filename="../ui_main_window.cpp" line="698"/>
         <source>Start</source>
         <translation>Начать</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="783"/>
-        <source>b)</source>
-        <translation type="obsolete">б)</translation>
     </message>
     <message>
         <location filename="../ui_main_window.cpp" line="699"/>
@@ -422,41 +377,6 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <location filename="../ui_main_window.cpp" line="703"/>
         <source>Finish</source>
         <translation>Завершить</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="784"/>
-        <source>c)</source>
-        <translation type="obsolete">в)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="782"/>
-        <source>a)</source>
-        <translation type="obsolete">а)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="785"/>
-        <source>d)</source>
-        <translation type="obsolete">г)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="798"/>
-        <source>Question</source>
-        <translation type="obsolete">Вопрос</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="802"/>
-        <source>Answered correctly</source>
-        <translation type="obsolete">Правильных ответов</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="806"/>
-        <source>Answer</source>
-        <translation type="obsolete">Ответ</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="810"/>
-        <source>Correct answer</source>
-        <translation type="obsolete">Правильный ответ</translation>
     </message>
     <message>
         <location filename="../ui_main_window.cpp" line="707"/>
@@ -514,29 +434,9 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>iTestClient</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="411"/>
+        <location filename="../main_window.cpp" line="417"/>
         <source>iTestClient - Load test data</source>
         <translation>iTestClient - Загрузка данных теста</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="264"/>
-        <source>A</source>
-        <translation type="obsolete">А</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="265"/>
-        <source>B</source>
-        <translation type="obsolete">Б</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="266"/>
-        <source>C</source>
-        <translation type="obsolete">В</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="267"/>
-        <source>D</source>
-        <translation type="obsolete">Г</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="217"/>

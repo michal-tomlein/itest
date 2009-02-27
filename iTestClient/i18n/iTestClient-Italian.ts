@@ -13,24 +13,9 @@
         <translation>iTest è un&apos; applicazione Qt che consiste di un Client e di un Server disgnata per creare semplicemente test computerizzati.</translation>
     </message>
     <message>
-        <location filename="../../shared/about_widget.cpp" line="34"/>
-        <source>This programme is distributed under the terms of the GPL v2.</source>
-        <translation>Questo Programma è distribuito sotto licenza GPL v2.</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="38"/>
-        <source>The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
-        <translation>Traduzione: &lt;span style=&quot;font-style:italic;&quot;&gt;Francesco Atzeni&lt;/span&gt;&lt;br&gt;&lt;br&gt;Il Programma è rilasciato &quot;Cosi&apos; Com&apos;è&quot; SENZA ALCUN TIMPO DI GARANZIA, INCLUSO IL DESIGN, COMMERCIALIZZAZIONE E OGNI TIPO DI USO.</translation>
-    </message>
-    <message>
         <location filename="../../shared/about_widget_v2.ui" line="153"/>
         <source>About Qt</source>
         <translation>Informazioni Qt</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="49"/>
-        <source>This programme uses Qt Open Source Edition version %1.</source>
-        <translation>Questo Programma usa Qt Open Source Edition versione %1.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="51"/>
@@ -56,6 +41,21 @@
         <location filename="../../shared/about_widget_v2.ui" line="211"/>
         <source>Close</source>
         <translation>Chiudi</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="34"/>
+        <source>This program is distributed under the terms of the GPL v2.</source>
+        <translation>Questo Programma è distribuito sotto licenza GPL v2.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="38"/>
+        <source>The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
+        <translation>Traduzione: &lt;span style=&quot;font-style:italic;&quot;&gt;Francesco Atzeni&lt;/span&gt;&lt;br&gt;&lt;br&gt;Il Programma è rilasciato &quot;Cosi&apos; Com&apos;è&quot; SENZA ALCUN TIMPO DI GARANZIA, INCLUSO IL DESIGN, COMMERCIALIZZAZIONE E OGNI TIPO DI USO.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="49"/>
+        <source>This program uses Qt Open Source Edition version %1.</source>
+        <translation>Questo Programma usa Qt Open Source Edition versione %1.</translation>
     </message>
 </context>
 <context>
@@ -90,41 +90,6 @@
         <location filename="../client.cpp" line="179"/>
         <source>FAILED</source>
         <translation>FALLITO</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="213"/>
-        <source>yes</source>
-        <translation type="obsolete">si</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="213"/>
-        <source>no</source>
-        <translation type="obsolete">no</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="242"/>
-        <source>None</source>
-        <translation type="obsolete">Nessuno</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="782"/>
-        <source>a)</source>
-        <translation type="obsolete">a)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="783"/>
-        <source>b)</source>
-        <translation type="obsolete">b)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="784"/>
-        <source>c)</source>
-        <translation type="obsolete">c)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="785"/>
-        <source>d)</source>
-        <translation type="obsolete">d)</translation>
     </message>
     <message>
         <location filename="../ui_main_window.cpp" line="660"/>
@@ -225,52 +190,52 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Generazione Test in Corso...</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>Finish the exam</source>
         <translation>Finisci l&apos;esame</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>Are you sure you want to finish? Once you click Finish there is no going back.</source>
         <translation>Sei sicuro di voler finire l&apos;esame? Una volta schiacciato su FINITO non c&apos;è modo di tornare indietro.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>&amp;Finish</source>
         <translation>&amp;Finito</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Annulla</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="332"/>
+        <location filename="../main_window.cpp" line="338"/>
         <source>Your name, please.</source>
         <translation>Il tuo nome, per favore.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="332"/>
+        <location filename="../main_window.cpp" line="338"/>
         <source>You cannot proceed unless you give us your name.</source>
         <translation>Non puoi procedere fino a che non inserisci il tuo nome.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>Exam finished</source>
         <translation>Esame Concluso</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>You have run out of time. Your answers are being sent.</source>
         <translation>Hai impiegato più tempo del consentito. Le tue risposte sono state inviate.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="411"/>
+        <location filename="../main_window.cpp" line="417"/>
         <source>iTestClient - Load test data</source>
         <translation>Client iTest - Carica Dati del Test</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="411"/>
+        <location filename="../main_window.cpp" line="417"/>
         <source>Invalid data received. There might be something wrong with the server.</source>
         <translation>Ricevuti dati invalidi. Potrebbe esserci qualcosa di sbagliato nel server.</translation>
     </message>
@@ -420,11 +385,6 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Pronto</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="777"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Welcome!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Benvenuto!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <location filename="../ui_main_window.cpp" line="696"/>
         <source>Your name:</source>
         <translation>Il Tuo Nome:</translation>
@@ -478,26 +438,6 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <location filename="../ui_main_window.cpp" line="707"/>
         <source>&lt;b&gt;Results:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Risultato:&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="798"/>
-        <source>Question</source>
-        <translation type="obsolete">Domanda</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="802"/>
-        <source>Answered correctly</source>
-        <translation type="obsolete">Ha Risposto Correttamente</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="806"/>
-        <source>Answer</source>
-        <translation type="obsolete">Risposta</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="810"/>
-        <source>Correct answer</source>
-        <translation type="obsolete">Risposta Corretta</translation>
     </message>
     <message>
         <location filename="../ui_main_window.cpp" line="708"/>

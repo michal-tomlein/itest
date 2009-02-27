@@ -31,17 +31,17 @@
     <message>
         <location filename="../../shared/about_widget.cpp" line="34"/>
         <source>This programme is distributed under the terms of the GPL v2.</source>
-        <translation>Šī programma tiek izplatīta ar GPL v2 licenci.</translation>
+        <translation type="obsolete">Šī programma tiek izplatīta ar GPL v2 licenci.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="38"/>
         <source>The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
-        <translation>tulkojums: &lt;span style=&quot;font-style:italic;&quot;&gt;Valdis Orols&lt;/span&gt;&lt;br&gt;&lt;br&gt;Šī programma tiek piedāvāta &quot;kā ir&quot;, bez jebkādām garantijām.</translation>
+        <translation type="obsolete">tulkojums: &lt;span style=&quot;font-style:italic;&quot;&gt;Valdis Orols&lt;/span&gt;&lt;br&gt;&lt;br&gt;Šī programma tiek piedāvāta &quot;kā ir&quot;, bez jebkādām garantijām.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="49"/>
         <source>This programme uses Qt Open Source Edition version %1.</source>
-        <translation>Šī programma izmanto bibliotēku Qt Open Source Edition, versija %1.</translation>
+        <translation type="obsolete">Šī programma izmanto bibliotēku Qt Open Source Edition, versija %1.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="51"/>
@@ -62,6 +62,21 @@
         <location filename="../../shared/about_widget.cpp" line="31"/>
         <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
         <translation>iTest ir aplikācija, kas izmanto Qt bibliotēku, sastāv no servera un klienta, izstrādāts datorizētu eksāmenu vadības vienkāršošanai.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="34"/>
+        <source>This program is distributed under the terms of the GPL v2.</source>
+        <translation>Šī programma tiek izplatīta ar GPL v2 licenci.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="38"/>
+        <source>The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
+        <translation>Tulkojums: &lt;span style=&quot;font-style:italic;&quot;&gt;Valdis Orols&lt;/span&gt;&lt;br&gt;&lt;br&gt;Šī programma tiek piedāvāta &quot;kā ir&quot;, bez jebkādām garantijām.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="49"/>
+        <source>This program uses Qt Open Source Edition version %1.</source>
+        <translation>Šī programma izmanto bibliotēku Qt Open Source Edition, versija %1.</translation>
     </message>
 </context>
 <context>
@@ -204,7 +219,7 @@
     <message>
         <location filename="../database.cpp" line="25"/>
         <source>Save changes before proceeding?</source>
-        <translation>Saglabāt izmaiņas pirms turpināšanas?</translation>
+        <translation type="obsolete">Saglabāt izmaiņas pirms turpināšanas?</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="2814"/>
@@ -212,7 +227,7 @@
         <translation>&amp;Saglabāt</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="25"/>
+        <location filename="../database.cpp" line="33"/>
         <source>&amp;Discard</source>
         <translation>&amp;Nesaglabāt</translation>
     </message>
@@ -222,7 +237,7 @@
         <translation>Atcelšana</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="52"/>
+        <location filename="../database.cpp" line="62"/>
         <source>New database</source>
         <translation>Jauna datu bāze</translation>
     </message>
@@ -232,32 +247,32 @@
         <translation>Datu bāzes nosaukums:</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="52"/>
+        <location filename="../database.cpp" line="62"/>
         <source>Untitled database</source>
         <translation>Bez nosaukuma</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="64"/>
+        <location filename="../database.cpp" line="74"/>
         <source>Create database file</source>
         <translation>Radīt datu bāzes datni</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="56"/>
+        <location filename="../database.cpp" line="66"/>
         <source>%1.itdb</source>
         <translation>%1.itdb</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="147"/>
+        <location filename="../database.cpp" line="157"/>
         <source>iTest databases (*.itdb)</source>
         <translation>iTest datu bāzes (*.itdb)</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="58"/>
+        <location filename="../database.cpp" line="68"/>
         <source>untitled.itdb</source>
         <translation>bez_nosaukuma.itdb</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="923"/>
+        <location filename="../server.cpp" line="921"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>Nevar ierakstit datni %1:
@@ -279,12 +294,12 @@
         <translation>Gatavs</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="207"/>
+        <location filename="../database.cpp" line="217"/>
         <source>Save database</source>
         <translation>Saglabāt datu bāzi</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="164"/>
+        <location filename="../database.cpp" line="174"/>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
@@ -305,39 +320,39 @@ līdzkamēr bāzei netiks atjaunots tās iepriekšējais nosaukums.
         <translation>&amp;Nemainīt</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="278"/>
+        <location filename="../database.cpp" line="288"/>
         <source>Database saved</source>
         <translation>Datu bāze saglabāta</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="641"/>
+        <location filename="../main_window.cpp" line="468"/>
         <source>Open database</source>
         <translation>Atvērt datu bāzi</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="290"/>
+        <location filename="../database.cpp" line="300"/>
         <source>Open database file</source>
         <translation>Atvērt datu bāzes datni</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="290"/>
+        <location filename="../database.cpp" line="300"/>
         <source>iTest databases (*.itdb);;All files (*.*)</source>
         <translation>iTest datu bāzes (*.itdb);;Visas datnes (*.*)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="819"/>
+        <location filename="../server.cpp" line="818"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>Nav iespējams nolasīt datni %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="335"/>
+        <location filename="../database.cpp" line="345"/>
         <source>iTest version notice</source>
         <translation>Informācija par iTest versiju</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="333"/>
+        <location filename="../database.cpp" line="343"/>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
@@ -346,22 +361,22 @@ Izvēlētā datu bāzes datne var tikt atvērta ar šo programmas versiju,
 bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="335"/>
+        <location filename="../database.cpp" line="345"/>
         <source>You need a newer version of iTest to open this database file.</source>
         <translation>Lai atvērtu šo datu bāzes datni, Jums nepieciešama iTest jaunāka versija.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="631"/>
+        <location filename="../database.cpp" line="641"/>
         <source>Database open</source>
         <translation>Datu bāze ir atvērta</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="656"/>
+        <location filename="../database.cpp" line="666"/>
         <source>Close database</source>
         <translation>Aizvērt datu bāzi</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="663"/>
+        <location filename="../database.cpp" line="673"/>
         <source>Database closed</source>
         <translation>Datu bāze aizvērta</translation>
     </message>
@@ -451,42 +466,42 @@ Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</transl
         <translation>iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="579"/>
+        <location filename="../main_window.cpp" line="584"/>
         <source>Failed to check for updates.</source>
         <translation>Nevar pārbaudīt, vai ir atjaunojumi.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="579"/>
+        <location filename="../main_window.cpp" line="584"/>
         <source>&amp;Try again</source>
         <translation>&amp;Atkārtot mēģinājumu</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="595"/>
+        <location filename="../main_window.cpp" line="600"/>
         <source>Your iTest is up-to-date.</source>
         <translation>Jums ir visjaunākā iTest versija.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="599"/>
+        <location filename="../main_window.cpp" line="604"/>
         <source>iTest %1 is available now.</source>
         <translation>Pieejams iTest %1.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="619"/>
+        <location filename="../main_window.cpp" line="624"/>
         <source>%1 - Overall statistics - iTest</source>
         <translation>%1 - Kopējā statistika - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="638"/>
+        <location filename="../main_window.cpp" line="643"/>
         <source>Adjust all</source>
         <translation>Uzstādīt visu</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="642"/>
+        <location filename="../main_window.cpp" line="647"/>
         <source>Close</source>
         <translation>Aizvērt</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="654"/>
+        <location filename="../main_window.cpp" line="659"/>
         <source>&lt;b&gt;%1 questions with statistics found&lt;/b&gt;</source>
         <translation>&lt;b&gt;Atrasti %1 jautājumi ar statistiku&lt;/b&gt;</translation>
     </message>
@@ -496,27 +511,27 @@ Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</transl
         <translation>Jautājuma nosaukums</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="660"/>
+        <location filename="../main_window.cpp" line="665"/>
         <source>Difficulty</source>
         <translation>Sarežģītība</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="662"/>
+        <location filename="../main_window.cpp" line="667"/>
         <source>Calculated difficulty</source>
         <translation>Izskaitļotā sarežģītība</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="664"/>
+        <location filename="../main_window.cpp" line="669"/>
         <source>Number of correct answers</source>
         <translation>Pareizo atbilžu skaits</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="666"/>
+        <location filename="../main_window.cpp" line="671"/>
         <source>Number of incorrect answers</source>
         <translation>Nepareizo atbilžu skaits</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="723"/>
+        <location filename="../main_window.cpp" line="728"/>
         <source>Adjust difficulty</source>
         <translation>Uzstādīt sarežģītību</translation>
     </message>
@@ -541,17 +556,17 @@ Ja tas ir kļūdas iemesls, novāciet tos un atkārtojiet mēģinājumu.</transl
         <translation>Sarežģīti</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="814"/>
+        <location filename="../main_window.cpp" line="819"/>
         <source>Change language - iTest</source>
         <translation>Nomainīt valodu - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="819"/>
+        <location filename="../main_window.cpp" line="824"/>
         <source>Select your preferred language</source>
         <translation>Izvēlieties vēlamo valodu</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="843"/>
+        <location filename="../main_window.cpp" line="848"/>
         <source>You need to restart iTest for the changes to apply.</source>
         <translation>Jāpārstartē iTest izmaiņu pielietošanai.</translation>
     </message>
@@ -2522,42 +2537,42 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation>Nevar pievienot off-line klientu. Vai nu šī datne satur citas sesijas klienta datus, vai arī šī datne satur nepareizus datus.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="836"/>
+        <location filename="../server.cpp" line="835"/>
         <source>%1 &gt; Client #%2 (%3) added</source>
         <translation>%1 &gt; Pievienots klients Nr.%2 (%3)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="859"/>
+        <location filename="../server.cpp" line="857"/>
         <source>No iTest client logs found in the folder you selected.</source>
         <translation>Izvēlētajā mapē nav atrasts neviens klienta žurnāls.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="862"/>
+        <location filename="../server.cpp" line="860"/>
         <source>%1 &gt; Failed to add off-line client</source>
         <translation>%1 &gt; Nevar pievienot off-line klientu</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="878"/>
+        <location filename="../server.cpp" line="876"/>
         <source>Export test</source>
         <translation>Eksportēt testu</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="873"/>
+        <location filename="../server.cpp" line="871"/>
         <source>iTest off-line test sessions (*.itos)</source>
         <translation>iTest (*.itos) off-line testēšanas sesijas</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="893"/>
+        <location filename="../server.cpp" line="891"/>
         <source>Test exported</source>
         <translation>Tests ir eksportēts</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="918"/>
+        <location filename="../server.cpp" line="916"/>
         <source>iTest Server logs (*.html)</source>
         <translation>iTest (*.html) servera žurnāli</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="930"/>
+        <location filename="../server.cpp" line="928"/>
         <source>iTest Server Log</source>
         <translation>iTest servera žurnāls</translation>
     </message>
@@ -2647,7 +2662,7 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation type="obsolete">Turku valoda</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="644"/>
+        <location filename="../database.cpp" line="654"/>
         <source>Error opening database.</source>
         <translation>Kļūda atverot datu bāzi.</translation>
     </message>
@@ -3309,7 +3324,7 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="617"/>
+        <location filename="../main_window.cpp" line="622"/>
         <source>%1 - Overall statistics</source>
         <translation>%1 - Kopējā statistika</translation>
     </message>
@@ -3562,6 +3577,16 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <location filename="../main_window.cpp" line="25"/>
         <source>Invalid database file: %1
 Error %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../database.cpp" line="30"/>
+        <source>The database has been modified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../database.cpp" line="31"/>
+        <source>Do you want to save your changes?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

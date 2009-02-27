@@ -31,17 +31,17 @@
     <message>
         <location filename="../../shared/about_widget.cpp" line="34"/>
         <source>This programme is distributed under the terms of the GPL v2.</source>
-        <translation>Tento program je distribuovaný pod licenciou GPL v2.</translation>
+        <translation type="obsolete">Tento program je distribuovaný pod licenciou GPL v2.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="38"/>
         <source>The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
-        <translation>Tento program je poskytovaný TAK AKO JE s ABSOLÚTNE ŽIADNOU ZÁRUKOU AKÉHOKOĽVEK DRUHU.</translation>
+        <translation type="obsolete">Tento program je poskytovaný TAK AKO JE s ABSOLÚTNE ŽIADNOU ZÁRUKOU AKÉHOKOĽVEK DRUHU.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="49"/>
         <source>This programme uses Qt Open Source Edition version %1.</source>
-        <translation>Tento program používa Qt Open Source Edition vo verzii %1.</translation>
+        <translation type="obsolete">Tento program používa Qt Open Source Edition vo verzii %1.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="51"/>
@@ -62,6 +62,21 @@
         <location filename="../../shared/about_widget.cpp" line="31"/>
         <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
         <translation>iTest je Qt program pozostávajúci zo serverového a klientského programu dizajnovaných pre jednoduché skúšanie pomocou počítača.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="34"/>
+        <source>This program is distributed under the terms of the GPL v2.</source>
+        <translation>Tento program je distribuovaný pod licenciou GPL v2.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="38"/>
+        <source>The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
+        <translation>Tento program je poskytovaný TAK AKO JE s ABSOLÚTNE ŽIADNOU ZÁRUKOU AKÉHOKOĽVEK DRUHU.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="49"/>
+        <source>This program uses Qt Open Source Edition version %1.</source>
+        <translation>Tento program používa Qt Open Source Edition vo verzii %1.</translation>
     </message>
 </context>
 <context>
@@ -204,7 +219,7 @@
     <message>
         <location filename="../database.cpp" line="25"/>
         <source>Save changes before proceeding?</source>
-        <translation>Uložiť zmeny pred pokračovaním?</translation>
+        <translation type="obsolete">Uložiť zmeny pred pokračovaním?</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="2814"/>
@@ -212,7 +227,7 @@
         <translation>&amp;Uložiť</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="25"/>
+        <location filename="../database.cpp" line="33"/>
         <source>&amp;Discard</source>
         <translation>&amp;Zahodiť</translation>
     </message>
@@ -222,7 +237,7 @@
         <translation>Zrušiť</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="52"/>
+        <location filename="../database.cpp" line="62"/>
         <source>New database</source>
         <translation>Nová databáza</translation>
     </message>
@@ -232,32 +247,32 @@
         <translation>Meno databázy:</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="52"/>
+        <location filename="../database.cpp" line="62"/>
         <source>Untitled database</source>
         <translation>Nepomenovaná databáza</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="64"/>
+        <location filename="../database.cpp" line="74"/>
         <source>Create database file</source>
         <translation>Vytvoriť nový datábazový súbor</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="56"/>
+        <location filename="../database.cpp" line="66"/>
         <source>%1.itdb</source>
         <translation>%1.itdb</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="147"/>
+        <location filename="../database.cpp" line="157"/>
         <source>iTest databases (*.itdb)</source>
         <translation>Databázy iTest (*.itdb)</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="58"/>
+        <location filename="../database.cpp" line="68"/>
         <source>untitled.itdb</source>
         <translation>nepomenovany.itdb</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="923"/>
+        <location filename="../server.cpp" line="921"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>Nemôžem zapisovať do súboru %1:
@@ -269,59 +284,59 @@
         <translation>Pripravený</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="207"/>
+        <location filename="../database.cpp" line="217"/>
         <source>Save database</source>
         <translation>Uložiť databázu</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="278"/>
+        <location filename="../database.cpp" line="288"/>
         <source>Database saved</source>
         <translation>Databáza uložená</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="641"/>
+        <location filename="../main_window.cpp" line="468"/>
         <source>Open database</source>
         <translation>Otvoriť databázu</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="290"/>
+        <location filename="../database.cpp" line="300"/>
         <source>Open database file</source>
         <translation>Otvoriť databázový súbor</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="290"/>
+        <location filename="../database.cpp" line="300"/>
         <source>iTest databases (*.itdb);;All files (*.*)</source>
         <translation>Databázy iTest (*.itdb);;Všetky súbory (*.*)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="819"/>
+        <location filename="../server.cpp" line="818"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>Nemôžem čítať súbor %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="335"/>
+        <location filename="../database.cpp" line="345"/>
         <source>iTest version notice</source>
         <translation>Upozornenie o verzii iTest</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="335"/>
+        <location filename="../database.cpp" line="345"/>
         <source>You need a newer version of iTest to open this database file.</source>
         <translation>Na otvorenie tohto databázového súboru potrebujete novšiu verziu programu iTest.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="631"/>
+        <location filename="../database.cpp" line="641"/>
         <source>Database open</source>
         <translation>Databáza otvorená</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="656"/>
+        <location filename="../database.cpp" line="666"/>
         <source>Close database</source>
         <translation>Zatvoriť databázu</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="663"/>
+        <location filename="../database.cpp" line="673"/>
         <source>Database closed</source>
         <translation>Databáza zatvorená</translation>
     </message>
@@ -401,42 +416,42 @@ Ak ste ich použili, skúste operáciu znova bez nich.</translation>
         <translation>iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="579"/>
+        <location filename="../main_window.cpp" line="584"/>
         <source>Failed to check for updates.</source>
         <translation>Nepodarilo sa skontrolovať aktualizácie.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="579"/>
+        <location filename="../main_window.cpp" line="584"/>
         <source>&amp;Try again</source>
         <translation>&amp;Skúsiť znovu</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="595"/>
+        <location filename="../main_window.cpp" line="600"/>
         <source>Your iTest is up-to-date.</source>
         <translation>Táto verzia programu iTest je aktuálna.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="599"/>
+        <location filename="../main_window.cpp" line="604"/>
         <source>iTest %1 is available now.</source>
         <translation>iTest vo verzii %1 je teraz dostupný.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="619"/>
+        <location filename="../main_window.cpp" line="624"/>
         <source>%1 - Overall statistics - iTest</source>
         <translation>%1 - Celková štatistika - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="638"/>
+        <location filename="../main_window.cpp" line="643"/>
         <source>Adjust all</source>
         <translation>Upraviť všetky</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="642"/>
+        <location filename="../main_window.cpp" line="647"/>
         <source>Close</source>
         <translation>Zatvoriť</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="654"/>
+        <location filename="../main_window.cpp" line="659"/>
         <source>&lt;b&gt;%1 questions with statistics found&lt;/b&gt;</source>
         <translation>&lt;b&gt;Bolo nájdených %1 otázok so štatistikami&lt;/b&gt;</translation>
     </message>
@@ -446,27 +461,27 @@ Ak ste ich použili, skúste operáciu znova bez nich.</translation>
         <translation>Meno otázky</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="660"/>
+        <location filename="../main_window.cpp" line="665"/>
         <source>Difficulty</source>
         <translation>Obtiažnosť</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="662"/>
+        <location filename="../main_window.cpp" line="667"/>
         <source>Calculated difficulty</source>
         <translation>Vypočítaná obtiažnosť</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="664"/>
+        <location filename="../main_window.cpp" line="669"/>
         <source>Number of correct answers</source>
         <translation>Počet správnych odpovedí</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="666"/>
+        <location filename="../main_window.cpp" line="671"/>
         <source>Number of incorrect answers</source>
         <translation>Počet nesprávnych odpovedí</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="723"/>
+        <location filename="../main_window.cpp" line="728"/>
         <source>Adjust difficulty</source>
         <translation>Upraviť obtiažnosť</translation>
     </message>
@@ -2388,42 +2403,42 @@ ale doporučuje sa im dať hodinu času.</translation>
         <translation>Nepodarilo sa pridať off-line klienta. Tento súbor obsahuje buď klientské dáta z iného sedenia alebo neplatné dáta.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="836"/>
+        <location filename="../server.cpp" line="835"/>
         <source>%1 &gt; Client #%2 (%3) added</source>
         <translation>%1 &gt; Klient #%2 (%3) pridaný</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="859"/>
+        <location filename="../server.cpp" line="857"/>
         <source>No iTest client logs found in the folder you selected.</source>
         <translation>Vo vybranom priečinku sa nenašli žiadne off-line záznamy o klientoch.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="862"/>
+        <location filename="../server.cpp" line="860"/>
         <source>%1 &gt; Failed to add off-line client</source>
         <translation>%1 &gt; Nepodarilo sa pridať off-line klienta</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="878"/>
+        <location filename="../server.cpp" line="876"/>
         <source>Export test</source>
         <translation>Exportovať test</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="873"/>
+        <location filename="../server.cpp" line="871"/>
         <source>iTest off-line test sessions (*.itos)</source>
         <translation>iTest off-line testové sedenia (*.itos)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="893"/>
+        <location filename="../server.cpp" line="891"/>
         <source>Test exported</source>
         <translation>Test exportovaný</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="918"/>
+        <location filename="../server.cpp" line="916"/>
         <source>iTest Server logs (*.html)</source>
         <translation>iTest záznamy servera (*.html)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="930"/>
+        <location filename="../server.cpp" line="928"/>
         <source>iTest Server Log</source>
         <translation>iTest záznam servera</translation>
     </message>
@@ -2443,12 +2458,12 @@ ale doporučuje sa im dať hodinu času.</translation>
         <translation>Naozaj chcete odstrániť záznam sedenia &quot;%1 - %2&quot;?</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="814"/>
+        <location filename="../main_window.cpp" line="819"/>
         <source>Change language - iTest</source>
         <translation>Zmeniť jazyk - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="819"/>
+        <location filename="../main_window.cpp" line="824"/>
         <source>Select your preferred language</source>
         <translation>Vyberte váš jazyk</translation>
     </message>
@@ -2463,7 +2478,7 @@ ale doporučuje sa im dať hodinu času.</translation>
         <translation type="obsolete">slovenčina</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="843"/>
+        <location filename="../main_window.cpp" line="848"/>
         <source>You need to restart iTest for the changes to apply.</source>
         <translation>Aby sa zmeny prejavili, je potrebné reštartovať iTest.</translation>
     </message>
@@ -2478,7 +2493,7 @@ ale doporučuje sa im dať hodinu času.</translation>
         <translation>Zmeniť jazyk prostredia iTest</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="333"/>
+        <location filename="../database.cpp" line="343"/>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
@@ -2522,7 +2537,7 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation>Obnoviť vybrané sedenie z archívu</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="164"/>
+        <location filename="../database.cpp" line="174"/>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
@@ -2648,7 +2663,7 @@ Všetky budú aktualizované.</translation>
         <translation type="obsolete">turečtina</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="644"/>
+        <location filename="../database.cpp" line="654"/>
         <source>Error opening database.</source>
         <translation>Pri otváraní databázy sa vyskytla chyba.</translation>
     </message>
@@ -3328,7 +3343,7 @@ a skrytie originálu. Pokračujte len ak ste si istí tým, čo robíte.</transl
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="617"/>
+        <location filename="../main_window.cpp" line="622"/>
         <source>%1 - Overall statistics</source>
         <translation>%1 - Celková štatistika</translation>
     </message>
@@ -3588,6 +3603,16 @@ a skrytie originálu. Pokračujte len ak ste si istí tým, čo robíte.</transl
 Error %2.</source>
         <translation>Neplatný databázový súbor: %1
 Chyba %2.</translation>
+    </message>
+    <message>
+        <location filename="../database.cpp" line="30"/>
+        <source>The database has been modified.</source>
+        <translation>V databáze boli urobené zmeny.</translation>
+    </message>
+    <message>
+        <location filename="../database.cpp" line="31"/>
+        <source>Do you want to save your changes?</source>
+        <translation>Chcete uložiť tieto zmeny?</translation>
     </message>
 </context>
 <context>

@@ -8,29 +8,9 @@
         <translation>Versão</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="13"/>
-        <source>iTest is a Qt application consisting of a Database Editor and a Test Writer designed for easy computerised examination.</source>
-        <translation type="obsolete">O iTest é uma programa Qt constituido por um Editor de Bases de Dados e por um Escritor de Testes, desenvolvido para facilitar os ezames computorizados.</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="34"/>
-        <source>This programme is distributed under the terms of the GPL v2.</source>
-        <translation>Este programa é distribuido sob os termos da licença GPL v2.</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="38"/>
-        <source>The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
-        <translation>Tradução: &lt;span style=&quot;font-style:italic;&quot;&gt;Eugéne Suter&lt;/span&gt;&lt;br&gt;&lt;br&gt;Este programa é fornecido TAL COMO ESTA sem QUALQUER TIPO DE GARANTIA, INCLUINDO GARANTIAS DE DESIGN, VENDABILIDADE E APTIDÃO PARA UM CERTO PROPÓSITO.</translation>
-    </message>
-    <message>
         <location filename="../../shared/about_widget_v2.ui" line="153"/>
         <source>About Qt</source>
         <translation>Sobre o Qt</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="49"/>
-        <source>This programme uses Qt Open Source Edition version %1.</source>
-        <translation>Este programa usa a edição Livre do Qt (Open Source Edition), versão %1.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="51"/>
@@ -62,6 +42,21 @@
         <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
         <translation>O iTest é uma programa Qt constituido por um Servidor e por um Cliente, desenvolvido para facilitar os exames computorizados.</translation>
     </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="34"/>
+        <source>This program is distributed under the terms of the GPL v2.</source>
+        <translation>Este programa é distribuido sob os termos da licença GPL v2.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="38"/>
+        <source>The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
+        <translation>Tradução: &lt;span style=&quot;font-style:italic;&quot;&gt;Eugéne Suter&lt;/span&gt;&lt;br&gt;&lt;br&gt;Este programa é fornecido TAL COMO ESTA sem QUALQUER TIPO DE GARANTIA, INCLUINDO GARANTIAS DE DESIGN, VENDABILIDADE E APTIDÃO PARA UM CERTO PROPÓSITO.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="49"/>
+        <source>This program uses Qt Open Source Edition version %1.</source>
+        <translation>Este programa usa a edição Livre do Qt (Open Source Edition), versão %1.</translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -81,26 +76,6 @@
 %2.</source>
         <translation>Não foi possível gravar o ficheiro %1:
 %2.</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="213"/>
-        <source>yes</source>
-        <translation type="obsolete">sim</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="213"/>
-        <source>no</source>
-        <translation type="obsolete">não</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="242"/>
-        <source>None</source>
-        <translation type="obsolete">Nenhum</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="725"/>
-        <source>iTest - Test Writer</source>
-        <translation type="obsolete">iTest - Escritor de Testes</translation>
     </message>
     <message>
         <location filename="../client.cpp" line="202"/>
@@ -189,52 +164,47 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>A gerar o teste...</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>Finish the exam</source>
         <translation>Terminar o teste</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>Are you sure you want to finish? Once you click Finish there is no going back.</source>
         <translation>Deseja mesmo terminar o teste? Assim que clicar em Terminar, não é possível voltar atrás.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>&amp;Finish</source>
         <translation>&amp;Terminar</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancelar</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="332"/>
+        <location filename="../main_window.cpp" line="338"/>
         <source>Your name, please.</source>
         <translation>O seu nome, por favor.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="332"/>
+        <location filename="../main_window.cpp" line="338"/>
         <source>You cannot proceed unless you give us your name.</source>
         <translation>Não pode proceder sem fornecer o seu nome.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>Exam finished</source>
         <translation>Teste terminado</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>You have run out of time. Your answers are being sent.</source>
         <translation>A seu tempo acabou. As suas respostas estão a ser enviadas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="423"/>
-        <source>iTest - Load test data</source>
-        <translation type="obsolete">iTest - Carregar os dados do teste</translation>
-    </message>
-    <message>
-        <location filename="../main_window.cpp" line="411"/>
+        <location filename="../main_window.cpp" line="417"/>
         <source>Invalid data received. There might be something wrong with the server.</source>
         <translation>Os dados recebidos são inválidos. Poderá existir um problema com o servidor.</translation>
     </message>
@@ -374,11 +344,6 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Pronto</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="777"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Welcome!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Bem vindo!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <location filename="../ui_main_window.cpp" line="696"/>
         <source>Your name:</source>
         <translation>O seu nome:</translation>
@@ -392,26 +357,6 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <location filename="../ui_main_window.cpp" line="698"/>
         <source>Start</source>
         <translation>Iniciar</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="782"/>
-        <source>a)</source>
-        <translation type="obsolete">a)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="783"/>
-        <source>b)</source>
-        <translation type="obsolete">b)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="784"/>
-        <source>c)</source>
-        <translation type="obsolete">c)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="785"/>
-        <source>d)</source>
-        <translation type="obsolete">d)</translation>
     </message>
     <message>
         <location filename="../ui_main_window.cpp" line="699"/>
@@ -437,26 +382,6 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <location filename="../ui_main_window.cpp" line="703"/>
         <source>Finish</source>
         <translation>Terminar</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="798"/>
-        <source>Question</source>
-        <translation type="obsolete">Questão</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="802"/>
-        <source>Answered correctly</source>
-        <translation type="obsolete">Respondido correctamente</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="806"/>
-        <source>Answer</source>
-        <translation type="obsolete">Resposta</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="810"/>
-        <source>Correct answer</source>
-        <translation type="obsolete">Resposta correcta</translation>
     </message>
     <message>
         <location filename="../ui_main_window.cpp" line="707"/>
@@ -509,29 +434,9 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>iTestClient</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="411"/>
+        <location filename="../main_window.cpp" line="417"/>
         <source>iTestClient - Load test data</source>
         <translation>iTestClient - Carregar os dados do teste</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="264"/>
-        <source>A</source>
-        <translation type="obsolete">A</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="265"/>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="266"/>
-        <source>C</source>
-        <translation type="obsolete">C</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="267"/>
-        <source>D</source>
-        <translation type="obsolete">D</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="217"/>

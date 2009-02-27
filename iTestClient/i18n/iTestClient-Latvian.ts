@@ -23,26 +23,6 @@
         <translation>Versija</translation>
     </message>
     <message>
-        <location filename="../about_widget.cpp" line="13"/>
-        <source>iTest is a Qt application consisting of a Database Editor and a Test Writer designed for easy computerised examination.</source>
-        <translation type="obsolete">iTest ir aplikācija, kas  izmanto Qt bibliotēku, sastāvošu no datu bāzu redaktora un testu rakstīšanas programmas, tā izstrādāta datorizēto eksāmenu vienkāršošanai.</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="34"/>
-        <source>This programme is distributed under the terms of the GPL v2.</source>
-        <translation>Šī programma tiek izplatīta ar GPL v2 licenci.</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="38"/>
-        <source>The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
-        <translation>Tulkojums: &lt;span style=&quot;font-style:italic;&quot;&gt;Valdis Orols&lt;/span&gt;&lt;br&gt;&lt;br&gt;Šī programma tiek izplatīta &quot;kā ir&quot;, bez jebkādām garantijām.</translation>
-    </message>
-    <message>
-        <location filename="../../shared/about_widget.cpp" line="49"/>
-        <source>This programme uses Qt Open Source Edition version %1.</source>
-        <translation>Šī programma izmanto Qt Open Source Edition %1versijas bibliotēku.</translation>
-    </message>
-    <message>
         <location filename="../../shared/about_widget.cpp" line="51"/>
         <source>Qt is a C++ toolkit for cross-platform application development.</source>
         <translation>Qt ir krosplatformu instruments krosplatformu aplikāciju izstrādei  C++ valodā.</translation>
@@ -61,6 +41,21 @@
         <location filename="../../shared/about_widget.cpp" line="31"/>
         <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
         <translation>iTest ir aplikācija, kas izmanto Qt bibliotēku, kura sastāv no datu bāzu redaktora (ar servera funkcijām) un programmas testu rakstišanai (klienta), tā ir izstrādāta datorizēto eksāmenu veikšanai.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="34"/>
+        <source>This program is distributed under the terms of the GPL v2.</source>
+        <translation>Šī programma tiek izplatīta ar GPL v2 licenci.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="38"/>
+        <source>The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
+        <translation>Tulkojums: &lt;span style=&quot;font-style:italic;&quot;&gt;Valdis Orols&lt;/span&gt;&lt;br&gt;&lt;br&gt;Šī programma tiek izplatīta &quot;kā ir&quot;, bez jebkādām garantijām.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="49"/>
+        <source>This program uses Qt Open Source Edition version %1.</source>
+        <translation>Šī programma izmanto Qt Open Source Edition %1versijas bibliotēku.</translation>
     </message>
 </context>
 <context>
@@ -81,31 +76,6 @@
 %2.</source>
         <translation>Nevar ierakstīt datni %1:
 %2.</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="211"/>
-        <source>%1 out of %2</source>
-        <translation type="obsolete">%1 no %2</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="213"/>
-        <source>yes</source>
-        <translation type="obsolete">jā</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="213"/>
-        <source>no</source>
-        <translation type="obsolete">nē</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="242"/>
-        <source>None</source>
-        <translation type="obsolete">Nav</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="725"/>
-        <source>iTest - Test Writer</source>
-        <translation type="obsolete">iTest - Testa rakstīšana</translation>
     </message>
     <message>
         <location filename="../client.cpp" line="202"/>
@@ -189,52 +159,47 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <translation>Testa jautājumu lasīšana...</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>Finish the exam</source>
         <translation>Pabeigt eksāmenu</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>Are you sure you want to finish? Once you click Finish there is no going back.</source>
         <translation>Esat pārliecināts, ka gribat pabeigt? Pogas Beigt nospiešanu nevar atcelt.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>&amp;Finish</source>
         <translation>&amp;Beigt</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="241"/>
+        <location filename="../main_window.cpp" line="247"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Atcelt</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="332"/>
+        <location filename="../main_window.cpp" line="338"/>
         <source>Your name, please.</source>
         <translation>Jūsu vārds, lūdzu.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="332"/>
+        <location filename="../main_window.cpp" line="338"/>
         <source>You cannot proceed unless you give us your name.</source>
         <translation>Jūs nevarēsiet turpināt, ja nenorādīsiet savu vārdu.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>Exam finished</source>
         <translation>Eksāmens pabeigts</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
+        <location filename="../main_window.cpp" line="411"/>
         <source>You have run out of time. Your answers are being sent.</source>
         <translation>Jūs iztērējāt atvēlēto laiku. Jūsu atbildes tika aizsūtitas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="423"/>
-        <source>iTest - Load test data</source>
-        <translation type="obsolete">iTest - Ielādēt testa datus</translation>
-    </message>
-    <message>
-        <location filename="../main_window.cpp" line="411"/>
+        <location filename="../main_window.cpp" line="417"/>
         <source>Invalid data received. There might be something wrong with the server.</source>
         <translation>Saņemti nepareizi dati. Iespējamas kļūdas servera darbā.</translation>
     </message>
@@ -374,11 +339,6 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <translation>Gatavs</translation>
     </message>
     <message>
-        <location filename="../ui_main_window.cpp" line="777"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Welcome!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg 2; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Laipni lūdzam!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
         <location filename="../ui_main_window.cpp" line="696"/>
         <source>Your name:</source>
         <translation>Jūsu vārds:</translation>
@@ -392,11 +352,6 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <location filename="../ui_main_window.cpp" line="698"/>
         <source>Start</source>
         <translation>Sākt</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="783"/>
-        <source>b)</source>
-        <translation type="obsolete">b)</translation>
     </message>
     <message>
         <location filename="../ui_main_window.cpp" line="699"/>
@@ -422,41 +377,6 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <location filename="../ui_main_window.cpp" line="703"/>
         <source>Finish</source>
         <translation>Beigt</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="784"/>
-        <source>c)</source>
-        <translation type="obsolete">c)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="782"/>
-        <source>a)</source>
-        <translation type="obsolete">a)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="785"/>
-        <source>d)</source>
-        <translation type="obsolete">d)</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="798"/>
-        <source>Question</source>
-        <translation type="obsolete">Jautājums</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="802"/>
-        <source>Answered correctly</source>
-        <translation type="obsolete">Pareizās atbildes</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="806"/>
-        <source>Answer</source>
-        <translation type="obsolete">Atbilde</translation>
-    </message>
-    <message>
-        <location filename="../ui_main_window.cpp" line="810"/>
-        <source>Correct answer</source>
-        <translation type="obsolete">Pareizā atbilde</translation>
     </message>
     <message>
         <location filename="../ui_main_window.cpp" line="707"/>
@@ -514,29 +434,9 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <translation>iTestClient</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="411"/>
+        <location filename="../main_window.cpp" line="417"/>
         <source>iTestClient - Load test data</source>
         <translation>iTestClient - Testa datu ielāde</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="264"/>
-        <source>A</source>
-        <translation type="obsolete">A</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="265"/>
-        <source>B</source>
-        <translation type="obsolete">B</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="266"/>
-        <source>C</source>
-        <translation type="obsolete">C</translation>
-    </message>
-    <message>
-        <location filename="../client.cpp" line="267"/>
-        <source>D</source>
-        <translation type="obsolete">D</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="217"/>

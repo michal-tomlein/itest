@@ -31,17 +31,17 @@
     <message>
         <location filename="../../shared/about_widget.cpp" line="34"/>
         <source>This programme is distributed under the terms of the GPL v2.</source>
-        <translation>Данная программа распространяется под лицензией GPL v2.</translation>
+        <translation type="obsolete">Данная программа распространяется под лицензией GPL v2.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="38"/>
         <source>The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
-        <translation>перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Константин Макшин, Евгений Бурмистров&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется &quot;как есть&quot; без каких-либо гарантий.</translation>
+        <translation type="obsolete">перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Константин Макшин, Евгений Бурмистров&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется &quot;как есть&quot; без каких-либо гарантий.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="49"/>
         <source>This programme uses Qt Open Source Edition version %1.</source>
-        <translation>Данная программа использует библиотеку Qt Open Source Edition версии %1.</translation>
+        <translation type="obsolete">Данная программа использует библиотеку Qt Open Source Edition версии %1.</translation>
     </message>
     <message>
         <location filename="../../shared/about_widget.cpp" line="51"/>
@@ -62,6 +62,21 @@
         <location filename="../../shared/about_widget.cpp" line="31"/>
         <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
         <translation>iTest является приложением, использующим библиотеку Qt, состоящим из сервера и клиента, и разработанным для упрощения проведения компьютеризованных экзаменов.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="34"/>
+        <source>This program is distributed under the terms of the GPL v2.</source>
+        <translation>Данная программа распространяется под лицензией GPL v2.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="38"/>
+        <source>The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
+        <translation>перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Константин Макшин, Евгений Бурмистров&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется &quot;как есть&quot; без каких-либо гарантий.</translation>
+    </message>
+    <message>
+        <location filename="../../shared/about_widget.cpp" line="49"/>
+        <source>This program uses Qt Open Source Edition version %1.</source>
+        <translation>Данная программа использует библиотеку Qt Open Source Edition версии %1.</translation>
     </message>
 </context>
 <context>
@@ -204,7 +219,7 @@
     <message>
         <location filename="../database.cpp" line="25"/>
         <source>Save changes before proceeding?</source>
-        <translation>Сохранить изменения перед продолжением?</translation>
+        <translation type="obsolete">Сохранить изменения перед продолжением?</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="2814"/>
@@ -212,7 +227,7 @@
         <translation>&amp;Сохранить</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="25"/>
+        <location filename="../database.cpp" line="33"/>
         <source>&amp;Discard</source>
         <translation>&amp;Не сохранять</translation>
     </message>
@@ -222,7 +237,7 @@
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="52"/>
+        <location filename="../database.cpp" line="62"/>
         <source>New database</source>
         <translation>Новая база данных</translation>
     </message>
@@ -232,32 +247,32 @@
         <translation>Имя базы данных:</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="52"/>
+        <location filename="../database.cpp" line="62"/>
         <source>Untitled database</source>
         <translation>Без имени</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="64"/>
+        <location filename="../database.cpp" line="74"/>
         <source>Create database file</source>
         <translation>Создать файл базы данных</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="56"/>
+        <location filename="../database.cpp" line="66"/>
         <source>%1.itdb</source>
         <translation>%1.itdb</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="147"/>
+        <location filename="../database.cpp" line="157"/>
         <source>iTest databases (*.itdb)</source>
         <translation>Базы данных iTest (*.itdb)</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="58"/>
+        <location filename="../database.cpp" line="68"/>
         <source>untitled.itdb</source>
         <translation>без_имени.itdb</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="923"/>
+        <location filename="../server.cpp" line="921"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>Невозможно записать файл %1:
@@ -279,12 +294,12 @@
         <translation>Готов</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="207"/>
+        <location filename="../database.cpp" line="217"/>
         <source>Save database</source>
         <translation>Сохранить базу данных</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="164"/>
+        <location filename="../database.cpp" line="174"/>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
@@ -305,39 +320,39 @@ This computer&apos;s archive will be updated.</source>
         <translation>&amp;Не изменять</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="278"/>
+        <location filename="../database.cpp" line="288"/>
         <source>Database saved</source>
         <translation>База данных сохранена</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="641"/>
+        <location filename="../main_window.cpp" line="468"/>
         <source>Open database</source>
         <translation>Открыть базу данных</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="290"/>
+        <location filename="../database.cpp" line="300"/>
         <source>Open database file</source>
         <translation>Открыть файл базы данных</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="290"/>
+        <location filename="../database.cpp" line="300"/>
         <source>iTest databases (*.itdb);;All files (*.*)</source>
         <translation>Базы данных iTest (*.itdb);;Все файлы (*.*)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="819"/>
+        <location filename="../server.cpp" line="818"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>Невозможно прочитать файл %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="335"/>
+        <location filename="../database.cpp" line="345"/>
         <source>iTest version notice</source>
         <translation>Информация о версии iTest</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="333"/>
+        <location filename="../database.cpp" line="343"/>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
@@ -346,22 +361,22 @@ but you are most probably missing a whole bunch of cool new features.</source>
 но Вы можете пропустить большое количество новых возможностей.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="335"/>
+        <location filename="../database.cpp" line="345"/>
         <source>You need a newer version of iTest to open this database file.</source>
         <translation>Чтобы открыть этот файл базы данных, Вам требуется более новая версия iTest.</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="631"/>
+        <location filename="../database.cpp" line="641"/>
         <source>Database open</source>
         <translation>База данных открыта</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="656"/>
+        <location filename="../database.cpp" line="666"/>
         <source>Close database</source>
         <translation>Закрыть базу данных</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="663"/>
+        <location filename="../database.cpp" line="673"/>
         <source>Database closed</source>
         <translation>База данных закрыта</translation>
     </message>
@@ -451,42 +466,42 @@ If this is the case, try again omitting these.</source>
         <translation>iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="579"/>
+        <location filename="../main_window.cpp" line="584"/>
         <source>Failed to check for updates.</source>
         <translation>Невозможно проверить наличие обновлений.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="579"/>
+        <location filename="../main_window.cpp" line="584"/>
         <source>&amp;Try again</source>
         <translation>&amp;Повторить попытку</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="595"/>
+        <location filename="../main_window.cpp" line="600"/>
         <source>Your iTest is up-to-date.</source>
         <translation>У Вас наиболее новая версия iTest.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="599"/>
+        <location filename="../main_window.cpp" line="604"/>
         <source>iTest %1 is available now.</source>
         <translation>Доступен iTest %1.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="619"/>
+        <location filename="../main_window.cpp" line="624"/>
         <source>%1 - Overall statistics - iTest</source>
         <translation>%1 - Общая статистика - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="638"/>
+        <location filename="../main_window.cpp" line="643"/>
         <source>Adjust all</source>
         <translation>Настроить всё</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="642"/>
+        <location filename="../main_window.cpp" line="647"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="654"/>
+        <location filename="../main_window.cpp" line="659"/>
         <source>&lt;b&gt;%1 questions with statistics found&lt;/b&gt;</source>
         <translation>&lt;b&gt;Найдено %1 вопросов со статистикой&lt;/b&gt;</translation>
     </message>
@@ -496,27 +511,27 @@ If this is the case, try again omitting these.</source>
         <translation>Название вопроса</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="660"/>
+        <location filename="../main_window.cpp" line="665"/>
         <source>Difficulty</source>
         <translation>Сложность</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="662"/>
+        <location filename="../main_window.cpp" line="667"/>
         <source>Calculated difficulty</source>
         <translation>Вычисленная сложность</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="664"/>
+        <location filename="../main_window.cpp" line="669"/>
         <source>Number of correct answers</source>
         <translation>Количество правильных ответов</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="666"/>
+        <location filename="../main_window.cpp" line="671"/>
         <source>Number of incorrect answers</source>
         <translation>Количество неправильных ответов</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="723"/>
+        <location filename="../main_window.cpp" line="728"/>
         <source>Adjust difficulty</source>
         <translation>Настроить сложность</translation>
     </message>
@@ -541,17 +556,17 @@ If this is the case, try again omitting these.</source>
         <translation>Сложно</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="814"/>
+        <location filename="../main_window.cpp" line="819"/>
         <source>Change language - iTest</source>
         <translation>Сменить язык - iTest</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="819"/>
+        <location filename="../main_window.cpp" line="824"/>
         <source>Select your preferred language</source>
         <translation>Выберите предпочтительный язык</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="843"/>
+        <location filename="../main_window.cpp" line="848"/>
         <source>You need to restart iTest for the changes to apply.</source>
         <translation>Необходимо перезапустить iTest для принятия изменений.</translation>
     </message>
@@ -2522,42 +2537,42 @@ although it is recommended to give them an hour.</source>
         <translation>Невозможно добавить off-line клиента. Либо данный файл содержит данные клиента другой сессии, либо он содержит неправильные данные.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="836"/>
+        <location filename="../server.cpp" line="835"/>
         <source>%1 &gt; Client #%2 (%3) added</source>
         <translation>%1 &gt; Добавлен клиент №%2 (%3)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="859"/>
+        <location filename="../server.cpp" line="857"/>
         <source>No iTest client logs found in the folder you selected.</source>
         <translation>В выбранной папке не найдено ни одного журнала клиента.</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="862"/>
+        <location filename="../server.cpp" line="860"/>
         <source>%1 &gt; Failed to add off-line client</source>
         <translation>%1 &gt; Невозможно добавить off-line клиента</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="878"/>
+        <location filename="../server.cpp" line="876"/>
         <source>Export test</source>
         <translation>Экспортировать тест</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="873"/>
+        <location filename="../server.cpp" line="871"/>
         <source>iTest off-line test sessions (*.itos)</source>
         <translation>Сессии off-line тестирования iTest (*.itos)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="893"/>
+        <location filename="../server.cpp" line="891"/>
         <source>Test exported</source>
         <translation>Тест экспортирован</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="918"/>
+        <location filename="../server.cpp" line="916"/>
         <source>iTest Server logs (*.html)</source>
         <translation>Журналы сервера iTest (*.html)</translation>
     </message>
     <message>
-        <location filename="../server.cpp" line="930"/>
+        <location filename="../server.cpp" line="928"/>
         <source>iTest Server Log</source>
         <translation>Журнал сервера iTest</translation>
     </message>
@@ -2647,7 +2662,7 @@ although it is recommended to give them an hour.</source>
         <translation type="obsolete">Турецкий</translation>
     </message>
     <message>
-        <location filename="../database.cpp" line="644"/>
+        <location filename="../database.cpp" line="654"/>
         <source>Error opening database.</source>
         <translation>Ошибка при открытии базы данных.</translation>
     </message>
@@ -3309,7 +3324,7 @@ Please choose a different group.</source>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="617"/>
+        <location filename="../main_window.cpp" line="622"/>
         <source>%1 - Overall statistics</source>
         <translation>%1 - Общая статистика</translation>
     </message>
@@ -3562,6 +3577,16 @@ Please choose a different group.</source>
         <location filename="../main_window.cpp" line="25"/>
         <source>Invalid database file: %1
 Error %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../database.cpp" line="30"/>
+        <source>The database has been modified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../database.cpp" line="31"/>
+        <source>Do you want to save your changes?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

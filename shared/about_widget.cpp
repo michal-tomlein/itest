@@ -31,11 +31,11 @@ AboutWidget::AboutWidget(const QString & ver, const QString & year)
     about.append(tr("iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination."));
     about.append("</p><p></p>");
 	about.append("<p style=\"font-family: sans-serif; font-size:8pt;\">");
-    about.append(tr("This programme is distributed under the terms of the GPL v2."));
+    about.append(tr("This program is distributed under the terms of the GPL v2."));
 	about.append("</p><p></p>");
 	about.append(QString("<p style=\"font-family: sans-serif; font-size:8pt;\">2005-%1 <span style=\"font-style:italic;\">Michal Tomlein</span> (michal.tomlein@gmail.com)</p>").arg(year));
 	about.append("<p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
-	about.append(tr("The programme is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE."));
+	about.append(tr("The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE."));
 	about.append("</p>");
 #ifdef Q_WS_MAC
 	about.remove("font-family: sans-serif;");
@@ -46,7 +46,7 @@ AboutWidget::AboutWidget(const QString & ver, const QString & year)
 	QString aboutQt = "<p style=\"font-family: sans-serif; font-style:italic;\"><span style=\"font-size:12pt;\">";
     aboutQt.append(tr("About Qt"));
 	aboutQt.append("</span></p><p></p><p style=\"font-family: sans-serif; font-size:8pt; font-style:italic;\">");
-	aboutQt.append(tr("This programme uses Qt Open Source Edition version %1.").arg(qVersion()));
+	aboutQt.append(tr("This program uses Qt Open Source Edition version %1.").arg(qVersion()));
 	aboutQt.append("</p><p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
 	aboutQt.append(tr("Qt is a C++ toolkit for cross-platform application development."));
 	aboutQt.append("</p><p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
