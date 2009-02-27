@@ -19,24 +19,34 @@
 
 #include "main_window.h"
 
-bool MainWindow::saveChangesBeforeProceeding(QString parentFunction, bool close)
+bool MainWindow::saveChangesBeforeProceeding(const QString & title, bool close)
 {
 	if (current_db_open && this->isWindowModified()) {
-		switch (QMessageBox::information(this, parentFunction, tr("Save changes before proceeding?"), tr("&Save"), tr("&Discard"), tr("Cancel"), 0, 2)) {
+        QMessageBox message(this);
+        message.setWindowTitle(title);
+        message.setWindowModality(Qt::WindowModal);
+        message.setWindowFlags(message.windowFlags() | Qt::Sheet);
+        message.setIcon(QMessageBox::Information);
+        message.setText(tr("The database has been modified."));
+        message.setInformativeText(tr("Do you want to save your changes?"));
+        message.addButton(tr("&Save"), QMessageBox::AcceptRole);
+        message.addButton(tr("&Discard"), QMessageBox::DestructiveRole);
+        message.addButton(tr("Cancel"), QMessageBox::RejectRole);
+        switch (message.exec()) {
 			case 0: // Save
 				current_db_open = false;
-				save(); if (close) {closeDB();}; return false;
+				save(); if (close) { closeDB(); } return false;
 				break;
 			case 1: // Discard
 				current_db_open = false;
-				if (close) {closeDB();}; return false;
+				if (close) { closeDB(); } return false;
 				break;
 			case 2: // Cancel
 				return true;
 				break;
 		}
 	} else if (current_db_open && (!this->isWindowModified())) {
-		if (close) {closeDB();}; return false;
+		if (close) { closeDB(); } return false;
 	}
 	return false;
 }
@@ -149,7 +159,7 @@ void MainWindow::saveBackup()
 		{ addRecent(saveDBName); saveDB(saveDBName, true, true); }
 }
 
-void MainWindow::saveDB(QString db_file_name, bool savecopy, bool allsessions)
+void MainWindow::saveDB(const QString & db_file_name, bool savecopy, bool allsessions)
 {
     this->setEnabled(false); qApp->processEvents();
 	// Prepare
@@ -307,7 +317,7 @@ void MainWindow::openRecent(QListWidgetItem * item)
     openDB(buffer);
 }
 
-void MainWindow::openDB(QString openDBName, bool useCP1250)
+void MainWindow::openDB(const QString & openDBName, bool useCP1250)
 {
     if (openDBName.isNull()) { return; }
     this->setEnabled(false); qApp->processEvents();

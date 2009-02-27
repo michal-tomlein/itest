@@ -810,18 +810,17 @@ void MainWindow::addOfflineClient()
     }
 }
 
-bool MainWindow::addOfflineClient(QString file_name)
+bool MainWindow::addOfflineClient(const QString & file_name)
 {
     if (file_name.isEmpty()) return false;
     QFile file(file_name);
-    if (!file.open(QFile::ReadOnly | QFile::Text))
-    {
+    if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::critical(this, tr("Add off-line client"), tr("Cannot read file %1:\n%2.").arg(file_name).arg(file.errorString()));
         return true;
     }
     QTextStream rfile(&file);
     rfile.setCodec("UTF-8");
-    
+
     if (rfile.readLine() != "[TEST_NAME]") return false;
     if (rfile.readLine() != current_db_testname) return false;
     if (rfile.readLine() != "[TEST_TIMESTAMP]") return false;
@@ -838,10 +837,9 @@ bool MainWindow::addOfflineClient(QString file_name)
     log_entry->setBackground(QBrush::QBrush(QColor::QColor(0, 125, 163)));
     log_entry->setForeground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
     updateLC(client); toggleSaveSessionEnabled();
-    QObject::connect(client, SIGNAL(resultsLoaded(Client *)),
-                  this, SLOT(clientResultsLoaded(Client *)));
+    QObject::connect(client, SIGNAL(resultsLoaded(Client *)), this, SLOT(clientResultsLoaded(Client *)));
     client->loadResults(rfile.readAll());
-    
+
     return true;
 }
 

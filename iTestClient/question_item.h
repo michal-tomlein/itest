@@ -27,13 +27,13 @@
 class QuestionItem : public Question
 {
 public:
-    QuestionItem(QString = QString());
+    QuestionItem(const QString & = QString());
 
 public slots:
     void shuffleAnswers(); QList<int> answerOrder();
     Answers answered(); void setAnswered(Answers);
     double score(); double maximumScore();
-    void addSvgItem(QString, QString); int numSvgItems();
+    void addSvgItem(const QString &, const QString &); int numSvgItems();
     QString svgName(int); QString svg(int);
     static ScoringSystem scoringSystem();
     static void setScoringSystem(ScoringSystem);

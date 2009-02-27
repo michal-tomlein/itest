@@ -533,7 +533,7 @@ bool MainWindow::printClientResults(Client * client, QPrinter * printer)
 	return ok;
 }
 
-bool MainWindow::printStudentResults(Student * student, QPrinter * printer, QString session_name, ScoringSystem sys)
+bool MainWindow::printStudentResults(Student * student, QPrinter * printer, const QString & session_name, ScoringSystem sys)
 {
 	if (!student->isReady()) return false;
 	QTextDocument doc; QString html; QTextStream out(&html);

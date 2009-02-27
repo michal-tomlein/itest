@@ -57,7 +57,7 @@ QWidget(parent) {
     QObject::connect(av_grp_radiobuttons, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(emitButtonReleased(QAbstractButton *)));
 }
 
-void AnswersView::setAnswers(QStringList answers, Question::Answers selected_answers, Question::SelectionType selectiontype, QList<int> ans_order)
+void AnswersView::setAnswers(const QStringList & answers, Question::Answers selected_answers, Question::SelectionType selectiontype, QList<int> ans_order)
 {
     av_ans_order = ans_order;
     av_grp_radiobuttons->setExclusive(false);

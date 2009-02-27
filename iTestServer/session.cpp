@@ -26,7 +26,7 @@ LogEntry::LogEntry()
 	le_text = "";
 }
 
-LogEntry::LogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, QString text)
+LogEntry::LogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, const QString & text)
 {
 	le_bgr = bgr; le_bgg = bgg; le_bgb = bgb;
 	le_fgr = fgr; le_fgg = fgg; le_fgb = fgb;
@@ -91,11 +91,11 @@ void Session::destruct()
 	s_students.clear();
 }
 
-void Session::setName(QString name) { s_name = name; }
+void Session::setName(const QString & name) { s_name = name; }
 
 QString Session::name() { return s_name; }
 
-void Session::setDateTimeFromString(QString date)
+void Session::setDateTimeFromString(const QString & date)
 {
 	s_datetime = QDateTime::fromString(date, "yyyy.MM.dd-hh:mm");
 }
@@ -109,7 +109,7 @@ QString Session::dateTimeToString()
 
 QDateTime Session::dateTime() { return s_datetime; }
 
-void Session::addLogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, QString text)
+void Session::addLogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, const QString & text)
 {
 	s_log << LogEntry::LogEntry(bgr, bgg, bgb, fgr, fgg, fgb, text);
 }
@@ -136,7 +136,7 @@ void Session::setPassMark(PassMark passmark) { s_passmark = passmark; }
 
 PassMark Session::passMark() { return s_passmark; }
 
-void Session::loadPassMark(QString str) { s_passmark.loadData(str); }
+void Session::loadPassMark(const QString & str) { s_passmark.loadData(str); }
 
 void Session::setScoringSystem(ScoringSystem sys)
 {

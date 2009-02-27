@@ -23,17 +23,17 @@ SvgItem::SvgItem():
 QListWidgetItem(0, QListWidgetItem::UserType)
 { si_valid = false; }
 
-SvgItem::SvgItem(QString text):
+SvgItem::SvgItem(const QString & text):
 QListWidgetItem(0, QListWidgetItem::UserType)
 { si_valid = false; setText(text); }
 
-SvgItem::SvgItem(QString text, QString svg):
+SvgItem::SvgItem(const QString & text, const QString & svg):
 QListWidgetItem(0, QListWidgetItem::UserType)
 { si_valid = false; setText(text); setSvg(svg); }
 
-bool SvgItem::setSvg(QString str)
+bool SvgItem::setSvg(QString svg)
 {
-    QString svg = str.remove("\n");
+    svg.remove("\n");
     QSvgRenderer svgrenderer(svg.toUtf8());
     if (!svgrenderer.isValid()) { return false; }
     else { si_valid = true; }

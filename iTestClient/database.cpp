@@ -240,7 +240,7 @@ void MainWindow::loadFile()
     loadFile(file_name);
 }
 
-void MainWindow::loadFile(QString file_name)
+void MainWindow::loadFile(const QString & file_name)
 {
     QProgressDialog progress(this);
     progress.setLabelText(tr("Reading database file..."));

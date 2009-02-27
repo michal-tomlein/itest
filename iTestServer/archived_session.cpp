@@ -44,7 +44,7 @@ ArchivedSession::ArchivedSession(MainWindow * parent, Session * session)
 	as_status = Default;
 }
 
-ArchivedSession::ArchivedSession(MainWindow * parent, QString input)
+ArchivedSession::ArchivedSession(MainWindow * parent, const QString & input)
 {
 	Session();
 	as_parent = parent;

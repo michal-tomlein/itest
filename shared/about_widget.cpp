@@ -19,7 +19,7 @@
 
 #include "about_widget.h"
 
-AboutWidget::AboutWidget(QString ver, QString year)
+AboutWidget::AboutWidget(const QString & ver, const QString & year)
 {
 	setupUi(this);
 	QObject::connect(btnClose, SIGNAL(released()), this, SLOT(close()));

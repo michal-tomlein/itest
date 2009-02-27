@@ -24,12 +24,12 @@ ClassMember::ClassMember()
     ms_name = "";
 }
 
-ClassMember::ClassMember(QString name)
+ClassMember::ClassMember(const QString & name)
 {
     ms_name = name;
 }
 
-void ClassMember::setName(QString name) { ms_name = name; }
+void ClassMember::setName(const QString & name) { ms_name = name; }
 
 QString ClassMember::name() { return ms_name; }
 
@@ -41,7 +41,7 @@ void ClassMember::addSession(QDateTime date, int num)
     ms_sessions << se;
 }
 
-void ClassMember::addSession(QString date, int num)
+void ClassMember::addSession(const QString & date, int num)
 {
     SessionEntry se;
     se.session = QDateTime::fromString(date, "yyyy.MM.dd-hh:mm");
@@ -56,7 +56,7 @@ void ClassMember::removeSession(QDateTime date)
     }
 }
 
-void ClassMember::removeSession(QString date)
+void ClassMember::removeSession(const QString & date)
 {
     removeSession(QDateTime::fromString(date, "yyyy.MM.dd-hh:mm"));
 }
@@ -119,7 +119,7 @@ Class::Class()
 	cl_lastyear = QDate::currentDate().year() + 4;
 }
 
-Class::Class(QString name)
+Class::Class(const QString & name)
 {
 	cl_name = name;
 	cl_firstyear = QDate::currentDate().year();
@@ -133,7 +133,7 @@ Class::~Class()
     }
 }
 
-void Class::setName(QString name) { cl_name = name; }
+void Class::setName(const QString & name) { cl_name = name; }
 
 QString Class::name() { return cl_name; }
 
@@ -147,7 +147,7 @@ int Class::lastYear() { return cl_lastyear; }
 
 int Class::addMember(ClassMember * mem) { cl_members << mem; return updateAddedMemberPosition(); }
 
-int Class::addMember(QString name) { cl_members << new ClassMember(name); return updateAddedMemberPosition(); }
+int Class::addMember(const QString & name) { cl_members << new ClassMember(name); return updateAddedMemberPosition(); }
 
 int Class::removeMember(ClassMember * mem) { delete mem; return cl_members.removeAll(mem); }
 
@@ -163,11 +163,11 @@ ClassMember * Class::takeMember(int i) { return cl_members.takeAt(i); }
 
 void Class::addSession(QDateTime session) { cl_sessions << session; }
 
-void Class::addSession(QString session) { cl_sessions << QDateTime::fromString(session, "yyyy.MM.dd-hh:mm"); }
+void Class::addSession(const QString & session) { cl_sessions << QDateTime::fromString(session, "yyyy.MM.dd-hh:mm"); }
 
 int Class::removeSession(QDateTime session) { return cl_sessions.removeAll(session); }
 
-int Class::removeSession(QString session) { return cl_sessions.removeAll(QDateTime::fromString(session, "yyyy.MM.dd-hh:mm")); }
+int Class::removeSession(const QString & session) { return cl_sessions.removeAll(QDateTime::fromString(session, "yyyy.MM.dd-hh:mm")); }
 
 void Class::removeSession(int i) { cl_sessions.removeAt(i); }
 

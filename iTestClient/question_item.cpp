@@ -19,7 +19,7 @@
 
 #include "question_item.h"
 
-QuestionItem::QuestionItem(QString name)
+QuestionItem::QuestionItem(const QString & name)
 {
      q_name = name;
      q_flag = -1;
@@ -49,7 +49,7 @@ Question::Answers QuestionItem::answered() { return q_answer; }
 
 void QuestionItem::setAnswered(Question::Answers ans) { q_answer = ans; }
 
-void QuestionItem::addSvgItem(QString name, QString svg)
+void QuestionItem::addSvgItem(const QString & name, const QString & svg)
 {
     q_svglist << name;
     q_svgmap.insert(name, svg);

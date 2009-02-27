@@ -20,7 +20,7 @@
 #include <cmath>
 #include "pass_mark.h"
 
-Question::Question(QString name)
+Question::Question(const QString & name)
 {
     q_name = name;
     q_flag = -1;
@@ -32,7 +32,7 @@ Question::Question(QString name)
 
 QString Question::name() { return q_name; }
 
-void Question::setName(QString name) { q_name = name; }
+void Question::setName(const QString & name) { q_name = name; }
 
 int Question::flag() { return q_flag; }
 
@@ -40,7 +40,7 @@ void Question::setFlag(int flag) { q_flag = flag; }
 
 QString Question::group() { return q_group; }
 
-void Question::setGroup(QString group) { q_group = group; }
+void Question::setGroup(const QString & group) { q_group = group; }
 
 int Question::difficulty() { return q_difficulty; }
 
@@ -48,7 +48,7 @@ void Question::setDifficulty(int difficulty) { q_difficulty = difficulty; }
 
 QString Question::text() { return q_text; }
 
-void Question::setText(QString text)
+void Question::setText(const QString & text)
 {
 	QTextDocument doc; doc.setHtml(text); QString final = text; QString lastgood; QTextDocument testdoc;
 	QStringList before; QString after = "font-size:10pt;";
@@ -72,7 +72,7 @@ void Question::setText(QString text)
 
 QString Question::explanation() { return q_explanation; }
 
-void Question::setExplanation(QString explanation) { q_explanation = explanation; }
+void Question::setExplanation(const QString & explanation) { q_explanation = explanation; }
 
 Question::SelectionType Question::selectionType() { return q_selectiontype; }
 
@@ -80,21 +80,21 @@ void Question::setSelectionType(Question::SelectionType type) { q_selectiontype 
 
 QString Question::answer(Question::Answer i) { return q_answers.at(answerToIndex(i) - 1); }
 
-void Question::setAnswer(Question::Answer i, QString ans)
+void Question::setAnswer(Question::Answer i, const QString & ans)
 {
     setAnswerAtIndex(answerToIndex(i), ans);
 }
 
 QString Question::answerAtIndex(int i) { return q_answers.at(i - 1); }
 
-void Question::setAnswerAtIndex(int i, QString ans)
+void Question::setAnswerAtIndex(int i, const QString & ans)
 {
     i--;
     if (i >= 0 && i < q_answers.count()) { q_answers.replace(i, ans); }
     else if (i >= q_answers.count() && i < 9) { q_answers.append(ans); }
 }
 
-void Question::addAnswer(QString ans)
+void Question::addAnswer(const QString & ans)
 {
     if (q_answers.count() < 9) { q_answers.append(ans); }
 }
@@ -124,7 +124,7 @@ void Question::setAnswerCorrect(Question::Answers ans, bool correct)
 
 QStringList Question::answers() { return q_answers; }
 
-void Question::setAnswers(QStringList answers) { q_answers = answers; }
+void Question::setAnswers(const QStringList & answers) { q_answers = answers; }
 
 Question::Answer Question::correctAnswer() { return Question::Answer((int)q_correctanswers); }
 
@@ -232,7 +232,7 @@ void ScoringSystem::init()
 
 ScoringSystem::ScoringSystem() { init(); }
 
-ScoringSystem::ScoringSystem(QString str) { loadData(str); }
+ScoringSystem::ScoringSystem(const QString & str) { loadData(str); }
 
 void ScoringSystem::loadData(QString str)
 {

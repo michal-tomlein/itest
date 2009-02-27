@@ -4,6 +4,7 @@ FORMS        += main_window_v2.ui \
                 ../shared/about_widget_v2.ui \
                 session_wizard.ui
 HEADERS      += main_window.h \
+                ../shared/main.h \
                 ../shared/about_widget.h \
                 ../shared/question.h \
                 question_item.h \

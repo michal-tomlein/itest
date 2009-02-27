@@ -17,6 +17,9 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
+#ifndef MAIN_WINDOW_H
+#define MAIN_WINDOW_H
+
 #include "ui_main_window_v2.h"
 #include "print_engine.h"
 #include "mtadvancedgroupbox.h"
@@ -62,15 +65,17 @@ class MainWindow : public QMainWindow, private Ui::MainWindow
 
 public:
     MainWindow();
-    
+
+    void openFile(const QString &);
+
 private slots:
     // UI-RELATED
     void varinit();
-    void quit(); void about(); void addRecent(QString);
+    void quit(); void about(); void addRecent(const QString &);
     void loadSettings(); void saveSettings();
     void onInfoDisplayChange(bool); void setPage(QAction *);
     void currentPageChanged(int);
-    bool saveChangesBeforeProceeding(QString, bool);
+    bool saveChangesBeforeProceeding(const QString &, bool);
     void setProgress(int); void setNullProgress();
     void checkForUpdates(); void httpRequestFinished(bool);
     void openDocumentation();
@@ -85,9 +90,9 @@ private slots:
     void setCLSCEnabled(bool); void setCLSSEnabled(bool);
     // DATABASE-RELATED
     void newDB(); void closeDB();
-    void openDB(QString, bool = false); void open();
+    void openDB(const QString &, bool = false); void open();
     void openRecent(); void openRecent(QListWidgetItem *);
-    void saveDB(QString, bool = false, bool = false);
+    void saveDB(const QString &, bool = false, bool = false);
     void save(); void saveAs(); void saveCopy(); void saveBackup();
     void setDatabaseModified();
     // STATS
@@ -124,7 +129,7 @@ private slots:
     void filterLQ(QAbstractButton *); void filterLQFlagChanged();
     void filterLQAction(QAction *); void filterLQSearch();
     void searchByGroup();
-    uint numOccurrences(QString); uint replaceAllOccurrences(QString, QString);
+    uint numOccurrences(const QString &); uint replaceAllOccurrences(const QString &, const QString &);
     void addSvg(); void removeSvg(); void exportSvg();
     void editSvg(); void browseForSvg(); void applySvgChanges();
     void currentSvgChanged();
@@ -142,7 +147,7 @@ private slots:
     void clientResultsLoaded(Client *); void clientDisconnected(Client *);
     void loadClientResults(QMap<QString, QuestionAnswer> *);
     void loadClientResults(QMap<QString, QuestionAnswer> *, QTableWidget *, ScoringSystem);
-    void addOfflineClient(); bool addOfflineClient(QString);
+    void addOfflineClient(); bool addOfflineClient(const QString &);
     void addOfflineClients();
     void updateLC(Client *); void sendCorrectAnswers(Client *);
     void exportTest(); void exportLog();
@@ -152,7 +157,7 @@ private slots:
     bool printerConfiguration(QString &); bool configurePrinter(bool);
     bool loadPrinterConfiguration();
     bool printClientResults(Client *, QPrinter *);
-    bool printStudentResults(Student *, QPrinter *, QString, ScoringSystem);
+    bool printStudentResults(Student *, QPrinter *, const QString &, ScoringSystem);
     void print(); void quickPrint(); void togglePrintEnabled();
     void printAll(); void printSessionSummary();
     bool printSessionSummary(Session *, QPrinter *);
@@ -181,9 +186,9 @@ private slots:
     void toggleAddSessionToMemberEnabled();
     void addSessionToMember();
     void removeSessionFromMember();
-    QDialog * createAddSessionDialogue(QString, MTListWidget * = NULL);
+    QDialog * createAddSessionDialogue(const QString &, MTListWidget * = NULL);
     // ERROR MESSAGES
-    void errorInvalidDBFile(QString, QString, int);
+    void errorInvalidDBFile(const QString &, const QString &, int);
     // TEXTEDIT-RELATED
     void setupTextEdits();
     void textBold(); void textUnderline(); void textItalic();
@@ -282,3 +287,5 @@ private:
 	friend class ArchivedSession;
     friend class PrintQuestionsDialogue;
 };
+
+#endif // MAIN_WINDOW_H

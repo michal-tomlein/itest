@@ -37,7 +37,7 @@ public:
     enum SelectionType { SingleSelection = 0, MultiSelection = 1 };
     Q_DECLARE_FLAGS(SelectionTypeFlag, SelectionType)
 
-    Question(QString = QString());
+    Question(const QString & = QString());
 
     static int answerToIndex(Answer);
     static Answer indexToAnswer(int);
@@ -50,19 +50,19 @@ public:
     static QList<int> randomise(QList<Question *>, PassMark, bool, int, quint32, QProgressDialog * = NULL, QApplication * = NULL);
 
 public slots:
-    QString name(); void setName(QString);
+    QString name(); void setName(const QString &);
     int flag(); void setFlag(int);
-    QString group(); void setGroup(QString);
+    QString group(); void setGroup(const QString &);
     int difficulty(); void setDifficulty(int);
-    QString text(); void setText(QString);
-    QString explanation(); void setExplanation(QString);
+    QString text(); void setText(const QString &);
+    QString explanation(); void setExplanation(const QString &);
     SelectionType selectionType(); void setSelectionType(SelectionType);
-    QString answer(Answer); void setAnswer(Answer, QString);
-    QString answerAtIndex(int); void setAnswerAtIndex(int, QString);
-    void addAnswer(QString); int numAnswers();
+    QString answer(Answer); void setAnswer(Answer, const QString &);
+    QString answerAtIndex(int); void setAnswerAtIndex(int, const QString &);
+    void addAnswer(const QString &); int numAnswers();
     bool hasCorrectAnswer(); bool isAnswerAtIndexCorrect(int);
     bool isAnswerCorrect(Answer); void setAnswerCorrect(Answers, bool);
-    QStringList answers(); void setAnswers(QStringList);
+    QStringList answers(); void setAnswers(const QStringList &);
     Answer correctAnswer();
     Answers correctAnswers(); void setCorrectAnswers(Answers);
 
@@ -89,7 +89,7 @@ protected:
     void init();
 public:
     ScoringSystem();
-    ScoringSystem(QString);
+    ScoringSystem(const QString &);
     void loadData(QString);
 #ifdef ITESTSERVER
     QString data();

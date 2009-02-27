@@ -59,7 +59,7 @@ Client::~Client()
     delete c_results;
 }
 
-void Client::setName(QString name) { c_name = name; }
+void Client::setName(const QString & name) { c_name = name; }
 
 QString Client::name() { return c_name; }
 

@@ -27,13 +27,13 @@ class Student : public QObject
     Q_OBJECT
 
 public:
-    Student(QString = tr("Unknown"));
+    Student(const QString & = tr("Unknown"));
     Student(Client *);
     Student(Student *);
     virtual ~Student();
 
 public slots:
-    void setName(QString); QString name();
+    void setName(const QString &); QString name();
     void setNumber(int); int number();
     int numCorrectAnswers(ScoringSystem);
     double score(); double maximumScore();
@@ -42,9 +42,8 @@ public slots:
     void updateScore(ScoringSystem);
     QMap<QString, QuestionAnswer> * results();
     void setPassed(bool); bool passed();
-    /*bool loadStudentData(QString);*/
     QString studentData(); QString studentArchiveData();
-    bool wasAsked(QString); uint replaceOccurrences(QString, QString);
+    bool wasAsked(const QString &); uint replaceOccurrences(const QString &, const QString &);
 
 private:
     QString s_name;

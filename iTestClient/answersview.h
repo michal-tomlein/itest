@@ -53,7 +53,7 @@ class AnswersView : public QWidget
 public:
     AnswersView(QWidget * = 0);
 
-    void setAnswers(QStringList, Question::Answers, Question::SelectionType, QList<int>);
+    void setAnswers(const QStringList &, Question::Answers, Question::SelectionType, QList<int>);
     Question::Answers selectedAnswers();
 
 public slots:

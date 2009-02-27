@@ -376,7 +376,7 @@ void MainWindow::addSessionToMember()
     setDatabaseModified();
 }
 
-QDialog * MainWindow::createAddSessionDialogue(QString title, MTListWidget * lw)
+QDialog * MainWindow::createAddSessionDialogue(const QString & title, MTListWidget * lw)
 {
     QDialog * d = new QDialog(this);
 #ifdef Q_WS_MAC

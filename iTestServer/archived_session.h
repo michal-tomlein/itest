@@ -31,7 +31,7 @@ class ArchivedSession : public Session
 public:
     ArchivedSession(MainWindow *);
     ArchivedSession(MainWindow *, Session *);
-    ArchivedSession(MainWindow *, QString);
+    ArchivedSession(MainWindow *, const QString &);
     virtual ~ArchivedSession();
     enum Status { Default, Archive, Remove };
 

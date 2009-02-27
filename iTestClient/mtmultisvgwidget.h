@@ -43,7 +43,7 @@ public:
     QWidget(parent) { init(); };
     
     void addWidget(QWidget * w) { msw_flayout->addWidget(w); };
-    void addWidget(QWidget * w, QString title, bool link = false) {
+    void addWidget(QWidget * w, const QString & title, bool link = false) {
         QWidget * widget = new QWidget;
         QVBoxLayout * vlayout = new QVBoxLayout(widget);
         QLabel * label = new QLabel(widget);
@@ -51,7 +51,7 @@ public:
             label->setText(title);
         } else {
             label->setText(QString("<a href=\"%1\">%2</a>").arg(msw_flayout->count()).arg(Qt::escape(title)));
-            QObject::connect(label, SIGNAL(linkActivated(QString)), this, SLOT(emitTitleClicked(QString)));
+            QObject::connect(label, SIGNAL(linkActivated(const QString &)), this, SLOT(emitTitleClicked(const QString &)));
         }
         label->setAlignment(Qt::AlignCenter);
         vlayout->addWidget(label);
@@ -69,10 +69,10 @@ public slots:
     };
 
 private slots:
-	void emitTitleClicked(QString text) { emit titleClicked(text); };
+	void emitTitleClicked(const QString & text) { emit titleClicked(text); };
 
 signals:
-	void titleClicked(QString);
+	void titleClicked(const QString &);
 
 private:
     FlowLayout * msw_flayout;

@@ -31,7 +31,7 @@ public:
                     int /* flag */ = -1,
                     int /* difficulty */ = 0,
                     Question::SelectionType /* type */ = Question::SingleSelection,
-                    QString /* explanation */ = QString());
+                    const QString & /* explanation */ = QString());
     void setAnswered(Question::Answer); Question::Answer answered();
     void setCorrectAnswer(Question::Answer); Question::Answer correctAnswer();
     double score(ScoringSystem);
@@ -39,7 +39,7 @@ public:
     void setFlag(int); int flag();
     void setDifficulty(int); int difficulty();
     void setSelectionType(Question::SelectionType); Question::SelectionType selectionType();
-    void setExplanation(QString); QString explanation();
+    void setExplanation(const QString &); QString explanation();
 
 private:
     Question::Answer qa_answered;
@@ -53,15 +53,15 @@ private:
 class QuestionItem : public Question
 {
 public:
-    QuestionItem(QString /* name */ = QString(),
+    QuestionItem(const QString & /* name */ = QString(),
                 int /* flag */ = -1,
-                QString /* group */ = QString(),
+                const QString & /* group */ = QString(),
                 int /* difficulty */ = 0,
-                QString /* text */ = QString(),
-                QStringList /* answers */ = QStringList() << QString() << QString() << QString() << QString(),
+                const QString & /* text */ = QString(),
+                const QStringList & /* answers */ = QStringList() << QString() << QString() << QString() << QString(),
                 Answers /* correctanswers */ = None,
                 SelectionType /* selectiontype */ = SingleSelection,
-                QString /* explanation */ = QString(),
+                const QString & /* explanation */ = QString(),
                 unsigned int /* inccount */ = 0,
                 unsigned int /* ccount */ = 0,
                 bool /* hidden */ = false,

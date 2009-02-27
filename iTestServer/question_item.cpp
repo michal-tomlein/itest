@@ -19,15 +19,15 @@
 
 #include "question_item.h"
 
-QuestionItem::QuestionItem(QString name,
+QuestionItem::QuestionItem(const QString & name,
                             int flag,
-                            QString group,
+                            const QString & group,
                             int difficulty,
-                            QString text,
-                            QStringList answers,
+                            const QString & text,
+                            const QStringList & answers,
                             Question::Answers correctanswers,
                             Question::SelectionType selectiontype,
-                            QString explanation,
+                            const QString & explanation,
                             unsigned int inccount,
                             unsigned int ccount,
                             bool hidden,
@@ -181,7 +181,7 @@ QString QuestionItem::allPublicProperties()
     return out;
 }
 
-QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int flag, int difficulty, Question::SelectionType type, QString explanation)
+QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int flag, int difficulty, Question::SelectionType type, const QString & explanation)
 {
     qa_answered = ans;
     qa_correct_answer = correct;
@@ -218,6 +218,6 @@ void QuestionAnswer::setSelectionType(Question::SelectionType type) { q_selectio
 
 Question::SelectionType QuestionAnswer::selectionType() { return q_selectiontype; }
 
-void QuestionAnswer::setExplanation(QString explanation) { qa_explanation = explanation; }
+void QuestionAnswer::setExplanation(const QString & explanation) { qa_explanation = explanation; }
 
 QString QuestionAnswer::explanation() { return qa_explanation; }

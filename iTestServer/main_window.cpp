@@ -20,9 +20,9 @@
 #include "../shared/about_widget.h"
 #include "main_window.h"
 
-void MainWindow::errorInvalidDBFile(QString parentFunction, QString fileName, int error)
+void MainWindow::errorInvalidDBFile(const QString & title, const QString & file, int error)
 {
-    QMessageBox::critical(this, parentFunction, tr("Invalid database file: %1\nError %2.").arg(fileName).arg(error));
+    QMessageBox::critical(this, title, tr("Invalid database file: %1\nError %2.").arg(file).arg(error));
 	this->setEnabled(true);
 }
 
@@ -458,11 +458,16 @@ MainWindow::MainWindow()
     statusBar()->showMessage(tr("Ready"), 10000);
     // Check app args ----------------------------------------------------------
     if (qApp->arguments().count() > 1) {
-        QFileInfo file_info(qApp->arguments().at(1));
-        if (file_info.exists()) {
-            addRecent(file_info.absoluteFilePath());
-            openDB(file_info.absoluteFilePath());
-        }
+        openFile(qApp->arguments().at(1));
+    }
+}
+
+void MainWindow::openFile(const QString & file)
+{
+    QFileInfo file_info(file);
+    if (file_info.exists() && !saveChangesBeforeProceeding(tr("Open database"), true)) {
+        addRecent(file_info.absoluteFilePath());
+        openDB(file_info.absoluteFilePath());
     }
 }
 
@@ -486,8 +491,8 @@ void MainWindow::loadSettings()
     this->resize(settings.value("editor/size", this->size()).toSize());
     onInfoDisplayChange(settings.value("editor/showDBI", false).toBool());
     actionShow_hidden->setChecked(settings.value("editor/showHidden", false).toBool());
-    SQSplitter->restoreState(settings.value("editor/SQSplitterState").toByteArray());
-    SVSplitter->restoreState(settings.value("editor/VSSSplitterState").toByteArray());
+    //SQSplitter->restoreState(settings.value("editor/SQSplitterState").toByteArray());
+    //SVSplitter->restoreState(settings.value("editor/VSSSplitterState").toByteArray());
     TSCustomServerPortSpinBox->setValue(settings.value("editor/customServerPort", 7777).toInt());
 }
 
@@ -502,12 +507,12 @@ void MainWindow::saveSettings()
     settings.setValue("editor/size", this->size());
     settings.setValue("editor/showDBI", actionShow_DBI->isChecked());
     settings.setValue("editor/showHidden", actionShow_hidden->isChecked());
-    settings.setValue("editor/SQSplitterState", SQSplitter->saveState());
-    settings.setValue("editor/VSSSplitterState", SVSplitter->saveState());
+    //settings.setValue("editor/SQSplitterState", SQSplitter->saveState());
+    //settings.setValue("editor/VSSSplitterState", SVSplitter->saveState());
     settings.setValue("editor/customServerPort", TSCustomServerPortSpinBox->value());
 }
 
-void MainWindow::addRecent(QString name)
+void MainWindow::addRecent(const QString & name)
 {
     for (int i = 0; i < recentDBsListWidget->count();) {
         if (recentDBsListWidget->item(i)->text() == name) {

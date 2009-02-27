@@ -17,6 +17,9 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
+#ifndef MAIN_WINDOW_H
+#define MAIN_WINDOW_H
+
 #include "ui_main_window.h"
 
 #include <QFile>
@@ -43,6 +46,8 @@ class MainWindow : public QMainWindow, private Ui::MainWindow
 public:
     MainWindow();
 
+    void openFile(const QString &);
+
 private slots:
     // UI-RELATED
     void varinit();
@@ -63,7 +68,7 @@ private slots:
     void readIncomingData();
     void displayError(QAbstractSocket::SocketError);
     // TEST-RELATED
-    void loadTest(QString); void loadFile(); void loadFile(QString);
+    void loadTest(QString); void loadFile(); void loadFile(const QString &);
     void randomlySelectQuestions();
     void updateTime();
     void finish(); void sendResults();
@@ -73,7 +78,7 @@ private slots:
     void setCurrentQuestion();
     void nextQuestion(); void lastQuestion();
     void setQuestionAnswered(Question::Answers);
-    void previewSvg(QString);
+    void previewSvg(const QString &);
 
 private:
     // CURRENT DB
@@ -124,3 +129,5 @@ private:
     // ITEST & DB VERSION
     QString ver; double f_ver; QString itos_ver; double f_itos_ver;
 };
+
+#endif // MAIN_WINDOW_H

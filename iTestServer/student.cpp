@@ -19,7 +19,7 @@
 
 #include "student.h"
 
-Student::Student(QString name)
+Student::Student(const QString & name)
 {
     s_name = name;
     s_number = 0;
@@ -57,7 +57,7 @@ Student::~Student()
     if (s_results) delete s_results;
 }
 
-void Student::setName(QString name) { s_name = name; }
+void Student::setName(const QString & name) { s_name = name; }
 
 QString Student::name() { return s_name; }
 
@@ -160,7 +160,7 @@ QString Student::studentArchiveData()
 	return out;
 }
 
-bool Student::wasAsked(QString qname)
+bool Student::wasAsked(const QString & qname)
 {
 	QMapIterator<QString, QuestionAnswer> i(*s_results);
 	while (i.hasNext()) { i.next();
@@ -169,7 +169,7 @@ bool Student::wasAsked(QString qname)
 	return false;
 }
 
-uint Student::replaceOccurrences(QString old_qname, QString new_qname)
+uint Student::replaceOccurrences(const QString & old_qname, const QString & new_qname)
 {
 	QuestionAnswer qans = s_results->value(old_qname, QuestionAnswer());
 	uint n = s_results->remove(old_qname);

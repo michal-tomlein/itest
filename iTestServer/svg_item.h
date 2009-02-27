@@ -29,8 +29,8 @@ class SvgItem : public QListWidgetItem
 {
 public:
     SvgItem();
-    SvgItem(QString);
-    SvgItem(QString, QString);
+    SvgItem(const QString &);
+    SvgItem(const QString &, const QString &);
 
 public slots:
     bool setSvg(QString);

@@ -46,7 +46,7 @@ public:
     virtual ~Client();
 
 public slots:
-    void setName(QString); QString name();
+    void setName(const QString &); QString name();
     void setNumber(int); int number();
     void setSocket(QTcpSocket *); QTcpSocket * socket();
     double score(); double maximumScore();

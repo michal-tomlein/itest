@@ -105,7 +105,7 @@ QWidget(parent) {
     ae_add_button->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 }
 
-void AnswersEdit::setAnswers(QStringList answers)
+void AnswersEdit::setAnswers(const QStringList & answers)
 {
     for (int i = 0; i < 9; ++i) {
         AnswerEdit * ans = ae_answers.at(i);
@@ -120,7 +120,7 @@ void AnswersEdit::setAnswers(QStringList answers)
     enableAddAnswerButton();
 }
 
-void AnswersEdit::setAnswers(QStringList answers, Question::Answers correct_answers, Question::SelectionType selectiontype)
+void AnswersEdit::setAnswers(const QStringList & answers, Question::Answers correct_answers, Question::SelectionType selectiontype)
 {
     for (int i = 0; i < 9; ++i) {
         AnswerEdit * ans = ae_answers.at(i);
@@ -165,7 +165,7 @@ Question::Answers AnswersEdit::correctAnswers()
     return correct_answers;
 }
 
-void AnswersEdit::replaceAnswer(int i, QString text)
+void AnswersEdit::replaceAnswer(int i, const QString & text)
 {
     if (i < 0 || i > 8) { return; }
     ae_answers.at(i)->ans_text->setText(text);
@@ -214,7 +214,7 @@ void AnswersEdit::addAnswer()
     }
 }
 
-void AnswersEdit::removeAnswer(QString id)
+void AnswersEdit::removeAnswer(const QString & id)
 {
     bool ok; int i = id.toInt(&ok);
     if (ok) { removeAnswer(i); }

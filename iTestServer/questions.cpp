@@ -410,21 +410,21 @@ void MainWindow::sortQuestionsDescending() { sortQuestions(Qt::DescendingOrder);
 
 void MainWindow::sortQuestions(Qt::SortOrder order)
 {
-    QStringList list; QMap<QString, QListWidgetItem *> map;
-    
+    QStringList list; QMap<QString, QListWidgetItem *> map; QListWidgetItem * item;
+
     setDatabaseModified();
-    
+
     for (int i = 0; i < LQListWidget->count();) {
-        list << LQListWidget->item(i)->text();
-        map.insert(LQListWidget->item(i)->text(), LQListWidget->takeItem(i));
+        item = LQListWidget->takeItem(i);
+        list << item->text(); map.insert(item->text(), item);
     }
-    
+
     if (order == Qt::AscendingOrder) {
         qSort(list.begin(), list.end(), caseInsensitiveLessThan);
     } else {
         qSort(list.begin(), list.end(), caseInsensitiveMoreThan);
     }
-    
+
     for (int i = 0; i < list.size(); ++i)
     { LQListWidget->insertItem(i, map.value(list.at(i))); }
 }
@@ -489,7 +489,7 @@ void MainWindow::adjustQuestionDifficulty()
 	}
 }
 
-uint MainWindow::numOccurrences(QString qname)
+uint MainWindow::numOccurrences(const QString & qname)
 {
 	uint n = 0;
 	QMapIterator<QDateTime, Session *> i(current_db_sessions);
@@ -507,7 +507,7 @@ uint MainWindow::numOccurrences(QString qname)
 	return n;
 }
 
-uint MainWindow::replaceAllOccurrences(QString old_qname, QString new_qname)
+uint MainWindow::replaceAllOccurrences(const QString & old_qname, const QString & new_qname)
 {
 	uint n = 0, as = 0, x = 0;
 	QMapIterator<QDateTime, Session *> i(current_db_sessions);

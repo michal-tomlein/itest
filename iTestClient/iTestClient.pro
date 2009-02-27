@@ -3,6 +3,7 @@ TEMPLATE      = app
 FORMS        += main_window.ui \
                 ../shared/about_widget_v2.ui
 HEADERS      += main_window.h \
+                ../shared/main.h \
                 ../shared/about_widget.h \
                 ../shared/question.h \
                 question_item.h \

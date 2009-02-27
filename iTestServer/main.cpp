@@ -10,13 +10,11 @@
  * iTest is distributed under the terms of the GPL v2, see details below.     *
  ******************************************************************************/
 
-#include <QApplication>
-
-#include "main_window.h"
+#include "../shared/main.h"
 
 int main(int argc, char *argv[])
 {
-	QApplication app(argc, argv);
+	MTApplication app(argc, argv);
 
 	QSettings settings("Michal Tomlein", "iTest");
 	QString lang = settings.value("lang").toString();
@@ -32,6 +30,7 @@ int main(int argc, char *argv[])
 	}
 
 	MainWindow * itest_window = new MainWindow;
+    app.setAppMainWindow(itest_window);
 	itest_window->show();
 	return app.exec();
 }

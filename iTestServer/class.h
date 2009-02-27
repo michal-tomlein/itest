@@ -32,13 +32,13 @@ class ClassMember
 {
 public:
     ClassMember();
-    ClassMember(QString);
+    ClassMember(const QString &);
 
-    void setName(QString); QString name();
+    void setName(const QString &); QString name();
     void addSession(QDateTime, int);
-    void addSession(QString, int);
+    void addSession(const QString &, int);
     void removeSession(QDateTime);
-    void removeSession(QString);
+    void removeSession(const QString &);
     SessionEntry sessionEntry(int);
     QDateTime session(int);
     QString sessionToString(int);
@@ -57,19 +57,19 @@ class Class
 {
 public:
     Class();
-    Class(QString);
+    Class(const QString &);
     virtual ~Class();
 
-    void setName(QString); QString name();
+    void setName(const QString &); QString name();
     void setFirstYear(int); int firstYear();
     void setLastYear(int); int lastYear();
-    int addMember(ClassMember *); int addMember(QString);
+    int addMember(ClassMember *); int addMember(const QString &);
     int removeMember(ClassMember *); void removeMember(int);
     int numMembers(); int memberPosition(ClassMember *);
     ClassMember * member(int);
     ClassMember * takeMember(int);
-    void addSession(QDateTime); void addSession(QString);
-    int removeSession(QDateTime); int removeSession(QString);
+    void addSession(QDateTime); void addSession(const QString &);
+    int removeSession(QDateTime); int removeSession(const QString &);
     void removeSession(int);
     int numSessions();
     QDateTime session(int); QString sessionToString(int);

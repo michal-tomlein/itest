@@ -31,7 +31,7 @@ class LogEntry
 {
 public:
     LogEntry();
-    LogEntry(int, int, int, int, int, int, QString);
+    LogEntry(int, int, int, int, int, int, const QString &);
     QColor entryBackgroundColour(); QColor entryForegroundColour();
     QString entryText(); QString entryData();
     int bgRed(); int bgGreen(); int bgBlue();
@@ -55,14 +55,14 @@ public:
     virtual ~Session();
 
 public slots:
-    void setName(QString); QString name();
-    void setDateTimeFromString(QString); void setDateTime(QDateTime);
+    void setName(const QString &); QString name();
+    void setDateTimeFromString(const QString &); void setDateTime(QDateTime);
     QString dateTimeToString(); QDateTime dateTime();
-    void addLogEntry(int, int, int, int, int, int, QString);
+    void addLogEntry(int, int, int, int, int, int, const QString &);
     int numLogEntries(); LogEntry logEntry(int); void deleteLog();
     void addStudent(Student *); int numStudents(); Student * student(int);
     long double maximumScore(); long double score(); int average();
-    void setPassMark(PassMark); PassMark passMark(); void loadPassMark(QString);
+    void setPassMark(PassMark); PassMark passMark(); void loadPassMark(const QString &);
     void setScoringSystem(ScoringSystem); ScoringSystem scoringSystem();
     QString sessionData();
     bool mostPassed(); bool isArchived();
