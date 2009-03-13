@@ -3526,7 +3526,7 @@ Please choose a different group.</source>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4364"/>
         <source>Use this option if the names of your questions contain clues to their answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Используйте эту опцию, если названия вопросов содержат ключи к ответам</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4367"/>
@@ -3546,12 +3546,12 @@ Please choose a different group.</source>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4377"/>
         <source>Reorder answers randomly</source>
-        <translation type="unfinished"></translation>
+        <translation>Располагать вопросы в случайном порядке</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4380"/>
         <source>Shuffle answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Перемешивать вопросы</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4197"/>
@@ -3566,28 +3566,29 @@ Please choose a different group.</source>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4383"/>
         <source>Do not print test results automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Отменить автоматическую печать результатов теста</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4386"/>
         <source>Do not print test results</source>
-        <translation type="unfinished"></translation>
+        <translation>Не печатать результаты теста</translation>
     </message>
     <message>
         <location filename="../main_window.cpp" line="25"/>
         <source>Invalid database file: %1
 Error %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Неправильный файл базы данных: %1
+Ошибка: %2.</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="30"/>
         <source>The database has been modified.</source>
-        <translation type="unfinished"></translation>
+        <translation>База данных была изменена.</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="31"/>
         <source>Do you want to save your changes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранить изменения?</translation>
     </message>
 </context>
 <context>
