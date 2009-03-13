@@ -3500,7 +3500,7 @@ Por favor escolha outro grupo.</translation>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4364"/>
         <source>Use this option if the names of your questions contain clues to their answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccione esta opção se as suas questões contêm pistas para as respostas</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4367"/>
@@ -3520,12 +3520,12 @@ Por favor escolha outro grupo.</translation>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4377"/>
         <source>Reorder answers randomly</source>
-        <translation type="unfinished"></translation>
+        <translation>Reordenar as questões aleatoriamente</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4380"/>
         <source>Shuffle answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Baralhar as respostas</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4197"/>
@@ -3540,28 +3540,29 @@ Por favor escolha outro grupo.</translation>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4383"/>
         <source>Do not print test results automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Não imprimir os resultados dos testes automaticamente</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4386"/>
         <source>Do not print test results</source>
-        <translation type="unfinished"></translation>
+        <translation>Não imprimir os resultados dos testes</translation>
     </message>
     <message>
         <location filename="../main_window.cpp" line="25"/>
         <source>Invalid database file: %1
 Error %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ficheiro de base de dados inválido: %1
+Erro %2.</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="30"/>
         <source>The database has been modified.</source>
-        <translation type="unfinished"></translation>
+        <translation>A base de dados foi modificada.</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="31"/>
         <source>Do you want to save your changes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Deseja guardar as alterações?</translation>
     </message>
 </context>
 <context>

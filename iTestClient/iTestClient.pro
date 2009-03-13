@@ -32,9 +32,9 @@ DEFINES      += ITESTCLIENT
 win32 {
 DESTDIR       = ../
 RC_FILE       = itestwri.rc
-OBJECTS_DIR   = .objects.win32/
-MOC_DIR       = .moc.win32/
-RCC_DIR       = .rcc.win32/
+OBJECTS_DIR   = .build.win32
+MOC_DIR       = .build.win32
+RCC_DIR       = .build.win32
 exists($(QTDIR)/bin/splitui.exe) {
 QMAKE_UIC     = splitui.exe
 SOURCES      += ui_main_window.cpp \
@@ -51,6 +51,9 @@ QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.4
 QMAKE_MAC_SDK = /Developer/SDKs/MacOSX10.4u.sdk
 }
 unix {
+OBJECTS_DIR   = .build.unix
+MOC_DIR       = .build.unix
+RCC_DIR       = .build.unix
 exists(/usr/bin/splitui) {
 QMAKE_UIC     = splitui
 SOURCES      += ui_main_window.cpp \
@@ -58,9 +61,6 @@ SOURCES      += ui_main_window.cpp \
 }
 !macx {
 DESTDIR       = ../bin/
-OBJECTS_DIR   = .objects.unix/
-MOC_DIR       = .moc.unix/
-RCC_DIR       = .rcc.unix/
 exists(/usr/bin/apgcc) {
 QMAKE_CC      = apgcc
 }

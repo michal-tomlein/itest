@@ -36,6 +36,21 @@ int main(int argc, char *argv[])
 }
 
 // ---------------------------- version changelog: -----------------------------
+/* version 1.4.1 - a minor update with some new features
+                 - added Latvian translation
+                 - number of flags now unlimited
+                   - iTest 1.4.0 won't be able to open your database if you
+                     create more than 20 flags (otherwise, the database format
+                     is unchanged and compatible)
+                 - added the "Shuffle answers" and "Do not print test results"
+                   options to server settings
+                 - "Other settings" moved from iTestClient to iTestServer
+                 - Mac OS X: double click or drag and drop database files onto
+                   the iTest icon to open them
+                 - upgraded from Qt 4.4.0 to Qt 4.5.0 (Windows and Mac OS X
+                   binary packages; tarballs still build with Qt 4.4)
+                 - numerous bug-fixes and more...
+*/
 /* version 1.4.0 - a major update
                  - added Italian translation
                  - added the ability to create classes with students

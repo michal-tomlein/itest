@@ -3445,7 +3445,7 @@ aunque es recomendable de otorgarles una hora.</translation>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4364"/>
         <source>Use this option if the names of your questions contain clues to their answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilice esta opción si es que los nombres de sus preguntas contienen pistas para sus respuestas</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4367"/>
@@ -3465,12 +3465,12 @@ aunque es recomendable de otorgarles una hora.</translation>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4377"/>
         <source>Reorder answers randomly</source>
-        <translation type="unfinished"></translation>
+        <translation>Reordenar las respuestas de manera aleatoria</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4380"/>
         <source>Shuffle answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Mezclar las respuestas</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4197"/>
@@ -3485,28 +3485,28 @@ aunque es recomendable de otorgarles una hora.</translation>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4383"/>
         <source>Do not print test results automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>No imprir los resultados del exámen de manera automática</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4386"/>
         <source>Do not print test results</source>
-        <translation type="unfinished"></translation>
+        <translation>No imprir los resultados del exámen</translation>
     </message>
     <message>
         <location filename="../main_window.cpp" line="25"/>
         <source>Invalid database file: %1
 Error %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivo de base de datos inválido: %1Error %2.</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="30"/>
         <source>The database has been modified.</source>
-        <translation type="unfinished"></translation>
+        <translation>La base de datos ha sido modificada.</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="31"/>
         <source>Do you want to save your changes?</source>
-        <translation type="unfinished"></translation>
+        <translation>¿Desea guardar los cambios?</translation>
     </message>
 </context>
 <context>
@@ -3599,7 +3599,7 @@ Error %2.</source>
     <message>
         <location filename="../print_engine.cpp" line="162"/>
         <source>Number of different printouts:</source>
-        <translation>Número de las distintas impresiones</translation>
+        <translation>Número de las distintas impresiones:</translation>
     </message>
     <message>
         <location filename="../print_engine.cpp" line="176"/>

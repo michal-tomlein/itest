@@ -824,7 +824,7 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="3835"/>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>yyyy.MM.dd - hh:mm</translation>
+        <translation>aaaa.MM.gg - hh:mm</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="3841"/>
@@ -3415,7 +3415,7 @@ although it is recommended to give them an hour.</source>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4364"/>
         <source>Use this option if the names of your questions contain clues to their answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleziona l&apos;opzione se le risposte alle domande sono contenute nel quesito</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4367"/>
@@ -3435,12 +3435,12 @@ although it is recommended to give them an hour.</source>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4377"/>
         <source>Reorder answers randomly</source>
-        <translation type="unfinished"></translation>
+        <translation>Riordina risposte casualmente</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4380"/>
         <source>Shuffle answers</source>
-        <translation type="unfinished"></translation>
+        <translation>Mischia risposte</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4197"/>
@@ -3455,28 +3455,28 @@ although it is recommended to give them an hour.</source>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4383"/>
         <source>Do not print test results automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Non stampare i risultati del test automaticamente</translation>
     </message>
     <message>
         <location filename="../ui_main_window_v2.cpp" line="4386"/>
         <source>Do not print test results</source>
-        <translation type="unfinished"></translation>
+        <translation>Non stampare i risultati del test</translation>
     </message>
     <message>
         <location filename="../main_window.cpp" line="25"/>
         <source>Invalid database file: %1
 Error %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>File database invalido: %1 Errore %2.</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="30"/>
         <source>The database has been modified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il database è stato modificato.</translation>
     </message>
     <message>
         <location filename="../database.cpp" line="31"/>
         <source>Do you want to save your changes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vuoi salvare i cambiamenti?</translation>
     </message>
 </context>
 <context>
