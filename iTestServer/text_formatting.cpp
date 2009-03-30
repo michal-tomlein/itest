@@ -17,22 +17,26 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
-#include "main_window.h"
+#include "mttextedit.h"
 
-const int EQ_index = 1; const int EC_index = 2;
-
-void MainWindow::setupTextEdits()
+MTTextEdit::MTTextEdit(QWidget * parent):
+QWidget(parent)
 {
+    setupUi(this);
+
+    tbtnUndo->setText(QString::fromUtf8("\342\227\204"));
+    tbtnRedo->setText(QString::fromUtf8("\342\226\272"));
+
     QPixmap pix(14, 14);
     pix.fill(Qt::black);
     tbtnColour->setIcon(pix);
-    
-    tbtngrpAlign = new QButtonGroup (this);
+
+    tbtngrpAlign = new QButtonGroup(this);
     tbtngrpAlign->addButton(tbtnAlignLeft);
     tbtngrpAlign->addButton(tbtnAlignCentre);
     tbtngrpAlign->addButton(tbtnAlignRight);
     tbtngrpAlign->addButton(tbtnAlignJustify);
-    
+
     QObject::connect(tbtnItalic, SIGNAL(released()), this, SLOT(textItalic()));
     QObject::connect(tbtnBold, SIGNAL(released()), this, SLOT(textBold()));
     QObject::connect(tbtnUnderlined, SIGNAL(released()), this, SLOT(textUnderline()));
@@ -40,87 +44,51 @@ void MainWindow::setupTextEdits()
     QObject::connect(sizeComboBox, SIGNAL(activated(const QString &)), this, SLOT(textSize(const QString &)));
     QObject::connect(fontComboBox, SIGNAL(activated(const QString &)), this, SLOT(textFamily(const QString &)));
     QObject::connect(tbtngrpAlign, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(textAlign(QAbstractButton *)));
-    QObject::connect(SQQuestionTextEdit, SIGNAL(currentCharFormatChanged(const QTextCharFormat &)),
+    QObject::connect(theTextEdit, SIGNAL(currentCharFormatChanged(const QTextCharFormat &)),
             this, SLOT(currentCharFormatChanged(const QTextCharFormat &)));
-    QObject::connect(SQQuestionTextEdit, SIGNAL(cursorPositionChanged()),
+    QObject::connect(theTextEdit, SIGNAL(cursorPositionChanged()),
             this, SLOT(cursorPositionChanged()));
-            
-    ECtbtnColour->setIcon(pix);
-            
-    tbtngrpECAlign = new QButtonGroup (this);
-    tbtngrpECAlign->addButton(ECtbtnAlignLeft);
-    tbtngrpECAlign->addButton(ECtbtnAlignCentre);
-    tbtngrpECAlign->addButton(ECtbtnAlignRight);
-    tbtngrpECAlign->addButton(ECtbtnAlignJustify);
-            
-    QObject::connect(ECtbtnItalic, SIGNAL(released()), this, SLOT(textItalic()));
-    QObject::connect(ECtbtnBold, SIGNAL(released()), this, SLOT(textBold()));
-    QObject::connect(ECtbtnUnderlined, SIGNAL(released()), this, SLOT(textUnderline()));
-    QObject::connect(ECtbtnColour, SIGNAL(released()), this, SLOT(textColor()));
-    QObject::connect(ECsizeComboBox, SIGNAL(activated(const QString &)), this, SLOT(textSize(const QString &)));
-    QObject::connect(ECfontComboBox, SIGNAL(activated(const QString &)), this, SLOT(textFamily(const QString &)));
-    QObject::connect(tbtngrpECAlign, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(textAlign(QAbstractButton *)));
-    QObject::connect(ECTextEdit, SIGNAL(currentCharFormatChanged(const QTextCharFormat &)),
-            this, SLOT(currentCharFormatChanged(const QTextCharFormat &)));
-    QObject::connect(ECTextEdit, SIGNAL(cursorPositionChanged()),
-            this, SLOT(cursorPositionChanged()));
+    QObject::connect(theTextEdit, SIGNAL(textChanged()), this, SIGNAL(textChanged()));
 }
 
-void MainWindow::textBold()
+void MTTextEdit::textBold()
 {
     QTextCharFormat fmt;
-    if (mainStackedWidget->currentIndex() == EQ_index) {
-        fmt.setFontWeight(tbtnBold->isChecked() ? QFont::Bold : QFont::Normal);
-    } else if (mainStackedWidget->currentIndex() == EC_index) {
-        fmt.setFontWeight(ECtbtnBold->isChecked() ? QFont::Bold : QFont::Normal);
-    }
+    fmt.setFontWeight(tbtnBold->isChecked() ? QFont::Bold : QFont::Normal);
     mergeFormatOnWordOrSelection(fmt);
 }
 
-void MainWindow::textUnderline()
+void MTTextEdit::textUnderline()
 {
     QTextCharFormat fmt;
-    if (mainStackedWidget->currentIndex() == EQ_index) {
-        fmt.setFontUnderline(tbtnUnderlined->isChecked());
-    } else if (mainStackedWidget->currentIndex() == EC_index) {
-        fmt.setFontUnderline(ECtbtnUnderlined->isChecked());
-    }
+    fmt.setFontUnderline(tbtnUnderlined->isChecked());
     mergeFormatOnWordOrSelection(fmt);
 }
 
-void MainWindow::textItalic()
+void MTTextEdit::textItalic()
 {
     QTextCharFormat fmt;
-    if (mainStackedWidget->currentIndex() == EQ_index) {
-        fmt.setFontItalic(tbtnItalic->isChecked());
-    } else if (mainStackedWidget->currentIndex() == EC_index) {
-        fmt.setFontItalic(ECtbtnItalic->isChecked());
-    }
+    fmt.setFontItalic(tbtnItalic->isChecked());
     mergeFormatOnWordOrSelection(fmt);
 }
 
-void MainWindow::textFamily(const QString &f)
+void MTTextEdit::textFamily(const QString & f)
 {
     QTextCharFormat fmt;
     fmt.setFontFamily(f);
     mergeFormatOnWordOrSelection(fmt);
 }
 
-void MainWindow::textSize(const QString &p)
+void MTTextEdit::textSize(const QString & p)
 {
     QTextCharFormat fmt;
     fmt.setFontPointSize(p.toDouble());
     mergeFormatOnWordOrSelection(fmt);
 }
 
-void MainWindow::textColor()
+void MTTextEdit::textColor()
 {
-    QColor col;
-    if (mainStackedWidget->currentIndex() == EQ_index) {
-        col = QColorDialog::getColor(SQQuestionTextEdit->textColor(), this);
-    } else if (mainStackedWidget->currentIndex() == EC_index) {
-        col = QColorDialog::getColor(ECTextEdit->textColor(), this);
-    }
+    QColor col = QColorDialog::getColor(theTextEdit->textColor(), this);
     if (!col.isValid())
         return;
     QTextCharFormat fmt;
@@ -129,107 +97,63 @@ void MainWindow::textColor()
     colorChanged(col);
 }
 
-void MainWindow::textAlign(QAbstractButton *b)
+void MTTextEdit::textAlign(QAbstractButton * b)
 {
     if (b == tbtnAlignLeft)
-        SQQuestionTextEdit->setAlignment(Qt::AlignLeft);
+        theTextEdit->setAlignment(Qt::AlignLeft);
     else if (b == tbtnAlignCentre)
-        SQQuestionTextEdit->setAlignment(Qt::AlignHCenter);
+        theTextEdit->setAlignment(Qt::AlignHCenter);
     else if (b == tbtnAlignRight)
-        SQQuestionTextEdit->setAlignment(Qt::AlignRight);
+        theTextEdit->setAlignment(Qt::AlignRight);
     else if (b == tbtnAlignJustify)
-        SQQuestionTextEdit->setAlignment(Qt::AlignJustify);
-    else if (b == ECtbtnAlignLeft)
-        ECTextEdit->setAlignment(Qt::AlignLeft);
-    else if (b == ECtbtnAlignCentre)
-        ECTextEdit->setAlignment(Qt::AlignHCenter);
-    else if (b == ECtbtnAlignRight)
-        ECTextEdit->setAlignment(Qt::AlignRight);
-    else if (b == ECtbtnAlignJustify)
-        ECTextEdit->setAlignment(Qt::AlignJustify);
+        theTextEdit->setAlignment(Qt::AlignJustify);
 }
 
-void MainWindow::mergeFormatOnWordOrSelection(const QTextCharFormat &format)
+void MTTextEdit::mergeFormatOnWordOrSelection(const QTextCharFormat & format)
 {
-    if (mainStackedWidget->currentIndex() == EQ_index) {
-        QTextCursor cursor = SQQuestionTextEdit->textCursor();
-        if (!cursor.hasSelection())
-            cursor.select(QTextCursor::WordUnderCursor);
-        cursor.mergeCharFormat(format);
-        SQQuestionTextEdit->mergeCurrentCharFormat(format);
-    } else if (mainStackedWidget->currentIndex() == EC_index) {
-        QTextCursor cursor = ECTextEdit->textCursor();
-        if (!cursor.hasSelection())
-            cursor.select(QTextCursor::WordUnderCursor);
-        cursor.mergeCharFormat(format);
-        ECTextEdit->mergeCurrentCharFormat(format);
-    }
+    QTextCursor cursor = theTextEdit->textCursor();
+    if (!cursor.hasSelection())
+        cursor.select(QTextCursor::WordUnderCursor);
+    cursor.mergeCharFormat(format);
+    theTextEdit->mergeCurrentCharFormat(format);
 }
 
-void MainWindow::fontChanged(const QFont &f)
+void MTTextEdit::fontChanged(const QFont & f)
 {
-    if (mainStackedWidget->currentIndex() == EQ_index) {
-        fontComboBox->setCurrentIndex(fontComboBox->findText(QFontInfo(f).family()));
-        sizeComboBox->setCurrentIndex(sizeComboBox->findText(QString::number(f.pointSize())));
-        tbtnBold->setChecked(f.bold());
-        tbtnItalic->setChecked(f.italic());
-        tbtnUnderlined->setChecked(f.underline());
-    } else if (mainStackedWidget->currentIndex() == EC_index) {
-        ECfontComboBox->setCurrentIndex(ECfontComboBox->findText(QFontInfo(f).family()));
-        ECsizeComboBox->setCurrentIndex(ECsizeComboBox->findText(QString::number(f.pointSize())));
-        ECtbtnBold->setChecked(f.bold());
-        ECtbtnItalic->setChecked(f.italic());
-        ECtbtnUnderlined->setChecked(f.underline());
-    }
+    fontComboBox->setCurrentIndex(fontComboBox->findText(QFontInfo(f).family()));
+    sizeComboBox->setCurrentIndex(sizeComboBox->findText(QString::number(f.pointSize())));
+    tbtnBold->setChecked(f.bold());
+    tbtnItalic->setChecked(f.italic());
+    tbtnUnderlined->setChecked(f.underline());
 }
 
-void MainWindow::colorChanged(const QColor &c)
+void MTTextEdit::colorChanged(const QColor & c)
 {
     QPixmap pix(14, 14);
     pix.fill(c);
-    if (mainStackedWidget->currentIndex() == EQ_index) {
-        tbtnColour->setIcon(pix);
-    } else if (mainStackedWidget->currentIndex() == EC_index) {
-        ECtbtnColour->setIcon(pix);
-    }
+    tbtnColour->setIcon(pix);
 }
 
-void MainWindow::alignmentChanged(Qt::Alignment a)
+void MTTextEdit::alignmentChanged(Qt::Alignment a)
 {
-    if (mainStackedWidget->currentIndex() == EQ_index) {
-        if (a & Qt::AlignLeft) {
-            tbtnAlignLeft->setChecked(true);
-        } else if (a & Qt::AlignHCenter) {
-            tbtnAlignCentre->setChecked(true);
-        } else if (a & Qt::AlignRight) {
-            tbtnAlignRight->setChecked(true);
-        } else if (a & Qt::AlignJustify) {
-            tbtnAlignJustify->setChecked(true);
-        }
-    } else if (mainStackedWidget->currentIndex() == EC_index) {
-        if (a & Qt::AlignLeft) {
-            ECtbtnAlignLeft->setChecked(true);
-        } else if (a & Qt::AlignHCenter) {
-            ECtbtnAlignCentre->setChecked(true);
-        } else if (a & Qt::AlignRight) {
-            ECtbtnAlignRight->setChecked(true);
-        } else if (a & Qt::AlignJustify) {
-            ECtbtnAlignJustify->setChecked(true);
-        }
+    if (a & Qt::AlignLeft) {
+        tbtnAlignLeft->setChecked(true);
+    } else if (a & Qt::AlignHCenter) {
+        tbtnAlignCentre->setChecked(true);
+    } else if (a & Qt::AlignRight) {
+        tbtnAlignRight->setChecked(true);
+    } else if (a & Qt::AlignJustify) {
+        tbtnAlignJustify->setChecked(true);
     }
 }
 
-void MainWindow::currentCharFormatChanged(const QTextCharFormat &format)
+void MTTextEdit::currentCharFormatChanged(const QTextCharFormat & format)
 {
     fontChanged(format.font());
     colorChanged(format.foreground().color());
 }
 
-void MainWindow::cursorPositionChanged()
+void MTTextEdit::cursorPositionChanged()
 {
-    if (mainStackedWidget->currentIndex() == EQ_index) {
-        alignmentChanged(SQQuestionTextEdit->alignment());
-    } else if (mainStackedWidget->currentIndex() == EC_index) {
-        alignmentChanged(ECTextEdit->alignment());
-    }
+    alignmentChanged(theTextEdit->alignment());
 }

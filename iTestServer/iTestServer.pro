@@ -2,7 +2,8 @@ CONFIG       += qt
 TEMPLATE      = app
 FORMS        += main_window_v2.ui \
                 ../shared/about_widget_v2.ui \
-                session_wizard.ui
+                session_wizard.ui \
+                mttextedit.ui
 HEADERS      += main_window.h \
                 ../shared/main.h \
                 ../shared/about_widget.h \
@@ -25,7 +26,8 @@ HEADERS      += main_window.h \
                 mttoolbutton.h \
                 mtprogressbar.h \
                 answersedit.h \
-                print_engine.h
+                print_engine.h \
+                mttextedit.h
 RESOURCES    += resources.qrc \
                 i18n.qrc
 SOURCES      += main.cpp \
@@ -63,7 +65,8 @@ exists($(QTDIR)/bin/splitui.exe) {
 QMAKE_UIC     = splitui.exe
 SOURCES      += ui_main_window_v2.cpp \
                 ui_about_widget_v2.cpp \
-                ui_session_wizard.cpp
+                ui_session_wizard.cpp \
+                ui_mttextedit.cpp
 }
 }
 macx {
@@ -83,7 +86,8 @@ exists(/usr/bin/splitui) {
 QMAKE_UIC     = splitui
 SOURCES      += ui_main_window_v2.cpp \
                 ui_about_widget_v2.cpp \
-                ui_session_wizard.cpp
+                ui_session_wizard.cpp \
+                ui_mttextedit.cpp
 }
 !macx {
 DESTDIR       = ../bin/

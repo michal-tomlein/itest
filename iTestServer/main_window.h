@@ -40,7 +40,6 @@
 #include <QTimer>
 #include <QCloseEvent>
 #include <QMap>
-#include <QColorDialog>
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDataStream>
@@ -189,13 +188,6 @@ private slots:
     QDialog * createAddSessionDialogue(const QString &, MTListWidget * = NULL);
     // ERROR MESSAGES
     void errorInvalidDBFile(const QString &, const QString &, int);
-    // TEXTEDIT-RELATED
-    void setupTextEdits();
-    void textBold(); void textUnderline(); void textItalic();
-    void textFamily(const QString &f); void textSize(const QString &p);
-    void textColor(); void textAlign(QAbstractButton *);
-    void currentCharFormatChanged(const QTextCharFormat &format);
-    void cursorPositionChanged();
 
 private:
     // CURRENT DB
@@ -220,13 +212,6 @@ private:
     // UI-RELATED
     void closeEvent(QCloseEvent *);
 	QHttp * http; QBuffer * http_buffer;
-	// TEXTEDIT-RELATED
-	void mergeFormatOnWordOrSelection(const QTextCharFormat &format);
-    void fontChanged(const QFont &f);
-    void colorChanged(const QColor &c);
-    void alignmentChanged(Qt::Alignment a);
-    QButtonGroup * tbtngrpAlign;
-    QButtonGroup * tbtngrpECAlign;
     // SERVER-RELATED
     QTcpServer * tcpServer;
     QMap<QListWidgetItem *, Client *> current_db_clients;

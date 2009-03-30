@@ -163,33 +163,6 @@ void MainWindow::setEQToolsEnabled(bool enabled)
 
 void MainWindow::setSQEnabled(bool enabled)
 {
-/*  SQQuestionNameLineEdit->setEnabled(enabled);
-    SQGroupLineEdit->setEnabled(enabled);
-    SQFlagComboBox->setEnabled(enabled);
-    SQDifficultyComboBox->setEnabled(enabled);
-    SQQuestionTextEdit->setEnabled(enabled);
-    SQAnswerALineEdit->setEnabled(enabled);
-    SQAnswerBLineEdit->setEnabled(enabled);
-    SQAnswerCLineEdit->setEnabled(enabled);
-    SQAnswerDLineEdit->setEnabled(enabled);
-    SQCorrectACheckBox->setEnabled(enabled);
-    SQCorrectBCheckBox->setEnabled(enabled);
-    SQCorrectCCheckBox->setEnabled(enabled);
-    SQCorrectDCheckBox->setEnabled(enabled);
-    btnApply->setEnabled(enabled);
-    btnDiscard->setEnabled(enabled);
-
-    fontComboBox->setEnabled(enabled);
-    sizeComboBox->setEnabled(enabled);
-    tbtnBold->setEnabled(enabled);
-    tbtnItalic->setEnabled(enabled);
-    tbtnUnderlined->setEnabled(enabled);
-    tbtnColour->setEnabled(enabled);
-    tbtnAlignLeft->setEnabled(enabled);
-    tbtnAlignCentre->setEnabled(enabled);
-    tbtnAlignRight->setEnabled(enabled);
-    tbtnAlignJustify->setEnabled(enabled);*/
-
 	actionApply->setEnabled(enabled);
 	actionDiscard->setEnabled(enabled);
     SQGroupBox->setEnabled(enabled);
@@ -321,6 +294,10 @@ MainWindow::MainWindow()
 	btnDiscard->setText(tr("Discard"));
 	btnDiscard->setStatusTip(tr("Discard any changes you have made to the question"));
 	btnDiscard->setIcon(QIcon(QString::fromUtf8(":/images/images/button_cancel.png")));
+    SQQuestionTextEdit->setTitle(tr("Question:"));
+    SQQuestionTextEdit->textEdit()->setStatusTip(tr("Text of the selected question"));
+    ECTextEdit->setTitle(tr("Comments:"));
+    ECTextEdit->textEdit()->setStatusTip(tr("Use this field for your comments, notes, reminders..."));
     EFTreeWidget->setMouseTracking(true);
     EFTreeWidget->header()->setResizeMode(0, QHeaderView::Fixed);
     EFTreeWidget->header()->setResizeMode(1, QHeaderView::Stretch);
@@ -444,8 +421,6 @@ MainWindow::MainWindow()
     setAllEnabled(false);
     // Load settings -----------------------------------------------------------
     loadSettings();
-    // Text edit ---------------------------------------------------------------
-    setupTextEdits();
     // Flags -------------------------------------------------------------------
     setupFlagsPage();
     // Server ------------------------------------------------------------------
