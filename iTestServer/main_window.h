@@ -121,7 +121,7 @@ private slots:
     static void setQuestionItemIcon(QListWidgetItem *, int);
     static QIcon iconForDifficulty(int);
     void sortQuestionsAscending(); void sortQuestionsDescending();
-    void sortQuestions(Qt::SortOrder);
+    void sortQuestionsByFlag(); void sortQuestions(Qt::SortOrder, bool = false);
     void hideQuestion(); void hideQuestion(QListWidgetItem *, QuestionItem *);
     void moveUp(); void moveDown(); void moveToTop(); void moveToBottom();
     void moveQuestion(int); void adjustQuestionDifficulty();

@@ -3710,6 +3710,7 @@
      </property>
      <addaction name="actionFrom_A_to_Z"/>
      <addaction name="actionFrom_Z_to_A"/>
+     <addaction name="actionBy_flag"/>
     </widget>
     <widget class="QMenu" name="menuFilter_LQ">
      <property name="title">
@@ -3936,6 +3937,9 @@
    <property name="shortcut">
     <string>Ctrl+Q</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
   </action>
   <action name="actionEdit_flags">
    <property name="checkable">
@@ -4001,6 +4005,9 @@
    </property>
    <property name="whatsThis">
     <string>About iTest</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="actionFrom_A_to_Z">
@@ -5093,6 +5100,24 @@
    </property>
    <property name="whatsThis">
     <string>Print a summary for the selected class</string>
+   </property>
+  </action>
+  <action name="actionBy_flag">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/images/flag.png</normaloff>:/images/images/flag.png</iconset>
+   </property>
+   <property name="text">
+    <string>By flag</string>
+   </property>
+   <property name="statusTip">
+    <string>Sort questions by flag</string>
+   </property>
+   <property name="whatsThis">
+    <string>Sort questions by flag</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+Right</string>
    </property>
   </action>
  </widget>

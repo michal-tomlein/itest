@@ -408,15 +408,20 @@ void MainWindow::sortQuestionsAscending() { sortQuestions(Qt::AscendingOrder); }
 
 void MainWindow::sortQuestionsDescending() { sortQuestions(Qt::DescendingOrder); }
 
-void MainWindow::sortQuestions(Qt::SortOrder order)
-{
-    QStringList list; QMap<QString, QListWidgetItem *> map; QListWidgetItem * item;
+void MainWindow::sortQuestionsByFlag() { sortQuestions(Qt::AscendingOrder, true); }
 
+void MainWindow::sortQuestions(Qt::SortOrder order, bool by_flag)
+{
     setDatabaseModified();
+
+    QStringList list; QMap<QString, QListWidgetItem *> map;
+    QListWidgetItem * item; QString item_text;
+    int l = makeString(current_db_f.size()).length();
 
     for (int i = 0; i < LQListWidget->count();) {
         item = LQListWidget->takeItem(i);
-        list << item->text(); map.insert(item->text(), item);
+        item_text = by_flag ? QString("%1%2").arg(current_db_questions.value(item)->flag(), l, 10, QLatin1Char('0')).arg(item->text()) : item->text();
+        list << item_text; map.insert(item_text, item);
     }
 
     if (order == Qt::AscendingOrder) {
@@ -426,7 +431,7 @@ void MainWindow::sortQuestions(Qt::SortOrder order)
     }
 
     for (int i = 0; i < list.size(); ++i)
-    { LQListWidget->insertItem(i, map.value(list.at(i))); }
+        LQListWidget->insertItem(i, map.value(list.at(i)));
 }
 
 void MainWindow::moveToTop() { moveQuestion(-2); }

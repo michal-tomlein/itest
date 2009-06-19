@@ -349,6 +349,7 @@ MainWindow::MainWindow()
 
     QObject::connect(actionFrom_A_to_Z, SIGNAL(triggered()), this, SLOT(sortQuestionsAscending()));
     QObject::connect(actionFrom_Z_to_A, SIGNAL(triggered()), this, SLOT(sortQuestionsDescending()));
+    QObject::connect(actionBy_flag, SIGNAL(triggered()), this, SLOT(sortQuestionsByFlag()));
 
     tbtnAddSVG->setDefaultAction(actionAdd_SVG);
     tbtnRemoveSVG->setDefaultAction(actionRemove_SVG);

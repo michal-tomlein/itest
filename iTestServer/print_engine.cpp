@@ -22,7 +22,7 @@
 PrintQuestionsDialogue::PrintQuestionsDialogue(MainWindow * parent):
 QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
 {
-    printq_parent = parent;
+        printq_parent = parent;
 	this->setWindowModality(Qt::WindowModal);
 	this->setAttribute(Qt::WA_DeleteOnClose);
 #ifdef Q_WS_MAC
@@ -191,50 +191,50 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
         printq_advanced->gridLayout()->setColumnStretch(2, 1);
 	printq_glayout->addWidget(printq_advanced, 3, 0);
 	printq_glayout->setMargin(6); printq_glayout->setSpacing(6);
-    int num_hidden = 0;
-    for (int i = 0; i < printq_parent->LQListWidget->count(); ++i) {
-        if (printq_parent->current_db_questions.value(printq_parent->LQListWidget->item(i))->isHidden()) { num_hidden++; }
-    }
-    printq_label_hidden->setText(printq_parent->actionShow_hidden->isChecked() ?
-        tr("%n hidden question(s) listed", "", num_hidden) : tr("%n hidden question(s) not listed", "", num_hidden));
+        int num_hidden = 0;
+        for (int i = 0; i < printq_parent->LQListWidget->count(); ++i) {
+                if (printq_parent->current_db_questions.value(printq_parent->LQListWidget->item(i))->isHidden()) { num_hidden++; }
+        }
+        printq_label_hidden->setText(printq_parent->actionShow_hidden->isChecked() ?
+                tr("%n hidden question(s) listed", "", num_hidden) : tr("%n hidden question(s) not listed", "", num_hidden));
 	togglePrintSelection(printq_rbtn_flags);
-    updateTestQnum();
+        updateTestQnum();
 	this->show();
 }
 
 void PrintQuestionsDialogue::togglePrintSelection(QAbstractButton * rbtn)
 {
-	if (rbtn->text() == tr("Flags")) {
+    if (rbtn->text() == tr("Flags")) {
         printq_excludelist->clear();
-		printq_includelist->clearContents();
+        printq_includelist->clearContents();
         printq_includelist->setRowCount(0);
         printq_includelist->setColumnCount(2);
         printq_includelist->setHorizontalHeaderLabels(QStringList() << tr("Flag name") << tr("Number of questions"));
         printq_includelist->horizontalHeader()->setResizeMode(1, QHeaderView::ResizeToContents);
         printq_includelist->horizontalHeader()->show();
-		QListWidgetItem * item;
-		for (int i = 0; i < printq_parent->current_db_f.size(); ++i) {
-			if (printq_parent->current_db_fe[i]) {
-				item = new QListWidgetItem(QString("%1 - %2").arg(i+1).arg(printq_parent->current_db_f[i]), printq_excludelist);
-				item->setData(Qt::UserRole, i);
-				MainWindow::setQuestionItemColour(item, i);
-			}
-		}
-	} else if (rbtn->text() == tr("Questions")) {
-		printq_excludelist->clear();
-		printq_includelist->clearContents();
+        QListWidgetItem * item;
+        for (int i = 0; i < printq_parent->current_db_f.size(); ++i) {
+            if (printq_parent->current_db_fe[i]) {
+                item = new QListWidgetItem(QString("%1 - %2").arg(i+1).arg(printq_parent->current_db_f[i]), printq_excludelist);
+                item->setData(Qt::UserRole, i);
+                MainWindow::setQuestionItemColour(item, i);
+            }
+        }
+    } else if (rbtn->text() == tr("Questions")) {
+        printq_excludelist->clear();
+        printq_includelist->clearContents();
         printq_includelist->setRowCount(0);
         printq_includelist->setColumnCount(1);
         printq_includelist->horizontalHeader()->hide();
-		QListWidgetItem * item;
-		for (int i = 0; i < printq_parent->LQListWidget->count(); ++i) {
-			if (!printq_parent->current_db_questions.value(printq_parent->LQListWidget->item(i))->isHidden() || printq_parent->actionShow_hidden->isChecked()) {
-				item = new QListWidgetItem(*printq_parent->LQListWidget->item(i));
-				item->setData(Qt::UserRole, i);
-				printq_excludelist->addItem(item);
-			}
-		}
-	}
+        QListWidgetItem * item;
+        for (int i = 0; i < printq_parent->LQListWidget->count(); ++i) {
+            if (!printq_parent->current_db_questions.value(printq_parent->LQListWidget->item(i))->isHidden() || printq_parent->actionShow_hidden->isChecked()) {
+                item = new QListWidgetItem(*printq_parent->LQListWidget->item(i));
+                item->setData(Qt::UserRole, i);
+                printq_excludelist->addItem(item);
+            }
+        }
+    }
     updateTestQnum();
 }
 
@@ -252,7 +252,7 @@ void PrintQuestionsDialogue::addQuestionToPrint(int row)
     QTableWidgetItem * item = MainWindow::toTableItem(printq_excludelist->takeItem(row), true);
     printq_includelist->setItem(printq_includelist->rowCount() - 1, 0, item);
     if (rbtngrpPrintqSelect->checkedButton()->text() == tr("Flags")) {
-    	int max = printq_parent->qnumForFlag(item->data(Qt::UserRole).toInt(), useGroups());
+        int max = printq_parent->qnumForFlag(item->data(Qt::UserRole).toInt(), useGroups());
         MTSpinBox * spb_qnum = new MTSpinBox(this);
         printq_includelist->setCellWidget(printq_includelist->rowCount() - 1, 1, spb_qnum);
         spb_qnum->setMaximum(max);
@@ -262,7 +262,7 @@ void PrintQuestionsDialogue::addQuestionToPrint(int row)
         QObject::connect(spb_qnum, SIGNAL(valueChanged(int)), this, SLOT(updateTestQnum()));
         printq_includelist->setRowHeight(printq_includelist->rowCount() - 1, 20);
     } else {
-    	printq_includelist->setRowHeight(printq_includelist->rowCount() - 1, 16);
+        printq_includelist->setRowHeight(printq_includelist->rowCount() - 1, 16);
     }
 }
 
@@ -277,9 +277,9 @@ void PrintQuestionsDialogue::removeQuestionToPrint()
 
 void PrintQuestionsDialogue::addAllQuestionsToPrint()
 {
-	for (int i = 0; i < printq_excludelist->count();) {
-		addQuestionToPrint(i);
-	}
+    for (int i = 0; i < printq_excludelist->count();) {
+        addQuestionToPrint(i);
+    }
     updateTestQnum();
 }
 
@@ -323,43 +323,43 @@ QString htmlForProgressBar(int, bool);
 
 bool MainWindow::loadPrinterSettings()
 {
-	QSettings settings("Michal Tomlein", "iTest");
-	printer_configured = settings.value("printer/configured", false).toBool();
-	printer_colorMode = settings.value("printer/colorMode").toInt();
-	printer_doubleSidedPrinting = settings.value("printer/doubleSidedPrinting").toBool();
-	printer_fontEmbeddingEnabled = settings.value("printer/fontEmbeddingEnabled").toBool();
-	printer_numCopies = settings.value("printer/numCopies").toInt();
-	printer_orientation = settings.value("printer/orientation").toInt();
-	printer_outputFileName = settings.value("printer/outputFileName").toString();
-	printer_outputFormat = settings.value("printer/outputFormat").toInt();
-	printer_pageOrder = settings.value("printer/pageOrder").toInt();
-	printer_pageSize = settings.value("printer/pageSize").toInt();
-	printer_paperSource = settings.value("printer/paperSource").toInt();
-	printer_printRange = settings.value("printer/printRange").toInt();
-	printer_printerName = settings.value("printer/printerName").toString();
-	printer_resolution = settings.value("printer/resolution").toInt();
-	return printer_configured;
+    QSettings settings("Michal Tomlein", "iTest");
+    printer_configured = settings.value("printer/configured", false).toBool();
+    printer_colorMode = settings.value("printer/colorMode").toInt();
+    printer_doubleSidedPrinting = settings.value("printer/doubleSidedPrinting").toBool();
+    printer_fontEmbeddingEnabled = settings.value("printer/fontEmbeddingEnabled").toBool();
+    printer_numCopies = settings.value("printer/numCopies").toInt();
+    printer_orientation = settings.value("printer/orientation").toInt();
+    printer_outputFileName = settings.value("printer/outputFileName").toString();
+    printer_outputFormat = settings.value("printer/outputFormat").toInt();
+    printer_pageOrder = settings.value("printer/pageOrder").toInt();
+    printer_pageSize = settings.value("printer/pageSize").toInt();
+    printer_paperSource = settings.value("printer/paperSource").toInt();
+    printer_printRange = settings.value("printer/printRange").toInt();
+    printer_printerName = settings.value("printer/printerName").toString();
+    printer_resolution = settings.value("printer/resolution").toInt();
+    return printer_configured;
 }
 
 void MainWindow::savePrinterSettings()
 {
-	QSettings settings("Michal Tomlein", "iTest");
-	settings.remove("printer");
-	settings.setValue("printer/configured", printer_configured);
-	if (!printer_configured) return;
-	settings.setValue("printer/colorMode", printer_colorMode);
-	settings.setValue("printer/doubleSidedPrinting", printer_doubleSidedPrinting);
-	settings.setValue("printer/fontEmbeddingEnabled", printer_fontEmbeddingEnabled);
-	settings.setValue("printer/numCopies", printer_numCopies);
-	settings.setValue("printer/orientation", printer_orientation);
-	settings.setValue("printer/outputFileName", printer_outputFileName);
-	settings.setValue("printer/outputFormat", printer_outputFormat);
-	settings.setValue("printer/pageOrder", printer_pageOrder);
-	settings.setValue("printer/pageSize", printer_pageSize);
-	settings.setValue("printer/paperSource", printer_paperSource);
-	settings.setValue("printer/printRange", printer_printRange);
-	settings.setValue("printer/printerName", printer_printerName);
-	settings.setValue("printer/resolution", printer_resolution);
+    QSettings settings("Michal Tomlein", "iTest");
+    settings.remove("printer");
+    settings.setValue("printer/configured", printer_configured);
+    if (!printer_configured) return;
+    settings.setValue("printer/colorMode", printer_colorMode);
+    settings.setValue("printer/doubleSidedPrinting", printer_doubleSidedPrinting);
+    settings.setValue("printer/fontEmbeddingEnabled", printer_fontEmbeddingEnabled);
+    settings.setValue("printer/numCopies", printer_numCopies);
+    settings.setValue("printer/orientation", printer_orientation);
+    settings.setValue("printer/outputFileName", printer_outputFileName);
+    settings.setValue("printer/outputFormat", printer_outputFormat);
+    settings.setValue("printer/pageOrder", printer_pageOrder);
+    settings.setValue("printer/pageSize", printer_pageSize);
+    settings.setValue("printer/paperSource", printer_paperSource);
+    settings.setValue("printer/printRange", printer_printRange);
+    settings.setValue("printer/printerName", printer_printerName);
+    settings.setValue("printer/resolution", printer_resolution);
 }
 
 bool MainWindow::printerConfiguration(QString & printer_config)
@@ -476,134 +476,134 @@ bool MainWindow::printerConfiguration(QString & printer_config)
 
 bool MainWindow::configurePrinter(bool review_config)
 {
-	if (!review_config) {
-		if (default_printer != NULL) delete default_printer;
-		default_printer = new QPrinter(QPrinter::HighResolution);
-	} else {
-		if (!loadPrinterConfiguration()) return false;
-		default_printer->setOutputFileName("");
-	}
-	QPrintDialog * dialogue = new QPrintDialog(default_printer, this);
-	dialogue->setWindowTitle(tr("Configure printer"));
-	if (dialogue->exec() != QDialog::Accepted) return false;
+    if (!review_config) {
+        if (default_printer != NULL) delete default_printer;
+        default_printer = new QPrinter(QPrinter::HighResolution);
+    } else {
+        if (!loadPrinterConfiguration()) return false;
+        default_printer->setOutputFileName("");
+    }
+    QPrintDialog * dialogue = new QPrintDialog(default_printer, this);
+    dialogue->setWindowTitle(tr("Configure printer"));
+    if (dialogue->exec() != QDialog::Accepted) return false;
 
-	printer_configured = true;
-	printer_colorMode = default_printer->colorMode();
-	printer_doubleSidedPrinting = default_printer->doubleSidedPrinting();
-	printer_fontEmbeddingEnabled = default_printer->fontEmbeddingEnabled();
-	printer_numCopies = default_printer->numCopies();
-	printer_orientation = default_printer->orientation();
-	printer_outputFileName = default_printer->outputFileName();
-	printer_outputFormat = default_printer->outputFormat();
-	printer_pageOrder = default_printer->pageOrder();
-	printer_pageSize = default_printer->pageSize();
-	printer_paperSource = default_printer->paperSource();
-	printer_printRange = default_printer->printRange();
-	printer_printerName = default_printer->printerName();
-	printer_resolution = default_printer->resolution();
-	savePrinterSettings();
+    printer_configured = true;
+    printer_colorMode = default_printer->colorMode();
+    printer_doubleSidedPrinting = default_printer->doubleSidedPrinting();
+    printer_fontEmbeddingEnabled = default_printer->fontEmbeddingEnabled();
+    printer_numCopies = default_printer->numCopies();
+    printer_orientation = default_printer->orientation();
+    printer_outputFileName = default_printer->outputFileName();
+    printer_outputFormat = default_printer->outputFormat();
+    printer_pageOrder = default_printer->pageOrder();
+    printer_pageSize = default_printer->pageSize();
+    printer_paperSource = default_printer->paperSource();
+    printer_printRange = default_printer->printRange();
+    printer_printerName = default_printer->printerName();
+    printer_resolution = default_printer->resolution();
+    savePrinterSettings();
     return true;
 }
 
 bool MainWindow::loadPrinterConfiguration()
 {
-	if (default_printer != NULL) delete default_printer;
-	default_printer = new QPrinter(QPrinter::HighResolution);
-	default_printer->setColorMode((QPrinter::ColorMode)printer_colorMode);
-	default_printer->setDoubleSidedPrinting(printer_doubleSidedPrinting);
-	default_printer->setFontEmbeddingEnabled(printer_fontEmbeddingEnabled);
-	default_printer->setNumCopies(printer_numCopies);
-	default_printer->setOrientation((QPrinter::Orientation)printer_orientation);
-	default_printer->setOutputFileName(printer_outputFileName);
-	default_printer->setOutputFormat((QPrinter::OutputFormat)printer_outputFormat);
-	default_printer->setPageOrder((QPrinter::PageOrder)printer_pageOrder);
-	default_printer->setPageSize((QPrinter::PageSize)printer_pageSize);
-	default_printer->setPaperSource((QPrinter::PaperSource)printer_paperSource);
-	default_printer->setPrintRange((QPrinter::PrintRange)printer_printRange);
-	default_printer->setPrinterName(printer_printerName);
-	default_printer->setResolution(printer_resolution);
-	return true;
+    if (default_printer != NULL) delete default_printer;
+    default_printer = new QPrinter(QPrinter::HighResolution);
+    default_printer->setColorMode((QPrinter::ColorMode)printer_colorMode);
+    default_printer->setDoubleSidedPrinting(printer_doubleSidedPrinting);
+    default_printer->setFontEmbeddingEnabled(printer_fontEmbeddingEnabled);
+    default_printer->setNumCopies(printer_numCopies);
+    default_printer->setOrientation((QPrinter::Orientation)printer_orientation);
+    default_printer->setOutputFileName(printer_outputFileName);
+    default_printer->setOutputFormat((QPrinter::OutputFormat)printer_outputFormat);
+    default_printer->setPageOrder((QPrinter::PageOrder)printer_pageOrder);
+    default_printer->setPageSize((QPrinter::PageSize)printer_pageSize);
+    default_printer->setPaperSource((QPrinter::PaperSource)printer_paperSource);
+    default_printer->setPrintRange((QPrinter::PrintRange)printer_printRange);
+    default_printer->setPrinterName(printer_printerName);
+    default_printer->setResolution(printer_resolution);
+    return true;
 }
 
 bool MainWindow::printClientResults(Client * client, QPrinter * printer)
 {
-	Student * student = new Student(client);
-	bool ok = printStudentResults(student, printer, current_db_testname, current_db_scoringsystem);
-	delete student;
-	return ok;
+    Student * student = new Student(client);
+    bool ok = printStudentResults(student, printer, current_db_testname, current_db_scoringsystem);
+    delete student;
+    return ok;
 }
 
 bool MainWindow::printStudentResults(Student * student, QPrinter * printer, const QString & session_name, ScoringSystem sys)
 {
-	if (!student->isReady()) return false;
-	QTextDocument doc; QString html; QTextStream out(&html);
-	QuestionItem * item; QTextDocument qdoc;
-	QString header = tr("Exam results"); header.append(QString(" - %1 - %2 - %3").arg(Qt::escape(session_name)).arg(Qt::escape(student->name())).arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm")));
-	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
-	out << header << endl << "</title><style type=\"text/css\">" << endl;
-	out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
-	out << ".default_text { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
-	out << ".bold_text { font-family: sans-serif; font-size: 7pt; color: black; font-weight: bold; }" << endl;
-	out << ".correct_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(69, 110, 14); }" << endl;
-	out << ".incorrect_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(204, 109, 0); }" << endl;
-	out << ".question { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
-	out << ".answer { font-family: sans-serif; font-size: 7pt; font-style: italic; color: black; }" << endl;
-	out << ".answered { text-decoration: underline; }" << endl;
-	out << ".correct { font-weight: bold; }" << endl;
-	out << "</style></head><body>" << endl;
-	out << "<p class=\"heading\" align=\"center\">" << endl << header << endl << "</p>" << endl;
-	QMapIterator<QString, QuestionAnswer> i(*(student->results())); QuestionAnswer qans;
-	while (i.hasNext()) {
-		i.next(); qans = i.value();
-		out << "<p><table border=\"0\" width=\"100%\" padding=\"0\" spacing=\"0\"><tr><td>" << endl;
-		if (qans.score(sys) > 0.0) {
-			out << "<div class=\"correct_qname\">" << endl;
-		} else {
-			out << "<div class=\"incorrect_qname\">" << endl;
-		}
-		item = NULL;
-		QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
-		while (q.hasNext()) { q.next();
-			if (q.value()->name() == i.key()) { item = q.value(); break; }
-		}
-		if (item != NULL) {
-			if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
-				out << "<div class=\"bold_text\">";
-				out << Qt::escape(current_db_f[item->flag()]) << ": </div>";
-			}
-			if (!item->group().isEmpty()) {
-				out << "[" << Qt::escape(item->group()) << "] ";
-			}
-			out << Qt::escape(item->name()) << endl << "</div></td><td align=\"right\" class=\"default_text\">" << endl;
+    if (!student->isReady()) return false;
+    QTextDocument doc; QString html; QTextStream out(&html);
+    QuestionItem * item; QTextDocument qdoc;
+    QString header = tr("Exam results"); header.append(QString(" - %1 - %2 - %3").arg(Qt::escape(session_name)).arg(Qt::escape(student->name())).arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm")));
+    out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
+    out << header << endl << "</title><style type=\"text/css\">" << endl;
+    out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
+    out << ".default_text { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
+    out << ".bold_text { font-family: sans-serif; font-size: 7pt; color: black; font-weight: bold; }" << endl;
+    out << ".correct_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(69, 110, 14); }" << endl;
+    out << ".incorrect_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(204, 109, 0); }" << endl;
+    out << ".question { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
+    out << ".answer { font-family: sans-serif; font-size: 7pt; font-style: italic; color: black; }" << endl;
+    out << ".answered { text-decoration: underline; }" << endl;
+    out << ".correct { font-weight: bold; }" << endl;
+    out << "</style></head><body>" << endl;
+    out << "<p class=\"heading\" align=\"center\">" << endl << header << endl << "</p>" << endl;
+    QMapIterator<QString, QuestionAnswer> i(*(student->results())); QuestionAnswer qans;
+    while (i.hasNext()) {
+        i.next(); qans = i.value();
+        out << "<p><table border=\"0\" width=\"100%\" padding=\"0\" spacing=\"0\"><tr><td>" << endl;
+        if (qans.score(sys) > 0.0) {
+            out << "<div class=\"correct_qname\">" << endl;
+        } else {
+            out << "<div class=\"incorrect_qname\">" << endl;
+        }
+        item = NULL;
+        QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
+        while (q.hasNext()) { q.next();
+            if (q.value()->name() == i.key()) { item = q.value(); break; }
+        }
+        if (item != NULL) {
+            if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
+                out << "<div class=\"bold_text\">";
+                out << Qt::escape(current_db_f[item->flag()]) << ": </div>";
+            }
+            if (!item->group().isEmpty()) {
+                out << "[" << Qt::escape(item->group()) << "] ";
+            }
+            out << Qt::escape(item->name()) << endl << "</div></td><td align=\"right\" class=\"default_text\">" << endl;
             out << tr("%1 out of %2").arg(qans.score(sys)).arg(qans.maximumScore(sys)) << "</td></table>" << endl;
-			out << "<div class=\"question\">" << endl;
-			qdoc.setHtml(item->text());
-			out << Qt::escape(qdoc.toPlainText()) << endl << "</div>" << endl;
+            out << "<div class=\"question\">" << endl;
+            qdoc.setHtml(item->text());
+            out << Qt::escape(qdoc.toPlainText()) << endl << "</div>" << endl;
             for (int a = 1; a <= item->numAnswers(); ++a) {
                 out << "<div class=\"answer";
                 if ((qans.answered() & Question::indexToAnswer(a)) == Question::indexToAnswer(a)) { out << " answered"; }
                 if (item->isAnswerAtIndexCorrect(a)) { out << " correct"; }
                 out << "\">\n" << Question::indexToLabel(a) << " " << Qt::escape(item->answerAtIndex(a)) << endl << "</div>" << endl;
             }
-		} else {
-			out << Qt::escape(i.key()) << endl << "</div></td><td align=\"right\" class=\"default_text\">" << endl;
+        } else {
+            out << Qt::escape(i.key()) << endl << "</div></td><td align=\"right\" class=\"default_text\">" << endl;
             out << tr("%1 out of %2").arg(qans.score(sys)).arg(qans.maximumScore(sys)) << "</td></table>" << endl;
-			out << "<div class=\"question\">" << endl;
-			out << tr("Not available") << endl << "</div>" << endl;
-			out << "<div class=\"answer\">" << endl;
-			out << tr("Answered:") << " " << Question::answerToString(qans.answered()) << "; ";
-			out << tr("Correct answer:") << " " << Question::answerToString(qans.correctAnswer());
-			out << endl << "</div>" << endl;
-		}
-		out << "</p>" << endl;
-	}
-	out << "<p class=\"default_text\" align=\"right\">" << endl;
-	out << "<b>" << tr("Total score:") << "</b> ";
-	out << tr("%1 out of %2").arg(student->score()).arg(student->maximumScore());
-	out << QString(" (%3)").arg(student->passed() ? tr("PASSED") : tr("FAILED"));
-	out << endl << "</p></body></html>" << endl;
-	doc.setHtml(html); printer->setDocName(header); doc.print(printer);
-	return true;
+            out << "<div class=\"question\">" << endl;
+            out << tr("Not available") << endl << "</div>" << endl;
+            out << "<div class=\"answer\">" << endl;
+            out << tr("Answered:") << " " << Question::answerToString(qans.answered()) << "; ";
+            out << tr("Correct answer:") << " " << Question::answerToString(qans.correctAnswer());
+            out << endl << "</div>" << endl;
+        }
+        out << "</p>" << endl;
+    }
+    out << "<p class=\"default_text\" align=\"right\">" << endl;
+    out << "<b>" << tr("Total score:") << "</b> ";
+    out << tr("%1 out of %2").arg(student->score()).arg(student->maximumScore());
+    out << QString(" (%3)").arg(student->passed() ? tr("PASSED") : tr("FAILED"));
+    out << endl << "</p></body></html>" << endl;
+    doc.setHtml(html); printer->setDocName(header); doc.print(printer);
+    return true;
 }
 
 void MainWindow::quickPrint()
@@ -626,7 +626,7 @@ void MainWindow::quickPrint()
 
 void MainWindow::print()
 {
-	if (mainStackedWidget->currentIndex() == 5 || mainStackedWidget->currentIndex() == 6) {
+    if (mainStackedWidget->currentIndex() == 5 || mainStackedWidget->currentIndex() == 6) {
         Student * student; QString printdialogue_caption; QString session_name; ScoringSystem sys;
         if (mainStackedWidget->currentIndex() == 5) {
             if (!SMLCListWidget->currentIndex().isValid()) return;
@@ -693,7 +693,7 @@ void MainWindow::print()
 
 void MainWindow::printAll()
 {
-	if (mainStackedWidget->currentIndex() == 5 || mainStackedWidget->currentIndex() == 6) {
+    if (mainStackedWidget->currentIndex() == 5 || mainStackedWidget->currentIndex() == 6) {
         if (current_db_session == NULL) { return; }
 
         QPrinter * printer = new QPrinter(QPrinter::HighResolution);
@@ -709,7 +709,7 @@ void MainWindow::printAll()
         int numfailed = 0, numsuccessful = 0;
         for (int i = 0; i < current_db_session->numStudents(); ++i) {
             if (printStudentResults(current_db_session->student(i), printer, current_db_session->name(), current_db_session->scoringSystem()))
-                { numsuccessful++; } else { numfailed++; }
+            { numsuccessful++; } else { numfailed++; }
         }
         statusBar()->showMessage(tr("%1 results printed successfully; %2 failed").arg(numsuccessful).arg(numfailed), 10000);
 
@@ -739,67 +739,67 @@ void MainWindow::printAll()
 
 void MainWindow::printSessionSummary()
 {
-	if (current_db_session == NULL) { return; }
+    if (current_db_session == NULL) { return; }
 
-	QPrinter * printer = new QPrinter(QPrinter::HighResolution);
-	QPrintDialog * dialogue = new QPrintDialog(printer, this);
-	dialogue->setWindowTitle(tr("Print session summary"));
-	if (dialogue->exec() != QDialog::Accepted) return;
+    QPrinter * printer = new QPrinter(QPrinter::HighResolution);
+    QPrintDialog * dialogue = new QPrintDialog(printer, this);
+    dialogue->setWindowTitle(tr("Print session summary"));
+    if (dialogue->exec() != QDialog::Accepted) return;
 
-	if (printSessionSummary(current_db_session, printer)) {
+    if (printSessionSummary(current_db_session, printer)) {
         statusBar()->showMessage(tr("Summary printed successfully"), 10000);
     } else {
         statusBar()->showMessage(tr("Failed to print the summary"), 10000);
     }
 
-	delete printer;
+    delete printer;
 }
 
 bool MainWindow::printSessionSummary(Session * session, QPrinter * printer)
 {
-	if (session == NULL) { return false; }
-	if (printer == NULL) { return false; }
-	QTextDocument doc; QString html; QTextStream out(&html);
-	QString header = tr("Session statistics and summary");
-	header.append(QString(" - %1 - %2").arg(Qt::escape(session->name())).arg(session->dateTimeToString()));
-	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
-	out << header << endl << "</title><style type=\"text/css\">" << endl;
-	out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
-	out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
-	out << ".bold_text { font-family: sans-serif; font-size: small; font-weight: bold; color: black; }" << endl;
-	out << ".student_passed { font-family: sans-serif; font-size: small; font-weight: bold; color: rgb(69, 110, 14); }" << endl;
-	out << ".student_failed { font-family: sans-serif; font-size: small; font-weight: bold; color: rgb(204, 109, 0); }" << endl;
-	out << "</style></head><body>" << endl;
-	out << "<p class=\"heading\" align=\"center\">" << endl << header << endl << "</p>" << endl;
-	out << "<p>\n<div class=\"bold_text\">" << endl << tr("Pass mark:");
-	out << "</div><br><table border=\"0\" width=\"100%\">" << endl;
-	out << "<tr><td width=\"30%\"><div class=\"bold_text\">" << endl;
-	out << tr("Total") << endl << "</div></td><td><div class=\"bold_text\">";
-	out << session->passMark().passMark() << endl << "</div></td></tr>" << endl;
-	for (int i = 0; i < session->passMark().count(); ++i) {
-		out << "<tr><td width=\"30%\"><div class=\"default_text\">" << endl;
-		out << current_db_f[session->passMark().condition(i)] << endl;
-		out << "</div></td><td><div class=\"default_text\">" << endl;
-		out << session->passMark().value(i) << endl << "</div></td></tr>" << endl;
-	}
-	out << "</table><br><table border=\"0\" width=\"100%\"><tr><td width=\"60%\" valign=\"middle\"><div class=\"bold_text\">" << endl;
-	out << tr("Average:") << endl;
-	out << "</div></td><td>" << htmlForProgressBar(session->average(), session->mostPassed());
+    if (session == NULL) { return false; }
+    if (printer == NULL) { return false; }
+    QTextDocument doc; QString html; QTextStream out(&html);
+    QString header = tr("Session statistics and summary");
+    header.append(QString(" - %1 - %2").arg(Qt::escape(session->name())).arg(session->dateTimeToString()));
+    out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
+    out << header << endl << "</title><style type=\"text/css\">" << endl;
+    out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
+    out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
+    out << ".bold_text { font-family: sans-serif; font-size: small; font-weight: bold; color: black; }" << endl;
+    out << ".student_passed { font-family: sans-serif; font-size: small; font-weight: bold; color: rgb(69, 110, 14); }" << endl;
+    out << ".student_failed { font-family: sans-serif; font-size: small; font-weight: bold; color: rgb(204, 109, 0); }" << endl;
+    out << "</style></head><body>" << endl;
+    out << "<p class=\"heading\" align=\"center\">" << endl << header << endl << "</p>" << endl;
+    out << "<p>\n<div class=\"bold_text\">" << endl << tr("Pass mark:");
+    out << "</div><br><table border=\"0\" width=\"100%\">" << endl;
+    out << "<tr><td width=\"30%\"><div class=\"bold_text\">" << endl;
+    out << tr("Total") << endl << "</div></td><td><div class=\"bold_text\">";
+    out << session->passMark().passMark() << endl << "</div></td></tr>" << endl;
+    for (int i = 0; i < session->passMark().count(); ++i) {
+        out << "<tr><td width=\"30%\"><div class=\"default_text\">" << endl;
+        out << current_db_f[session->passMark().condition(i)] << endl;
+        out << "</div></td><td><div class=\"default_text\">" << endl;
+        out << session->passMark().value(i) << endl << "</div></td></tr>" << endl;
+    }
+    out << "</table><br><table border=\"0\" width=\"100%\"><tr><td width=\"60%\" valign=\"middle\"><div class=\"bold_text\">" << endl;
+    out << tr("Average:") << endl;
+    out << "</div></td><td>" << htmlForProgressBar(session->average(), session->mostPassed());
     out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl;
-	out << session->average() << "%" << endl;
-	out << "</div></td></tr></table><br><div class=\"bold_text\">" << endl;
-	out << tr("Students:") << endl << "</div><br>" << endl;
-	for (int i = 0; i < session->numStudents(); ++i) {
-		out << "<table border=\"0\" width=\"100%\"><tr><td width=\"30%\" valign=\"middle\"><div class=\"" << (session->student(i)->passed() ? "student_passed" : "student_failed") << "\">" << endl;
-		out << Qt::escape(session->student(i)->name()) << endl;
-		out << "</div></td><td width=\"30%\" valign=\"middle\"><div class=\"default_text\">" << endl;
-		if (session->student(i)->isReady()) {
+    out << session->average() << "%" << endl;
+    out << "</div></td></tr></table><br><div class=\"bold_text\">" << endl;
+    out << tr("Students:") << endl << "</div><br>" << endl;
+    for (int i = 0; i < session->numStudents(); ++i) {
+        out << "<table border=\"0\" width=\"100%\"><tr><td width=\"30%\" valign=\"middle\"><div class=\"" << (session->student(i)->passed() ? "student_passed" : "student_failed") << "\">" << endl;
+        out << Qt::escape(session->student(i)->name()) << endl;
+        out << "</div></td><td width=\"30%\" valign=\"middle\"><div class=\"default_text\">" << endl;
+        if (session->student(i)->isReady()) {
             out << tr("%1 out of %2 (%3)").arg(session->student(i)->score()).arg(session->student(i)->maximumScore()).arg(session->student(i)->passed() ? tr("PASSED") : tr("FAILED")) << endl;
         } else {
             out << tr("NOT AVAILABLE") << endl;
         }
-		out << "</div></td><td>" << endl;
-		if (session->student(i)->isReady()) {
+        out << "</div></td><td>" << endl;
+        if (session->student(i)->isReady()) {
             int percentage = percentageFromValues(0.0, session->student(i)->maximumScore(), session->student(i)->score());
             out << htmlForProgressBar(percentage, session->student(i)->passed());
             out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl;
@@ -808,108 +808,110 @@ bool MainWindow::printSessionSummary(Session * session, QPrinter * printer)
             out << htmlForProgressBar(0, false);
             out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl << tr("N/A") << endl;
         }
-		out << "</div></td></tr></table>" << endl;
-	}
-	out << "</p></body></html>" << endl;
-	doc.setHtml(html); printer->setDocName(header); doc.print(printer);
-	return true;
+        out << "</div></td></tr></table>" << endl;
+    }
+    out << "</p></body></html>" << endl;
+    doc.setHtml(html); printer->setDocName(header); doc.print(printer);
+    return true;
 }
 
 void MainWindow::printClassSummary()
 {
-	if (current_db_class == NULL) { return; }
+    if (current_db_class == NULL) { return; }
 
-	QPrinter * printer = new QPrinter(QPrinter::HighResolution);
-	QPrintDialog * dialogue = new QPrintDialog(printer, this);
-	dialogue->setWindowTitle(tr("Print class summary"));
-	if (dialogue->exec() != QDialog::Accepted) return;
+    QPrinter * printer = new QPrinter(QPrinter::HighResolution);
+    QPrintDialog * dialogue = new QPrintDialog(printer, this);
+    dialogue->setWindowTitle(tr("Print class summary"));
+    if (dialogue->exec() != QDialog::Accepted) return;
 
-	if (printClassSummary(current_db_class, printer)) {
+    if (printClassSummary(current_db_class, printer)) {
         statusBar()->showMessage(tr("Summary printed successfully"), 10000);
     } else {
         statusBar()->showMessage(tr("Failed to print the summary"), 10000);
     }
 
-	delete printer;
+    delete printer;
 }
 
 bool MainWindow::printClassSummary(Class * cl, QPrinter * printer)
 {
-	if (cl == NULL) { return false; }
-	if (printer == NULL) { return false; }
-	QTextDocument doc; QString html; QTextStream out(&html);
-	QString header = tr("Class statistics and summary");
-	header.append(QString(" - %1").arg(Qt::escape(cl->name())));
+    if (cl == NULL) { return false; }
+    if (printer == NULL) { return false; }
+    QTextDocument doc; QString html; QTextStream out(&html);
+    QString header = tr("Class statistics and summary");
+    header.append(QString(" - %1").arg(Qt::escape(cl->name())));
     int average = cl->average(&current_db_sessions, &current_db_archivedsessions);
-	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
-	out << header << endl << "</title><style type=\"text/css\">" << endl;
-	out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
-	out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
-	out << ".bold_text { font-family: sans-serif; font-size: small; font-weight: bold; color: black; }" << endl;
-	out << ".student_passed { font-family: sans-serif; font-size: small; color: rgb(69, 110, 14); }" << endl;
-	out << ".student_failed { font-family: sans-serif; font-size: small; color: rgb(204, 109, 0); }" << endl;
-	out << "</style></head><body>" << endl;
-	out << "<p align=\"center\"><div class=\"heading\">" << endl;
+    out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
+    out << header << endl << "</title><style type=\"text/css\">" << endl;
+    out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
+    out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
+    out << ".bold_text { font-family: sans-serif; font-size: small; font-weight: bold; color: black; }" << endl;
+    out << ".student_passed { font-family: sans-serif; font-size: small; color: rgb(69, 110, 14); }" << endl;
+    out << ".student_failed { font-family: sans-serif; font-size: small; color: rgb(204, 109, 0); }" << endl;
+    out << "</style></head><body>" << endl;
+    out << "<p align=\"center\"><div class=\"heading\">" << endl;
     out << header << endl << "</div><div align=\"center\" class=\"bold_text\">" << endl;
     out << cl->firstYear() << " - " << cl->lastYear() << "</div></p><p>" << endl;
     out << "<table border=\"0\" width=\"100%\"><tr><td width=\"60%\" valign=\"middle\"><div class=\"bold_text\">" << endl;
-	out << tr("Class average:") << endl;
-	out << "</div></td><td>" << htmlForProgressBar(average, average >= 50);
-	out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl;
-	out << average << "%" << endl << "</div></td></tr></table>" << endl;
+    out << tr("Class average:") << endl;
+    out << "</div></td><td>" << htmlForProgressBar(average, average >= 50);
+    out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl;
+    out << average << "%" << endl << "</div></td></tr></table>" << endl;
     out << "<table border=\"0\" width=\"100%\"><tr><td width=\"60%\"><div class=\"bold_text\">" << endl;
     out << tr("Students:") << endl << "</div></td><td><div class=\"bold_text\">" << endl;
     out << tr("Average:") << endl << "</div></td><td></td></tr></table>" << endl;
-	for (int i = 0; i < cl->numMembers(); ++i) {
+    for (int i = 0; i < cl->numMembers(); ++i) {
         out << "<table border=\"0\" width=\"100%\"><tr><td width=\"60%\" valign=\"middle\"><div class=\"default_text\">" << endl;
         out << Qt::escape(cl->member(i)->name());
         average = cl->member(i)->average(&current_db_sessions, &current_db_archivedsessions);
         out << "</div></td><td>" << htmlForProgressBar(average, average >= 50);
         out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl;
         out << average << "%" << endl << "</div></td></tr></table>" << endl;
-	}
-	out << "</p></body></html>" << endl;
-	doc.setHtml(html); printer->setDocName(header); doc.print(printer);
-	return true;
+    }
+    out << "</p></body></html>" << endl;
+    doc.setHtml(html); printer->setDocName(header); doc.print(printer);
+    return true;
 }
 
 void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
 {
-	QPrinter * printer = new QPrinter(QPrinter::HighResolution);
-	QPrintDialog * dialogue = new QPrintDialog(printer, printq_widget);
-	dialogue->setWindowTitle(tr("Print questions"));
-	if (dialogue->exec() != QDialog::Accepted) return;
+    QPrinter * printer = new QPrinter(QPrinter::HighResolution);
+    QPrintDialog * dialogue = new QPrintDialog(printer, printq_widget);
+    dialogue->setWindowTitle(tr("Print questions"));
+    if (dialogue->exec() != QDialog::Accepted) return;
 
     bool flags_selected = printq_widget->flagsSelected();
-	bool questions_selected = printq_widget->questionsSelected();
+    bool questions_selected = printq_widget->questionsSelected();
     bool formatted = printq_widget->printFormatting();
-	bool print_statistics = printq_widget->printStatistics();
-	bool test = printq_widget->printTest();
-	bool print_graphics = printq_widget->printGraphics();
+    bool print_statistics = printq_widget->printStatistics();
+    bool test = printq_widget->printTest();
+    bool print_graphics = printq_widget->printGraphics();
     bool randomise = printq_widget->randomise();
     int numprintouts = printq_widget->numPrintouts();
     bool use_groups = printq_widget->useGroups();
     int numquestions = printq_widget->numQuestions();
     QList<int> used_items; PassMark passmark; int pm_v = 0;
-	for (int i = 0; i < printq_widget->includeTableWidget()->rowCount(); ++i) {
-		used_items << printq_widget->includeTableWidget()->item(i, 0)->data(Qt::UserRole).toInt();
-        pm_v = ((QSpinBox *)printq_widget->includeTableWidget()->cellWidget(i, 1))->value();
-        if (flags_selected && pm_v > 0) {
-            passmark.addCondition(printq_widget->includeTableWidget()->item(i, 0)->data(Qt::UserRole).toInt(), 0, pm_v);
+    for (int i = 0; i < printq_widget->includeTableWidget()->rowCount(); ++i) {
+        used_items << printq_widget->includeTableWidget()->item(i, 0)->data(Qt::UserRole).toInt();
+        if (flags_selected) {
+            pm_v = ((QSpinBox *)printq_widget->includeTableWidget()->cellWidget(i, 1))->value();
+            if (flags_selected && pm_v > 0) {
+                passmark.addCondition(printq_widget->includeTableWidget()->item(i, 0)->data(Qt::UserRole).toInt(), 0, pm_v);
+            }
         }
-	}
+    }
     QList<Question *> questions;
     for (int i = 0; i < LQListWidget->count(); ++i) {
         if (flags_selected) {
             QuestionItem * item = current_db_questions.value(LQListWidget->item(i));
-			if (used_items.contains(item->flag()) && (!item->isHidden() || actionShow_hidden->isChecked())) {
-				questions << item;
-			}
-		} else if (questions_selected) {
-			if (used_items.contains(i)) {
-				questions << current_db_questions.value(LQListWidget->item(i));
-			}
-		}
+            if (used_items.contains(item->flag()) && (!item->isHidden() || actionShow_hidden->isChecked())) {
+                questions << item;
+            }
+        } else if (questions_selected) {
+            if (used_items.contains(i)) {
+                questions << current_db_questions.value(LQListWidget->item(i));
+            }
+        }
     }
     QFileInfo file_info; bool print_to_file = false; bool native_format = false;
     int len = makeString(numprintouts).length();
@@ -980,67 +982,67 @@ void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
         }
         doc.setHtml(html); printer->setDocName(tr("Key")); doc.print(printer);
     }
-	delete printer;
-	return;
+    delete printer;
+    return;
 }
 
 QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & doc, bool test, bool formatted, bool print_statistics, bool print_graphics)
 {
     if (item == NULL) { return ""; }
-	QString html; QTextStream out(&html);
-	out << "<div class=\"heading\" align=\"center\">" << endl;
+    QString html; QTextStream out(&html);
+    out << "<div class=\"heading\" align=\"center\">" << endl;
     if (n != 0) { out << "(" << n << ") "; }
-	if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
-		out << Qt::escape(current_db_f[item->flag()]) << ": ";
-	}
-	if (!item->group().isEmpty()) {
-		out << "[" << Qt::escape(item->group()) << "] ";
-	}
-	out << Qt::escape(item->name()) << endl << "</div>" << endl;
-	if (!test) {
-	    out << "<table border=\"0\" width=\"100%\">" << endl;
-	    out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-	    out << tr("Name:") << "</div></td><td><div class=\"default_text\">" << endl;
-	    out << Qt::escape(item->name()) << "</div></td></tr>" << endl;
-	    if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
-	    	out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-	    	out << tr("Flag:") << "</div></td><td><div class=\"default_text\">" << endl;
-	    	out << Qt::escape(current_db_f[item->flag()]) << "</div></td></tr>" << endl;
-	    }
-	    if (!item->group().isEmpty()) {
-	    	out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-	    	out << tr("Group:") << "</div></td><td><div class=\"default_text\">" << endl;
-	    	out << Qt::escape(item->group()) << "</div></td></tr>" << endl;
-	    }
-	    out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-	    out << tr("Difficulty:") << "</div></td><td><div class=\"default_text\">" << endl;
-	    switch (item->difficulty()) {
-	    	case 0: out << tr("Easy"); break;
-	    	case 1: out << tr("Medium"); break;
-	    	case 2: out << tr("Difficult"); break;
-	    	default: out << tr("Unknown"); break;
-	    }
-	    out << "</div></td></tr>" << endl;
-	    if (item->numSvgItems() > 0 && !print_graphics) {
-	    	out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-	    	out << tr("Attachments (SVG):") << "</div></td><td><div class=\"default_text\">" << endl;
-	    	for (int i = 0; i < item->numSvgItems(); ++i) {
-	    	    out << Qt::escape(item->svgItem(i)->text()) << "<b>; </b>";
-	    	}
-	    	out << "</div></td></tr>" << endl;
-	    }
-	    out << "</table>" << endl;
-	}
-	if (formatted) {
-	    out << item->text() << endl;
-	} else {
-	    QTextDocument doc; doc.setHtml(item->text());
+    if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
+        out << Qt::escape(current_db_f[item->flag()]) << ": ";
+    }
+    if (!item->group().isEmpty()) {
+        out << "[" << Qt::escape(item->group()) << "] ";
+    }
+    out << Qt::escape(item->name()) << endl << "</div>" << endl;
+    if (!test) {
+        out << "<table border=\"0\" width=\"100%\">" << endl;
+        out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+        out << tr("Name:") << "</div></td><td><div class=\"default_text\">" << endl;
+        out << Qt::escape(item->name()) << "</div></td></tr>" << endl;
+        if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
+            out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+            out << tr("Flag:") << "</div></td><td><div class=\"default_text\">" << endl;
+            out << Qt::escape(current_db_f[item->flag()]) << "</div></td></tr>" << endl;
+        }
+        if (!item->group().isEmpty()) {
+            out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+            out << tr("Group:") << "</div></td><td><div class=\"default_text\">" << endl;
+            out << Qt::escape(item->group()) << "</div></td></tr>" << endl;
+        }
+        out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+        out << tr("Difficulty:") << "</div></td><td><div class=\"default_text\">" << endl;
+        switch (item->difficulty()) {
+            case 0: out << tr("Easy"); break;
+            case 1: out << tr("Medium"); break;
+            case 2: out << tr("Difficult"); break;
+            default: out << tr("Unknown"); break;
+        }
+        out << "</div></td></tr>" << endl;
+        if (item->numSvgItems() > 0 && !print_graphics) {
+            out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+            out << tr("Attachments (SVG):") << "</div></td><td><div class=\"default_text\">" << endl;
+            for (int i = 0; i < item->numSvgItems(); ++i) {
+                out << Qt::escape(item->svgItem(i)->text()) << "<b>; </b>";
+            }
+            out << "</div></td></tr>" << endl;
+        }
+        out << "</table>" << endl;
+    }
+    if (formatted) {
+        out << item->text() << endl;
+    } else {
+        QTextDocument doc; doc.setHtml(item->text());
         out << Qt::escape(doc.toPlainText()) << endl;
-	}
-	if (item->numSvgItems() > 0 && print_graphics) {
-	    out << "<table border=\"0\" width=\"100%\"><tr>" << endl;
-	    for (int i = 0; i < item->numSvgItems(); ++i) {
-	        QSvgRenderer svgrenderer(item->svgItem(i)->svg().toUtf8());
+    }
+    if (item->numSvgItems() > 0 && print_graphics) {
+        out << "<table border=\"0\" width=\"100%\"><tr>" << endl;
+        for (int i = 0; i < item->numSvgItems(); ++i) {
+            QSvgRenderer svgrenderer(item->svgItem(i)->svg().toUtf8());
             if (!svgrenderer.isValid()) { out << "<td></td>" << endl; continue; }
             QSize svg_size = svgrenderer.defaultSize();
             svg_size.scale(128, 128, Qt::KeepAspectRatio);
@@ -1054,15 +1056,15 @@ QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & 
             svgrenderer.render(&painter);
             QUrl resource_url(QString("%1-%2-%3.qpixmap").arg(item->name()).arg(i).arg(qrand()));
             doc.addResource(QTextDocument::ImageResource, resource_url, pixmap);
-	        out << "<td align=\"center\"><img src=\"" << resource_url.toString(QUrl::None) << "\"></td>" << endl;
-	    }
-	    out << "</tr><tr>" << endl;
-	    for (int i = 0; i < item->numSvgItems(); ++i) {
-	        out << "<td align=\"center\"><div class=\"default_text\">";
-	        out << Qt::escape(item->svgItem(i)->text()) << "</div></td>" << endl;
-	    }
-	    out << "</tr></table>" << endl;
-	}
+            out << "<td align=\"center\"><img src=\"" << resource_url.toString(QUrl::None) << "\"></td>" << endl;
+        }
+        out << "</tr><tr>" << endl;
+        for (int i = 0; i < item->numSvgItems(); ++i) {
+            out << "<td align=\"center\"><div class=\"default_text\">";
+            out << Qt::escape(item->svgItem(i)->text()) << "</div></td>" << endl;
+        }
+        out << "</tr></table>" << endl;
+    }
     for (int a = 1; a <= item->numAnswers(); ++a) {
         if (!item->answerAtIndex(a).isEmpty() || item->isAnswerAtIndexCorrect(a)) {
             out << "<div class=\"answer";
@@ -1070,51 +1072,51 @@ QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & 
             out << "\">\n" << Question::indexToLabel(a) << " " << Qt::escape(item->answerAtIndex(a)) << endl << "</div>" << endl;
         }
     }
-	if (print_statistics) {
-	    if (item->incorrectAnsCount() != 0 || item->correctAnsCount() != 0) {
-	        out << "<br><div class=\"bold_text\">" << tr("Statistics:") << "</div>" << endl;
-	        out << "<table border=\"0\" width=\"100%\">" << endl;
-	        out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
-	        out << tr("Number of correct answers:") << "</div></td><td><div class=\"default_text\">" << endl;
-	        out << item->correctAnsCount() << "</div></td></tr>" << endl;
-	        out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
-	        out << tr("Number of incorrect answers:") << "</div></td><td><div class=\"default_text\">" << endl;
-	        out << item->incorrectAnsCount() << "</div></td></tr>" << endl;
-	        out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
-	        out << tr("Calculated difficulty:") << "</div></td><td><div class=\"default_text\">" << endl;
-	        switch (item->recommendedDifficulty()) {
-	    	    case -1: out << tr("Unavailable"); break;
-	    	    case 0: out << tr("Easy"); break;
-	    	    case 1: out << tr("Medium"); break;
-	    	    case 2: out << tr("Difficult"); break;
-	    	    default: out << tr("Unavailable"); break;
-	        }
-	        out << "</div></td></tr></table>" << endl;
-	    }
-	}
-	out << "</p><hr noshade=\"noshade\" size=\"1\">" << endl;
-	return html;
+    if (print_statistics) {
+        if (item->incorrectAnsCount() != 0 || item->correctAnsCount() != 0) {
+            out << "<br><div class=\"bold_text\">" << tr("Statistics:") << "</div>" << endl;
+            out << "<table border=\"0\" width=\"100%\">" << endl;
+            out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
+            out << tr("Number of correct answers:") << "</div></td><td><div class=\"default_text\">" << endl;
+            out << item->correctAnsCount() << "</div></td></tr>" << endl;
+            out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
+            out << tr("Number of incorrect answers:") << "</div></td><td><div class=\"default_text\">" << endl;
+            out << item->incorrectAnsCount() << "</div></td></tr>" << endl;
+            out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
+            out << tr("Calculated difficulty:") << "</div></td><td><div class=\"default_text\">" << endl;
+            switch (item->recommendedDifficulty()) {
+                case -1: out << tr("Unavailable"); break;
+                case 0: out << tr("Easy"); break;
+                case 1: out << tr("Medium"); break;
+                case 2: out << tr("Difficult"); break;
+                default: out << tr("Unavailable"); break;
+            }
+            out << "</div></td></tr></table>" << endl;
+        }
+    }
+    out << "</p><hr noshade=\"noshade\" size=\"1\">" << endl;
+    return html;
 }
 
 QString MainWindow::htmlForClassMember(ClassMember * mem)
 {
     QString html; QTextStream out(&html); int average = mem->average(&current_db_sessions, &current_db_archivedsessions);
-	out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
-	out << tr("Statistics for %1").arg(Qt::escape(mem->name())) << endl << "</title><style type=\"text/css\">" << endl;
-	out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
-	out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
-	out << ".bold_text { font-family: sans-serif; font-size: small; font-weight: bold; color: black; }" << endl;
-	out << ".student_passed { font-family: sans-serif; font-size: small; color: rgb(69, 110, 14); }" << endl;
-	out << ".student_failed { font-family: sans-serif; font-size: small; color: rgb(204, 109, 0); }" << endl;
-	out << "</style></head><body>" << endl;
-	out << "<p align=\"center\"><div class=\"heading\">" << endl;
+    out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
+    out << tr("Statistics for %1").arg(Qt::escape(mem->name())) << endl << "</title><style type=\"text/css\">" << endl;
+    out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
+    out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
+    out << ".bold_text { font-family: sans-serif; font-size: small; font-weight: bold; color: black; }" << endl;
+    out << ".student_passed { font-family: sans-serif; font-size: small; color: rgb(69, 110, 14); }" << endl;
+    out << ".student_failed { font-family: sans-serif; font-size: small; color: rgb(204, 109, 0); }" << endl;
+    out << "</style></head><body>" << endl;
+    out << "<p align=\"center\"><div class=\"heading\">" << endl;
     out << tr("Statistics for %1").arg(Qt::escape(mem->name())) << endl << "</div><div align=\"center\" class=\"bold_text\">" << endl;
     out << current_db_class->firstYear() << " - " << current_db_class->lastYear() << ": " << Qt::escape(current_db_class->name()) << "</div></p><p>" << endl;
     out << "<table border=\"0\" width=\"100%\"><tr><td width=\"60%\" valign=\"middle\"><div class=\"bold_text\">" << endl;
-	out << tr("Average:") << endl;
-	out << "</div></td><td>" << htmlForProgressBar(average, average >= 50);
-	out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl;
-	out << average << "%" << endl << "</div></td></tr></table>" << endl;
+    out << tr("Average:") << endl;
+    out << "</div></td><td>" << htmlForProgressBar(average, average >= 50);
+    out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl;
+    out << average << "%" << endl << "</div></td></tr></table>" << endl;
     out << "<table border=\"0\" width=\"100%\"><tr><td width=\"35%\"><div class=\"bold_text\">" << endl;
     out << tr("Test sessions attended:") << endl << "</div></td><td width=\"25%\"><div class=\"bold_text\">" << endl;
     out << tr("Under the name:") << endl << "</div></td><td><div class=\"bold_text\">" << endl;
@@ -1142,8 +1144,8 @@ QString MainWindow::htmlForClassMember(ClassMember * mem)
         else { out << htmlForProgressBar(0, true); }
         out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl;
         out << percentage << "%" << endl << "</div></td></tr></table>" << endl;
-	}
-	out << "</p></body></html>" << endl;
+    }
+    out << "</p></body></html>" << endl;
     return html;
 }
 
@@ -1161,6 +1163,6 @@ QString htmlForProgressBar(int percentage, bool green)
         out << (green ? "yellowgreen" : "#FF9419"); // "#456E0E" : "#CC6D00"
         out << "\" width=\"" << percentage << "%\"></td>" << endl;
     }
-	out << (percentage >= 100 ? "</tr>" : "<td></td></tr>") << "</table>" << endl;
+    out << (percentage >= 100 ? "</tr>" : "<td></td></tr>") << "</table>" << endl;
     return html;
 }
