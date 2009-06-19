@@ -1,7 +1,7 @@
 /******************************************************************************
  *                                    iTest                                   *
  * -------------------------------------------------------------------------- *
- * Version:      1.4.1                                                        *
+ * Version:      1.4.2                                                        *
  * Qt version:   4.3.0 or higher required                                     *
  * -------------------------------------------------------------------------- *
  * iTest is a Qt application consisting of a Server and a Client designed for *
@@ -30,12 +30,13 @@ int main(int argc, char *argv[])
 	}
 
 	MainWindow * itest_window = new MainWindow;
-    app.setAppMainWindow(itest_window);
+        app.setAppMainWindow(itest_window);
 	itest_window->showFullScreen();
 	return app.exec();
 }
 
 // ---------------------------- version changelog: -----------------------------
+// version 1.4.2 - a minor update with some new features
 /* version 1.4.1 - a minor update with some new features
                  - added Latvian translation
                  - number of flags now unlimited
