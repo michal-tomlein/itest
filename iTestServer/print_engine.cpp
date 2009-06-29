@@ -129,13 +129,13 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
 	printq_glayout->addLayout(printq_hlayout2, 2, 0);
 	    MTAdvancedGroupBox * printq_advanced = new MTAdvancedGroupBox(this);
 	        printq_advanced_statistics = new QCheckBox(tr("Print statistics"), this);
-	        printq_advanced_statistics->setChecked(true);
+                printq_advanced_statistics->setChecked(false);
 	    printq_advanced->addWidget(printq_advanced_statistics, 0, 0, 1, 2);
 	        printq_advanced_formatting = new QCheckBox(tr("Print formatted questions"), this);
 	        printq_advanced_formatting->setChecked(true);
 	    printq_advanced->addWidget(printq_advanced_formatting, 1, 0, 1, 2);
             printq_advanced_graphics = new QCheckBox(tr("Print graphics"), this);
-	        printq_advanced_graphics->setChecked(false);
+                printq_advanced_graphics->setChecked(true);
 	    printq_advanced->addWidget(printq_advanced_graphics, 2, 0, 1, 2);
 	        printq_advanced_test = new QCheckBox(tr("Print a test (do not highlight the correct answers)"), this);
 	        printq_advanced_test->setChecked(false);
@@ -930,7 +930,7 @@ void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
         out << ".heading { font-family: sans-serif; font-size: small; font-weight: bold; color: black; }" << endl;
         out << ".default_text { font-family: sans-serif; font-size: small; color: black; }" << endl;
         out << ".bold_text { font-family: sans-serif; font-size: small; font-weight: bold; color: black; }" << endl;
-        out << ".answer { font-family: sans-serif; font-size: small; font-style: italic; color: black; }" << endl;
+        out << ".answer { font-family: sans-serif; font-size: " << (test ? "medium" : "small") << "; font-style: italic; color: black; }" << endl;
         out << ".correct { font-weight: bold; }" << endl;
         out << "</style></head><body>" << endl;
         if (test) { out << QString("<div class=\"heading\" align=\"center\">%1#%2</div><hr noshade=\"noshade\" size=\"1\">").arg(timestamp).arg(i + 1, len, 10, QChar('0')) << endl; }
@@ -991,6 +991,12 @@ QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & 
     if (item == NULL) { return ""; }
     QString html; QTextStream out(&html);
     out << "<div class=\"heading\" align=\"center\">" << endl;
+    if (!test) {
+        QPixmap difficulty_icon = iconForDifficulty(item->difficulty()).pixmap(16, 16);
+        QUrl resource_url(QString("%1-difficulty-icon.qpixmap").arg(item->name()));
+        doc.addResource(QTextDocument::ImageResource, resource_url, difficulty_icon);
+        out << "<img src=\"" << resource_url.toString(QUrl::None) << "\" width=\"10\" height=\"10\"> " << endl;
+    }
     if (n != 0) { out << "(" << n << ") "; }
     if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
         out << Qt::escape(current_db_f[item->flag()]) << ": ";
@@ -999,47 +1005,25 @@ QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & 
         out << "[" << Qt::escape(item->group()) << "] ";
     }
     out << Qt::escape(item->name()) << endl << "</div>" << endl;
-    if (!test) {
-        out << "<table border=\"0\" width=\"100%\">" << endl;
-        out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-        out << tr("Name:") << "</div></td><td><div class=\"default_text\">" << endl;
-        out << Qt::escape(item->name()) << "</div></td></tr>" << endl;
-        if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
-            out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-            out << tr("Flag:") << "</div></td><td><div class=\"default_text\">" << endl;
-            out << Qt::escape(current_db_f[item->flag()]) << "</div></td></tr>" << endl;
-        }
-        if (!item->group().isEmpty()) {
-            out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-            out << tr("Group:") << "</div></td><td><div class=\"default_text\">" << endl;
-            out << Qt::escape(item->group()) << "</div></td></tr>" << endl;
-        }
-        out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-        out << tr("Difficulty:") << "</div></td><td><div class=\"default_text\">" << endl;
-        switch (item->difficulty()) {
-            case 0: out << tr("Easy"); break;
-            case 1: out << tr("Medium"); break;
-            case 2: out << tr("Difficult"); break;
-            default: out << tr("Unknown"); break;
-        }
-        out << "</div></td></tr>" << endl;
-        if (item->numSvgItems() > 0 && !print_graphics) {
-            out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
-            out << tr("Attachments (SVG):") << "</div></td><td><div class=\"default_text\">" << endl;
-            for (int i = 0; i < item->numSvgItems(); ++i) {
-                out << Qt::escape(item->svgItem(i)->text()) << "<b>; </b>";
-            }
-            out << "</div></td></tr>" << endl;
-        }
-        out << "</table>" << endl;
-    }
     if (formatted) {
         out << item->text() << endl;
     } else {
         QTextDocument doc; doc.setHtml(item->text());
         out << Qt::escape(doc.toPlainText()) << endl;
     }
-    if (item->numSvgItems() > 0 && print_graphics) {
+    if (!test && !print_graphics && item->numSvgItems()) {
+        out << "<table border=\"0\" width=\"100%\">" << endl;
+        out << "<tr><td width=\"40%\"><div class=\"bold_text\">" << endl;
+        out << tr("Attachments (SVG):") << "</div></td><td><div class=\"default_text\">" << endl;
+        QStringList attachments;
+        for (int i = 0; i < item->numSvgItems(); ++i) {
+            attachments << Qt::escape(item->svgItem(i)->text());
+        }
+        out << attachments.join("<b>; </b>");
+        out << "</div></td></tr>" << endl;
+        out << "</table>" << endl;
+    }
+    if (print_graphics && item->numSvgItems()) {
         out << "<table border=\"0\" width=\"100%\"><tr>" << endl;
         for (int i = 0; i < item->numSvgItems(); ++i) {
             QSvgRenderer svgrenderer(item->svgItem(i)->svg().toUtf8());
@@ -1069,21 +1053,23 @@ QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & 
         if (!item->answerAtIndex(a).isEmpty() || item->isAnswerAtIndexCorrect(a)) {
             out << "<div class=\"answer";
             if (item->isAnswerAtIndexCorrect(a) && !test) { out << " correct"; }
-            out << "\">\n" << Question::indexToLabel(a) << " " << Qt::escape(item->answerAtIndex(a)) << endl << "</div>" << endl;
+            out << "\">\n" << (test ? "<span style=\"font-style: normal;\">[&nbsp;&nbsp;&nbsp;]</span> " : "");
+            out << Question::indexToLabel(a) << " " << Qt::escape(item->answerAtIndex(a)) << endl << "</div>" << endl;
         }
     }
     if (print_statistics) {
-        if (item->incorrectAnsCount() != 0 || item->correctAnsCount() != 0) {
+        if (item->incorrectAnsCount() || item->correctAnsCount()) {
             out << "<br><div class=\"bold_text\">" << tr("Statistics:") << "</div>" << endl;
             out << "<table border=\"0\" width=\"100%\">" << endl;
-            out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
-            out << tr("Number of correct answers:") << "</div></td><td><div class=\"default_text\">" << endl;
-            out << item->correctAnsCount() << "</div></td></tr>" << endl;
-            out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
-            out << tr("Number of incorrect answers:") << "</div></td><td><div class=\"default_text\">" << endl;
-            out << item->incorrectAnsCount() << "</div></td></tr>" << endl;
-            out << "<tr><td width=\"40%\"><div class=\"default_text\">" << endl;
-            out << tr("Calculated difficulty:") << "</div></td><td><div class=\"default_text\">" << endl;
+            out << "<tr><td><div class=\"default_text\">" << endl;
+            out << tr("Number of correct answers:") << "</div></td>" << endl;
+            out << "<td><div class=\"default_text\">" << endl;
+            out << tr("Number of incorrect answers:") << "</div></td>" << endl;
+            out << "<td><div class=\"default_text\">" << endl;
+            out << tr("Calculated difficulty:") << "</div></td></tr>" << endl;
+            out << "<tr><td><div class=\"default_text\">" << item->correctAnsCount() << endl;
+            out << "</div></td><td><div class=\"default_text\">" << item->incorrectAnsCount() << endl;
+            out << "</div></td><td><div class=\"default_text\">" << endl;
             switch (item->recommendedDifficulty()) {
                 case -1: out << tr("Unavailable"); break;
                 case 0: out << tr("Easy"); break;
