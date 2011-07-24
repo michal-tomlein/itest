@@ -78,6 +78,7 @@ void QuestionWidget::init(QuestionItem * item, bool highlight_correct_answers)
     qw_lbl_explanation->setText(item->explanation());
     qw_lbl_explanation->setVisible(!item->explanation().isEmpty());
     QFont font; QList<int> ans_order = item->answerOrder();
+    font.setPointSize(14);
     for (int i = 0; i < qw_lbl_answers.count(); ++i) {
         qw_lbl_answers.at(i)->setText(QString("%1 %2").arg(Question::indexToLabel(i + 1)).arg(item->answerAtIndex(ans_order.at(i) + 1)));
         font.setBold(item->isAnswerAtIndexCorrect(ans_order.at(i) + 1) && highlight_correct_answers);
