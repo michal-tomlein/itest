@@ -74,9 +74,9 @@ ICON          = images/itest.icns
 icons.path    = Contents/Resources
 icons.files   = ../itdb.icns ../itcl.icns
 QMAKE_BUNDLE_DATA += icons
-CONFIG       += x86 ppc
-QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.4
-QMAKE_MAC_SDK = /Developer/SDKs/MacOSX10.4u.sdk
+CONFIG       += x86_64
+QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.5
+QMAKE_MAC_SDK = /Developer/SDKs/MacOSX10.6.sdk
 }
 unix {
 OBJECTS_DIR   = .build.unix
