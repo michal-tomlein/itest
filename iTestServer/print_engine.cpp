@@ -920,7 +920,7 @@ void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
         print_to_file = true;
         native_format = printer->outputFormat() == QPrinter::NativeFormat;
     }
-    QList<int> randlist[numprintouts]; QString timestamp = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm");
+    QVector<QList<int> > randlist(numprintouts); QString timestamp = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm");
     for (int i = 0; i < numprintouts; ++i) {
         if (randomise) { randlist[i] = Question::randomise(questions, passmark, use_groups, numquestions, i); }
         else { for (int q = 0; q < questions.count(); ++q) { randlist[i] << q; } }

@@ -17,8 +17,21 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
-#include <cmath>
 #include "pass_mark.h"
+
+int pow(int base, int exp)
+{
+    int result = 1;
+
+    while (exp) {
+        if (exp & 1)
+            result *= base;
+        exp >>= 1;
+        base *= base;
+    }
+
+    return result;
+}
 
 Question::Question(const QString & name)
 {
@@ -334,7 +347,7 @@ QList<int> Question::randomise(QList<Question *> questions, PassMark passmark, b
     	}
     } else {
     	if (progress != NULL) { progress->setMaximum(questions.size() + passmark.count()); }
-    	QList<Question *> qflist[passmark.count()];
+    	QVector<QList<Question *> > qflist(passmark.count());
     	QList<Question *> unusedqlist; int x;
     	for (int i = 0; i < questions.size(); ++i) {
     		if (passmark.conditionIndex(questions.at(i)->flag()) != -1) {

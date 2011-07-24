@@ -164,7 +164,7 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selec
     } else if (flags_selected) {
     	QSet<QString> groups; QList<int> used_items;
         int include_count = tw_include->rowCount();
-    	int max[include_count]; QSet<QString> groups_i[include_count];
+        QVector<int> max(include_count); QVector<QSet<QString> > groups_i(include_count);
         for (int i = 0; i < include_count; ++i) {
             used_items << tw_include->item(i, 0)->data(Qt::UserRole).toInt();
             max[i] = 0;
