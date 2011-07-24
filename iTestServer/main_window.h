@@ -211,65 +211,65 @@ private:
     QVector<bool> current_db_fe; QVector<QString> current_db_f;
     // UI-RELATED
     void closeEvent(QCloseEvent *);
-	QHttp * http; QBuffer * http_buffer;
+    QHttp * http; QBuffer * http_buffer;
     // SERVER-RELATED
     QTcpServer * tcpServer;
     QMap<QListWidgetItem *, Client *> current_db_clients;
     QList<QByteArray> current_db_test;
     QString current_db_testdate;
-	QString current_db_testname;
+    QString current_db_testname;
     ScoringSystem current_db_scoringsystem;
     // PRINTER-RELATED
     QPrinter * default_printer; bool printer_configured;
-	int printer_colorMode; bool printer_doubleSidedPrinting;
-	bool printer_fontEmbeddingEnabled; int printer_numCopies;
-	int printer_orientation; QString printer_outputFileName;
-	int printer_outputFormat; int printer_pageOrder;
-	int printer_pageSize; int printer_paperSource;
-	int printer_printRange; QString printer_printerName;
-	int printer_resolution;
+    int printer_colorMode; bool printer_doubleSidedPrinting;
+    bool printer_fontEmbeddingEnabled; int printer_numCopies;
+    int printer_orientation; QString printer_outputFileName;
+    int printer_outputFormat; int printer_pageOrder;
+    int printer_pageSize; int printer_paperSource;
+    int printer_printRange; QString printer_printerName;
+    int printer_resolution;
     // WIDGETS
-	QProgressBar * progressBar;
-	QButtonGroup * rbtngrpFilterLQ;
-	QActionGroup * actgrpFilterLQ;
-	QActionGroup * actgrpPage;
-	QButtonGroup * rbtngrpAdvSelect;
-	QButtonGroup * rbtngrpTestTime;
-	QPushButton * btnApply; QPushButton * btnDiscard;
-	// STATS
-	MTTableWidget * stats_tw;
-	QPushButton * stats_btn_adjustall;
-	QMap<QAbstractButton *, QuestionItem *> stats_qmap;
-	QMap<QAbstractButton *, int> stats_twmap;
-	QMap<QAbstractButton *, int> stats_lwmap;
-	QButtonGroup * btngrpStatsAdjust;
-	// EDIT SVG
-	QLineEdit * editsvg_lineedit_name;
-	QString editsvg_svgpath;
-	// LANG
-	QComboBox * langComboBox;
-	// FLAG-WIDGETS
-	QVector<QLineEdit *> EFFlagLineEdit;
-	// PALETTES
-	SearchLineEditPalettes searchLineEditPalettes;
-	// ITEST & DB VERSION & ENVIRONMENT VARIABLES
-	QString ver; double f_ver;
-	QString itdb_ver; double f_itdb_ver;
-	QString itos_ver; double f_itos_ver;
-	QString itest_url; QString docs_url;
-	QMap<QString, QString> itest_i18n;
-	// EXCEPTIONS
-	class xInvalidDBFile {
+    QProgressBar * progressBar;
+    QButtonGroup * rbtngrpFilterLQ;
+    QActionGroup * actgrpFilterLQ;
+    QActionGroup * actgrpPage;
+    QButtonGroup * rbtngrpAdvSelect;
+    QButtonGroup * rbtngrpTestTime;
+    QPushButton * btnApply; QPushButton * btnDiscard;
+    // STATS
+    MTTableWidget * stats_tw;
+    QPushButton * stats_btn_adjustall;
+    QMap<QAbstractButton *, QuestionItem *> stats_qmap;
+    QMap<QAbstractButton *, int> stats_twmap;
+    QMap<QAbstractButton *, int> stats_lwmap;
+    QButtonGroup * btngrpStatsAdjust;
+    // EDIT SVG
+    QLineEdit * editsvg_lineedit_name;
+    QString editsvg_svgpath;
+    // LANG
+    QComboBox * langComboBox;
+    // FLAG-WIDGETS
+    QVector<QLineEdit *> EFFlagLineEdit;
+    // PALETTES
+    SearchLineEditPalettes searchLineEditPalettes;
+    // ITEST & DB VERSION & ENVIRONMENT VARIABLES
+    QString ver; double f_ver;
+    QString itdb_ver; double f_itdb_ver;
+    QString itos_ver; double f_itos_ver;
+    QString itest_url; QString docs_url;
+    QMap<QString, QString> itest_i18n;
+    // EXCEPTIONS
+    class xInvalidDBFile {
     public:
         xInvalidDBFile(int e): x_error(e) {};
         int error() { return x_error; };
     private:
         int x_error;
     };
-	// FRIENDS
-	friend class Client;
-	friend class Session;
-	friend class ArchivedSession;
+    // FRIENDS
+    friend class Client;
+    friend class Session;
+    friend class ArchivedSession;
     friend class PrintQuestionsDialogue;
 };
 

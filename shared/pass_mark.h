@@ -32,32 +32,32 @@
 class PassMark
 {
 public:
-	PassMark(int = 0);
+    PassMark(int = 0);
 
-	void setPassMark(int);
-	int passMark();
-	void addCondition(int, int, int);
-	int count();
-	int condition(int);
-	int value(int);
-	int conditionIndex(int);
+    void setPassMark(int);
+    int passMark();
+    void addCondition(int, int, int);
+    int count();
+    int condition(int);
+    int value(int);
+    int conditionIndex(int);
     int qnum(int);
 #ifdef ITESTSERVER
-	bool check(QMap<QString, QuestionAnswer> *, QMap<QListWidgetItem *, QuestionItem *> *, ScoringSystem);
+    bool check(QMap<QString, QuestionAnswer> *, QMap<QListWidgetItem *, QuestionItem *> *, ScoringSystem);
 #endif
 #ifdef ITESTCLIENT
     bool check(QList<QuestionItem *>);
 #endif
 #ifdef ITESTSERVER
-	QString data(); QString archiveData(); void loadData(QString);
+    QString data(); QString archiveData(); void loadData(QString);
 #endif
-	void clear();
+    void clear();
 
 private:
-	QList<int> pm_conditions;
-	QList<int> pm_values;
+    QList<int> pm_conditions;
+    QList<int> pm_values;
     QList<int> pm_qnums;
-	int pm_mark;
+    int pm_mark;
 };
 
 #endif // PASS_MARK_H

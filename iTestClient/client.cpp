@@ -126,19 +126,18 @@ void MainWindow::sendResults()
         save_file_name = savePathLineEdit->text();
     }
     if (save_file_name.isNull() || save_file_name.isEmpty()) { return; }
-	QFile file(save_file_name);
-	if (!file.open(QFile::WriteOnly | QFile::Text)) 
-	{
-		QMessageBox::critical(this, tr("Save answer log"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
-		return;
-	}
-	QTextStream sfile(&file);
-	sfile.setCodec("UTF-8");
-	sfile << "[TEST_NAME]\n" << current_db_name << endl;
-	sfile << "[TEST_TIMESTAMP]\n" << current_test_date << endl;
-	sfile << "[TIME_FINISHED]\n" << current_test_time_finished << endl;
-	sfile << "[CLIENT_NAME]\n" << nameLineEdit->text() << endl;
-	for (int i = 0; i < LQListWidget->count(); ++i) {
+    QFile file(save_file_name);
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+    	QMessageBox::critical(this, tr("Save answer log"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
+    	return;
+    }
+    QTextStream sfile(&file);
+    sfile.setCodec("UTF-8");
+    sfile << "[TEST_NAME]\n" << current_db_name << endl;
+    sfile << "[TEST_TIMESTAMP]\n" << current_test_date << endl;
+    sfile << "[TIME_FINISHED]\n" << current_test_time_finished << endl;
+    sfile << "[CLIENT_NAME]\n" << nameLineEdit->text() << endl;
+    for (int i = 0; i < LQListWidget->count(); ++i) {
         sfile << "[Q_NAME]\n";
         sfile << current_test_questions.value(LQListWidget->item(i))->name();
         sfile << "\n[Q_ANSWERED]\n";

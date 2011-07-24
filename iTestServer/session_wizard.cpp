@@ -22,47 +22,47 @@
 SessionWizard::SessionWizard(Session * session, Class * cl, QWidget * parent, Qt::WindowFlags f):
 QDialog(parent, f)
 {
-	setupUi(this);
-	QObject::connect(btnMatch, SIGNAL(released()), this, SLOT(match()));
-	QObject::connect(btnSplit, SIGNAL(released()), this, SLOT(split()));
-	twMatchedPairs->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-	twMatchedPairs->horizontalHeader()->hide();
-	twMatchedPairs->verticalHeader()->hide();
+    setupUi(this);
+    QObject::connect(btnMatch, SIGNAL(released()), this, SLOT(match()));
+    QObject::connect(btnSplit, SIGNAL(released()), this, SLOT(split()));
+    twMatchedPairs->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    twMatchedPairs->horizontalHeader()->hide();
+    twMatchedPairs->verticalHeader()->hide();
     QObject::connect(lwSessionStudents, SIGNAL(currentTextChanged(QString)), this, SLOT(toggleMatchEnabled()));
     QObject::connect(lwClassStudents, SIGNAL(currentTextChanged(QString)), this, SLOT(toggleMatchEnabled()));
     QObject::connect(twMatchedPairs, SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)), this, SLOT(toggleSplitEnabled()));
     toggleMatchEnabled(); toggleSplitEnabled();
 
-	lblSessionName->setText(QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name()));
-	lblClassName->setText(cl->name());
-	for (int i = 0; i < session->numStudents(); ++i) {
-	    QListWidgetItem * item = new QListWidgetItem(session->student(i)->name());
-	    item->setData(Qt::UserRole, i);
-	    lwSessionStudents->addItem(item);
-	}
-	for (int i = 0; i < cl->numMembers(); ++i) {
-	    QListWidgetItem * item = new QListWidgetItem(cl->member(i)->name());
-	    item->setData(Qt::UserRole, i);
-	    lwClassStudents->addItem(item);
-	}
-	QString str1; QString str2; bool found = false;
-	for (int i = 0; i < lwSessionStudents->count();) {
-	    for (int j = 0; j < lwClassStudents->count();) {
-	        str1 = lwSessionStudents->item(i)->text().toLower().simplified();
-	        str1.remove(" ");
-	        str2 = lwClassStudents->item(j)->text().toLower().simplified();
-	        str2.remove(" ");
-	        if (str1 == str2) {
-	            lwSessionStudents->setCurrentRow(i);
-	            lwClassStudents->setCurrentRow(j);
-	            match();
-	            found = true; break;
-	        } else {
-	            j++;
-	        }
-	    }
-	    if (!found) { i++; } else { found = false; }
-	}
+    lblSessionName->setText(QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name()));
+    lblClassName->setText(cl->name());
+    for (int i = 0; i < session->numStudents(); ++i) {
+        QListWidgetItem * item = new QListWidgetItem(session->student(i)->name());
+        item->setData(Qt::UserRole, i);
+        lwSessionStudents->addItem(item);
+    }
+    for (int i = 0; i < cl->numMembers(); ++i) {
+        QListWidgetItem * item = new QListWidgetItem(cl->member(i)->name());
+        item->setData(Qt::UserRole, i);
+        lwClassStudents->addItem(item);
+    }
+    QString str1; QString str2; bool found = false;
+    for (int i = 0; i < lwSessionStudents->count();) {
+        for (int j = 0; j < lwClassStudents->count();) {
+            str1 = lwSessionStudents->item(i)->text().toLower().simplified();
+            str1.remove(" ");
+            str2 = lwClassStudents->item(j)->text().toLower().simplified();
+            str2.remove(" ");
+            if (str1 == str2) {
+                lwSessionStudents->setCurrentRow(i);
+                lwClassStudents->setCurrentRow(j);
+                match();
+                found = true; break;
+            } else {
+                j++;
+            }
+        }
+        if (!found) { i++; } else { found = false; }
+    }
 }
 
 int SessionWizard::numMatchedPairs() { return twMatchedPairs->rowCount(); }

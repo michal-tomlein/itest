@@ -98,32 +98,32 @@ int ClassMember::average(QMap<QDateTime, Session *> * sessions, QMap<QDateTime, 
 QString ClassMember::memberData()
 {
     QString out;
-	out.append("[MEM]\n");
-	// MEM_NAME
-	out.append(ms_name);
-	// MEM_SNUM
-	out.append(QString("\n%1").arg(ms_sessions.count()));
-	for (int i = 0; i < ms_sessions.count(); ++i) {
-		// MEM_SESSION
-	    out.append(QString("\n%1\n").arg(sessionToString(i)));
-	    // MEM_NAME
-	    out.append(QString("%1").arg(memberNumForSession(i)));
-	}
-	return out;
+    out.append("[MEM]\n");
+    // MEM_NAME
+    out.append(ms_name);
+    // MEM_SNUM
+    out.append(QString("\n%1").arg(ms_sessions.count()));
+    for (int i = 0; i < ms_sessions.count(); ++i) {
+    	// MEM_SESSION
+        out.append(QString("\n%1\n").arg(sessionToString(i)));
+        // MEM_NAME
+        out.append(QString("%1").arg(memberNumForSession(i)));
+    }
+    return out;
 }
 
 Class::Class()
 {
-	cl_name = "";
-	cl_firstyear = QDate::currentDate().year();
-	cl_lastyear = QDate::currentDate().year() + 4;
+    cl_name = "";
+    cl_firstyear = QDate::currentDate().year();
+    cl_lastyear = QDate::currentDate().year() + 4;
 }
 
 Class::Class(const QString & name)
 {
-	cl_name = name;
-	cl_firstyear = QDate::currentDate().year();
-	cl_lastyear = QDate::currentDate().year() + 4;
+    cl_name = name;
+    cl_firstyear = QDate::currentDate().year();
+    cl_lastyear = QDate::currentDate().year() + 4;
 }
 
 Class::~Class()
@@ -192,24 +192,24 @@ int Class::average(QMap<QDateTime, Session *> * sessions, QMap<QDateTime, Archiv
 
 QString Class::classData()
 {
-	QString out;
-	out.append("[CLASS]\n");
-	// CL_NAME
-	out.append(QString("%1\n").arg(cl_name));
+    QString out;
+    out.append("[CLASS]\n");
+    // CL_NAME
+    out.append(QString("%1\n").arg(cl_name));
     // CL_YEAR
     out.append(QString("%1-%2\n").arg(cl_firstyear).arg(cl_lastyear));
-	// CL_SESSIONS
+    // CL_SESSIONS
     QStringList sessions;
-	for (int i = 0; i < cl_sessions.count(); ++i) {
-	    sessions << sessionToString(i);
-	}
-	out.append(sessions.join(";"));
-	// CL_MNUM
-	out.append(QString("\n%1").arg(cl_members.count()));
-	for (int i = 0; i < cl_members.count(); ++i) {
-	    out.append(QString("\n%1").arg(cl_members.at(i)->memberData()));
-	}
-	return out;
+    for (int i = 0; i < cl_sessions.count(); ++i) {
+        sessions << sessionToString(i);
+    }
+    out.append(sessions.join(";"));
+    // CL_MNUM
+    out.append(QString("\n%1").arg(cl_members.count()));
+    for (int i = 0; i < cl_members.count(); ++i) {
+        out.append(QString("\n%1").arg(cl_members.at(i)->memberData()));
+    }
+    return out;
 }
 
 int Class::updateAddedMemberPosition()

@@ -144,9 +144,9 @@ void MainWindow::loadTest(QString input)
         if (in.readLine() != "[Q_FLAG]") { errorInvalidData(); return; }
         item->setFlag(in.readLine().toInt());
         if (db_version >= 1.2) {
-        	// Group
-        	if (in.readLine() != "[Q_GRP]") { errorInvalidData(); return; }
-        	item->setGroup(in.readLine());
+            // Group
+            if (in.readLine() != "[Q_GRP]") { errorInvalidData(); return; }
+            item->setGroup(in.readLine());
         }
         // Difficulty
         if (db_version >= 1.2) { if (in.readLine() != "[Q_DIF]") { errorInvalidData(); return; } }
@@ -297,10 +297,10 @@ void MainWindow::randomlySelectQuestions()
             q_item->setText(current_db_questions.at(randlist.at(i))->name());
         }
         q_item->setData(Qt::UserRole, current_db_questions.at(randlist.at(i))->name());
-    	LQListWidget->addItem(q_item);
-    	current_test_questions.insert(q_item, current_db_questions.at(randlist.at(i)));
-    	if ((current_db_questions.at(randlist.at(i))->flag() >= 0) && (current_db_questions.at(randlist.at(i))->flag() < current_db_f.size())) {
-    		if (!flags.contains(current_db_f[current_db_questions.at(randlist.at(i))->flag()]))
+        LQListWidget->addItem(q_item);
+        current_test_questions.insert(q_item, current_db_questions.at(randlist.at(i)));
+        if ((current_db_questions.at(randlist.at(i))->flag() >= 0) && (current_db_questions.at(randlist.at(i))->flag() < current_db_f.size())) {
+        	if (!flags.contains(current_db_f[current_db_questions.at(randlist.at(i))->flag()]))
                 { flags << current_db_f[current_db_questions.at(randlist.at(i))->flag()]; }
         }
     }
@@ -309,7 +309,7 @@ void MainWindow::randomlySelectQuestions()
 
     if (qApp->arguments().count() > 2) {
         if (qApp->arguments().at(1) == "-port") {
-        		getReady();
+            	getReady();
         }
     }
 }

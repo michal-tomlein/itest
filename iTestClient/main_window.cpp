@@ -97,10 +97,10 @@ MainWindow::MainWindow()
     
     // Check app args ----------------------------------------------------------
     if (qApp->arguments().count() > 2) {
-    	if (qApp->arguments().at(1) == "-port") {
-    		serverNameLineEdit->setText("Localhost");
-    		serverPortLineEdit->setText(qApp->arguments().at(2));
-    		connectSocket();
+        if (qApp->arguments().at(1) == "-port") {
+        	serverNameLineEdit->setText("Localhost");
+        	serverPortLineEdit->setText(qApp->arguments().at(2));
+        	connectSocket();
         }
     } else if (qApp->arguments().count() > 1) {
         openFile(qApp->arguments().at(1));
@@ -222,24 +222,24 @@ void MainWindow::lastQuestion()
 void MainWindow::previewSvg(const QString & link)
 {
     if (!LQListWidget->currentIndex().isValid()) { return; }
-	QuestionItem * item = current_test_questions.value(LQListWidget->currentItem());
-	if (item == NULL) { return; }
+    QuestionItem * item = current_test_questions.value(LQListWidget->currentItem());
+    if (item == NULL) { return; }
     int i_link = link.toInt();
-	if (i_link < 0 || i_link >= item->numSvgItems()) { return; }
+    if (i_link < 0 || i_link >= item->numSvgItems()) { return; }
     QSvgWidget * svg_widget = new QSvgWidget;
-	svg_widget->setAttribute(Qt::WA_DeleteOnClose);
-	svg_widget->setParent(this);
+    svg_widget->setAttribute(Qt::WA_DeleteOnClose);
+    svg_widget->setParent(this);
 #ifndef Q_WS_MAC
-	svg_widget->setWindowFlags(Qt::Dialog | Qt::WindowMaximizeButtonHint | Qt::WindowStaysOnTopHint);
+    svg_widget->setWindowFlags(Qt::Dialog | Qt::WindowMaximizeButtonHint | Qt::WindowStaysOnTopHint);
 #else
-	svg_widget->setWindowFlags(Qt::Dialog | Qt::WindowMaximizeButtonHint | Qt::WindowStaysOnTopHint | Qt::WindowSystemMenuHint);
+    svg_widget->setWindowFlags(Qt::Dialog | Qt::WindowMaximizeButtonHint | Qt::WindowStaysOnTopHint | Qt::WindowSystemMenuHint);
 #endif
-	svg_widget->setWindowTitle(item->svgName(i_link));
-	QSize minimum_size = svg_widget->sizeHint();
-	minimum_size.scale(128, 128, Qt::KeepAspectRatioByExpanding);
-	svg_widget->setMinimumSize(minimum_size);
-	svg_widget->load(item->svg(i_link).toUtf8());
-	svg_widget->show();
+    svg_widget->setWindowTitle(item->svgName(i_link));
+    QSize minimum_size = svg_widget->sizeHint();
+    minimum_size.scale(128, 128, Qt::KeepAspectRatioByExpanding);
+    svg_widget->setMinimumSize(minimum_size);
+    svg_widget->load(item->svg(i_link).toUtf8());
+    svg_widget->show();
 }
 
 void MainWindow::finish()
@@ -261,7 +261,7 @@ void MainWindow::finish()
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     if ((mainStackedWidget->currentIndex() == 0) || (mainStackedWidget->currentIndex() == 3)) {
-	   saveSettings(); event->accept();
+       saveSettings(); event->accept();
     } else if (current_connection_local) { saveSettings(); event->accept(); }
     else { event->ignore(); }
 }
@@ -320,16 +320,16 @@ void MainWindow::disableInputTypeSelection()
 
 void MainWindow::getReady()
 {
-	if (hideQuestionNamesCheckBox->isChecked()) {
-		for (int i = 0; i < LQListWidget->count(); ++i) {
-			LQListWidget->item(i)->setText(QString("%1").arg(i + 1));
-		}
-	} else {
-		for (int i = 0; i < LQListWidget->count(); ++i) {
-			LQListWidget->item(i)->setText(current_test_questions.value(LQListWidget->item(i))->name());
-		}
-	}
-	mainStackedWidget->setCurrentIndex(1);
+    if (hideQuestionNamesCheckBox->isChecked()) {
+    	for (int i = 0; i < LQListWidget->count(); ++i) {
+    	    LQListWidget->item(i)->setText(QString("%1").arg(i + 1));
+    	}
+    } else {
+    	for (int i = 0; i < LQListWidget->count(); ++i) {
+    	    LQListWidget->item(i)->setText(current_test_questions.value(LQListWidget->item(i))->name());
+    	}
+    }
+    mainStackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::start()
@@ -362,36 +362,36 @@ void MainWindow::start()
 
 void MainWindow::newTest()
 {
-	current_db_questions.clear();
-	current_test_qnum = 0;
-	current_test_questions.clear();
-	//current_test_results->clear();
-	current_test_time_remaining = 0;
-	current_test_score = 0;
-	current_test_results_sent = false;
-	current_test_passmark.clear();
-	current_test_use_groups = false;
-	test_loaded = false;
-	timer.stop();
-	LQListWidget->clear();
-	nameLineEdit->clear();
-	scoreLabel->clear();
-	progressBar->setValue(0);
-	resultsTableWidget->setRowCount(0);
-	mainStackedWidget->setCurrentIndex(0);
-	current_db_fe.clear(); current_db_f.clear();
-	if (rbtnNetwork->isChecked()) {
-		tcpSocket->disconnectFromHost();
-		current_connection_local = false;
-		blocksize = 0;
-		client_number = 0;
-		num_entries = 0;
-		current_entry = 0;
-		connectSocket();
-	} else {
-		current_connection_local = true;
-		loadFile();
-	}
+    current_db_questions.clear();
+    current_test_qnum = 0;
+    current_test_questions.clear();
+    //current_test_results->clear();
+    current_test_time_remaining = 0;
+    current_test_score = 0;
+    current_test_results_sent = false;
+    current_test_passmark.clear();
+    current_test_use_groups = false;
+    test_loaded = false;
+    timer.stop();
+    LQListWidget->clear();
+    nameLineEdit->clear();
+    scoreLabel->clear();
+    progressBar->setValue(0);
+    resultsTableWidget->setRowCount(0);
+    mainStackedWidget->setCurrentIndex(0);
+    current_db_fe.clear(); current_db_f.clear();
+    if (rbtnNetwork->isChecked()) {
+    	tcpSocket->disconnectFromHost();
+    	current_connection_local = false;
+    	blocksize = 0;
+    	client_number = 0;
+    	num_entries = 0;
+    	current_entry = 0;
+    	connectSocket();
+    } else {
+    	current_connection_local = true;
+    	loadFile();
+    }
 }
 
 void MainWindow::updateTime()
@@ -421,7 +421,7 @@ void MainWindow::errorInvalidData()
 void MainWindow::about()
 {
     AboutWidget * itest_about = new AboutWidget(ver, QString("2009"));
-	itest_about->setParent(this);
+    itest_about->setParent(this);
     itest_about->setWindowFlags(Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/ | Qt::WindowStaysOnTopHint);
-	itest_about->show();
+    itest_about->show();
 }

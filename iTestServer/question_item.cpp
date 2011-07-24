@@ -57,9 +57,9 @@ QuestionItem::QuestionItem(const QString & name,
 
 QuestionItem::~QuestionItem()
 {
-	for (int i = 0; i < q_svgitems.count(); ++i) {
-		if (q_svgitems.at(i)) delete q_svgitems.at(i);
-	}
+    for (int i = 0; i < q_svgitems.count(); ++i) {
+        if (q_svgitems.at(i)) delete q_svgitems.at(i);
+    }
 }
 
 bool QuestionItem::isHidden() { return q_hidden; }

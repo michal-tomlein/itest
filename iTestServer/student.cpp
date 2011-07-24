@@ -109,70 +109,70 @@ bool Student::passed() { return s_passed; }
 
 QString Student::studentData()
 {
-	QString out;
-	out.append("[STUDENT]\n");
-	// S_NAME
-	out.append(s_name);
-	// S_READY
-	out.append(s_ready ? "\ntrue" : "\nfalse");
-	// S_PASSED
-	out.append(s_passed ? "\ntrue" : "\nfalse");
-	// S_NUMBER
-	out.append(QString("\n%1\n").arg(s_number));
-	// S_NUMRESULTS
-	out.append(QString("%1").arg(s_results->count()));
-	// S_RESULTS
-	QMapIterator<QString, QuestionAnswer> i(*s_results); QuestionAnswer qans;
-	while (i.hasNext()) { i.next();
-		qans = i.value();
-		out.append(QString("\n%1").arg(i.key()));
-		out.append(QString("\n%1").arg(qans.flag()));
+    QString out;
+    out.append("[STUDENT]\n");
+    // S_NAME
+    out.append(s_name);
+    // S_READY
+    out.append(s_ready ? "\ntrue" : "\nfalse");
+    // S_PASSED
+    out.append(s_passed ? "\ntrue" : "\nfalse");
+    // S_NUMBER
+    out.append(QString("\n%1\n").arg(s_number));
+    // S_NUMRESULTS
+    out.append(QString("%1").arg(s_results->count()));
+    // S_RESULTS
+    QMapIterator<QString, QuestionAnswer> i(*s_results); QuestionAnswer qans;
+    while (i.hasNext()) { i.next();
+    	qans = i.value();
+    	out.append(QString("\n%1").arg(i.key()));
+    	out.append(QString("\n%1").arg(qans.flag()));
         out.append(QString("\n%1").arg(qans.difficulty()));
         out.append(QString("\n%1").arg(qans.selectionType()));
-		out.append(QString("\n%1").arg(qans.answered()));
-		out.append(QString("\n%1").arg(qans.correctAnswer()));
-	}
-	return out;
+    	out.append(QString("\n%1").arg(qans.answered()));
+    	out.append(QString("\n%1").arg(qans.correctAnswer()));
+    }
+    return out;
 }
 
 QString Student::studentArchiveData()
 {
-	QString out;
-	out.append("[STUDENT]\n");
-	// S_NAME
-	out.append(s_name);
-	// S_READY
-	out.append(s_ready ? "\ntrue" : "\nfalse");
-	// S_NUMBER
-	out.append(QString("\n%1\n").arg(s_number));
-	// S_SCORE
-	out.append(QString("%1\n").arg((int)s_score));
-	// S_NUMRESULTS
-	out.append(QString("%1").arg(s_results->count()));
-	// S_RESULTS
-	QMapIterator<QString, QuestionAnswer> i(*s_results); QuestionAnswer qans;
-	while (i.hasNext()) { i.next();
-		qans = i.value();
-		out.append(QString("\n%1").arg(i.key()));
-		out.append(QString("\n%1").arg(Question::convertToOldAnsNumber(qans.answered())));
-		out.append(QString("\n%1").arg(Question::convertToOldAnsNumber(qans.correctAnswer())));
-	}
-	return out;
+    QString out;
+    out.append("[STUDENT]\n");
+    // S_NAME
+    out.append(s_name);
+    // S_READY
+    out.append(s_ready ? "\ntrue" : "\nfalse");
+    // S_NUMBER
+    out.append(QString("\n%1\n").arg(s_number));
+    // S_SCORE
+    out.append(QString("%1\n").arg((int)s_score));
+    // S_NUMRESULTS
+    out.append(QString("%1").arg(s_results->count()));
+    // S_RESULTS
+    QMapIterator<QString, QuestionAnswer> i(*s_results); QuestionAnswer qans;
+    while (i.hasNext()) { i.next();
+    	qans = i.value();
+    	out.append(QString("\n%1").arg(i.key()));
+    	out.append(QString("\n%1").arg(Question::convertToOldAnsNumber(qans.answered())));
+    	out.append(QString("\n%1").arg(Question::convertToOldAnsNumber(qans.correctAnswer())));
+    }
+    return out;
 }
 
 bool Student::wasAsked(const QString & qname)
 {
-	QMapIterator<QString, QuestionAnswer> i(*s_results);
-	while (i.hasNext()) { i.next();
-		if (i.key() == qname) { return true; }
-	}
-	return false;
+    QMapIterator<QString, QuestionAnswer> i(*s_results);
+    while (i.hasNext()) { i.next();
+    	if (i.key() == qname) { return true; }
+    }
+    return false;
 }
 
 uint Student::replaceOccurrences(const QString & old_qname, const QString & new_qname)
 {
-	QuestionAnswer qans = s_results->value(old_qname, QuestionAnswer());
-	uint n = s_results->remove(old_qname);
-	if (n > 0) { s_results->insert(new_qname, qans); }
-	return n;
+    QuestionAnswer qans = s_results->value(old_qname, QuestionAnswer());
+    uint n = s_results->remove(old_qname);
+    if (n > 0) { s_results->insert(new_qname, qans); }
+    return n;
 }

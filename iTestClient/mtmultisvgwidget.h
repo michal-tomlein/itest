@@ -57,9 +57,9 @@ public:
         vlayout->addWidget(label);
         vlayout->addWidget(w);
         msw_flayout->addWidget(widget);
-	};
-	QSize layoutSizeHint() { return msw_flayout->sizeHint(); };
-	int layoutHeightForWidth(int w) { return msw_flayout->heightForWidth(w); };
+    };
+    QSize layoutSizeHint() { return msw_flayout->sizeHint(); };
+    int layoutHeightForWidth(int w) { return msw_flayout->heightForWidth(w); };
 
 public slots:
     void clear() {
@@ -69,10 +69,10 @@ public slots:
     };
 
 private slots:
-	void emitTitleClicked(const QString & text) { emit titleClicked(text); };
+    void emitTitleClicked(const QString & text) { emit titleClicked(text); };
 
 signals:
-	void titleClicked(const QString &);
+    void titleClicked(const QString &);
 
 private:
     FlowLayout * msw_flayout;

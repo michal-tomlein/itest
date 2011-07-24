@@ -1,5 +1,5 @@
-<!DOCTYPE RCC><RCC version="1.0">
-    <qresource>
+<RCC>
+    <qresource prefix="/" >
         <file>i18n/iTest-i18n.qm</file>
         <file>i18n/iTestServer-Slovak.qm</file>
         <file>i18n/iTestServer-Russian.qm</file>

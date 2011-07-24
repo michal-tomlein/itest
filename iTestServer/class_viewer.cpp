@@ -71,28 +71,28 @@ void MainWindow::setupClassViewer()
 
 void MainWindow::setCurrentClass(QListWidgetItem * item)
 {
-	if (item == NULL) { return; }
+    if (item == NULL) { return; }
     MTListWidget::highlightItem(item);
-	clearCLSC(); setCLSCEnabled(true);
-	Class * cl = current_db_classes.value(item, NULL);
-	if (cl == NULL) { return; }
-	current_db_class = cl;
-	CLSCGroupBox->setEnabled(true);
-	CLSCNameLineEdit->setText(cl->name());
-	CLSCFirstYearSpinBox->setValue(cl->firstYear());
-	CLSCLastYearSpinBox->setValue(cl->lastYear());
-	CLSCNumStudentsLabel->setText(makeString(cl->numMembers()));
-	CLSCAverageLabel->setText(QString("%1%").arg(cl->average(&current_db_sessions, &current_db_archivedsessions)));
-	CLLSListWidget->clear();
-	for (int i = 0; i < cl->numMembers(); ++i) {
-		CLLSListWidget->addItem(cl->member(i)->name());
-	}
-	for (int i = 0; i < cl->numSessions(); ++i) {
-	    Session * session = current_db_sessions.value(cl->session(i), current_db_archivedsessions.value(cl->session(i), new ArchivedSession(this)));
-	    QListWidgetItem * item = new QListWidgetItem(QString("%1 - %2").arg(cl->sessionToString(i)).arg(session->name()));
-	    item->setData(Qt::UserRole, cl->session(i));
+    clearCLSC(); setCLSCEnabled(true);
+    Class * cl = current_db_classes.value(item, NULL);
+    if (cl == NULL) { return; }
+    current_db_class = cl;
+    CLSCGroupBox->setEnabled(true);
+    CLSCNameLineEdit->setText(cl->name());
+    CLSCFirstYearSpinBox->setValue(cl->firstYear());
+    CLSCLastYearSpinBox->setValue(cl->lastYear());
+    CLSCNumStudentsLabel->setText(makeString(cl->numMembers()));
+    CLSCAverageLabel->setText(QString("%1%").arg(cl->average(&current_db_sessions, &current_db_archivedsessions)));
+    CLLSListWidget->clear();
+    for (int i = 0; i < cl->numMembers(); ++i) {
+    	CLLSListWidget->addItem(cl->member(i)->name());
+    }
+    for (int i = 0; i < cl->numSessions(); ++i) {
+        Session * session = current_db_sessions.value(cl->session(i), current_db_archivedsessions.value(cl->session(i), new ArchivedSession(this)));
+        QListWidgetItem * item = new QListWidgetItem(QString("%1 - %2").arg(cl->sessionToString(i)).arg(session->name()));
+        item->setData(Qt::UserRole, cl->session(i));
         CLLSSListWidget->addItem(item);
-	}
+    }
     togglePrintEnabled();
 }
 
@@ -240,7 +240,7 @@ void MainWindow::addSession()
     if (!current_db_class) { return; }
 
     MTListWidget * lw = new MTListWidget;
-	QDialog * d = createAddSessionDialogue(tr("Add session"), lw);
+    QDialog * d = createAddSessionDialogue(tr("Add session"), lw);
     QList<QDateTime> sessions_list;
     for (int i = 0; i < CLLSSListWidget->count(); ++i) {
         sessions_list << CLLSSListWidget->item(i)->data(Qt::UserRole).toDateTime();
@@ -362,7 +362,7 @@ void MainWindow::addSessionToMember()
     Session * session = current_db_sessions.value(datetime, current_db_archivedsessions.value(datetime, new ArchivedSession(this)));
     if (session->numStudents() < 1) { return; }
     MTListWidget * lw = new MTListWidget;
-	QDialog * d = createAddSessionDialogue(tr("Add selected session"), lw);
+    QDialog * d = createAddSessionDialogue(tr("Add selected session"), lw);
     for (int i = 0; i < session->numStudents(); ++i) {
         lw->addItem(session->student(i)->name());
     }
@@ -380,7 +380,7 @@ QDialog * MainWindow::createAddSessionDialogue(const QString & title, MTListWidg
 {
     QDialog * d = new QDialog(this);
 #ifdef Q_WS_MAC
-	d->setWindowTitle(QString("%1 - %2").arg(current_db_name).arg(title));
+    d->setWindowTitle(QString("%1 - %2").arg(current_db_name).arg(title));
 #else
     d->setWindowTitle(QString("%1 - %2 - iTest").arg(current_db_name).arg(title));
 #endif
@@ -442,21 +442,21 @@ void MainWindow::clearCL()
 
 void MainWindow::clearCLSC()
 {
-	clearCLSS();
+    clearCLSS();
     CLSCNameLineEdit->clear();
-	CLSCNumStudentsLabel->setText("0");
-	CLSCAverageLabel->setText("0%");
-	CLLSListWidget->clear();
-	CLLSSListWidget->clear();
+    CLSCNumStudentsLabel->setText("0");
+    CLSCAverageLabel->setText("0%");
+    CLLSListWidget->clear();
+    CLLSSListWidget->clear();
     setCLSCEnabled(false);
 }
 
 void MainWindow::clearCLSS()
 {
-	CLSSNameLineEdit->clear();
-	CLSSAverageLabel->setText("0%");
-	CLSSResultsTableWidget->clearContents();
-	CLSSResultsTableWidget->setRowCount(0);
+    CLSSNameLineEdit->clear();
+    CLSSAverageLabel->setText("0%");
+    CLSSResultsTableWidget->clearContents();
+    CLSSResultsTableWidget->setRowCount(0);
     setCLSSEnabled(false);
 }
 
