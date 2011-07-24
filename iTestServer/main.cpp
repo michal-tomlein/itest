@@ -29,9 +29,7 @@ int main(int argc, char *argv[])
 		app.installTranslator(translator);
 	}
 
-	MainWindow * itest_window = new MainWindow;
-        app.setAppMainWindow(itest_window);
-	itest_window->show();
+    app.setAppMainWindow(new MainWindow);
 	return app.exec();
 }
 

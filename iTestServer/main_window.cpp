@@ -420,8 +420,6 @@ MainWindow::MainWindow()
 	QObject::connect(mainStackedWidget, SIGNAL(currentChanged(int)), this, SLOT(currentPageChanged(int)));
     // Disable all -------------------------------------------------------------
     setAllEnabled(false);
-    // Load settings -----------------------------------------------------------
-    loadSettings();
     // Flags -------------------------------------------------------------------
     setupFlagsPage();
     // Server ------------------------------------------------------------------
@@ -430,12 +428,22 @@ MainWindow::MainWindow()
     setupSessionViewer();
     // Class viewer ------------------------------------------------------------
     setupClassViewer();
+    // -------------------------------------------------------------------------
+#ifdef Q_WS_MAC
+    show();
+#endif
+    // Load settings -----------------------------------------------------------
+    loadSettings();
     // Ready -------------------------------------------------------------------
     statusBar()->showMessage(tr("Ready"), 10000);
     // Check app args ----------------------------------------------------------
     if (qApp->arguments().count() > 1) {
         openFile(qApp->arguments().at(1));
     }
+    // -------------------------------------------------------------------------
+#ifndef Q_WS_MAC
+    show();
+#endif
 }
 
 void MainWindow::openFile(const QString & file)
