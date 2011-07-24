@@ -133,7 +133,7 @@ private slots:
     void editSvg(); void browseForSvg(); void applySvgChanges();
     void currentSvgChanged();
     // SERVER-RELATED
-    void setupServer(); void reloadAvailableItems();
+    void setupServer(); void reloadAvailableItems(); bool isDifficultyIncluded(int difficulty);
     void updateTestQnum(); void updateTestQnum(bool, bool, bool, QSpinBox *, QTableWidget *);
     void updateTestTime(); int numIdentifiedClients(); void toggleStartServerEnabled();
     void toggleSaveSessionEnabled(); void resetScoringSystemValues(bool);

@@ -312,15 +312,15 @@
                <day>1</day>
               </datetime>
              </property>
-             <property name="displayFormat">
-              <string>yyyy.MM.dd - hh:mm</string>
-             </property>
              <property name="date">
               <date>
                <year>2006</year>
                <month>12</month>
                <day>1</day>
               </date>
+             </property>
+             <property name="displayFormat">
+              <string>yyyy.MM.dd - hh:mm</string>
              </property>
             </widget>
            </item>
@@ -2088,6 +2088,75 @@
               <string>Do not print test results</string>
              </property>
             </widget>
+           </item>
+           <item row="5" column="3">
+            <widget class="QLabel" name="label_difficulty">
+             <property name="text">
+              <string>Difficulty:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="4" colspan="2">
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <item>
+              <widget class="QCheckBox" name="TSIncludeEasyCheckBox">
+               <property name="statusTip">
+                <string>Include easy questions in the test</string>
+               </property>
+               <property name="text">
+                <string>Easy</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="TSIncludeMediumCheckBox">
+               <property name="statusTip">
+                <string>Include questions with medium difficulty in the test</string>
+               </property>
+               <property name="text">
+                <string>Medium</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="TSIncludeDifficultCheckBox">
+               <property name="statusTip">
+                <string>Include difficult questions in the test</string>
+               </property>
+               <property name="text">
+                <string>Difficult</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>

@@ -41,6 +41,9 @@ void MainWindow::setupServer()
     rbtngrpAdvSelect->addButton(rbtnSelectQuestions);
     QObject::connect(rbtngrpAdvSelect, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(reloadAvailableItems()));
     QObject::connect(TSAdvancedSetupGroupBox, SIGNAL(toggled(bool)), this, SLOT(reloadAvailableItems()));
+    QObject::connect(TSIncludeEasyCheckBox, SIGNAL(toggled(bool)), this, SLOT(reloadAvailableItems()));
+    QObject::connect(TSIncludeMediumCheckBox, SIGNAL(toggled(bool)), this, SLOT(reloadAvailableItems()));
+    QObject::connect(TSIncludeDifficultCheckBox, SIGNAL(toggled(bool)), this, SLOT(reloadAvailableItems()));
     QObject::connect(TSSearchAvailableLineEdit, SIGNAL(textChanged(QLineEdit *, const QString &)), TSExcludeListWidget, SLOT(filterItems(QLineEdit *, const QString &)));
     QObject::connect(TSSearchUsedLineEdit, SIGNAL(textChanged(QLineEdit *, const QString &)), TSIncludeTableWidget, SLOT(filterItems(QLineEdit *, const QString &)));
     QObject::connect(TSExcludeListWidget, SIGNAL(currentIndexAvailabilityChanged(bool)), btnAddToList, SLOT(setEnabled(bool)));
@@ -88,6 +91,20 @@ void MainWindow::toggleStartServerEnabled()
     actionStart_server->setEnabled(TSQnumSpinBox->value() > 0);
 }
 
+bool MainWindow::isDifficultyIncluded(int difficulty)
+{
+    switch (difficulty) {
+        case 0:
+            return TSIncludeEasyCheckBox->isChecked();
+        case 1:
+            return TSIncludeMediumCheckBox->isChecked();
+        case 2:
+            return TSIncludeDifficultCheckBox->isChecked();
+    }
+
+    return true;
+}
+
 void MainWindow::reloadAvailableItems()
 {
 	TSExcludeListWidget->clear(); TSIncludeTableWidget->clearContents();
@@ -120,7 +137,12 @@ void MainWindow::reloadAvailableItems()
             for (int i = 0; i < LQListWidget->count(); ++i) {
                 item = new QListWidgetItem (*LQListWidget->item(i));
                 q_item = NULL; q_item = current_db_questions.value(LQListWidget->item(i));
-                if (q_item != NULL) { if (q_item->isHidden()) { continue; } }
+                if (q_item != NULL) {
+                    if (q_item->isHidden() || !isDifficultyIncluded(q_item->difficulty())) {
+                        delete item;
+                        continue;
+                    }
+                }
                 item->setData(Qt::UserRole, i);
                 TSExcludeListWidget->addItem(item);
             }
@@ -146,23 +168,25 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selec
     	if (use_groups) {
     		QSet<QString> groups;
     		for (int q = 0; q < LQListWidget->count(); ++q) {
-    			item = NULL; item = current_db_questions.value(LQListWidget->item(q));
-    			if (item == NULL) { continue; }
-    			if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
-    			if (item->group().isEmpty()) { db_qnum++; }
-    			else { groups << item->group(); }
-    		}
-    		db_qnum += groups.count();
-    	} else {
-    		for (int q = 0; q < LQListWidget->count(); ++q) {
-    			item = NULL; item = current_db_questions.value(LQListWidget->item(q));
-    			if (item == NULL) { continue; }
-    		    if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
-    		    db_qnum++;
-    		}
-    	}
+                item = NULL; item = current_db_questions.value(LQListWidget->item(q));
+                if (item == NULL) { continue; }
+                if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
+                if (server_mode && !isDifficultyIncluded(item->difficulty())) continue;
+                if (item->group().isEmpty()) { db_qnum++; }
+                else { groups << item->group(); }
+            }
+            db_qnum += groups.count();
+        } else {
+            for (int q = 0; q < LQListWidget->count(); ++q) {
+                item = NULL; item = current_db_questions.value(LQListWidget->item(q));
+                if (item == NULL) { continue; }
+                if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
+                if (server_mode && !isDifficultyIncluded(item->difficulty())) continue;
+                db_qnum++;
+            }
+        }
     } else if (flags_selected) {
-    	QSet<QString> groups; QList<int> used_items;
+        QSet<QString> groups; QList<int> used_items;
         int include_count = tw_include->rowCount();
         QVector<int> max(include_count); QVector<QSet<QString> > groups_i(include_count);
         for (int i = 0; i < include_count; ++i) {
@@ -170,14 +194,15 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selec
             max[i] = 0;
         }
         for (int i = 0; i < LQListWidget->count(); ++i) {
-        	item = NULL; item = current_db_questions.value(LQListWidget->item(i));
-        	if (item == NULL) { continue; }
+            item = NULL; item = current_db_questions.value(LQListWidget->item(i));
+            if (item == NULL) { continue; }
             if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
+            if (server_mode && !isDifficultyIncluded(item->difficulty())) continue;
             if (used_items.contains(item->flag())) {
-            	if (use_groups) {
-            		if (item->group().isEmpty()) { db_qnum++; max[used_items.indexOf(item->flag())]++; }
-            		else { groups << item->group(); groups_i[used_items.indexOf(item->flag())] << item->group(); }
-            	} else { db_qnum++; max[used_items.indexOf(item->flag())]++; }
+                if (use_groups) {
+                    if (item->group().isEmpty()) { db_qnum++; max[used_items.indexOf(item->flag())]++; }
+                    else { groups << item->group(); groups_i[used_items.indexOf(item->flag())] << item->group(); }
+                } else { db_qnum++; max[used_items.indexOf(item->flag())]++; }
             }
         }
         db_qnum += groups.count();
@@ -191,20 +216,20 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selec
             min_qnum += ((QSpinBox *)tw_include->cellWidget(i, 1))->value();
         }
     } else {
-    	if (use_groups) {
-    		QSet<QString> groups; int x = 0;
+        if (use_groups) {
+            QSet<QString> groups; int x = 0;
             int include_count = tw_include->rowCount();
-    		for (int q = 0; q < include_count; ++q) {
+            for (int q = 0; q < include_count; ++q) {
                 x = tw_include->item(q, 0)->data(Qt::UserRole).toInt();
-    			item = NULL; item = current_db_questions.value(LQListWidget->item(x));
-    			if (item == NULL) { continue; }
-    			if (item->group().isEmpty()) { db_qnum++; }
-    	    	else { groups << item->group(); }
-    		}
-    	    db_qnum += groups.count();
-    	} else {
-    		db_qnum = tw_include->rowCount();
-    	}
+                item = NULL; item = current_db_questions.value(LQListWidget->item(x));
+                if (item == NULL) { continue; }
+                if (item->group().isEmpty()) { db_qnum++; }
+                else { groups << item->group(); }
+            }
+            db_qnum += groups.count();
+        } else {
+            db_qnum = tw_include->rowCount();
+        }
     }
     spb_qnum->setMinimum(min_qnum);
     spb_qnum->setMaximum(db_qnum);
@@ -387,6 +412,7 @@ void MainWindow::startServer()
     	    item = NULL; item = current_db_questions.value(LQListWidget->item(q));
     	    if (item == NULL) { continue; }
     	    if (item->isHidden()) { continue; }
+            if (!isDifficultyIncluded(item->difficulty())) continue;
     	    db_qnum++;
     	}
     } else if (rbtnSelectFlags->isChecked()) {
@@ -394,6 +420,7 @@ void MainWindow::startServer()
         	item = NULL; item = current_db_questions.value(LQListWidget->item(i));
         	if (item == NULL) { continue; }
         	if (item->isHidden()) { continue; }
+            if (!isDifficultyIncluded(item->difficulty())) continue;
             if (used_items.contains(item->flag())) { db_qnum++; }
         }
     } else if (rbtnSelectQuestions->isChecked()) {
@@ -438,7 +465,7 @@ void MainWindow::startServer()
         ba.clear(); ok = false;
         // ---------------------------------------------------------------------
         item = NULL; item = current_db_questions.value(LQListWidget->item(i));
-        if (item != NULL) {
+        if (item != NULL && isDifficultyIncluded(item->difficulty())) {
         	if (!TSAdvancedSetupGroupBox->isChecked()) {
         		if (!item->isHidden()) {
         			ok = true;
@@ -996,4 +1023,7 @@ void MainWindow::clearSM()
     TSHideCorrectAnswersCheckBox->setChecked(false);
     TSShuffleAnswersCheckBox->setChecked(false);
     TSScoringSystemGroupBox->setChecked(false);
+    TSIncludeEasyCheckBox->setChecked(true);
+    TSIncludeMediumCheckBox->setChecked(true);
+    TSIncludeDifficultCheckBox->setChecked(true);
 }
