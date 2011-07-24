@@ -101,7 +101,7 @@ int QuestionItem::recommendedDifficulty()
     return -1;
 }
 
-QString QuestionItem::allProperties()
+QString QuestionItem::allProperties(bool itdb1_3)
 {
     QString out;
     // Q_NAME
@@ -120,17 +120,29 @@ QString QuestionItem::allProperties()
     out.append("\n[Q_TEXT]\n");
     out.append(q_text);
     // Q_ANSWERS
-    out.append("\n[Q_ANS]\n");
-    out.append(QString("%1\n").arg(q_selectiontype));
-    out.append(QString("%1\n").arg(q_correctanswers));
-    out.append(QString("%1\n").arg(q_answers.count()));
-    for (int i = 0; i < q_answers.count(); ++i) {
-        out.append(q_answers.at(i));
-        out.append("\n");
+    if (itdb1_3) {
+        for (int i = 0; i < 4; ++i) {
+            out.append(QString("\n[Q_ANS%1]\n").arg((char)('A' + i)));
+            if (i < q_answers.count()) {
+                out.append(q_answers.at(i));
+                out.append(isAnswerAtIndexCorrect(i + 1) ? "\ntrue" : "\nfalse");
+            } else {
+                out.append("\nfalse");
+            }
+        }
+    } else {
+        out.append("\n[Q_ANS]\n");
+        out.append(QString("%1\n").arg(q_selectiontype));
+        out.append(QString("%1\n").arg(q_correctanswers));
+        out.append(QString("%1\n").arg(q_answers.count()));
+        for (int i = 0; i < q_answers.count(); ++i) {
+            out.append(q_answers.at(i));
+            out.append("\n");
+        }
+        // Q_EXPLANATION
+        out.append("[Q_EXPL]\n");
+        out.append(q_explanation);
     }
-    // Q_EXPLANATION
-    out.append("[Q_EXPL]\n");
-    out.append(q_explanation);
     // STATISTICS
     out.append("\n[Q_ICCNT]\n");
     out.append(QString("%1\n%2").arg(q_incorrectanscount).arg(q_correctanscount));

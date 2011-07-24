@@ -66,7 +66,7 @@ public slots:
     void setScoringSystem(ScoringSystem); ScoringSystem scoringSystem();
     QString sessionData();
     bool mostPassed(); bool isArchived();
-    void destruct();
+    void destroy();
 
 private:
     QString s_name;

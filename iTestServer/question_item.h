@@ -78,7 +78,7 @@ public slots:
     bool removeSvgItem(SvgItem *); SvgItem * removeSvgItem(int);
     int numSvgItems(); SvgItem * svgItem(int); QList<SvgItem *> svgItems();
     int recommendedDifficulty();
-    QString allProperties(); QString allPublicProperties();
+    QString allProperties(bool = false); QString allPublicProperties();
 
 private:
     unsigned int q_incorrectanscount;

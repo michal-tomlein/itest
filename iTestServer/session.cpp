@@ -86,7 +86,7 @@ Session::~Session()
 	}
 }
 
-void Session::destruct()
+void Session::destroy()
 {
 	s_students.clear();
 }
