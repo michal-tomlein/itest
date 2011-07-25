@@ -33,17 +33,24 @@ public:
     virtual ~Student();
 
 public slots:
-    void setName(const QString &); QString name();
-    void setNumber(int); int number();
+    void setName(const QString &);
+    QString name();
+    void setNumber(int);
+    int number();
     int numCorrectAnswers(ScoringSystem);
-    double score(); double maximumScore();
-    void setReady(bool); bool isReady();
+    double score();
+    double maximumScore();
+    void setReady(bool);
+    bool isReady();
     void setResults(QMap<QString, QuestionAnswer> *);
     void updateScore(ScoringSystem);
     QMap<QString, QuestionAnswer> * results();
-    void setPassed(bool); bool passed();
-    QString studentData(); QString studentArchiveData();
-    bool wasAsked(const QString &); uint replaceOccurrences(const QString &, const QString &);
+    void setPassed(bool);
+    bool passed();
+    QString studentData();
+    QString studentArchiveData();
+    bool wasAsked(const QString &);
+    uint replaceOccurrences(const QString &, const QString &);
 
 private:
     QString s_name;

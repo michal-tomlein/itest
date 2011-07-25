@@ -26,20 +26,26 @@
 class QuestionAnswer
 {
 public:
-    QuestionAnswer(Question::Answer /* correct */ = Question::None,
-                    Question::Answer /* ans */ = Question::None,
-                    int /* flag */ = -1,
-                    int /* difficulty */ = 0,
-                    Question::SelectionType /* type */ = Question::SingleSelection,
-                    const QString & /* explanation */ = QString());
-    void setAnswered(Question::Answer); Question::Answer answered();
-    void setCorrectAnswer(Question::Answer); Question::Answer correctAnswer();
+    QuestionAnswer(Question::Answer correct = Question::None,
+                   Question::Answer ans = Question::None,
+                   int flag = -1,
+                   int difficulty = 0,
+                   Question::SelectionType type = Question::SingleSelection,
+                   const QString & explanation = QString());
+    void setAnswered(Question::Answer);
+    Question::Answer answered();
+    void setCorrectAnswer(Question::Answer);
+    Question::Answer correctAnswer();
     double score(ScoringSystem);
     double maximumScore(ScoringSystem);
-    void setFlag(int); int flag();
-    void setDifficulty(int); int difficulty();
-    void setSelectionType(Question::SelectionType); Question::SelectionType selectionType();
-    void setExplanation(const QString &); QString explanation();
+    void setFlag(int);
+    int flag();
+    void setDifficulty(int);
+    int difficulty();
+    void setSelectionType(Question::SelectionType);
+    Question::SelectionType selectionType();
+    void setExplanation(const QString &);
+    QString explanation();
 
 private:
     Question::Answer qa_answered;
@@ -53,32 +59,40 @@ private:
 class QuestionItem : public Question
 {
 public:
-    QuestionItem(const QString & /* name */ = QString(),
-                int /* flag */ = -1,
-                const QString & /* group */ = QString(),
-                int /* difficulty */ = 0,
-                const QString & /* text */ = QString(),
-                const QStringList & /* answers */ = QStringList() << QString() << QString() << QString() << QString(),
-                Answers /* correctanswers */ = None,
-                SelectionType /* selectiontype */ = SingleSelection,
-                const QString & /* explanation */ = QString(),
-                unsigned int /* inccount */ = 0,
-                unsigned int /* ccount */ = 0,
-                bool /* hidden */ = false,
-                QList<SvgItem *> /* svgs */ = QList<SvgItem *>(),
-                bool /* copysvgs */ = true);
+    QuestionItem(const QString & name = QString(),
+                int flag = -1,
+                const QString & group = QString(),
+                int difficulty = 0,
+                const QString & text = QString(),
+                const QStringList & answers = QStringList() << QString() << QString() << QString() << QString(),
+                Answers correctanswers = None,
+                SelectionType selectiontype = SingleSelection,
+                const QString & explanation = QString(),
+                unsigned int inccount = 0,
+                unsigned int ccount = 0,
+                bool hidden = false,
+                QList<SvgItem *> svgs = QList<SvgItem *>(),
+                bool copysvgs = true);
     ~QuestionItem();
 
 public slots:
-    bool isHidden(); void setHidden(bool);
-    unsigned int incorrectAnsCount(); void setIncorrectAnsCount(unsigned int);
-    unsigned int correctAnsCount(); void setCorrectAnsCount(unsigned int);
-    void addIncorrectAns(); void addCorrectAns();
+    bool isHidden();
+    void setHidden(bool);
+    unsigned int incorrectAnsCount();
+    void setIncorrectAnsCount(unsigned int);
+    unsigned int correctAnsCount();
+    void setCorrectAnsCount(unsigned int);
+    void addIncorrectAns();
+    void addCorrectAns();
     void addSvgItem(SvgItem *);
-    bool removeSvgItem(SvgItem *); SvgItem * removeSvgItem(int);
-    int numSvgItems(); SvgItem * svgItem(int); QList<SvgItem *> svgItems();
+    bool removeSvgItem(SvgItem *);
+    SvgItem * removeSvgItem(int);
+    int numSvgItems();
+    SvgItem * svgItem(int);
+    QList<SvgItem *> svgItems();
     int recommendedDifficulty();
-    QString allProperties(bool = false); QString allPublicProperties();
+    QString allProperties(bool = false);
+    QString allPublicProperties();
 
 private:
     unsigned int q_incorrectanscount;

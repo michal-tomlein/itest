@@ -49,7 +49,9 @@ public:
     bool check(QList<QuestionItem *>);
 #endif
 #ifdef ITESTSERVER
-    QString data(); QString archiveData(); void loadData(QString);
+    QString data();
+    QString archiveData();
+    void loadData(QString);
 #endif
     void clear();
 

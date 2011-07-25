@@ -50,21 +50,35 @@ public:
     static QList<int> randomise(QList<Question *>, PassMark, bool, int, quint32, QProgressDialog * = NULL, QApplication * = NULL);
 
 public slots:
-    QString name(); void setName(const QString &);
-    int flag(); void setFlag(int);
-    QString group(); void setGroup(const QString &);
-    int difficulty(); void setDifficulty(int);
-    QString text(); void setText(const QString &);
-    QString explanation(); void setExplanation(const QString &);
-    SelectionType selectionType(); void setSelectionType(SelectionType);
-    QString answer(Answer); void setAnswer(Answer, const QString &);
-    QString answerAtIndex(int); void setAnswerAtIndex(int, const QString &);
-    void addAnswer(const QString &); int numAnswers();
-    bool hasCorrectAnswer(); bool isAnswerAtIndexCorrect(int);
-    bool isAnswerCorrect(Answer); void setAnswerCorrect(Answers, bool);
-    QStringList answers(); void setAnswers(const QStringList &);
+    QString name();
+    void setName(const QString &);
+    int flag();
+    void setFlag(int);
+    QString group();
+    void setGroup(const QString &);
+    int difficulty();
+    void setDifficulty(int);
+    QString text();
+    void setText(const QString &);
+    QString explanation();
+    void setExplanation(const QString &);
+    SelectionType selectionType();
+    void setSelectionType(SelectionType);
+    QString answer(Answer);
+    void setAnswer(Answer, const QString &);
+    QString answerAtIndex(int);
+    void setAnswerAtIndex(int, const QString &);
+    void addAnswer(const QString &);
+    int numAnswers();
+    bool hasCorrectAnswer();
+    bool isAnswerAtIndexCorrect(int);
+    bool isAnswerCorrect(Answer);
+    void setAnswerCorrect(Answers, bool);
+    QStringList answers();
+    void setAnswers(const QStringList &);
     Answer correctAnswer();
-    Answers correctAnswers(); void setCorrectAnswers(Answers);
+    Answers correctAnswers();
+    void setCorrectAnswers(Answers);
 
 private:
     QString q_name;

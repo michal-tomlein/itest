@@ -32,14 +32,24 @@ class LogEntry
 public:
     LogEntry();
     LogEntry(int, int, int, int, int, int, const QString &);
-    QColor entryBackgroundColour(); QColor entryForegroundColour();
-    QString entryText(); QString entryData();
-    int bgRed(); int bgGreen(); int bgBlue();
-    int fgRed(); int fgGreen(); int fgBlue();
+    QColor entryBackgroundColour();
+    QColor entryForegroundColour();
+    QString entryText();
+    QString entryData();
+    int bgRed();
+    int bgGreen();
+    int bgBlue();
+    int fgRed();
+    int fgGreen();
+    int fgBlue();
 
 private:
-    int le_bgr; int le_bgg; int le_bgb;
-    int le_fgr; int le_fgg; int le_fgb;
+    int le_bgr;
+    int le_bgg;
+    int le_bgb;
+    int le_fgr;
+    int le_fgg;
+    int le_fgb;
     QString le_text;
 };
 
@@ -55,17 +65,30 @@ public:
     virtual ~Session();
 
 public slots:
-    void setName(const QString &); QString name();
-    void setDateTimeFromString(const QString &); void setDateTime(QDateTime);
-    QString dateTimeToString(); QDateTime dateTime();
+    void setName(const QString &);
+    QString name();
+    void setDateTimeFromString(const QString &);
+    void setDateTime(QDateTime);
+    QString dateTimeToString();
+    QDateTime dateTime();
     void addLogEntry(int, int, int, int, int, int, const QString &);
-    int numLogEntries(); LogEntry logEntry(int); void deleteLog();
-    void addStudent(Student *); int numStudents(); Student * student(int);
-    long double maximumScore(); long double score(); int average();
-    void setPassMark(PassMark); PassMark passMark(); void loadPassMark(const QString &);
-    void setScoringSystem(ScoringSystem); ScoringSystem scoringSystem();
+    int numLogEntries();
+    LogEntry logEntry(int);
+    void deleteLog();
+    void addStudent(Student *);
+    int numStudents();
+    Student * student(int);
+    long double maximumScore();
+    long double score();
+    int average();
+    void setPassMark(PassMark);
+    PassMark passMark();
+    void loadPassMark(const QString &);
+    void setScoringSystem(ScoringSystem);
+    ScoringSystem scoringSystem();
     QString sessionData();
-    bool mostPassed(); bool isArchived();
+    bool mostPassed();
+    bool isArchived();
     void destroy();
 
 private:

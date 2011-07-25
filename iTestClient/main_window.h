@@ -55,8 +55,10 @@ private slots:
     void errorInvalidData();
     void getReady();
     void start();
-    void browse_i(); void browse_o();
-    void loadSettings(); void saveSettings();
+    void browse_i();
+    void browse_o();
+    void loadSettings();
+    void saveSettings();
     // ENABLE, DISABLE, TOGGLE
     void enableConnectButton();
     void enableLoadButton();
@@ -68,15 +70,20 @@ private slots:
     void readIncomingData();
     void displayError(QAbstractSocket::SocketError);
     // TEST-RELATED
-    void loadTest(QString); void loadFile(); void loadFile(const QString &);
+    void loadTest(QString);
+    void loadFile();
+    void loadFile(const QString &);
     void randomlySelectQuestions();
     void updateTime();
-    void finish(); void sendResults();
-    void readResults(QString); void loadResults(QTableWidget *);
+    void finish();
+    void sendResults();
+    void readResults(QString);
+    void loadResults(QTableWidget *);
     void newTest();
     // QUESTION-RELATED
     void setCurrentQuestion();
-    void nextQuestion(); void lastQuestion();
+    void nextQuestion();
+    void lastQuestion();
     void setQuestionAnswered(Question::Answers);
     void previewSvg(const QString &);
 
@@ -101,7 +108,8 @@ private:
     bool current_test_shuffle_answers;
     bool current_connection_local;
     // FLAGS
-    QVector<bool> current_db_fe; QVector<QString> current_db_f;
+    QVector<bool> current_db_fe;
+    QVector<QString> current_db_f;
     // UI-RELATED
     QTimer timer;
     void closeEvent(QCloseEvent*);
@@ -127,7 +135,10 @@ private:
     QTableWidgetItem * ITW_test_passmark;
     QTextBrowser * ITW_test_comments;
     // ITEST & DB VERSION
-    QString ver; double f_ver; QString itos_ver; double f_itos_ver;
+    QString ver;
+    double f_ver;
+    QString itos_ver;
+    double f_itos_ver;
 };
 
 #endif // MAIN_WINDOW_H

@@ -34,7 +34,8 @@ public:
     ClassMember();
     ClassMember(const QString &);
 
-    void setName(const QString &); QString name();
+    void setName(const QString &);
+    QString name();
     void addSession(QDateTime, int);
     void addSession(const QString &, int);
     void removeSession(QDateTime);
@@ -60,19 +61,28 @@ public:
     Class(const QString &);
     virtual ~Class();
 
-    void setName(const QString &); QString name();
-    void setFirstYear(int); int firstYear();
-    void setLastYear(int); int lastYear();
-    int addMember(ClassMember *); int addMember(const QString &);
-    int removeMember(ClassMember *); void removeMember(int);
-    int numMembers(); int memberPosition(ClassMember *);
+    void setName(const QString &);
+    QString name();
+    void setFirstYear(int);
+    int firstYear();
+    void setLastYear(int);
+    int lastYear();
+    int addMember(ClassMember *);
+    int addMember(const QString &);
+    int removeMember(ClassMember *);
+    void removeMember(int);
+    int numMembers();
+    int memberPosition(ClassMember *);
     ClassMember * member(int);
     ClassMember * takeMember(int);
-    void addSession(QDateTime); void addSession(const QString &);
-    int removeSession(QDateTime); int removeSession(const QString &);
+    void addSession(QDateTime);
+    void addSession(const QString &);
+    int removeSession(QDateTime);
+    int removeSession(const QString &);
     void removeSession(int);
     int numSessions();
-    QDateTime session(int); QString sessionToString(int);
+    QDateTime session(int);
+    QString sessionToString(int);
     int average(QMap<QDateTime, Session *> *, QMap<QDateTime, ArchivedSession *> *);
     QString classData();
 
@@ -80,7 +90,8 @@ private:
     int updateAddedMemberPosition();
 
     QString cl_name;
-    int cl_firstyear; int cl_lastyear;
+    int cl_firstyear;
+    int cl_lastyear;
     QList<ClassMember *> cl_members;
     QList<QDateTime> cl_sessions;
 };

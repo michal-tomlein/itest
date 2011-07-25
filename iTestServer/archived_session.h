@@ -39,7 +39,8 @@ public slots:
     void archive();
     void restore(QString);
     void removeFromArchive();
-    Status status(); void setStatus(Status);
+    Status status();
+    void setStatus(Status);
     QString sessionArchiveData();
 
 private:

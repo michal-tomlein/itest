@@ -46,13 +46,18 @@ public:
     virtual ~Client();
 
 public slots:
-    void setName(const QString &); QString name();
-    void setNumber(int); int number();
-    void setSocket(QTcpSocket *); QTcpSocket * socket();
-    double score(); double maximumScore();
+    void setName(const QString &);
+    QString name();
+    void setNumber(int);
+    int number();
+    void setSocket(QTcpSocket *);
+    QTcpSocket * socket();
+    double score();
+    double maximumScore();
     bool isReady();
     QMap<QString, QuestionAnswer> * results();
-    void setPassed(bool); bool passed();
+    void setPassed(bool);
+    bool passed();
     void loadResults(QString);
     void readClientFeedback();
     bool isIdentified();
