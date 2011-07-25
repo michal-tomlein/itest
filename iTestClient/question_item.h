@@ -22,7 +22,7 @@
 
 #include <QMap>
 
-#include "../shared/question.h"
+#include "question.h"
 
 class QuestionItem : public Question
 {

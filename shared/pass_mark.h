@@ -21,10 +21,10 @@
 #define PASS_MARK_H
 
 #ifdef ITESTSERVER
-#include "../iTestServer/student.h"
+#include "student.h"
 #endif
 #ifdef ITESTCLIENT
-#include "../iTestClient/question_item.h"
+#include "question_item.h"
 #endif
 
 #include <QTextStream>

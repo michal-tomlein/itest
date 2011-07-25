@@ -29,6 +29,7 @@ SOURCES      += main.cpp \
                 answersview.cpp
 QT           += network svg
 DEFINES      += ITESTCLIENT
+INCLUDEPATH  += ../shared
 win32 {
 DESTDIR       = ../
 RC_FILE       = itestwri.rc

@@ -20,7 +20,7 @@
 #ifndef QUESTION_ITEM_H
 #define QUESTION_ITEM_H
 
-#include "../shared/question.h"
+#include "question.h"
 #include "svg_item.h"
 
 class QuestionAnswer

@@ -25,7 +25,7 @@
 #include <QDateTime>
 #include <QColor>
 
-#include "../shared/pass_mark.h"
+#include "pass_mark.h"
 
 class LogEntry
 {

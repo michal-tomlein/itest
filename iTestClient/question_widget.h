@@ -23,7 +23,7 @@
 #include <QSvgWidget>
 
 #include "mtmultisvgwidget.h"
-#include "../shared/pass_mark.h"
+#include "pass_mark.h"
 
 class QuestionWidget : public QWidget
 {

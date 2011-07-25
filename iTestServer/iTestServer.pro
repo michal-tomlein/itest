@@ -55,6 +55,7 @@ SOURCES      += main.cpp \
                 answersedit.cpp
 QT           += network svg
 DEFINES      += ITESTSERVER
+INCLUDEPATH  += ../shared
 win32 {
 DESTDIR       = ../
 RC_FILE       = itest.rc

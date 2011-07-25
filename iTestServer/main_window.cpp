@@ -17,7 +17,7 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
-#include "../shared/about_widget.h"
+#include "about_widget.h"
 #include "main_window.h"
 
 void MainWindow::errorInvalidDBFile(const QString & title, const QString & file, int error)

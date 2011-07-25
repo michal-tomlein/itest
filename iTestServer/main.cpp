@@ -10,7 +10,7 @@
  * iTest is distributed under the terms of the GPL v2, see details below.     *
  ******************************************************************************/
 
-#include "../shared/main.h"
+#include "main.h"
 
 int main(int argc, char *argv[])
 {

@@ -22,12 +22,7 @@
 
 #include <QApplication>
 
-#ifdef ITESTSERVER
-#include "../iTestServer/main_window.h"
-#endif
-#ifdef ITESTCLIENT
-#include "../iTestClient/main_window.h"
-#endif
+#include "main_window.h"
 
 class MTApplication : public QApplication
 {
