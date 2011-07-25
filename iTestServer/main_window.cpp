@@ -702,10 +702,10 @@ void MainWindow::overallStatistics()
     	    default: tw_item->setText(tr("Unknown")); break;
     	}
     	stats_tw->setItem(row, 2, tw_item);
-    	tw_item = new QTableWidgetItem(makeString(q_item->correctAnsCount()));
+    	tw_item = new QTableWidgetItem(QString::number(q_item->correctAnsCount()));
     	tw_item->setFont(font); tw_item->setForeground(QBrush::QBrush(QColor::QColor(92, 163, 0)));
     	stats_tw->setItem(row, 3, tw_item);
-    	tw_item = new QTableWidgetItem(makeString(q_item->incorrectAnsCount()));
+    	tw_item = new QTableWidgetItem(QString::number(q_item->incorrectAnsCount()));
     	tw_item->setFont(font); tw_item->setForeground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
     	stats_tw->setItem(row, 4, tw_item);
     	tw_item = new QTableWidgetItem;

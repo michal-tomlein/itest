@@ -589,7 +589,7 @@ void MainWindow::addClient()
     QObject::connect(client, SIGNAL(disconnected(Client *)),
                   this, SLOT(clientDisconnected(Client *)));
 
-    QListWidgetItem * item = new QListWidgetItem(makeString(SMLCListWidget->count() + 1), SMLCListWidget);
+    QListWidgetItem * item = new QListWidgetItem(QString::number(SMLCListWidget->count() + 1), SMLCListWidget);
     current_db_clients.insert(item, client);
     client->setNumber(item->text().toInt());
     QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 connected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(item->text()));
@@ -856,7 +856,7 @@ bool MainWindow::addOfflineClient(const QString & file_name)
     rfile.readLine();
     if (rfile.readLine() != "[CLIENT_NAME]") return false;
     Client * client = new Client (this, rfile.readLine());
-    QListWidgetItem * item = new QListWidgetItem(makeString(SMLCListWidget->count() + 1), SMLCListWidget);
+    QListWidgetItem * item = new QListWidgetItem(QString::number(SMLCListWidget->count() + 1), SMLCListWidget);
     current_db_clients.insert(item, client);
     client->setNumber(item->text().toInt()); item->setText(client->name());
     QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) added").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
@@ -979,7 +979,7 @@ void MainWindow::runTestWriter()
 #else
     itw_file_name.replace(itw_file_name.lastIndexOf("iTestServer"), 11, "iTestClient");
 #endif
-    QStringList arguments; arguments << "-port" << makeString(tcpServer->serverPort());
+    QStringList arguments; arguments << "-port" << QString::number(tcpServer->serverPort());
     QProcess * itw = new QProcess;
     itw->start(itw_file_name, arguments);
 }

@@ -416,7 +416,7 @@ void MainWindow::sortQuestions(Qt::SortOrder order, bool by_flag)
 
     QStringList list; QMap<QString, QListWidgetItem *> map;
     QListWidgetItem * item; QString item_text;
-    int l = makeString(current_db_f.size()).length();
+    int l = QString::number(current_db_f.size()).length();
 
     for (int i = 0; i < LQListWidget->count();) {
         item = LQListWidget->takeItem(i);

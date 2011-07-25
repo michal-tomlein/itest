@@ -81,7 +81,7 @@ void MainWindow::setCurrentClass(QListWidgetItem * item)
     CLSCNameLineEdit->setText(cl->name());
     CLSCFirstYearSpinBox->setValue(cl->firstYear());
     CLSCLastYearSpinBox->setValue(cl->lastYear());
-    CLSCNumStudentsLabel->setText(makeString(cl->numMembers()));
+    CLSCNumStudentsLabel->setText(QString::number(cl->numMembers()));
     CLSCAverageLabel->setText(QString("%1%").arg(cl->average(&current_db_sessions, &current_db_archivedsessions)));
     CLLSListWidget->clear();
     for (int i = 0; i < cl->numMembers(); ++i) {
@@ -212,7 +212,7 @@ void MainWindow::addStudent()
         }
     }
     CLLSListWidget->insertItem(current_db_class->addMember(new ClassMember(s_name)), s_name);
-    CLSCNumStudentsLabel->setText(makeString(current_db_class->numMembers()));
+    CLSCNumStudentsLabel->setText(QString::number(current_db_class->numMembers()));
     setDatabaseModified();
 }
 
@@ -228,7 +228,7 @@ void MainWindow::deleteStudent()
     }
     current_db_class->removeMember(CLLSListWidget->highlightedRow());
     delete CLLSListWidget->takeItem(CLLSListWidget->highlightedRow());
-    CLSCNumStudentsLabel->setText(makeString(current_db_class->numMembers()));
+    CLSCNumStudentsLabel->setText(QString::number(current_db_class->numMembers()));
     CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions, &current_db_archivedsessions)));
     clearCLSS();
     togglePrintEnabled();

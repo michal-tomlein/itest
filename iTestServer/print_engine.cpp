@@ -914,7 +914,7 @@ void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
         }
     }
     QFileInfo file_info; bool print_to_file = false; bool native_format = false;
-    int len = makeString(numprintouts).length();
+    int len = QString::number(numprintouts).length();
     if (!printer->outputFileName().isEmpty() && (numprintouts > 1 || printq_widget->printKey())) {
         file_info.setFile(printer->outputFileName());
         print_to_file = true;

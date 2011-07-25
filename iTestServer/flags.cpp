@@ -31,7 +31,7 @@ void MainWindow::addFlagItem(int i)
     le->setPalette(palette);
     EFFlagLineEdit << le;
     QTreeWidgetItem * item = new QTreeWidgetItem(EFTreeWidget);
-    item->setText(0, makeString(i + 1));
+    item->setText(0, QString::number(i + 1));
     item->setCheckState(0, Qt::Unchecked);
     item->setStatusTip(0, tr("Check or uncheck this checkbox to enable or disable flag %1").arg(i + 1));
     EFTreeWidget->setItemWidget(item, 1, le);
@@ -135,7 +135,7 @@ void MainWindow::updateFlagQnums()
         if (i.value()->flag() >= 0) { flag_qnum[i.value()->flag()]++; }
     }
     for (int i = 0; i < EFTreeWidget->topLevelItemCount(); ++i) {
-        EFTreeWidget->topLevelItem(i)->setText(2, makeString(flag_qnum[i]));
+        EFTreeWidget->topLevelItem(i)->setText(2, QString::number(flag_qnum[i]));
         EFTreeWidget->topLevelItem(i)->setDisabled(flag_qnum[i] > 0 && EFTreeWidget->topLevelItem(i)->checkState(0) == Qt::Checked);
         if (i < current_db_f.size()) EFFlagLineEdit[i]->setText(current_db_f[i]);
     }
