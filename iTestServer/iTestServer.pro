@@ -59,9 +59,9 @@ INCLUDEPATH  += ../shared
 win32 {
 DESTDIR       = ../
 RC_FILE       = itest.rc
-OBJECTS_DIR   = .build.win32
-MOC_DIR       = .build.win32
-RCC_DIR       = .build.win32
+OBJECTS_DIR   = build/win32
+MOC_DIR       = build/win32
+RCC_DIR       = build/win32
 exists($(QTDIR)/bin/splitui.exe) {
 QMAKE_UIC     = splitui.exe
 SOURCES      += ui_main_window_v2.cpp \
@@ -80,9 +80,9 @@ QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.5
 QMAKE_MAC_SDK = /Developer/SDKs/MacOSX10.6.sdk
 }
 unix {
-OBJECTS_DIR   = .build.unix
-MOC_DIR       = .build.unix
-RCC_DIR       = .build.unix
+OBJECTS_DIR   = build/unix
+MOC_DIR       = build/unix
+RCC_DIR       = build/unix
 exists(/usr/bin/splitui) {
 QMAKE_UIC     = splitui
 SOURCES      += ui_main_window_v2.cpp \
