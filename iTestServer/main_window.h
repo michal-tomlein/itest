@@ -111,6 +111,7 @@ private slots:
     void saveAs();
     void saveCopy();
     void saveBackup();
+    void exportCSV();
     void setDatabaseModified();
     // STATS
     void overallStatistics();

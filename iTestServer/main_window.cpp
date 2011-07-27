@@ -98,6 +98,7 @@ void MainWindow::setAllEnabled(bool enabled)
     actionSave_as->setEnabled(enabled);
     actionSave_a_copy->setEnabled(enabled);
     actionSave_a_backup->setEnabled(enabled);
+    actionExport_CSV->setEnabled(enabled);
     actionClose->setEnabled(enabled);
 //  actionEdit_questions->setEnabled(enabled);
 //  actionEdit_test->setEnabled(enabled);
@@ -335,6 +336,7 @@ MainWindow::MainWindow()
     QObject::connect(actionSave_as, SIGNAL(triggered()), this, SLOT(saveAs()));
     QObject::connect(actionSave_a_copy, SIGNAL(triggered()), this, SLOT(saveCopy()));
     QObject::connect(actionSave_a_backup, SIGNAL(triggered()), this, SLOT(saveBackup()));
+    QObject::connect(actionExport_CSV, SIGNAL(triggered()), this, SLOT(exportCSV()));
     QObject::connect(actionClose, SIGNAL(triggered()), this, SLOT(closeDB()));
     QObject::connect(actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
     QObject::connect(actionAbout, SIGNAL(triggered()), this, SLOT(about()));

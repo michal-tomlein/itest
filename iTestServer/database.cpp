@@ -678,3 +678,46 @@ void MainWindow::closeDB()
     statusBar()->showMessage(tr("Database closed"), 10000);
     // -------------------------------------------------------------------------
 }
+
+inline QString quoteForCSV(QString s)
+{
+    return QString("\"%1\"").arg(s.replace('"', "\"\""));
+}
+
+void MainWindow::exportCSV()
+{
+    QString file_name = QFileDialog::getSaveFileName(this,
+                                                     tr("Export as CSV"),
+                                                     QString("%1.csv").arg(DBIDatabaseNameLineEdit->text()),
+                                                     tr("CSV files (*.csv)"));
+    if (file_name.isEmpty())
+        return;
+
+    QFile file(file_name);
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        QMessageBox::critical(this, tr("Export as CSV"), tr("Cannot write file %1:\n%2.").arg(file_name).arg(file.errorString()));
+        this->setEnabled(true); return;
+    }
+
+    QTextStream out(&file);
+    out.setCodec("UTF-8");
+
+    const QString separator(',');
+
+    QTextDocument doc;
+    for (int i = 0; i < LQListWidget->count(); ++i) {
+        QuestionItem * item = current_db_questions.value(LQListWidget->item(i));
+        out << quoteForCSV(item->name()) << separator;
+        out << QString::number(item->flag()) << separator;
+        out << quoteForCSV(item->group()) << separator;
+        doc.setHtml(item->text());
+        out << quoteForCSV(doc.toPlainText()) << separator;
+        out << quoteForCSV(item->explanation()) << separator;
+        out << QString::number(item->correctAnswers());
+        foreach (const QString & answer, item->answers())
+            out << separator << quoteForCSV(answer);
+        out << endl;
+    }
+
+    file.close();
+}
