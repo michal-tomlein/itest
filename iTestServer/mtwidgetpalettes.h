@@ -27,14 +27,14 @@ struct SearchLineEditPalettes
     QPalette search_active_palette;
     QPalette search_noresults_palette;
     SearchLineEditPalettes() {
-        search_active_palette.setColor(QPalette::Active, QPalette::Base, QColor::QColor(255, 251, 0));
-        search_active_palette.setColor(QPalette::Active, QPalette::Text, QColor::QColor(0, 0, 0));
-        search_active_palette.setColor(QPalette::Inactive, QPalette::Base, QColor::QColor(255, 251, 0));
-        search_active_palette.setColor(QPalette::Inactive, QPalette::Text, QColor::QColor(0, 0, 0));
-        search_noresults_palette.setColor(QPalette::Active, QPalette::Base, QColor::QColor(255, 0, 0));
-        search_noresults_palette.setColor(QPalette::Active, QPalette::Text, QColor::QColor(0, 0, 0));
-        search_noresults_palette.setColor(QPalette::Inactive, QPalette::Base, QColor::QColor(255, 0, 0));
-        search_noresults_palette.setColor(QPalette::Inactive, QPalette::Text, QColor::QColor(0, 0, 0));
+        search_active_palette.setColor(QPalette::Active, QPalette::Base, QColor(255, 251, 0));
+        search_active_palette.setColor(QPalette::Active, QPalette::Text, QColor(0, 0, 0));
+        search_active_palette.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 251, 0));
+        search_active_palette.setColor(QPalette::Inactive, QPalette::Text, QColor(0, 0, 0));
+        search_noresults_palette.setColor(QPalette::Active, QPalette::Base, QColor(255, 0, 0));
+        search_noresults_palette.setColor(QPalette::Active, QPalette::Text, QColor(0, 0, 0));
+        search_noresults_palette.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 0, 0));
+        search_noresults_palette.setColor(QPalette::Inactive, QPalette::Text, QColor(0, 0, 0));
     };
 };
 

@@ -33,9 +33,9 @@ LogEntry::LogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, const Q
     le_text = text;
 }
 
-QColor LogEntry::entryBackgroundColour() { return QColor::QColor(le_bgr, le_bgg, le_bgb); }
+QColor LogEntry::entryBackgroundColour() { return QColor(le_bgr, le_bgg, le_bgb); }
 
-QColor LogEntry::entryForegroundColour() { return QColor::QColor(le_fgr, le_fgg, le_fgb); }
+QColor LogEntry::entryForegroundColour() { return QColor(le_fgr, le_fgg, le_fgb); }
 
 QString LogEntry::entryText() { return le_text; }
 
@@ -111,7 +111,7 @@ QDateTime Session::dateTime() { return s_datetime; }
 
 void Session::addLogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, const QString & text)
 {
-    s_log << LogEntry::LogEntry(bgr, bgg, bgb, fgr, fgg, fgb, text);
+    s_log << LogEntry(bgr, bgg, bgb, fgr, fgg, fgb, text);
 }
 
 int Session::numLogEntries() { return s_log.count(); }

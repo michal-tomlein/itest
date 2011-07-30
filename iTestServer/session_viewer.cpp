@@ -189,19 +189,19 @@ void MainWindow::setCurrentSession(QListWidgetItem * item)
     SVLCListWidget->clear(); SVLogListWidget->clear();
     for (int i = 0; i < session->numLogEntries(); ++i) {
     	QListWidgetItem * log_entry = new QListWidgetItem (session->logEntry(i).entryText(), SVLogListWidget);
-    	log_entry->setBackground(QBrush::QBrush(session->logEntry(i).entryBackgroundColour()));
-    	log_entry->setForeground(QBrush::QBrush(session->logEntry(i).entryForegroundColour()));
+    	log_entry->setBackground(QBrush(session->logEntry(i).entryBackgroundColour()));
+    	log_entry->setForeground(QBrush(session->logEntry(i).entryForegroundColour()));
     }
     SVLogGroupBox->setVisible(session->numLogEntries() > 0);
     for (int i = 0; i < session->numStudents(); ++i) {
     	QListWidgetItem * item = new QListWidgetItem(session->student(i)->name(), SVLCListWidget);
     	current_db_students.insert(item, session->student(i));
     	if (session->student(i)->passed()) {
-            item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
+            item->setBackground(QBrush(QColor(197, 255, 120)));
         } else {
-            item->setBackground(QBrush::QBrush(QColor::QColor(204, 163, 0)));
+            item->setBackground(QBrush(QColor(204, 163, 0)));
         }
-        item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        item->setForeground(QBrush(QColor(0, 0, 0)));
     }
     SVPassMarkTableWidget->clearContents();
     SVPassMarkTableWidget->verticalHeader()->hide();
@@ -211,8 +211,8 @@ void MainWindow::setCurrentSession(QListWidgetItem * item)
     	for (int i = 0; i < session->passMark().count(); ++i) {
     	    if (session->passMark().condition(i) < 0 || session->passMark().condition(i) >= current_db_f.size()) { continue; }
     	    item = new QTableWidgetItem(QString("%1 - %2").arg(session->passMark().condition(i) + 1).arg(current_db_f[session->passMark().condition(i)]));
-    	    item->setBackground(QBrush::QBrush(backgroundColourForFlag(session->passMark().condition(i))));
-    	    item->setForeground(QBrush::QBrush(foregroundColourForFlag(session->passMark().condition(i))));
+    	    item->setBackground(QBrush(backgroundColourForFlag(session->passMark().condition(i))));
+    	    item->setForeground(QBrush(foregroundColourForFlag(session->passMark().condition(i))));
     	    SVPassMarkTableWidget->setItem(i, 0, item);
     	    item = new QTableWidgetItem(QString::number(session->passMark().value(i)));
     	    SVPassMarkTableWidget->setItem(i, 1, item);
@@ -429,15 +429,15 @@ void MainWindow::loadStudentResults(QMap<QString, QuestionAnswer> * results)
 void MainWindow::selectSessionItem(QListWidgetItem * item)
 {
     for (int i = 0; i < SVLSListWidget->count(); ++i) {
-    	SVLSListWidget->item(i)->setBackground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
-    	SVLSListWidget->item(i)->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	SVLSListWidget->item(i)->setBackground(QBrush(QColor(255, 255, 255)));
+    	SVLSListWidget->item(i)->setForeground(QBrush(QColor(0, 0, 0)));
     }
     for (int i = 0; i < SVLASListWidget->count(); ++i) {
-    	SVLASListWidget->item(i)->setBackground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
-    	SVLASListWidget->item(i)->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	SVLASListWidget->item(i)->setBackground(QBrush(QColor(255, 255, 255)));
+    	SVLASListWidget->item(i)->setForeground(QBrush(QColor(0, 0, 0)));
     }
-    item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-    item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    item->setBackground(QBrush(QColor(197, 255, 120)));
+    item->setForeground(QBrush(QColor(0, 0, 0)));
     item->listWidget()->clearSelection();
 }
 

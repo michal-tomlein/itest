@@ -88,7 +88,7 @@ void MainWindow::clearSQNoFlags()
 void MainWindow::clearDBI()
 {
     DBIDatabaseNameLineEdit->clear();
-    DBIDateEdit->setDateTime(QDateTime::QDateTime(QDate::QDate(2006, 12, 1), QTime::QTime(0, 0)));
+    DBIDateEdit->setDateTime(QDateTime(QDate(2006, 12, 1), QTime(0, 0)));
     DBIUseLastSaveDateCheckBox->setChecked(true);
 }
 
@@ -664,24 +664,24 @@ void MainWindow::overallStatistics()
     	q_item = current_db_questions.value(LQListWidget->item(i));
     	if (q_item->recommendedDifficulty() == -1) { continue; }
     	tw_item = new QTableWidgetItem(q_item->group().isEmpty() ? q_item->name() : QString("[%1] %2").arg(q_item->group()).arg(q_item->name()));
-    	tw_item->setBackground(QBrush::QBrush(backgroundColourForFlag(q_item->flag())));
-    	tw_item->setForeground(QBrush::QBrush(foregroundColourForFlag(q_item->flag())));
+    	tw_item->setBackground(QBrush(backgroundColourForFlag(q_item->flag())));
+    	tw_item->setForeground(QBrush(foregroundColourForFlag(q_item->flag())));
     	tw_item->setFont(font);
     	stats_tw->setItem(row, 0, tw_item);
     	tw_item = new QTableWidgetItem;
     	switch (q_item->difficulty()) {
     	    case -1: tw_item->setText(tr("Unknown")); break;
     	    case 0: tw_item->setText(tr("Easy"));
-    	    	tw_item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-    	    	tw_item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	    	tw_item->setBackground(QBrush(QColor(197, 255, 120)));
+    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
     	    	break;
     	    case 1: tw_item->setText(tr("Medium"));
-    	    	tw_item->setBackground(QBrush::QBrush(QColor::QColor(255, 251, 0)));
-    	    	tw_item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	    	tw_item->setBackground(QBrush(QColor(255, 251, 0)));
+    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
     	    	break;
     	    case 2: tw_item->setText(tr("Difficult"));
-    	    	tw_item->setBackground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
-    	    	tw_item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	    	tw_item->setBackground(QBrush(QColor(204, 109, 0)));
+    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
     	    	break;
     	    default: tw_item->setText(tr("Unknown")); break;
     	}
@@ -690,25 +690,25 @@ void MainWindow::overallStatistics()
     	switch (q_item->recommendedDifficulty()) {
     	    case -1: tw_item->setText(tr("Unknown")); break;
     	    case 0: tw_item->setText(tr("Easy"));
-    	    	tw_item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-    	    	tw_item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	    	tw_item->setBackground(QBrush(QColor(197, 255, 120)));
+    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
     	    	break;
     	    case 1: tw_item->setText(tr("Medium"));
-    	    	tw_item->setBackground(QBrush::QBrush(QColor::QColor(255, 251, 0)));
-    	    	tw_item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	    	tw_item->setBackground(QBrush(QColor(255, 251, 0)));
+    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
     	    	break;
     	    case 2: tw_item->setText(tr("Difficult"));
-    	    	tw_item->setBackground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
-    	    	tw_item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	    	tw_item->setBackground(QBrush(QColor(204, 109, 0)));
+    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
     	    	break;
     	    default: tw_item->setText(tr("Unknown")); break;
     	}
     	stats_tw->setItem(row, 2, tw_item);
     	tw_item = new QTableWidgetItem(QString::number(q_item->correctAnsCount()));
-    	tw_item->setFont(font); tw_item->setForeground(QBrush::QBrush(QColor::QColor(92, 163, 0)));
+    	tw_item->setFont(font); tw_item->setForeground(QBrush(QColor(92, 163, 0)));
     	stats_tw->setItem(row, 3, tw_item);
     	tw_item = new QTableWidgetItem(QString::number(q_item->incorrectAnsCount()));
-    	tw_item->setFont(font); tw_item->setForeground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
+    	tw_item->setFont(font); tw_item->setForeground(QBrush(QColor(204, 109, 0)));
     	stats_tw->setItem(row, 4, tw_item);
     	tw_item = new QTableWidgetItem;
     	QPushButton * stats_btn_adjust = new QPushButton(tr("Adjust difficulty"), stats_tw);
@@ -756,16 +756,16 @@ void MainWindow::statsAdjust(QAbstractButton * btn)
     switch (rdif) {
     	case -1: break;
     	case 0: tw_item->setText(tr("Easy"));
-    	    tw_item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-    	    tw_item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	    tw_item->setBackground(QBrush(QColor(197, 255, 120)));
+    	    tw_item->setForeground(QBrush(QColor(0, 0, 0)));
     	    break;
     	case 1: tw_item->setText(tr("Medium"));
-    	    tw_item->setBackground(QBrush::QBrush(QColor::QColor(255, 251, 0)));
-    	    tw_item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	    tw_item->setBackground(QBrush(QColor(255, 251, 0)));
+    	    tw_item->setForeground(QBrush(QColor(0, 0, 0)));
     	    break;
     	case 2: tw_item->setText(tr("Difficult"));
-    	    tw_item->setBackground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
-    	    tw_item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    	    tw_item->setBackground(QBrush(QColor(204, 109, 0)));
+    	    tw_item->setForeground(QBrush(QColor(0, 0, 0)));
     	    break;
     	default: break;
     }

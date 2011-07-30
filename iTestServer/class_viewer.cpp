@@ -23,22 +23,22 @@ void MainWindow::setupClassViewer()
 {
     tbtnAdd_class->setAction(actionAdd_class, true);
     tbtnAdd_class->setText(tr("Add"));
-    tbtnAdd_class->setIconSize(QSize::QSize(16, 16));
+    tbtnAdd_class->setIconSize(QSize(16, 16));
     tbtnDelete_class->setAction(actionDelete_class, true);
     tbtnDelete_class->setText(tr("Delete"));
-    tbtnDelete_class->setIconSize(QSize::QSize(16, 16));
+    tbtnDelete_class->setIconSize(QSize(16, 16));
     tbtnAdd_student->setAction(actionAdd_student, true);
     tbtnAdd_student->setText(tr("Add"));
-    tbtnAdd_student->setIconSize(QSize::QSize(16, 16));
+    tbtnAdd_student->setIconSize(QSize(16, 16));
     tbtnDelete_student->setAction(actionDelete_student, true);
     tbtnDelete_student->setText(tr("Delete"));
-    tbtnDelete_student->setIconSize(QSize::QSize(16, 16));
+    tbtnDelete_student->setIconSize(QSize(16, 16));
     tbtnAdd_session->setAction(actionAdd_session, true);
     tbtnAdd_session->setText(tr("Add"));
-    tbtnAdd_session->setIconSize(QSize::QSize(16, 16));
+    tbtnAdd_session->setIconSize(QSize(16, 16));
     tbtnDelete_session->setAction(actionDelete_session, true);
     tbtnDelete_session->setText(tr("Delete"));
-    tbtnDelete_session->setIconSize(QSize::QSize(16, 16));
+    tbtnDelete_session->setIconSize(QSize(16, 16));
     QObject::connect(actionAdd_class, SIGNAL(triggered()), this, SLOT(addClass()));
     QObject::connect(actionDelete_class, SIGNAL(triggered()), this, SLOT(deleteClass()));
     QObject::connect(actionPrint_class_summary, SIGNAL(triggered()), this, SLOT(printClassSummary()));
@@ -114,7 +114,7 @@ void MainWindow::setCurrentClassMember(QListWidgetItem * item)
             CLSSResultsTableWidget->item(i, 0)->setData(Qt::UserRole, session->dateTime());
             CLSSResultsTableWidget->setItem(i, 1, new QTableWidgetItem(session->student(mem->sessionEntry(i).member_num)->name()));
             CLSSResultsTableWidget->item(i, 1)->setData(Qt::UserRole, mem->sessionEntry(i).member_num);
-            CLSSResultsTableWidget->item(i, 1)->setBackground(QBrush::QBrush(session->student(mem->sessionEntry(i).member_num)->passed() ? QColor::QColor(197, 255, 120) : QColor::QColor(204, 163, 0)));
+            CLSSResultsTableWidget->item(i, 1)->setBackground(QBrush(session->student(mem->sessionEntry(i).member_num)->passed() ? QColor(197, 255, 120) : QColor(204, 163, 0)));
             MTProgressBar * bar = new MTProgressBar(this);
             CLSSResultsTableWidget->setCellWidget(i, 2, bar);
             bar->setMaximum((int)(session->student(mem->sessionEntry(i).member_num)->maximumScore() * 100.0));
@@ -250,15 +250,15 @@ void MainWindow::addSession()
         if (sessions_list.contains(SVLSListWidget->item(i)->data(Qt::UserRole).toDateTime())) { continue; }
         QListWidgetItem * item = new QListWidgetItem(*(SVLSListWidget->item(i)));
         item->setFont(font);
-        item->setBackground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
-        item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        item->setBackground(QBrush(QColor(255, 255, 255)));
+        item->setForeground(QBrush(QColor(0, 0, 0)));
         lw->addItem(item);
     }
     for (int i = 0; i < SVLASListWidget->count(); ++i) {
         if (sessions_list.contains(SVLASListWidget->item(i)->data(Qt::UserRole).toDateTime())) { continue; }
         QListWidgetItem * item = new QListWidgetItem(*(SVLASListWidget->item(i)));
-        item->setBackground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
-        item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        item->setBackground(QBrush(QColor(255, 255, 255)));
+        item->setForeground(QBrush(QColor(0, 0, 0)));
         lw->addItem(item);
     }
     lw->setCurrentRow(0);
@@ -267,7 +267,7 @@ void MainWindow::addSession()
     QDateTime datetime = lw->currentItem()->data(Qt::UserRole).toDateTime();
     current_db_class->addSession(datetime);
     QListWidgetItem * item = new QListWidgetItem(*(lw->currentItem()));
-    item->setFont(QFont::QFont());
+    item->setFont(QFont());
     CLLSSListWidget->addItem(item);
     delete d;
     setDatabaseModified();

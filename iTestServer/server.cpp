@@ -248,7 +248,7 @@ void MainWindow::updateTestTime()
 {
     if (rbtnTestTime->isChecked()) {
     	if (TSQnumSpinBox->value() == 0) {
-    	    TSQuestionTimeEdit->setTime(QTime::QTime(0, 0));
+            TSQuestionTimeEdit->setTime(QTime(0, 0));
     	} else {
     	    QTime time = TSTestTimeEdit->time(); QTime nulltime (0, 0);
     	    QTime qtime = nulltime.addSecs(((time.hour() * 60 * 60) + (time.minute() * 60)) / TSQnumSpinBox->value());
@@ -594,8 +594,8 @@ void MainWindow::addClient()
     client->setNumber(item->text().toInt());
     QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 connected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(item->text()));
     SMSLListWidget->insertItem(0, log_entry);
-    log_entry->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-    log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    log_entry->setBackground(QBrush(QColor(197, 255, 120)));
+    log_entry->setForeground(QBrush(QColor(0, 0, 0)));
     updateLC(client);
 
     QByteArray client_number;
@@ -618,8 +618,8 @@ void MainWindow::clientIdentified(Client * client)
 {
     QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 identified as %3").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
-    log_entry->setBackground(QBrush::QBrush(QColor::QColor(17, 120, 122)));
-    log_entry->setForeground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
+    log_entry->setBackground(QBrush(QColor(17, 120, 122)));
+    log_entry->setForeground(QBrush(QColor(255, 255, 255)));
     if (current_db_clients.value(SMLCListWidget->currentItem()) == client)
     { setCurrentClient(); }
     updateLC(client); toggleSaveSessionEnabled();
@@ -629,16 +629,16 @@ void MainWindow::clientFinished(Client * client)
 {
     QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) finished the exam").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
-    log_entry->setBackground(QBrush::QBrush(QColor::QColor(255, 251, 0)));
-    log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    log_entry->setBackground(QBrush(QColor(255, 251, 0)));
+    log_entry->setForeground(QBrush(QColor(0, 0, 0)));
 }
 
 void MainWindow::clientResultsLoaded(Client * client)
 {
     QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) submitted results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
-    log_entry->setBackground(QBrush::QBrush(QColor::QColor(221, 255, 0)));
-    log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    log_entry->setBackground(QBrush(QColor(221, 255, 0)));
+    log_entry->setForeground(QBrush(QColor(0, 0, 0)));
     if (current_db_clients.value(SMLCListWidget->currentItem()) == client)
     { setCurrentClient(); }
     updateLC(client); sendCorrectAnswers(client);
@@ -646,13 +646,13 @@ void MainWindow::clientResultsLoaded(Client * client)
         if (!printClientResults(client, default_printer)) {
             QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
             SMSLListWidget->insertItem(0, log_entry);
-            log_entry->setBackground(QBrush::QBrush(QColor::QColor(255, 0, 0)));
-            log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+            log_entry->setBackground(QBrush(QColor(255, 0, 0)));
+            log_entry->setForeground(QBrush(QColor(0, 0, 0)));
         } else {
             QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
             SMSLListWidget->insertItem(0, log_entry);
-            log_entry->setBackground(QBrush::QBrush(QColor::QColor(221, 255, 0)));
-            log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+            log_entry->setBackground(QBrush(QColor(221, 255, 0)));
+            log_entry->setForeground(QBrush(QColor(0, 0, 0)));
         }
     }
 }
@@ -666,8 +666,8 @@ void MainWindow::clientDisconnected(Client * client)
     } else {
        log_entry->setText(tr("%1 > Client #%2 disconnected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()));
     }
-    log_entry->setBackground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
-    log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+    log_entry->setBackground(QBrush(QColor(204, 109, 0)));
+    log_entry->setForeground(QBrush(QColor(0, 0, 0)));
     if (current_db_clients.value(SMLCListWidget->currentItem()) == client)
     { setCurrentClient(); }
     updateLC(client);
@@ -714,17 +714,17 @@ void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> * results, QTab
             item->setText(q_item->group().isEmpty() ? q_item->name() : QString("[%1] %2").arg(q_item->group()).arg(q_item->name()));
         }
         item->setIcon(iconForDifficulty(qans.difficulty()));
-        item->setBackground(QBrush::QBrush(backgroundColourForFlag(qans.flag())));
-        item->setForeground(QBrush::QBrush(foregroundColourForFlag(qans.flag())));
+        item->setBackground(QBrush(backgroundColourForFlag(qans.flag())));
+        item->setForeground(QBrush(foregroundColourForFlag(qans.flag())));
         tw->setItem(row, 0, item);
         double score = qans.score(sys);
         item = new QTableWidgetItem(tr("%1 out of %2").arg(score).arg(qans.maximumScore(sys)));
         if (score > 0.0) {
-            item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-            item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+            item->setBackground(QBrush(QColor(197, 255, 120)));
+            item->setForeground(QBrush(QColor(0, 0, 0)));
         } else {
-            item->setBackground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
-            item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+            item->setBackground(QBrush(QColor(204, 109, 0)));
+            item->setForeground(QBrush(QColor(0, 0, 0)));
         }
         tw->setItem(row, 1, item);
         item = new QTableWidgetItem;
@@ -771,12 +771,12 @@ void MainWindow::updateLC(Client * client)
           client_items.at(i)->setText(client->name());
        switch (client->socket()->state()) {
           case QAbstractSocket::UnconnectedState:
-             client_items.at(i)->setBackground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
-             client_items.at(i)->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+             client_items.at(i)->setBackground(QBrush(QColor(204, 109, 0)));
+             client_items.at(i)->setForeground(QBrush(QColor(0, 0, 0)));
              break;
           case QAbstractSocket::ConnectedState:
-             client_items.at(i)->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-             client_items.at(i)->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+             client_items.at(i)->setBackground(QBrush(QColor(197, 255, 120)));
+             client_items.at(i)->setForeground(QBrush(QColor(0, 0, 0)));
              break;
           case QAbstractSocket::HostLookupState:
           case QAbstractSocket::ConnectingState:
@@ -784,8 +784,8 @@ void MainWindow::updateLC(Client * client)
           case QAbstractSocket::ClosingState:
           case QAbstractSocket::ListeningState:
           default:
-             client_items.at(i)->setBackground(QBrush::QBrush(QColor::QColor(201, 204, 0)));
-             client_items.at(i)->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+             client_items.at(i)->setBackground(QBrush(QColor(201, 204, 0)));
+             client_items.at(i)->setForeground(QBrush(QColor(0, 0, 0)));
              break;
        }
     }
@@ -861,8 +861,8 @@ bool MainWindow::addOfflineClient(const QString & file_name)
     client->setNumber(item->text().toInt()); item->setText(client->name());
     QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) added").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
-    log_entry->setBackground(QBrush::QBrush(QColor::QColor(0, 125, 163)));
-    log_entry->setForeground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
+    log_entry->setBackground(QBrush(QColor(0, 125, 163)));
+    log_entry->setForeground(QBrush(QColor(255, 255, 255)));
     updateLC(client); toggleSaveSessionEnabled();
     QObject::connect(client, SIGNAL(resultsLoaded(Client *)), this, SLOT(clientResultsLoaded(Client *)));
     client->loadResults(rfile.readAll());
@@ -886,8 +886,8 @@ void MainWindow::addOfflineClients()
         if (!addOfflineClient(client_logs.at(i).absoluteFilePath())) {
             QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Failed to add off-line client").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")));
             SMSLListWidget->insertItem(0, log_entry);
-            log_entry->setBackground(QBrush::QBrush(QColor::QColor(204, 109, 0)));
-            log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+            log_entry->setBackground(QBrush(QColor(204, 109, 0)));
+            log_entry->setForeground(QBrush(QColor(0, 0, 0)));
         }
     }
 }
@@ -1014,8 +1014,8 @@ void MainWindow::clearSM()
     TSGroupsCheckBox->setChecked(false);
     TSMaxQnumCheckBox->setChecked(false);
     rbtnTestTime->setChecked(true);
-    TSTestTimeEdit->setTime(QTime::QTime(0, 0));
-    TSQuestionTimeEdit->setTime(QTime::QTime(0, 0));
+    TSTestTimeEdit->setTime(QTime(0, 0));
+    TSQuestionTimeEdit->setTime(QTime(0, 0));
     TSDoNotPrintResultsCheckBox->setChecked(false);
     TSHideQuestionNamesCheckBox->setChecked(false);
     TSHideCorrectAnswersCheckBox->setChecked(false);

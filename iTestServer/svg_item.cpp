@@ -45,7 +45,7 @@ bool SvgItem::setSvg(QString svg)
     painter.drawRect(QRect(0, 0, 64, 64));
     painter.restore();
     svgrenderer.render(&painter);
-    setIcon(QIcon::QIcon(pixmap));
+    setIcon(QIcon(pixmap));
     si_svg = svg;
     return true;
 }

@@ -614,13 +614,13 @@ void MainWindow::quickPrint()
     if (!printClientResults(client, default_printer)) {
         QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results (Server QuickPrint call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
         SMSLListWidget->insertItem(0, log_entry);
-        log_entry->setBackground(QBrush::QBrush(QColor::QColor(200, 0, 0)));
-        log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        log_entry->setBackground(QBrush(QColor(200, 0, 0)));
+        log_entry->setForeground(QBrush(QColor(0, 0, 0)));
     } else {
         QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully (Server QuickPrint call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
         SMSLListWidget->insertItem(0, log_entry);
-        log_entry->setBackground(QBrush::QBrush(QColor::QColor(180, 255, 0)));
-        log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        log_entry->setBackground(QBrush(QColor(180, 255, 0)));
+        log_entry->setForeground(QBrush(QColor(0, 0, 0)));
     }
 }
 
@@ -654,8 +654,8 @@ void MainWindow::print()
             if (mainStackedWidget->currentIndex() == 5) {
                 QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results (Server Print call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(student->number()).arg(student->name()));
                 SMSLListWidget->insertItem(0, log_entry);
-                log_entry->setBackground(QBrush::QBrush(QColor::QColor(200, 0, 0)));
-                log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+                log_entry->setBackground(QBrush(QColor(200, 0, 0)));
+                log_entry->setForeground(QBrush(QColor(0, 0, 0)));
             } else {
                 statusBar()->showMessage(tr("Failed to print the results"), 10000);
             }
@@ -663,8 +663,8 @@ void MainWindow::print()
             if (mainStackedWidget->currentIndex() == 5) {
                 QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully (Server Print call)").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(student->number()).arg(student->name()));
                 SMSLListWidget->insertItem(0, log_entry);
-                log_entry->setBackground(QBrush::QBrush(QColor::QColor(180, 255, 0)));
-                log_entry->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+                log_entry->setBackground(QBrush(QColor(180, 255, 0)));
+                log_entry->setForeground(QBrush(QColor(0, 0, 0)));
             } else {
                 statusBar()->showMessage(tr("Results printed successfully"), 10000);
             }

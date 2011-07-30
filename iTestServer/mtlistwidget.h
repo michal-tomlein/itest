@@ -57,17 +57,17 @@ public slots:
     static void highlightItem(QListWidgetItem * item) {
         if (item == NULL) { return; }
         for (int i = 0; i < item->listWidget()->count(); ++i) {
-            item->listWidget()->item(i)->setBackground(QBrush::QBrush(QColor::QColor(255, 255, 255)));
-            item->listWidget()->item(i)->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+            item->listWidget()->item(i)->setBackground(QBrush(QColor(255, 255, 255)));
+            item->listWidget()->item(i)->setForeground(QBrush(QColor(0, 0, 0)));
         }
-        item->setBackground(QBrush::QBrush(QColor::QColor(197, 255, 120)));
-        item->setForeground(QBrush::QBrush(QColor::QColor(0, 0, 0)));
+        item->setBackground(QBrush(QColor(197, 255, 120)));
+        item->setForeground(QBrush(QColor(0, 0, 0)));
         item->listWidget()->clearSelection();
     };
     bool isItemHighlighted(int i) { return isItemHighlighted(item(i)); };
     static bool isItemHighlighted(QListWidgetItem * item) {
         if (item == NULL) { return false; }
-        return (item->background() == QBrush::QBrush(QColor::QColor(197, 255, 120)));
+        return (item->background() == QBrush(QColor(197, 255, 120)));
     };
     int highlightedRow() { return row(highlightedItem()); };
     QListWidgetItem * highlightedItem() {

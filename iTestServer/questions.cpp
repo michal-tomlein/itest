@@ -266,7 +266,7 @@ void MainWindow::hideQuestion()
 void MainWindow::hideQuestion(QListWidgetItem * q_item, QuestionItem * item)
 {
     q_item->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
-    q_item->setForeground(QBrush::QBrush(foregroundColourForFlag(item->flag(), item->isHidden())));
+    q_item->setForeground(QBrush(foregroundColourForFlag(item->flag(), item->isHidden())));
     if (item->isHidden()) {
     	QFont font; font.setBold(true);
     	q_item->setFont(font);
@@ -294,8 +294,8 @@ QIcon MainWindow::iconForDifficulty(int q_difficulty_i)
 
 void MainWindow::setQuestionItemColour(QListWidgetItem * q_item, int q_flag_i)
 {
-    q_item->setBackground(QBrush::QBrush(backgroundColourForFlag(q_flag_i)));
-    q_item->setForeground(QBrush::QBrush(foregroundColourForFlag(q_flag_i)));
+    q_item->setBackground(QBrush(backgroundColourForFlag(q_flag_i)));
+    q_item->setForeground(QBrush(foregroundColourForFlag(q_flag_i)));
 }
 
 void MainWindow::searchByGroup() {
