@@ -2639,19 +2639,51 @@ Chyba %2.</translation>
     </message>
     <message>
         <source>Include easy questions in the test</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahrnúť do testu jednoduché otázky</translation>
     </message>
     <message>
         <source>Include questions with medium difficulty in the test</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahrnúť do testu stredne ťažké otázky</translation>
     </message>
     <message>
         <source>Include difficult questions in the test</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahrnúť do testu obtiažne otázky</translation>
     </message>
     <message>
         <source>iTest databases (*.itdb);;iTest 1.3 databases (*.it13.itdb)</source>
-        <translation type="unfinished"></translation>
+        <translation>Databázy iTest (*.itdb);;Databázy iTest 1.3 (*.it13.itdb)</translation>
+    </message>
+    <message>
+        <source>Reorder questions randomly</source>
+        <translation>Náhodne preusporiadať otázky</translation>
+    </message>
+    <message>
+        <source>Shuffle questions</source>
+        <translation>Preusporiadať otázky</translation>
+    </message>
+    <message>
+        <source>Show the New test button at the end of the test session</source>
+        <translation>Zobraziť na konci testu tlačidlo Nový test</translation>
+    </message>
+    <message>
+        <source>Show the New test button</source>
+        <translation>Zobraziť tlačidlo Nový test</translation>
+    </message>
+    <message>
+        <source>CSV</source>
+        <translation>CSV</translation>
+    </message>
+    <message>
+        <source>Export all questions as a CSV file</source>
+        <translation>Exportovať všetky otázky ako CSV súbor</translation>
+    </message>
+    <message>
+        <source>Export as CSV</source>
+        <translation>Exportovať ako CSV</translation>
+    </message>
+    <message>
+        <source>CSV files (*.csv)</source>
+        <translation>CSV súbory (*.csv)</translation>
     </message>
 </context>
 <context>

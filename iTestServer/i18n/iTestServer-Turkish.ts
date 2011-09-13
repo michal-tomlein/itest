@@ -2653,6 +2653,38 @@ Hata: %2.</translation>
         <source>iTest databases (*.itdb);;iTest 1.3 databases (*.it13.itdb)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Reorder questions randomly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shuffle questions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show the New test button at the end of the test session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show the New test button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export all questions as a CSV file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export as CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSV files (*.csv)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PrintQuestionsDialogue</name>
