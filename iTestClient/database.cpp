@@ -68,6 +68,12 @@ void MainWindow::loadTest(QString input)
         // Use groups
         db_use_groups = (in.readLine() == "true");
     }
+    bool shuffle_questions = true;
+    if (db_version >= 1.42) {
+        if (in.readLine() != "[TEST_SHUFFLE_QUESTIONS]") { errorInvalidData(); return; }
+        // Shuffle questions
+        shuffle_questions = (in.readLine() != "false");
+    }
     bool shuffle_answers = false;
     if (db_version >= 1.41) {
         if (in.readLine() != "[TEST_SHUFFLE_ANS]") { errorInvalidData(); return; }
@@ -81,6 +87,12 @@ void MainWindow::loadTest(QString input)
         // Hide correct answers
         hideCorrectAnswersCheckBox->setChecked(in.readLine() == "true");
         hideCorrectAnswersCheckBox->setEnabled(false);
+    }
+    bool show_newtest = true;
+    if (db_version >= 1.42) {
+        if (in.readLine() != "[TEST_SHOW_NEWTEST]") { errorInvalidData(); return; }
+        // Show the New test button
+        show_newtest = (in.readLine() == "true");
     }
     if (in.readLine() != "[TEST_DATE]") { errorInvalidData(); return; }
     // Test date
@@ -208,7 +220,9 @@ void MainWindow::loadTest(QString input)
     current_test_time_remaining += (QTime::fromString(test_time, "hh:mm").hour() * 60);
     current_test_time_remaining += QTime::fromString(test_time, "hh:mm").minute();
     current_test_use_groups = db_use_groups;
+    current_test_shuffle_questions = shuffle_questions;
     current_test_shuffle_answers = shuffle_answers;
+    btnNewTest->setVisible(show_newtest);
     // Display info
     ITW_test_name->setText(current_db_name);
     ITW_test_date->setText(current_db_date);
@@ -287,6 +301,8 @@ void MainWindow::randomlySelectQuestions()
     QList<Question *> questions;
     for (int i = 0; i < current_db_questions.count(); ++i) { questions << current_db_questions.at(i); }
     QList<int> randlist = Question::randomise(questions, current_test_passmark, current_test_use_groups, current_test_qnum, client_number, &progress, qApp);
+    if (!current_test_shuffle_questions)
+        qSort(randlist);
     QStringList flags;
     for (int i = 0; i < randlist.count(); ++i) {
         if (current_test_shuffle_answers) { current_db_questions.at(randlist.at(i))->shuffleAnswers(); }

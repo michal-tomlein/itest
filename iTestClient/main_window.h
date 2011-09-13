@@ -105,6 +105,7 @@ private:
     QString current_test_time_finished;
     PassMark current_test_passmark;
     bool current_test_use_groups;
+    bool current_test_shuffle_questions;
     bool current_test_shuffle_answers;
     bool current_connection_local;
     // FLAGS

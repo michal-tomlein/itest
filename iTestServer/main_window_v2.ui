@@ -1849,62 +1849,7 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_qnum">
-             <property name="text">
-              <string>Number of questions:</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QCheckBox" name="TSMaxQnumCheckBox">
-             <property name="statusTip">
-              <string>Use the maximum number of questions possible</string>
-             </property>
-             <property name="text">
-              <string>Maximum</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="MTSpinBox" name="TSQnumSpinBox">
-             <property name="minimumSize">
-              <size>
-               <width>54</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="statusTip">
-              <string>Specify the number of questions</string>
-             </property>
-             <property name="minimum">
-              <number>1</number>
-             </property>
-             <property name="value">
-              <number>10</number>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3">
-            <widget class="QLabel" name="label_passmark">
-             <property name="minimumSize">
-              <size>
-               <width>130</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Pass mark:</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
+           <item row="4" column="0">
             <widget class="QLabel" name="label_testtime">
              <property name="text">
               <string>Time for:</string>
@@ -1914,7 +1859,7 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="1">
+           <item row="4" column="1">
             <widget class="QRadioButton" name="rbtnTestTime">
              <property name="text">
               <string>the whole test</string>
@@ -1924,7 +1869,7 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="2">
+           <item row="4" column="2">
             <widget class="QTimeEdit" name="TSTestTimeEdit">
              <property name="statusTip">
               <string>Time for the whole test</string>
@@ -1934,14 +1879,14 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
+           <item row="5" column="1">
             <widget class="QRadioButton" name="rbtnQuestionTime">
              <property name="text">
               <string>one question</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="2">
+           <item row="5" column="2">
             <widget class="QTimeEdit" name="TSQuestionTimeEdit">
              <property name="enabled">
               <bool>false</bool>
@@ -1954,7 +1899,7 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="0">
+           <item row="6" column="0">
             <widget class="QLabel" name="label_server_port">
              <property name="text">
               <string>Server port:</string>
@@ -1964,7 +1909,7 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="1">
+           <item row="6" column="1">
             <widget class="QCheckBox" name="TSCustomServerPortCheckBox">
              <property name="statusTip">
               <string>Use a custom server port (if unchecked, a random port will be chosen)</string>
@@ -1977,7 +1922,7 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="2">
+           <item row="6" column="2">
             <widget class="QSpinBox" name="TSCustomServerPortSpinBox">
              <property name="statusTip">
               <string>Specify a custom server port</string>
@@ -1990,7 +1935,7 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="6">
+           <item row="6" column="6">
             <widget class="QPushButton" name="btnStartServer">
              <property name="statusTip">
               <string>Proceed to testing mode using this computer as a server</string>
@@ -2010,27 +1955,7 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="4">
-            <widget class="MTSpinBox" name="TSPassMarkSpinBox">
-             <property name="statusTip">
-              <string>Specify the minimum number of correct answers (with score above 0) to pass the test</string>
-             </property>
-             <property name="maximum">
-              <number>10</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="4" colspan="3">
-            <widget class="QCheckBox" name="TSHideQuestionNamesCheckBox">
-             <property name="statusTip">
-              <string>Use this option if the names of your questions contain clues to their answers</string>
-             </property>
-             <property name="text">
-              <string>Hide question names, show numbers instead</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="4" colspan="3">
+           <item row="5" column="4" colspan="3">
             <widget class="QCheckBox" name="TSHideCorrectAnswersCheckBox">
              <property name="statusTip">
               <string>Do not show correct answers at the end of the test</string>
@@ -2039,45 +1964,6 @@
               <string>Do not show correct answers at the end of the test</string>
              </property>
             </widget>
-           </item>
-           <item row="3" column="3">
-            <widget class="QLabel" name="label_other_settings">
-             <property name="minimumSize">
-              <size>
-               <width>130</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Other settings:</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="4" colspan="3">
-            <widget class="QCheckBox" name="TSShuffleAnswersCheckBox">
-             <property name="statusTip">
-              <string>Reorder answers randomly</string>
-             </property>
-             <property name="text">
-              <string>Shuffle answers</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="5">
-            <spacer>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>261</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
            <item row="0" column="4" colspan="3">
             <widget class="QCheckBox" name="TSDoNotPrintResultsCheckBox">
@@ -2089,7 +1975,46 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="3">
+           <item row="3" column="2">
+            <widget class="MTSpinBox" name="TSQnumSpinBox">
+             <property name="minimumSize">
+              <size>
+               <width>54</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="statusTip">
+              <string>Specify the number of questions</string>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="value">
+              <number>10</number>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="TSMaxQnumCheckBox">
+             <property name="statusTip">
+              <string>Use the maximum number of questions possible</string>
+             </property>
+             <property name="text">
+              <string>Maximum</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_qnum">
+             <property name="text">
+              <string>Number of questions:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
             <widget class="QLabel" name="label_difficulty">
              <property name="text">
               <string>Difficulty:</string>
@@ -2099,7 +2024,7 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="4" colspan="2">
+           <item row="2" column="1" colspan="3">
             <layout class="QHBoxLayout" name="horizontalLayout">
              <property name="spacing">
               <number>9</number>
@@ -2157,6 +2082,104 @@
               </spacer>
              </item>
             </layout>
+           </item>
+           <item row="4" column="4" colspan="3">
+            <widget class="QCheckBox" name="TSHideQuestionNamesCheckBox">
+             <property name="statusTip">
+              <string>Use this option if the names of your questions contain clues to their answers</string>
+             </property>
+             <property name="text">
+              <string>Hide question names, show numbers instead</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="3">
+            <widget class="QLabel" name="label_other_settings">
+             <property name="minimumSize">
+              <size>
+               <width>130</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Other settings:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="5">
+            <spacer>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>261</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="3" column="4">
+            <widget class="MTSpinBox" name="TSPassMarkSpinBox">
+             <property name="statusTip">
+              <string>Specify the minimum number of correct answers (with score above 0) to pass the test</string>
+             </property>
+             <property name="maximum">
+              <number>10</number>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QLabel" name="label_passmark">
+             <property name="minimumSize">
+              <size>
+               <width>130</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Pass mark:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="4" colspan="3">
+            <widget class="QCheckBox" name="TSShuffleAnswersCheckBox">
+             <property name="statusTip">
+              <string>Reorder answers randomly</string>
+             </property>
+             <property name="text">
+              <string>Shuffle answers</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="4" colspan="3">
+            <widget class="QCheckBox" name="TSShuffleQuestionsCheckBox">
+             <property name="statusTip">
+              <string>Reorder questions randomly</string>
+             </property>
+             <property name="text">
+              <string>Shuffle questions</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="4" colspan="2">
+            <widget class="QCheckBox" name="TSShowNewTestButtonCheckBox">
+             <property name="statusTip">
+              <string>Show the New test button at the end of the test session</string>
+             </property>
+             <property name="text">
+              <string>Show the New test button</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
