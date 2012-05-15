@@ -1005,10 +1005,10 @@ QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & 
         out << "<img src=\"" << resource_url.toString(QUrl::None) << "\" width=\"10\" height=\"10\"> " << endl;
     }
     if (n != 0) { out << "(" << n << ") "; }
-    if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
+    if (!test && item->flag() >= 0 && item->flag() < current_db_f.size()) {
         out << Qt::escape(current_db_f[item->flag()]) << ": ";
     }
-    if (!item->group().isEmpty()) {
+    if (!test && !item->group().isEmpty()) {
         out << "[" << Qt::escape(item->group()) << "] ";
     }
     out << Qt::escape(item->name()) << endl << "</div>" << endl;
