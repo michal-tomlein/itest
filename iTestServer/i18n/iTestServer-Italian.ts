@@ -2787,6 +2787,10 @@ Error %2.</source>
         <source>Number of questions</source>
         <translation>Numero di Domande</translation>
     </message>
+    <message>
+        <source>Include explanations on the answer key</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>

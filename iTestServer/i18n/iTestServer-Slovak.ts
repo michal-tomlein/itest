@@ -2792,6 +2792,10 @@ Chyba %2.</translation>
         <source>Number of questions</source>
         <translation>Počet otázok</translation>
     </message>
+    <message>
+        <source>Include explanations on the answer key</source>
+        <translation>Vytlačiť vysvetlenia na kľúči k testu</translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>

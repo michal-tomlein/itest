@@ -147,22 +147,27 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
             printq_advanced_key->setEnabled(false);
             QObject::connect(printq_advanced_test, SIGNAL(toggled(bool)), printq_advanced_key, SLOT(setEnabled(bool)));
         printq_advanced->addWidget(printq_advanced_key, 4, 0, 1, 2);
+            printq_advanced_explanations = new QCheckBox(tr("Include explanations on the answer key"), this);
+            printq_advanced_explanations->setChecked(false);
+            printq_advanced_explanations->setEnabled(false);
+            QObject::connect(printq_advanced_key, SIGNAL(toggled(bool)), printq_advanced_explanations, SLOT(setEnabled(bool)));
+        printq_advanced->addWidget(printq_advanced_explanations, 5, 0, 1, 2);
             printq_advanced_usegroups = new QCheckBox(tr("Allow one question per group only"), this);
             printq_advanced_usegroups->setChecked(false);
             printq_advanced_usegroups->setEnabled(false);
             QObject::connect(printq_advanced_test, SIGNAL(toggled(bool)), printq_advanced_usegroups, SLOT(setEnabled(bool)));
             QObject::connect(printq_advanced_usegroups, SIGNAL(toggled(bool)), this, SLOT(updateTestQnum()));
-        printq_advanced->addWidget(printq_advanced_usegroups, 5, 0, 1, 2);
+        printq_advanced->addWidget(printq_advanced_usegroups, 6, 0, 1, 2);
             printq_advanced_randomise = new QCheckBox(tr("Randomise question order in each printout"), this);
             printq_advanced_randomise->setChecked(false);
             QObject::connect(printq_advanced_randomise, SIGNAL(toggled(bool)), this, SLOT(resetDefaultValues()));
-        printq_advanced->addWidget(printq_advanced_randomise, 6, 0, 1, 2);
+        printq_advanced->addWidget(printq_advanced_randomise, 7, 0, 1, 2);
             QLabel * printq_label_numprintouts = new QLabel(this);
             printq_label_numprintouts->setText(tr("Number of different printouts:"));
             printq_label_numprintouts->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
             printq_label_numprintouts->setEnabled(false);
             QObject::connect(printq_advanced_randomise, SIGNAL(toggled(bool)), printq_label_numprintouts, SLOT(setEnabled(bool)));
-        printq_advanced->addWidget(printq_label_numprintouts, 7, 0, 1, 1);
+        printq_advanced->addWidget(printq_label_numprintouts, 8, 0, 1, 1);
             printq_advanced_numprintouts = new QSpinBox(this);
             printq_advanced_numprintouts->setMinimum(1);
             printq_advanced_numprintouts->setMaximum(9999);
@@ -170,13 +175,13 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
             printq_advanced_numprintouts->setMaximumSize(printq_advanced_numprintouts->sizeHint());
             printq_advanced_numprintouts->setEnabled(false);
             QObject::connect(printq_advanced_randomise, SIGNAL(toggled(bool)), printq_advanced_numprintouts, SLOT(setEnabled(bool)));
-        printq_advanced->addWidget(printq_advanced_numprintouts, 7, 1, 1, 1);
+        printq_advanced->addWidget(printq_advanced_numprintouts, 8, 1, 1, 1);
             QLabel * printq_label_numquestions = new QLabel(this);
             printq_label_numquestions->setText(tr("Number of questions:"));
             printq_label_numquestions->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
             printq_label_numquestions->setEnabled(false);
             QObject::connect(printq_advanced_randomise, SIGNAL(toggled(bool)), printq_label_numquestions, SLOT(setEnabled(bool)));
-        printq_advanced->addWidget(printq_label_numquestions, 8, 0, 1, 1);
+        printq_advanced->addWidget(printq_label_numquestions, 9, 0, 1, 1);
             printq_advanced_numquestions = new MTSpinBox(this);
             printq_advanced_numquestions->setMinimum(0);
             printq_advanced_numquestions->setMaximum(9999);
@@ -186,7 +191,7 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
             QObject::connect(printq_advanced_randomise, SIGNAL(toggled(bool)), printq_advanced_numquestions, SLOT(setEnabled(bool)));
             QObject::connect(printq_advanced_randomise, SIGNAL(toggled(bool)), printq_advanced_numquestions, SLOT(setMaximumValue()));
             QObject::connect(printq_advanced_numquestions, SIGNAL(valueChanged(int)), this, SLOT(togglePrintEnabled()));
-        printq_advanced->addWidget(printq_advanced_numquestions, 8, 1, 1, 1);
+        printq_advanced->addWidget(printq_advanced_numquestions, 9, 1, 1, 1);
         printq_advanced->gridLayout()->setColumnStretch(2, 1);
     printq_glayout->addWidget(printq_advanced, 3, 0);
     printq_glayout->setMargin(6); printq_glayout->setSpacing(6);
@@ -883,6 +888,7 @@ void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
     bool formatted = printq_widget->printFormatting();
     bool print_statistics = printq_widget->printStatistics();
     bool test = printq_widget->printTest();
+    bool explanations = printq_widget->printExplanations();
     bool print_graphics = printq_widget->printGraphics();
     bool randomise = printq_widget->randomise();
     int numprintouts = printq_widget->numPrintouts();
@@ -953,7 +959,7 @@ void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
         out << "table { border-style: solid; border-color: lightgrey; }" << endl;
         out << "</style></head><body>" << endl;
         out << QString("<div class=\"heading\" align=\"center\">%1</div><hr noshade=\"noshade\" size=\"1\">").arg(timestamp) << endl;
-        int cols = 12;
+        int cols = explanations ? 1 : 12;
         int n = numprintouts / cols; if (numprintouts % cols > 0) { n++; }
         for (int t = 0; t < n; ++t) {
             out << "<table border=\"1\" width=\"100%\" cellspacing=\"0\" cellpadding=\"1\">" << endl;
@@ -968,6 +974,9 @@ void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
                     out << QString("<td class=\"default_text%1\">").arg(j % 2 == 0 && numprintouts > 1 ? " odd_col" : "");
                     out << Question::answerToString(questions.at(randlist[j].at(i))->correctAnswer());
                     out << "</td>" << endl;
+                    if (explanations) {
+                        out << "<td class=\"default_text\">" << Qt::escape(questions.at(randlist[j].at(i))->explanation()) << "</td>" << endl;
+                    }
                 }
                 out << "</tr>" << endl;
             }

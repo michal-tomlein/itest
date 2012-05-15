@@ -2788,6 +2788,10 @@ Erro %2.</translation>
         <source>Number of questions</source>
         <translation>Número de questões</translation>
     </message>
+    <message>
+        <source>Include explanations on the answer key</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>

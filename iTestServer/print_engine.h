@@ -43,6 +43,7 @@ public:
     bool printFormatting() const { return printq_advanced_formatting->isChecked(); }
     bool printTest() const { return printq_advanced_test->isChecked(); }
     bool printKey() const { return printTest() ? printq_advanced_key->isChecked() : false; }
+    bool printExplanations() const { return printKey() ? printq_advanced_explanations->isChecked() : false; }
     bool printGraphics() const { return printq_advanced_graphics->isChecked(); }
     bool randomise() const { return printq_advanced_randomise->isChecked(); }
     int numPrintouts() const { return randomise() ? printq_advanced_numprintouts->value() : 1; }
@@ -70,6 +71,7 @@ private:
     QCheckBox * printq_advanced_formatting;
     QCheckBox * printq_advanced_test;
     QCheckBox * printq_advanced_key;
+    QCheckBox * printq_advanced_explanations;
     QCheckBox * printq_advanced_graphics;
     QCheckBox * printq_advanced_randomise;
     QSpinBox * printq_advanced_numprintouts;

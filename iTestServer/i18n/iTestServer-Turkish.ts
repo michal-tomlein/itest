@@ -2788,6 +2788,10 @@ Hata: %2.</translation>
         <source>Number of questions</source>
         <translation>Soruların sayısı</translation>
     </message>
+    <message>
+        <source>Include explanations on the answer key</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
