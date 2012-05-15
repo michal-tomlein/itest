@@ -141,7 +141,6 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
             printq_advanced_test->setChecked(false);
             QObject::connect(printq_advanced_test, SIGNAL(toggled(bool)), this, SLOT(resetDefaultValues()));
             QObject::connect(printq_advanced_test, SIGNAL(toggled(bool)), printq_advanced_statistics, SLOT(setDisabled(bool)));
-            QObject::connect(printq_advanced_test, SIGNAL(toggled(bool)), printq_advanced_formatting, SLOT(setDisabled(bool)));
         printq_advanced->addWidget(printq_advanced_test, 3, 0, 1, 2);
             printq_advanced_key = new QCheckBox(tr("Print a key to the test (a separate printout with correct answers)"), this);
             printq_advanced_key->setChecked(false);
@@ -292,7 +291,6 @@ void PrintQuestionsDialogue::resetDefaultValues()
 {
     if (printTest()) {
         printq_advanced_statistics->setChecked(false);
-        printq_advanced_formatting->setChecked(true);
     } else {
         printq_advanced_key->setChecked(false);
         printq_advanced_usegroups->setChecked(false);
@@ -1009,7 +1007,7 @@ QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & 
         out << item->text() << endl;
     } else {
         QTextDocument doc; doc.setHtml(item->text());
-        out << Qt::escape(doc.toPlainText()) << endl;
+        out << "<br>" << Qt::escape(doc.toPlainText()) << endl;
     }
     if (!test && !print_graphics && item->numSvgItems()) {
         out << "<table border=\"0\" width=\"100%\">" << endl;

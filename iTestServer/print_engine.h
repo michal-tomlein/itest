@@ -36,18 +36,18 @@ class PrintQuestionsDialogue : public QWidget
 public:
     PrintQuestionsDialogue(MainWindow *);
 
-    MTTableWidget * includeTableWidget() { return printq_includelist; };
-    bool flagsSelected() { return rbtngrpPrintqSelect->checkedButton()->text() == tr("Flags"); };
-    bool questionsSelected() { return rbtngrpPrintqSelect->checkedButton()->text() == tr("Questions"); };
-    bool printStatistics() { return printTest() ? false : printq_advanced_statistics->isChecked(); };
-    bool printFormatting() { return printTest() ? true : printq_advanced_formatting->isChecked(); };
-    bool printTest() { return printq_advanced_test->isChecked(); };
-    bool printKey() { return printTest() ? printq_advanced_key->isChecked() : false; };
-    bool printGraphics() { return printq_advanced_graphics->isChecked(); };
-    bool randomise() { return printq_advanced_randomise->isChecked(); };
-    int numPrintouts() { return randomise() ? printq_advanced_numprintouts->value() : 1; };
-    bool useGroups() { return printTest() ? printq_advanced_usegroups->isChecked() : false; };
-    int numQuestions() { return printq_advanced_numquestions->value(); };
+    MTTableWidget * includeTableWidget() const { return printq_includelist; }
+    bool flagsSelected() const { return rbtngrpPrintqSelect->checkedButton()->text() == tr("Flags"); }
+    bool questionsSelected() const { return rbtngrpPrintqSelect->checkedButton()->text() == tr("Questions"); }
+    bool printStatistics() const { return printTest() ? false : printq_advanced_statistics->isChecked(); }
+    bool printFormatting() const { return printq_advanced_formatting->isChecked(); }
+    bool printTest() const { return printq_advanced_test->isChecked(); }
+    bool printKey() const { return printTest() ? printq_advanced_key->isChecked() : false; }
+    bool printGraphics() const { return printq_advanced_graphics->isChecked(); }
+    bool randomise() const { return printq_advanced_randomise->isChecked(); }
+    int numPrintouts() const { return randomise() ? printq_advanced_numprintouts->value() : 1; }
+    bool useGroups() const { return printTest() ? printq_advanced_usegroups->isChecked() : false; }
+    int numQuestions() const { return printq_advanced_numquestions->value(); }
 
 private slots:
     void addQuestionToPrint();
