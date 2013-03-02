@@ -23,6 +23,8 @@ Supported platforms:
 Available in:
 
 * English
+* Czech (thanks to *Pavel Fric*)
+* Hungarian (thanks to *Szabó István*)
 * Italian (thanks to *Francesco Atzeni*)
 * Latvian (thanks to *Valdis Orols*)
 * Portuguese (thanks to *Eugéne Suter*)
@@ -30,6 +32,7 @@ Available in:
 * Slovak
 * Spanish (thanks to *Gustavo A. Díaz*)
 * Turkish (thanks to *Serdar Soytetir*)
+* Ukrainian (thanks to *Vadim Nekhai*)
 
 See [screenshots, screencasts][1] and the [documentation][2] for further
 information.
