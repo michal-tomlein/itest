@@ -147,6 +147,18 @@
         <source>Latvian</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Ukrainian</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Czech</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Hungarian</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>MTAdvancedGroupBox</name>

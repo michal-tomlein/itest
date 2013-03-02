@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/" >
+    <qresource prefix="/">
         <file>i18n/iTest-i18n.qm</file>
         <file>i18n/iTestServer-Slovak.qm</file>
         <file>i18n/iTestServer-Russian.qm</file>
@@ -8,5 +8,8 @@
         <file>i18n/iTestServer-Spanish.qm</file>
         <file>i18n/iTestServer-Italian.qm</file>
         <file>i18n/iTestServer-Latvian.qm</file>
+        <file>i18n/iTestServer-Ukrainian.qm</file>
+        <file>i18n/iTestServer-Czech.qm</file>
+        <file>i18n/iTestServer-Hungarian.qm</file>
     </qresource>
 </RCC>

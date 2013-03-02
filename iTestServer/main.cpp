@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 
 // ---------------------------- version changelog: -----------------------------
 /* version 1.4.2 - a minor update with some new features
+                 - added Ukrainian, Czech and Hungarian translations
                  - fixed the "Print questions" feature
                  - added the ability to sort questions by flag
 */

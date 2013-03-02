@@ -30,5 +30,17 @@
         <source>Latvian</source>
         <translation>latviešu</translation>
     </message>
+    <message>
+        <source>Ukrainian</source>
+        <translation>Українська</translation>
+    </message>
+    <message>
+        <source>Czech</source>
+        <translation>čeština</translation>
+    </message>
+    <message>
+        <source>Hungarian</source>
+        <translation>Magyar</translation>
+    </message>
 </context>
 </TS>

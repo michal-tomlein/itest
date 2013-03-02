@@ -36,7 +36,9 @@ int main(int argc, char *argv[])
 }
 
 // ---------------------------- version changelog: -----------------------------
-// version 1.4.2 - a minor update with some new features
+/* version 1.4.2 - a minor update with some new features
+                 - added Ukrainian, Czech and Hungarian translations
+*/
 /* version 1.4.1 - a minor update with some new features
                  - added Latvian translation
                  - number of flags now unlimited
