@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
-        <translation>A Qt egyszerű hordozhatóságot biztosít a(z) MS Windows, a Mac OS a Linux és minden jelentős kereskedelmi Unix változathoz. Qtopia Core-ként szintén rendelkezésre áll beágyazott eszközként.</translation>
+        <translation>A Qt egyszerű hordozhatóságot biztosít a(z) MS Windows, a Mac OS X a Linux és minden jelentős kereskedelmi Unix változathoz. Qtopia Core-ként szintén rendelkezésre áll beágyazott eszközként.</translation>
     </message>
     <message>
         <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
@@ -149,11 +149,11 @@
     </message>
     <message>
         <source>Ukrainian</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukrajna</translation>
     </message>
     <message>
         <source>Czech</source>
-        <translation type="unfinished"></translation>
+        <translation>Csehország</translation>
     </message>
     <message>
         <source>Hungarian</source>
@@ -620,7 +620,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>&lt;b&gt;%1 questions with statistics found&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1 kérdések statisztikai találattal&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Question name</source>
@@ -948,7 +948,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>Pass mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Elégséges</translation>
     </message>
     <message>
         <source>Test name:</source>
@@ -1148,7 +1148,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>&lt;b&gt;Pass mark:&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Elégséges:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>The minimum number of correct answers to pass this exam</source>
@@ -1196,7 +1196,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>Pass mark details</source>
-        <translation type="unfinished"></translation>
+        <translation>Elégséges részletek</translation>
     </message>
     <message>
         <source>List of classes</source>
@@ -1847,7 +1847,10 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
 as these operating systems handle the number of copies internally.&lt;br&gt;
 To print more copies, click &apos;Review configuration&apos; and set the&lt;br&gt;
 number of copies each time you start the server.</source>
-        <translation type="unfinished"></translation>
+        <translation>Negjegyzés: A Windows és Mac OS X rendszerekben a fenti szám mindig 1&lt;br&gt;
+ahogy ezek az operációs rendszerek kezelik a másolatok számát.&lt;br&gt;
+Több másolat nyomtatásához kattints a &apos;Konfiguráció megtekintés&apos;-ére&lt;br&gt;
+és állítsd be a másolatok számát minden alkalommal, ha szervert indítassz.</translation>
     </message>
     <message>
         <source>Orientation:</source>
@@ -2003,7 +2006,7 @@ number of copies each time you start the server.</source>
     </message>
     <message>
         <source>%1 out of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%2-ból (-ből) %1</translation>
     </message>
     <message>
         <source>PASSED</source>
@@ -2015,23 +2018,23 @@ number of copies each time you start the server.</source>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) &gt; failed to print the client&apos;s results (Server QuickPrint call)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 &gt; Kliens #%2 (%3) &gt; képtelen nyomtatni a kliens(ek) eredméynét (Szerver Gyorsnyomtatás hívás)</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) &gt; results printed successfully (Server QuickPrint call)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 &gt; Kliens #%2 (%3) &gt; eredmény(ek) nyomtatása sikeres (szerver Gyorsnyomtatás hívás)</translation>
     </message>
     <message>
         <source>Print client&apos;s results</source>
-        <translation type="unfinished"></translation>
+        <translation>Kliens(ek) eredmény nyomtatás</translation>
     </message>
     <message>
         <source>Print student&apos;s results</source>
-        <translation type="unfinished"></translation>
+        <translation>Hallgató(k) eredmény nyomtatás</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) &gt; failed to print the client&apos;s results (Server Print call)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 &gt; Kliens #%2 (%3) &gt; képtelen nyomtatni a kliens(ek) eredméynét (Szerver Gyorsnyomtatás hívás)</translation>
     </message>
     <message>
         <source>Failed to print the results</source>
@@ -2039,27 +2042,27 @@ number of copies each time you start the server.</source>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) &gt; results printed successfully (Server Print call)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 &gt; Kliens #%2 (%3) &gt; eredmény(ek) nyomtatása sikeres (szerver Gyorsnyomtatás hívás)</translation>
     </message>
     <message>
         <source>Results printed successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Az eredmények nyomtatása sikeres</translation>
     </message>
     <message>
         <source>Summary printed successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Az összesítés nyomtatása sikeres</translation>
     </message>
     <message>
         <source>Failed to print the summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Az összesítés nyomtatása nem lehetséges</translation>
     </message>
     <message>
         <source>%1 results printed successfully; %2 failed</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 eredmény nyomtatása sikeres; %2 nem lehet</translation>
     </message>
     <message>
         <source>Session statistics and summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Folyamat statisztika és összesítés</translation>
     </message>
     <message>
         <source>Total</source>
@@ -2075,7 +2078,7 @@ number of copies each time you start the server.</source>
     </message>
     <message>
         <source>%1 out of %2 (%3)</source>
-        <translation type="unfinished"></translation>
+        <translation>%2-ból (-ből) %1 (%3)</translation>
     </message>
     <message>
         <source>NOT AVAILABLE</source>
@@ -2166,7 +2169,8 @@ Válassz másik nevet:</translation>
     <message>
         <source>This group is used by one or more questions with a different flag.
 Please choose a different group.</source>
-        <translation type="unfinished"></translation>
+        <translation>A csoport egy vagy több kérdést különböző jelölővel használja.
+Válassz másik csoportot.</translation>
     </message>
     <message>
         <source>A question with this name already exists.
@@ -2181,13 +2185,19 @@ Changing the name to this one will cause that this question will be used
 instead of the no longer existent old one.
 %2 occurrences of the old name will also be updated.
 Are you sure you want to change the name?</source>
-        <translation type="unfinished"></translation>
+        <translation>Az új nevet már használják.
+%1 nevű kérdést már találtam a mentett folyamatokban.
+A név megváltoztatása azzal jár, hogy ezt a kérdést fogja alkalmazni.
+%2 a régi nevet frissíti.
+Biztosan megváltoztatod a nevet?</translation>
     </message>
     <message>
         <source>Are you sure you want to change the name of the question?
 %1 occurrences of this question found in the saved sessions.
 All occurrences will be updated.</source>
-        <translation type="unfinished"></translation>
+        <translation>Biztosan megváltoztatod a kérdés nevét?
+%1  ez a kérdés már van a mentett folyamatokban.
+Minden esemény frissítve lesz.</translation>
     </message>
     <message>
         <source>Data saved</source>
@@ -2207,7 +2217,7 @@ All occurrences will be updated.</source>
     </message>
     <message>
         <source>Unable to parse file %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>A fájl elemzése nem lehetséges %1.</translation>
     </message>
     <message>
         <source>Are you sure you want to remove attachment &quot;%1&quot;?</source>
@@ -2417,7 +2427,7 @@ ajánlott adni nekik egy órát.</translation>
     </message>
     <message>
         <source>Name of the selected class (if you change this name, do not forget to click the Apply button on the right)</source>
-        <translation>A kiválasztott osztály neve (ha megváltoztatod ezt a nevet, ne felejts el az ALkalmaz gombra kattintani jobbra)</translation>
+        <translation>A kiválasztott osztály neve (ha megváltoztatod ezt a nevet, ne felejts el az Alkalmaz gombra kattintani jobbra)</translation>
     </message>
     <message>
         <source>The first year of the selected class (if you change this year, do not forget to click the Apply button on the right)</source>
@@ -2441,7 +2451,7 @@ ajánlott adni nekik egy órát.</translation>
     </message>
     <message>
         <source>Are you sure you want to remove session &quot;%1&quot; from the table of results of the selected student? The session will not be deleted from the database.</source>
-        <translation>Biztosan lemozgatod a folyamatot &quot;%1&quot; a kiválasztott hallgató eredményeinek táblájából? A folyamat az adatbázisból nem törlődik.</translation>
+        <translation>Biztosan eltáűvolítod a folyamatot &quot;%1&quot; a kiválasztott hallgató eredményeinek táblájából? A folyamat az adatbázisból nem törlődik.</translation>
     </message>
     <message>
         <source>Explanation:</source>
@@ -2533,11 +2543,11 @@ ajánlott adni nekik egy órát.</translation>
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"></translation>
+        <translation>Pontszám</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Érték</translation>
     </message>
     <message>
         <source>Partially correct answers</source>
@@ -2627,63 +2637,63 @@ Hiba %2.</translation>
     </message>
     <message>
         <source>Include easy questions in the test</source>
-        <translation type="unfinished"></translation>
+        <translation>Beszámítja a könnyű kérdéseket a tesztbe</translation>
     </message>
     <message>
         <source>Include questions with medium difficulty in the test</source>
-        <translation type="unfinished"></translation>
+        <translation>Beleszámítja a közepes erősségű kérdéseket a tesztbe</translation>
     </message>
     <message>
         <source>Include difficult questions in the test</source>
-        <translation type="unfinished"></translation>
+        <translation>Beleszámítja a nehéz kérdéseket a tesztbe</translation>
     </message>
     <message>
         <source>Reorder questions randomly</source>
-        <translation type="unfinished"></translation>
+        <translation>Kérdések véletlen rendezése</translation>
     </message>
     <message>
         <source>Shuffle questions</source>
-        <translation type="unfinished"></translation>
+        <translation>Kérdések keverése</translation>
     </message>
     <message>
         <source>Show the New test button at the end of the test session</source>
-        <translation type="unfinished"></translation>
+        <translation>Mutatja az Új teszt gombot a teszt végén</translation>
     </message>
     <message>
         <source>Show the New test button</source>
-        <translation type="unfinished"></translation>
+        <translation>Új teszt gomb mutatása</translation>
     </message>
     <message>
         <source>By flag</source>
-        <translation type="unfinished"></translation>
+        <translation>Jelölővel</translation>
     </message>
     <message>
         <source>Sort questions by flag</source>
-        <translation type="unfinished"></translation>
+        <translation>Kérdés rendezés jelölővel</translation>
     </message>
     <message>
         <source>Ctrl+Alt+Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+Right</translation>
     </message>
     <message>
         <source>CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>CSV</translation>
     </message>
     <message>
         <source>Export all questions as a CSV file</source>
-        <translation type="unfinished"></translation>
+        <translation>Összes kérdést exportja CVS fájlba</translation>
     </message>
     <message>
         <source>iTest databases (*.itdb);;iTest 1.3 databases (*.it13.itdb)</source>
-        <translation type="unfinished"></translation>
+        <translation>iTest adatbázisok (*.itdb);;iTest 1.3 adatbázisok (*.it13.itdb)</translation>
     </message>
     <message>
         <source>Export as CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportál CVS-ként</translation>
     </message>
     <message>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>CVS fájlok (*.cvs)</translation>
     </message>
 </context>
 <context>
@@ -2790,7 +2800,7 @@ Hiba %2.</translation>
     </message>
     <message>
         <source>Include explanations on the answer key</source>
-        <translation type="unfinished"></translation>
+        <translation>Magyarázatot tartalmaz a megoldáshoz</translation>
     </message>
 </context>
 <context>

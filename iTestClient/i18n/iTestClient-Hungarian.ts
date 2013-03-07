@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
-        <translation>A Qt egyszerű hordozhatóságot biztosít a(z) MS Windows, a Mac OS a Linux és minden jelentős kereskedelmi Unix változathoz. Qtopia Core-ként szintén rendelkezésre áll beágyazott eszközként.</translation>
+        <translation>A Qt egyszerű hordozhatóságot biztosít a(z) MS Windows, a Mac OS X a Linux és minden jelentős kereskedelmi Unix változathoz. Qtopia Core-ként szintén rendelkezésre áll beágyazott eszközként.</translation>
     </message>
     <message>
         <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>%1 out of %2 (%3)</source>
-        <translation type="unfinished"></translation>
+        <translation>%2-ból (-ből) %1 (%3)</translation>
     </message>
     <message>
         <source>PASSED</source>
@@ -131,7 +131,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>%1 of total %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%2-ból (-ből) %1</translation>
     </message>
     <message>
         <source>Total</source>
@@ -289,7 +289,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>Pass mark</source>
-        <translation type="unfinished"></translation>
+        <translation>Elégséges</translation>
     </message>
     <message>
         <source>Comments</source>
@@ -415,7 +415,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     <name>QuestionWidget</name>
     <message>
         <source>%1 out of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%2-ból (-ből) %1</translation>
     </message>
 </context>
 </TS>
