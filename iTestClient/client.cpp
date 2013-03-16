@@ -128,8 +128,8 @@ void MainWindow::sendResults()
     if (save_file_name.isNull() || save_file_name.isEmpty()) { return; }
     QFile file(save_file_name);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
-    	QMessageBox::critical(this, tr("Save answer log"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
-    	return;
+        QMessageBox::critical(this, tr("Save answer log"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
+        return;
     }
     QTextStream sfile(&file);
     sfile.setCodec("UTF-8");

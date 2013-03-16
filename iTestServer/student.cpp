@@ -124,13 +124,13 @@ QString Student::studentData()
     // S_RESULTS
     QMapIterator<QString, QuestionAnswer> i(*s_results); QuestionAnswer qans;
     while (i.hasNext()) { i.next();
-    	qans = i.value();
-    	out.append(QString("\n%1").arg(i.key()));
-    	out.append(QString("\n%1").arg(qans.flag()));
+        qans = i.value();
+        out.append(QString("\n%1").arg(i.key()));
+        out.append(QString("\n%1").arg(qans.flag()));
         out.append(QString("\n%1").arg(qans.difficulty()));
         out.append(QString("\n%1").arg(qans.selectionType()));
-    	out.append(QString("\n%1").arg(qans.answered()));
-    	out.append(QString("\n%1").arg(qans.correctAnswer()));
+        out.append(QString("\n%1").arg(qans.answered()));
+        out.append(QString("\n%1").arg(qans.correctAnswer()));
     }
     return out;
 }
@@ -152,10 +152,10 @@ QString Student::studentArchiveData()
     // S_RESULTS
     QMapIterator<QString, QuestionAnswer> i(*s_results); QuestionAnswer qans;
     while (i.hasNext()) { i.next();
-    	qans = i.value();
-    	out.append(QString("\n%1").arg(i.key()));
-    	out.append(QString("\n%1").arg(Question::convertToOldAnsNumber(qans.answered())));
-    	out.append(QString("\n%1").arg(Question::convertToOldAnsNumber(qans.correctAnswer())));
+        qans = i.value();
+        out.append(QString("\n%1").arg(i.key()));
+        out.append(QString("\n%1").arg(Question::convertToOldAnsNumber(qans.answered())));
+        out.append(QString("\n%1").arg(Question::convertToOldAnsNumber(qans.correctAnswer())));
     }
     return out;
 }
@@ -164,7 +164,7 @@ bool Student::wasAsked(const QString & qname)
 {
     QMapIterator<QString, QuestionAnswer> i(*s_results);
     while (i.hasNext()) { i.next();
-    	if (i.key() == qname) { return true; }
+        if (i.key() == qname) { return true; }
     }
     return false;
 }

@@ -35,7 +35,7 @@ ArchivedSession::ArchivedSession(MainWindow * parent, Session * session)
     s_score = session->s_score;
     s_log = session->s_log;
     for (int i = 0; i < session->s_students.count(); ++i) {
-    	s_students << new Student(session->s_students.at(i));
+        s_students << new Student(session->s_students.at(i));
     }
     s_passmark = session->s_passmark;
     s_scoringsystem = session->s_scoringsystem;
@@ -73,17 +73,17 @@ void ArchivedSession::archive()
     QStringList qa_diflist; QStringList qa_selectiontypelist;
     out << sessionArchiveData() << endl;
     for (int s = 0; s < numStudents(); ++s) {
-    	out << student(s)->studentArchiveData() << endl;
-    	students_passed.append(student(s)->passed() ? "+" : "-");
-    	QMapIterator<QString, QuestionAnswer> i(*(student(s)->results())); QuestionAnswer qans;
-    	while (i.hasNext()) { i.next();
-    	    qans = i.value();
+        out << student(s)->studentArchiveData() << endl;
+        students_passed.append(student(s)->passed() ? "+" : "-");
+        QMapIterator<QString, QuestionAnswer> i(*(student(s)->results())); QuestionAnswer qans;
+        while (i.hasNext()) { i.next();
+            qans = i.value();
             qa_flaglist << QString::number(qans.flag());
             qa_anslist << QString::number(qans.answered());
-    	    qa_correctanslist << QString::number(qans.correctAnswer());
+            qa_correctanslist << QString::number(qans.correctAnswer());
             qa_diflist << QString::number(qans.difficulty());
             qa_selectiontypelist << QString::number(qans.selectionType());
-    	}
+        }
     }
     archive.setValue(QString("%1/%2").arg(as_parent->current_db_name).arg(session_title), data);
     archive.setValue(QString("%1/%2/PassMark").arg(as_parent->current_db_name).arg(session_title), s_passmark.archiveData());
@@ -117,40 +117,40 @@ void ArchivedSession::restore(QString input)
     int s_snum = in.readLine().toInt();
     int s_lenum = in.readLine().toInt();
     for (int le = 0; le < s_lenum; ++le) {
-    	bufferlist.clear();
-    	bufferlist = in.readLine().split(';');
-    	if (bufferlist.count() == 6) {
-    	    addLogEntry(bufferlist.at(0).toInt(),
-    	    	    	bufferlist.at(1).toInt(),
-    	    	    	bufferlist.at(2).toInt(),
-    	    	    	bufferlist.at(3).toInt(),
-    	    	    	bufferlist.at(4).toInt(),
-    	    	    	bufferlist.at(5).toInt(),
-    	    	    	in.readLine());
-    	} else {
-    	    addLogEntry(255, 255, 255, 0, 0, 0, in.readLine());
-    	}
+        bufferlist.clear();
+        bufferlist = in.readLine().split(';');
+        if (bufferlist.count() == 6) {
+            addLogEntry(bufferlist.at(0).toInt(),
+                        bufferlist.at(1).toInt(),
+                        bufferlist.at(2).toInt(),
+                        bufferlist.at(3).toInt(),
+                        bufferlist.at(4).toInt(),
+                        bufferlist.at(5).toInt(),
+                        in.readLine());
+        } else {
+            addLogEntry(255, 255, 255, 0, 0, 0, in.readLine());
+        }
     }
     for (int s = 0; s < s_snum; ++s) {
-    	if (in.atEnd()) { break; }
-    	if (in.readLine() != "[STUDENT]") { continue; }
-    	Student * student = new Student(in.readLine());
-    	if (in.readLine() == "true") { student->setReady(true); }
-    	else { student->setReady(false); }
-    	student->setNumber(in.readLine().toInt());
-    	in.readLine(); // SCORE
-    	int numresults = in.readLine().toInt();
-    	QMap<QString, QuestionAnswer> * results = new QMap<QString, QuestionAnswer>;
-    	for (int a = 0; a < numresults; ++a) {
-    	    buffer = in.readLine();
-    	    ans = Question::convertOldAnsNumber(in.readLine().toInt());
-    	    c_ans = Question::convertOldAnsNumber(in.readLine().toInt());
-    	    QuestionAnswer qans(c_ans, ans);
-    	    results->insert(buffer, qans);
-    	}
-    	student->setResults(results);
+        if (in.atEnd()) { break; }
+        if (in.readLine() != "[STUDENT]") { continue; }
+        Student * student = new Student(in.readLine());
+        if (in.readLine() == "true") { student->setReady(true); }
+        else { student->setReady(false); }
+        student->setNumber(in.readLine().toInt());
+        in.readLine(); // SCORE
+        int numresults = in.readLine().toInt();
+        QMap<QString, QuestionAnswer> * results = new QMap<QString, QuestionAnswer>;
+        for (int a = 0; a < numresults; ++a) {
+            buffer = in.readLine();
+            ans = Question::convertOldAnsNumber(in.readLine().toInt());
+            c_ans = Question::convertOldAnsNumber(in.readLine().toInt());
+            QuestionAnswer qans(c_ans, ans);
+            results->insert(buffer, qans);
+        }
+        student->setResults(results);
         student->updateScore(scoringSystem());
-    	addStudent(student);
+        addStudent(student);
     }
 }
 
@@ -171,8 +171,8 @@ QString ArchivedSession::sessionArchiveData()
     // S_LOGENTRIES
     LogEntry log_entry;
     for (int i = 0; i < s_log.count(); ++i) {
-    	log_entry = s_log.at(i);
-    	out.append(QString("\n%1").arg(log_entry.entryData()));
+        log_entry = s_log.at(i);
+        out.append(QString("\n%1").arg(log_entry.entryData()));
     }
     return out;
 }

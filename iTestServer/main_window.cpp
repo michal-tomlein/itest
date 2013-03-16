@@ -567,12 +567,12 @@ void MainWindow::httpRequestFinished(bool error)
 {
     httpRequestFinished_start:
     if (error) {
-    	switch (QMessageBox::critical(this, tr("iTest"), tr("Failed to check for updates."), tr("&Try again"), tr("Cancel"), 0, 1)) {
-    	    case 0: // Try again
-    	    	checkForUpdates(); return; break;
-    	    case 1: // Cancel
-    	    	return; break;
-    	}
+        switch (QMessageBox::critical(this, tr("iTest"), tr("Failed to check for updates."), tr("&Try again"), tr("Cancel"), 0, 1)) {
+            case 0: // Try again
+                checkForUpdates(); return; break;
+            case 1: // Cancel
+                return; break;
+        }
     }
     QString str(http_buffer->data()); QTextStream in(&str);
     if (in.readLine() != "[iTest.current-version]") { error = true; goto httpRequestFinished_start; }
@@ -583,13 +583,13 @@ void MainWindow::httpRequestFinished(bool error)
     QString release_notes;
     while (!in.atEnd()) { release_notes.append(in.readLine()); }
     if (f_current_ver <= f_ver) {
-    	QMessageBox::information(this, tr("iTest"), tr("Your iTest is up-to-date."));
+        QMessageBox::information(this, tr("iTest"), tr("Your iTest is up-to-date."));
     } else {
-    	QString info; QTextStream out(&info);
-    	out << "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body><p>" << endl;
-    	out << "<b>" << tr("iTest %1 is available now.").arg(current_ver) << "</b><br><br>" << endl;
-    	out << release_notes << endl << "</p></body></html>";
-    	QMessageBox::information(this, tr("iTest"), info);
+        QString info; QTextStream out(&info);
+        out << "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body><p>" << endl;
+        out << "<b>" << tr("iTest %1 is available now.").arg(current_ver) << "</b><br><br>" << endl;
+        out << release_notes << endl << "</p></body></html>";
+        QMessageBox::information(this, tr("iTest"), info);
     }
 }
 
@@ -640,7 +640,7 @@ void MainWindow::overallStatistics()
     QObject::connect(btngrpStatsAdjust, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(statsAdjust(QAbstractButton *)));
     int rows = 0; int row = 0;
     for (int i = 0; i < LQListWidget->count(); ++i) {
-    	if (current_db_questions.value(LQListWidget->item(i))->recommendedDifficulty() != -1) { rows++; }
+        if (current_db_questions.value(LQListWidget->item(i))->recommendedDifficulty() != -1) { rows++; }
     }
     stats_label->setText(tr("<b>%1 questions with statistics found</b>").arg(rows));
     if (rows == 0) { stats_widget->show(); return; }
@@ -661,68 +661,68 @@ void MainWindow::overallStatistics()
     stats_tw->verticalHeader()->hide();
     QFont font; font.setBold(true);
     for (int i = 0; i < LQListWidget->count(); ++i) {
-    	q_item = current_db_questions.value(LQListWidget->item(i));
-    	if (q_item->recommendedDifficulty() == -1) { continue; }
-    	tw_item = new QTableWidgetItem(q_item->group().isEmpty() ? q_item->name() : QString("[%1] %2").arg(q_item->group()).arg(q_item->name()));
-    	tw_item->setBackground(QBrush(backgroundColourForFlag(q_item->flag())));
-    	tw_item->setForeground(QBrush(foregroundColourForFlag(q_item->flag())));
-    	tw_item->setFont(font);
-    	stats_tw->setItem(row, 0, tw_item);
-    	tw_item = new QTableWidgetItem;
-    	switch (q_item->difficulty()) {
-    	    case -1: tw_item->setText(tr("Unknown")); break;
-    	    case 0: tw_item->setText(tr("Easy"));
-    	    	tw_item->setBackground(QBrush(QColor(197, 255, 120)));
-    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
-    	    	break;
-    	    case 1: tw_item->setText(tr("Medium"));
-    	    	tw_item->setBackground(QBrush(QColor(255, 251, 0)));
-    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
-    	    	break;
-    	    case 2: tw_item->setText(tr("Difficult"));
-    	    	tw_item->setBackground(QBrush(QColor(204, 109, 0)));
-    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
-    	    	break;
-    	    default: tw_item->setText(tr("Unknown")); break;
-    	}
-    	stats_tw->setItem(row, 1, tw_item);
-    	tw_item = new QTableWidgetItem;
-    	switch (q_item->recommendedDifficulty()) {
-    	    case -1: tw_item->setText(tr("Unknown")); break;
-    	    case 0: tw_item->setText(tr("Easy"));
-    	    	tw_item->setBackground(QBrush(QColor(197, 255, 120)));
-    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
-    	    	break;
-    	    case 1: tw_item->setText(tr("Medium"));
-    	    	tw_item->setBackground(QBrush(QColor(255, 251, 0)));
-    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
-    	    	break;
-    	    case 2: tw_item->setText(tr("Difficult"));
-    	    	tw_item->setBackground(QBrush(QColor(204, 109, 0)));
-    	    	tw_item->setForeground(QBrush(QColor(0, 0, 0)));
-    	    	break;
-    	    default: tw_item->setText(tr("Unknown")); break;
-    	}
-    	stats_tw->setItem(row, 2, tw_item);
-    	tw_item = new QTableWidgetItem(QString::number(q_item->correctAnsCount()));
-    	tw_item->setFont(font); tw_item->setForeground(QBrush(QColor(92, 163, 0)));
-    	stats_tw->setItem(row, 3, tw_item);
-    	tw_item = new QTableWidgetItem(QString::number(q_item->incorrectAnsCount()));
-    	tw_item->setFont(font); tw_item->setForeground(QBrush(QColor(204, 109, 0)));
-    	stats_tw->setItem(row, 4, tw_item);
-    	tw_item = new QTableWidgetItem;
-    	QPushButton * stats_btn_adjust = new QPushButton(tr("Adjust difficulty"), stats_tw);
+        q_item = current_db_questions.value(LQListWidget->item(i));
+        if (q_item->recommendedDifficulty() == -1) { continue; }
+        tw_item = new QTableWidgetItem(q_item->group().isEmpty() ? q_item->name() : QString("[%1] %2").arg(q_item->group()).arg(q_item->name()));
+        tw_item->setBackground(QBrush(backgroundColourForFlag(q_item->flag())));
+        tw_item->setForeground(QBrush(foregroundColourForFlag(q_item->flag())));
+        tw_item->setFont(font);
+        stats_tw->setItem(row, 0, tw_item);
+        tw_item = new QTableWidgetItem;
+        switch (q_item->difficulty()) {
+            case -1: tw_item->setText(tr("Unknown")); break;
+            case 0: tw_item->setText(tr("Easy"));
+                tw_item->setBackground(QBrush(QColor(197, 255, 120)));
+                tw_item->setForeground(QBrush(QColor(0, 0, 0)));
+                break;
+            case 1: tw_item->setText(tr("Medium"));
+                tw_item->setBackground(QBrush(QColor(255, 251, 0)));
+                tw_item->setForeground(QBrush(QColor(0, 0, 0)));
+                break;
+            case 2: tw_item->setText(tr("Difficult"));
+                tw_item->setBackground(QBrush(QColor(204, 109, 0)));
+                tw_item->setForeground(QBrush(QColor(0, 0, 0)));
+                break;
+            default: tw_item->setText(tr("Unknown")); break;
+        }
+        stats_tw->setItem(row, 1, tw_item);
+        tw_item = new QTableWidgetItem;
+        switch (q_item->recommendedDifficulty()) {
+            case -1: tw_item->setText(tr("Unknown")); break;
+            case 0: tw_item->setText(tr("Easy"));
+                tw_item->setBackground(QBrush(QColor(197, 255, 120)));
+                tw_item->setForeground(QBrush(QColor(0, 0, 0)));
+                break;
+            case 1: tw_item->setText(tr("Medium"));
+                tw_item->setBackground(QBrush(QColor(255, 251, 0)));
+                tw_item->setForeground(QBrush(QColor(0, 0, 0)));
+                break;
+            case 2: tw_item->setText(tr("Difficult"));
+                tw_item->setBackground(QBrush(QColor(204, 109, 0)));
+                tw_item->setForeground(QBrush(QColor(0, 0, 0)));
+                break;
+            default: tw_item->setText(tr("Unknown")); break;
+        }
+        stats_tw->setItem(row, 2, tw_item);
+        tw_item = new QTableWidgetItem(QString::number(q_item->correctAnsCount()));
+        tw_item->setFont(font); tw_item->setForeground(QBrush(QColor(92, 163, 0)));
+        stats_tw->setItem(row, 3, tw_item);
+        tw_item = new QTableWidgetItem(QString::number(q_item->incorrectAnsCount()));
+        tw_item->setFont(font); tw_item->setForeground(QBrush(QColor(204, 109, 0)));
+        stats_tw->setItem(row, 4, tw_item);
+        tw_item = new QTableWidgetItem;
+        QPushButton * stats_btn_adjust = new QPushButton(tr("Adjust difficulty"), stats_tw);
         stats_tw->setCellWidget(row, 5, stats_btn_adjust);
-    	stats_btn_adjust->setEnabled(false);
-    	stats_qmap.insert(stats_btn_adjust, q_item);
-    	stats_twmap.insert(stats_btn_adjust, row);
-    	stats_lwmap.insert(stats_btn_adjust, i);
-    	btngrpStatsAdjust->addButton(stats_btn_adjust);
-    	if (q_item->difficulty() != q_item->recommendedDifficulty()) {
-    	    stats_btn_adjustall->setEnabled(true);
-    	    stats_btn_adjust->setEnabled(true);
-    	}
-    	row++;
+        stats_btn_adjust->setEnabled(false);
+        stats_qmap.insert(stats_btn_adjust, q_item);
+        stats_twmap.insert(stats_btn_adjust, row);
+        stats_lwmap.insert(stats_btn_adjust, i);
+        btngrpStatsAdjust->addButton(stats_btn_adjust);
+        if (q_item->difficulty() != q_item->recommendedDifficulty()) {
+            stats_btn_adjustall->setEnabled(true);
+            stats_btn_adjust->setEnabled(true);
+        }
+        row++;
     }
     stats_tw->resizeColumnsToContents(); stats_tw->resizeRowsToContents();
     stats_widget->resize(stats_tw->columnWidth(0) + stats_tw->columnWidth(1) + stats_tw->columnWidth(2) + stats_tw->columnWidth(3) + stats_tw->columnWidth(4) + stats_tw->columnWidth(5) + 40, 400);
@@ -734,10 +734,10 @@ void MainWindow::statsAdjustAll()
     if (stats_tw == NULL) { return; }
     QAbstractButton * btn;
     for (int i = 0; i < stats_tw->rowCount(); ++i) {
-    	btn = (QAbstractButton *)stats_tw->cellWidget(i, 5);
-    	if (btn == NULL) { continue; }
-    	if (!btn->isEnabled()) { continue; }
-    	statsAdjust(btn);
+        btn = (QAbstractButton *)stats_tw->cellWidget(i, 5);
+        if (btn == NULL) { continue; }
+        if (!btn->isEnabled()) { continue; }
+        statsAdjust(btn);
     }
     if (stats_btn_adjustall == NULL) { return; }
     stats_btn_adjustall->setEnabled(false);
@@ -754,31 +754,31 @@ void MainWindow::statsAdjust(QAbstractButton * btn)
     if (tw_item == NULL) { return; }
     int rdif = q_item->recommendedDifficulty();
     switch (rdif) {
-    	case -1: break;
-    	case 0: tw_item->setText(tr("Easy"));
-    	    tw_item->setBackground(QBrush(QColor(197, 255, 120)));
-    	    tw_item->setForeground(QBrush(QColor(0, 0, 0)));
-    	    break;
-    	case 1: tw_item->setText(tr("Medium"));
-    	    tw_item->setBackground(QBrush(QColor(255, 251, 0)));
-    	    tw_item->setForeground(QBrush(QColor(0, 0, 0)));
-    	    break;
-    	case 2: tw_item->setText(tr("Difficult"));
-    	    tw_item->setBackground(QBrush(QColor(204, 109, 0)));
-    	    tw_item->setForeground(QBrush(QColor(0, 0, 0)));
-    	    break;
-    	default: break;
+        case -1: break;
+        case 0: tw_item->setText(tr("Easy"));
+            tw_item->setBackground(QBrush(QColor(197, 255, 120)));
+            tw_item->setForeground(QBrush(QColor(0, 0, 0)));
+            break;
+        case 1: tw_item->setText(tr("Medium"));
+            tw_item->setBackground(QBrush(QColor(255, 251, 0)));
+            tw_item->setForeground(QBrush(QColor(0, 0, 0)));
+            break;
+        case 2: tw_item->setText(tr("Difficult"));
+            tw_item->setBackground(QBrush(QColor(204, 109, 0)));
+            tw_item->setForeground(QBrush(QColor(0, 0, 0)));
+            break;
+        default: break;
     }
     if (rdif >= 0 && rdif <= 2) {
-    	q_item->setDifficulty(rdif);
-    	if (current_db_questions.value(LQListWidget->currentItem()) == q_item)
-    	    { SQDifficultyComboBox->setCurrentIndex(rdif); }
-    	setDatabaseModified(); btn->setEnabled(false);
-    	int i = stats_lwmap.value(btn, -1);
-    	if (i == -1) { return; }
-    	QListWidgetItem * lw_item = LQListWidget->item(i);
-    	if (lw_item == NULL) { return; }
-    	setQuestionItemIcon(lw_item, rdif);
+        q_item->setDifficulty(rdif);
+        if (current_db_questions.value(LQListWidget->currentItem()) == q_item)
+            { SQDifficultyComboBox->setCurrentIndex(rdif); }
+        setDatabaseModified(); btn->setEnabled(false);
+        int i = stats_lwmap.value(btn, -1);
+        if (i == -1) { return; }
+        QListWidgetItem * lw_item = LQListWidget->item(i);
+        if (lw_item == NULL) { return; }
+        setQuestionItemIcon(lw_item, rdif);
     }
 }
 
@@ -812,8 +812,8 @@ void MainWindow::changeLanguage()
     langComboBox = new QComboBox(lang_widget);
     QStringList langs(itest_i18n.keys()); langs.sort();
     for (int i = 0; i < langs.count(); ++i) {
-    	langComboBox->addItem(langs.at(i));
-    	if (langs.at(i) == "English") { langComboBox->setCurrentIndex(i); }
+        langComboBox->addItem(langs.at(i));
+        if (langs.at(i) == "English") { langComboBox->setCurrentIndex(i); }
     }
     lang_glayout->addWidget(langComboBox, 1, 0);
     QDialogButtonBox * lang_buttonbox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, lang_widget);
@@ -830,8 +830,8 @@ void MainWindow::langChanged()
     QSettings settings("Michal Tomlein", "iTest");
     QString current_lang = settings.value("lang", "English").toString();
     if (current_lang != lang) {
-    	settings.setValue("lang", lang);
-    	QMessageBox::information(this, tr("iTest"), tr("You need to restart iTest for the changes to apply."));
+        settings.setValue("lang", lang);
+        QMessageBox::information(this, tr("iTest"), tr("You need to restart iTest for the changes to apply."));
     }
     if (langComboBox->parent() == NULL) { return; }
     QWidget * lang_widget = (QWidget *)langComboBox->parent();

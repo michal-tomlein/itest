@@ -85,7 +85,7 @@ void MainWindow::setCurrentClass(QListWidgetItem * item)
     CLSCAverageLabel->setText(QString("%1%").arg(cl->average(&current_db_sessions, &current_db_archivedsessions)));
     CLLSListWidget->clear();
     for (int i = 0; i < cl->numMembers(); ++i) {
-    	CLLSListWidget->addItem(cl->member(i)->name());
+        CLLSListWidget->addItem(cl->member(i)->name());
     }
     for (int i = 0; i < cl->numSessions(); ++i) {
         Session * session = current_db_sessions.value(cl->session(i), current_db_archivedsessions.value(cl->session(i), new ArchivedSession(this)));

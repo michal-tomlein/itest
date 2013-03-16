@@ -104,7 +104,7 @@ QString ClassMember::memberData()
     // MEM_SNUM
     out.append(QString("\n%1").arg(ms_sessions.count()));
     for (int i = 0; i < ms_sessions.count(); ++i) {
-    	// MEM_SESSION
+        // MEM_SESSION
         out.append(QString("\n%1\n").arg(sessionToString(i)));
         // MEM_NAME
         out.append(QString("%1").arg(memberNumForSession(i)));

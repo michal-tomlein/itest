@@ -72,7 +72,7 @@ Session::Session(ArchivedSession * archived_session)
     s_score = archived_session->s_score;
     s_log = archived_session->s_log;
     for (int i = 0; i < archived_session->s_students.count(); ++i) {
-    	s_students << new Student(archived_session->s_students.at(i));
+        s_students << new Student(archived_session->s_students.at(i));
     }
     s_passmark = archived_session->s_passmark;
     s_scoringsystem = archived_session->s_scoringsystem;
@@ -82,7 +82,7 @@ Session::Session(ArchivedSession * archived_session)
 Session::~Session()
 {
     for (int i = 0; i < s_students.count(); ++i) {
-    	if (s_students.at(i)) delete s_students.at(i);
+        if (s_students.at(i)) delete s_students.at(i);
     }
 }
 
@@ -172,8 +172,8 @@ QString Session::sessionData()
     // S_LOGENTRIES
     LogEntry log_entry;
     for (int i = 0; i < s_log.count(); ++i) {
-    	log_entry = s_log.at(i);
-    	out.append(QString("\n%1").arg(log_entry.entryData()));
+        log_entry = s_log.at(i);
+        out.append(QString("\n%1").arg(log_entry.entryData()));
     }
     return out;
 }

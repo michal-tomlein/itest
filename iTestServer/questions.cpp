@@ -160,29 +160,29 @@ void MainWindow::applyQuestionChanges()
     QString q_group = removeLineBreaks(SQGroupLineEdit->text());
     int q_flag;
     if (SQFlagComboBox->count() != 0) {
-    	q_flag = SQFlagComboBox->itemData(SQFlagComboBox->currentIndex()).toInt();
+        q_flag = SQFlagComboBox->itemData(SQFlagComboBox->currentIndex()).toInt();
     } else { q_flag = -1; }
     if (!q_group.isEmpty()) {
-    	QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
-    	while (q.hasNext()) { q.next();
-    	    if (q.value()->group() == q_group) {
-    	    	if (q.value()->flag() != q_flag) {
-                	    QMessageBox::information(this, tr("Apply changes"), tr("This group is used by one or more questions with a different flag.\nPlease choose a different group."));
-                	    return;
-                	}
+        QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
+        while (q.hasNext()) { q.next();
+            if (q.value()->group() == q_group) {
+                if (q.value()->flag() != q_flag) {
+                        QMessageBox::information(this, tr("Apply changes"), tr("This group is used by one or more questions with a different flag.\nPlease choose a different group."));
+                        return;
+                    }
                 }
-    	}
+        }
     }
     // CHECK FLAG
     /*if (item->flag() != q_flag && item->flag() != -1) {
-    	switch (QMessageBox::information(this, tr("iTestServer"), tr("It is strongly advised against changing the flag of a question.\nConsider duplicating the question and hiding the original instead.\nProceed only if you know what you are doing."), tr("&Change"), tr("Do &not change"), 0, 1)) {
-    	    case 0: // Change
-    	    	break;
-    	    case 1: // Do not change
-    	    	q_flag = item->flag();
-    	    	SQFlagComboBox->setCurrentIndex(current_db_flagentries.value(item->flag()));
-    	    	break;
-    	}
+        switch (QMessageBox::information(this, tr("iTestServer"), tr("It is strongly advised against changing the flag of a question.\nConsider duplicating the question and hiding the original instead.\nProceed only if you know what you are doing."), tr("&Change"), tr("Do &not change"), 0, 1)) {
+            case 0: // Change
+                break;
+            case 1: // Do not change
+                q_flag = item->flag();
+                SQFlagComboBox->setCurrentIndex(current_db_flagentries.value(item->flag()));
+                break;
+        }
     }*/
     // CHECK NAME
     QString q_name = removeLineBreaks(SQQuestionNameLineEdit->text());
@@ -193,29 +193,29 @@ void MainWindow::applyQuestionChanges()
             if (q.value()->name() == q_name) { n++; }
         }
         if (n > 0) { QMessageBox::critical(this, tr("Apply changes"), tr("A question with this name already exists.\nPlease choose a different name.")); return; }
-    	uint num_old = numOccurrences(current_db_question);
-    	uint num_new = numOccurrences(q_name);
-    	if (num_new != 0) {
-    	    switch (QMessageBox::information(this, tr("iTestServer"), tr("This new name has been used before.\n%1 occurrences of a question with this name found in the saved sessions.\nChanging the name to this one will cause that this question will be used\ninstead of the no longer existent old one.\n%2 occurrences of the old name will also be updated.\nAre you sure you want to change the name?").arg(num_new).arg(num_old), tr("&Change"), tr("Do &not change"), 0, 1)) {
-    	    	case 0: // Change
-    	    	    replaceAllOccurrences(current_db_question, q_name);
-    	    	    break;
-    	    	case 1: // Do not change
-    	    	    q_name = current_db_question;
-    	    	    SQQuestionNameLineEdit->setText(current_db_question);
-    	    	    break;
-    	    }
-    	} else if (num_old != 0) {
-    	    switch (QMessageBox::information(this, tr("iTestServer"), tr("Are you sure you want to change the name of the question?\n%1 occurrences of this question found in the saved sessions.\nAll occurrences will be updated.").arg(num_old), tr("&Change"), tr("Do &not change"), 0, 1)) {
-    	    	case 0: // Change
-    	    	    replaceAllOccurrences(current_db_question, q_name);
-    	    	    break;
-    	    	case 1: // Do not change
-    	    	    q_name = current_db_question;
-    	    	    SQQuestionNameLineEdit->setText(current_db_question);
-    	    	    break;
-    	    }
-    	}
+        uint num_old = numOccurrences(current_db_question);
+        uint num_new = numOccurrences(q_name);
+        if (num_new != 0) {
+            switch (QMessageBox::information(this, tr("iTestServer"), tr("This new name has been used before.\n%1 occurrences of a question with this name found in the saved sessions.\nChanging the name to this one will cause that this question will be used\ninstead of the no longer existent old one.\n%2 occurrences of the old name will also be updated.\nAre you sure you want to change the name?").arg(num_new).arg(num_old), tr("&Change"), tr("Do &not change"), 0, 1)) {
+                case 0: // Change
+                    replaceAllOccurrences(current_db_question, q_name);
+                    break;
+                case 1: // Do not change
+                    q_name = current_db_question;
+                    SQQuestionNameLineEdit->setText(current_db_question);
+                    break;
+            }
+        } else if (num_old != 0) {
+            switch (QMessageBox::information(this, tr("iTestServer"), tr("Are you sure you want to change the name of the question?\n%1 occurrences of this question found in the saved sessions.\nAll occurrences will be updated.").arg(num_old), tr("&Change"), tr("Do &not change"), 0, 1)) {
+                case 0: // Change
+                    replaceAllOccurrences(current_db_question, q_name);
+                    break;
+                case 1: // Do not change
+                    q_name = current_db_question;
+                    SQQuestionNameLineEdit->setText(current_db_question);
+                    break;
+            }
+        }
     }
     // SAVE VALUES
     item->setName(q_name);
@@ -268,11 +268,11 @@ void MainWindow::hideQuestion(QListWidgetItem * q_item, QuestionItem * item)
     q_item->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
     q_item->setForeground(QBrush(foregroundColourForFlag(item->flag(), item->isHidden())));
     if (item->isHidden()) {
-    	QFont font; font.setBold(true);
-    	q_item->setFont(font);
+        QFont font; font.setBold(true);
+        q_item->setFont(font);
     } else {
-    	QFont font;
-    	q_item->setFont(font);
+        QFont font;
+        q_item->setFont(font);
     }
 }
 
@@ -284,10 +284,10 @@ void MainWindow::setQuestionItemIcon(QListWidgetItem * q_item, int q_difficulty_
 QIcon MainWindow::iconForDifficulty(int q_difficulty_i)
 {
     switch (q_difficulty_i) {
-    	case 0: return QIcon(QString::fromUtf8(":/images/images/easy.png")); break;
-    	case 1: return QIcon(QString::fromUtf8(":/images/images/medium.png")); break;
-    	case 2: return QIcon(QString::fromUtf8(":/images/images/difficult.png")); break;
-    	default: return QIcon(QString::fromUtf8(":/images/images/easy.png")); break;
+        case 0: return QIcon(QString::fromUtf8(":/images/images/easy.png")); break;
+        case 1: return QIcon(QString::fromUtf8(":/images/images/medium.png")); break;
+        case 2: return QIcon(QString::fromUtf8(":/images/images/difficult.png")); break;
+        default: return QIcon(QString::fromUtf8(":/images/images/easy.png")); break;
     }
     return QIcon(QString::fromUtf8(":/images/images/easy.png"));
 }
@@ -487,10 +487,10 @@ void MainWindow::adjustQuestionDifficulty()
     QuestionItem * item = current_db_questions.value(LQListWidget->currentItem());
     int rdif = item->recommendedDifficulty();
     if (rdif >= 0 && rdif <= 2) {
-    	item->setDifficulty(rdif);
-    	SQDifficultyComboBox->setCurrentIndex(rdif);
-    	setQuestionItemIcon(LQListWidget->currentItem(), item->difficulty());
-    	setDatabaseModified();
+        item->setDifficulty(rdif);
+        SQDifficultyComboBox->setCurrentIndex(rdif);
+        setQuestionItemIcon(LQListWidget->currentItem(), item->difficulty());
+        setDatabaseModified();
     }
 }
 
@@ -499,15 +499,15 @@ uint MainWindow::numOccurrences(const QString & qname)
     uint n = 0;
     QMapIterator<QDateTime, Session *> i(current_db_sessions);
     while (i.hasNext()) { i.next();
-    	for (int s = 0; s < i.value()->numStudents(); ++s) {
-    	    if (i.value()->student(s)->wasAsked(qname)) { n++; }
-    	}
+        for (int s = 0; s < i.value()->numStudents(); ++s) {
+            if (i.value()->student(s)->wasAsked(qname)) { n++; }
+        }
     }
     QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
     while (a.hasNext()) { a.next();
-    	for (int s = 0; s < a.value()->numStudents(); ++s) {
-    	    if (a.value()->student(s)->wasAsked(qname)) { n++; }
-    	}
+        for (int s = 0; s < a.value()->numStudents(); ++s) {
+            if (a.value()->student(s)->wasAsked(qname)) { n++; }
+        }
     }
     return n;
 }
@@ -517,21 +517,21 @@ uint MainWindow::replaceAllOccurrences(const QString & old_qname, const QString 
     uint n = 0, as = 0, x = 0;
     QMapIterator<QDateTime, Session *> i(current_db_sessions);
     while (i.hasNext()) { i.next();
-    	for (int s = 0; s < i.value()->numStudents(); ++s) {
-    	    n += i.value()->student(s)->replaceOccurrences(old_qname, new_qname);
-    	}
+        for (int s = 0; s < i.value()->numStudents(); ++s) {
+            n += i.value()->student(s)->replaceOccurrences(old_qname, new_qname);
+        }
     }
     QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
     while (a.hasNext()) { a.next();
-    	as = 0;
-    	for (int s = 0; s < a.value()->numStudents(); ++s) {
-    	    x = a.value()->student(s)->replaceOccurrences(old_qname, new_qname);
-    	    n += x; as += x;
-    	}
-    	if (as > 0) {
+        as = 0;
+        for (int s = 0; s < a.value()->numStudents(); ++s) {
+            x = a.value()->student(s)->replaceOccurrences(old_qname, new_qname);
+            n += x; as += x;
+        }
+        if (as > 0) {
             a.value()->setStatus(ArchivedSession::Archive);
-    	    current_db_queued_sessions.removeAll(a.value());
-    	    current_db_queued_sessions.enqueue(a.value());
+            current_db_queued_sessions.removeAll(a.value());
+            current_db_queued_sessions.enqueue(a.value());
         }
     }
     return n;

@@ -98,9 +98,9 @@ MainWindow::MainWindow()
     // Check app args ----------------------------------------------------------
     if (qApp->arguments().count() > 2) {
         if (qApp->arguments().at(1) == "-port") {
-        	serverNameLineEdit->setText("Localhost");
-        	serverPortLineEdit->setText(qApp->arguments().at(2));
-        	connectSocket();
+            serverNameLineEdit->setText("Localhost");
+            serverPortLineEdit->setText(qApp->arguments().at(2));
+            connectSocket();
         }
     } else if (qApp->arguments().count() > 1) {
         openFile(qApp->arguments().at(1));
@@ -321,13 +321,13 @@ void MainWindow::disableInputTypeSelection()
 void MainWindow::getReady()
 {
     if (hideQuestionNamesCheckBox->isChecked()) {
-    	for (int i = 0; i < LQListWidget->count(); ++i) {
-    	    LQListWidget->item(i)->setText(QString("%1").arg(i + 1));
-    	}
+        for (int i = 0; i < LQListWidget->count(); ++i) {
+            LQListWidget->item(i)->setText(QString("%1").arg(i + 1));
+        }
     } else {
-    	for (int i = 0; i < LQListWidget->count(); ++i) {
-    	    LQListWidget->item(i)->setText(current_test_questions.value(LQListWidget->item(i))->name());
-    	}
+        for (int i = 0; i < LQListWidget->count(); ++i) {
+            LQListWidget->item(i)->setText(current_test_questions.value(LQListWidget->item(i))->name());
+        }
     }
     mainStackedWidget->setCurrentIndex(1);
 }
@@ -381,16 +381,16 @@ void MainWindow::newTest()
     mainStackedWidget->setCurrentIndex(0);
     current_db_fe.clear(); current_db_f.clear();
     if (rbtnNetwork->isChecked()) {
-    	tcpSocket->disconnectFromHost();
-    	current_connection_local = false;
-    	blocksize = 0;
-    	client_number = 0;
-    	num_entries = 0;
-    	current_entry = 0;
-    	connectSocket();
+        tcpSocket->disconnectFromHost();
+        current_connection_local = false;
+        blocksize = 0;
+        client_number = 0;
+        num_entries = 0;
+        current_entry = 0;
+        connectSocket();
     } else {
-    	current_connection_local = true;
-    	loadFile();
+        current_connection_local = true;
+        loadFile();
     }
 }
 

@@ -166,8 +166,8 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selec
     int db_qnum = 0; int min_qnum = 0; int total_passmark = 0; QuestionItem * item; bool server_mode = tw_include == TSIncludeTableWidget;
     if (!advanced) {
         if (use_groups) {
-        	QSet<QString> groups;
-        	for (int q = 0; q < LQListWidget->count(); ++q) {
+            QSet<QString> groups;
+            for (int q = 0; q < LQListWidget->count(); ++q) {
                 item = NULL; item = current_db_questions.value(LQListWidget->item(q));
                 if (item == NULL) { continue; }
                 if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
@@ -247,21 +247,21 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selec
 void MainWindow::updateTestTime()
 {
     if (rbtnTestTime->isChecked()) {
-    	if (TSQnumSpinBox->value() == 0) {
+        if (TSQnumSpinBox->value() == 0) {
             TSQuestionTimeEdit->setTime(QTime(0, 0));
-    	} else {
-    	    QTime time = TSTestTimeEdit->time(); QTime nulltime (0, 0);
-    	    QTime qtime = nulltime.addSecs(((time.hour() * 60 * 60) + (time.minute() * 60)) / TSQnumSpinBox->value());
-    	    TSQuestionTimeEdit->setTime(qtime);
-    	}
+        } else {
+            QTime time = TSTestTimeEdit->time(); QTime nulltime (0, 0);
+            QTime qtime = nulltime.addSecs(((time.hour() * 60 * 60) + (time.minute() * 60)) / TSQnumSpinBox->value());
+            TSQuestionTimeEdit->setTime(qtime);
+        }
     } else if (rbtnQuestionTime->isChecked()) {
-    	QTime time = TSQuestionTimeEdit->time(); QTime nulltime (0, 0);
-    	while ((((time.hour() * 60 * 60) + (time.minute() * 60)) * TSQnumSpinBox->value()) > 86340) {
-    	    time = time.addSecs(-60); qApp->processEvents();
-    	}
-    	TSQuestionTimeEdit->setTime(time);
-    	QTime qtime = nulltime.addSecs(((time.hour() * 60 * 60) + (time.minute() * 60)) * TSQnumSpinBox->value());
-    	TSTestTimeEdit->setTime(qtime);
+        QTime time = TSQuestionTimeEdit->time(); QTime nulltime (0, 0);
+        while ((((time.hour() * 60 * 60) + (time.minute() * 60)) * TSQnumSpinBox->value()) > 86340) {
+            time = time.addSecs(-60); qApp->processEvents();
+        }
+        TSQuestionTimeEdit->setTime(time);
+        QTime qtime = nulltime.addSecs(((time.hour() * 60 * 60) + (time.minute() * 60)) * TSQnumSpinBox->value());
+        TSTestTimeEdit->setTime(qtime);
     }
 }
 
@@ -291,7 +291,7 @@ void MainWindow::addToList()
         QTableWidgetItem * item = toTableItem(TSExcludeListWidget->takeItem(TSExcludeListWidget->currentRow()), true);
         TSIncludeTableWidget->setItem(TSIncludeTableWidget->rowCount() - 1, 0, item);
         if (rbtnSelectFlags->isChecked()) {
-        	int max = qnumForFlag(item->data(Qt::UserRole).toInt(), TSGroupsCheckBox->isChecked());
+            int max = qnumForFlag(item->data(Qt::UserRole).toInt(), TSGroupsCheckBox->isChecked());
             MTSpinBox * spb_qnum = new MTSpinBox(this);
             TSIncludeTableWidget->setCellWidget(TSIncludeTableWidget->rowCount() - 1, 1, spb_qnum);
             spb_qnum->setMaximum(max);
@@ -299,13 +299,13 @@ void MainWindow::addToList()
             QObject::connect(spb_qnum, SIGNAL(valueChanged(int)), this, SLOT(updateTestQnum()));
             QSpinBox * spb_passmark = new QSpinBox(this);
             TSIncludeTableWidget->setCellWidget(TSIncludeTableWidget->rowCount() - 1, 2, spb_passmark);
-        	spb_passmark->setMaximum(max);
-        	spb_passmark->setFixedHeight(20);
+            spb_passmark->setMaximum(max);
+            spb_passmark->setFixedHeight(20);
             QObject::connect(spb_passmark, SIGNAL(valueChanged(int)), this, SLOT(updateTestQnum()));
             QObject::connect(spb_passmark, SIGNAL(valueChanged(int)), spb_qnum, SLOT(setMinimum(int)));
-        	TSIncludeTableWidget->setRowHeight(TSIncludeTableWidget->rowCount() - 1, 20);
+            TSIncludeTableWidget->setRowHeight(TSIncludeTableWidget->rowCount() - 1, 20);
         } else {
-        	TSIncludeTableWidget->setRowHeight(TSIncludeTableWidget->rowCount() - 1, 16);
+            TSIncludeTableWidget->setRowHeight(TSIncludeTableWidget->rowCount() - 1, 16);
         }
         updateTestQnum();
     }
@@ -332,11 +332,11 @@ void MainWindow::startServer()
     }
 
     if (TSCustomTestNameCheckBox->isChecked() && TSTestNameLineEdit->text().isEmpty())
-    	{ QMessageBox::critical(this, tr("iTestServer"), tr("Invalid test name.")); return; }
+        { QMessageBox::critical(this, tr("iTestServer"), tr("Invalid test name.")); return; }
     QTime time = TSTestTimeEdit->time(); if (!time.isValid())
-    	{ QMessageBox::critical(this, tr("iTestServer"), tr("Invalid exam time.")); return; }
+        { QMessageBox::critical(this, tr("iTestServer"), tr("Invalid exam time.")); return; }
     if ((time.hour() == 0) && (time.minute() == 0) && (time.second() == 0))
-    	{ QMessageBox::critical(this, tr("iTestServer"), tr("Students will need at least one minute for the exam,\nalthough it is recommended to give them an hour.")); return; }
+        { QMessageBox::critical(this, tr("iTestServer"), tr("Students will need at least one minute for the exam,\nalthough it is recommended to give them an hour.")); return; }
 
     if (!tcpServer->listen(QHostAddress::Any, TSCustomServerPortCheckBox->isChecked() ? TSCustomServerPortSpinBox->value() : 0) && !tcpServer->isListening()) {
         QMessageBox::critical(this, tr("iTestServer"), tr("Unable to start the server: %1.")
@@ -376,7 +376,7 @@ void MainWindow::startServer()
     int test_qnum = TSQnumSpinBox->value();
     // CUSTOM TEST NAME
     if (TSCustomTestNameCheckBox->isChecked()) {
-    	current_db_testname = TSTestNameLineEdit->text();
+        current_db_testname = TSTestNameLineEdit->text();
     } else { current_db_testname = current_db_name; }
     // TEST DATE
     current_db_testdate = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm");
@@ -384,11 +384,11 @@ void MainWindow::startServer()
     current_db_passmark.clear();
     current_db_passmark.setPassMark(TSPassMarkSpinBox->value());
     if (TSAdvancedSetupGroupBox->isChecked() && rbtnSelectFlags->isChecked()) {
-    	for (int i = 0; i < TSIncludeTableWidget->rowCount(); ++i) {
-    	    if (((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 1))->value() > 0 || ((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 2))->value() > 0) {
-    	    	current_db_passmark.addCondition(TSIncludeTableWidget->item(i, 0)->data(Qt::UserRole).toInt(), ((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 2))->value(), ((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 1))->value());
-    	    }
-    	}
+        for (int i = 0; i < TSIncludeTableWidget->rowCount(); ++i) {
+            if (((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 1))->value() > 0 || ((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 2))->value() > 0) {
+                current_db_passmark.addCondition(TSIncludeTableWidget->item(i, 0)->data(Qt::UserRole).toInt(), ((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 2))->value(), ((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 1))->value());
+            }
+        }
     }
     // SCORING SYSTEM
     current_db_scoringsystem.allowIncompleteAnswers = TSAllowIncompleteAnswersCheckBox->isChecked();
@@ -469,19 +469,19 @@ void MainWindow::startServer()
         item = NULL; item = current_db_questions.value(LQListWidget->item(i));
         if (item != NULL && isDifficultyIncluded(item->difficulty())) {
             if (!TSAdvancedSetupGroupBox->isChecked()) {
-            	if (!item->isHidden()) {
-            	    ok = true;
-            	}
+                if (!item->isHidden()) {
+                    ok = true;
+                }
             } else if (rbtnSelectFlags->isChecked()) {
-            	if (!item->isHidden()) {
-            	    if (used_items.contains(item->flag())) {
-            	    	ok = true;
-            	    }
-            	}
+                if (!item->isHidden()) {
+                    if (used_items.contains(item->flag())) {
+                        ok = true;
+                    }
+                }
             } else if (rbtnSelectQuestions->isChecked()) {
-            	if (used_items.contains(i)) {
-            	    ok = true;
-            	}
+                if (used_items.contains(i)) {
+                    ok = true;
+                }
             }
         }
         // ---------------------------------------------------------------------
@@ -521,55 +521,55 @@ void MainWindow::startServer()
 void MainWindow::stopServer()
 {
     switch (QMessageBox::information(this, tr("iTestServer - Stop server"), tr("Are you sure you want to stop the server?"), tr("&Stop"), tr("Cancel"), 0, 1)) {
-    	case 0: // Stop
-    	    break;
-    	case 1: // Cancel
-    	    return; break;
+        case 0: // Stop
+            break;
+        case 1: // Cancel
+            return; break;
     }
     tcpServer->close();
     // -------------------------------------------------------------------------
     if (actionSave_session->isChecked() && (numIdentifiedClients() > 0)) {
-    	Session * session = new Session;
-    	session->setName(current_db_testname);
-    	session->setDateTimeFromString(current_db_testdate);
+        Session * session = new Session;
+        session->setName(current_db_testname);
+        session->setDateTimeFromString(current_db_testdate);
         PassMark passmark(current_db_passmark.passMark());
         for (int i = 0; i < current_db_passmark.count(); ++i) {
             if (current_db_passmark.value(i) > 0) { passmark.addCondition(current_db_passmark.condition(i), current_db_passmark.value(i), current_db_passmark.value(i)); }
         }
-    	session->setPassMark(passmark);
-    	current_db_passmark.clear();
-    	for (int i = 0; i < SMSLListWidget->count(); ++i) {
-    	    session->addLogEntry(SMSLListWidget->item(i)->background().color().red(),
-    	    	    	    	    SMSLListWidget->item(i)->background().color().green(),
-    	    	    	    	    SMSLListWidget->item(i)->background().color().blue(),
-    	    	    	    	    SMSLListWidget->item(i)->foreground().color().red(),
-    	    	    	    	    SMSLListWidget->item(i)->foreground().color().green(),
-    	    	    	    	    SMSLListWidget->item(i)->foreground().color().blue(),
-    	    	    	    	    SMSLListWidget->item(i)->text());
-    	}
-    	for (int i = 0; i < SMLCListWidget->count(); ++i) {
-    	    if (SMLCListWidget->item(i)->isHidden()) continue;
-    	    Student * student = new Student(current_db_clients.value(SMLCListWidget->item(i)));
-    	    session->addStudent(student);
-    	}
+        session->setPassMark(passmark);
+        current_db_passmark.clear();
+        for (int i = 0; i < SMSLListWidget->count(); ++i) {
+            session->addLogEntry(SMSLListWidget->item(i)->background().color().red(),
+                                    SMSLListWidget->item(i)->background().color().green(),
+                                    SMSLListWidget->item(i)->background().color().blue(),
+                                    SMSLListWidget->item(i)->foreground().color().red(),
+                                    SMSLListWidget->item(i)->foreground().color().green(),
+                                    SMSLListWidget->item(i)->foreground().color().blue(),
+                                    SMSLListWidget->item(i)->text());
+        }
+        for (int i = 0; i < SMLCListWidget->count(); ++i) {
+            if (SMLCListWidget->item(i)->isHidden()) continue;
+            Student * student = new Student(current_db_clients.value(SMLCListWidget->item(i)));
+            session->addStudent(student);
+        }
         session->setScoringSystem(current_db_scoringsystem);
-    	current_db_sessions.insert(session->dateTime(), session);
-    	QListWidgetItem * item = new QListWidgetItem (QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name()));
-    	SVLSListWidget->insertItem(0, item);
+        current_db_sessions.insert(session->dateTime(), session);
+        QListWidgetItem * item = new QListWidgetItem (QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name()));
+        SVLSListWidget->insertItem(0, item);
         item->setData(Qt::UserRole, session->dateTime());
     }
     // -------------------------------------------------------------------------
     for (int i = 0; i < SMLCListWidget->count(); ++i) {
-    	delete current_db_clients.value(SMLCListWidget->item(i));
+        delete current_db_clients.value(SMLCListWidget->item(i));
     }
     current_db_clients.clear(); SMLCListWidget->clear(); SMSLListWidget->clear();
     setAllEnabled(true); actionQuit->setEnabled(true);
     actionNew->setEnabled(true); actionOpen->setEnabled(true);
     setPage(actionEdit_test); togglePrintEnabled();
     if (actionUse_last_save_date->isChecked()) {
-    	actionUse_last_save_date->setChecked(false);
-    	save();
-    	actionUse_last_save_date->setChecked(true);
+        actionUse_last_save_date->setChecked(false);
+        save();
+        actionUse_last_save_date->setChecked(true);
     } else { save(); }
 }
 
@@ -678,19 +678,19 @@ void MainWindow::clientDisconnected(Client * client)
 void MainWindow::setCurrentClient()
 {
     if (SMLCListWidget->currentIndex().isValid()) {
-    	if (SMLCListWidget->currentItem()->isHidden())
-    	{ setSMSCEnabled(false); clearSMSC(); togglePrintEnabled(); return; }
-    	setSMSCEnabled(true); clearSMSC(); togglePrintEnabled();
-    	Client * client = current_db_clients.value(SMLCListWidget->currentItem());
-    	if (client->isIdentified()) { SMSCNameLabel->setText(client->name()); }
-    	else { SMSCNameLabel->setText(tr("Not identified yet")); }
-    	setClientStatus(client->socket()->state());
-    	if (client->isReady()) {
-    	    SMSCScoreLabel->setText(tr("%1 out of %2 (%3)").arg(client->score()).arg(client->maximumScore()).arg(client->passed() ? tr("PASSED") : tr("FAILED")));
-    	    loadClientResults(client->results());
-    	}
+        if (SMLCListWidget->currentItem()->isHidden())
+        { setSMSCEnabled(false); clearSMSC(); togglePrintEnabled(); return; }
+        setSMSCEnabled(true); clearSMSC(); togglePrintEnabled();
+        Client * client = current_db_clients.value(SMLCListWidget->currentItem());
+        if (client->isIdentified()) { SMSCNameLabel->setText(client->name()); }
+        else { SMSCNameLabel->setText(tr("Not identified yet")); }
+        setClientStatus(client->socket()->state());
+        if (client->isReady()) {
+            SMSCScoreLabel->setText(tr("%1 out of %2 (%3)").arg(client->score()).arg(client->maximumScore()).arg(client->passed() ? tr("PASSED") : tr("FAILED")));
+            loadClientResults(client->results());
+        }
     } else {
-    	setSMSCEnabled(false); clearSMSC(); togglePrintEnabled();
+        setSMSCEnabled(false); clearSMSC(); togglePrintEnabled();
     }
 }
 
@@ -901,8 +901,8 @@ void MainWindow::exportTest()
     if (save_file_name.isNull() || save_file_name.isEmpty()) { return; }
     QFile file(save_file_name);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
-    	QMessageBox::critical(this, tr("Export test"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
-    	return;
+        QMessageBox::critical(this, tr("Export test"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
+        return;
     }
     QTextStream sfile(&file);
     sfile.setCodec("UTF-8");
@@ -945,8 +945,8 @@ Text
     if (save_file_name.isNull() || save_file_name.isEmpty()) { return; }
     QFile file(save_file_name);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
-    	QMessageBox::critical(this, tr("Export server log"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
-    	return;
+        QMessageBox::critical(this, tr("Export server log"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
+        return;
     }
     QTextStream sfile(&file);
     sfile.setCodec("UTF-8");
@@ -955,16 +955,16 @@ Text
     sfile << tr("iTest Server Log") << " - " << testname << " - ";
     sfile << timestamp << endl << "</title></head><body>" << endl;
     for (int i = 0; i < lw->count(); ++i) {
-    	sfile << "<div style=\"background-color: rgb(";
-    	sfile << lw->item(i)->background().color().red() << ", ";
-    	sfile << lw->item(i)->background().color().green() << ", ";
-    	sfile << lw->item(i)->background().color().blue() << "); ";
-    	sfile << "color: rgb(";
-    	sfile << lw->item(i)->foreground().color().red() << ", ";
-    	sfile << lw->item(i)->foreground().color().green() << ", ";
-    	sfile << lw->item(i)->foreground().color().blue() << ")\">";
-    	sfile << endl << lw->item(i)->text() << "\n</div>" << endl;
-    	setProgress(100 / lw->count() * i); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>
+        sfile << "<div style=\"background-color: rgb(";
+        sfile << lw->item(i)->background().color().red() << ", ";
+        sfile << lw->item(i)->background().color().green() << ", ";
+        sfile << lw->item(i)->background().color().blue() << "); ";
+        sfile << "color: rgb(";
+        sfile << lw->item(i)->foreground().color().red() << ", ";
+        sfile << lw->item(i)->foreground().color().green() << ", ";
+        sfile << lw->item(i)->foreground().color().blue() << ")\">";
+        sfile << endl << lw->item(i)->text() << "\n</div>" << endl;
+        setProgress(100 / lw->count() * i); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>
     }
     sfile << "</body></html>" << endl;
     setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>

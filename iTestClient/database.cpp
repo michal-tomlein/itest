@@ -316,7 +316,7 @@ void MainWindow::randomlySelectQuestions()
         LQListWidget->addItem(q_item);
         current_test_questions.insert(q_item, current_db_questions.at(randlist.at(i)));
         if ((current_db_questions.at(randlist.at(i))->flag() >= 0) && (current_db_questions.at(randlist.at(i))->flag() < current_db_f.size())) {
-        	if (!flags.contains(current_db_f[current_db_questions.at(randlist.at(i))->flag()]))
+            if (!flags.contains(current_db_f[current_db_questions.at(randlist.at(i))->flag()]))
                 { flags << current_db_f[current_db_questions.at(randlist.at(i))->flag()]; }
         }
     }
@@ -325,7 +325,7 @@ void MainWindow::randomlySelectQuestions()
 
     if (qApp->arguments().count() > 2) {
         if (qApp->arguments().at(1) == "-port") {
-            	getReady();
+            getReady();
         }
     }
 }

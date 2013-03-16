@@ -167,10 +167,10 @@ int MainWindow::qnumForFlag(int flag, bool use_groups)
     for (int i = 0; i < LQListWidget->count(); ++i) {
         qi = current_db_questions.value(LQListWidget->item(i));
         if (qi->flag() == flag) {
-        	if (use_groups) {
-        	    if (qi->group().isEmpty()) { qnum++; }
-        	    else { groups << qi->group(); }
-        	} else { qnum++; }
+            if (use_groups) {
+                if (qi->group().isEmpty()) { qnum++; }
+                else { groups << qi->group(); }
+            } else { qnum++; }
         }
     }
     qnum += groups.count();
@@ -182,48 +182,48 @@ QColor MainWindow::backgroundColourForFlag(int flag)
     switch (flag) {
         case -1:
             return QColor(255, 255, 255); break;
-    	case 0: // 0: 255 255 255 - 0 0 0
-    	    return QColor(240, 255, 210); break;
-    	case 1: // 1: 197 255 120 - 0 0 0
-    	    return QColor(197, 255, 120); break;
-    	case 2: // 2: 92 163 0 - 0 0 0
-    	    return QColor(92, 163, 0); break;
-    	case 3: // 3: 69 110 14 - 255 255 255
-    	    return QColor(69, 110, 14); break;
-    	case 4: // 4: 17 120 122 - 255 255 255
-    	    return QColor(17, 120, 122); break;
-    	case 5: // 5: 0 163 136 - 0 0 0
-    	    return QColor(0, 163, 136); break;
-    	case 6: // 6: 0 147 163 - 0 0 0
-    	    return QColor(0, 147, 163); break;
-    	case 7: // 7: 0 125 163 - 255 255 255
-    	    return QColor(0, 125, 163); break;
-    	case 8: // 8: 0 84 163 - 255 255 255
-    	    return QColor(0, 84, 163); break;
-    	case 9: // 9: 40 76 110 - 255 255 255
-    	    return QColor(40, 76, 110); break;
-    	case 10: // 10: 0 11 163 - 255 255 255
-    	    return QColor(0, 11, 163); break;
-    	case 11: // 11: 139 0 163 - 255 255 255
-    	    return QColor(139, 0, 163); break;
-    	case 12: // 12: 163 0 79 - 255 255 255
-    	    return QColor(163, 0, 79); break;
-    	case 13: // 13: 163 0 0 - 0 0 0
-    	    return QColor(163, 0, 0); break;
-    	case 14: // 14: 255 0 0 - 0 0 0
-    	    return QColor(255, 0, 0); break;
-    	case 15: // 15: 204 109 0 - 0 0 0
-    	    return QColor(204, 109, 0); break;
-    	case 16: // 16: 204 163 0 - 0 0 0
-    	    return QColor(204, 163, 0); break;
-    	case 17: // 17: 201 204 0 - 0 0 0
-    	    return QColor(201, 204, 0); break;
-    	case 18: // 18: 255 251 0 - 0 0 0
-    	    return QColor(255, 251, 0); break;
-    	case 19: // 19: 221 255 0 - 0 0 0
-    	    return QColor(221, 255, 0); break;
-    	default: // 20+: 173 217 255 - 0 0 0
-    	    return QColor(173, 217, 255); break;
+        case 0: // 0: 255 255 255 - 0 0 0
+            return QColor(240, 255, 210); break;
+        case 1: // 1: 197 255 120 - 0 0 0
+            return QColor(197, 255, 120); break;
+        case 2: // 2: 92 163 0 - 0 0 0
+            return QColor(92, 163, 0); break;
+        case 3: // 3: 69 110 14 - 255 255 255
+            return QColor(69, 110, 14); break;
+        case 4: // 4: 17 120 122 - 255 255 255
+            return QColor(17, 120, 122); break;
+        case 5: // 5: 0 163 136 - 0 0 0
+            return QColor(0, 163, 136); break;
+        case 6: // 6: 0 147 163 - 0 0 0
+            return QColor(0, 147, 163); break;
+        case 7: // 7: 0 125 163 - 255 255 255
+            return QColor(0, 125, 163); break;
+        case 8: // 8: 0 84 163 - 255 255 255
+            return QColor(0, 84, 163); break;
+        case 9: // 9: 40 76 110 - 255 255 255
+            return QColor(40, 76, 110); break;
+        case 10: // 10: 0 11 163 - 255 255 255
+            return QColor(0, 11, 163); break;
+        case 11: // 11: 139 0 163 - 255 255 255
+            return QColor(139, 0, 163); break;
+        case 12: // 12: 163 0 79 - 255 255 255
+            return QColor(163, 0, 79); break;
+        case 13: // 13: 163 0 0 - 0 0 0
+            return QColor(163, 0, 0); break;
+        case 14: // 14: 255 0 0 - 0 0 0
+            return QColor(255, 0, 0); break;
+        case 15: // 15: 204 109 0 - 0 0 0
+            return QColor(204, 109, 0); break;
+        case 16: // 16: 204 163 0 - 0 0 0
+            return QColor(204, 163, 0); break;
+        case 17: // 17: 201 204 0 - 0 0 0
+            return QColor(201, 204, 0); break;
+        case 18: // 18: 255 251 0 - 0 0 0
+            return QColor(255, 251, 0); break;
+        case 19: // 19: 221 255 0 - 0 0 0
+            return QColor(221, 255, 0); break;
+        default: // 20+: 173 217 255 - 0 0 0
+            return QColor(173, 217, 255); break;
     }
     return QColor(255, 255, 255);
 }
@@ -231,36 +231,36 @@ QColor MainWindow::backgroundColourForFlag(int flag)
 QColor MainWindow::foregroundColourForFlag(int flag, bool hidden)
 {
     switch (flag) {
-    	case 0: // 0: 255 255 255 - 0 0 0
-    	case 1: // 1: 197 255 120 - 0 0 0
-    	case 2: // 2: 92 163 0 - 0 0 0
-    	case 5: // 5: 0 163 136 - 0 0 0
-    	case 6: // 6: 0 147 163 - 0 0 0
-    	case 13: // 13: 163 0 0 - 0 0 0
-    	case 14: // 14: 255 0 0 - 0 0 0
-    	case 15: // 15: 204 109 0 - 0 0 0
-    	case 16: // 16: 204 163 0 - 0 0 0
-    	case 17: // 17: 201 204 0 - 0 0 0
-    	case 18: // 18: 255 251 0 - 0 0 0
-    	case 19: // 19: 221 255 0 - 0 0 0
-    	    if (hidden) { return QColor(100, 100, 100); }
-    	    else { return QColor(0, 0, 0); }
-    	    break;
-    	case 3: // 3: 69 110 14 - 255 255 255
-    	case 4: // 4: 17 120 122 - 255 255 255
-    	case 7: // 7: 0 125 163 - 255 255 255
-    	case 8: // 8: 0 84 163 - 255 255 255
-    	case 9: // 9: 40 76 110 - 255 255 255
-    	case 10: // 10: 0 11 163 - 255 255 255
-    	case 11: // 11: 139 0 163 - 255 255 255
-    	case 12: // 12: 163 0 79 - 255 255 255
-    	    if (hidden) { return QColor(200, 200, 200); }
-    	    else { return QColor(255, 255, 255); }
-    	    break;
-    	default:
-    	    if (hidden) { return QColor(100, 100, 100); }
-    	    else { return QColor(0, 0, 0); }
-    	    break;
+        case 0: // 0: 255 255 255 - 0 0 0
+        case 1: // 1: 197 255 120 - 0 0 0
+        case 2: // 2: 92 163 0 - 0 0 0
+        case 5: // 5: 0 163 136 - 0 0 0
+        case 6: // 6: 0 147 163 - 0 0 0
+        case 13: // 13: 163 0 0 - 0 0 0
+        case 14: // 14: 255 0 0 - 0 0 0
+        case 15: // 15: 204 109 0 - 0 0 0
+        case 16: // 16: 204 163 0 - 0 0 0
+        case 17: // 17: 201 204 0 - 0 0 0
+        case 18: // 18: 255 251 0 - 0 0 0
+        case 19: // 19: 221 255 0 - 0 0 0
+            if (hidden) { return QColor(100, 100, 100); }
+            else { return QColor(0, 0, 0); }
+            break;
+        case 3: // 3: 69 110 14 - 255 255 255
+        case 4: // 4: 17 120 122 - 255 255 255
+        case 7: // 7: 0 125 163 - 255 255 255
+        case 8: // 8: 0 84 163 - 255 255 255
+        case 9: // 9: 40 76 110 - 255 255 255
+        case 10: // 10: 0 11 163 - 255 255 255
+        case 11: // 11: 139 0 163 - 255 255 255
+        case 12: // 12: 163 0 79 - 255 255 255
+            if (hidden) { return QColor(200, 200, 200); }
+            else { return QColor(255, 255, 255); }
+            break;
+        default:
+            if (hidden) { return QColor(100, 100, 100); }
+            else { return QColor(0, 0, 0); }
+            break;
     }
     return QColor(0, 0, 0);
 }
