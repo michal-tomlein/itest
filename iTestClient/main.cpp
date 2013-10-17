@@ -14,6 +14,10 @@
 
 int main(int argc, char *argv[])
 {
+#ifdef Q_OS_MAC
+    QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande");
+#endif
+
     MTApplication app(argc, argv);
 
     QSettings settings("Michal Tomlein", "iTest");
