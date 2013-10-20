@@ -53,52 +53,59 @@ SOURCES      += main.cpp \
                 class_viewer.cpp \
                 session_wizard.cpp \
                 answersedit.cpp
+
 QT           += network svg
 DEFINES      += ITESTSERVER
 INCLUDEPATH  += ../shared
+
 win32 {
-DESTDIR       = ../
-RC_FILE       = itest.rc
-OBJECTS_DIR   = build/win32
-MOC_DIR       = build/win32
-RCC_DIR       = build/win32
-exists($(QTDIR)/bin/splitui.exe) {
-QMAKE_UIC     = splitui.exe
-SOURCES      += ui_main_window_v2.cpp \
-                ui_about_widget_v2.cpp \
-                ui_session_wizard.cpp \
-                ui_mttextedit.cpp
+    DESTDIR       = ../
+    RC_FILE       = itest.rc
+    OBJECTS_DIR   = build/win32
+    MOC_DIR       = build/win32
+    RCC_DIR       = build/win32
+
+    exists($(QTDIR)/bin/splitui.exe) {
+        QMAKE_UIC     = splitui.exe
+        SOURCES      += ui_main_window_v2.cpp \
+                        ui_about_widget_v2.cpp \
+                        ui_session_wizard.cpp \
+                        ui_mttextedit.cpp
+    }
 }
-}
+
 macx {
-ICON          = images/itest.icns
-icons.path    = Contents/Resources
-icons.files   = ../itdb.icns ../itcl.icns
-QMAKE_BUNDLE_DATA += icons
-CONFIG       += x86_64
-QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.5
+    ICON          = images/itest.icns
+    icons.path    = Contents/Resources
+    icons.files   = ../itdb.icns ../itcl.icns
+    QMAKE_BUNDLE_DATA += icons
+    CONFIG       += x86_64
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.5
 }
+
+macx-xcode {
+    QMAKE_CC      = clang
+    QMAKE_CXX     = clang++
+}
+
 unix {
-OBJECTS_DIR   = build/unix
-MOC_DIR       = build/unix
-RCC_DIR       = build/unix
-exists(/usr/bin/splitui) {
-QMAKE_UIC     = splitui
-SOURCES      += ui_main_window_v2.cpp \
-                ui_about_widget_v2.cpp \
-                ui_session_wizard.cpp \
-                ui_mttextedit.cpp
+    OBJECTS_DIR   = build/unix
+    MOC_DIR       = build/unix
+    RCC_DIR       = build/unix
+
+    exists(/usr/bin/splitui) {
+        QMAKE_UIC     = splitui
+        SOURCES      += ui_main_window_v2.cpp \
+                        ui_about_widget_v2.cpp \
+                        ui_session_wizard.cpp \
+                        ui_mttextedit.cpp
+    }
+
+    !macx {
+        DESTDIR       = ../bin/
+    }
 }
-!macx {
-DESTDIR       = ../bin/
-exists(/usr/bin/apgcc) {
-QMAKE_CC      = apgcc
-}
-exists(/usr/bin/apg++) {
-QMAKE_CXX     = apg++
-}
-}
-}
+
 TRANSLATIONS += i18n/iTestServer-Slovak.ts \
                 i18n/iTestServer-Russian.ts \
                 i18n/iTestServer-Turkish.ts \
@@ -109,4 +116,5 @@ TRANSLATIONS += i18n/iTestServer-Slovak.ts \
                 i18n/iTestServer-Ukrainian.ts \
                 i18n/iTestServer-Czech.ts \
                 i18n/iTestServer-Hungarian.ts
+
 QMAKE_RESOURCE_FLAGS += -compress 9

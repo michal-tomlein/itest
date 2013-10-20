@@ -27,48 +27,55 @@ SOURCES      += main.cpp \
                 flowlayout.cpp \
                 question_widget.cpp \
                 answersview.cpp
+
 QT           += network svg
 DEFINES      += ITESTCLIENT
 INCLUDEPATH  += ../shared
+
 win32 {
-DESTDIR       = ../
-RC_FILE       = itestwri.rc
-OBJECTS_DIR   = build/win32
-MOC_DIR       = build/win32
-RCC_DIR       = build/win32
-exists($(QTDIR)/bin/splitui.exe) {
-QMAKE_UIC     = splitui.exe
-SOURCES      += ui_main_window.cpp \
-                ui_about_widget_v2.cpp
+    DESTDIR       = ../
+    RC_FILE       = itestwri.rc
+    OBJECTS_DIR   = build/win32
+    MOC_DIR       = build/win32
+    RCC_DIR       = build/win32
+
+    exists($(QTDIR)/bin/splitui.exe) {
+        QMAKE_UIC     = splitui.exe
+        SOURCES      += ui_main_window.cpp \
+                        ui_about_widget_v2.cpp
+    }
 }
-}
+
 macx {
-ICON          = images/itestwri.icns
-icons.path    = Contents/Resources
-icons.files   = ../itos.icns
-QMAKE_BUNDLE_DATA += icons
-CONFIG       += x86_64
-QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.5
+    ICON          = images/itestwri.icns
+    icons.path    = Contents/Resources
+    icons.files   = ../itos.icns
+    QMAKE_BUNDLE_DATA += icons
+    CONFIG       += x86_64
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.5
 }
+
+macx-xcode {
+    QMAKE_CC      = clang
+    QMAKE_CXX     = clang++
+}
+
 unix {
-OBJECTS_DIR   = build/unix
-MOC_DIR       = build/unix
-RCC_DIR       = build/unix
-exists(/usr/bin/splitui) {
-QMAKE_UIC     = splitui
-SOURCES      += ui_main_window.cpp \
-                ui_about_widget_v2.cpp
+    OBJECTS_DIR   = build/unix
+    MOC_DIR       = build/unix
+    RCC_DIR       = build/unix
+
+    exists(/usr/bin/splitui) {
+        QMAKE_UIC     = splitui
+        SOURCES      += ui_main_window.cpp \
+                        ui_about_widget_v2.cpp
+    }
+
+    !macx {
+        DESTDIR       = ../bin/
+    }
 }
-!macx {
-DESTDIR       = ../bin/
-exists(/usr/bin/apgcc) {
-QMAKE_CC      = apgcc
-}
-exists(/usr/bin/apg++) {
-QMAKE_CXX     = apg++
-}
-}
-}
+
 TRANSLATIONS += i18n/iTestClient-Slovak.ts \
                 i18n/iTestClient-Russian.ts \
                 i18n/iTestClient-Turkish.ts \
@@ -79,4 +86,5 @@ TRANSLATIONS += i18n/iTestClient-Slovak.ts \
                 i18n/iTestClient-Ukrainian.ts \
                 i18n/iTestClient-Czech.ts \
                 i18n/iTestClient-Hungarian.ts
+
 QMAKE_RESOURCE_FLAGS += -compress 9
