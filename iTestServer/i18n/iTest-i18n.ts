@@ -23,6 +23,10 @@
         <translation>Español</translation>
     </message>
     <message>
+        <source>German</source>
+        <translation>Deutsch</translation>
+    </message>
+    <message>
         <source>Italian</source>
         <translation>Italiano</translation>
     </message>
