@@ -81,6 +81,7 @@ TRANSLATIONS += i18n/iTestClient-Slovak.ts \
                 i18n/iTestClient-Turkish.ts \
                 i18n/iTestClient-Portuguese.ts \
                 i18n/iTestClient-Spanish.ts \
+                i18n/iTestClient-German.ts \
                 i18n/iTestClient-Italian.ts \
                 i18n/iTestClient-Latvian.ts \
                 i18n/iTestClient-Ukrainian.ts \
