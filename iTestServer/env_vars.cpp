@@ -39,12 +39,12 @@ void MainWindow::varinit()
         itest_i18n.insert(translator.translate("LanguageNames", "Turkish"), "Turkish");
         itest_i18n.insert(translator.translate("LanguageNames", "Portuguese"), "Portuguese");
         itest_i18n.insert(translator.translate("LanguageNames", "Spanish"), "Spanish");
-        itest_i18n.insert(translator.translate("LanguageNames", "German"), "German");
         itest_i18n.insert(translator.translate("LanguageNames", "Italian"), "Italian");
         itest_i18n.insert(translator.translate("LanguageNames", "Latvian"), "Latvian");
         itest_i18n.insert(translator.translate("LanguageNames", "Ukrainian"), "Ukrainian");
         itest_i18n.insert(translator.translate("LanguageNames", "Czech"), "Czech");
         itest_i18n.insert(translator.translate("LanguageNames", "Hungarian"), "Hungarian");
+        itest_i18n.insert(translator.translate("LanguageNames", "German"), "German");
     // CURRENT_DB
         current_db_open = false;
 }

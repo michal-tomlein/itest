@@ -24,6 +24,7 @@ Available in:
 
 * English
 * Czech (thanks to *Pavel Fric*)
+* German (thanks to *Dirk Jung*)
 * Hungarian (thanks to *Szabó István*)
 * Italian (thanks to *Francesco Atzeni*)
 * Latvian (thanks to *Valdis Orols*)
