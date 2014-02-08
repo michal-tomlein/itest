@@ -21,10 +21,16 @@ int main(int argc, char *argv[])
     MTApplication app(argc, argv);
 
     QSettings settings("Michal Tomlein", "iTest");
-
-    QTranslator * translator = new QTranslator;
-    translator->load(QString("iTestServer-%1.qm").arg(QLocale::system().name()), ":/i18n");
-    app.installTranslator(translator);
+    QString lang = settings.value("lang").toString();
+    if (lang.length() > 2)
+        lang.clear();
+    if (lang.isEmpty())
+        lang = QLocale::system().name().split('_').first();
+    if (lang != "en") {
+        QTranslator * translator = new QTranslator;
+        translator->load(QString("iTestServer-%1.qm").arg(lang), ":/i18n");
+        app.installTranslator(translator);
+    }
 
     app.setAppMainWindow(new MainWindow);
     return app.exec();

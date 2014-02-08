@@ -33,18 +33,18 @@ void MainWindow::varinit()
         docs_url = tr("http://itest.sourceforge.net/documentation/%1/en/").arg("1.4");
         // i18n
         QTranslator translator; translator.load(":/i18n/iTest-i18n.qm");
-        itest_i18n.insert("English", "English");
-        itest_i18n.insert(translator.translate("LanguageNames", "Slovak"), "Slovak");
-        itest_i18n.insert(translator.translate("LanguageNames", "Russian"), "Russian");
-        itest_i18n.insert(translator.translate("LanguageNames", "Turkish"), "Turkish");
-        itest_i18n.insert(translator.translate("LanguageNames", "Portuguese"), "Portuguese");
-        itest_i18n.insert(translator.translate("LanguageNames", "Spanish"), "Spanish");
-        itest_i18n.insert(translator.translate("LanguageNames", "Italian"), "Italian");
-        itest_i18n.insert(translator.translate("LanguageNames", "Latvian"), "Latvian");
-        itest_i18n.insert(translator.translate("LanguageNames", "Ukrainian"), "Ukrainian");
-        itest_i18n.insert(translator.translate("LanguageNames", "Czech"), "Czech");
-        itest_i18n.insert(translator.translate("LanguageNames", "Hungarian"), "Hungarian");
-        itest_i18n.insert(translator.translate("LanguageNames", "German"), "German");
+        itest_i18n.insert("English", "en");
+        itest_i18n.insert(translator.translate("LanguageNames", "Slovak"), "sk");
+        itest_i18n.insert(translator.translate("LanguageNames", "Russian"), "ru");
+        itest_i18n.insert(translator.translate("LanguageNames", "Turkish"), "tr");
+        itest_i18n.insert(translator.translate("LanguageNames", "Portuguese"), "pt");
+        itest_i18n.insert(translator.translate("LanguageNames", "Spanish"), "es");
+        itest_i18n.insert(translator.translate("LanguageNames", "Italian"), "it");
+        itest_i18n.insert(translator.translate("LanguageNames", "Latvian"), "lv");
+        itest_i18n.insert(translator.translate("LanguageNames", "Ukrainian"), "uk");
+        itest_i18n.insert(translator.translate("LanguageNames", "Czech"), "cs");
+        itest_i18n.insert(translator.translate("LanguageNames", "Hungarian"), "hu");
+        itest_i18n.insert(translator.translate("LanguageNames", "German"), "de");
     // CURRENT_DB
         current_db_open = false;
 }
