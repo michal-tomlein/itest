@@ -1,15 +1,15 @@
 <RCC>
     <qresource prefix="/">
-        <file>i18n/iTestClient-Slovak.qm</file>
-        <file>i18n/iTestClient-Russian.qm</file>
-        <file>i18n/iTestClient-Turkish.qm</file>
-        <file>i18n/iTestClient-Portuguese.qm</file>
-        <file>i18n/iTestClient-Spanish.qm</file>
-        <file>i18n/iTestClient-German.qm</file>
-        <file>i18n/iTestClient-Italian.qm</file>
-        <file>i18n/iTestClient-Latvian.qm</file>
-        <file>i18n/iTestClient-Ukrainian.qm</file>
-        <file>i18n/iTestClient-Czech.qm</file>
-        <file>i18n/iTestClient-Hungarian.qm</file>
+        <file>i18n/iTestClient-sk.qm</file>
+        <file>i18n/iTestClient-ru.qm</file>
+        <file>i18n/iTestClient-tr.qm</file>
+        <file>i18n/iTestClient-pt.qm</file>
+        <file>i18n/iTestClient-es.qm</file>
+        <file>i18n/iTestClient-it.qm</file>
+        <file>i18n/iTestClient-lv.qm</file>
+        <file>i18n/iTestClient-uk.qm</file>
+        <file>i18n/iTestClient-cs.qm</file>
+        <file>i18n/iTestClient-hu.qm</file>
+        <file>i18n/iTestClient-de.qm</file>
     </qresource>
 </RCC>

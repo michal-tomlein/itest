@@ -106,16 +106,16 @@ unix {
     }
 }
 
-TRANSLATIONS += i18n/iTestServer-Slovak.ts \
-                i18n/iTestServer-Russian.ts \
-                i18n/iTestServer-Turkish.ts \
-                i18n/iTestServer-Portuguese.ts \
-                i18n/iTestServer-Spanish.ts \
-                i18n/iTestServer-Italian.ts \
-                i18n/iTestServer-Latvian.ts \
-                i18n/iTestServer-Ukrainian.ts \
-                i18n/iTestServer-Czech.ts \
-                i18n/iTestServer-Hungarian.ts \
-                i18n/iTestServer-German.ts
+TRANSLATIONS += i18n/iTestServer-sk.ts \
+                i18n/iTestServer-ru.ts \
+                i18n/iTestServer-tr.ts \
+                i18n/iTestServer-pt.ts \
+                i18n/iTestServer-es.ts \
+                i18n/iTestServer-it.ts \
+                i18n/iTestServer-lv.ts \
+                i18n/iTestServer-uk.ts \
+                i18n/iTestServer-cs.ts \
+                i18n/iTestServer-hu.ts \
+                i18n/iTestServer-de.ts
 
 QMAKE_RESOURCE_FLAGS += -compress 9
