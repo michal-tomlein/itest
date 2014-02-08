@@ -280,7 +280,7 @@ ale pravděpodobně přicházíte o pěkných pár skvělých nových možností
     </message>
     <message>
         <source>When you are ready to begin the examination, click the Start button below.</source>
-        <translation>Až budete připraven začít se skouškou, klepněte na tlačítko Začít dole.</translation>
+        <translation>Až budete připraven začít se zkouškou, klepněte na tlačítko Začít dole.</translation>
     </message>
     <message>
         <source>Start</source>
@@ -368,7 +368,7 @@ ale pravděpodobně přicházíte o pěkných pár skvělých nových možností
     </message>
     <message>
         <source>Welcome!</source>
-        <translation>Vitejte!</translation>
+        <translation>Vítejte!</translation>
     </message>
 </context>
 <context>
