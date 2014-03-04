@@ -185,7 +185,7 @@ void MainWindow::loadResults(QTableWidget * tw)
     tw->setRowCount(questions.count());
     bool highlight_correct_answers = !rbtnFromFile->isChecked() && !hideCorrectAnswersCheckBox->isChecked();
     for (int i = 0; i < questions.count(); ++i) {
-        tw->setCellWidget(i, 0, new QuestionWidget(questions.at(i), highlight_correct_answers));
+        tw->setCellWidget(i, 0, new QuestionWidget(current_test_questions.value(LQListWidget->item(i)), highlight_correct_answers));
         tw->setRowHeight(i, tw->cellWidget(i, 0)->sizeHint().height());
     }
 }
