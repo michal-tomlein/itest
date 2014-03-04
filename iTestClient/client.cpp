@@ -181,10 +181,10 @@ void MainWindow::readResults(QString input)
 
 void MainWindow::loadResults(QTableWidget * tw)
 {
-    QList<QuestionItem *> questions = current_test_questions.values();
-    tw->setRowCount(questions.count());
+    int count = current_test_questions.count();
+    tw->setRowCount(count);
     bool highlight_correct_answers = !rbtnFromFile->isChecked() && !hideCorrectAnswersCheckBox->isChecked();
-    for (int i = 0; i < questions.count(); ++i) {
+    for (int i = 0; i < count; ++i) {
         tw->setCellWidget(i, 0, new QuestionWidget(current_test_questions.value(LQListWidget->item(i)), highlight_correct_answers));
         tw->setRowHeight(i, tw->cellWidget(i, 0)->sizeHint().height());
     }
