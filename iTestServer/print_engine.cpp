@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2005-2009 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2014 Michal Tomlein
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence

@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2005-2009 Michal Tomlein (michal.tomlein@gmail.com)
+ Copyright (C) 2005-2014 Michal Tomlein
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -33,7 +33,7 @@ AboutWidget::AboutWidget(const QString & ver, const QString & year)
     about.append("<p style=\"font-family: sans-serif; font-size:8pt;\">");
     about.append(tr("This program is distributed under the terms of the GPL v2."));
     about.append("</p><p></p>");
-    about.append(QString("<p style=\"font-family: sans-serif; font-size:8pt;\">2005-%1 <span style=\"font-style:italic;\">Michal Tomlein</span> (michal.tomlein@gmail.com)</p>").arg(year));
+    about.append(QString("<p style=\"font-family: sans-serif; font-size:8pt;\">2005-%1 <span style=\"font-style:italic;\">Michal Tomlein</span> (michal@tomlein.org)</p>").arg(year));
     about.append("<p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
     about.append(tr("The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE."));
     about.append("</p>");

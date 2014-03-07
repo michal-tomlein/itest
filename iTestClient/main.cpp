@@ -1,14 +1,21 @@
-/******************************************************************************
- *                                    iTest                                   *
- * -------------------------------------------------------------------------- *
- * Version:      1.4.2                                                        *
- * Qt version:   4.3.0 or higher required                                     *
- * -------------------------------------------------------------------------- *
- * iTest is a Qt application consisting of a Server and a Client designed for *
- * easy computerised examination.                                             *
- * -------------------------------------------------------------------------- *
- * iTest is distributed under the terms of the GPL v2, see details below.     *
- ******************************************************************************/
+/*******************************************************************
+ This file is part of iTest
+ Copyright (C) 2005-2014 Michal Tomlein
+
+ iTest is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public Licence
+ as published by the Free Software Foundation; either version 2
+ of the Licence, or (at your option) any later version.
+
+ iTest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public Licence for more details.
+
+ You should have received a copy of the GNU General Public Licence
+ along with iTest; if not, write to the Free Software Foundation,
+ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ ********************************************************************/
 
 #include "main.h"
 
@@ -101,22 +108,3 @@ int main(int argc, char *argv[])
                  - fixed segmentation fault when connecting
 */
 // version 1.0.0 - the first release
-
-/*******************************************************************
- This file is part of iTest
- Copyright (C) 2005-2009 Michal Tomlein (michal.tomlein@gmail.com)
-
- iTest is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public Licence
- as published by the Free Software Foundation; either version 2
- of the Licence, or (at your option) any later version.
-
- iTest is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public Licence for more details.
-
- You should have received a copy of the GNU General Public Licence
- along with iTest; if not, write to the Free Software Foundation,
- Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-********************************************************************/
