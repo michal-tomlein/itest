@@ -286,32 +286,38 @@ double QuestionItem::score()
 #ifdef ITESTSERVER
     Question::Answers q_answer(qa_answered);
     Question::Answers q_correctanswers(qa_correct_answer);
-    int num_answers = 9;
+    int num_answers = qa_num_answers;
 #else
     int num_answers = q_answers.count();
 #endif
-    if (q_scoringsystem.allowIncompleteAnswers && q_selectiontype == Question::MultiSelection) {
-        double score = 0.0;
-        if (q_correctanswers == Question::None && q_answer == Question::None) { score = q_scoringsystem.correctAnswer[q_difficulty]; }
-        else {
-            int numcorrect = 0; int max = 0;
-            for (int i = 1; i <= num_answers; ++i) {
-                if (q_correctanswers.testFlag(Question::indexToAnswer(i)) && q_answer.testFlag(Question::indexToAnswer(i)))
-                    { max++; numcorrect++; }
-                else if (q_correctanswers.testFlag(Question::indexToAnswer(i)) && !q_answer.testFlag(Question::indexToAnswer(i)))
-                    { max++; score += q_scoringsystem.missingAnswer[q_difficulty]; }
-                else if (!q_correctanswers.testFlag(Question::indexToAnswer(i)) && q_answer.testFlag(Question::indexToAnswer(i)))
-                    { score += q_scoringsystem.incorrectAnswer[q_difficulty]; }
-            }
-            if (max != 0) { score += q_scoringsystem.correctAnswer[q_difficulty] * (double)numcorrect / (double)max; }
-        }
-        return score;
-    } else {
-        if (q_answer == Question::None) { return q_correctanswers == Question::None ? q_scoringsystem.correctAnswer[q_difficulty] : q_scoringsystem.incorrectAnswer[q_difficulty]; }
-        if (q_selectiontype == Question::MultiSelection) { return q_correctanswers == q_answer ? q_scoringsystem.correctAnswer[q_difficulty] : q_scoringsystem.incorrectAnswer[q_difficulty]; }
-        return q_correctanswers.testFlag((Question::Answer)(int)q_answer) ? q_scoringsystem.correctAnswer[q_difficulty] : q_scoringsystem.incorrectAnswer[q_difficulty];
+
+    if (q_answer == Question::None) {
+        return q_correctanswers == Question::None ? q_scoringsystem.correctAnswer[q_difficulty] : q_scoringsystem.missingAnswer[q_difficulty];
     }
-    return 0.0;
+
+    if (q_selectiontype == Question::MultiSelection) {
+        if (q_scoringsystem.allowIncompleteAnswers) {
+            if ((q_correctanswers & q_answer) == 0)
+                return q_scoringsystem.incorrectAnswer[q_difficulty];
+
+            int correct = 0;
+            for (int i = 1; i <= num_answers; ++i) {
+                Question::Answer answer = Question::indexToAnswer(i);
+                if (q_correctanswers.testFlag(answer) == q_answer.testFlag(answer)) {
+                    correct++;
+                }
+            }
+
+            if (num_answers)
+                return q_scoringsystem.correctAnswer[q_difficulty] * (double)correct / (double)num_answers;
+
+            return 0.0;
+        } else {
+            return q_correctanswers == q_answer ? q_scoringsystem.correctAnswer[q_difficulty] : q_scoringsystem.incorrectAnswer[q_difficulty];
+        }
+    }
+
+    return q_correctanswers.testFlag((Question::Answer)(int)q_answer) ? q_scoringsystem.correctAnswer[q_difficulty] : q_scoringsystem.incorrectAnswer[q_difficulty];
 }
 
 #ifdef ITESTSERVER

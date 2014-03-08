@@ -193,10 +193,11 @@ QString QuestionItem::allPublicProperties()
     return out;
 }
 
-QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int flag, int difficulty, Question::SelectionType type, const QString & explanation)
+QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int num_answers, int flag, int difficulty, Question::SelectionType type, const QString & explanation)
 {
     qa_answered = ans;
     qa_correct_answer = correct;
+    qa_num_answers = num_answers;
     qa_flag = flag;
     q_difficulty = difficulty;
     q_selectiontype = type;
@@ -210,6 +211,10 @@ Question::Answer QuestionAnswer::answered() { return qa_answered; }
 void QuestionAnswer::setCorrectAnswer(Question::Answer ans) { qa_correct_answer = ans; }
 
 Question::Answer QuestionAnswer::correctAnswer() { return qa_correct_answer; }
+
+void QuestionAnswer::setNumAnswers(int num_answers) { qa_num_answers = num_answers; }
+
+int QuestionAnswer::numAnswers() { return qa_num_answers; }
 
 /*bool QuestionAnswer::isAnsweredCorrectly()
 {

@@ -547,15 +547,17 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                     if (db_version >= 1.2) {
                         ans_flag = rfile.readLine().toInt();
                     }
+
+                    QuestionItem * item = NULL;
+                    QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
+                    while (q.hasNext()) { q.next();
+                        if (q.value()->name() == db_buffer) { item = q.value(); break; }
+                    }
+
                     if (db_version >= 1.35) {
                         ans_dif = rfile.readLine().toInt();
                         ans_selectiontype = (Question::SelectionType)rfile.readLine().toInt();
                     } else {
-                        QuestionItem * item = NULL;
-                        QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
-                        while (q.hasNext()) { q.next();
-                            if (q.value()->name() == db_buffer) { item = q.value(); break; }
-                        }
                         if (item == NULL) {
                             if (db_version < 1.2) { ans_flag = -1; }
                             if (db_version < 1.35) { ans_dif = 0; ans_selectiontype = Question::SingleSelection; }
@@ -564,6 +566,7 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                             if (db_version < 1.35) { ans_dif = item->difficulty(); ans_selectiontype = item->selectionType(); }
                         }
                     }
+
                     if (db_version < 1.27) {
                         ans = Question::convertOldAnsNumber(rfile.readLine().toInt());
                         c_ans = Question::convertOldAnsNumber(rfile.readLine().toInt());
@@ -571,7 +574,8 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                         ans = (Question::Answer)rfile.readLine().toInt();
                         c_ans = (Question::Answer)rfile.readLine().toInt();
                     }
-                    QuestionAnswer qans(c_ans, ans, ans_flag, ans_dif, ans_selectiontype);
+
+                    QuestionAnswer qans(c_ans, ans, item ? item->numAnswers() : 9, ans_flag, ans_dif, ans_selectiontype);
                     results->insert(db_buffer, qans);
                 }
                 student->setResults(results);

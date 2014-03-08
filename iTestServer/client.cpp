@@ -107,7 +107,7 @@ void Client::loadResults(QString input)
         if (item == NULL) { in.readLine(); in.readLine(); continue; }
         if (in.readLine() != "[Q_ANSWERED]") { return; }
         ans = (Question::Answer)in.readLine().toInt();
-        QuestionAnswer qans(item->correctAnswer(), ans, item->flag(), item->difficulty(), item->selectionType(), item->explanation());
+        QuestionAnswer qans(item->correctAnswer(), ans, item->numAnswers(), item->flag(), item->difficulty(), item->selectionType(), item->explanation());
         c_results->insert(item->name(), qans);
         c_score += qans.score(c_parent->current_db_scoringsystem);
         c_maxscore += qans.maximumScore(c_parent->current_db_scoringsystem);

@@ -118,23 +118,24 @@ void MainWindow::openArchive()
                     { qans.setDifficulty(qa_diflist.at(x).toInt()); }
                 if (qa_selectiontypelist_found)
                     { qans.setSelectionType((Question::SelectionType)qa_selectiontypelist.at(x).toInt()); }
-                if (!qa_flaglist_found || !qa_correctanslist_found || !qa_diflist_found || !qa_selectiontypelist_found) {
-                    QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
-                    while (q.hasNext()) { q.next();
-                        if (q.value()->name() == qa.key()) { q_item = q.value(); break; }
-                    }
-                    if (q_item == NULL) {
-                        if (!qa_flaglist_found) { qans.setFlag(-1); }
-                    } else {
-                        if (!qa_flaglist_found) { qans.setFlag(q_item->flag()); }
-                        if (!qa_correctanslist_found)
-                            { qans.setCorrectAnswer(q_item->correctAnswer()); }
-                        if (!qa_diflist_found)
-                            { qans.setDifficulty(q_item->difficulty()); }
-                        if (!qa_selectiontypelist_found)
-                            { qans.setSelectionType(q_item->selectionType()); }
-                    }
+
+                QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
+                while (q.hasNext()) { q.next();
+                    if (q.value()->name() == qa.key()) { q_item = q.value(); break; }
                 }
+                if (q_item == NULL) {
+                    if (!qa_flaglist_found) { qans.setFlag(-1); }
+                } else {
+                    qans.setNumAnswers(q_item->numAnswers());
+                    if (!qa_flaglist_found) { qans.setFlag(q_item->flag()); }
+                    if (!qa_correctanslist_found)
+                        { qans.setCorrectAnswer(q_item->correctAnswer()); }
+                    if (!qa_diflist_found)
+                        { qans.setDifficulty(q_item->difficulty()); }
+                    if (!qa_selectiontypelist_found)
+                        { qans.setSelectionType(q_item->selectionType()); }
+                }
+
                 archived_session->student(s)->results()->insert(qa.key(), qans);
                 x++;
             }

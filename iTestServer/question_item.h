@@ -28,6 +28,7 @@ class QuestionAnswer
 public:
     QuestionAnswer(Question::Answer correct = Question::None,
                    Question::Answer ans = Question::None,
+                   int num_answers = 9,
                    int flag = -1,
                    int difficulty = 0,
                    Question::SelectionType type = Question::SingleSelection,
@@ -36,6 +37,8 @@ public:
     Question::Answer answered();
     void setCorrectAnswer(Question::Answer);
     Question::Answer correctAnswer();
+    void setNumAnswers(int);
+    int numAnswers();
     double score(ScoringSystem);
     double maximumScore(ScoringSystem);
     void setFlag(int);
@@ -50,6 +53,7 @@ public:
 private:
     Question::Answer qa_answered;
     Question::Answer qa_correct_answer;
+    int qa_num_answers;
     int qa_flag;
     int q_difficulty;
     Question::SelectionType q_selectiontype;
