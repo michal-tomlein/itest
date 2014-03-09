@@ -40,7 +40,7 @@ protected:
             agb_groupbox->setVisible(false);
             QObject::connect(agb_groupbox, SIGNAL(clicked(bool)), this, SLOT(setChecked(bool)));
                 agb_glayout = new QGridLayout(agb_groupbox);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
                 agb_glayout->setContentsMargins(9, 9, 9, 9);
 #else
                 agb_glayout->setContentsMargins(9, 6, 9, 9);

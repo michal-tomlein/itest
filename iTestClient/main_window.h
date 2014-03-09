@@ -20,6 +20,8 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
+#include "defs.h"
+
 #include "ui_main_window.h"
 
 #include <QFile>
@@ -50,7 +52,6 @@ public:
 
 private slots:
     // UI-RELATED
-    void varinit();
     void about();
     void errorInvalidData();
     void getReady();
@@ -135,11 +136,6 @@ private:
     QTableWidgetItem * ITW_test_flags;
     QTableWidgetItem * ITW_test_passmark;
     QTextBrowser * ITW_test_comments;
-    // ITEST & DB VERSION
-    QString ver;
-    double f_ver;
-    QString itos_ver;
-    double f_itos_ver;
 };
 
 #endif // MAIN_WINDOW_H

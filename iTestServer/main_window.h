@@ -20,6 +20,8 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
+#include "defs.h"
+
 #include "ui_main_window_v2.h"
 #include "print_engine.h"
 #include "mtadvancedgroupbox.h"
@@ -46,7 +48,6 @@
 #include <QByteArray>
 #include <QPrinter>
 #include <QPrintDialog>
-#include <QHttp>
 #include <QBuffer>
 #include <QDesktopServices>
 #include <QHeaderView>
@@ -57,6 +58,9 @@
 #include <QUrl>
 
 #include <QtAlgorithms>
+
+class QNetworkAccessManager;
+class QNetworkReply;
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
@@ -69,7 +73,6 @@ public:
 
 private slots:
     // UI-RELATED
-    void varinit();
     void quit();
     void about();
     void addRecent(const QString &);
@@ -81,8 +84,9 @@ private slots:
     bool saveChangesBeforeProceeding(const QString &, bool);
     void setProgress(int);
     void setNullProgress();
-    void checkForUpdates();
-    void httpRequestFinished(bool);
+    void checkForUpdates(bool silent = false);
+    void httpRequestFinished(QNetworkReply *reply);
+    void httpRequestFailed(bool silent);
     void openDocumentation();
     void changeLanguage();
     void langChanged();
@@ -296,8 +300,7 @@ private:
     QVector<QString> current_db_f;
     // UI-RELATED
     void closeEvent(QCloseEvent *);
-    QHttp * http;
-    QBuffer * http_buffer;
+    QNetworkAccessManager *network_access_manager;
     // SERVER-RELATED
     QTcpServer * tcpServer;
     QMap<QListWidgetItem *, Client *> current_db_clients;
@@ -346,14 +349,7 @@ private:
     QVector<QLineEdit *> EFFlagLineEdit;
     // PALETTES
     SearchLineEditPalettes searchLineEditPalettes;
-    // ITEST & DB VERSION & ENVIRONMENT VARIABLES
-    QString ver;
-    double f_ver;
-    QString itdb_ver;
-    double f_itdb_ver;
-    QString itos_ver;
-    double f_itos_ver;
-    QString itest_url;
+
     QString docs_url;
     QMap<QString, QString> itest_i18n;
     // EXCEPTIONS

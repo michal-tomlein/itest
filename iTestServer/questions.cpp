@@ -576,7 +576,7 @@ void MainWindow::editSvg()
     QWidget * editsvg_widget = new QWidget(this, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/);
     editsvg_widget->setWindowModality(Qt::WindowModal);
     editsvg_widget->setAttribute(Qt::WA_DeleteOnClose);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     editsvg_widget->setWindowTitle(tr("%1 - Edit SVG").arg(svg_item->text()));
 #else
     editsvg_widget->setWindowTitle(tr("%1 - Edit SVG - iTest").arg(svg_item->text()));

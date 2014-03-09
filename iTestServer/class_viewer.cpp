@@ -63,7 +63,7 @@ void MainWindow::setupClassViewer()
     QObject::connect(tbtnRemoveSession, SIGNAL(released()), this, SLOT(removeSessionFromMember()));
     CLLCListWidget->setSortingEnabled(true);
     CLLSSListWidget->setSortingEnabled(true);
-    CLSSResultsTableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    CLSSResultsTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     CLSSResultsTableWidget->verticalHeader()->hide();
     CLSSResultsTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     setCLSCEnabled(false);
@@ -379,7 +379,7 @@ void MainWindow::addSessionToMember()
 QDialog * MainWindow::createAddSessionDialogue(const QString & title, MTListWidget * lw)
 {
     QDialog * d = new QDialog(this);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     d->setWindowTitle(QString("%1 - %2").arg(current_db_name).arg(title));
 #else
     d->setWindowTitle(QString("%1 - %2 - iTest").arg(current_db_name).arg(title));

@@ -27,7 +27,8 @@ HEADERS      += main_window.h \
                 mtprogressbar.h \
                 answersedit.h \
                 print_engine.h \
-                mttextedit.h
+                mttextedit.h \
+                ../shared/defs.h
 RESOURCES    += resources.qrc \
                 i18n.qrc
 SOURCES      += main.cpp \
@@ -41,7 +42,6 @@ SOURCES      += main.cpp \
                 question_item.cpp \
                 server.cpp \
                 client.cpp \
-                env_vars.cpp \
                 print_engine.cpp \
                 session_viewer.cpp \
                 student.cpp \
@@ -54,7 +54,13 @@ SOURCES      += main.cpp \
                 session_wizard.cpp \
                 answersedit.cpp
 
-QT           += network svg
+lessThan(QT_MAJOR_VERSION, 5) {
+    QT           += network svg
+    CONFIG       += depend_includepath
+} else {
+    QT           += widgets network svg printsupport
+}
+
 DEFINES      += ITESTSERVER
 INCLUDEPATH  += ../shared
 

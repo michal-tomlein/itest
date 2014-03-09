@@ -54,7 +54,7 @@ AnswersEdit::AnswersEdit(QWidget * parent):
 QWidget(parent) {
     QVBoxLayout * vlayout = new QVBoxLayout(this);
     vlayout->setContentsMargins(0, 0, 0, 0);
-#ifndef Q_WS_MAC
+#ifndef Q_OS_MAC
     vlayout->setSpacing(6);
 #else
     vlayout->setSpacing(3);
@@ -74,7 +74,7 @@ QWidget(parent) {
     ae_singleselection->setStatusTip(tr("Single choice questions allow selecting one answer only, even if the question has more correct answers"));
     ae_singleselection->setChecked(true);
     hlayout->addWidget(ae_singleselection);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 #if QT_VERSION < 0x040400
     hlayout->addSpacing(6);
 #endif
@@ -86,7 +86,7 @@ QWidget(parent) {
     ae_correct_label = new QLabel(tr("Correct:"), this);
     hlayout->addWidget(ae_correct_label);
     vlayout->addLayout(hlayout);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     QVBoxLayout * vlayout2 = new QVBoxLayout;
     vlayout2->setContentsMargins(0, 0, 0, 0); vlayout2->setSpacing(0);
     vlayout->addLayout(vlayout2);
@@ -95,7 +95,7 @@ QWidget(parent) {
         AnswerEdit * ans = new AnswerEdit(i, this);
         if (i >= 4) { ans->setVisible(false); }
         ae_answers << ans;
-#ifndef Q_WS_MAC
+#ifndef Q_OS_MAC
         vlayout->addWidget(ans);
 #else
         vlayout2->addWidget(ans);

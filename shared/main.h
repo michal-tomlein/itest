@@ -30,21 +30,14 @@ class MTApplication : public QApplication
 
 public:
     MTApplication(int & argc, char ** argv):
-    QApplication(argc, argv) { init(); };
+    QApplication(argc, argv) { init(); }
     MTApplication(int & argc, char ** argv, bool GUIenabled):
-    QApplication(argc, argv, GUIenabled) { init(); };
-    MTApplication(int & argc, char ** argv, Type type):
-    QApplication(argc, argv, type) { init(); };
-#ifdef Q_WS_X11
-    MTApplication(Display * display, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0):
-    QApplication(display, visual, colormap) { init(); };
-    MTApplication(Display * display, int & argc, char ** argv, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0):
-    QApplication(display, argc, argv, visual, colormap) { init(); };
-#endif
-    void setAppMainWindow(MainWindow * w) { app_main_window = w; };
+    QApplication(argc, argv, GUIenabled) { init(); }
+
+    void setAppMainWindow(MainWindow * w) { app_main_window = w; }
 
 protected:
-    void init() { app_main_window = NULL; };
+    void init() { app_main_window = NULL; }
     bool event(QEvent * event) {
         switch (event->type()) {
             case QEvent::FileOpen:
@@ -55,7 +48,7 @@ protected:
             default:
                 return this->QApplication::event(event);
         }
-    };
+    }
 
 private:
     MainWindow * app_main_window;

@@ -20,6 +20,11 @@
 #include "about_widget.h"
 #include "main_window.h"
 
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QSettings>
+
 void MainWindow::errorInvalidDBFile(const QString & title, const QString & file, int error)
 {
     QMessageBox::critical(this, title, tr("Invalid database file: %1\nError %2.").arg(file).arg(error));
@@ -269,10 +274,9 @@ MainWindow::MainWindow()
     // User interface ----------------------------------------------------------
     if (tr("LTR") == "RTL") { qApp->setLayoutDirection(Qt::RightToLeft); }
     setupUi(this);
-    http = new QHttp(this);
-    http_buffer = new QBuffer(this);
+    network_access_manager = new QNetworkAccessManager(this);
     default_printer = NULL;
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     this->setUnifiedTitleAndToolBarOnMac(true);
     //this->setAttribute(Qt::WA_MacBrushedMetal);
 #endif
@@ -300,9 +304,9 @@ MainWindow::MainWindow()
     ECTextEdit->setTitle(tr("Comments:"));
     ECTextEdit->textEdit()->setStatusTip(tr("Use this field for your comments, notes, reminders..."));
     EFTreeWidget->setMouseTracking(true);
-    EFTreeWidget->header()->setResizeMode(0, QHeaderView::Fixed);
-    EFTreeWidget->header()->setResizeMode(1, QHeaderView::Stretch);
-    EFTreeWidget->header()->setResizeMode(2, QHeaderView::ResizeToContents);
+    EFTreeWidget->header()->setSectionResizeMode(0, QHeaderView::Fixed);
+    EFTreeWidget->header()->setSectionResizeMode(1, QHeaderView::Stretch);
+    EFTreeWidget->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     EFButtonBox->button(QDialogButtonBox::Apply)->setText(tr("Apply"));
     EFButtonBox->button(QDialogButtonBox::Apply)->setStatusTip(tr("Apply any changes you have made to the flags"));
     EFButtonBox->button(QDialogButtonBox::Apply)->setIcon(QIcon(QString::fromUtf8(":/images/images/button_ok.png")));
@@ -310,7 +314,24 @@ MainWindow::MainWindow()
     EFButtonBox->button(QDialogButtonBox::Discard)->setStatusTip(tr("Discard any changes you have made to the flags"));
     EFButtonBox->button(QDialogButtonBox::Discard)->setIcon(QIcon(QString::fromUtf8(":/images/images/button_cancel.png")));
     // Initialize variables ----------------------------------------------------
-    varinit();
+    // URLs
+    docs_url = tr("http://itest.sourceforge.net/documentation/%1/en/").arg("1.4");
+    // i18n
+    QTranslator translator; translator.load(":/i18n/iTest-i18n.qm");
+    itest_i18n.insert("English", "en");
+    itest_i18n.insert(translator.translate("LanguageNames", "Slovak"), "sk");
+    itest_i18n.insert(translator.translate("LanguageNames", "Russian"), "ru");
+    itest_i18n.insert(translator.translate("LanguageNames", "Turkish"), "tr");
+    itest_i18n.insert(translator.translate("LanguageNames", "Portuguese"), "pt");
+    itest_i18n.insert(translator.translate("LanguageNames", "Spanish"), "es");
+    itest_i18n.insert(translator.translate("LanguageNames", "Italian"), "it");
+    itest_i18n.insert(translator.translate("LanguageNames", "Latvian"), "lv");
+    itest_i18n.insert(translator.translate("LanguageNames", "Ukrainian"), "uk");
+    itest_i18n.insert(translator.translate("LanguageNames", "Czech"), "cs");
+    itest_i18n.insert(translator.translate("LanguageNames", "Hungarian"), "hu");
+    itest_i18n.insert(translator.translate("LanguageNames", "German"), "de");
+    // CURRENT_DB
+    current_db_open = false;
     current_db_session = NULL;
     current_db_class = NULL;
     current_db_f.resize(20);
@@ -412,7 +433,7 @@ MainWindow::MainWindow()
     QObject::connect(DBIDateEdit, SIGNAL(dateTimeChanged(const QDateTime &)), this, SLOT(setDatabaseModified()));
 
     QObject::connect(actionCheck_for_updates, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
-    QObject::connect(http, SIGNAL(done(bool)), this, SLOT(httpRequestFinished(bool)));
+    QObject::connect(network_access_manager, SIGNAL(finished(QNetworkReply *)), this, SLOT(httpRequestFinished(QNetworkReply *)));
     QObject::connect(actionDocumentation, SIGNAL(triggered()), this, SLOT(openDocumentation()));
     QObject::connect(SQStatisticsLabel, SIGNAL(linkActivated(QString)), this, SLOT(adjustQuestionDifficulty()));
     QObject::connect(actionPrint_questions, SIGNAL(triggered()), this, SLOT(showPrintQuestionsDialogue()));
@@ -431,7 +452,7 @@ MainWindow::MainWindow()
     // Class viewer ------------------------------------------------------------
     setupClassViewer();
     // -------------------------------------------------------------------------
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     show();
 #endif
     // Load settings -----------------------------------------------------------
@@ -443,7 +464,7 @@ MainWindow::MainWindow()
         openFile(qApp->arguments().at(1));
     }
     // -------------------------------------------------------------------------
-#ifndef Q_WS_MAC
+#ifndef Q_OS_MAC
     show();
 #endif
 }
@@ -556,40 +577,83 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::setDatabaseModified() { this->setWindowModified(true); }
 
-void MainWindow::checkForUpdates()
+void MainWindow::checkForUpdates(bool silent)
 {
-    delete http_buffer; http_buffer = new QBuffer(this);
-    http->setHost(itest_url);
-    http->get("/current-version", http_buffer);
+    QNetworkRequest request(QString("http://%1/current-version").arg(ITEST_URL));
+    request.setRawHeader("User-Agent", QString("iTest/%1").arg(ITEST_VERSION).toUtf8());
+    QNetworkReply *reply = network_access_manager->get(request);
+    reply->setProperty("silent", silent);
 }
 
-void MainWindow::httpRequestFinished(bool error)
+void MainWindow::httpRequestFinished(QNetworkReply *reply)
 {
-    httpRequestFinished_start:
-    if (error) {
-        switch (QMessageBox::critical(this, tr("iTest"), tr("Failed to check for updates."), tr("&Try again"), tr("Cancel"), 0, 1)) {
-            case 0: // Try again
-                checkForUpdates(); return; break;
-            case 1: // Cancel
-                return; break;
-        }
-    }
-    QString str(http_buffer->data()); QTextStream in(&str);
-    if (in.readLine() != "[iTest.current-version]") { error = true; goto httpRequestFinished_start; }
+    bool silent = reply->property("silent").toBool();
+
+    QString str;
+
+    if (reply->error() == QNetworkReply::NoError && reply->isReadable())
+        str = QString::fromUtf8(reply->readAll());
+    else
+        return httpRequestFailed(silent);
+
+    reply->deleteLater();
+
+    QTextStream in(&str);
+    if (in.readLine() != "[iTest.current-version]")
+        return httpRequestFailed(silent);
     QString current_ver = in.readLine();
-    if (in.readLine() != "[iTest.current-version.float]") { error = true; goto httpRequestFinished_start; }
+    if (in.readLine() != "[iTest.current-version.float]")
+        return httpRequestFailed(silent);
     double f_current_ver = in.readLine().toDouble();
-    if (in.readLine() != "[iTest.release-notes]") { error = true; goto httpRequestFinished_start; }
+    if (in.readLine() != "[iTest.release-notes]")
+        return httpRequestFailed(silent);
     QString release_notes;
     while (!in.atEnd()) { release_notes.append(in.readLine()); }
-    if (f_current_ver <= f_ver) {
-        QMessageBox::information(this, tr("iTest"), tr("Your iTest is up-to-date."));
+
+    if (f_current_ver <= F_ITEST_VERSION) {
+        if (!silent) {
+            QMessageBox message(this);
+            message.setWindowTitle("iTest");
+            message.setWindowModality(Qt::WindowModal);
+            message.setWindowFlags(message.windowFlags() | Qt::Sheet);
+            message.setIcon(QMessageBox::Information);
+            message.setText(tr("You are running the latest version of iTest."));
+            message.exec();
+        }
     } else {
-        QString info; QTextStream out(&info);
-        out << "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body><p>" << endl;
-        out << "<b>" << tr("iTest %1 is available now.").arg(current_ver) << "</b><br><br>" << endl;
-        out << release_notes << endl << "</p></body></html>";
-        QMessageBox::information(this, tr("iTest"), info);
+        QMessageBox message(this);
+        message.setWindowTitle("iTest");
+        message.setWindowModality(Qt::WindowModal);
+        message.setWindowFlags(message.windowFlags() | Qt::Sheet);
+        message.setIcon(QMessageBox::Information);
+        message.setText(tr("iTest %1 is available now.").arg(current_ver));
+        message.setInformativeText(QString("<html><head>"
+                                           "<meta name=\"qrichtext\" content=\"1\" />"
+                                           "<style type=\"text/css\">p, li { white-space: pre-wrap; }</style>"
+                                           "</head><body><p>%1</p></body></html>")
+                                   .arg(release_notes));
+        message.addButton(tr("&Download Update"), QMessageBox::AcceptRole);
+        message.addButton(tr("Remind Me &Later"), QMessageBox::RejectRole);
+        switch (message.exec()) {
+            case QMessageBox::AcceptRole: // Download
+                QDesktopServices::openUrl(QUrl("http://github.com/michal-tomlein/itest/releases"));
+                break;
+            case QMessageBox::RejectRole: // Later
+                break;
+        }
+    }
+}
+
+void MainWindow::httpRequestFailed(bool silent)
+{
+    if (silent)
+        return;
+
+    switch (QMessageBox::critical(this, "iTest", tr("Failed to check for updates."), tr("&Try again"), tr("Cancel"), 0, 1)) {
+        case 0: // Try again
+            checkForUpdates(); break;
+        case 1: // Cancel
+            break;
     }
 }
 
@@ -604,7 +668,7 @@ void MainWindow::overallStatistics()
     QWidget * stats_widget = new QWidget(this, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/);
     stats_widget->setWindowModality(Qt::WindowModal);
     stats_widget->setAttribute(Qt::WA_DeleteOnClose);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     stats_widget->setWindowTitle(tr("%1 - Overall statistics").arg(current_db_name));
 #else
     stats_widget->setWindowTitle(tr("%1 - Overall statistics - iTest").arg(current_db_name));
@@ -799,7 +863,7 @@ void MainWindow::changeLanguage()
     QWidget * lang_widget = new QWidget(this, Qt::Dialog);
     lang_widget->setWindowModality(Qt::WindowModal);
     lang_widget->setAttribute(Qt::WA_DeleteOnClose);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     lang_widget->setWindowTitle(tr("Change language"));
 #else
     lang_widget->setWindowTitle(tr("Change language - iTest"));
@@ -856,7 +920,7 @@ void MainWindow::previewSvg(QListWidgetItem * item)
 
 void MainWindow::about()
 {
-    AboutWidget * itest_about = new AboutWidget(ver);
+    AboutWidget * itest_about = new AboutWidget;
     itest_about->setParent(this);
     itest_about->setWindowFlags(Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/ | Qt::WindowStaysOnTopHint);
     itest_about->show();

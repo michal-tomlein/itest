@@ -55,9 +55,9 @@ void MainWindow::setupServer()
     TSExcludeListWidget->setDragDropMode(QAbstractItemView::InternalMove);
     TSIncludeTableWidget->verticalHeader()->hide();
     TSIncludeTableWidget->horizontalHeader()->hide();
-    TSIncludeTableWidget->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
-    TSIncludeTableWidget->horizontalHeader()->setResizeMode(1, QHeaderView::ResizeToContents);
-    TSIncludeTableWidget->horizontalHeader()->setResizeMode(2, QHeaderView::ResizeToContents);
+    TSIncludeTableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+    TSIncludeTableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    TSIncludeTableWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     QObject::connect(TSMaxQnumCheckBox, SIGNAL(toggled(bool)), TSQnumSpinBox, SLOT(setMaximumValue()));
     QObject::connect(TSGroupsCheckBox, SIGNAL(toggled(bool)), this, SLOT(updateTestQnum()));
     QObject::connect(TSQnumSpinBox, SIGNAL(valueChanged(int)), this, SLOT(updateTestTime()));
@@ -117,8 +117,8 @@ void MainWindow::reloadAvailableItems()
             // FLAGS -----------------------------------------------------------
             TSIncludeTableWidget->setColumnCount(3);
             TSIncludeTableWidget->setHorizontalHeaderLabels(QStringList() << tr("Flag name") << tr("Number of questions") << tr("Pass mark"));
-            TSIncludeTableWidget->horizontalHeader()->setResizeMode(1, QHeaderView::ResizeToContents);
-            TSIncludeTableWidget->horizontalHeader()->setResizeMode(2, QHeaderView::ResizeToContents);
+            TSIncludeTableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+            TSIncludeTableWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
             TSIncludeTableWidget->horizontalHeader()->show();
             QListWidgetItem * item;
             for (int i = 0; i < current_db_f.size(); ++i) {
@@ -435,8 +435,8 @@ void MainWindow::startServer()
     out << (quint64)0;
     // -------------------------------------------------------------------------
     setProgress(5); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    out << QString("[ITEST_VERSION]\n") << QString("%1\n").arg(f_ver);
-    out << QString("[ITEST_DB_VERSION]\n") << QString("%1\n").arg(f_itos_ver);
+    out << QString("[ITEST_VERSION]\n") << QString("%1\n").arg(F_ITEST_VERSION);
+    out << QString("[ITEST_DB_VERSION]\n") << QString("%1\n").arg(F_ITOS_VERSION);
     out << QString("[DB_NAME]\n") << current_db_testname << QString("\n");
     out << QString("[DB_DATE]\n") << current_db_date << QString("\n");
     out << QString("[DB_DATE_ULSD]\n") << (actionUse_last_save_date->isChecked() ? QString("true\n") : QString("false\n"));
@@ -874,7 +874,7 @@ bool MainWindow::addOfflineClient(const QString & file_name)
 
 void MainWindow::addOfflineClients()
 {
-#ifdef Q_WS_WIN
+#ifdef Q_OS_WIN32
     QString dir_path = QFileDialog::getExistingDirectory(this, tr("Add off-line clients"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks | QFileDialog::DontUseNativeDialog);
 #else
     QString dir_path = QFileDialog::getExistingDirectory(this, tr("Add off-line clients"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
@@ -975,7 +975,7 @@ void MainWindow::runTestWriter()
 {
     QFileInfo file_info(qApp->arguments().at(0));
     QString itw_file_name = file_info.absoluteFilePath();
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     itw_file_name.replace(itw_file_name.lastIndexOf("iTestServer.app"), 15, "iTestClient.app");
     itw_file_name.replace(itw_file_name.lastIndexOf("Server"), 6, "Client");
 #else

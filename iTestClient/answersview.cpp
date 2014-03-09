@@ -38,7 +38,7 @@ AnswersView::AnswersView(QWidget * parent):
 QWidget(parent) {
     QVBoxLayout * vlayout = new QVBoxLayout(this);
     vlayout->setContentsMargins(0, 0, 0, 0);
-#ifndef Q_WS_MAC
+#ifndef Q_OS_MAC
     vlayout->setSpacing(6);
 #else
     vlayout->setSpacing(0);

@@ -39,11 +39,11 @@ void MainWindow::setupSessionViewer()
     QObject::connect(SVSearchDetailsLineEdit, SIGNAL(textChanged(QLineEdit *, const QString &)), SVPassMarkTableWidget, SLOT(filterItems(QLineEdit *, const QString &)));
     SVLSListWidget->setSortingEnabled(true);
     SVLASListWidget->setSortingEnabled(true);
-    SVPassMarkTableWidget->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
-    SVPassMarkTableWidget->horizontalHeader()->setResizeMode(1, QHeaderView::ResizeToContents);
+    SVPassMarkTableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+    SVPassMarkTableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     SVPassMarkTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    SVScoringSystemTableWidget->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
-    SVScoringSystemTableWidget->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+    SVScoringSystemTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    SVScoringSystemTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     SVScoringSystemTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     for (int i = 0; i < SVScoringSystemTableWidget->rowCount(); ++i) {
         SVScoringSystemTableWidget->setItem(i, 1, new QTableWidgetItem);

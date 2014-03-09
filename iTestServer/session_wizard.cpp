@@ -19,13 +19,15 @@
 
 #include "session_wizard.h"
 
+#include "defs.h"
+
 SessionWizard::SessionWizard(Session * session, Class * cl, QWidget * parent, Qt::WindowFlags f):
 QDialog(parent, f)
 {
     setupUi(this);
     QObject::connect(btnMatch, SIGNAL(released()), this, SLOT(match()));
     QObject::connect(btnSplit, SIGNAL(released()), this, SLOT(split()));
-    twMatchedPairs->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    twMatchedPairs->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     twMatchedPairs->horizontalHeader()->hide();
     twMatchedPairs->verticalHeader()->hide();
     QObject::connect(lwSessionStudents, SIGNAL(currentTextChanged(QString)), this, SLOT(toggleMatchEnabled()));

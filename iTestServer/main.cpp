@@ -26,6 +26,13 @@ int main(int argc, char *argv[])
 #endif
 
     MTApplication app(argc, argv);
+    app.setApplicationName("iTestServer");
+    app.setApplicationVersion(ITEST_VERSION);
+
+#ifdef Q_OS_WIN32
+    if (QSysInfo::WindowsVersion > QSysInfo::WV_6_1)
+        QApplication::setStyle("windowsxp");
+#endif
 
     QSettings settings("Michal Tomlein", "iTest");
     QString lang = settings.value("lang").toString();

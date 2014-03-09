@@ -27,7 +27,7 @@ class AboutWidget : public QWidget, private Ui::AboutWidget
     Q_OBJECT
 
 public:
-    AboutWidget(const QString &);
+    AboutWidget();
 
 private slots:
     void showLicence();

@@ -25,7 +25,7 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
         printq_parent = parent;
     this->setWindowModality(Qt::WindowModal);
     this->setAttribute(Qt::WA_DeleteOnClose);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     this->setWindowTitle(tr("%1 - Print questions").arg(printq_parent->current_db_name));
 #else
     this->setWindowTitle(tr("%1 - Print questions - iTest").arg(printq_parent->current_db_name));
@@ -104,8 +104,8 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
                 printq_includelist->setColumnCount(2);
                 printq_includelist->verticalHeader()->hide();
                 printq_includelist->horizontalHeader()->hide();
-                printq_includelist->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
-                printq_includelist->horizontalHeader()->setResizeMode(1, QHeaderView::ResizeToContents);
+                printq_includelist->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+                printq_includelist->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
                 QObject::connect(printq_includelist, SIGNAL(itemDoubleClicked(QTableWidgetItem *)), this, SLOT(removeQuestionToPrint()));
                 QObject::connect(printq_includelist, SIGNAL(currentIndexAvailabilityChanged(bool)), printq_remove, SLOT(setEnabled(bool)));
                 QObject::connect(printq_search_included, SIGNAL(textChanged(QLineEdit *, const QString &)), printq_includelist, SLOT(filterItems(QLineEdit *, const QString &)));
@@ -214,7 +214,7 @@ void PrintQuestionsDialogue::togglePrintSelection(QAbstractButton * rbtn)
         printq_includelist->setRowCount(0);
         printq_includelist->setColumnCount(2);
         printq_includelist->setHorizontalHeaderLabels(QStringList() << tr("Flag name") << tr("Number of questions"));
-        printq_includelist->horizontalHeader()->setResizeMode(1, QHeaderView::ResizeToContents);
+        printq_includelist->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
         printq_includelist->horizontalHeader()->show();
         QListWidgetItem * item;
         for (int i = 0; i < printq_parent->current_db_f.size(); ++i) {
@@ -382,7 +382,7 @@ bool MainWindow::printerConfiguration(QString & printer_config)
     else { conf << tr("No") << endl; }
     conf << "<br><b>" << tr("Number of copies:") << "</b>" << " ";
     conf << printer_numCopies << endl;
-#ifndef Q_WS_X11
+#if defined(Q_OS_WIN32) || defined(Q_OS_MAC)
     conf << "<br>" << tr("Note: On Windows and Mac OS X, the number above is always 1<br>\nas these operating systems handle the number of copies internally.<br>\nTo print more copies, click 'Review configuration' and set the<br>\nnumber of copies each time you start the server.") << endl;
 #endif
     conf << "<br><b>" << tr("Orientation:") << "</b>" << " ";
@@ -399,7 +399,9 @@ bool MainWindow::printerConfiguration(QString & printer_config)
     switch (printer_outputFormat) {
         case QPrinter::NativeFormat: conf << tr("Native") << endl; break;
         case QPrinter::PdfFormat: conf << tr("PDF") << endl; break;
+#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
         case QPrinter::PostScriptFormat: conf << tr("PostScript") << endl; break;
+#endif
         default: conf << tr("Unknown") << endl; break;
     }
     conf << "<br><b>" << tr("Page order:") << "</b>" << " ";
