@@ -45,9 +45,7 @@ void MainWindow::loadTest(QString input)
     double version = in.readLine().toDouble();
     if (in.readLine() != "[ITEST_DB_VERSION]") { errorInvalidData(); return; }
     double db_version = in.readLine().toDouble();
-    if ((version > f_ver) && (db_version == f_itos_ver))
-    { QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features.")); }
-    if ((version > f_ver) && (db_version > f_itos_ver))
+    if ((version > F_ITEST_VERSION) && (db_version > F_ITOS_VERSION))
     { QMessageBox::critical(this, tr("iTest version notice"), tr("You need a newer version of iTest to open this database file.")); return; }
     if (db_version == 1.0) { errorInvalidData(); return; }
     current_db_multiple_ans_support = db_version >= 1.27;

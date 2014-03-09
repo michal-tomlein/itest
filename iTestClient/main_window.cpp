@@ -22,11 +22,10 @@
 
 MainWindow::MainWindow()
 {
-    varinit();
     setupUi(this);
     if (tr("LTR") == "RTL") { qApp->setLayoutDirection(Qt::RightToLeft); }
 
-#ifndef Q_WS_WIN
+#ifndef Q_OS_WIN32
     testPageSplitter->setPalette(this->palette());
 #endif
 
@@ -87,10 +86,10 @@ MainWindow::MainWindow()
     ITW_test_passmark = infoTableWidget->item(7, 0);
     ITW_test_comments = new QTextBrowser (infoTableWidget);
     infoTableWidget->setCellWidget(8, 0, ITW_test_comments);
-    infoTableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-    infoTableWidget->verticalHeader()->setResizeMode(8, QHeaderView::Stretch);
+    infoTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    infoTableWidget->verticalHeader()->setSectionResizeMode(8, QHeaderView::Stretch);
     resultsTableWidget->setColumnCount(1);
-    resultsTableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+    resultsTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     resultsTableWidget->horizontalHeader()->hide();
     
     loadSettings();
@@ -229,7 +228,7 @@ void MainWindow::previewSvg(const QString & link)
     QSvgWidget * svg_widget = new QSvgWidget;
     svg_widget->setAttribute(Qt::WA_DeleteOnClose);
     svg_widget->setParent(this);
-#ifndef Q_WS_MAC
+#ifndef Q_OS_MAC
     svg_widget->setWindowFlags(Qt::Dialog | Qt::WindowMaximizeButtonHint | Qt::WindowStaysOnTopHint);
 #else
     svg_widget->setWindowFlags(Qt::Dialog | Qt::WindowMaximizeButtonHint | Qt::WindowStaysOnTopHint | Qt::WindowSystemMenuHint);
@@ -420,7 +419,7 @@ void MainWindow::errorInvalidData()
 
 void MainWindow::about()
 {
-    AboutWidget * itest_about = new AboutWidget(ver);
+    AboutWidget * itest_about = new AboutWidget;
     itest_about->setParent(this);
     itest_about->setWindowFlags(Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/ | Qt::WindowStaysOnTopHint);
     itest_about->show();

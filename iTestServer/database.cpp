@@ -79,8 +79,8 @@ void MainWindow::newDB()
     setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     QTextStream sfile(&file);
     sfile.setCodec("UTF-8");
-    sfile << "[ITEST_VERSION]\n" << f_ver << endl;
-    sfile << "[ITEST_DB_VERSION]\n" << (itdb1_3 ? 1.3 : f_itdb_ver) << endl;
+    sfile << "[ITEST_VERSION]\n" << F_ITEST_VERSION << endl;
+    sfile << "[ITEST_DB_VERSION]\n" << (itdb1_3 ? 1.3 : F_ITDB_VERSION) << endl;
     sfile << "[DB_NAME]\n" << db_name << endl;
     sfile << "[DB_DATE]\n" << endl;
     sfile << "[DB_DATE_ULSD]\ntrue" << endl;
@@ -100,7 +100,7 @@ void MainWindow::newDB()
     current_db_name = db_name;
     current_db_open = true;
     addRecent(saveDBName);
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     this->setWindowTitle(QString("%1[*]").arg(current_db_name));
 #else
     this->setWindowTitle(QString("%1[*] - iTestServer").arg(current_db_name));
@@ -172,8 +172,8 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy)
     setProgress(5); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     QTextStream sfile(&file);
     sfile.setCodec("UTF-8");
-    sfile << "[ITEST_VERSION]\n" << f_ver << endl;
-    sfile << "[ITEST_DB_VERSION]\n" << (itdb1_3 ? 1.3 : f_itdb_ver) << endl;
+    sfile << "[ITEST_VERSION]\n" << F_ITEST_VERSION << endl;
+    sfile << "[ITEST_DB_VERSION]\n" << (itdb1_3 ? 1.3 : F_ITDB_VERSION) << endl;
     sfile << "[DB_NAME]\n" << db_name << endl;
     sfile << "[DB_DATE]\n" << db_date << endl;
     sfile << "[DB_DATE_ULSD]\n" << use_last_save_date << endl;
@@ -221,7 +221,7 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy)
             DBIDateEdit->setDateTime(QDateTime::fromString(current_db_date, "yyyy.MM.dd-hh:mm"));
         }
     }
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     this->setWindowTitle(QString("%1[*]").arg(current_db_name));
 #else
     this->setWindowTitle(QString("%1[*] - iTestServer").arg(current_db_name));
@@ -277,12 +277,10 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         QString db_buffer; QStringList bufferlist;
         // ---------------------------------------------------------------------
         if (rfile.readLine() != "[ITEST_VERSION]") { throw xInvalidDBFile(0); }
-        double version = rfile.readLine().toDouble();
+        rfile.readLine();
         if (rfile.readLine() != "[ITEST_DB_VERSION]") { throw xInvalidDBFile(1); }
         double db_version = rfile.readLine().toDouble();
-        if ((version > f_ver) && (db_version == f_itdb_ver))
-            QMessageBox::information(this, tr("iTest version notice"), tr("There is a newer version of iTest available.\nNonetheless, this version is able to open the database file you selected,\nbut you are most probably missing a whole bunch of cool new features."));
-        if ((version > f_ver) && (db_version > f_itdb_ver)) {
+        if (db_version > F_ITDB_VERSION) {
             QMessageBox::critical(this, tr("iTest version notice"), tr("You need a newer version of iTest to open this database file."));
             this->setEnabled(true);
             return;
@@ -580,7 +578,7 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         current_db_date = db_date;
         current_db_comments = db_comments;
         current_db_open = true;
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
         this->setWindowTitle(QString("%1[*]").arg(current_db_name));
 #else
         this->setWindowTitle(QString("%1[*] - iTestServer").arg(current_db_name));

@@ -19,9 +19,11 @@
 
 #include "about_widget.h"
 
+#include "defs.h"
+
 #include <QDesktopServices>
 
-AboutWidget::AboutWidget(const QString & ver)
+AboutWidget::AboutWidget()
 {
     setupUi(this);
 
@@ -31,7 +33,7 @@ AboutWidget::AboutWidget(const QString & ver)
 #endif
     QObject::connect(licenceButton, SIGNAL(clicked()), this, SLOT(showLicence()));
 
-    versionLabel->setText(tr("Version %1").arg(ver));
+    versionLabel->setText(tr("Version %1").arg(ITEST_VERSION));
 
     QString about;
     about.append("<p style=\"font-family: sans-serif; font-size:8pt;\">");
@@ -44,7 +46,7 @@ AboutWidget::AboutWidget(const QString & ver)
     about.append("<p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
     about.append(tr("The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE."));
     about.append("</p>");
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
     about.remove("font-family: sans-serif;");
     about.replace("font-size:8pt;", "font-size:11pt;");
 #endif

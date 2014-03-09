@@ -12,7 +12,8 @@ HEADERS      += main_window.h \
                 mtmultisvgwidget.h \
                 flowlayout.h \
                 question_widget.h \
-                answersview.h
+                answersview.h \
+                ../shared/defs.h
 RESOURCES    += resources.qrc \
                 i18n.qrc
 SOURCES      += main.cpp \
@@ -22,13 +23,18 @@ SOURCES      += main.cpp \
                 client.cpp \
                 ../shared/question.cpp \
                 question_item.cpp \
-                env_vars.cpp \
                 ../shared/pass_mark.cpp \
                 flowlayout.cpp \
                 question_widget.cpp \
                 answersview.cpp
 
-QT           += network svg
+lessThan(QT_MAJOR_VERSION, 5) {
+    QT           += network svg
+    CONFIG       += depend_includepath
+} else {
+    QT           += widgets network svg
+}
+
 DEFINES      += ITESTCLIENT
 INCLUDEPATH  += ../shared
 

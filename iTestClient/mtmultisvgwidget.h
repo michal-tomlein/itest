@@ -26,6 +26,7 @@
 #include <QLabel>
 #include <QTextDocument>
 
+#include "defs.h"
 #include "flowlayout.h"
 
 class MTMultiSvgWidget : public QWidget
@@ -37,12 +38,12 @@ protected:
         msw_flayout = new FlowLayout(this);
         msw_flayout->setContentsMargins(0, 0, 0, 0);
         msw_flayout->setSpacing(6);
-    };
+    }
 public:
     MTMultiSvgWidget(QWidget * parent = 0):
-    QWidget(parent) { init(); };
+    QWidget(parent) { init(); }
     
-    void addWidget(QWidget * w) { msw_flayout->addWidget(w); };
+    void addWidget(QWidget * w) { msw_flayout->addWidget(w); }
     void addWidget(QWidget * w, const QString & title, bool link = false) {
         QWidget * widget = new QWidget;
         QVBoxLayout * vlayout = new QVBoxLayout(widget);
@@ -57,19 +58,19 @@ public:
         vlayout->addWidget(label);
         vlayout->addWidget(w);
         msw_flayout->addWidget(widget);
-    };
-    QSize layoutSizeHint() { return msw_flayout->sizeHint(); };
-    int layoutHeightForWidth(int w) { return msw_flayout->heightForWidth(w); };
+    }
+    QSize layoutSizeHint() { return msw_flayout->sizeHint(); }
+    int layoutHeightForWidth(int w) { return msw_flayout->heightForWidth(w); }
 
 public slots:
     void clear() {
         for (int i = 0; i < msw_flayout->count();) {
             delete msw_flayout->takeAt(i)->widget();
         }
-    };
+    }
 
 private slots:
-    void emitTitleClicked(const QString & text) { emit titleClicked(text); };
+    void emitTitleClicked(const QString & text) { emit titleClicked(text); }
 
 signals:
     void titleClicked(const QString &);
