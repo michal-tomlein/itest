@@ -12,18 +12,6 @@
         <translation>Qt Névjegy</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation>Bezár</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation>Verzió</translation>
-    </message>
-    <message>
-        <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
-        <translation>Az iTest egy Qt alkalmazás, ami egy Szerverből és egy ügyfélből áll, számítógépes vizsgáztatásra tervezték.</translation>
-    </message>
-    <message>
         <source>This program is distributed under the terms of the GPL v2.</source>
         <translation>A program GPL v2 licensz alatt terjesztve.</translation>
     </message>
@@ -32,20 +20,24 @@
         <translation>Fordítás: &lt;span style=&quot;font-style:italic;&quot;&gt;Szabó István&lt;/span&gt;&lt;br&gt;&lt;br&gt;A program TELJES JÓTÁLLÁS NÉLKÜL, BELEÉRTVE A DIZÁJNT IS, ELADÁS ÉS MEGFELELTETÉS NÉLKÜLI CÉLBÓL JÖTT LÉTRE.</translation>
     </message>
     <message>
-        <source>This program uses Qt Open Source Edition version %1.</source>
-        <translation>A program a Qt Open Source Edition-t használja - verzió: %1.</translation>
+        <source>iTest</source>
+        <translation>iTest</translation>
     </message>
     <message>
-        <source>Qt is a C++ toolkit for cross-platform application development.</source>
-        <translation>A Qt egy C++ eszköz-rendszer - alkalmazás fejlesztéshez.</translation>
+        <source>Version %1</source>
+        <translation>Verzió %1</translation>
     </message>
     <message>
-        <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
-        <translation>A Qt egyszerű hordozhatóságot biztosít a(z) MS Windows, a Mac OS X a Linux és minden jelentős kereskedelmi Unix változathoz. Qtopia Core-ként szintén rendelkezésre áll beágyazott eszközként.</translation>
+        <source>Licence</source>
+        <translation>Engedély</translation>
     </message>
     <message>
-        <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
-        <translation>Qt egy Trolltech termék. Látogass el a &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; több információért.</translation>
+        <source>iTest is an application suite consisting of a Server and a Client designed for easy computerised examination.</source>
+        <translation>Az iTest egy Qt alkalmazás, ami egy Szerverből és egy ügyfélből áll, számítógépes vizsgáztatásra tervezték.</translation>
+    </message>
+    <message>
+        <source>http://www.gnu.org/licenses/gpl-2.0.html</source>
+        <translation>http://www.gnu.org/licenses/gpl-2.0.html</translation>
     </message>
 </context>
 <context>

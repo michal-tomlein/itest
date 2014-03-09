@@ -19,45 +19,40 @@
 
 #include "about_widget.h"
 
-AboutWidget::AboutWidget(const QString & ver, const QString & year)
+#include <QDesktopServices>
+
+AboutWidget::AboutWidget(const QString & ver)
 {
     setupUi(this);
-    QObject::connect(btnClose, SIGNAL(released()), this, SLOT(close()));
-    QString about = "<p style=\"font-family: sans-serif; font-style:italic;\"><span style=\"font-size:12pt;\">iTest</span><br>";
-    about.append("<span style=\"font-size:8pt;\">");
-    about.append(tr("Version"));
-    about.append(QString(" %1</span></p><p></p>").arg(ver));
+
+    QObject::connect(aboutQtButton, SIGNAL(clicked()), qApp, SLOT(aboutQt()));
+#ifdef Q_OS_MAC
+    QObject::connect(aboutQtButton, SIGNAL(clicked()), this, SLOT(close()));
+#endif
+    QObject::connect(licenceButton, SIGNAL(clicked()), this, SLOT(showLicence()));
+
+    versionLabel->setText(tr("Version %1").arg(ver));
+
+    QString about;
     about.append("<p style=\"font-family: sans-serif; font-size:8pt;\">");
-    about.append(tr("iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination."));
+    about.append(tr("iTest is an application suite consisting of a Server and a Client designed for easy computerised examination."));
     about.append("</p><p></p>");
     about.append("<p style=\"font-family: sans-serif; font-size:8pt;\">");
     about.append(tr("This program is distributed under the terms of the GPL v2."));
     about.append("</p><p></p>");
-    about.append(QString("<p style=\"font-family: sans-serif; font-size:8pt;\">2005-%1 <span style=\"font-style:italic;\">Michal Tomlein</span> (michal@tomlein.org)</p>").arg(year));
+    about.append(QString("<p style=\"font-family: sans-serif; font-size:8pt;\">2005&ndash;2014 <span style=\"font-style:italic;\">Michal Tomlein</span> (michal@tomlein.org)</p>"));
     about.append("<p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
     about.append(tr("The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE."));
     about.append("</p>");
 #ifdef Q_WS_MAC
     about.remove("font-family: sans-serif;");
-    about.replace("font-size:12pt;", "font-size:14pt;");
-    about.replace("font-size:8pt;", "font-size:10pt;");
+    about.replace("font-size:8pt;", "font-size:11pt;");
 #endif
-    aboutTextBrowser->setHtml(about);
-    QString aboutQt = "<p style=\"font-family: sans-serif; font-style:italic;\"><span style=\"font-size:12pt;\">";
-    aboutQt.append(tr("About Qt"));
-    aboutQt.append("</span></p><p></p><p style=\"font-family: sans-serif; font-size:8pt; font-style:italic;\">");
-    aboutQt.append(tr("This program uses Qt Open Source Edition version %1.").arg(qVersion()));
-    aboutQt.append("</p><p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
-    aboutQt.append(tr("Qt is a C++ toolkit for cross-platform application development."));
-    aboutQt.append("</p><p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
-    aboutQt.append(tr("Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core."));
-    aboutQt.append("</p><p></p><p style=\"font-family: sans-serif; font-size:8pt;\">");
-    aboutQt.append(tr("Qt is a Trolltech product. See <span style=\"font-style:italic;\">http://www.trolltech.com/qt/</span> for more information."));
-    aboutQt.append("</p>");
-#ifdef Q_WS_MAC
-    aboutQt.remove("font-family: sans-serif;");
-    aboutQt.replace("font-size:12pt;", "font-size:14pt;");
-    aboutQt.replace("font-size:8pt;", "font-size:10pt;");
-#endif
-    aboutQtTextBrowser->setHtml(aboutQt);
+
+    aboutTextBrowser->setHtml(QString("<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; margin-left:0px; margin-right:0px; color: #9F9F9F; }\n</style></head><body style=\"margin-top:0px; margin-bottom:0px; margin-left:9px; margin-right:9px;\">\n%1</body></html>").arg(about));
+}
+
+void AboutWidget::showLicence()
+{
+    QDesktopServices::openUrl(QUrl(tr("http://www.gnu.org/licenses/gpl-2.0.html")));
 }

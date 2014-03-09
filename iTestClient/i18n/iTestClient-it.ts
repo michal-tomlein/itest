@@ -4,36 +4,12 @@
 <context>
     <name>AboutWidget</name>
     <message>
-        <source>Version</source>
-        <translation>Versione</translation>
-    </message>
-    <message>
-        <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
-        <translation>iTest è un&apos; applicazione Qt che consiste di un Client e di un Server disgnata per creare semplicemente test computerizzati.</translation>
-    </message>
-    <message>
         <source>About Qt</source>
         <translation>Informazioni Qt</translation>
     </message>
     <message>
-        <source>Qt is a C++ toolkit for cross-platform application development.</source>
-        <translation>Qt è un toolkit C++ per lo sviluppo di applicazioni multi-piattaforma.</translation>
-    </message>
-    <message>
-        <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
-        <translation>Qt permette la portabilità con un singolo sorgente su piattaforme MS Windows, Mac OS X, Linux e tutte le maggiori versioni commerciali di Unix variants. Qt è anche disponibile in versione embedded per dispositivi quali Qtopia Core.</translation>
-    </message>
-    <message>
-        <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
-        <translation>Qt è un prodotto Trolltech. Visita &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; per maggiori informazioni.</translation>
-    </message>
-    <message>
         <source>About iTest</source>
         <translation>Informazioni iTest</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Chiudi</translation>
     </message>
     <message>
         <source>This program is distributed under the terms of the GPL v2.</source>
@@ -44,8 +20,24 @@
         <translation>Traduzione: &lt;span style=&quot;font-style:italic;&quot;&gt;Francesco Atzeni&lt;/span&gt;&lt;br&gt;&lt;br&gt;Il Programma è rilasciato &quot;Cosi&apos; Com&apos;è&quot; SENZA ALCUN TIMPO DI GARANZIA, INCLUSO IL DESIGN, COMMERCIALIZZAZIONE E OGNI TIPO DI USO.</translation>
     </message>
     <message>
-        <source>This program uses Qt Open Source Edition version %1.</source>
-        <translation>Questo Programma usa Qt Open Source Edition versione %1.</translation>
+        <source>iTest</source>
+        <translation>iTest</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Versione %1</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Licenza</translation>
+    </message>
+    <message>
+        <source>iTest is an application suite consisting of a Server and a Client designed for easy computerised examination.</source>
+        <translation>iTest è un&apos; applicazione Qt che consiste di un Client e di un Server disgnata per creare semplicemente test computerizzati.</translation>
+    </message>
+    <message>
+        <source>http://www.gnu.org/licenses/gpl-2.0.html</source>
+        <translation>http://www.gnu.org/licenses/gpl-2.0.html</translation>
     </message>
 </context>
 <context>

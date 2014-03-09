@@ -12,18 +12,6 @@
         <translation>Про Qt</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation>Закрити</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation>Версія</translation>
-    </message>
-    <message>
-        <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
-        <translation>iTest є програмою, створеною для проведення комп&apos;ютеризованих екзаменів. Вона використовує бібліотеку Qt і складається із серверної та клієнтської частин.</translation>
-    </message>
-    <message>
         <source>This program is distributed under the terms of the GPL v2.</source>
         <translation>Ця програма розповсюджується відповідно до умов ліценізї GPL v2.</translation>
     </message>
@@ -32,20 +20,24 @@
         <translation>Переклад: &lt;span style=&quot;font-style:italic;&quot;&gt;&lt;a href=&quot;http://onix.name/&quot;&gt;Нехай Вадим&lt;/a&gt;. Якщо ви маєте будь-які зауваження, коментарі та пропозиції щодо перекладу, пишіть на e-mail адресу onix@onix.name, або Jabber: on1x@jabber.org.&lt;/span&gt;&lt;br&gt;&lt;br&gt;Це програмне забезпечення розповсюджується ЯК Є, БЕЗ НІЯКИХ ГАРАНТІЙ, ВКЛЮЧАЮЧИ ГАРАНТІЇ ДИЗАЙНУ, ФІНАНСОВОЇ ВИГОДИ ТА ПРИГІДНОСТІ ДЛЯ КОНКРЕТНОГО ЗАСТОСУВАННЯ.</translation>
     </message>
     <message>
-        <source>This program uses Qt Open Source Edition version %1.</source>
-        <translation>Ця програма використовує Qt Open Source Edition версії %1.</translation>
+        <source>iTest</source>
+        <translation>iTest</translation>
     </message>
     <message>
-        <source>Qt is a C++ toolkit for cross-platform application development.</source>
-        <translation>Qt є інструментарієм для розробки багатоплатформного програмного забезпечення мовою програмування C++.</translation>
+        <source>Version %1</source>
+        <translation>Версія %1</translation>
     </message>
     <message>
-        <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
-        <translation>Qt забезпечує мобільність єдиних джерельних текстів між MS Windows, Mac OS X, Linux та всіма основними комерційними версіями Unix. Qt існує також для вбудованих пристроїв у вигляді Qtopia Core.</translation>
+        <source>Licence</source>
+        <translation>Ліцензія</translation>
     </message>
     <message>
-        <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
-        <translation>Qt є продуктом компанії Qt Software. Для отримання додаткової інформації звертайтеся за адресою &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.qtsoftware.com/&lt;/span&gt;.</translation>
+        <source>iTest is an application suite consisting of a Server and a Client designed for easy computerised examination.</source>
+        <translation>iTest є програмою, створеною для проведення комп&apos;ютеризованих екзаменів. Вона використовує бібліотеку Qt і складається із серверної та клієнтської частин.</translation>
+    </message>
+    <message>
+        <source>http://www.gnu.org/licenses/gpl-2.0.html</source>
+        <translation>http://www.gnu.org/licenses/old-licenses/gpl-2.0.uk.html</translation>
     </message>
 </context>
 <context>

@@ -12,30 +12,6 @@
         <translation>О Qt</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation>Закрыть</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation>Версия</translation>
-    </message>
-    <message>
-        <source>Qt is a C++ toolkit for cross-platform application development.</source>
-        <translation>Qt является инструментом для разработки кросс-платформенных приложений на C++.</translation>
-    </message>
-    <message>
-        <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
-        <translation>Qt обеспечивает переносимость кода между MS Windows, Max OS X, Linux и всеми основными коммерческими вариантами Unix. Также библиотека Qt доступна для портативных устройств в виде Qtopia Core.</translation>
-    </message>
-    <message>
-        <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
-        <translation>Qt является продуктом компании Trolltech. Для дополнительной информации обращайтесь на &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt;.</translation>
-    </message>
-    <message>
-        <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
-        <translation>iTest является приложением, использующим библиотеку Qt, состоящим из сервера и клиента, и разработанным для упрощения проведения компьютеризованных экзаменов.</translation>
-    </message>
-    <message>
         <source>This program is distributed under the terms of the GPL v2.</source>
         <translation>Данная программа распространяется под лицензией GPL v2.</translation>
     </message>
@@ -44,8 +20,24 @@
         <translation>перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Константин Макшин, Евгений Бурмистров&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется &quot;как есть&quot; без каких-либо гарантий.</translation>
     </message>
     <message>
-        <source>This program uses Qt Open Source Edition version %1.</source>
-        <translation>Данная программа использует библиотеку Qt Open Source Edition версии %1.</translation>
+        <source>iTest</source>
+        <translation>iTest</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Версия %1</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Лицензия</translation>
+    </message>
+    <message>
+        <source>iTest is an application suite consisting of a Server and a Client designed for easy computerised examination.</source>
+        <translation>iTest является приложением, использующим библиотеку Qt, состоящим из сервера и клиента, и разработанным для упрощения проведения компьютеризованных экзаменов.</translation>
+    </message>
+    <message>
+        <source>http://www.gnu.org/licenses/gpl-2.0.html</source>
+        <translation>http://www.gnu.org/licenses/old-licenses/gpl-2.0.ru.html</translation>
     </message>
 </context>
 <context>
@@ -157,6 +149,10 @@
     </message>
     <message>
         <source>Hungarian</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>German</source>
         <translation></translation>
     </message>
 </context>

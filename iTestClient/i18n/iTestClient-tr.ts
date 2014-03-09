@@ -12,30 +12,6 @@
         <translation>Qt Hakkında</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation>Kapat</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation>Sürüm</translation>
-    </message>
-    <message>
-        <source>Qt is a C++ toolkit for cross-platform application development.</source>
-        <translation>Qt platformdan bağımsız bir C++ uygulama geliştirme araç kitidir.</translation>
-    </message>
-    <message>
-        <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
-        <translation>Qt MS Windows, Mac OS X ve ana ticari Linux dağıtımlarında tek kaynak taşınabilirliği sağlar. Qt aynı zamanda Qtopia Core olarak gömülü sistemler için de kullanılabilir.</translation>
-    </message>
-    <message>
-        <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
-        <translation>Qt br Trolltech ürünüdür. Lütfen daha fazla bilgi için &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; adresine bakın.</translation>
-    </message>
-    <message>
-        <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
-        <translation>iTest bilgisayar destekli sınav yapabilmek amacıyla oluşturulan, Veritabanı Düzenleyici ve Test Hazırlayıcı uygulamalardan oluşan bir Qt uygulamasıdır.</translation>
-    </message>
-    <message>
         <source>This program is distributed under the terms of the GPL v2.</source>
         <translation>Bu program GPL v2 lisansı ile dağıtılmaktadır.</translation>
     </message>
@@ -44,8 +20,24 @@
         <translation>Çeviren: &lt;span style=&quot;font-style:italic;&quot;&gt;Serdar Soytetir&lt;/span&gt;&lt;br&gt;&lt;br&gt;Bu program TİCARİ AMAÇLARA VEYA ÖZEL BİR AMACA UYGUNLUK KONUSU DA DAHİL OLMAK ÜZERE HİÇBİR GARANTİ VERMEMEKTEDİR.</translation>
     </message>
     <message>
-        <source>This program uses Qt Open Source Edition version %1.</source>
-        <translation>Bu uygulama Qt Open Source Edition sürüm %1 kullanmaktadır.</translation>
+        <source>iTest</source>
+        <translation>iTest</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Sürüm %1</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Lisans</translation>
+    </message>
+    <message>
+        <source>iTest is an application suite consisting of a Server and a Client designed for easy computerised examination.</source>
+        <translation>iTest bilgisayar destekli sınav yapabilmek amacıyla oluşturulan, Veritabanı Düzenleyici ve Test Hazırlayıcı uygulamalardan oluşan bir Qt uygulamasıdır.</translation>
+    </message>
+    <message>
+        <source>http://www.gnu.org/licenses/gpl-2.0.html</source>
+        <translation>http://www.gnu.org/licenses/gpl-2.0.html</translation>
     </message>
 </context>
 <context>
