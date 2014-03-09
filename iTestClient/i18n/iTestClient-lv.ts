@@ -12,30 +12,6 @@
         <translation>Par Qt</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation>Aizvērt</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation>Versija</translation>
-    </message>
-    <message>
-        <source>Qt is a C++ toolkit for cross-platform application development.</source>
-        <translation>Qt ir krosplatformu instruments krosplatformu aplikāciju izstrādei  C++ valodā.</translation>
-    </message>
-    <message>
-        <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
-        <translation>Qt nodrošina koda savietojamību starp MS Windows, Max OS X, Linux un visiem Unix komerciālajiem pamata variantiem. Bibliotēka Qt pieejama arī portatīvajām Qtopia Core tipa ierīcēm.</translation>
-    </message>
-    <message>
-        <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
-        <translation>Qt ir kompānijas Trolltech produkts. Papildus informācijai &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt;.</translation>
-    </message>
-    <message>
-        <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
-        <translation>iTest ir aplikācija, kas izmanto Qt bibliotēku, kura sastāv no datu bāzu redaktora (ar servera funkcijām) un programmas testu rakstišanai (klienta), tā ir izstrādāta datorizēto eksāmenu veikšanai.</translation>
-    </message>
-    <message>
         <source>This program is distributed under the terms of the GPL v2.</source>
         <translation>Šī programma tiek izplatīta ar GPL v2 licenci.</translation>
     </message>
@@ -44,8 +20,24 @@
         <translation>Tulkojums: &lt;span style=&quot;font-style:italic;&quot;&gt;Valdis Orols&lt;/span&gt;&lt;br&gt;&lt;br&gt;Šī programma tiek izplatīta &quot;kā ir&quot;, bez jebkādām garantijām.</translation>
     </message>
     <message>
-        <source>This program uses Qt Open Source Edition version %1.</source>
-        <translation>Šī programma izmanto Qt Open Source Edition %1versijas bibliotēku.</translation>
+        <source>iTest</source>
+        <translation>iTest</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Versija %1</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Licence</translation>
+    </message>
+    <message>
+        <source>iTest is an application suite consisting of a Server and a Client designed for easy computerised examination.</source>
+        <translation>iTest ir aplikācija, kas izmanto Qt bibliotēku, kura sastāv no datu bāzu redaktora (ar servera funkcijām) un programmas testu rakstišanai (klienta), tā ir izstrādāta datorizēto eksāmenu veikšanai.</translation>
+    </message>
+    <message>
+        <source>http://www.gnu.org/licenses/gpl-2.0.html</source>
+        <translation>http://www.gnu.org/licenses/gpl-2.0.html</translation>
     </message>
 </context>
 <context>

@@ -420,7 +420,7 @@ void MainWindow::errorInvalidData()
 
 void MainWindow::about()
 {
-    AboutWidget * itest_about = new AboutWidget(ver, QString("2014"));
+    AboutWidget * itest_about = new AboutWidget(ver);
     itest_about->setParent(this);
     itest_about->setWindowFlags(Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/ | Qt::WindowStaysOnTopHint);
     itest_about->show();

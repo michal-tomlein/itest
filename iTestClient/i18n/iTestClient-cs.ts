@@ -12,30 +12,6 @@
         <translation>O Qt</translation>
     </message>
     <message>
-        <source>Close</source>
-        <translation>Zavřít</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation>Verze</translation>
-    </message>
-    <message>
-        <source>Qt is a C++ toolkit for cross-platform application development.</source>
-        <translation>Qt je sada nástrojů pro víceplatformový vývoj aplikací v jazyku C++.</translation>
-    </message>
-    <message>
-        <source>Qt provides single-source portability across MS Windows, Mac OS X, Linux and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.</source>
-        <translation>Qt umožňuje použití jednoho zdrojového kódu v systémech MS Windows, Mac OS X, Linux a ve všech hlavních komerčních unixových variantách. Qt je též dostupné pro vložená zařízení jako Qtopia Core.</translation>
-    </message>
-    <message>
-        <source>Qt is a Trolltech product. See &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; for more information.</source>
-        <translation>Qt je produktem společnosti Trolltech. Podívejte se na &lt;span style=&quot;font-style:italic;&quot;&gt;http://www.trolltech.com/qt/&lt;/span&gt; pro více informací.</translation>
-    </message>
-    <message>
-        <source>iTest is a Qt application consisting of a Server and a Client designed for easy computerised examination.</source>
-        <translation>iTest je Qt programem sestávajícím ze serverového a klientského programu navržených pro jednoduché zkoušení s pomocí počítače.</translation>
-    </message>
-    <message>
         <source>This program is distributed under the terms of the GPL v2.</source>
         <translation>Tento program je šířen pod licencí GPL v2.</translation>
     </message>
@@ -44,8 +20,24 @@
         <translation>Překlad: &lt;span style=&quot;font-style:italic;&quot;&gt;Pavel Fric&lt;/span&gt; (fripohled.blogspot.com)&lt;br&gt;&lt;br&gt;Tento program je poskytovaný TAK JAK JE bez ABSOLUTNĚ ŽÁDNÉ ZÁRUKY J AKÉHOKOLI DRUHU, VČETNĚ ZÁRUKY PROVEDENÍ, PRODEJNOSTI A VHODNOSTI PRO ZVLÁŠTNÍ ÚČEL.</translation>
     </message>
     <message>
-        <source>This program uses Qt Open Source Edition version %1.</source>
-        <translation>Tento program používá Qt Open Source Edition ve verzi %1.</translation>
+        <source>iTest</source>
+        <translation>iTest</translation>
+    </message>
+    <message>
+        <source>Version %1</source>
+        <translation>Verze %1</translation>
+    </message>
+    <message>
+        <source>Licence</source>
+        <translation>Licence</translation>
+    </message>
+    <message>
+        <source>iTest is an application suite consisting of a Server and a Client designed for easy computerised examination.</source>
+        <translation>iTest je sada aplikací sestávající ze serverového a klientského programu navržených pro jednoduché zkoušení s pomocí počítače.</translation>
+    </message>
+    <message>
+        <source>http://www.gnu.org/licenses/gpl-2.0.html</source>
+        <translation>http://www.gnu.org/licenses/old-licenses/gpl-2.0.cs.html</translation>
     </message>
 </context>
 <context>
