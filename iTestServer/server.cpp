@@ -18,6 +18,15 @@
 ********************************************************************/
 
 #include "main_window.h"
+#include "client.h"
+#include "session.h"
+#include "student.h"
+#include "svg_item.h"
+
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QProcess>
+#include <QTcpServer>
 
 void MainWindow::setupServer()
 {

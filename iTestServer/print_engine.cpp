@@ -17,9 +17,22 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
+#include "print_engine.h"
 #include "main_window.h"
+#include "class.h"
+#include "client.h"
+#include "session.h"
+#include "student.h"
+#include "svg_item.h"
+#include "mtadvancedgroupbox.h"
 
+#include <QDir>
+#include <QFileInfo>
+#include <QPainter>
+#include <QPrinter>
+#include <QPrintDialog>
 #include <QSettings>
+#include <QSvgRenderer>
 
 PrintQuestionsDialogue::PrintQuestionsDialogue(MainWindow * parent):
 QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
@@ -206,6 +219,71 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
     togglePrintSelection(printq_rbtn_flags);
         updateTestQnum();
     this->show();
+}
+
+MTTableWidget * PrintQuestionsDialogue::includeTableWidget() const
+{
+    return printq_includelist;
+}
+
+bool PrintQuestionsDialogue::flagsSelected() const
+{
+    return rbtngrpPrintqSelect->checkedButton()->text() == tr("Flags");
+}
+
+bool PrintQuestionsDialogue::questionsSelected() const
+{
+    return rbtngrpPrintqSelect->checkedButton()->text() == tr("Questions");
+}
+
+bool PrintQuestionsDialogue::printStatistics() const
+{
+    return printTest() ? false : printq_advanced_statistics->isChecked();
+}
+
+bool PrintQuestionsDialogue::printFormatting() const
+{
+    return printq_advanced_formatting->isChecked();
+}
+
+bool PrintQuestionsDialogue::printTest() const
+{
+    return printq_advanced_test->isChecked();
+}
+
+bool PrintQuestionsDialogue::printKey() const
+{
+    return printTest() ? printq_advanced_key->isChecked() : false;
+}
+
+bool PrintQuestionsDialogue::printExplanations() const
+{
+    return printKey() ? printq_advanced_explanations->isChecked() : false;
+}
+
+bool PrintQuestionsDialogue::printGraphics() const
+{
+    return printq_advanced_graphics->isChecked();
+}
+
+bool PrintQuestionsDialogue::randomise() const
+{
+    return printq_advanced_randomise->isChecked();
+}
+
+int PrintQuestionsDialogue::numPrintouts() const
+{
+    return randomise() ? printq_advanced_numprintouts->value() : 1;
+}
+
+bool PrintQuestionsDialogue::useGroups() const
+{
+    return printTest() ? printq_advanced_usegroups->isChecked() : false;
+}
+
+int PrintQuestionsDialogue::numQuestions() const
+{
+    return printq_advanced_numquestions->value();
 }
 
 void PrintQuestionsDialogue::togglePrintSelection(QAbstractButton * rbtn)

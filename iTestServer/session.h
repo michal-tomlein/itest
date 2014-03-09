@@ -23,9 +23,11 @@
 #include <QObject>
 #include <QList>
 #include <QDateTime>
-#include <QColor>
 
 #include "pass_mark.h"
+#include "question.h"
+
+class Student;
 
 class LogEntry
 {
@@ -82,7 +84,7 @@ public slots:
     void setPassMark(PassMark);
     PassMark passMark();
     void loadPassMark(const QString &);
-    void setScoringSystem(ScoringSystem);
+    void setScoringSystem(const ScoringSystem &);
     ScoringSystem scoringSystem();
     QString sessionData();
     bool mostPassed();

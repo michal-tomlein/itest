@@ -20,14 +20,14 @@
 #ifndef QUESTION_H
 #define QUESTION_H
 
-#include <QString>
+#include "defs.h"
+
 #include <QStringList>
-#include <QTextDocument>
-#include <QTextStream>
-#include <QProgressDialog>
-#include <QApplication>
 
 class PassMark;
+
+class QApplication;
+class QProgressDialog;
 
 class Question
 {

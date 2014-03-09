@@ -21,9 +21,6 @@
 #define SVG_ITEM_H
 
 #include <QListWidgetItem>
-#include <QSvgRenderer>
-#include <QPainter>
-#include <QPixmap>
 
 class SvgItem : public QListWidgetItem
 {

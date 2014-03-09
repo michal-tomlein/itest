@@ -19,6 +19,13 @@
 
 #include "answersview.h"
 
+#include <QButtonGroup>
+#include <QCheckBox>
+#include <QRadioButton>
+#include <QTextBrowser>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+
 AnswerView::AnswerView(int i, AnswersView * parent):
 QWidget(parent) {
     QHBoxLayout * hlayout = new QHBoxLayout(this);

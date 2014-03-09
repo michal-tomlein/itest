@@ -19,11 +19,22 @@
 
 #include "about_widget.h"
 #include "main_window.h"
+#include "class.h"
+#include "print_engine.h"
+#include "session.h"
+#include "svg_item.h"
 
+#include <QDesktopServices>
+#include <QFileInfo>
+#include <QMessageBox>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QSettings>
+#include <QSvgRenderer>
+#include <QSvgWidget>
+#include <QTimer>
+#include <QTranslator>
 
 void MainWindow::errorInvalidDBFile(const QString & title, const QString & file, int error)
 {

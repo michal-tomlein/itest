@@ -19,6 +19,9 @@
 
 #include "svg_item.h"
 
+#include <QPainter>
+#include <QSvgRenderer>
+
 SvgItem::SvgItem():
 QListWidgetItem(0, QListWidgetItem::UserType)
 { si_valid = false; }

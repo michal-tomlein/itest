@@ -65,4 +65,4 @@ ScoringSystem QuestionItem::q_scoringsystem;
 
 ScoringSystem QuestionItem::scoringSystem() { return q_scoringsystem; }
 
-void QuestionItem::setScoringSystem(ScoringSystem sys) { q_scoringsystem = sys; }
+void QuestionItem::setScoringSystem(const ScoringSystem &sys) { q_scoringsystem = sys; }

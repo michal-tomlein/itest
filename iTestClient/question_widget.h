@@ -20,10 +20,14 @@
 #ifndef QUESTION_WIDGET_H
 #define QUESTION_WIDGET_H
 
-#include <QSvgWidget>
+#include "defs.h"
 
-#include "mtmultisvgwidget.h"
-#include "pass_mark.h"
+#include <QWidget>
+
+class QuestionItem;
+class MTMultiSvgWidget;
+
+class QLabel;
 
 class QuestionWidget : public QWidget
 {

@@ -19,6 +19,14 @@
 
 #include "about_widget.h"
 #include "main_window.h"
+#include "question_item.h"
+
+#include <QCloseEvent>
+#include <QDateTime>
+#include <QFileInfo>
+#include <QMessageBox>
+#include <QSvgWidget>
+#include <QSettings>
 
 MainWindow::MainWindow()
 {

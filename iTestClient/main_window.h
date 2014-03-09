@@ -23,23 +23,10 @@
 #include "defs.h"
 
 #include "ui_main_window.h"
+#include "pass_mark.h"
 
-#include <QFile>
-#include <QFileDialog>
-#include <QCloseEvent>
-#include <QMessageBox>
-#include <QButtonGroup>
 #include <QTcpSocket>
-#include <QProgressDialog>
-#include <QHeaderView>
 #include <QTimer>
-#include <QTime>
-#include <QSettings>
-#include <QTranslator>
-#include <QSvgWidget>
-#include <QSvgRenderer>
-
-#include "question_widget.h"
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {

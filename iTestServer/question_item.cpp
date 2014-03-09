@@ -18,6 +18,7 @@
 ********************************************************************/
 
 #include "question_item.h"
+#include "svg_item.h"
 
 QuestionItem::QuestionItem(const QString & name,
                             int flag,

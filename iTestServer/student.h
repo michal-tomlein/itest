@@ -20,7 +20,11 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include "client.h"
+#include <QObject>
+
+class Client;
+class QuestionAnswer;
+class ScoringSystem;
 
 class Student : public QObject
 {
@@ -37,13 +41,13 @@ public slots:
     QString name();
     void setNumber(int);
     int number();
-    int numCorrectAnswers(ScoringSystem);
+    int numCorrectAnswers(const ScoringSystem &);
     double score();
     double maximumScore();
     void setReady(bool);
     bool isReady();
     void setResults(QMap<QString, QuestionAnswer> *);
-    void updateScore(ScoringSystem);
+    void updateScore(const ScoringSystem &);
     QMap<QString, QuestionAnswer> * results();
     void setPassed(bool);
     bool passed();

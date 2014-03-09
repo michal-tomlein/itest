@@ -18,6 +18,12 @@
 ********************************************************************/
 
 #include "main_window.h"
+#include "question_item.h"
+#include "question_widget.h"
+
+#include <QDir>
+#include <QMessageBox>
+#include <QProgressDialog>
 
 void MainWindow::connectSocket()
 {

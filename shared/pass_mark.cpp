@@ -18,6 +18,11 @@
 ********************************************************************/
 
 #include "pass_mark.h"
+#include "question_item.h"
+
+#ifdef ITESTSERVER
+#include "question.h"
+#endif
 
 PassMark::PassMark(int mark)
 {

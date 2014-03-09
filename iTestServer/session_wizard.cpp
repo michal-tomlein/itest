@@ -18,8 +18,10 @@
 ********************************************************************/
 
 #include "session_wizard.h"
-
 #include "defs.h"
+#include "class.h"
+#include "session.h"
+#include "student.h"
 
 SessionWizard::SessionWizard(Session * session, Class * cl, QWidget * parent, Qt::WindowFlags f):
 QDialog(parent, f)

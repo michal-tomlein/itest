@@ -18,7 +18,10 @@
 ********************************************************************/
 
 #include "main_window.h"
+#include "session.h"
+#include "student.h"
 
+#include <QMessageBox>
 #include <QSettings>
 
 void MainWindow::setupSessionViewer()

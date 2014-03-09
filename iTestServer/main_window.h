@@ -23,43 +23,21 @@
 #include "defs.h"
 
 #include "ui_main_window_v2.h"
-#include "print_engine.h"
-#include "mtadvancedgroupbox.h"
-#include "mtprogressbar.h"
+#include "pass_mark.h"
 
-#include <QFile>
-#include <QInputDialog>
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QAction>
-#include <QDir>
-#include <QSet>
-#include <QList>
-#include <QListWidgetItem>
-#include <QTableWidgetItem>
-#include <QStatusBar>
-#include <QProgressBar>
-#include <QTimer>
-#include <QCloseEvent>
-#include <QMap>
-#include <QTcpServer>
 #include <QTcpSocket>
-#include <QDataStream>
-#include <QByteArray>
-#include <QPrinter>
-#include <QPrintDialog>
-#include <QBuffer>
-#include <QDesktopServices>
-#include <QHeaderView>
-#include <QTranslator>
-#include <QProcess>
-#include <QSvgWidget>
-#include <QUrl>
 
-#include <QtAlgorithms>
+class Class;
+class ClassMember;
+class Client;
+class PrintQuestionsDialogue;
+class Session;
+class Student;
 
 class QNetworkAccessManager;
 class QNetworkReply;
+class QPrinter;
+class QTcpServer;
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {

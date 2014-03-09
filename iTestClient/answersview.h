@@ -20,17 +20,17 @@
 #ifndef ANSWERSVIEW_H
 #define ANSWERSVIEW_H
 
-#include <QWidget>
-#include <QTextBrowser>
-#include <QCheckBox>
-#include <QRadioButton>
-#include <QButtonGroup>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include "question.h"
 
-#include "question_item.h"
+#include <QWidget>
 
 class AnswersView;
+
+class QAbstractButton;
+class QButtonGroup;
+class QCheckBox;
+class QRadioButton;
+class QTextBrowser;
 
 class AnswerView : public QWidget
 {

@@ -20,9 +20,10 @@
 #ifndef ITEST_MAIN_H
 #define ITEST_MAIN_H
 
-#include <QApplication>
-
 #include "main_window.h"
+
+#include <QApplication>
+#include <QFileOpenEvent>
 
 class MTApplication : public QApplication
 {

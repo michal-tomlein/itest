@@ -19,6 +19,15 @@
 
 #include "main_window.h"
 
+#include "class.h"
+#include "session.h"
+#include "student.h"
+#include "svg_item.h"
+
+#include <QFileDialog>
+#include <QInputDialog>
+#include <QMessageBox>
+
 bool MainWindow::saveChangesBeforeProceeding(const QString & title, bool close)
 {
     if (current_db_open && this->isWindowModified()) {

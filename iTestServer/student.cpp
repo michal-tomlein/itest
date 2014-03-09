@@ -18,6 +18,11 @@
 ********************************************************************/
 
 #include "student.h"
+#include "client.h"
+#include "question.h"
+#include "question_item.h"
+
+#include <QMap>
 
 Student::Student(const QString & name)
 {
@@ -65,7 +70,7 @@ void Student::setNumber(int number) { s_number = number; }
 
 int Student::number() { return s_number; }
 
-int Student::numCorrectAnswers(ScoringSystem sys)
+int Student::numCorrectAnswers(const ScoringSystem &sys)
 {
     int num = 0; QuestionAnswer qans;
     QMapIterator<QString, QuestionAnswer> i(*s_results);
@@ -92,7 +97,7 @@ void Student::setResults(QMap<QString, QuestionAnswer> * results)
 
 QMap<QString, QuestionAnswer> * Student::results() { return s_results; }
 
-void Student::updateScore(ScoringSystem sys)
+void Student::updateScore(const ScoringSystem &sys)
 {
     s_score = 0; s_maxscore = 0; QuestionAnswer qans;
     QMapIterator<QString, QuestionAnswer> i(*s_results);

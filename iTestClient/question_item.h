@@ -20,9 +20,9 @@
 #ifndef QUESTION_ITEM_H
 #define QUESTION_ITEM_H
 
-#include <QMap>
-
 #include "question.h"
+
+#include <QMap>
 
 class QuestionItem : public Question
 {
@@ -41,7 +41,7 @@ public slots:
     QString svgName(int);
     QString svg(int);
     static ScoringSystem scoringSystem();
-    static void setScoringSystem(ScoringSystem);
+    static void setScoringSystem(const ScoringSystem &);
 
 private:
     QList<int> q_ans_order;

@@ -18,6 +18,8 @@
 ********************************************************************/
 
 #include "class.h"
+#include "session.h"
+#include "student.h"
 
 ClassMember::ClassMember()
 {

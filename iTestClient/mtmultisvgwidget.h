@@ -21,10 +21,8 @@
 #define MTMULTISVGWIDGET_H
 
 #include <QWidget>
-#include <QScrollArea>
 #include <QVBoxLayout>
 #include <QLabel>
-#include <QTextDocument>
 
 #include "defs.h"
 #include "flowlayout.h"

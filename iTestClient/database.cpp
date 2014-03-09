@@ -18,6 +18,12 @@
 ********************************************************************/
 
 #include "main_window.h"
+#include "question_item.h"
+
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QProgressDialog>
+#include <QTime>
 
 void MainWindow::browse_i()
 {

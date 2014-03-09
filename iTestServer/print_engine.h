@@ -20,14 +20,18 @@
 #ifndef PRINT_ENGINE_H
 #define PRINT_ENGINE_H
 
-#include "session_wizard.h"
-#include "mtlistwidget.h"
-#include "mttablewidget.h"
-#include "mtspinbox.h"
+#include <QWidget>
 
-#include <QCheckBox>
-#include <QSpinBox>
-#include <QHeaderView>
+class MainWindow;
+class MTListWidget;
+class MTSpinBox;
+class MTTableWidget;
+
+class QAbstractButton;
+class QCheckBox;
+class QButtonGroup;
+class QPushButton;
+class QSpinBox;
 
 class PrintQuestionsDialogue : public QWidget
 {
@@ -36,19 +40,19 @@ class PrintQuestionsDialogue : public QWidget
 public:
     PrintQuestionsDialogue(MainWindow *);
 
-    MTTableWidget * includeTableWidget() const { return printq_includelist; }
-    bool flagsSelected() const { return rbtngrpPrintqSelect->checkedButton()->text() == tr("Flags"); }
-    bool questionsSelected() const { return rbtngrpPrintqSelect->checkedButton()->text() == tr("Questions"); }
-    bool printStatistics() const { return printTest() ? false : printq_advanced_statistics->isChecked(); }
-    bool printFormatting() const { return printq_advanced_formatting->isChecked(); }
-    bool printTest() const { return printq_advanced_test->isChecked(); }
-    bool printKey() const { return printTest() ? printq_advanced_key->isChecked() : false; }
-    bool printExplanations() const { return printKey() ? printq_advanced_explanations->isChecked() : false; }
-    bool printGraphics() const { return printq_advanced_graphics->isChecked(); }
-    bool randomise() const { return printq_advanced_randomise->isChecked(); }
-    int numPrintouts() const { return randomise() ? printq_advanced_numprintouts->value() : 1; }
-    bool useGroups() const { return printTest() ? printq_advanced_usegroups->isChecked() : false; }
-    int numQuestions() const { return printq_advanced_numquestions->value(); }
+    MTTableWidget * includeTableWidget() const;
+    bool flagsSelected() const;
+    bool questionsSelected() const;
+    bool printStatistics() const;
+    bool printFormatting() const;
+    bool printTest() const;
+    bool printKey() const;
+    bool printExplanations() const;
+    bool printGraphics() const;
+    bool randomise() const;
+    int numPrintouts() const;
+    bool useGroups() const;
+    int numQuestions() const;
 
 private slots:
     void addQuestionToPrint();

@@ -17,7 +17,13 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
+#include "question.h"
+#include "question_item.h"
 #include "pass_mark.h"
+
+#include <QApplication>
+#include <QTextDocument>
+#include <QProgressDialog>
 
 int pow(int base, int exp)
 {
@@ -277,7 +283,7 @@ QString ScoringSystem::data()
 #endif
 
 #ifdef ITESTSERVER
-double QuestionAnswer::score(ScoringSystem q_scoringsystem)
+double QuestionAnswer::score(const ScoringSystem &q_scoringsystem)
 #endif
 #ifdef ITESTCLIENT
 double QuestionItem::score()
@@ -321,7 +327,7 @@ double QuestionItem::score()
 }
 
 #ifdef ITESTSERVER
-double QuestionAnswer::maximumScore(ScoringSystem q_scoringsystem)
+double QuestionAnswer::maximumScore(const ScoringSystem &q_scoringsystem)
 #endif
 #ifdef ITESTCLIENT
 double QuestionItem::maximumScore()

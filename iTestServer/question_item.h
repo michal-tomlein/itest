@@ -21,7 +21,8 @@
 #define QUESTION_ITEM_H
 
 #include "question.h"
-#include "svg_item.h"
+
+class SvgItem;
 
 class QuestionAnswer
 {
@@ -39,8 +40,8 @@ public:
     Question::Answer correctAnswer();
     void setNumAnswers(int);
     int numAnswers();
-    double score(ScoringSystem);
-    double maximumScore(ScoringSystem);
+    double score(const ScoringSystem &);
+    double maximumScore(const ScoringSystem &);
     void setFlag(int);
     int flag();
     void setDifficulty(int);

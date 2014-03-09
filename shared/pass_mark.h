@@ -20,14 +20,16 @@
 #ifndef PASS_MARK_H
 #define PASS_MARK_H
 
+#include <QTextStream>
+
+class QuestionItem;
+
 #ifdef ITESTSERVER
-#include "student.h"
-#endif
-#ifdef ITESTCLIENT
-#include "question_item.h"
+class QuestionAnswer;
+class ScoringSystem;
 #endif
 
-#include <QTextStream>
+class QListWidgetItem;
 
 class PassMark
 {

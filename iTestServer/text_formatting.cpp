@@ -19,6 +19,8 @@
 
 #include "mttextedit.h"
 
+#include <QColorDialog>
+
 MTTextEdit::MTTextEdit(QWidget * parent):
 QWidget(parent)
 {

@@ -18,6 +18,13 @@
 ********************************************************************/
 
 #include "main_window.h"
+#include "session.h"
+#include "student.h"
+#include "svg_item.h"
+
+#include <QFileDialog>
+#include <QInputDialog>
+#include <QMessageBox>
 
 void MainWindow::addQuestion()
 {

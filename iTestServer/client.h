@@ -20,18 +20,12 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <QTcpSocket>
 #include <QMap>
-#include <QMapIterator>
 #include <QObject>
-#include <QDataStream>
-#include <QMessageBox>
-#include <QListWidgetItem>
-#include <QTextStream>
-
-#include "question_item.h"
+#include <QTcpSocket>
 
 class MainWindow;
+class QuestionAnswer;
 
 class Client : public QObject
 {

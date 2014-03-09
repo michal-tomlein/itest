@@ -18,6 +18,13 @@
 ********************************************************************/
 
 #include "question_widget.h"
+#include "question_item.h"
+#include "mtmultisvgwidget.h"
+
+#include <QLabel>
+#include <QSvgWidget>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 void QuestionWidget::init(QuestionItem * item, bool highlight_correct_answers)
 {

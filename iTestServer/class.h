@@ -20,7 +20,11 @@
 #ifndef CLASS_H
 #define CLASS_H
 
-#include "session.h"
+#include "defs.h"
+
+#include <QDateTime>
+
+class Session;
 
 struct SessionEntry
 {

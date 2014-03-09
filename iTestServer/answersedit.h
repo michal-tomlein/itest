@@ -21,15 +21,14 @@
 #define ANSWERSEDIT_H
 
 #include <QWidget>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QRadioButton>
-#include <QLabel>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
 
 #include "mttoolbutton.h"
 #include "question_item.h"
+
+class QCheckBox;
+class QLabel;
+class QLineEdit;
+class QRadioButton;
 
 inline QString removeLineBreaks(QString str) { return str.remove("\n"); }
 

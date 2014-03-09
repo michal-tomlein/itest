@@ -18,6 +18,9 @@
 ********************************************************************/
 
 #include "session.h"
+#include "student.h"
+
+#include <QColor>
 
 LogEntry::LogEntry()
 {
@@ -136,7 +139,7 @@ PassMark Session::passMark() { return s_passmark; }
 
 void Session::loadPassMark(const QString & str) { s_passmark.loadData(str); }
 
-void Session::setScoringSystem(ScoringSystem sys)
+void Session::setScoringSystem(const ScoringSystem &sys)
 {
     s_scoringsystem = sys;
     s_maxscore = 0.0; s_score = 0.0;

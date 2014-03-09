@@ -20,9 +20,9 @@
 #ifndef MTTEXTEDIT_H
 #define MTTEXTEDIT_H
 
-#include <QColorDialog>
-
 #include "ui_mttextedit.h"
+
+#include <QWidget>
 
 class MTTextEdit : public QWidget, private Ui::MTTextEdit
 {

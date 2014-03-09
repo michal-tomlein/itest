@@ -21,9 +21,9 @@
 #define SESSION_WIZARD_H
 
 #include "ui_session_wizard.h"
-#include "class.h"
 
-#include <QHeaderView>
+class Class;
+class Session;
 
 class SessionWizard : public QDialog, private Ui::SessionWizard
 {

@@ -18,6 +18,14 @@
 ********************************************************************/
 
 #include "main_window.h"
+#include "class.h"
+#include "session.h"
+#include "session_wizard.h"
+#include "student.h"
+#include "mtprogressbar.h"
+
+#include <QMessageBox>
+#include <QInputDialog>
 
 void MainWindow::setupClassViewer()
 {

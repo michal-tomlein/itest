@@ -19,6 +19,13 @@
 
 #include "answersedit.h"
 
+#include <QCheckBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QRadioButton>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+
 AnswerEdit::AnswerEdit(int i, AnswersEdit * parent):
 QWidget(parent) {
     ans_visible = this->QWidget::isVisible();
