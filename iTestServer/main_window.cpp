@@ -20,6 +20,8 @@
 #include "about_widget.h"
 #include "main_window.h"
 
+#include <QSettings>
+
 void MainWindow::errorInvalidDBFile(const QString & title, const QString & file, int error)
 {
     QMessageBox::critical(this, title, tr("Invalid database file: %1\nError %2.").arg(file).arg(error));
@@ -54,14 +56,10 @@ void MainWindow::clearCurrentValues()
     QMapIterator<QDateTime, Session *> n(current_db_sessions);
     while (n.hasNext()) { n.next(); if (n.value()) delete n.value(); }
     current_db_sessions.clear();
-    QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
-    while (a.hasNext()) { a.next(); if (a.value()) delete a.value(); }
-    current_db_archivedsessions.clear();
     QMapIterator<QListWidgetItem *, Class *> c(current_db_classes);
     while (c.hasNext()) { c.next(); delete c.value(); }
     current_db_classes.clear();
     current_db_flagentries.clear();
-    current_db_queued_sessions.clear();
 }
 
 void MainWindow::clearSQ()
@@ -97,7 +95,6 @@ void MainWindow::setAllEnabled(bool enabled)
     actionSave->setEnabled(enabled);
     actionSave_as->setEnabled(enabled);
     actionSave_a_copy->setEnabled(enabled);
-    actionSave_a_backup->setEnabled(enabled);
     actionExport_CSV->setEnabled(enabled);
     actionClose->setEnabled(enabled);
 //  actionEdit_questions->setEnabled(enabled);
@@ -220,17 +217,6 @@ void MainWindow::enableSVTools()
     menuSession->setEnabled(i == SV);
     actionExport_log->setEnabled(i == SM || (i == SV && SVSelectedSessionWidget->isEnabled() && SVLogListWidget->count() > 0));
     actionDelete_log->setEnabled(i == SV && SVSelectedSessionWidget->isEnabled() && SVLogListWidget->count() > 0);
-    if (SVSelectedSessionWidget->isEnabled() && current_db_session != NULL) {
-        actionArchive_session->setEnabled(i == SV && !current_db_session->isArchived());
-        actionCopy_to_archive->setEnabled(i == SV && !current_db_session->isArchived());
-        actionRestore_session->setEnabled(i == SV && current_db_session->isArchived());
-        actionCopy_from_archive->setEnabled(i == SV && current_db_session->isArchived());
-    } else {
-        actionArchive_session->setEnabled(false);
-        actionRestore_session->setEnabled(false);
-        actionCopy_to_archive->setEnabled(false);
-        actionCopy_from_archive->setEnabled(false);
-    }
 }
 
 void MainWindow::togglePrintEnabled()
@@ -274,7 +260,6 @@ MainWindow::MainWindow()
     default_printer = NULL;
 #ifdef Q_WS_MAC
     this->setUnifiedTitleAndToolBarOnMac(true);
-    //this->setAttribute(Qt::WA_MacBrushedMetal);
 #endif
     progressBar = new QProgressBar(this);
     progressBar->setTextVisible(false);
@@ -335,7 +320,6 @@ MainWindow::MainWindow()
     QObject::connect(actionSave, SIGNAL(triggered()), this, SLOT(save()));
     QObject::connect(actionSave_as, SIGNAL(triggered()), this, SLOT(saveAs()));
     QObject::connect(actionSave_a_copy, SIGNAL(triggered()), this, SLOT(saveCopy()));
-    QObject::connect(actionSave_a_backup, SIGNAL(triggered()), this, SLOT(saveBackup()));
     QObject::connect(actionExport_CSV, SIGNAL(triggered()), this, SLOT(exportCSV()));
     QObject::connect(actionClose, SIGNAL(triggered()), this, SLOT(closeDB()));
     QObject::connect(actionQuit, SIGNAL(triggered()), this, SLOT(quit()));

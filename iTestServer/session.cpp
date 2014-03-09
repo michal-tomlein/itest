@@ -17,7 +17,7 @@
  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ********************************************************************/
 
-#include "archived_session.h"
+#include "session.h"
 
 LogEntry::LogEntry()
 {
@@ -61,22 +61,20 @@ Session::Session()
     s_name = tr("Undefined");
     s_maxscore = 0.0;
     s_score = 0.0;
-    s_archived = false;
 }
 
-Session::Session(ArchivedSession * archived_session)
+Session::Session(Session * session)
 {
-    s_name = archived_session->s_name;
-    s_datetime = archived_session->s_datetime;
-    s_maxscore = archived_session->s_maxscore;
-    s_score = archived_session->s_score;
-    s_log = archived_session->s_log;
-    for (int i = 0; i < archived_session->s_students.count(); ++i) {
-        s_students << new Student(archived_session->s_students.at(i));
+    s_name = session->s_name;
+    s_datetime = session->s_datetime;
+    s_maxscore = session->s_maxscore;
+    s_score = session->s_score;
+    s_log = session->s_log;
+    for (int i = 0; i < session->s_students.count(); ++i) {
+        s_students << new Student(session->s_students.at(i));
     }
-    s_passmark = archived_session->s_passmark;
-    s_scoringsystem = archived_session->s_scoringsystem;
-    s_archived = false;
+    s_passmark = session->s_passmark;
+    s_scoringsystem = session->s_scoringsystem;
 }
 
 Session::~Session()
@@ -186,5 +184,3 @@ bool Session::mostPassed()
     }
     return numpassed >= (s_students.count() - numpassed);
 }
-
-bool Session::isArchived() { return s_archived; }

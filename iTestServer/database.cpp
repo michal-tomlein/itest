@@ -140,26 +140,10 @@ void MainWindow::saveCopy()
     QString db_name = DBIDatabaseNameLineEdit->text();
     QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save a copy"), QString("%1.itdb").arg(db_name), tr("iTest databases (*.itdb);;iTest 1.3 databases (*.it13.itdb)"));
     if (!saveDBName.isNull() || !saveDBName.isEmpty())
-    { addRecent(saveDBName); saveDB(saveDBName, true, false); }
+    { addRecent(saveDBName); saveDB(saveDBName, true); }
 }
 
-void MainWindow::saveBackup()
-{
-    if (this->isWindowModified()) {
-        switch (QMessageBox::information(this, tr("Save a backup"), tr("It is necessary to save any changes you have made to the database before proceeding."), tr("&Save"), tr("Cancel"), 0, 1)) {
-            case 0: // Save
-                save(); break;
-            case 1: // Cancel
-                return; break;
-        }
-    }
-    QString db_name = DBIDatabaseNameLineEdit->text();
-    QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save a backup"), QString("%1.itdb").arg(db_name), tr("iTest databases (*.itdb)"));
-    if (!saveDBName.isNull() || !saveDBName.isEmpty())
-    { addRecent(saveDBName); saveDB(saveDBName, true, true); }
-}
-
-void MainWindow::saveDB(const QString & db_file_name, bool savecopy, bool allsessions)
+void MainWindow::saveDB(const QString & db_file_name, bool savecopy)
 {
     this->setEnabled(false); qApp->processEvents();
     // Prepare
@@ -168,30 +152,6 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy, bool allses
     }
     // Gather info
     QString db_name = DBIDatabaseNameLineEdit->text();
-    if (db_name != current_db_name) {
-        QSettings archive(QSettings::IniFormat, QSettings::UserScope, "Michal Tomlein", "iTest");
-        QStringList dbs, sns; QString buffer;
-        switch (QMessageBox::information(this, tr("iTestServer"), tr("Are you sure you want to change the database name?\nIf you do so, any archived sessions associated to this database\non other computers will not load, unless you change it back.\nThis computer's archive will be updated."), tr("&Change"), tr("Do &not change"), 0, 1)) {
-            case 0: // Change
-                dbs = archive.value("databases").toStringList();
-                if (!dbs.contains(current_db_name)) { break; }
-                dbs.removeAll(current_db_name);
-                dbs << db_name;
-                archive.setValue("databases", dbs);
-                sns = archive.value(QString("%1/sessions").arg(current_db_name)).toStringList();
-                archive.setValue(QString("%1/sessions").arg(db_name), sns);
-                for (int i = 0; i < sns.count(); ++i) {
-                    buffer = archive.value(QString("%1/%2").arg(current_db_name).arg(sns.at(i))).toString();
-                    archive.setValue(QString("%1/%2").arg(db_name).arg(sns.at(i)), buffer);
-                }
-                archive.remove(current_db_name);
-                break;
-            case 1: // Do not change
-                db_name = current_db_name;
-                DBIDatabaseNameLineEdit->setText(current_db_name);
-                break;
-        }
-    }
     bool itdb1_3 = db_file_name.endsWith(".it13.itdb");
     QString use_last_save_date; QString db_date;
     if (actionUse_last_save_date->isChecked()) {
@@ -202,16 +162,7 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy, bool allses
         use_last_save_date = "false";
     }
     QString db_comments = removeLineBreaks(ECTextEdit->toHtml());
-    QMap<QDateTime, Session *> sessions = current_db_sessions;
-    if (allsessions && !itdb1_3) {
-        QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
-        while (a.hasNext()) { a.next();
-            if (!sessions.contains(a.key())) {
-                sessions.insert(a.key(), a.value());
-            }
-        }
-    }
-    uint db_snum = (uint)sessions.size();
+    uint db_snum = (uint)current_db_sessions.size();
     // Save database -----------------------------------------------------------
     QFile file(db_file_name);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
@@ -240,14 +191,14 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy, bool allses
     }
     sfile << "[DB_FLAGS_END]" << endl;
     setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    uint count = (uint)current_db_questions.size() + (uint)sessions.size();
+    uint count = (uint)current_db_questions.size() + (uint)current_db_sessions.size();
     uint n = current_db_questions.size();
     for (int i = 0; i < LQListWidget->count(); ++i) {
         sfile << current_db_questions.value(LQListWidget->item(i))->allProperties(itdb1_3) << endl;
         setProgress((90/(i+1)*count)+10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>
     }
     if (!itdb1_3) {
-        QMapIterator<QDateTime, Session *> i(sessions);
+        QMapIterator<QDateTime, Session *> i(current_db_sessions);
         while (i.hasNext()) { i.next(); n++;
             sfile << i.value()->sessionData() << endl;
             for (int s = 0; s < i.value()->numStudents(); ++s) {
@@ -258,18 +209,6 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy, bool allses
         QMapIterator<QListWidgetItem *, Class *> c(current_db_classes);
         while (c.hasNext()) { c.next();
             sfile << c.value()->classData() << endl;
-        }
-    }
-    // -------------------------------------------------------------------------
-    while (!current_db_queued_sessions.isEmpty()) {
-        ArchivedSession * session = current_db_queued_sessions.dequeue();
-        if (session->status() == ArchivedSession::Remove) {
-            session->removeFromArchive();
-            session->destroy();
-            delete session;
-        } else if (session->status() == ArchivedSession::Archive) {
-            session->archive();
-            session->setStatus(ArchivedSession::Default);
         }
     }
     // -------------------------------------------------------------------------
@@ -653,8 +592,6 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         mainStackedWidget->setCurrentIndex(1);
         // ---------------------------------------------------------------------
         this->setEnabled(true);
-        // Load archived sessions
-        openArchive();
     }
     catch (xInvalidDBFile e) {
         errorInvalidDBFile(tr("Open database"), openDBName, e.error());

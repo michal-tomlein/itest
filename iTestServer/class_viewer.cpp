@@ -82,13 +82,16 @@ void MainWindow::setCurrentClass(QListWidgetItem * item)
     CLSCFirstYearSpinBox->setValue(cl->firstYear());
     CLSCLastYearSpinBox->setValue(cl->lastYear());
     CLSCNumStudentsLabel->setText(QString::number(cl->numMembers()));
-    CLSCAverageLabel->setText(QString("%1%").arg(cl->average(&current_db_sessions, &current_db_archivedsessions)));
+    CLSCAverageLabel->setText(QString("%1%").arg(cl->average(&current_db_sessions)));
     CLLSListWidget->clear();
     for (int i = 0; i < cl->numMembers(); ++i) {
         CLLSListWidget->addItem(cl->member(i)->name());
     }
     for (int i = 0; i < cl->numSessions(); ++i) {
-        Session * session = current_db_sessions.value(cl->session(i), current_db_archivedsessions.value(cl->session(i), new ArchivedSession(this)));
+        Session * session = current_db_sessions.value(cl->session(i));
+        if (!session)
+            continue;
+
         QListWidgetItem * item = new QListWidgetItem(QString("%1 - %2").arg(cl->sessionToString(i)).arg(session->name()));
         item->setData(Qt::UserRole, cl->session(i));
         CLLSSListWidget->addItem(item);
@@ -104,11 +107,11 @@ void MainWindow::setCurrentClassMember(QListWidgetItem * item)
     clearCLSS(); setCLSSEnabled(true);
     ClassMember * mem = current_db_class->member(CLLSListWidget->row(item));
     CLSSNameLineEdit->setText(mem->name());
-    CLSSAverageLabel->setText(QString("%1%").arg(mem->average(&current_db_sessions, &current_db_archivedsessions)));
+    CLSSAverageLabel->setText(QString("%1%").arg(mem->average(&current_db_sessions)));
     CLSSResultsTableWidget->setRowCount(mem->numSessionEntries());
     CLSSResultsTableWidget->setSortingEnabled(false);
     for (int i = 0; i < mem->numSessionEntries(); ++i) {
-        Session * session = current_db_sessions.value(mem->sessionEntry(i).session, current_db_archivedsessions.value(mem->sessionEntry(i).session, NULL));
+        Session * session = current_db_sessions.value(mem->sessionEntry(i).session);
         if (session != NULL) {
             CLSSResultsTableWidget->setItem(i, 0, new QTableWidgetItem(QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name())));
             CLSSResultsTableWidget->item(i, 0)->setData(Qt::UserRole, session->dateTime());
@@ -229,7 +232,7 @@ void MainWindow::deleteStudent()
     current_db_class->removeMember(CLLSListWidget->highlightedRow());
     delete CLLSListWidget->takeItem(CLLSListWidget->highlightedRow());
     CLSCNumStudentsLabel->setText(QString::number(current_db_class->numMembers()));
-    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions, &current_db_archivedsessions)));
+    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions)));
     clearCLSS();
     togglePrintEnabled();
     setDatabaseModified();
@@ -254,13 +257,6 @@ void MainWindow::addSession()
         item->setForeground(QBrush(QColor(0, 0, 0)));
         lw->addItem(item);
     }
-    for (int i = 0; i < SVLASListWidget->count(); ++i) {
-        if (sessions_list.contains(SVLASListWidget->item(i)->data(Qt::UserRole).toDateTime())) { continue; }
-        QListWidgetItem * item = new QListWidgetItem(*(SVLASListWidget->item(i)));
-        item->setBackground(QBrush(QColor(255, 255, 255)));
-        item->setForeground(QBrush(QColor(0, 0, 0)));
-        lw->addItem(item);
-    }
     lw->setCurrentRow(0);
     if (!d->exec()) { delete d; return; }
     if (lw->currentItem() == NULL) { delete d; return; }
@@ -271,7 +267,10 @@ void MainWindow::addSession()
     CLLSSListWidget->addItem(item);
     delete d;
     setDatabaseModified();
-    Session * session = current_db_sessions.value(datetime, current_db_archivedsessions.value(datetime, new ArchivedSession(this)));
+    Session * session = current_db_sessions.value(datetime);
+    if (!session)
+        return;
+
     SessionWizard wizard(session, current_db_class, this);
     wizard.setWindowModality(Qt::WindowModal);
     wizard.exec();
@@ -279,7 +278,7 @@ void MainWindow::addSession()
         current_db_class->member(wizard.studentNumberInClass(i))->addSession(datetime, wizard.studentNumberInSession(i));
     }
     setCurrentClassMember(CLLSListWidget->highlightedItem());
-    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions, &current_db_archivedsessions)));
+    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions)));
 }
 
 void MainWindow::deleteSession()
@@ -299,7 +298,7 @@ void MainWindow::deleteSession()
         current_db_class->member(i)->removeSession(datetime);
     }
     if (CLLSListWidget->highlightedRow() >= 0) { setCurrentClassMember(CLLSListWidget->highlightedItem()); }
-    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions, &current_db_archivedsessions)));
+    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions)));
     setDatabaseModified();
 }
 
@@ -315,15 +314,7 @@ void MainWindow::viewSession(QListWidgetItem * item)
             return;
         }
     }
-    for (int i = 0; i < SVLASListWidget->count(); ++i) {
-        if (SVLASListWidget->item(i)->data(Qt::UserRole).toDateTime() == sdt) {
-            setCurrentSession(SVLASListWidget->item(i));
-            actionSaved_sessions->setChecked(true);
-            mainStackedWidget->setCurrentIndex(6);
-            return;
-        }
-    }
-    QMessageBox::information(this, tr("iTestServer"), tr("Session not found. This session might have been archived on a different computer."));
+    QMessageBox::information(this, tr("iTestServer"), tr("Session not found."));
 }
 
 void MainWindow::viewSessionAndStudent(QTableWidgetItem *)
@@ -340,16 +331,7 @@ void MainWindow::viewSessionAndStudent(QTableWidgetItem *)
             return;
         }
     }
-    for (int i = 0; i < SVLASListWidget->count(); ++i) {
-        if (SVLASListWidget->item(i)->data(Qt::UserRole).toDateTime() == sdt) {
-            setCurrentSession(SVLASListWidget->item(i));
-            SVLCListWidget->setCurrentRow(num);
-            actionSaved_sessions->setChecked(true);
-            mainStackedWidget->setCurrentIndex(6);
-            return;
-        }
-    }
-    QMessageBox::information(this, tr("iTestServer"), tr("Session not found. This session might have been archived on a different computer."));
+    QMessageBox::information(this, tr("iTestServer"), tr("Session not found."));
 }
 
 void MainWindow::addSessionToMember()
@@ -359,7 +341,10 @@ void MainWindow::addSessionToMember()
     if (CLLSListWidget->highlightedRow() < 0) { return; }
 
     QDateTime datetime = CLLSSListWidget->currentItem()->data(Qt::UserRole).toDateTime();
-    Session * session = current_db_sessions.value(datetime, current_db_archivedsessions.value(datetime, new ArchivedSession(this)));
+    Session * session = current_db_sessions.value(datetime);
+    if (!session)
+        return;
+
     if (session->numStudents() < 1) { return; }
     MTListWidget * lw = new MTListWidget;
     QDialog * d = createAddSessionDialogue(tr("Add selected session"), lw);
@@ -371,7 +356,7 @@ void MainWindow::addSessionToMember()
     if (lw->currentItem() == NULL) { delete d; return; }
     current_db_class->member(CLLSListWidget->highlightedRow())->addSession(datetime, lw->currentRow());
     setCurrentClassMember(CLLSListWidget->highlightedItem());
-    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions, &current_db_archivedsessions)));
+    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions)));
     delete d;
     setDatabaseModified();
 }
@@ -419,7 +404,7 @@ void MainWindow::removeSessionFromMember()
     }
     current_db_class->member(CLLSListWidget->highlightedRow())->removeSession(CLSSResultsTableWidget->item(CLSSResultsTableWidget->currentRow(), 0)->data(Qt::UserRole).toDateTime());
     setCurrentClassMember(CLLSListWidget->highlightedItem());
-    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions, &current_db_archivedsessions)));
+    CLSCAverageLabel->setText(QString("%1%").arg(current_db_class->average(&current_db_sessions)));
     setDatabaseModified();
 }
 

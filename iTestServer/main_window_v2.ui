@@ -2467,20 +2467,6 @@
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QLabel" name="label_archived_sessions">
-               <property name="text">
-                <string>&lt;b&gt;Archived sessions:&lt;/b&gt;</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="MTListWidget" name="SVLASListWidget">
-               <property name="statusTip">
-                <string>Double click a session to view</string>
-               </property>
-              </widget>
-             </item>
             </layout>
            </widget>
           </item>
@@ -3720,11 +3706,6 @@
     <addaction name="separator"/>
     <addaction name="actionExport_log"/>
     <addaction name="actionDelete_log"/>
-    <addaction name="separator"/>
-    <addaction name="actionArchive_session"/>
-    <addaction name="actionCopy_to_archive"/>
-    <addaction name="actionRestore_session"/>
-    <addaction name="actionCopy_from_archive"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -3842,7 +3823,6 @@
     <addaction name="actionSave"/>
     <addaction name="actionSave_as"/>
     <addaction name="actionSave_a_copy"/>
-    <addaction name="actionSave_a_backup"/>
     <addaction name="separator"/>
     <addaction name="menuExport"/>
     <addaction name="separator"/>
@@ -4715,27 +4695,6 @@
     <string>Delete the log for the selected session</string>
    </property>
   </action>
-  <action name="actionArchive_session">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/images/images/archive.png</normaloff>:/images/images/archive.png</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Archive session</string>
-   </property>
-   <property name="iconText">
-    <string>Archive session</string>
-   </property>
-   <property name="toolTip">
-    <string>Archive the selected session</string>
-   </property>
-   <property name="statusTip">
-    <string>Archive the selected session</string>
-   </property>
-   <property name="whatsThis">
-    <string>Archive the selected session</string>
-   </property>
-  </action>
   <action name="actionDocumentation">
    <property name="icon">
     <iconset resource="resources.qrc">
@@ -4844,60 +4803,6 @@
     <string>Change the language of the iTest interface</string>
    </property>
   </action>
-  <action name="actionRestore_session">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/images/images/restore.png</normaloff>:/images/images/restore.png</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Restore session</string>
-   </property>
-   <property name="toolTip">
-    <string>Restore the selected session from the archive</string>
-   </property>
-   <property name="statusTip">
-    <string>Restore the selected session from the archive</string>
-   </property>
-   <property name="whatsThis">
-    <string>Restore the selected session from the archive</string>
-   </property>
-  </action>
-  <action name="actionCopy_to_archive">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/images/images/copy_to_archive.png</normaloff>:/images/images/copy_to_archive.png</iconset>
-   </property>
-   <property name="text">
-    <string>Copy to archive</string>
-   </property>
-   <property name="toolTip">
-    <string>Copy the selected session to the archive</string>
-   </property>
-   <property name="statusTip">
-    <string>Copy the selected session to the archive</string>
-   </property>
-   <property name="whatsThis">
-    <string>Copy the selected session to the archive</string>
-   </property>
-  </action>
-  <action name="actionCopy_from_archive">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/images/images/copy_from_archive.png</normaloff>:/images/images/copy_from_archive.png</iconset>
-   </property>
-   <property name="text">
-    <string>Copy from archive</string>
-   </property>
-   <property name="toolTip">
-    <string>Copy the selected session from the archive</string>
-   </property>
-   <property name="statusTip">
-    <string>Copy the selected session from the archive</string>
-   </property>
-   <property name="whatsThis">
-    <string>Copy the selected session from the archive</string>
-   </property>
-  </action>
   <action name="actionSave_a_copy">
    <property name="icon">
     <iconset resource="resources.qrc">
@@ -4914,24 +4819,6 @@
    </property>
    <property name="whatsThis">
     <string>Save a copy of the database</string>
-   </property>
-  </action>
-  <action name="actionSave_a_backup">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/images/images/savebackup.png</normaloff>:/images/images/savebackup.png</iconset>
-   </property>
-   <property name="text">
-    <string>Save a backup</string>
-   </property>
-   <property name="toolTip">
-    <string>Save a backup copy of the database with all the archived sessions</string>
-   </property>
-   <property name="statusTip">
-    <string>Save a backup copy of the database with all the archived sessions</string>
-   </property>
-   <property name="whatsThis">
-    <string>Save a backup copy of the database with all the archived sessions</string>
    </property>
   </action>
   <action name="actionShow_hidden">

@@ -79,11 +79,11 @@ bool ClassMember::hasSession(QDateTime session)
     return false;
 }
 
-int ClassMember::average(QMap<QDateTime, Session *> * sessions, QMap<QDateTime, ArchivedSession *> * archivedsessions)
+int ClassMember::average(QMap<QDateTime, Session *> * sessions)
 {
     long double score = 0.0; long double maxscore = 0.0;
     for (int i = 0; i < ms_sessions.count(); ++i) {
-        Session * session = sessions->value(ms_sessions.at(i).session, archivedsessions->value(ms_sessions.at(i).session, NULL));
+        Session * session = sessions->value(ms_sessions.at(i).session, NULL);
         if (session == NULL) { continue; }
         if (ms_sessions.at(i).member_num < 0 || ms_sessions.at(i).member_num >= session->numStudents()) { continue; }
         Student * student = session->student(ms_sessions.at(i).member_num);
@@ -177,12 +177,12 @@ QDateTime Class::session(int i) { return cl_sessions.at(i); }
 
 QString Class::sessionToString(int i) { return cl_sessions.at(i).toString("yyyy.MM.dd-hh:mm"); }
 
-int Class::average(QMap<QDateTime, Session *> * sessions, QMap<QDateTime, ArchivedSession *> * archivedsessions)
+int Class::average(QMap<QDateTime, Session *> * sessions)
 {
     long double score = 0.0; int n = 0;
     for (int i = 0; i < cl_members.count(); ++i) {
         if (cl_members.at(i)->numSessionEntries() > 0) {
-            score += cl_members.at(i)->average(sessions, archivedsessions);
+            score += cl_members.at(i)->average(sessions);
             n++;
         }
     }

@@ -503,35 +503,16 @@ uint MainWindow::numOccurrences(const QString & qname)
             if (i.value()->student(s)->wasAsked(qname)) { n++; }
         }
     }
-    QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
-    while (a.hasNext()) { a.next();
-        for (int s = 0; s < a.value()->numStudents(); ++s) {
-            if (a.value()->student(s)->wasAsked(qname)) { n++; }
-        }
-    }
     return n;
 }
 
 uint MainWindow::replaceAllOccurrences(const QString & old_qname, const QString & new_qname)
 {
-    uint n = 0, as = 0, x = 0;
+    uint n = 0;
     QMapIterator<QDateTime, Session *> i(current_db_sessions);
     while (i.hasNext()) { i.next();
         for (int s = 0; s < i.value()->numStudents(); ++s) {
             n += i.value()->student(s)->replaceOccurrences(old_qname, new_qname);
-        }
-    }
-    QMapIterator<QDateTime, ArchivedSession *> a(current_db_archivedsessions);
-    while (a.hasNext()) { a.next();
-        as = 0;
-        for (int s = 0; s < a.value()->numStudents(); ++s) {
-            x = a.value()->student(s)->replaceOccurrences(old_qname, new_qname);
-            n += x; as += x;
-        }
-        if (as > 0) {
-            a.value()->setStatus(ArchivedSession::Archive);
-            current_db_queued_sessions.removeAll(a.value());
-            current_db_queued_sessions.enqueue(a.value());
         }
     }
     return n;

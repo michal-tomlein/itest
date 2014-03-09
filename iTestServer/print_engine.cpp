@@ -19,6 +19,8 @@
 
 #include "main_window.h"
 
+#include <QSettings>
+
 PrintQuestionsDialogue::PrintQuestionsDialogue(MainWindow * parent):
 QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
 {
@@ -843,7 +845,7 @@ bool MainWindow::printClassSummary(Class * cl, QPrinter * printer)
     QTextDocument doc; QString html; QTextStream out(&html);
     QString header = tr("Class statistics and summary");
     header.append(QString(" - %1").arg(Qt::escape(cl->name())));
-    int average = cl->average(&current_db_sessions, &current_db_archivedsessions);
+    int average = cl->average(&current_db_sessions);
     out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
     out << header << endl << "</title><style type=\"text/css\">" << endl;
     out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
@@ -866,7 +868,7 @@ bool MainWindow::printClassSummary(Class * cl, QPrinter * printer)
     for (int i = 0; i < cl->numMembers(); ++i) {
         out << "<table border=\"0\" width=\"100%\"><tr><td width=\"60%\" valign=\"middle\"><div class=\"default_text\">" << endl;
         out << Qt::escape(cl->member(i)->name());
-        average = cl->member(i)->average(&current_db_sessions, &current_db_archivedsessions);
+        average = cl->member(i)->average(&current_db_sessions);
         out << "</div></td><td>" << htmlForProgressBar(average, average >= 50);
         out << "</td><td width=\"7%\" align=\"right\" valign=\"middle\"><div class=\"default_text\">" << endl;
         out << average << "%" << endl << "</div></td></tr></table>" << endl;
@@ -1093,7 +1095,7 @@ QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & 
 
 QString MainWindow::htmlForClassMember(ClassMember * mem)
 {
-    QString html; QTextStream out(&html); int average = mem->average(&current_db_sessions, &current_db_archivedsessions);
+    QString html; QTextStream out(&html); int average = mem->average(&current_db_sessions);
     out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
     out << tr("Statistics for %1").arg(Qt::escape(mem->name())) << endl << "</title><style type=\"text/css\">" << endl;
     out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
@@ -1120,7 +1122,7 @@ QString MainWindow::htmlForClassMember(ClassMember * mem)
     }
     QMapIterator<QDateTime, int> i(sessions_map);
     while (i.hasNext()) { i.next();
-        Session * session = current_db_sessions.value(i.key(), current_db_archivedsessions.value(i.key(), NULL));
+        Session * session = current_db_sessions.value(i.key());
         out << "<table border=\"0\" width=\"100%\"><tr><td width=\"35%\" valign=\"middle\"><div class=\"default_text\">" << endl;
         out << mem->sessionToString(i.value());
         if (session != NULL) { out << " - " << Qt::escape(session->name()); }

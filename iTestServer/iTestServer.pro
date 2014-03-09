@@ -12,7 +12,6 @@ HEADERS      += main_window.h \
                 client.h \
                 student.h \
                 session.h \
-                archived_session.h \
                 ../shared/pass_mark.h \
                 svg_item.h \
                 extendedlineedit.h \
@@ -46,7 +45,6 @@ SOURCES      += main.cpp \
                 session_viewer.cpp \
                 student.cpp \
                 session.cpp \
-                archived_session.cpp \
                 ../shared/pass_mark.cpp \
                 svg_item.cpp \
                 class.cpp \

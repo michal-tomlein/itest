@@ -53,15 +53,13 @@ private:
     QString le_text;
 };
 
-class ArchivedSession;
-
 class Session : public QObject
 {
     Q_OBJECT
 
 public:
     Session();
-    Session(ArchivedSession *);
+    Session(Session *);
     virtual ~Session();
 
 public slots:
@@ -88,7 +86,6 @@ public slots:
     ScoringSystem scoringSystem();
     QString sessionData();
     bool mostPassed();
-    bool isArchived();
     void destroy();
 
 private:
@@ -98,11 +95,8 @@ private:
     long double s_score;
     QList<LogEntry> s_log;
     QList<Student *> s_students;
-    bool s_archived;
     PassMark s_passmark;
     ScoringSystem s_scoringsystem;
-
-    friend class ArchivedSession;
 };
 
 #endif // SESSION_H

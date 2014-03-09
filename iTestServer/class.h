@@ -20,7 +20,7 @@
 #ifndef CLASS_H
 #define CLASS_H
 
-#include "archived_session.h"
+#include "session.h"
 
 struct SessionEntry
 {
@@ -46,7 +46,7 @@ public:
     int memberNumForSession(int);
     int numSessionEntries();
     bool hasSession(QDateTime);
-    int average(QMap<QDateTime, Session *> *, QMap<QDateTime, ArchivedSession *> *);
+    int average(QMap<QDateTime, Session *> *);
     QString memberData();
 
 private:
@@ -83,7 +83,7 @@ public:
     int numSessions();
     QDateTime session(int);
     QString sessionToString(int);
-    int average(QMap<QDateTime, Session *> *, QMap<QDateTime, ArchivedSession *> *);
+    int average(QMap<QDateTime, Session *> *);
     QString classData();
 
 private:

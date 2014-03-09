@@ -51,7 +51,6 @@
 #include <QDesktopServices>
 #include <QHeaderView>
 #include <QTranslator>
-#include <QQueue>
 #include <QProcess>
 #include <QSvgWidget>
 #include <QUrl>
@@ -86,7 +85,6 @@ private slots:
     void openDocumentation();
     void changeLanguage();
     void langChanged();
-    void hideArchive();
     void previewSvg(QListWidgetItem *);
     // ENABLE/DISABLE
     void setAllEnabled(bool);
@@ -106,11 +104,10 @@ private slots:
     void open();
     void openRecent();
     void openRecent(QListWidgetItem *);
-    void saveDB(const QString &, bool = false, bool = false);
+    void saveDB(const QString &, bool = false);
     void save();
     void saveAs();
     void saveCopy();
-    void saveBackup();
     void exportCSV();
     void setDatabaseModified();
     // STATS
@@ -244,13 +241,8 @@ private slots:
     void selectSessionItem(QListWidgetItem *);
     void loadStudentResults(QMap<QString, QuestionAnswer> *);
     void deleteLog();
-    void archiveSession();
-    void restoreSession();
-    void copyToArchive();
-    void copyFromArchive();
     void searchSVLS(const QString &);
     void clearSVSC();
-    void openArchive();
     void showSelectedStudentTab();
     // CLASSVIEWER-RELATED
     void setupClassViewer();
@@ -283,13 +275,11 @@ private:
     QString current_db_question;
     QMap<QListWidgetItem *, QuestionItem *> current_db_questions;
     QMap<QDateTime, Session *> current_db_sessions;
-    QMap<QDateTime, ArchivedSession *> current_db_archivedsessions;
     QMap<QListWidgetItem *, Class *> current_db_classes;
     QMap<QListWidgetItem *, Student *> current_db_students;
     QMap<int, int> current_db_flagentries;
     Session * current_db_session;
     Class * current_db_class;
-    QQueue<ArchivedSession *> current_db_queued_sessions;
     PassMark current_db_passmark;
     // FLAGS
     QVector<bool> current_db_fe;
@@ -367,7 +357,6 @@ private:
     // FRIENDS
     friend class Client;
     friend class Session;
-    friend class ArchivedSession;
     friend class PrintQuestionsDialogue;
 };
 

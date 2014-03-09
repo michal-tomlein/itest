@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/images" >
-        <file>images/archive.png</file>
         <file>images/attachment.png</file>
         <file>images/back.png</file>
         <file>images/bottom.png</file>
@@ -14,8 +13,6 @@
         <file>images/client.png</file>
         <file>images/clients.png</file>
         <file>images/contents.png</file>
-        <file>images/copy_from_archive.png</file>
-        <file>images/copy_to_archive.png</file>
         <file>images/difficult.png</file>
         <file>images/document-properties.png</file>
         <file>images/document-save.png</file>
@@ -52,9 +49,7 @@
         <file>images/qt4.png</file>
         <file>images/quit.png</file>
         <file>images/reload.png</file>
-        <file>images/restore.png</file>
         <file>images/save_all.png</file>
-        <file>images/savebackup.png</file>
         <file>images/savedsession-add32.png</file>
         <file>images/savedsession-remove32.png</file>
         <file>images/savedsessions32.png</file>

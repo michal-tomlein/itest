@@ -19,6 +19,9 @@
 
 #include "main.h"
 
+#include <QSettings>
+#include <QTranslator>
+
 int main(int argc, char *argv[])
 {
 #ifdef Q_OS_MAC
