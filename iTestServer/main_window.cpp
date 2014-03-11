@@ -57,8 +57,6 @@ void MainWindow::setNullProgress()
 void MainWindow::clearCurrentValues()
 {
     current_db_file.clear();
-    current_db_name.clear();
-    current_db_date.clear();
     current_db_comments.clear();
     current_db_question.clear();
     current_db_fe.clear(); current_db_fe.resize(20);
@@ -97,13 +95,6 @@ void MainWindow::clearSQNoFlags()
     SQExplanationLineEdit->clear();
 }
 
-void MainWindow::clearDBI()
-{
-    DBIDatabaseNameLineEdit->clear();
-    DBIDateEdit->setDateTime(QDateTime(QDate(2006, 12, 1), QTime(0, 0)));
-    DBIUseLastSaveDateCheckBox->setChecked(true);
-}
-
 void MainWindow::setAllEnabled(bool enabled)
 {
     actionSave->setEnabled(enabled);
@@ -118,12 +109,8 @@ void MainWindow::setAllEnabled(bool enabled)
 //  actionSaved_sessions->setEnabled(enabled);
 //  actionEdit_classes->setEnabled(enabled);
     actgrpPage->setEnabled(enabled);
-    actionShow_DBI->setEnabled(enabled);
 //    actionOverall_statistics->setEnabled(enabled);
 
-    DBIDatabaseNameLineEdit->setEnabled(enabled);
-//  DBIDateEdit->setEnabled(enabled);
-    DBIUseLastSaveDateCheckBox->setEnabled(enabled);
     LQListWidget->setEnabled(enabled);
     LQFlagComboBox->setEnabled(enabled);
     LQSearchLineEdit->setEnabled(enabled);
@@ -247,7 +234,6 @@ void MainWindow::togglePrintEnabled()
 void MainWindow::clearAll()
 {
     clearCurrentValues();
-    clearDBI();
     clearLQ();
     clearSQ();
     ECTextEdit->clear();
@@ -358,11 +344,6 @@ MainWindow::MainWindow()
     QObject::connect(recentDBsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(openRecent(QListWidgetItem *)));
     QObject::connect(LQListWidget, SIGNAL(currentTextChanged(QString)), this, SLOT(setCurrentQuestion()));
 
-    QObject::connect(actionShow_DBI, SIGNAL(toggled(bool)), this, SLOT(onInfoDisplayChange(bool)));
-    QObject::connect(actionUse_last_save_date, SIGNAL(toggled(bool)), DBIUseLastSaveDateCheckBox, SLOT(setChecked(bool)));
-    QObject::connect(DBIUseLastSaveDateCheckBox, SIGNAL(toggled(bool)), actionUse_last_save_date, SLOT(setChecked(bool)));
-    QObject::connect(DBIUseLastSaveDateCheckBox, SIGNAL(toggled(bool)), DBIDateEdit, SLOT(setDisabled(bool)));
-
     QObject::connect(actionFrom_A_to_Z, SIGNAL(triggered()), this, SLOT(sortQuestionsAscending()));
     QObject::connect(actionFrom_Z_to_A, SIGNAL(triggered()), this, SLOT(sortQuestionsDescending()));
     QObject::connect(actionBy_flag, SIGNAL(triggered()), this, SLOT(sortQuestionsByFlag()));
@@ -419,11 +400,7 @@ MainWindow::MainWindow()
 
     //QObject::connect(btnApply, SIGNAL(released()), this, SLOT(setDatabaseModified()));
     //QObject::connect(actionApply, SIGNAL(triggered()), this, SLOT(setDatabaseModified()));
-    QObject::connect(actionUse_last_save_date, SIGNAL(triggered()), this, SLOT(setDatabaseModified()));
-    QObject::connect(DBIUseLastSaveDateCheckBox, SIGNAL(released()), this, SLOT(setDatabaseModified()));
     QObject::connect(ECTextEdit, SIGNAL(textChanged()), this, SLOT(setDatabaseModified()));
-    QObject::connect(DBIDatabaseNameLineEdit, SIGNAL(textEdited(const QString &)), this, SLOT(setDatabaseModified()));
-    QObject::connect(DBIDateEdit, SIGNAL(dateTimeChanged(const QDateTime &)), this, SLOT(setDatabaseModified()));
 
     QObject::connect(actionCheck_for_updates, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
     QObject::connect(network_access_manager, SIGNAL(finished(QNetworkReply *)), this, SLOT(httpRequestFinished(QNetworkReply *)));
@@ -489,7 +466,6 @@ void MainWindow::loadSettings()
     if (!recent.isEmpty()) { recentDBsListWidget->addItems(recent); }
     this->move(settings.value("editor/pos", this->pos()).toPoint());
     this->resize(settings.value("editor/size", this->size()).toSize());
-    onInfoDisplayChange(settings.value("editor/showDBI", false).toBool());
     actionShow_hidden->setChecked(settings.value("editor/showHidden", false).toBool());
     //SQSplitter->restoreState(settings.value("editor/SQSplitterState").toByteArray());
     //SVSplitter->restoreState(settings.value("editor/VSSSplitterState").toByteArray());
@@ -505,7 +481,6 @@ void MainWindow::saveSettings()
     settings.setValue("editor/recentDatabases", recent);
     settings.setValue("editor/pos", this->pos());
     settings.setValue("editor/size", this->size());
-    settings.setValue("editor/showDBI", actionShow_DBI->isChecked());
     settings.setValue("editor/showHidden", actionShow_hidden->isChecked());
     //settings.setValue("editor/SQSplitterState", SQSplitter->saveState());
     //settings.setValue("editor/VSSSplitterState", SVSplitter->saveState());
@@ -547,12 +522,6 @@ void MainWindow::setPage(QAction * act)
     } else if (act == actionEdit_classes) {
         mainStackedWidget->setCurrentIndex(7);
     }
-}
-
-void MainWindow::onInfoDisplayChange(bool show)
-{
-    DBIGroupBox->setVisible(show);
-    actionShow_DBI->setChecked(show);
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -662,9 +631,9 @@ void MainWindow::overallStatistics()
     stats_widget->setWindowModality(Qt::WindowModal);
     stats_widget->setAttribute(Qt::WA_DeleteOnClose);
 #ifdef Q_OS_MAC
-    stats_widget->setWindowTitle(tr("%1 - Overall statistics").arg(current_db_name));
+    stats_widget->setWindowTitle(tr("%1 - Overall statistics").arg(currentDatabaseName()));
 #else
-    stats_widget->setWindowTitle(tr("%1 - Overall statistics - iTest").arg(current_db_name));
+    stats_widget->setWindowTitle(tr("%1 - Overall statistics - iTest").arg(currentDatabaseName()));
 #endif
     stats_widget->setMinimumSize(QSize(300, 200));
     QGridLayout * stats_glayout = new QGridLayout(stats_widget);

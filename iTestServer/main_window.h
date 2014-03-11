@@ -48,6 +48,9 @@ public:
 
     void openFile(const QString &);
 
+    static QString databaseNameForFilePath(const QString &filePath);
+    QString currentDatabaseName();
+
 private slots:
     // UI-RELATED
     void quit();
@@ -55,7 +58,6 @@ private slots:
     void addRecent(const QString &);
     void loadSettings();
     void saveSettings();
-    void onInfoDisplayChange(bool);
     void setPage(QAction *);
     void currentPageChanged(int);
     bool saveChangesBeforeProceeding(const QString &, bool);
@@ -117,7 +119,6 @@ private slots:
     // CLEAR
     void clearAll();
     void clearCurrentValues();
-    void clearDBI();
     void clearLQ();
     void clearSQ();
     void clearSQNoFlags();
@@ -251,8 +252,6 @@ private:
     // CURRENT DB
     bool current_db_open;
     QString current_db_file;
-    QString current_db_name;
-    QString current_db_date;
     QString current_db_comments;
     QString current_db_question;
     QMap<QListWidgetItem *, QuestionItem *> current_db_questions;

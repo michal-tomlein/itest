@@ -246,101 +246,6 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QGroupBox" name="DBIGroupBox">
-          <property name="title">
-           <string>Database information</string>
-          </property>
-          <layout class="QHBoxLayout">
-           <property name="spacing">
-            <number>9</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="DBIDatabaseNameLabel">
-             <property name="text">
-              <string>Database name:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="DBIDatabaseNameLineEdit">
-             <property name="statusTip">
-              <string>Database name</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>60</width>
-               <height>10</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLabel" name="DBIDateLabel">
-             <property name="text">
-              <string>Date:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QDateEdit" name="DBIDateEdit">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="statusTip">
-              <string>Database date</string>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::PlusMinus</enum>
-             </property>
-             <property name="dateTime">
-              <datetime>
-               <hour>0</hour>
-               <minute>0</minute>
-               <second>0</second>
-               <year>2006</year>
-               <month>12</month>
-               <day>1</day>
-              </datetime>
-             </property>
-             <property name="date">
-              <date>
-               <year>2006</year>
-               <month>12</month>
-               <day>1</day>
-              </date>
-             </property>
-             <property name="displayFormat">
-              <string>yyyy.MM.dd - hh:mm</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="DBIUseLastSaveDateCheckBox">
-             <property name="statusTip">
-              <string>Use last save date</string>
-             </property>
-             <property name="text">
-              <string>Use last save date</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
          <layout class="QHBoxLayout">
           <item>
            <widget class="QGroupBox" name="LQGroupBox">
@@ -3718,8 +3623,6 @@
     <addaction name="actionSaved_sessions"/>
     <addaction name="actionEdit_classes"/>
     <addaction name="separator"/>
-    <addaction name="actionShow_DBI"/>
-    <addaction name="separator"/>
     <addaction name="actionChange_language"/>
    </widget>
    <widget class="QMenu" name="menuQuestion">
@@ -3805,8 +3708,6 @@
     <addaction name="separator"/>
     <addaction name="actionOverall_statistics"/>
     <addaction name="actionPrint_questions"/>
-    <addaction name="separator"/>
-    <addaction name="actionUse_last_save_date"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
@@ -4194,26 +4095,6 @@
     <string>Show difficult questions only</string>
    </property>
   </action>
-  <action name="actionShow_DBI">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Show database &amp;information</string>
-   </property>
-   <property name="statusTip">
-    <string>Show database information</string>
-   </property>
-   <property name="whatsThis">
-    <string>Show database information</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+I</string>
-   </property>
-  </action>
   <action name="actionShow_flag">
    <property name="icon">
     <iconset resource="resources.qrc">
@@ -4296,23 +4177,6 @@
    </property>
    <property name="whatsThis">
     <string>Edit comments</string>
-   </property>
-  </action>
-  <action name="actionUse_last_save_date">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Use last save date</string>
-   </property>
-   <property name="statusTip">
-    <string>Use last save date</string>
-   </property>
-   <property name="whatsThis">
-    <string>Use last save date</string>
    </property>
   </action>
   <action name="actionAdd">

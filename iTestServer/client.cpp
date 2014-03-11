@@ -140,7 +140,7 @@ void Client::readClientFeedback()
         quint64 current_entry;
         in >> current_entry;
         if (current_entry < (quint64)c_parent->current_db_test.count()) {
-            c_socket->write(c_parent->current_db_test.at(current_entry));
+            c_socket->write(c_parent->current_db_test.at((int)current_entry));
         }
         if (current_entry >= (quint64)(c_parent->current_db_test.count() - 1)) {
             c_test_sent = true; c_blocksize = 0;

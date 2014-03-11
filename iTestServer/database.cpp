@@ -28,6 +28,16 @@
 #include <QInputDialog>
 #include <QMessageBox>
 
+QString MainWindow::databaseNameForFilePath(const QString &filePath)
+{
+    return QFileInfo(filePath).completeBaseName();
+}
+
+QString MainWindow::currentDatabaseName()
+{
+    return databaseNameForFilePath(current_db_file);
+}
+
 bool MainWindow::saveChangesBeforeProceeding(const QString & title, bool close)
 {
     if (current_db_open && this->isWindowModified()) {
@@ -104,24 +114,18 @@ void MainWindow::newDB()
     setProgress(50); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     // APPLY
     setAllEnabled(true);
-    DBIDatabaseNameLineEdit->setText( db_name );
     current_db_file = saveDBName;
-    current_db_name = db_name;
     current_db_open = true;
     addRecent(saveDBName);
 #ifdef Q_OS_MAC
-    this->setWindowTitle(QString("%1[*]").arg(current_db_name));
+    this->setWindowTitle(QString("%1[*]").arg(currentDatabaseName()));
 #else
-    this->setWindowTitle(QString("%1[*] - iTestServer").arg(current_db_name));
+    this->setWindowTitle(QString("%1[*] - iTestServer").arg(currentDatabaseName()));
 #endif
     this->setWindowModified(false);
     statusBar()->showMessage(tr("Ready"), 10000);
     setProgress(100); setProgress(-1); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     actionEdit_questions->setChecked(true);
-    actionUse_last_save_date->setChecked(true);
-    DBIUseLastSaveDateCheckBox->setChecked(true);
-    DBIDateEdit->setDateTime(QDateTime::currentDateTime());
-    DBIDateEdit->setEnabled(false);
     setPage(actionEdit_questions);
     this->setEnabled(true);
     // -------------------------------------------------------------------------
@@ -131,8 +135,9 @@ void MainWindow::save() { saveDB(current_db_file); }
 
 void MainWindow::saveAs()
 {
-    QString db_name = DBIDatabaseNameLineEdit->text();
-    QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save database"), QString("%1.itdb").arg(db_name), tr("iTest databases (*.itdb)"));
+    QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save database"),
+                                                      QFileInfo(current_db_file).fileName(),
+                                                      tr("iTest databases (*.itdb)"));
     if (!saveDBName.isNull() || !saveDBName.isEmpty()) { addRecent(saveDBName); saveDB(saveDBName); }
 }
 
@@ -146,8 +151,9 @@ void MainWindow::saveCopy()
                 return; break;
         }
     }
-    QString db_name = DBIDatabaseNameLineEdit->text();
-    QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save a copy"), QString("%1.itdb").arg(db_name), tr("iTest databases (*.itdb);;iTest 1.3 databases (*.it13.itdb)"));
+    QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save a copy"),
+                                                      QFileInfo(current_db_file).fileName(),
+                                                      tr("iTest databases (*.itdb);;iTest 1.3 databases (*.it13.itdb)"));
     if (!saveDBName.isNull() || !saveDBName.isEmpty())
     { addRecent(saveDBName); saveDB(saveDBName, true); }
 }
@@ -160,16 +166,7 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy)
         applyQuestionChanges();
     }
     // Gather info
-    QString db_name = DBIDatabaseNameLineEdit->text();
     bool itdb1_3 = db_file_name.endsWith(".it13.itdb");
-    QString use_last_save_date; QString db_date;
-    if (actionUse_last_save_date->isChecked()) {
-        db_date = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm");
-        use_last_save_date = "true";
-    } else {
-        db_date = DBIDateEdit->dateTime().toString("yyyy.MM.dd-hh:mm");
-        use_last_save_date = "false";
-    }
     QString db_comments = removeLineBreaks(ECTextEdit->toHtml());
     uint db_snum = (uint)current_db_sessions.size();
     // Save database -----------------------------------------------------------
@@ -183,9 +180,9 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy)
     sfile.setCodec("UTF-8");
     sfile << "[ITEST_VERSION]\n" << F_ITEST_VERSION << endl;
     sfile << "[ITEST_DB_VERSION]\n" << (itdb1_3 ? 1.3 : F_ITDB_VERSION) << endl;
-    sfile << "[DB_NAME]\n" << db_name << endl;
-    sfile << "[DB_DATE]\n" << db_date << endl;
-    sfile << "[DB_DATE_ULSD]\n" << use_last_save_date << endl;
+    sfile << "[DB_NAME]\n" << databaseNameForFilePath(db_file_name) << endl;
+    sfile << "[DB_DATE]\n" << QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm") << endl;
+    sfile << "[DB_DATE_ULSD]\ntrue" << endl;
     sfile << "[DB_COMMENTS]\n" << db_comments << endl;
     sfile << "[DB_QNUM]\n" << current_db_questions.size() << endl;
     sfile << "[DB_SNUM]\n" << (itdb1_3 ? 0 : db_snum) << endl;
@@ -222,18 +219,13 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy)
     }
     // -------------------------------------------------------------------------
     if (!savecopy) {
-        current_db_name = db_name;
-        current_db_date = db_date;
         current_db_comments = db_comments;
         current_db_file = db_file_name;
-        if (actionUse_last_save_date->isChecked()) {
-            DBIDateEdit->setDateTime(QDateTime::fromString(current_db_date, "yyyy.MM.dd-hh:mm"));
-        }
     }
 #ifdef Q_OS_MAC
-    this->setWindowTitle(QString("%1[*]").arg(current_db_name));
+    this->setWindowTitle(QString("%1[*]").arg(currentDatabaseName()));
 #else
-    this->setWindowTitle(QString("%1[*] - iTestServer").arg(current_db_name));
+    this->setWindowTitle(QString("%1[*] - iTestServer").arg(currentDatabaseName()));
 #endif
     this->setWindowModified(false);
     statusBar()->showMessage(tr("Database saved"), 10000);
@@ -306,7 +298,7 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         QString db_date = rfile.readLine();
         if (rfile.readLine() != "[DB_DATE_ULSD]") { throw xInvalidDBFile(14); }
         // Use last save date
-        bool db_ulsd = (rfile.readLine() == "true");
+        rfile.readLine();
         if (rfile.readLine() != "[DB_COMMENTS]") { throw xInvalidDBFile(16); }
         // Database comments
         QString db_comments = rfile.readLine();
@@ -564,12 +556,7 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
             QListWidgetItem * cl_item = new QListWidgetItem(QString("%1-%2: %3").arg(cl->firstYear()).arg(cl->lastYear()).arg(cl->name()), CLLCListWidget);
             current_db_classes.insert(cl_item, cl);
         }
-        // Set texts - DBI section
-        DBIDatabaseNameLineEdit->setText( db_name );
-        DBIDateEdit->setDateTime( QDateTime::fromString(db_date, "yyyy.MM.dd-hh:mm") );
-        DBIUseLastSaveDateCheckBox->setChecked(db_ulsd);
-        actionUse_last_save_date->setChecked(db_ulsd);
-        DBIDateEdit->setEnabled(!db_ulsd);
+
         ECTextEdit->setHtml( db_comments );
         // Set flags
         current_db_fe = db_fe;
@@ -583,14 +570,12 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         setProgress(99); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         // Save values
         current_db_file = openDBName;
-        current_db_name = db_name;
-        current_db_date = db_date;
         current_db_comments = db_comments;
         current_db_open = true;
 #ifdef Q_OS_MAC
-        this->setWindowTitle(QString("%1[*]").arg(current_db_name));
+        this->setWindowTitle(QString("%1[*]").arg(currentDatabaseName()));
 #else
-        this->setWindowTitle(QString("%1[*] - iTestServer").arg(current_db_name));
+        this->setWindowTitle(QString("%1[*] - iTestServer").arg(currentDatabaseName()));
 #endif
         this->setWindowModified(false);
         statusBar()->showMessage(tr("Database open"), 10000);
@@ -636,7 +621,7 @@ void MainWindow::exportCSV()
 {
     QString file_name = QFileDialog::getSaveFileName(this,
                                                      tr("Export as CSV"),
-                                                     QString("%1.csv").arg(DBIDatabaseNameLineEdit->text()),
+                                                     QString("%1.csv").arg(currentDatabaseName()),
                                                      tr("CSV files (*.csv)"));
     if (file_name.isEmpty())
         return;

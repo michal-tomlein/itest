@@ -373,9 +373,9 @@ QDialog * MainWindow::createAddSessionDialogue(const QString & title, MTListWidg
 {
     QDialog * d = new QDialog(this);
 #ifdef Q_OS_MAC
-    d->setWindowTitle(QString("%1 - %2").arg(current_db_name).arg(title));
+    d->setWindowTitle(QString("%1 - %2").arg(currentDatabaseName()).arg(title));
 #else
-    d->setWindowTitle(QString("%1 - %2 - iTest").arg(current_db_name).arg(title));
+    d->setWindowTitle(QString("%1 - %2 - iTest").arg(currentDatabaseName()).arg(title));
 #endif
     d->setMinimumSize(QSize(300, 100));
         QVBoxLayout * vl = new QVBoxLayout(d);

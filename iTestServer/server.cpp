@@ -386,7 +386,9 @@ void MainWindow::startServer()
     // CUSTOM TEST NAME
     if (TSCustomTestNameCheckBox->isChecked()) {
         current_db_testname = TSTestNameLineEdit->text();
-    } else { current_db_testname = current_db_name; }
+    } else {
+        current_db_testname = currentDatabaseName();
+    }
     // TEST DATE
     current_db_testdate = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm");
     // PASS MARK
@@ -447,8 +449,8 @@ void MainWindow::startServer()
     out << QString("[ITEST_VERSION]\n") << QString("%1\n").arg(F_ITEST_VERSION);
     out << QString("[ITEST_DB_VERSION]\n") << QString("%1\n").arg(F_ITOS_VERSION);
     out << QString("[DB_NAME]\n") << current_db_testname << QString("\n");
-    out << QString("[DB_DATE]\n") << current_db_date << QString("\n");
-    out << QString("[DB_DATE_ULSD]\n") << (actionUse_last_save_date->isChecked() ? QString("true\n") : QString("false\n"));
+    out << QString("[DB_DATE]\n") << QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm") << QString("\n");
+    out << QString("[DB_DATE_ULSD]\ntrue\n");
     out << QString("[TEST_GRPS]\n") << (TSGroupsCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
     out << QString("[TEST_SHUFFLE_QUESTIONS]\n") << (TSShuffleQuestionsCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
     out << QString("[TEST_SHUFFLE_ANS]\n") << (TSShuffleAnswersCheckBox->isChecked() ? QString("true\n") : QString("false\n"));
@@ -575,11 +577,7 @@ void MainWindow::stopServer()
     setAllEnabled(true); actionQuit->setEnabled(true);
     actionNew->setEnabled(true); actionOpen->setEnabled(true);
     setPage(actionEdit_test); togglePrintEnabled();
-    if (actionUse_last_save_date->isChecked()) {
-        actionUse_last_save_date->setChecked(false);
-        save();
-        actionUse_last_save_date->setChecked(true);
-    } else { save(); }
+    save();
 }
 
 void MainWindow::addClient()

@@ -41,9 +41,9 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
     this->setWindowModality(Qt::WindowModal);
     this->setAttribute(Qt::WA_DeleteOnClose);
 #ifdef Q_OS_MAC
-    this->setWindowTitle(tr("%1 - Print questions").arg(printq_parent->current_db_name));
+    this->setWindowTitle(tr("%1 - Print questions").arg(printq_parent->currentDatabaseName()));
 #else
-    this->setWindowTitle(tr("%1 - Print questions - iTest").arg(printq_parent->current_db_name));
+    this->setWindowTitle(tr("%1 - Print questions - iTest").arg(printq_parent->currentDatabaseName()));
 #endif
     this->setMinimumSize(QSize(640, 480));
     rbtngrpPrintqSelect = new QButtonGroup(this);
@@ -726,7 +726,9 @@ void MainWindow::print()
             if (current_db_session != NULL) {
                 session_name = current_db_session->name();
                 sys = current_db_session->scoringSystem();
-            } else { session_name = current_db_name; }
+            } else {
+                session_name = currentDatabaseName();
+            }
         } else { return; }
         if (student == NULL) return;
 
