@@ -267,11 +267,11 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>Número de preguntas</translation>
     </message>
     <message>
-        <source>Number of flags</source>
+        <source>Number of categories</source>
         <translation>Número de categorías</translation>
     </message>
     <message>
-        <source>Flag names</source>
+        <source>Category names</source>
         <translation>Nombres de la categorías</translation>
     </message>
     <message>

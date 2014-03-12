@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0
+
+- Simplified the scoring system (for multiple-choice questions if partially correct answers are allowed)
+- Renamed flags to categories
+- Removed the session archive
+- Removed the database information section
+
 ## 1.4.2
 
 - Added Ukrainian, Czech and Hungarian translations

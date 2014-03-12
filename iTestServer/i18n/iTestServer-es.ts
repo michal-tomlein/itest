@@ -451,19 +451,19 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>http://itest.sourceforge.net/documentation/%1/en/</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>Ingrese un nombre para la categoría %1</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>Active o desactive el casillero para activar o desactivar la categoría %1</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Categorías guardadas</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Categorías descartadas</translation>
     </message>
     <message>
@@ -479,11 +479,11 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>Comentarios:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Aplicar cualquier cambio realizado en las categorías</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Descartar cualqueir cambio realizado en las categorías</translation>
     </message>
     <message>
@@ -615,7 +615,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>Lista de preguntas</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Seleccionar la categoría para filtrar la lista de abajo</translation>
     </message>
     <message>
@@ -639,7 +639,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>Mostrar solo preguntas de alta dificultad</translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Mostrar preguntas en la categoría seleccionada unicamente</translation>
     </message>
     <message>
@@ -687,11 +687,11 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>Nombre de la pregunta seleccionada</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Categoría:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>Categoría de la pregunta seleccionada</translation>
     </message>
     <message>
@@ -779,7 +779,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>&lt;b&gt;Usado:&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Nombre de la categoría</translation>
     </message>
     <message>
@@ -791,7 +791,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>Seleccionar:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Categorías</translation>
     </message>
     <message>
@@ -1127,11 +1127,11 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Categorías</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Editar categorías</translation>
     </message>
     <message>
@@ -1203,7 +1203,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Mostrar únicamente preguntas de la &amp;categoría seleccionada</translation>
     </message>
     <message>
@@ -1247,11 +1247,11 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
         <translation>&amp;Agregar</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation>Por categoría</translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation>Ordenar las preguntas por categoría</translation>
     </message>
     <message>
@@ -1883,7 +1883,7 @@ Por favor seleccione un nombre distinto:</translation>
         <translation>Aplicar cambios</translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>Este grupo es usado por una o más preguntas en una categoría diferente.
 Por favor seleccione un grupo distinto.</translation>
@@ -2614,11 +2614,11 @@ aunque es recomendable de otorgarles una hora.</translation>
         <translation>Mezclar las respuestas</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Categoría</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Número de preguntas en esta categoría</translation>
     </message>
     <message>
@@ -2706,7 +2706,7 @@ Error %2.</source>
         <translation>Seleccionar:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Categorías</translation>
     </message>
     <message>
@@ -2788,7 +2788,7 @@ Error %2.</source>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Nombre de la categoría</translation>
     </message>
     <message>

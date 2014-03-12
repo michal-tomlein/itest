@@ -98,10 +98,10 @@ void MainWindow::setCurrentSession(QListWidgetItem * item)
         passMarkDetailsTab->setEnabled(true); QTableWidgetItem * item;
         SVPassMarkTableWidget->setRowCount(session->passMark().count());
         for (int i = 0; i < session->passMark().count(); ++i) {
-            if (session->passMark().condition(i) < 0 || session->passMark().condition(i) >= current_db_f.size()) { continue; }
-            item = new QTableWidgetItem(QString("%1 - %2").arg(session->passMark().condition(i) + 1).arg(current_db_f[session->passMark().condition(i)]));
-            item->setBackground(QBrush(backgroundColourForFlag(session->passMark().condition(i))));
-            item->setForeground(QBrush(foregroundColourForFlag(session->passMark().condition(i))));
+            if (session->passMark().condition(i) < 0 || session->passMark().condition(i) >= current_db_categories.size()) { continue; }
+            item = new QTableWidgetItem(QString("%1 - %2").arg(session->passMark().condition(i) + 1).arg(current_db_categories[session->passMark().condition(i)]));
+            item->setBackground(QBrush(backgroundColourForCategory(session->passMark().condition(i))));
+            item->setForeground(QBrush(foregroundColourForCategory(session->passMark().condition(i))));
             SVPassMarkTableWidget->setItem(i, 0, item);
             item = new QTableWidgetItem(QString::number(session->passMark().value(i)));
             SVPassMarkTableWidget->setItem(i, 1, item);

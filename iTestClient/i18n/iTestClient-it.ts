@@ -271,11 +271,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Numero di Domande</translation>
     </message>
     <message>
-        <source>Number of flags</source>
+        <source>Number of categories</source>
         <translation>Nummero di Spunte</translation>
     </message>
     <message>
-        <source>Flag names</source>
+        <source>Category names</source>
         <translation>Nomi Spunta</translation>
     </message>
     <message>

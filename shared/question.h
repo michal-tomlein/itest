@@ -52,8 +52,8 @@ public:
 public slots:
     QString name();
     void setName(const QString &);
-    int flag();
-    void setFlag(int);
+    int category();
+    void setCategory(int);
     QString group();
     void setGroup(const QString &);
     int difficulty();
@@ -82,7 +82,7 @@ public slots:
 
 private:
     QString q_name;
-    int q_flag;
+    int q_category;
     QString q_group;
     int q_difficulty;
     QString q_text;

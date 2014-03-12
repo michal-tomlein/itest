@@ -240,11 +240,11 @@ fakat siz muhtemelen birçok yeni özelliği kaçırıyorsunuz.</translation>
         <translation>Soru sayısı</translation>
     </message>
     <message>
-        <source>Number of flags</source>
+        <source>Number of categories</source>
         <translation>Bayrak sayısı</translation>
     </message>
     <message>
-        <source>Flag names</source>
+        <source>Category names</source>
         <translation>Bayrak isimleri</translation>
     </message>
     <message>

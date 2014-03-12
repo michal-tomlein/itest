@@ -101,27 +101,27 @@ private slots:
     void statsWidgetClosed();
     // PRINT QUESTIONS
     void showPrintQuestionsDialogue();
-    // FLAGS-RELATED
-    void addFlagItem(int);
-    void removeFlagItem(int);
-    void setupFlagsPage();
-    void setFlagEnabled(QTreeWidgetItem *);
-    void setFlags();
-    void loadFlags();
-    void applyFlags();
-    void discardFlags();
-    void updateFlags(QAbstractButton *);
-    void updateFlagQnums();
-    void checkForUnflaggedQuestions();
-    int qnumForFlag(int, bool = false);
-    static QColor backgroundColourForFlag(int);
-    static QColor foregroundColourForFlag(int, bool = false);
+    // CATEGORIES-RELATED
+    void addCategoryItem(int);
+    void removeCategoryItem(int);
+    void setupCategoriesPage();
+    void setCategoryEnabled(QTreeWidgetItem *);
+    void setCategories();
+    void loadCategories();
+    void applyCategories();
+    void discardCategories();
+    void updateCategories(QAbstractButton *);
+    void updateCategoryQnums();
+    void checkForUncategorisedQuestions();
+    int qnumForCategory(int, bool = false);
+    static QColor backgroundColourForCategory(int);
+    static QColor foregroundColourForCategory(int, bool = false);
     // CLEAR
     void clearAll();
     void clearCurrentValues();
     void clearLQ();
     void clearSQ();
-    void clearSQNoFlags();
+    void clearSQNoCategories();
     void clearSM();
     void clearSMSC();
     void clearSV();
@@ -140,7 +140,7 @@ private slots:
     static QIcon iconForDifficulty(int);
     void sortQuestionsAscending();
     void sortQuestionsDescending();
-    void sortQuestionsByFlag();
+    void sortQuestionsByCategory();
     void sortQuestions(Qt::SortOrder, bool = false);
     void hideQuestion();
     void hideQuestion(QListWidgetItem *, QuestionItem *);
@@ -151,7 +151,7 @@ private slots:
     void moveQuestion(int);
     void adjustQuestionDifficulty();
     void filterLQ(QAbstractButton *);
-    void filterLQFlagChanged();
+    void filterLQCategoryChanged();
     void filterLQAction(QAction *);
     void filterLQSearch();
     void searchByGroup();
@@ -258,13 +258,13 @@ private:
     QMap<QDateTime, Session *> current_db_sessions;
     QMap<QListWidgetItem *, Class *> current_db_classes;
     QMap<QListWidgetItem *, Student *> current_db_students;
-    QMap<int, int> current_db_flagentries;
+    QMap<int, int> current_db_categoryentries;
     Session * current_db_session;
     Class * current_db_class;
     PassMark current_db_passmark;
-    // FLAGS
-    QVector<bool> current_db_fe;
-    QVector<QString> current_db_f;
+    // CATEGORIES
+    QVector<bool> current_db_categories_enabled;
+    QVector<QString> current_db_categories;
     // UI-RELATED
     void closeEvent(QCloseEvent *);
     QNetworkAccessManager *network_access_manager;
@@ -313,7 +313,7 @@ private:
     // LANG
     QComboBox * langComboBox;
     // FLAG-WIDGETS
-    QVector<QLineEdit *> EFFlagLineEdit;
+    QVector<QLineEdit *> EFCategoryLineEdit;
     // PALETTES
     SearchLineEditPalettes searchLineEditPalettes;
 

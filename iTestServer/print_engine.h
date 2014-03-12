@@ -41,7 +41,7 @@ public:
     PrintQuestionsDialogue(MainWindow *);
 
     MTTableWidget * includeTableWidget() const;
-    bool flagsSelected() const;
+    bool categoriesSelected() const;
     bool questionsSelected() const;
     bool printStatistics() const;
     bool printFormatting() const;

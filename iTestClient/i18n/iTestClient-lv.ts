@@ -239,11 +239,11 @@ bet Jūs varat izlaist lielu skaitu jaunu iespēju.</translation>
         <translation>Jautājumu skaits</translation>
     </message>
     <message>
-        <source>Number of flags</source>
+        <source>Number of categories</source>
         <translation>Kategoriju skaits</translation>
     </message>
     <message>
-        <source>Flag names</source>
+        <source>Category names</source>
         <translation>Kategoriju nosaukumi</translation>
     </message>
     <message>

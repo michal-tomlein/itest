@@ -450,19 +450,19 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>http://itest.sourceforge.net/documentation/%1/en/</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>Gemmen Sie der Kategorie einen Namen %1</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>Aktivieren oder deaktivieren Sie diese Box, um die Kategorie zu aktivieren oder deaktivieren %1</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Kategorie gespeichert</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Kategorie verworfen</translation>
     </message>
     <message>
@@ -478,11 +478,11 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>Kommentare:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Anwenden aller Änderungen, die Sie an der Kategorie vorgenommen haben</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Verwerfen aller Änderungen, die Sie an der Kategorie vorgenommen haben</translation>
     </message>
     <message>
@@ -614,7 +614,7 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>Liste der Fragen</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Wählen Sie eine Kategorie um die Liste zu filtern</translation>
     </message>
     <message>
@@ -638,7 +638,7 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>Zeige nur schwere Fragen</translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Zeige nur Fragen der gewählten Kategorie</translation>
     </message>
     <message>
@@ -686,11 +686,11 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>Name der gewählten Frage</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Kategorie:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>Kategorisiere die gewählte Frage</translation>
     </message>
     <message>
@@ -778,7 +778,7 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>&lt;b&gt;verwendet:&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Name der Kategorie</translation>
     </message>
     <message>
@@ -790,7 +790,7 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>Gewählt:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Kategorie</translation>
     </message>
     <message>
@@ -1126,11 +1126,11 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Kategorien</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Kategorien bearbeiten</translation>
     </message>
     <message>
@@ -1202,7 +1202,7 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Zeige nur Fragen der gewählten &amp;Kategorie</translation>
     </message>
     <message>
@@ -1246,11 +1246,11 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>&amp;Hinzufügen</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation>Nach Kategorie</translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation>Sortiere Fragen nach Kategorien</translation>
     </message>
     <message>
@@ -1882,7 +1882,7 @@ Bitte wählen Sie einen anderen Namen:</translation>
         <translation>Änderungen anwenden</translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>Die Gruppe wird von einer oder mehreren Fragen aus unterschiedlichen Kategorien verwendet.
 Bitte wählen Sie eine andere Gruppe.</translation>
@@ -2614,11 +2614,11 @@ obwohl es empfehlenswert ist, ihnen eine Stunde zu geben.</translation>
         <translation>Mische die Antworten</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Kategorie</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Anzahl der Fragen in der Kategorie</translation>
     </message>
     <message>
@@ -2706,7 +2706,7 @@ Error %2.</source>
         <translation>Wähle:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Kategorie</translation>
     </message>
     <message>
@@ -2788,7 +2788,7 @@ Error %2.</source>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Kategoriename</translation>
     </message>
     <message>

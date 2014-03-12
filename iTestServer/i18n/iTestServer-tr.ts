@@ -429,11 +429,11 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
         <translation>Veritabanı kapatıldı</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Bayraklar kaydedildi</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Bayraklar kaydedilmedi</translation>
     </message>
     <message>
@@ -449,11 +449,11 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
         <translation>Yorumlar:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Bayraklar üzerinde yaptığınız tüm değişiklikleri uygulayın</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Bayraklar üzerinde yaptığınız tüm değişiklikleri yok sayın</translation>
     </message>
     <message>
@@ -585,7 +585,7 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
         <translation>Soru listesi</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Aşağıdaki listeyi süzmek için bir bayrak seçin</translation>
     </message>
     <message>
@@ -609,7 +609,7 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
         <translation>Sadece zor soruları göster</translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Sadece seçilen bayrağı taşıyan soruları göster</translation>
     </message>
     <message>
@@ -657,11 +657,11 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
         <translation>Seçilen sorunun adı</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Bayrak:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>Seçilen sorunun taşıdığı bayrak</translation>
     </message>
     <message>
@@ -737,7 +737,7 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
         <translation>Seç:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Bayraklar</translation>
     </message>
     <message>
@@ -1057,11 +1057,11 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
         <translation>Ctrl+Ç</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Bayraklar</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Bayrakları düzenle</translation>
     </message>
     <message>
@@ -1133,7 +1133,7 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
         <translation>Ctrl+Ö</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Sadece seçilen &amp;bayrağı taşıyan soruları göster</translation>
     </message>
     <message>
@@ -1177,11 +1177,11 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
         <translation>&amp;Ekle</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1962,11 +1962,11 @@ aslında sınav için bir saat tavsiye edilir.</translation>
         <translation>&quot;%1 - %2&quot; oturumları için günlük kayıtlarını silmek istediğinizden emin misiniz?</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>%1 bayrağı için bir isim yazın</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>Bu kutucuğu işaretleyip kaldırarak  %1 bayrağını aktifleştirip pasifleştirin</translation>
     </message>
     <message>
@@ -2010,7 +2010,7 @@ aslında sınav için bir saat tavsiye edilir.</translation>
         <translation>http://itest.sourceforge.net/documentation/%1/en/</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Bayrak adı</translation>
     </message>
     <message>
@@ -2070,7 +2070,7 @@ aslında sınav için bir saat tavsiye edilir.</translation>
         <translation>Her grup için bir soruya izin ver</translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>Bu grup içerisinde birbirinden faklı bayraklar taşıyan bir ya da daha fazla soru var.
 Lütfen başka bir grup seçin.</translation>
@@ -2616,11 +2616,11 @@ Lütfen başka bir grup seçin.</translation>
         <translation>Yanıtları karıştır</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Bayrak</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Bu bayrağı taşıyan soruların sayısı</translation>
     </message>
     <message>
@@ -2709,7 +2709,7 @@ Hata: %2.</translation>
         <translation>Seç:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Bayraklar</translation>
     </message>
     <message>
@@ -2789,7 +2789,7 @@ Hata: %2.</translation>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Bayrak adı</translation>
     </message>
     <message>

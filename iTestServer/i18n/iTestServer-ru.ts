@@ -427,11 +427,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>База данных закрыта</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Категории сохранены</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Категории отменены</translation>
     </message>
     <message>
@@ -447,11 +447,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Комментарии:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Применить изменения категорий</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Отменить изменения категорий</translation>
     </message>
     <message>
@@ -583,7 +583,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Список вопросов</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Выберите категорию для фильтрации списка</translation>
     </message>
     <message>
@@ -607,7 +607,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Показывать только сложные вопросы</translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Показывать только вопросы выбранной категории</translation>
     </message>
     <message>
@@ -655,11 +655,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Название выбранного вопроса</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Категория:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>Категория выбранного вопроса</translation>
     </message>
     <message>
@@ -735,7 +735,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Выберите:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Категории</translation>
     </message>
     <message>
@@ -1055,11 +1055,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Категории</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Редактировать категории</translation>
     </message>
     <message>
@@ -1131,7 +1131,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Показывать только вопросы выбранной &amp;категории</translation>
     </message>
     <message>
@@ -1175,11 +1175,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>&amp;Добавить</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation>По категории</translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation>Сортировать вопросы по категориям</translation>
     </message>
     <message>
@@ -1961,11 +1961,11 @@ although it is recommended to give them an hour.</source>
         <translation>Вы уверены, что хотите удалить журнал сессии &quot;%1 - %2&quot;?</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>Введите название категории %1</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>Установите или снимите этот переключатель для установки или снятия категории %1</translation>
     </message>
     <message>
@@ -2009,7 +2009,7 @@ although it is recommended to give them an hour.</source>
         <translation>http://itest.sourceforge.net/documentation/%1/ru/</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Название категории</translation>
     </message>
     <message>
@@ -2069,7 +2069,7 @@ although it is recommended to give them an hour.</source>
         <translation>Использовать только один вопрос из группы</translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>В этой группе содержится один или более вопросов другой категории.
 Пожалуйста, выберете другую группу.</translation>
@@ -2615,11 +2615,11 @@ Please choose a different group.</source>
         <translation>Перемешивать вопросы</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Категория</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Количество вопросов в этой категории</translation>
     </message>
     <message>
@@ -2708,7 +2708,7 @@ Error %2.</source>
         <translation>Выберите:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Категории</translation>
     </message>
     <message>
@@ -2792,7 +2792,7 @@ Error %2.</source>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Название категории</translation>
     </message>
     <message>

@@ -536,19 +536,19 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
         <translation>http://itest.sourceforge.net/documentation/%1/en/</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>Inserisci nome marcatore %1</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>Spunta per abilitare o disabilitare questo marcatore %1</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Marcatore Salvato</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Marcatore Scartato</translation>
     </message>
     <message>
@@ -572,11 +572,11 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
         <translation>Commenti:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Applica i cambiamenti ai marcatori</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Scarta i cambiamenti ai marcatori</translation>
     </message>
     <message>
@@ -664,7 +664,7 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
         <translation>Seleziona:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Marcatori</translation>
     </message>
     <message>
@@ -780,11 +780,11 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
         <translation>Mostra solo domande difficili</translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Mostra solo domande con il seguente marcatore</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Selezionare il marcatore da filtrare</translation>
     </message>
     <message>
@@ -828,11 +828,11 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
         <translation>Nome domanda selezionata</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Marcatore:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>Marcatore della Domanda</translation>
     </message>
     <message>
@@ -940,7 +940,7 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
         <translation>&lt;b&gt;Usato:&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Nome Marcatore</translation>
     </message>
     <message>
@@ -1368,11 +1368,11 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Marcatori</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Modifica Marcatori</translation>
     </message>
     <message>
@@ -1444,7 +1444,7 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Mostra domande contenenti questo &amp;marcatore</translation>
     </message>
     <message>
@@ -1700,11 +1700,11 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
         <translation>Mostra Statistiche Difficoltà Domande</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation>Secondo marcatori</translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation>Ordina le domande secondo marcatori</translation>
     </message>
     <message>
@@ -2176,7 +2176,7 @@ Scegli un nome differente:</translation>
         <translation>Applica Cambiamenti</translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>Questo Gruppo è usato da una o più domande con marcatore differente.
 Scegliere un Gruppo differente.</translation>
@@ -2614,11 +2614,11 @@ although it is recommended to give them an hour.</source>
         <translation>Mischia risposte</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Marcatore</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Numero di domande con questo marcatore</translation>
     </message>
     <message>
@@ -2706,7 +2706,7 @@ Error %2.</source>
         <translation>Seleziona:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Marcatori</translation>
     </message>
     <message>
@@ -2788,7 +2788,7 @@ Error %2.</source>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Nome Marcatore</translation>
     </message>
     <message>

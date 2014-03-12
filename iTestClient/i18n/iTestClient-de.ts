@@ -266,11 +266,11 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
         <translation>Anzahl der Fragen</translation>
     </message>
     <message>
-        <source>Number of flags</source>
+        <source>Number of categories</source>
         <translation>Anzahl der Kategorien</translation>
     </message>
     <message>
-        <source>Flag names</source>
+        <source>Category names</source>
         <translation>Kategoriename</translation>
     </message>
     <message>

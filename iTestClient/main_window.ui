@@ -369,12 +369,12 @@
           </row>
           <row>
            <property name="text">
-            <string>Number of flags</string>
+            <string>Number of categories</string>
            </property>
           </row>
           <row>
            <property name="text">
-            <string>Flag names</string>
+            <string>Category names</string>
            </property>
           </row>
           <row>

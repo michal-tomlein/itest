@@ -21,7 +21,7 @@
 #include "svg_item.h"
 
 QuestionItem::QuestionItem(const QString & name,
-                            int flag,
+                            int category,
                             const QString & group,
                             int difficulty,
                             const QString & text,
@@ -36,7 +36,7 @@ QuestionItem::QuestionItem(const QString & name,
                             bool copysvgs)
 {
     q_name = name;
-    q_flag = flag;
+    q_category = category;
     q_group = group;
     q_difficulty = difficulty;
     q_explanation = explanation;
@@ -110,7 +110,7 @@ QString QuestionItem::allProperties(bool itdb1_3)
     out.append(q_name);
     // Q_FLAG
     out.append("\n[Q_FLAG]\n");
-    out.append(QString("%1").arg(q_flag));
+    out.append(QString("%1").arg(q_category));
     // Q_GROUP
     out.append("\n[Q_GRP]\n");
     out.append(q_group);
@@ -170,7 +170,7 @@ QString QuestionItem::allPublicProperties()
     out.append(q_name);
     // Q_FLAG
     out.append("\n[Q_FLAG]\n");
-    out.append(QString("%1").arg(q_flag));
+    out.append(QString("%1").arg(q_category));
     // Q_GROUP
     out.append("\n[Q_GRP]\n");
     out.append(q_group);
@@ -194,12 +194,12 @@ QString QuestionItem::allPublicProperties()
     return out;
 }
 
-QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int num_answers, int flag, int difficulty, Question::SelectionType type, const QString & explanation)
+QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int num_answers, int category, int difficulty, Question::SelectionType type, const QString & explanation)
 {
     qa_answered = ans;
     qa_correct_answer = correct;
     qa_num_answers = num_answers;
-    qa_flag = flag;
+    qa_category = category;
     q_difficulty = difficulty;
     q_selectiontype = type;
     qa_explanation = explanation;
@@ -224,9 +224,9 @@ int QuestionAnswer::numAnswers() { return qa_num_answers; }
     return false;
 }*/
 
-void QuestionAnswer::setFlag(int flag) { qa_flag = flag; }
+void QuestionAnswer::setCategory(int category) { qa_category = category; }
 
-int QuestionAnswer::flag() { return qa_flag; }
+int QuestionAnswer::category() { return qa_category; }
 
 void QuestionAnswer::setDifficulty(int difficulty) { q_difficulty = difficulty; }
 

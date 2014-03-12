@@ -42,7 +42,7 @@ int pow(int base, int exp)
 Question::Question(const QString & name)
 {
     q_name = name;
-    q_flag = -1;
+    q_category = -1;
     q_difficulty = 0;
     q_selectiontype = Question::SingleSelection;
     q_answers << "" << "" << "" << "";
@@ -53,9 +53,9 @@ QString Question::name() { return q_name; }
 
 void Question::setName(const QString & name) { q_name = name; }
 
-int Question::flag() { return q_flag; }
+int Question::category() { return q_category; }
 
-void Question::setFlag(int flag) { q_flag = flag; }
+void Question::setCategory(int category) { q_category = category; }
 
 QString Question::group() { return q_group; }
 
@@ -362,8 +362,8 @@ QList<int> Question::randomise(QList<Question *> questions, PassMark passmark, b
         QVector<QList<Question *> > qflist(passmark.count());
         QList<Question *> unusedqlist; int x;
         for (int i = 0; i < questions.size(); ++i) {
-            if (passmark.conditionIndex(questions.at(i)->flag()) != -1) {
-                qflist[passmark.conditionIndex(questions.at(i)->flag())] << questions.at(i);
+            if (passmark.conditionIndex(questions.at(i)->category()) != -1) {
+                qflist[passmark.conditionIndex(questions.at(i)->category())] << questions.at(i);
             } else {
                 unusedqlist << questions.at(i);
             }

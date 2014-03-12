@@ -109,7 +109,7 @@ void MainWindow::newDB()
     if (!itdb1_3) sfile << "[DB_CNUM]\n0" << endl;
     sfile << "[DB_FLAGS]" << endl;
     sfile << "--------------------\n";
-    for (int i = 0; i < current_db_f.size(); ++i) { sfile << "[DB_F" << i << "]\n" << endl; }
+    for (int i = 0; i < current_db_categories.size(); ++i) { sfile << "[DB_F" << i << "]\n" << endl; }
     sfile << "[DB_FLAGS_END]";
     setProgress(50); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     // APPLY
@@ -188,12 +188,12 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy)
     sfile << "[DB_SNUM]\n" << (itdb1_3 ? 0 : db_snum) << endl;
     if (!itdb1_3) sfile << "[DB_CNUM]\n" << current_db_classes.size() << endl;
     sfile << "[DB_FLAGS]" << endl;
-    int num_flags = current_db_f.size();
-    if (num_flags > 20 && !current_db_fe[num_flags - 1]) num_flags--;
-    for (int i = 0; i < num_flags; ++i) { sfile << (current_db_fe[i] ? "+" : "-"); }
+    int num_categories = current_db_categories.size();
+    if (num_categories > 20 && !current_db_categories_enabled[num_categories - 1]) num_categories--;
+    for (int i = 0; i < num_categories; ++i) { sfile << (current_db_categories_enabled[i] ? "+" : "-"); }
     sfile << endl;
-    for (int i = 0; i < num_flags; ++i) {
-        sfile << "[DB_F" << i << "]\n" << current_db_f[i] << endl;
+    for (int i = 0; i < num_categories; ++i) {
+        sfile << "[DB_F" << i << "]\n" << current_db_categories[i] << endl;
     }
     sfile << "[DB_FLAGS_END]" << endl;
     setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -316,20 +316,20 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         }
         if (rfile.readLine() != "[DB_FLAGS]") { throw xInvalidDBFile(50); }
         setProgress(6); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        // Flags enabled
+        // Categories enabled
         db_buffer = rfile.readLine();
-        QVector<bool> db_fe(db_buffer.length());
-        for (int i = 0; i < db_fe.size(); ++i) {
-            if (db_buffer.at(i) == '+') { db_fe[i] = true; } else if (db_buffer.at(i) == '-')
-            { db_fe[i] = false; } else { throw xInvalidDBFile(52); }
+        QVector<bool> db_categories_enabled(db_buffer.length());
+        for (int i = 0; i < db_categories_enabled.size(); ++i) {
+            if (db_buffer.at(i) == '+') { db_categories_enabled[i] = true; } else if (db_buffer.at(i) == '-')
+            { db_categories_enabled[i] = false; } else { throw xInvalidDBFile(52); }
         }
-        // Flags
-        QVector<QString> db_f(db_buffer.length());
-        for (int i = 0; i < db_f.size(); ++i) {
+        // Categories
+        QVector<QString> db_categories(db_buffer.length());
+        for (int i = 0; i < db_categories.size(); ++i) {
             if (rfile.readLine() != QString("[DB_F%1]").arg(i)) { throw xInvalidDBFile(54); }
-            db_f[i] = rfile.readLine();
+            db_categories[i] = rfile.readLine();
         }
-        // End of flags
+        // End of categories
         if (rfile.readLine() != "[DB_FLAGS_END]") { throw xInvalidDBFile(59); }
         setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         int count = db_qnum + db_snum;
@@ -340,9 +340,9 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
             // Question name
             if (rfile.readLine() != "[Q_NAME]") { throw xInvalidDBFile(100); }
             item = new QuestionItem (rfile.readLine());
-            // Flag
+            // Category
             if (rfile.readLine() != "[Q_FLAG]") { throw xInvalidDBFile(102); }
-            item->setFlag(rfile.readLine().toInt());
+            item->setCategory(rfile.readLine().toInt());
             if (db_version >= 1.2) {
                 // Question group
                 if (rfile.readLine() != "[Q_GRP]") { throw xInvalidDBFile(104); }
@@ -417,12 +417,12 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
             LQListWidget->addItem(q_item);
             current_db_questions.insert(q_item, item);
             setQuestionItemIcon(q_item, item->difficulty());
-            setQuestionItemColour(q_item, item->flag());
+            setQuestionItemColour(q_item, item->category());
             hideQuestion(q_item, item);
             setProgress((85/(i+1)*count)+10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>
         }
         // Saved sessions
-        int ans_flag = -1; int ans_dif = 0;
+        int ans_category = -1; int ans_dif = 0;
         Question::Answer c_ans; Question::Answer ans;
         Question::SelectionType ans_selectiontype = Question::SingleSelection;
         for (int i = 0; i < db_snum; ++i) {
@@ -483,7 +483,7 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                 for (int a = 0; a < numresults; ++a) {
                     db_buffer = rfile.readLine();
                     if (db_version >= 1.2) {
-                        ans_flag = rfile.readLine().toInt();
+                        ans_category = rfile.readLine().toInt();
                     }
 
                     QuestionItem * item = NULL;
@@ -497,10 +497,10 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                         ans_selectiontype = (Question::SelectionType)rfile.readLine().toInt();
                     } else {
                         if (item == NULL) {
-                            if (db_version < 1.2) { ans_flag = -1; }
+                            if (db_version < 1.2) { ans_category = -1; }
                             if (db_version < 1.35) { ans_dif = 0; ans_selectiontype = Question::SingleSelection; }
                         } else {
-                            if (db_version < 1.2) { ans_flag = item->flag(); }
+                            if (db_version < 1.2) { ans_category = item->category(); }
                             if (db_version < 1.35) { ans_dif = item->difficulty(); ans_selectiontype = item->selectionType(); }
                         }
                     }
@@ -513,7 +513,7 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                         c_ans = (Question::Answer)rfile.readLine().toInt();
                     }
 
-                    QuestionAnswer qans(c_ans, ans, item ? item->numAnswers() : 9, ans_flag, ans_dif, ans_selectiontype);
+                    QuestionAnswer qans(c_ans, ans, item ? item->numAnswers() : 9, ans_category, ans_dif, ans_selectiontype);
                     results->insert(db_buffer, qans);
                 }
                 student->setResults(results);
@@ -558,12 +558,12 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         }
 
         ECTextEdit->setHtml( db_comments );
-        // Set flags
-        current_db_fe = db_fe;
-        current_db_f = db_f;
+        // Set categories
+        current_db_categories_enabled = db_categories_enabled;
+        current_db_categories = db_categories;
         setProgress(97); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        // Apply flags
-        setFlags(); loadFlags();
+        // Apply categories
+        setCategories(); loadCategories();
         setProgress(98); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         // Enable All
         setAllEnabled(true);
@@ -641,7 +641,7 @@ void MainWindow::exportCSV()
     for (int i = 0; i < LQListWidget->count(); ++i) {
         QuestionItem * item = current_db_questions.value(LQListWidget->item(i));
         out << quoteForCSV(item->name()) << separator;
-        out << QString::number(item->flag()) << separator;
+        out << QString::number(item->category()) << separator;
         out << quoteForCSV(item->group()) << separator;
         doc.setHtml(item->text());
         out << quoteForCSV(doc.toPlainText()) << separator;

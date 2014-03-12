@@ -106,7 +106,7 @@ bool PassMark::check(QMap<QString, QuestionAnswer> * answers, QMap<QListWidgetIt
         ans = i.value();
         if (ans.score(sys) > 0.0) {
             c_ans_count++;
-            if (item->flag() >= 0) { c_ans[item->flag()]++; }
+            if (item->category() >= 0) { c_ans[item->category()]++; }
         }
     }
     if (c_ans_count < pm_mark) { return false; }
@@ -124,7 +124,7 @@ bool PassMark::check(QList<QuestionItem *> questions)
     for (int i = 0; i < questions.count(); ++i) {
         if (questions.at(i)->score() > 0.0) {
             c_ans_count++;
-            if (questions.at(i)->flag() >= 0) { c_ans[questions.at(i)->flag()]++; }
+            if (questions.at(i)->category() >= 0) { c_ans[questions.at(i)->category()]++; }
         }
     }
     if (c_ans_count < pm_mark) { return false; }

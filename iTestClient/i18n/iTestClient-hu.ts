@@ -272,11 +272,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>Kérdések száma</translation>
     </message>
     <message>
-        <source>Number of flags</source>
+        <source>Number of categories</source>
         <translation>Jelölők száma</translation>
     </message>
     <message>
-        <source>Flag names</source>
+        <source>Category names</source>
         <translation>Jelölők neve</translation>
     </message>
     <message>

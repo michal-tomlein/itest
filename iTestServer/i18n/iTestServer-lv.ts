@@ -427,11 +427,11 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation>Datu bāze aizvērta</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Kategorijas ir saglabātas</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Kategorijas ir atceltas</translation>
     </message>
     <message>
@@ -447,11 +447,11 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation>Komentāri:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Pielietot kategoriju izmaiņas</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Atcelt kategoriju izmaiņas</translation>
     </message>
     <message>
@@ -583,7 +583,7 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation>Jautājumu saraksts</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Izvēlieties kategoriju zemāk esošā saraksta filtrācijai</translation>
     </message>
     <message>
@@ -607,7 +607,7 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation>Parādīt tikai grūtus jautājumus </translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Parādīt tikai izvēlētās kategorijas jautājumus</translation>
     </message>
     <message>
@@ -655,11 +655,11 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation>Izvēlētā jautājuma nosaukums</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Kategorija:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>Izvēlētā jautājuma kategorija</translation>
     </message>
     <message>
@@ -735,7 +735,7 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation>Izvēlieties:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Kategorijas</translation>
     </message>
     <message>
@@ -1055,11 +1055,11 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Kategorijas</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Rediģēt kategorijas</translation>
     </message>
     <message>
@@ -1131,7 +1131,7 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Parādīt tikai izvēlētās &amp;kategorijas jautājumus</translation>
     </message>
     <message>
@@ -1175,11 +1175,11 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
         <translation>&amp;Pievienot</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation>Pēc kategorijas</translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation>Šķirot jautājumus pēc kategorijas</translation>
     </message>
     <message>
@@ -1961,11 +1961,11 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation>Esat pārliecināts(-a), ka gribat nodzēst sesijas žurnālu &quot;%1 - %2&quot;?</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>Ievadiet kategorijas %1nosaukumu</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>Uzstādiet vai noņemiet šo pārslēdzēju kategorijas  %1 uzstādīšanai vai noņemšanai</translation>
     </message>
     <message>
@@ -2009,7 +2009,7 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation>http://itest.sourceforge.net/documentation/%1/lv/</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Kategorijas nosaukums</translation>
     </message>
     <message>
@@ -2069,7 +2069,7 @@ lai gan ieteikts dot vismaz stundu.</translation>
         <translation>Izmantot tikai vienu jautājumu katrai grupai </translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>Šajā grupā ir viens vai vairāki citas kategorijas jautājumi.
 Lūdzu, izvēlieties citu grupu.</translation>
@@ -2615,11 +2615,11 @@ Lūdzu, izvēlieties citu grupu.</translation>
         <translation>Sajaukt atbildes</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Kategorija</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Jautājumu skaits šajā kategorijā</translation>
     </message>
     <message>
@@ -2708,7 +2708,7 @@ Kļūda %2.</translation>
         <translation>Izvēlieties:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Kategorijas</translation>
     </message>
     <message>
@@ -2792,7 +2792,7 @@ Kļūda %2.</translation>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Kategorijas nosaukums</translation>
     </message>
     <message>

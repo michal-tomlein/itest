@@ -338,9 +338,9 @@
                 </widget>
                </item>
                <item>
-                <widget class="QRadioButton" name="LQFlagRadioButton">
+                <widget class="QRadioButton" name="LQCategoryRadioButton">
                  <property name="statusTip">
-                  <string>Show questions with the selected flag only</string>
+                  <string>Show questions in the selected category only</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -360,9 +360,9 @@
               </layout>
              </item>
              <item>
-              <widget class="QComboBox" name="LQFlagComboBox">
+              <widget class="QComboBox" name="LQCategoryComboBox">
                <property name="statusTip">
-                <string>Select the flag to filter the list below</string>
+                <string>Select the category to filter the list below</string>
                </property>
               </widget>
              </item>
@@ -567,14 +567,14 @@
              <item>
               <layout class="QHBoxLayout">
                <item>
-                <widget class="QLabel" name="SQFlagLabel">
+                <widget class="QLabel" name="SQCategoryLabel">
                  <property name="text">
-                  <string>Flag:</string>
+                  <string>Category:</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QComboBox" name="SQFlagComboBox">
+                <widget class="QComboBox" name="SQCategoryComboBox">
                  <property name="minimumSize">
                   <size>
                    <width>130</width>
@@ -582,7 +582,7 @@
                   </size>
                  </property>
                  <property name="statusTip">
-                  <string>Flag of the selected question</string>
+                  <string>Category of the selected question</string>
                  </property>
                 </widget>
                </item>
@@ -895,7 +895,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="editFlagsPage">
+      <widget class="QWidget" name="editCategoriesPage">
        <layout class="QVBoxLayout">
         <property name="margin">
          <number>6</number>
@@ -910,7 +910,7 @@
           </property>
           <column>
            <property name="text">
-            <string>Flag</string>
+            <string>Category</string>
            </property>
           </column>
           <column>
@@ -920,7 +920,7 @@
           </column>
           <column>
            <property name="text">
-            <string>Number of questions with this flag</string>
+            <string>Number of questions in this category</string>
            </property>
           </column>
          </widget>
@@ -964,9 +964,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="rbtnSelectFlags">
+              <widget class="QRadioButton" name="rbtnSelectCategories">
                <property name="text">
-                <string>Flags</string>
+                <string>Categories</string>
                </property>
                <property name="checked">
                 <bool>true</bool>
@@ -1121,7 +1121,7 @@
                  </property>
                  <column>
                   <property name="text">
-                   <string>Flag name</string>
+                   <string>Category name</string>
                   </property>
                  </column>
                  <column>
@@ -2751,7 +2751,7 @@
                      </property>
                      <column>
                       <property name="text">
-                       <string>Flag name</string>
+                       <string>Category name</string>
                       </property>
                      </column>
                      <column>
@@ -3618,7 +3618,7 @@
     </property>
     <addaction name="actionEdit_questions"/>
     <addaction name="actionEdit_comments"/>
-    <addaction name="actionEdit_flags"/>
+    <addaction name="actionEdit_categories"/>
     <addaction name="actionEdit_test"/>
     <addaction name="actionSaved_sessions"/>
     <addaction name="actionEdit_classes"/>
@@ -3686,7 +3686,7 @@
      </property>
      <addaction name="actionFrom_A_to_Z"/>
      <addaction name="actionFrom_Z_to_A"/>
-     <addaction name="actionBy_flag"/>
+     <addaction name="actionBy_category"/>
     </widget>
     <widget class="QMenu" name="menuFilter_LQ">
      <property name="title">
@@ -3700,7 +3700,7 @@
      <addaction name="actionShow_easy"/>
      <addaction name="actionShow_medium"/>
      <addaction name="actionShow_difficult"/>
-     <addaction name="actionShow_flag"/>
+     <addaction name="actionShow_category"/>
     </widget>
     <addaction name="actionShow_hidden"/>
     <addaction name="menuSort_questions"/>
@@ -3784,7 +3784,7 @@
    <addaction name="separator"/>
    <addaction name="actionEdit_questions"/>
    <addaction name="actionEdit_comments"/>
-   <addaction name="actionEdit_flags"/>
+   <addaction name="actionEdit_categories"/>
    <addaction name="actionEdit_test"/>
    <addaction name="actionSaved_sessions"/>
    <addaction name="actionEdit_classes"/>
@@ -3922,7 +3922,7 @@
     <enum>QAction::QuitRole</enum>
    </property>
   </action>
-  <action name="actionEdit_flags">
+  <action name="actionEdit_categories">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -3931,19 +3931,19 @@
      <normaloff>:/images/images/flag.png</normaloff>:/images/images/flag.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Flags</string>
+    <string>&amp;Categories</string>
    </property>
    <property name="iconText">
-    <string>Flags</string>
+    <string>Categories</string>
    </property>
    <property name="toolTip">
-    <string>Edit flags</string>
+    <string>Edit categories</string>
    </property>
    <property name="statusTip">
-    <string>Edit flags</string>
+    <string>Edit categories</string>
    </property>
    <property name="whatsThis">
-    <string>Edit flags</string>
+    <string>Edit categories</string>
    </property>
   </action>
   <action name="actionEdit_test">
@@ -4095,19 +4095,19 @@
     <string>Show difficult questions only</string>
    </property>
   </action>
-  <action name="actionShow_flag">
+  <action name="actionShow_category">
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/images/images/flag.png</normaloff>:/images/images/flag.png</iconset>
    </property>
    <property name="text">
-    <string>Show questions with the selected &amp;flag only</string>
+    <string>Show questions in the selected &amp;category only</string>
    </property>
    <property name="statusTip">
-    <string>Show questions with the selected flag only</string>
+    <string>Show questions in the selected category only</string>
    </property>
    <property name="whatsThis">
-    <string>Show questions with the selected flag only</string>
+    <string>Show questions in the selected category only</string>
    </property>
   </action>
   <action name="actionMove_up">
@@ -4953,19 +4953,19 @@
     <string>Print a summary for the selected class</string>
    </property>
   </action>
-  <action name="actionBy_flag">
+  <action name="actionBy_category">
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/images/images/flag.png</normaloff>:/images/images/flag.png</iconset>
    </property>
    <property name="text">
-    <string>By flag</string>
+    <string>By category</string>
    </property>
    <property name="statusTip">
-    <string>Sort questions by flag</string>
+    <string>Sort questions by category</string>
    </property>
    <property name="whatsThis">
-    <string>Sort questions by flag</string>
+    <string>Sort questions by category</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+Right</string>
@@ -5031,9 +5031,9 @@
  </resources>
  <connections>
   <connection>
-   <sender>LQFlagRadioButton</sender>
+   <sender>LQCategoryRadioButton</sender>
    <signal>toggled(bool)</signal>
-   <receiver>LQFlagComboBox</receiver>
+   <receiver>LQCategoryComboBox</receiver>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">

@@ -247,11 +247,11 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
         <translation>Počet otázok</translation>
     </message>
     <message>
-        <source>Number of flags</source>
+        <source>Number of categories</source>
         <translation>Počet kategórií</translation>
     </message>
     <message>
-        <source>Flag names</source>
+        <source>Category names</source>
         <translation>Mená kategórií</translation>
     </message>
     <message>

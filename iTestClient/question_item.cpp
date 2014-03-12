@@ -22,7 +22,7 @@
 QuestionItem::QuestionItem(const QString & name)
 {
      q_name = name;
-     q_flag = -1;
+     q_category = -1;
      q_difficulty = 0;
      q_selectiontype = Question::SingleSelection;
      q_answers << "" << "" << "" << "";

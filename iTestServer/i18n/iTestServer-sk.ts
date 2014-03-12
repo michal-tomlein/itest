@@ -401,11 +401,11 @@
         <translation>Databáza zatvorená</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Kategórie uložené</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Kategórie zahodené</translation>
     </message>
     <message>
@@ -421,11 +421,11 @@
         <translation>Poznámky:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Uložiť akékoľvek zmeny v kategóriách</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Zahodiť akékoľvek zmeny v kategóriách</translation>
     </message>
     <message>
@@ -545,7 +545,7 @@
         <translation>Zoznam otázok</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Vyberte kategóriu na filtrovanie zoznamu dole</translation>
     </message>
     <message>
@@ -569,7 +569,7 @@
         <translation>Zobraziť len obtiažne otázky</translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Zobraziť len otázky vo vybranej kategórii</translation>
     </message>
     <message>
@@ -617,11 +617,11 @@
         <translation>Meno vybranej otázky</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Kategória:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>Kategória vybranej otázky</translation>
     </message>
     <message>
@@ -697,7 +697,7 @@
         <translation>Vybrať:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Kategórie</translation>
     </message>
     <message>
@@ -1005,11 +1005,11 @@
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Kategórie</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Upraviť kategórie</translation>
     </message>
     <message>
@@ -1081,7 +1081,7 @@
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Zobraziť len otázky vo vybranej &amp;kategórii</translation>
     </message>
     <message>
@@ -1125,11 +1125,11 @@
         <translation>Prid&amp;ať</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation>Podľa kategórie</translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation>Usporiadať otázky podľa kategórie</translation>
     </message>
     <message>
@@ -1962,11 +1962,11 @@ Nájdených %1 výskytov starého mena v uložených sedeniach.
 Všetky budú aktualizované.</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>Napíšte meno pre kategóriu %1</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>Zaškrtnite alebo odškrtnite toto políčko aby ste povolili alebo zakázali kategóriu %1</translation>
     </message>
     <message>
@@ -2010,7 +2010,7 @@ Všetky budú aktualizované.</translation>
         <translation>http://itest.sourceforge.net/documentation/%1/sk/</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Meno kategórie</translation>
     </message>
     <message>
@@ -2070,7 +2070,7 @@ Všetky budú aktualizované.</translation>
         <translation>Povoliť iba jednu otázku na skupinu</translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>Táto skupina je používaná jednou alebo viacerými otázkami v inej kategórii.
 Prosím zvoľte inú skupinu.</translation>
@@ -2616,11 +2616,11 @@ Prosím zvoľte inú skupinu.</translation>
         <translation>Preusporiadať odpovede</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Kategória</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Počet otázok v tejto kategórii</translation>
     </message>
     <message>
@@ -2709,7 +2709,7 @@ Chyba %2.</translation>
         <translation>Vybrať:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Kategórie</translation>
     </message>
     <message>
@@ -2793,7 +2793,7 @@ Chyba %2.</translation>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Meno kategórie</translation>
     </message>
     <message>

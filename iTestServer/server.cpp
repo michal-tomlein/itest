@@ -46,7 +46,7 @@ void MainWindow::setupServer()
     enableSMTools(); togglePrintEnabled();
 
     rbtngrpAdvSelect = new QButtonGroup (this);
-    rbtngrpAdvSelect->addButton(rbtnSelectFlags);
+    rbtngrpAdvSelect->addButton(rbtnSelectCategories);
     rbtngrpAdvSelect->addButton(rbtnSelectQuestions);
     QObject::connect(rbtngrpAdvSelect, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(reloadAvailableItems()));
     QObject::connect(TSAdvancedSetupGroupBox, SIGNAL(toggled(bool)), this, SLOT(reloadAvailableItems()));
@@ -122,17 +122,17 @@ void MainWindow::reloadAvailableItems()
     if (!TSAdvancedSetupGroupBox->isChecked()) {
         TSIncludeTableWidget->horizontalHeader()->hide();
     } else {
-        if (rbtnSelectFlags->isChecked()) {
-            // FLAGS -----------------------------------------------------------
+        if (rbtnSelectCategories->isChecked()) {
+            // CATEGORIES ------------------------------------------------------
             TSIncludeTableWidget->setColumnCount(3);
-            TSIncludeTableWidget->setHorizontalHeaderLabels(QStringList() << tr("Flag name") << tr("Number of questions") << tr("Pass mark"));
+            TSIncludeTableWidget->setHorizontalHeaderLabels(QStringList() << tr("Category name") << tr("Number of questions") << tr("Pass mark"));
             TSIncludeTableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
             TSIncludeTableWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
             TSIncludeTableWidget->horizontalHeader()->show();
             QListWidgetItem * item;
-            for (int i = 0; i < current_db_f.size(); ++i) {
-                if (current_db_fe[i]) {
-                    item = new QListWidgetItem (QString("%1 - %2").arg(i+1).arg(current_db_f[i]), TSExcludeListWidget);
+            for (int i = 0; i < current_db_categories.size(); ++i) {
+                if (current_db_categories_enabled[i]) {
+                    item = new QListWidgetItem (QString("%1 - %2").arg(i+1).arg(current_db_categories[i]), TSExcludeListWidget);
                     item->setData(Qt::UserRole, i);
                     setQuestionItemColour(item, i);
                 }
@@ -165,12 +165,12 @@ void MainWindow::updateTestQnum()
 {
     updateTestQnum(TSAdvancedSetupGroupBox->isChecked(),
                     TSGroupsCheckBox->isChecked(),
-                    rbtnSelectFlags->isChecked(),
+                    rbtnSelectCategories->isChecked(),
                     TSQnumSpinBox,
                     TSIncludeTableWidget);
 }
 
-void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selected, QSpinBox * spb_qnum, QTableWidget * tw_include)
+void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool categories_selected, QSpinBox * spb_qnum, QTableWidget * tw_include)
 {
     int db_qnum = 0; int min_qnum = 0; int total_passmark = 0; QuestionItem * item; bool server_mode = tw_include == TSIncludeTableWidget;
     if (!advanced) {
@@ -194,7 +194,7 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selec
                 db_qnum++;
             }
         }
-    } else if (flags_selected) {
+    } else if (categories_selected) {
         QSet<QString> groups; QList<int> used_items;
         int include_count = tw_include->rowCount();
         QVector<int> max(include_count); QVector<QSet<QString> > groups_i(include_count);
@@ -207,11 +207,11 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selec
             if (item == NULL) { continue; }
             if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
             if (server_mode && !isDifficultyIncluded(item->difficulty())) continue;
-            if (used_items.contains(item->flag())) {
+            if (used_items.contains(item->category())) {
                 if (use_groups) {
-                    if (item->group().isEmpty()) { db_qnum++; max[used_items.indexOf(item->flag())]++; }
-                    else { groups << item->group(); groups_i[used_items.indexOf(item->flag())] << item->group(); }
-                } else { db_qnum++; max[used_items.indexOf(item->flag())]++; }
+                    if (item->group().isEmpty()) { db_qnum++; max[used_items.indexOf(item->category())]++; }
+                    else { groups << item->group(); groups_i[used_items.indexOf(item->category())] << item->group(); }
+                } else { db_qnum++; max[used_items.indexOf(item->category())]++; }
             }
         }
         db_qnum += groups.count();
@@ -248,7 +248,7 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool flags_selec
         if (TSMaxQnumCheckBox->isChecked()) {
             TSQnumSpinBox->setValue(db_qnum);
         }
-    } else if (!flags_selected) {
+    } else if (!categories_selected) {
         spb_qnum->setValue(db_qnum);
     }
 }
@@ -299,8 +299,8 @@ void MainWindow::addToList()
         TSIncludeTableWidget->setRowCount(TSIncludeTableWidget->rowCount() + 1);
         QTableWidgetItem * item = toTableItem(TSExcludeListWidget->takeItem(TSExcludeListWidget->currentRow()), true);
         TSIncludeTableWidget->setItem(TSIncludeTableWidget->rowCount() - 1, 0, item);
-        if (rbtnSelectFlags->isChecked()) {
-            int max = qnumForFlag(item->data(Qt::UserRole).toInt(), TSGroupsCheckBox->isChecked());
+        if (rbtnSelectCategories->isChecked()) {
+            int max = qnumForCategory(item->data(Qt::UserRole).toInt(), TSGroupsCheckBox->isChecked());
             MTSpinBox * spb_qnum = new MTSpinBox(this);
             TSIncludeTableWidget->setCellWidget(TSIncludeTableWidget->rowCount() - 1, 1, spb_qnum);
             spb_qnum->setMaximum(max);
@@ -394,7 +394,7 @@ void MainWindow::startServer()
     // PASS MARK
     current_db_passmark.clear();
     current_db_passmark.setPassMark(TSPassMarkSpinBox->value());
-    if (TSAdvancedSetupGroupBox->isChecked() && rbtnSelectFlags->isChecked()) {
+    if (TSAdvancedSetupGroupBox->isChecked() && rbtnSelectCategories->isChecked()) {
         for (int i = 0; i < TSIncludeTableWidget->rowCount(); ++i) {
             if (((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 1))->value() > 0 || ((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 2))->value() > 0) {
                 current_db_passmark.addCondition(TSIncludeTableWidget->item(i, 0)->data(Qt::UserRole).toInt(), ((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 2))->value(), ((QSpinBox *)TSIncludeTableWidget->cellWidget(i, 1))->value());
@@ -426,13 +426,13 @@ void MainWindow::startServer()
             if (!isDifficultyIncluded(item->difficulty())) continue;
             db_qnum++;
         }
-    } else if (rbtnSelectFlags->isChecked()) {
+    } else if (rbtnSelectCategories->isChecked()) {
         for (int i = 0; i < LQListWidget->count(); ++i) {
             item = NULL; item = current_db_questions.value(LQListWidget->item(i));
             if (item == NULL) { continue; }
             if (item->isHidden()) { continue; }
             if (!isDifficultyIncluded(item->difficulty())) continue;
-            if (used_items.contains(item->flag())) { db_qnum++; }
+            if (used_items.contains(item->category())) { db_qnum++; }
         }
     } else if (rbtnSelectQuestions->isChecked()) {
         db_qnum = TSIncludeTableWidget->rowCount();
@@ -464,9 +464,9 @@ void MainWindow::startServer()
     out << QString("\n[DB_COMMENTS]\n") << current_db_comments << QString("\n");
     out << QString("[DB_QNUM]\n") << QString("%1\n").arg(db_qnum);
     out << QString("[DB_FLAGS]\n");
-    for (int i = 0; i < current_db_f.size(); ++i) { out << QString(current_db_fe[i] ? "+" : "-"); }
+    for (int i = 0; i < current_db_categories.size(); ++i) { out << QString(current_db_categories_enabled[i] ? "+" : "-"); }
     out << QString("\n");
-    for (int i = 0; i < current_db_f.size(); ++i) { out << QString("[DB_F%1]\n%2\n").arg(i).arg(current_db_f[i]); }
+    for (int i = 0; i < current_db_categories.size(); ++i) { out << QString("[DB_F%1]\n%2\n").arg(i).arg(current_db_categories[i]); }
     out << QString("[DB_FLAGS_END]\n");
     out << current_db_passmark.data() << QString("\n");
     setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -483,9 +483,9 @@ void MainWindow::startServer()
                 if (!item->isHidden()) {
                     ok = true;
                 }
-            } else if (rbtnSelectFlags->isChecked()) {
+            } else if (rbtnSelectCategories->isChecked()) {
                 if (!item->isHidden()) {
-                    if (used_items.contains(item->flag())) {
+                    if (used_items.contains(item->category())) {
                         ok = true;
                     }
                 }
@@ -723,8 +723,8 @@ void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> * results, QTab
             item->setText(q_item->group().isEmpty() ? q_item->name() : QString("[%1] %2").arg(q_item->group()).arg(q_item->name()));
         }
         item->setIcon(iconForDifficulty(qans.difficulty()));
-        item->setBackground(QBrush(backgroundColourForFlag(qans.flag())));
-        item->setForeground(QBrush(foregroundColourForFlag(qans.flag())));
+        item->setBackground(QBrush(backgroundColourForCategory(qans.category())));
+        item->setForeground(QBrush(foregroundColourForCategory(qans.category())));
         tw->setItem(row, 0, item);
         double score = qans.score(sys);
         item = new QTableWidgetItem(tr("%1 out of %2").arg(score).arg(qans.maximumScore(sys)));
@@ -1014,7 +1014,7 @@ void MainWindow::clearSMSC()
 void MainWindow::clearSM()
 {
     TSAdvancedSetupGroupBox->setChecked(false);
-    rbtnSelectFlags->setChecked(true);
+    rbtnSelectCategories->setChecked(true);
     TSSearchAvailableLineEdit->clear();
     TSSearchUsedLineEdit->clear();
     TSExcludeListWidget->clear();

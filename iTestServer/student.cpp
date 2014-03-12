@@ -131,7 +131,7 @@ QString Student::studentData()
     while (i.hasNext()) { i.next();
         qans = i.value();
         out.append(QString("\n%1").arg(i.key()));
-        out.append(QString("\n%1").arg(qans.flag()));
+        out.append(QString("\n%1").arg(qans.category()));
         out.append(QString("\n%1").arg(qans.difficulty()));
         out.append(QString("\n%1").arg(qans.selectionType()));
         out.append(QString("\n%1").arg(qans.answered()));

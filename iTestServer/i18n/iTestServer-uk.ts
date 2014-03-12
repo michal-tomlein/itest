@@ -563,19 +563,19 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>http://itest.sourceforge.net/documentation/%1/en/</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>Введіть назву категорії %1</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>Встановіть або зніміть цей перемикач для того, щоб встановити або зняти категорію %1</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Категорії збережені</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Категорії скасовані</translation>
     </message>
     <message>
@@ -609,11 +609,11 @@ Error %2.</source>
         <translation>Коментарі:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Застосувати зміни категорій</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Скасувати зміни категорій</translation>
     </message>
     <message>
@@ -797,11 +797,11 @@ Error %2.</source>
         <translation>Показувати тільки складні питання</translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Показувати тільки питання обраної категоріі</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Обрати категорію для фільтрації списку</translation>
     </message>
     <message>
@@ -845,11 +845,11 @@ Error %2.</source>
         <translation>Назва обраного питання</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Категорія:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>Категорія обраного питання</translation>
     </message>
     <message>
@@ -953,7 +953,7 @@ Error %2.</source>
         <translation>Використовуйте це поле для коментарів, нотаток, нагадувань...</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Категорія</translation>
     </message>
     <message>
@@ -961,7 +961,7 @@ Error %2.</source>
         <translation>Ім&apos;я</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Кількість питань у цій категорії</translation>
     </message>
     <message>
@@ -973,7 +973,7 @@ Error %2.</source>
         <translation>Оберіть:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Категорії</translation>
     </message>
     <message>
@@ -989,7 +989,7 @@ Error %2.</source>
         <translation>&lt;b&gt;Використано:&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Назва категорії</translation>
     </message>
     <message>
@@ -1541,11 +1541,11 @@ Error %2.</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Категорії</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Редагувати категорії</translation>
     </message>
     <message>
@@ -1621,7 +1621,7 @@ Error %2.</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Відображати тільки питання обраної &amp;категорії</translation>
     </message>
     <message>
@@ -1989,11 +1989,11 @@ Error %2.</source>
         <translation>Вивести на друк підсумки обраного класу</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation>По категорії</translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation>Сортувати питання по категоріям</translation>
     </message>
     <message>
@@ -2389,7 +2389,7 @@ Please choose a different name:</source>
         <translation>Статистика: кількість &lt;b&gt;правильних&lt;/b&gt; відповідей: &lt;b&gt;%1&lt;/b&gt;; кількість &lt;b&gt;неправильних&lt;/b&gt; відповідей: &lt;b&gt;%2&lt;/b&gt;; складність: &lt;b&gt;%3&lt;/b&gt;; &lt;a href=&quot;adjust.difficulty&quot;&gt;налаштувати складність&lt;/a&gt;</translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>У цій групі міститься одне або більше питань іншої категорії.
 Будь ласка, оберіть іншу групу.</translation>
@@ -2708,7 +2708,7 @@ although it is recommended to give them an hour.</source>
         <translation>Оберіть:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Категорії</translation>
     </message>
     <message>
@@ -2792,7 +2792,7 @@ although it is recommended to give them an hour.</source>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Назва категорії</translation>
     </message>
     <message>

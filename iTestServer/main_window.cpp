@@ -59,8 +59,8 @@ void MainWindow::clearCurrentValues()
     current_db_file.clear();
     current_db_comments.clear();
     current_db_question.clear();
-    current_db_fe.clear(); current_db_fe.resize(20);
-    current_db_f.clear(); current_db_f.resize(20);
+    current_db_categories_enabled.clear(); current_db_categories_enabled.resize(20);
+    current_db_categories.clear(); current_db_categories.resize(20);
     QMapIterator<QListWidgetItem *, QuestionItem *> i(current_db_questions);
     while (i.hasNext()) { i.next(); delete i.value(); }
     current_db_questions.clear();
@@ -71,17 +71,17 @@ void MainWindow::clearCurrentValues()
     QMapIterator<QListWidgetItem *, Class *> c(current_db_classes);
     while (c.hasNext()) { c.next(); delete c.value(); }
     current_db_classes.clear();
-    current_db_flagentries.clear();
+    current_db_categoryentries.clear();
 }
 
 void MainWindow::clearSQ()
 {
-    SQFlagComboBox->clear();
-    LQFlagComboBox->clear();
-    clearSQNoFlags();
+    SQCategoryComboBox->clear();
+    LQCategoryComboBox->clear();
+    clearSQNoCategories();
 }
 
-void MainWindow::clearSQNoFlags()
+void MainWindow::clearSQNoCategories()
 {
     SQQuestionNameLineEdit->clear();
     SQGroupLineEdit->clear();
@@ -104,7 +104,7 @@ void MainWindow::setAllEnabled(bool enabled)
     actionClose->setEnabled(enabled);
 //  actionEdit_questions->setEnabled(enabled);
 //  actionEdit_test->setEnabled(enabled);
-//  actionEdit_flags->setEnabled(enabled);
+//  actionEdit_categories->setEnabled(enabled);
 //  actionEdit_comments->setEnabled(enabled);
 //  actionSaved_sessions->setEnabled(enabled);
 //  actionEdit_classes->setEnabled(enabled);
@@ -112,7 +112,7 @@ void MainWindow::setAllEnabled(bool enabled)
 //    actionOverall_statistics->setEnabled(enabled);
 
     LQListWidget->setEnabled(enabled);
-    LQFlagComboBox->setEnabled(enabled);
+    LQCategoryComboBox->setEnabled(enabled);
     LQSearchLineEdit->setEnabled(enabled);
     actionAdd->setEnabled(enabled);
 //  actionUse_last_save_date->setEnabled(enabled);
@@ -122,7 +122,7 @@ void MainWindow::setAllEnabled(bool enabled)
 //  actionShow_easy->setEnabled(enabled);
 //  actionShow_medium->setEnabled(enabled);
 //  actionShow_difficult->setEnabled(enabled);
-//  actionShow_flag->setEnabled(enabled);
+//  actionShow_category->setEnabled(enabled);
 
     menuDatabase->setEnabled(enabled);
     if (!enabled) {
@@ -150,7 +150,7 @@ void MainWindow::setEQToolsEnabled(bool enabled)
 //  actionShow_easy->setEnabled(enabled);
 //  actionShow_medium->setEnabled(enabled);
 //  actionShow_difficult->setEnabled(enabled);
-//  actionShow_flag->setEnabled(enabled);
+//  actionShow_category->setEnabled(enabled);
     menuFilter_LQ->setEnabled(enabled);
     if (enabled) {
         if (LQListWidget->currentIndex().isValid())
@@ -237,8 +237,8 @@ void MainWindow::clearAll()
     clearLQ();
     clearSQ();
     ECTextEdit->clear();
-    loadFlags();
-    updateFlagQnums();
+    loadCategories();
+    updateCategoryQnums();
     clearSM();
     clearSV();
     clearCL();
@@ -268,7 +268,7 @@ MainWindow::MainWindow()
     progressBar->setFixedWidth(150);
     progressBar->setFixedHeight(15);
     progressBar->setVisible(false);
-    LQFlagComboBox->setVisible(false);
+    LQCategoryComboBox->setVisible(false);
     SQStatisticsLabel->setVisible(false);
     currentSvgChanged();
     btnApply = SQButtonBox->button(QDialogButtonBox::Apply);
@@ -288,10 +288,10 @@ MainWindow::MainWindow()
     EFTreeWidget->header()->setSectionResizeMode(1, QHeaderView::Stretch);
     EFTreeWidget->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     EFButtonBox->button(QDialogButtonBox::Apply)->setText(tr("Apply"));
-    EFButtonBox->button(QDialogButtonBox::Apply)->setStatusTip(tr("Apply any changes you have made to the flags"));
+    EFButtonBox->button(QDialogButtonBox::Apply)->setStatusTip(tr("Apply any changes you have made to the categories"));
     EFButtonBox->button(QDialogButtonBox::Apply)->setIcon(QIcon(QString::fromUtf8(":/images/images/button_ok.png")));
     EFButtonBox->button(QDialogButtonBox::Discard)->setText(tr("Discard"));
-    EFButtonBox->button(QDialogButtonBox::Discard)->setStatusTip(tr("Discard any changes you have made to the flags"));
+    EFButtonBox->button(QDialogButtonBox::Discard)->setStatusTip(tr("Discard any changes you have made to the categories"));
     EFButtonBox->button(QDialogButtonBox::Discard)->setIcon(QIcon(QString::fromUtf8(":/images/images/button_cancel.png")));
     // Initialize variables ----------------------------------------------------
     // URLs
@@ -314,8 +314,8 @@ MainWindow::MainWindow()
     current_db_open = false;
     current_db_session = NULL;
     current_db_class = NULL;
-    current_db_f.resize(20);
-    current_db_fe.resize(20);
+    current_db_categories.resize(20);
+    current_db_categories_enabled.resize(20);
     // Connect slots -----------------------------------------------------------
     tbtnAddQuestion->setDefaultAction(actionAdd);
     tbtnDuplicateQuestion->setDefaultAction(actionDuplicate);
@@ -346,7 +346,7 @@ MainWindow::MainWindow()
 
     QObject::connect(actionFrom_A_to_Z, SIGNAL(triggered()), this, SLOT(sortQuestionsAscending()));
     QObject::connect(actionFrom_Z_to_A, SIGNAL(triggered()), this, SLOT(sortQuestionsDescending()));
-    QObject::connect(actionBy_flag, SIGNAL(triggered()), this, SLOT(sortQuestionsByFlag()));
+    QObject::connect(actionBy_category, SIGNAL(triggered()), this, SLOT(sortQuestionsByCategory()));
 
     tbtnAddSVG->setDefaultAction(actionAdd_SVG);
     tbtnRemoveSVG->setDefaultAction(actionRemove_SVG);
@@ -373,25 +373,25 @@ MainWindow::MainWindow()
     rbtngrpFilterLQ->addButton(LQEasyRadioButton);
     rbtngrpFilterLQ->addButton(LQMediumRadioButton);
     rbtngrpFilterLQ->addButton(LQDifficultRadioButton);
-    rbtngrpFilterLQ->addButton(LQFlagRadioButton);
+    rbtngrpFilterLQ->addButton(LQCategoryRadioButton);
 
     actgrpFilterLQ = new QActionGroup(this);
     actgrpFilterLQ->addAction(actionShow_all);
     actgrpFilterLQ->addAction(actionShow_easy);
     actgrpFilterLQ->addAction(actionShow_medium);
     actgrpFilterLQ->addAction(actionShow_difficult);
-    actgrpFilterLQ->addAction(actionShow_flag);
+    actgrpFilterLQ->addAction(actionShow_category);
 
     QObject::connect(rbtngrpFilterLQ, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(filterLQ(QAbstractButton *)));
     QObject::connect(actgrpFilterLQ, SIGNAL(triggered(QAction *)), this, SLOT(filterLQAction(QAction *)));
-    QObject::connect(LQFlagComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(filterLQFlagChanged()));
+    QObject::connect(LQCategoryComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(filterLQCategoryChanged()));
     QObject::connect(LQSearchLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(filterLQSearch()));
     QObject::connect(tbtnSearchByGroup, SIGNAL(released()), this, SLOT(searchByGroup()));
 
     actgrpPage = new QActionGroup(this);
     actgrpPage->addAction(actionEdit_questions);
     actgrpPage->addAction(actionEdit_comments);
-    actgrpPage->addAction(actionEdit_flags);
+    actgrpPage->addAction(actionEdit_categories);
     actgrpPage->addAction(actionEdit_test);
     actgrpPage->addAction(actionSaved_sessions);
     actgrpPage->addAction(actionEdit_classes);
@@ -413,8 +413,8 @@ MainWindow::MainWindow()
     QObject::connect(mainStackedWidget, SIGNAL(currentChanged(int)), this, SLOT(currentPageChanged(int)));
     // Disable all -------------------------------------------------------------
     setAllEnabled(false);
-    // Flags -------------------------------------------------------------------
-    setupFlagsPage();
+    // Categories -------------------------------------------------------------------
+    setupCategoriesPage();
     // Server ------------------------------------------------------------------
     setupServer();
     // Session viewer ----------------------------------------------------------
@@ -502,7 +502,7 @@ void MainWindow::currentPageChanged(int i)
 {
     enableTools();
     switch (i) {
-        case 3: updateFlagQnums(); break;
+        case 3: updateCategoryQnums(); break;
         case 4: reloadAvailableItems(); break;
     }
 }
@@ -513,7 +513,7 @@ void MainWindow::setPage(QAction * act)
         mainStackedWidget->setCurrentIndex(1);
     } else if (act == actionEdit_comments) {
         mainStackedWidget->setCurrentIndex(2);
-    } else if (act == actionEdit_flags) {
+    } else if (act == actionEdit_categories) {
         mainStackedWidget->setCurrentIndex(3);
     } else if (act == actionEdit_test) {
         mainStackedWidget->setCurrentIndex(4);
@@ -690,8 +690,8 @@ void MainWindow::overallStatistics()
         q_item = current_db_questions.value(LQListWidget->item(i));
         if (q_item->recommendedDifficulty() == -1) { continue; }
         tw_item = new QTableWidgetItem(q_item->group().isEmpty() ? q_item->name() : QString("[%1] %2").arg(q_item->group()).arg(q_item->name()));
-        tw_item->setBackground(QBrush(backgroundColourForFlag(q_item->flag())));
-        tw_item->setForeground(QBrush(foregroundColourForFlag(q_item->flag())));
+        tw_item->setBackground(QBrush(backgroundColourForCategory(q_item->category())));
+        tw_item->setForeground(QBrush(foregroundColourForCategory(q_item->category())));
         tw_item->setFont(font);
         stats_tw->setItem(row, 0, tw_item);
         tw_item = new QTableWidgetItem;

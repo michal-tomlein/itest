@@ -96,9 +96,9 @@ private:
     bool current_test_shuffle_questions;
     bool current_test_shuffle_answers;
     bool current_connection_local;
-    // FLAGS
-    QVector<bool> current_db_fe;
-    QVector<QString> current_db_f;
+    // CATEGORIES
+    QVector<bool> current_db_categories_enabled;
+    QVector<QString> current_db_categories;
     // UI-RELATED
     QTimer timer;
     void closeEvent(QCloseEvent*);
@@ -120,7 +120,7 @@ private:
     QTableWidgetItem * ITW_test_time;
     QTableWidgetItem * ITW_test_qnum;
     QTableWidgetItem * ITW_test_fnum;
-    QTableWidgetItem * ITW_test_flags;
+    QTableWidgetItem * ITW_test_categories;
     QTableWidgetItem * ITW_test_passmark;
     QTextBrowser * ITW_test_comments;
 };

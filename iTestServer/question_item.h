@@ -30,7 +30,7 @@ public:
     QuestionAnswer(Question::Answer correct = Question::None,
                    Question::Answer ans = Question::None,
                    int num_answers = 9,
-                   int flag = -1,
+                   int category = -1,
                    int difficulty = 0,
                    Question::SelectionType type = Question::SingleSelection,
                    const QString & explanation = QString());
@@ -42,8 +42,8 @@ public:
     int numAnswers();
     double score(const ScoringSystem &);
     double maximumScore(const ScoringSystem &);
-    void setFlag(int);
-    int flag();
+    void setCategory(int);
+    int category();
     void setDifficulty(int);
     int difficulty();
     void setSelectionType(Question::SelectionType);
@@ -55,7 +55,7 @@ private:
     Question::Answer qa_answered;
     Question::Answer qa_correct_answer;
     int qa_num_answers;
-    int qa_flag;
+    int qa_category;
     int q_difficulty;
     Question::SelectionType q_selectiontype;
     QString qa_explanation;
@@ -65,7 +65,7 @@ class QuestionItem : public Question
 {
 public:
     QuestionItem(const QString & name = QString(),
-                int flag = -1,
+                int category = -1,
                 const QString & group = QString(),
                 int difficulty = 0,
                 const QString & text = QString(),

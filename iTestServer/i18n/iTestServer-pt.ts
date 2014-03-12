@@ -439,19 +439,19 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Base de dados encerrada</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>Digite um nome para a categoria %1</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>Marque ou desmarque esta caixa para activar ou desactivar a categoria %1</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Categorias gravadas</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Categorias descartadas</translation>
     </message>
     <message>
@@ -467,11 +467,11 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Comentários:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Gravar quaisqueres alterações feitas às categorias</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Descartar quaisqueres alterações feitas às categorias</translation>
     </message>
     <message>
@@ -603,7 +603,7 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Lista de questões</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Seleccione a categoria que servirá de filtro na lista abaixo</translation>
     </message>
     <message>
@@ -627,7 +627,7 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Mostrar apenas as questões difíceis</translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Mostrar apenas as questões que correspondem à categoria seleccionada</translation>
     </message>
     <message>
@@ -675,11 +675,11 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Nome da questão seleccionada</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Categoria:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>Categoria da questão seleccionada</translation>
     </message>
     <message>
@@ -755,7 +755,7 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Seleccionar:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Categorias</translation>
     </message>
     <message>
@@ -1075,11 +1075,11 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Categorias</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Editar categorias</translation>
     </message>
     <message>
@@ -1151,7 +1151,7 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Mostrar apenas as questões que correspondem à &amp;categoria seleccionada</translation>
     </message>
     <message>
@@ -1195,11 +1195,11 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>&amp;Adicionar</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation>Por categoria</translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation>Ordenar as questões por categoria</translation>
     </message>
     <message>
@@ -2008,7 +2008,7 @@ embore seja recomendado que o possam fazer numa hora.</translation>
         <translation>http://itest.sourceforge.net/documentation/%1/en/</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Nome da categoria</translation>
     </message>
     <message>
@@ -2068,7 +2068,7 @@ embore seja recomendado que o possam fazer numa hora.</translation>
         <translation>Permitir apenas uma questão por grupo</translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>Este grupo é usado por uma ou mais questões com categorias diferentes.
 Por favor escolha outro grupo.</translation>
@@ -2614,11 +2614,11 @@ Por favor escolha outro grupo.</translation>
         <translation>Baralhar as respostas</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Categoria</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Número de questões pertencentes a esta categoria</translation>
     </message>
     <message>
@@ -2707,7 +2707,7 @@ Erro %2.</translation>
         <translation>Seleccionar:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Categorias</translation>
     </message>
     <message>
@@ -2789,7 +2789,7 @@ Erro %2.</translation>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Nome da categoria</translation>
     </message>
     <message>

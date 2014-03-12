@@ -535,19 +535,19 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
         <translation>http://itest.sourceforge.net/documentation/%1/en/</translation>
     </message>
     <message>
-        <source>Type a name for flag %1</source>
+        <source>Type a name for category %1</source>
         <translation>Adj nevet a jelölőnek %1</translation>
     </message>
     <message>
-        <source>Check or uncheck this checkbox to enable or disable flag %1</source>
+        <source>Check or uncheck this checkbox to enable or disable category %1</source>
         <translation>A CheckBox-ban engedd, vagy tiltsd a jelölő használatát %1</translation>
     </message>
     <message>
-        <source>Flags saved</source>
+        <source>Categories saved</source>
         <translation>Jelölő mentve</translation>
     </message>
     <message>
-        <source>Flags discarded</source>
+        <source>Categories discarded</source>
         <translation>Jelölők eldobva</translation>
     </message>
     <message>
@@ -571,11 +571,11 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
         <translation>Megjegyzések:</translation>
     </message>
     <message>
-        <source>Apply any changes you have made to the flags</source>
+        <source>Apply any changes you have made to the categories</source>
         <translation>Minden változást alkalmaz a jelölőkre</translation>
     </message>
     <message>
-        <source>Discard any changes you have made to the flags</source>
+        <source>Discard any changes you have made to the categories</source>
         <translation>Eldob minden változást a jelölőkre</translation>
     </message>
     <message>
@@ -663,7 +663,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
         <translation>Választ:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Jelölők</translation>
     </message>
     <message>
@@ -779,11 +779,11 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
         <translation>Csak a nehéz kérdések mutatása</translation>
     </message>
     <message>
-        <source>Show questions with the selected flag only</source>
+        <source>Show questions in the selected category only</source>
         <translation>Csak a jelölővel ellátott kérdések mutatása</translation>
     </message>
     <message>
-        <source>Select the flag to filter the list below</source>
+        <source>Select the category to filter the list below</source>
         <translation>Válassz jelölőt a lenti lista szűréséhez</translation>
     </message>
     <message>
@@ -827,11 +827,11 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
         <translation>A kiválasztott kérdés neve</translation>
     </message>
     <message>
-        <source>Flag:</source>
+        <source>Category:</source>
         <translation>Jelölő:</translation>
     </message>
     <message>
-        <source>Flag of the selected question</source>
+        <source>Category of the selected question</source>
         <translation>A kiválasztott kérdés jelölője</translation>
     </message>
     <message>
@@ -939,7 +939,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
         <translation>&lt;b&gt;Használt:&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Jelölő neve</translation>
     </message>
     <message>
@@ -1367,11 +1367,11 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>&amp;Flags</source>
+        <source>&amp;Categories</source>
         <translation>&amp;Jelölők</translation>
     </message>
     <message>
-        <source>Edit flags</source>
+        <source>Edit categories</source>
         <translation>Jelölők szerkesztése</translation>
     </message>
     <message>
@@ -1443,7 +1443,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <source>Show questions with the selected &amp;flag only</source>
+        <source>Show questions in the selected &amp;category only</source>
         <translation>Csak a Jelölt kiválasztott kérdéseke&amp;t mutatja</translation>
     </message>
     <message>
@@ -2163,7 +2163,7 @@ Válassz másik nevet:</translation>
         <translation>Változtatások alkalmazása</translation>
     </message>
     <message>
-        <source>This group is used by one or more questions with a different flag.
+        <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>A csoport egy vagy több kérdést különböző jelölővel használja.
 Válassz másik csoportot.</translation>
@@ -2602,11 +2602,11 @@ ajánlott adni nekik egy órát.</translation>
         <translation>Kevert válaszok</translation>
     </message>
     <message>
-        <source>Flag</source>
+        <source>Category</source>
         <translation>Jelölő</translation>
     </message>
     <message>
-        <source>Number of questions with this flag</source>
+        <source>Number of questions in this category</source>
         <translation>Ezzel a jelzővel rendelkező kérdések száma</translation>
     </message>
     <message>
@@ -2660,11 +2660,11 @@ Hiba %2.</translation>
         <translation>Új teszt gomb mutatása</translation>
     </message>
     <message>
-        <source>By flag</source>
+        <source>By category</source>
         <translation>Jelölővel</translation>
     </message>
     <message>
-        <source>Sort questions by flag</source>
+        <source>Sort questions by category</source>
         <translation>Kérdés rendezés jelölővel</translation>
     </message>
     <message>
@@ -2707,7 +2707,7 @@ Hiba %2.</translation>
         <translation>Választ:</translation>
     </message>
     <message>
-        <source>Flags</source>
+        <source>Categories</source>
         <translation>Jelölők</translation>
     </message>
     <message>
@@ -2787,7 +2787,7 @@ Hiba %2.</translation>
         </translation>
     </message>
     <message>
-        <source>Flag name</source>
+        <source>Category name</source>
         <translation>Jelölő név</translation>
     </message>
     <message>

@@ -243,11 +243,11 @@ Embora esta versão consiga abrir a base de dados que seleccionou,
         <translation>Número de questões</translation>
     </message>
     <message>
-        <source>Number of flags</source>
+        <source>Number of categories</source>
         <translation>Número de categorias</translation>
     </message>
     <message>
-        <source>Flag names</source>
+        <source>Category names</source>
         <translation>Nomes das categorias</translation>
     </message>
     <message>

@@ -35,7 +35,7 @@ SOURCES      += main.cpp \
                 database.cpp \
                 questions.cpp \
                 text_formatting.cpp \
-                flags.cpp \
+                categories.cpp \
                 ../shared/about_widget.cpp \
                 ../shared/question.cpp \
                 question_item.cpp \

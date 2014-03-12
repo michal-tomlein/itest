@@ -90,7 +90,7 @@ MainWindow::MainWindow()
     ITW_test_time = infoTableWidget->item(3, 0);
     ITW_test_qnum = infoTableWidget->item(4, 0);
     ITW_test_fnum = infoTableWidget->item(5, 0);
-    ITW_test_flags = infoTableWidget->item(6, 0);
+    ITW_test_categories = infoTableWidget->item(6, 0);
     ITW_test_passmark = infoTableWidget->item(7, 0);
     ITW_test_comments = new QTextBrowser (infoTableWidget);
     infoTableWidget->setCellWidget(8, 0, ITW_test_comments);
@@ -386,7 +386,7 @@ void MainWindow::newTest()
     progressBar->setValue(0);
     resultsTableWidget->setRowCount(0);
     mainStackedWidget->setCurrentIndex(0);
-    current_db_fe.clear(); current_db_f.clear();
+    current_db_categories_enabled.clear(); current_db_categories.clear();
     if (rbtnNetwork->isChecked()) {
         tcpSocket->disconnectFromHost();
         current_connection_local = false;

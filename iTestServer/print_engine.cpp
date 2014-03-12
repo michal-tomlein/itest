@@ -54,14 +54,14 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
             QLabel * printq_label = new QLabel(this);
             printq_label->setText(tr("Select:"));
         printq_hlayout0->addWidget(printq_label);
-            QRadioButton * printq_rbtn_flags = new QRadioButton(this);
-            printq_rbtn_flags->setText(tr("Flags"));
-            printq_rbtn_flags->setChecked(true);
-            rbtngrpPrintqSelect->addButton(printq_rbtn_flags);
-        printq_hlayout0->addWidget(printq_rbtn_flags);
+            QRadioButton * printq_rbtn_categories = new QRadioButton(this);
+            printq_rbtn_categories->setText(tr("Categories"));
+            printq_rbtn_categories->setChecked(true);
+            rbtngrpPrintqSelect->addButton(printq_rbtn_categories);
+        printq_hlayout0->addWidget(printq_rbtn_categories);
             QRadioButton * printq_rbtn_questions = new QRadioButton(this);
             printq_rbtn_questions->setText(tr("Questions"));
-            printq_rbtn_flags->setChecked(false);
+            printq_rbtn_categories->setChecked(false);
             rbtngrpPrintqSelect->addButton(printq_rbtn_questions);
         printq_hlayout0->addWidget(printq_rbtn_questions);
         printq_hlayout0->addStretch();
@@ -216,7 +216,7 @@ QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)
         }
         printq_label_hidden->setText(printq_parent->actionShow_hidden->isChecked() ?
                 tr("%n hidden question(s) listed", "", num_hidden) : tr("%n hidden question(s) not listed", "", num_hidden));
-    togglePrintSelection(printq_rbtn_flags);
+    togglePrintSelection(printq_rbtn_categories);
         updateTestQnum();
     this->show();
 }
@@ -226,9 +226,9 @@ MTTableWidget * PrintQuestionsDialogue::includeTableWidget() const
     return printq_includelist;
 }
 
-bool PrintQuestionsDialogue::flagsSelected() const
+bool PrintQuestionsDialogue::categoriesSelected() const
 {
-    return rbtngrpPrintqSelect->checkedButton()->text() == tr("Flags");
+    return rbtngrpPrintqSelect->checkedButton()->text() == tr("Categories");
 }
 
 bool PrintQuestionsDialogue::questionsSelected() const
@@ -288,18 +288,18 @@ int PrintQuestionsDialogue::numQuestions() const
 
 void PrintQuestionsDialogue::togglePrintSelection(QAbstractButton * rbtn)
 {
-    if (rbtn->text() == tr("Flags")) {
+    if (rbtn->text() == tr("Categories")) {
         printq_excludelist->clear();
         printq_includelist->clearContents();
         printq_includelist->setRowCount(0);
         printq_includelist->setColumnCount(2);
-        printq_includelist->setHorizontalHeaderLabels(QStringList() << tr("Flag name") << tr("Number of questions"));
+        printq_includelist->setHorizontalHeaderLabels(QStringList() << tr("Category name") << tr("Number of questions"));
         printq_includelist->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
         printq_includelist->horizontalHeader()->show();
         QListWidgetItem * item;
-        for (int i = 0; i < printq_parent->current_db_f.size(); ++i) {
-            if (printq_parent->current_db_fe[i]) {
-                item = new QListWidgetItem(QString("%1 - %2").arg(i+1).arg(printq_parent->current_db_f[i]), printq_excludelist);
+        for (int i = 0; i < printq_parent->current_db_categories.size(); ++i) {
+            if (printq_parent->current_db_categories_enabled[i]) {
+                item = new QListWidgetItem(QString("%1 - %2").arg(i+1).arg(printq_parent->current_db_categories[i]), printq_excludelist);
                 item->setData(Qt::UserRole, i);
                 MainWindow::setQuestionItemColour(item, i);
             }
@@ -335,8 +335,8 @@ void PrintQuestionsDialogue::addQuestionToPrint(int row)
     printq_includelist->setRowCount(printq_includelist->rowCount() + 1);
     QTableWidgetItem * item = MainWindow::toTableItem(printq_excludelist->takeItem(row), true);
     printq_includelist->setItem(printq_includelist->rowCount() - 1, 0, item);
-    if (rbtngrpPrintqSelect->checkedButton()->text() == tr("Flags")) {
-        int max = printq_parent->qnumForFlag(item->data(Qt::UserRole).toInt(), useGroups());
+    if (rbtngrpPrintqSelect->checkedButton()->text() == tr("Categories")) {
+        int max = printq_parent->qnumForCategory(item->data(Qt::UserRole).toInt(), useGroups());
         MTSpinBox * spb_qnum = new MTSpinBox(this);
         printq_includelist->setCellWidget(printq_includelist->rowCount() - 1, 1, spb_qnum);
         spb_qnum->setMaximum(max);
@@ -383,7 +383,7 @@ void PrintQuestionsDialogue::resetDefaultValues()
     if (!randomise()) {
         printq_advanced_numprintouts->setValue(1);
     }
-    if (rbtngrpPrintqSelect->checkedButton()->text() == tr("Flags")) {
+    if (rbtngrpPrintqSelect->checkedButton()->text() == tr("Categories")) {
         for (int i = 0; i < printq_includelist->rowCount(); ++i) {
             printq_includelist->cellWidget(i, 1)->setEnabled(randomise());
             if (!randomise()) { ((MTSpinBox *)printq_includelist->cellWidget(i, 1))->setMaximumValue(); }
@@ -393,7 +393,7 @@ void PrintQuestionsDialogue::resetDefaultValues()
 
 void PrintQuestionsDialogue::updateTestQnum()
 {
-    printq_parent->updateTestQnum(true, useGroups(), flagsSelected(), printq_advanced_numquestions, printq_includelist);
+    printq_parent->updateTestQnum(true, useGroups(), categoriesSelected(), printq_advanced_numquestions, printq_includelist);
 }
 
 void PrintQuestionsDialogue::printQuestions()
@@ -652,9 +652,9 @@ bool MainWindow::printStudentResults(Student * student, QPrinter * printer, cons
             if (q.value()->name() == i.key()) { item = q.value(); break; }
         }
         if (item != NULL) {
-            if (item->flag() >= 0 && item->flag() < current_db_f.size()) {
+            if (item->category() >= 0 && item->category() < current_db_categories.size()) {
                 out << "<div class=\"bold_text\">";
-                out << Qt::escape(current_db_f[item->flag()]) << ": </div>";
+                out << Qt::escape(current_db_categories[item->category()]) << ": </div>";
             }
             if (!item->group().isEmpty()) {
                 out << "[" << Qt::escape(item->group()) << "] ";
@@ -865,7 +865,7 @@ bool MainWindow::printSessionSummary(Session * session, QPrinter * printer)
     out << session->passMark().passMark() << endl << "</div></td></tr>" << endl;
     for (int i = 0; i < session->passMark().count(); ++i) {
         out << "<tr><td width=\"30%\"><div class=\"default_text\">" << endl;
-        out << current_db_f[session->passMark().condition(i)] << endl;
+        out << current_db_categories[session->passMark().condition(i)] << endl;
         out << "</div></td><td><div class=\"default_text\">" << endl;
         out << session->passMark().value(i) << endl << "</div></td></tr>" << endl;
     }
@@ -967,7 +967,7 @@ void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
     dialogue->setWindowTitle(tr("Print questions"));
     if (dialogue->exec() != QDialog::Accepted) return;
 
-    bool flags_selected = printq_widget->flagsSelected();
+    bool categories_selected = printq_widget->categoriesSelected();
     bool questions_selected = printq_widget->questionsSelected();
     bool formatted = printq_widget->printFormatting();
     bool print_statistics = printq_widget->printStatistics();
@@ -981,18 +981,18 @@ void MainWindow::printQuestions(PrintQuestionsDialogue * printq_widget)
     QList<int> used_items; PassMark passmark; int pm_v = 0;
     for (int i = 0; i < printq_widget->includeTableWidget()->rowCount(); ++i) {
         used_items << printq_widget->includeTableWidget()->item(i, 0)->data(Qt::UserRole).toInt();
-        if (flags_selected) {
+        if (categories_selected) {
             pm_v = ((QSpinBox *)printq_widget->includeTableWidget()->cellWidget(i, 1))->value();
-            if (flags_selected && pm_v > 0) {
+            if (categories_selected && pm_v > 0) {
                 passmark.addCondition(printq_widget->includeTableWidget()->item(i, 0)->data(Qt::UserRole).toInt(), 0, pm_v);
             }
         }
     }
     QList<Question *> questions;
     for (int i = 0; i < LQListWidget->count(); ++i) {
-        if (flags_selected) {
+        if (categories_selected) {
             QuestionItem * item = current_db_questions.value(LQListWidget->item(i));
-            if (used_items.contains(item->flag()) && (!item->isHidden() || actionShow_hidden->isChecked())) {
+            if (used_items.contains(item->category()) && (!item->isHidden() || actionShow_hidden->isChecked())) {
                 questions << item;
             }
         } else if (questions_selected) {
@@ -1089,8 +1089,8 @@ QString MainWindow::htmlForQuestion(QuestionItem * item, int n, QTextDocument & 
         out << "<img src=\"" << resource_url.toString(QUrl::None) << "\" width=\"10\" height=\"10\"> " << endl;
     }
     if (n != 0) { out << "(" << n << ") "; }
-    if (!test && item->flag() >= 0 && item->flag() < current_db_f.size()) {
-        out << Qt::escape(current_db_f[item->flag()]) << ": ";
+    if (!test && item->category() >= 0 && item->category() < current_db_categories.size()) {
+        out << Qt::escape(current_db_categories[item->category()]) << ": ";
     }
     if (!test && !item->group().isEmpty()) {
         out << "[" << Qt::escape(item->group()) << "] ";

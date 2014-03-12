@@ -123,20 +123,20 @@ void MainWindow::loadTest(QString input)
     int db_qnum = in.readLine().toInt();
     progress.setMaximum(db_qnum);
     if (in.readLine() != "[DB_FLAGS]") { errorInvalidData(); return; }
-    // Flags enabled
+    // Categories enabled
     db_buffer = in.readLine();
-    QVector<bool> db_fe(db_buffer.length());
-    for (int i = 0; i < db_fe.size(); ++i) {
-        if (db_buffer.at(i) == '+') { db_fe[i] = true; } else if (db_buffer.at(i) == '-')
-        { db_fe[i] = false; } else { errorInvalidData(); return; }
+    QVector<bool> db_categories_enabled(db_buffer.length());
+    for (int i = 0; i < db_categories_enabled.size(); ++i) {
+        if (db_buffer.at(i) == '+') { db_categories_enabled[i] = true; } else if (db_buffer.at(i) == '-')
+        { db_categories_enabled[i] = false; } else { errorInvalidData(); return; }
     }
-    // Flags
-    QVector<QString> db_f(db_buffer.length());
-    for (int i = 0; i < db_f.size(); ++i) {
+    // Categories
+    QVector<QString> db_categories(db_buffer.length());
+    for (int i = 0; i < db_categories.size(); ++i) {
         if (in.readLine() != QString("[DB_F%1]").arg(i)) { errorInvalidData(); return; }
-        db_f[i] = in.readLine();
+        db_categories[i] = in.readLine();
     }
-    // End of flags
+    // End of categories
     if (in.readLine() != "[DB_FLAGS_END]") { errorInvalidData(); return; }
     // Pass mark
     if (db_version >= 1.2) {
@@ -156,9 +156,9 @@ void MainWindow::loadTest(QString input)
         // Question name
         if (in.readLine() != "[Q_NAME]") { errorInvalidData(); return; }
         item = new QuestionItem (in.readLine());
-        // Flag
+        // Category
         if (in.readLine() != "[Q_FLAG]") { errorInvalidData(); return; }
-        item->setFlag(in.readLine().toInt());
+        item->setCategory(in.readLine().toInt());
         if (db_version >= 1.2) {
             // Group
             if (in.readLine() != "[Q_GRP]") { errorInvalidData(); return; }
@@ -211,9 +211,9 @@ void MainWindow::loadTest(QString input)
         progress.setValue(i); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         qApp->processEvents();
     }
-    // Set flags
-    current_db_fe = db_fe;
-    current_db_f = db_f;
+    // Set categories
+    current_db_categories_enabled = db_categories_enabled;
+    current_db_categories = db_categories;
     // Save values
     current_db_name = db_name;
     current_db_date = db_date;
@@ -236,8 +236,8 @@ void MainWindow::loadTest(QString input)
     QString pm_str = tr("Total");
     pm_str.append(QString(": %1;").arg(current_test_passmark.passMark()));
     for (int i = 0; i < current_test_passmark.count(); ++i) {
-        if (current_test_passmark.condition(i) < 0 && current_test_passmark.condition(i) >= current_db_f.size()) { continue; }
-        pm_str.append(QString(" %1: %2;").arg(current_db_f[current_test_passmark.condition(i)]).arg(current_test_passmark.value(i)));
+        if (current_test_passmark.condition(i) < 0 && current_test_passmark.condition(i) >= current_db_categories.size()) { continue; }
+        pm_str.append(QString(" %1: %2;").arg(current_db_categories[current_test_passmark.condition(i)]).arg(current_test_passmark.value(i)));
     }
     ITW_test_passmark->setText(pm_str);
     ITW_test_comments->setHtml(current_db_comments);
@@ -307,7 +307,7 @@ void MainWindow::randomlySelectQuestions()
     QList<int> randlist = Question::randomise(questions, current_test_passmark, current_test_use_groups, current_test_qnum, client_number, &progress, qApp);
     if (!current_test_shuffle_questions)
         qSort(randlist);
-    QStringList flags;
+    QStringList categories;
     for (int i = 0; i < randlist.count(); ++i) {
         if (current_test_shuffle_answers) { current_db_questions.at(randlist.at(i))->shuffleAnswers(); }
         QListWidgetItem * q_item = new QListWidgetItem;
@@ -319,13 +319,13 @@ void MainWindow::randomlySelectQuestions()
         q_item->setData(Qt::UserRole, current_db_questions.at(randlist.at(i))->name());
         LQListWidget->addItem(q_item);
         current_test_questions.insert(q_item, current_db_questions.at(randlist.at(i)));
-        if ((current_db_questions.at(randlist.at(i))->flag() >= 0) && (current_db_questions.at(randlist.at(i))->flag() < current_db_f.size())) {
-            if (!flags.contains(current_db_f[current_db_questions.at(randlist.at(i))->flag()]))
-                { flags << current_db_f[current_db_questions.at(randlist.at(i))->flag()]; }
+        if ((current_db_questions.at(randlist.at(i))->category() >= 0) && (current_db_questions.at(randlist.at(i))->category() < current_db_categories.size())) {
+            if (!categories.contains(current_db_categories[current_db_questions.at(randlist.at(i))->category()]))
+                { categories << current_db_categories[current_db_questions.at(randlist.at(i))->category()]; }
         }
     }
-    ITW_test_fnum->setText(QString("%1").arg(flags.count()));
-    ITW_test_flags->setText(flags.join(", "));
+    ITW_test_fnum->setText(QString("%1").arg(categories.count()));
+    ITW_test_categories->setText(categories.join(", "));
 
     if (qApp->arguments().count() > 2) {
         if (qApp->arguments().at(1) == "-port") {

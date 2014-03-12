@@ -43,11 +43,11 @@ void MainWindow::addQuestion()
     q_item->setIcon(QIcon(QString::fromUtf8(":/images/images/easy.png")));
     LQListWidget->addItem(q_item);
     setDatabaseModified();
-    int numflags = 0;
-    for (int i = 0; i < current_db_f.size(); ++i) { if (current_db_fe[i]) { numflags++; } }
-    if (numflags > 0) {
-        item->setFlag(SQFlagComboBox->itemData(0).toInt());
-        setQuestionItemColour(q_item, item->flag());
+    int numcategories = 0;
+    for (int i = 0; i < current_db_categories.size(); ++i) { if (current_db_categories_enabled[i]) { numcategories++; } }
+    if (numcategories > 0) {
+        item->setCategory(SQCategoryComboBox->itemData(0).toInt());
+        setQuestionItemColour(q_item, item->category());
     }
 }
 
@@ -97,7 +97,7 @@ void MainWindow::duplicateQuestion()
                  if (q.value()->name() == new_q_name) { allright = false; copynum++; goto addQuestion_start; break; }
              }
              QuestionItem * new_item = new QuestionItem(new_q_name,
-                                                    item->flag(),
+                                                    item->category(),
                                                     item->group(),
                                                     item->difficulty(),
                                                     item->text(),
@@ -112,7 +112,7 @@ void MainWindow::duplicateQuestion()
              QListWidgetItem * new_q_item = new QListWidgetItem(new_item->group().isEmpty() ? new_q_name : QString("[%1] %2").arg(new_item->group()).arg(new_q_name));
              current_db_questions.insert(new_q_item, new_item);
              setQuestionItemIcon(new_q_item, new_item->difficulty());
-             setQuestionItemColour(new_q_item, new_item->flag());
+             setQuestionItemColour(new_q_item, new_item->category());
              hideQuestion(new_q_item, new_item);
              LQListWidget->insertItem(LQListWidget->currentRow()+1, new_q_item);
              LQListWidget->setCurrentRow(LQListWidget->currentRow()+1);
@@ -124,12 +124,12 @@ void MainWindow::duplicateQuestion()
 void MainWindow::setCurrentQuestion()
 {
     if (LQListWidget->currentIndex().isValid()) {
-        setSQEnabled(true); clearSQNoFlags(); setLQToolsEnabled(true);
+        setSQEnabled(true); clearSQNoCategories(); setLQToolsEnabled(true);
         QuestionItem * item = current_db_questions.value(LQListWidget->currentItem());
         SQQuestionNameLineEdit->setText(item->name());
         SQGroupLineEdit->setText(item->group());
-        SQFlagComboBox->setCurrentIndex(current_db_flagentries.value(item->flag()));
-        LQFlagComboBox->setCurrentIndex(current_db_flagentries.value(item->flag()));
+        SQCategoryComboBox->setCurrentIndex(current_db_categoryentries.value(item->category()));
+        LQCategoryComboBox->setCurrentIndex(current_db_categoryentries.value(item->category()));
         SQDifficultyComboBox->setCurrentIndex(item->difficulty());
         SQQuestionTextEdit->setHtml(item->text());
         SQAnswersEdit->setAnswers(item->answers(), item->correctAnswers(), item->selectionType());
@@ -154,7 +154,7 @@ void MainWindow::setCurrentQuestion()
         }
         current_db_question = item->name();
     } else {
-        setSQEnabled(false); clearSQNoFlags(); setLQToolsEnabled(false);
+        setSQEnabled(false); clearSQNoCategories(); setLQToolsEnabled(false);
     }
 }
 
@@ -165,29 +165,29 @@ void MainWindow::applyQuestionChanges()
     QuestionItem * item = current_db_questions.value(q_item);
     // CHECK GROUP
     QString q_group = removeLineBreaks(SQGroupLineEdit->text());
-    int q_flag;
-    if (SQFlagComboBox->count() != 0) {
-        q_flag = SQFlagComboBox->itemData(SQFlagComboBox->currentIndex()).toInt();
-    } else { q_flag = -1; }
+    int q_category;
+    if (SQCategoryComboBox->count() != 0) {
+        q_category = SQCategoryComboBox->itemData(SQCategoryComboBox->currentIndex()).toInt();
+    } else { q_category = -1; }
     if (!q_group.isEmpty()) {
         QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
         while (q.hasNext()) { q.next();
             if (q.value()->group() == q_group) {
-                if (q.value()->flag() != q_flag) {
-                        QMessageBox::information(this, tr("Apply changes"), tr("This group is used by one or more questions with a different flag.\nPlease choose a different group."));
+                if (q.value()->category() != q_category) {
+                        QMessageBox::information(this, tr("Apply changes"), tr("This group is used by one or more questions in a different category.\nPlease choose a different group."));
                         return;
                     }
                 }
         }
     }
     // CHECK FLAG
-    /*if (item->flag() != q_flag && item->flag() != -1) {
-        switch (QMessageBox::information(this, tr("iTestServer"), tr("It is strongly advised against changing the flag of a question.\nConsider duplicating the question and hiding the original instead.\nProceed only if you know what you are doing."), tr("&Change"), tr("Do &not change"), 0, 1)) {
+    /*if (item->category() != q_category && item->category() != -1) {
+        switch (QMessageBox::information(this, tr("iTestServer"), tr("It is strongly advised against changing the category of a question.\nConsider duplicating the question and hiding the original instead.\nProceed only if you know what you are doing."), tr("&Change"), tr("Do &not change"), 0, 1)) {
             case 0: // Change
                 break;
             case 1: // Do not change
-                q_flag = item->flag();
-                SQFlagComboBox->setCurrentIndex(current_db_flagentries.value(item->flag()));
+                q_category = item->category();
+                SQCategoryComboBox->setCurrentIndex(current_db_categoryentries.value(item->category()));
                 break;
         }
     }*/
@@ -227,7 +227,7 @@ void MainWindow::applyQuestionChanges()
     // SAVE VALUES
     item->setName(q_name);
     item->setGroup(q_group);
-    item->setFlag(q_flag);
+    item->setCategory(q_category);
     item->setDifficulty(SQDifficultyComboBox->currentIndex());
     item->setText(removeLineBreaks(SQQuestionTextEdit->toHtml()));
     item->setAnswers(SQAnswersEdit->answers());
@@ -248,7 +248,7 @@ void MainWindow::applyQuestionChanges()
     current_db_question = q_name;
     q_item->setText(item->group().isEmpty() ? q_name : QString("[%1] %2").arg(item->group()).arg(q_name));
     setQuestionItemIcon(q_item, item->difficulty());
-    setQuestionItemColour(q_item, item->flag());
+    setQuestionItemColour(q_item, item->category());
     hideQuestion(q_item, item);
     statusBar()->showMessage(tr("Data saved"), 10000);
     setDatabaseModified();
@@ -273,7 +273,7 @@ void MainWindow::hideQuestion()
 void MainWindow::hideQuestion(QListWidgetItem * q_item, QuestionItem * item)
 {
     q_item->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
-    q_item->setForeground(QBrush(foregroundColourForFlag(item->flag(), item->isHidden())));
+    q_item->setForeground(QBrush(foregroundColourForCategory(item->category(), item->isHidden())));
     if (item->isHidden()) {
         QFont font; font.setBold(true);
         q_item->setFont(font);
@@ -299,10 +299,10 @@ QIcon MainWindow::iconForDifficulty(int q_difficulty_i)
     return QIcon(QString::fromUtf8(":/images/images/easy.png"));
 }
 
-void MainWindow::setQuestionItemColour(QListWidgetItem * q_item, int q_flag_i)
+void MainWindow::setQuestionItemColour(QListWidgetItem * q_item, int q_category_i)
 {
-    q_item->setBackground(QBrush(backgroundColourForFlag(q_flag_i)));
-    q_item->setForeground(QBrush(foregroundColourForFlag(q_flag_i)));
+    q_item->setBackground(QBrush(backgroundColourForCategory(q_category_i)));
+    q_item->setForeground(QBrush(foregroundColourForCategory(q_category_i)));
 }
 
 void MainWindow::searchByGroup() {
@@ -313,9 +313,9 @@ void MainWindow::searchByGroup() {
 
 void MainWindow::filterLQSearch() { filterLQ(rbtngrpFilterLQ->checkedButton()); }
 
-void MainWindow::filterLQFlagChanged() 
+void MainWindow::filterLQCategoryChanged()
 {
-    if (LQFlagRadioButton->isChecked()) {filterLQ(LQFlagRadioButton);}
+    if (LQCategoryRadioButton->isChecked()) {filterLQ(LQCategoryRadioButton);}
 }
 
 void MainWindow::filterLQAction(QAction * act)
@@ -328,8 +328,8 @@ void MainWindow::filterLQAction(QAction * act)
         filterLQ(LQMediumRadioButton); LQMediumRadioButton->setChecked(true);
     } else if (act == actionShow_difficult) {
         filterLQ(LQDifficultRadioButton); LQDifficultRadioButton->setChecked(true);
-    } else if (act == actionShow_flag) {
-        filterLQ(LQFlagRadioButton); LQFlagRadioButton->setChecked(true);
+    } else if (act == actionShow_category) {
+        filterLQ(LQCategoryRadioButton); LQCategoryRadioButton->setChecked(true);
     }
 }
 
@@ -384,10 +384,10 @@ void MainWindow::filterLQ(QAbstractButton * rbtn)
                 } else { LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); }
             } else { LQListWidget->item(i)->setHidden(true); }
         }
-    } else if (rbtn == LQFlagRadioButton) {
+    } else if (rbtn == LQCategoryRadioButton) {
         for (int i = 0; i < LQListWidget->count(); ++i) {
             item = current_db_questions.value(LQListWidget->item(i));
-            if (current_db_flagentries.value(item->flag()) == LQFlagComboBox->currentIndex()) {
+            if (current_db_categoryentries.value(item->category()) == LQCategoryComboBox->currentIndex()) {
                 if (!keyword.isEmpty()) {
                     if (LQListWidget->item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
                         LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); n++;
@@ -415,19 +415,19 @@ void MainWindow::sortQuestionsAscending() { sortQuestions(Qt::AscendingOrder); }
 
 void MainWindow::sortQuestionsDescending() { sortQuestions(Qt::DescendingOrder); }
 
-void MainWindow::sortQuestionsByFlag() { sortQuestions(Qt::AscendingOrder, true); }
+void MainWindow::sortQuestionsByCategory() { sortQuestions(Qt::AscendingOrder, true); }
 
-void MainWindow::sortQuestions(Qt::SortOrder order, bool by_flag)
+void MainWindow::sortQuestions(Qt::SortOrder order, bool by_category)
 {
     setDatabaseModified();
 
     QStringList list; QMap<QString, QListWidgetItem *> map;
     QListWidgetItem * item; QString item_text;
-    int l = QString::number(current_db_f.size()).length();
+    int l = QString::number(current_db_categories.size()).length();
 
     for (int i = 0; i < LQListWidget->count();) {
         item = LQListWidget->takeItem(i);
-        item_text = by_flag ? QString("%1%2").arg(current_db_questions.value(item)->flag(), l, 10, QLatin1Char('0')).arg(item->text()) : item->text();
+        item_text = by_category ? QString("%1%2").arg(current_db_questions.value(item)->category(), l, 10, QLatin1Char('0')).arg(item->text()) : item->text();
         list << item_text; map.insert(item_text, item);
     }
 
