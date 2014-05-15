@@ -394,7 +394,7 @@
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
-        <translation>Folyamat nincs meg. Lehetséges, hogy arhiválva volt egy másik számítógépen.</translation>
+        <translation type="obsolete">Folyamat nincs meg. Lehetséges, hogy arhiválva volt egy másik számítógépen.</translation>
     </message>
     <message>
         <source>&amp;Save</source>
@@ -456,14 +456,14 @@
     </message>
     <message>
         <source>Save a backup</source>
-        <translation>Backup mentés</translation>
+        <translation type="obsolete">Backup mentés</translation>
     </message>
     <message>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
 This computer&apos;s archive will be updated.</source>
-        <translation>Biztos, hogy meváltoztatod az adatbázis nevét?
+        <translation type="obsolete">Biztos, hogy meváltoztatod az adatbázis nevét?
 Ilyenkor bármely, az adatbázishoz rendelt arhivált folyamat
 egy másik gépről nem tölthető be, ha ott nem változtatod meg.
 E gép arhivumát frissíteni fogja.</translation>
@@ -506,7 +506,7 @@ E gép arhivumát frissíteni fogja.</translation>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Van a(z) iTes-nek elérhető újabb verziója.
+        <translation type="obsolete">Van a(z) iTes-nek elérhető újabb verziója.
 Ez a verzió alkalmas a kiválasztott adatbázis megnyitására,
 de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
@@ -596,7 +596,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>Your iTest is up-to-date.</source>
-        <translation>A(z) iTest naprakész.</translation>
+        <translation type="obsolete">A(z) iTest naprakész.</translation>
     </message>
     <message>
         <source>iTest %1 is available now.</source>
@@ -724,7 +724,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>Show database information</source>
-        <translation>Adatbázis info mutatása</translation>
+        <translation type="obsolete">Adatbázis info mutatása</translation>
     </message>
     <message>
         <source>Close the open database</source>
@@ -732,27 +732,27 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Adatbázis információ</translation>
+        <translation type="obsolete">Adatbázis információ</translation>
     </message>
     <message>
         <source>Database name</source>
-        <translation>Adatbázis neve</translation>
+        <translation type="obsolete">Adatbázis neve</translation>
     </message>
     <message>
         <source>Date:</source>
-        <translation>Dátum:</translation>
+        <translation type="obsolete">Dátum:</translation>
     </message>
     <message>
         <source>Database date</source>
-        <translation>Adatbázis dátum</translation>
+        <translation type="obsolete">Adatbázis dátum</translation>
     </message>
     <message>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>yyy.MM.dd - hh:mm</translation>
+        <translation type="obsolete">yyy.MM.dd - hh:mm</translation>
     </message>
     <message>
         <source>Use last save date</source>
-        <translation>Utolsó mentett dátum használata</translation>
+        <translation type="obsolete">Utolsó mentett dátum használata</translation>
     </message>
     <message>
         <source>List of questions</source>
@@ -1120,7 +1120,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Arhivált folyamatok:&lt;/b&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;Arhivált folyamatok:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Selected session</source>
@@ -1436,11 +1436,11 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>Show database &amp;information</source>
-        <translation>&amp;Adatbázis információ mutatása</translation>
+        <translation type="obsolete">&amp;Adatbázis információ mutatása</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="obsolete">Ctrl+I</translation>
     </message>
     <message>
         <source>Show questions in the selected &amp;category only</source>
@@ -1480,7 +1480,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>&amp;Use last save date</source>
-        <translation>&amp;Utolsó mentett dátum használata</translation>
+        <translation type="obsolete">&amp;Utolsó mentett dátum használata</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -1644,15 +1644,15 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>&amp;Archive session</source>
-        <translation>&amp;Arhív folyamat</translation>
+        <translation type="obsolete">&amp;Arhív folyamat</translation>
     </message>
     <message>
         <source>Archive session</source>
-        <translation>Arhív folyamat</translation>
+        <translation type="obsolete">Arhív folyamat</translation>
     </message>
     <message>
         <source>Archive the selected session</source>
-        <translation>Kiválasztott folyamat arhívum</translation>
+        <translation type="obsolete">Kiválasztott folyamat arhívum</translation>
     </message>
     <message>
         <source>Documentation</source>
@@ -1708,27 +1708,27 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>&amp;Restore session</source>
-        <translation>Folyamat &amp;helyreállítása</translation>
+        <translation type="obsolete">Folyamat &amp;helyreállítása</translation>
     </message>
     <message>
         <source>Restore the selected session from the archive</source>
-        <translation>A kiválasztott folyamat helyreállítása archívumból</translation>
+        <translation type="obsolete">A kiválasztott folyamat helyreállítása archívumból</translation>
     </message>
     <message>
         <source>Copy to archive</source>
-        <translation>Arhívumba másolás</translation>
+        <translation type="obsolete">Arhívumba másolás</translation>
     </message>
     <message>
         <source>Copy the selected session to the archive</source>
-        <translation>A kiválasztott folyamat másolása arhívumba</translation>
+        <translation type="obsolete">A kiválasztott folyamat másolása arhívumba</translation>
     </message>
     <message>
         <source>Copy from archive</source>
-        <translation>Másolás arhívumból</translation>
+        <translation type="obsolete">Másolás arhívumból</translation>
     </message>
     <message>
         <source>Copy the selected session from the archive</source>
-        <translation>A kiválasztott folyamat másolása arhívumból</translation>
+        <translation type="obsolete">A kiválasztott folyamat másolása arhívumból</translation>
     </message>
     <message>
         <source>Save a copy of the database</source>
@@ -1736,7 +1736,7 @@ de nehogy elszalaszd az új fejlesztések adta lehetőségeket.</translation>
     </message>
     <message>
         <source>Save a backup copy of the database with all the archived sessions</source>
-        <translation>Az adatbázis biztonsági másolatának mentése az összes arhív folyamatokkal</translation>
+        <translation type="obsolete">Az adatbázis biztonsági másolatának mentése az összes arhív folyamatokkal</translation>
     </message>
     <message>
         <source>Show hidden questions</source>
@@ -2311,7 +2311,7 @@ ajánlott adni nekik egy órát.</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; Kliens #%2 csatlakozva</translation>
+        <translation type="obsolete">%1 &gt; Kliens #%2 csatlakozva</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 identified as %3</source>
@@ -2690,6 +2690,26 @@ Hiba %2.</translation>
     <message>
         <source>CSV files (*.csv)</source>
         <translation>CVS fájlok (*.cvs)</translation>
+    </message>
+    <message>
+        <source>Session not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running the latest version of iTest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Download Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remind Me &amp;Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 &gt; Client #%2 (%3) connected</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

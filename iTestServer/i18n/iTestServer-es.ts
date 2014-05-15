@@ -372,14 +372,14 @@
     </message>
     <message>
         <source>Save a backup</source>
-        <translation>Guardar una copia de respaldo</translation>
+        <translation type="obsolete">Guardar una copia de respaldo</translation>
     </message>
     <message>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
 This computer&apos;s archive will be updated.</source>
-        <translation>¿Está seguro de cambiar el nombre de la base de datos?
+        <translation type="obsolete">¿Está seguro de cambiar el nombre de la base de datos?
 Si es así, cualquier sesión relacionada con esta base de datos
 en otras computadoras no se cargará, al menos que lo restaure.
 Los archivos de esta computadora serán actualizados.</translation>
@@ -422,7 +422,7 @@ Los archivos de esta computadora serán actualizados.</translation>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Existe una nueva version de iTest disponible.
+        <translation type="obsolete">Existe una nueva version de iTest disponible.
 No obstante, esta versión es capaz de abrir el archivo de base de datos que ha seleccionado,
 pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</translation>
     </message>
@@ -504,7 +504,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
     </message>
     <message>
         <source>Your iTest is up-to-date.</source>
-        <translation>Su iTest se encuentra actualizado.</translation>
+        <translation type="obsolete">Su iTest se encuentra actualizado.</translation>
     </message>
     <message>
         <source>iTest %1 is available now.</source>
@@ -732,31 +732,31 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
     </message>
     <message>
         <source>Database information</source>
-        <translation>Información de la base de datos</translation>
+        <translation type="obsolete">Información de la base de datos</translation>
     </message>
     <message>
         <source>Database name</source>
-        <translation>Nombre de la base de datos</translation>
+        <translation type="obsolete">Nombre de la base de datos</translation>
     </message>
     <message>
         <source>Date:</source>
-        <translation>Fecha:</translation>
+        <translation type="obsolete">Fecha:</translation>
     </message>
     <message>
         <source>Database date</source>
-        <translation>Fecha de la base de datos</translation>
+        <translation type="obsolete">Fecha de la base de datos</translation>
     </message>
     <message>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>yyyy.MM.dd - hh:mm</translation>
+        <translation type="obsolete">yyyy.MM.dd - hh:mm</translation>
     </message>
     <message>
         <source>Use last save date</source>
-        <translation>Usar última fecha guardada</translation>
+        <translation type="obsolete">Usar última fecha guardada</translation>
     </message>
     <message>
         <source>Show database information</source>
-        <translation>Mostrar la información de la base de datos</translation>
+        <translation type="obsolete">Mostrar la información de la base de datos</translation>
     </message>
     <message>
         <source>Close the open database</source>
@@ -1032,7 +1032,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
     </message>
     <message>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Sesiones guardadas:&lt;/b&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;Sesiones guardadas:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&amp;Help</source>
@@ -1196,11 +1196,11 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
     </message>
     <message>
         <source>Show database &amp;information</source>
-        <translation>Mostrar &amp;información de la base de datos</translation>
+        <translation type="obsolete">Mostrar &amp;información de la base de datos</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="obsolete">Ctrl+I</translation>
     </message>
     <message>
         <source>Show questions in the selected &amp;category only</source>
@@ -1240,7 +1240,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
     </message>
     <message>
         <source>&amp;Use last save date</source>
-        <translation>&amp;Utilizar última fecha guardada</translation>
+        <translation type="obsolete">&amp;Utilizar última fecha guardada</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -1424,15 +1424,15 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
     </message>
     <message>
         <source>&amp;Archive session</source>
-        <translation>&amp;Archivo de sesión</translation>
+        <translation type="obsolete">&amp;Archivo de sesión</translation>
     </message>
     <message>
         <source>Archive session</source>
-        <translation>Archivo de sesión</translation>
+        <translation type="obsolete">Archivo de sesión</translation>
     </message>
     <message>
         <source>Archive the selected session</source>
-        <translation>Archivo de la sesión seleccionada</translation>
+        <translation type="obsolete">Archivo de la sesión seleccionada</translation>
     </message>
     <message>
         <source>Documentation</source>
@@ -1488,27 +1488,27 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
     </message>
     <message>
         <source>&amp;Restore session</source>
-        <translation>&amp;Restaurar sesión</translation>
+        <translation type="obsolete">&amp;Restaurar sesión</translation>
     </message>
     <message>
         <source>Restore the selected session from the archive</source>
-        <translation>Restaurar la sesión seleccionada del archivo</translation>
+        <translation type="obsolete">Restaurar la sesión seleccionada del archivo</translation>
     </message>
     <message>
         <source>Copy to archive</source>
-        <translation>Copiar hacia el archivo</translation>
+        <translation type="obsolete">Copiar hacia el archivo</translation>
     </message>
     <message>
         <source>Copy the selected session to the archive</source>
-        <translation>Copiar la sesión seleccionada hacia el archivo</translation>
+        <translation type="obsolete">Copiar la sesión seleccionada hacia el archivo</translation>
     </message>
     <message>
         <source>Copy from archive</source>
-        <translation>Copiar desde el archivo</translation>
+        <translation type="obsolete">Copiar desde el archivo</translation>
     </message>
     <message>
         <source>Copy the selected session from the archive</source>
-        <translation>Copiar la sesión seleccionada desde el archivo</translation>
+        <translation type="obsolete">Copiar la sesión seleccionada desde el archivo</translation>
     </message>
     <message>
         <source>Save a copy of the database</source>
@@ -1516,7 +1516,7 @@ pero probablemente se esté perdiendo una gran cantidad de nuevas funciones.</tr
     </message>
     <message>
         <source>Save a backup copy of the database with all the archived sessions</source>
-        <translation>Guardar una réplica de la copia de seguridad de la base de datos con todas las sesiones guardadas</translation>
+        <translation type="obsolete">Guardar una réplica de la copia de seguridad de la base de datos con todas las sesiones guardadas</translation>
     </message>
     <message>
         <source>Show hidden questions</source>
@@ -1991,7 +1991,7 @@ aunque es recomendable de otorgarles una hora.</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; Cliente #%2 conectado</translation>
+        <translation type="obsolete">%1 &gt; Cliente #%2 conectado</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 identified as %3</source>
@@ -2307,7 +2307,7 @@ aunque es recomendable de otorgarles una hora.</translation>
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
-        <translation>Sesión no encontrada. Esta sesión puede que se haya guardado en una computadora diferente.</translation>
+        <translation type="obsolete">Sesión no encontrada. Esta sesión puede que se haya guardado en una computadora diferente.</translation>
     </message>
     <message>
         <source>List of classes</source>
@@ -2689,6 +2689,26 @@ Error %2.</source>
     <message>
         <source>CSV files (*.csv)</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running the latest version of iTest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Download Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remind Me &amp;Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 &gt; Client #%2 (%3) connected</source>
+        <translation>%1 &gt; Cliente #%2 (%3) conectado</translation>
     </message>
 </context>
 <context>

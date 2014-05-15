@@ -601,7 +601,7 @@ void MainWindow::addClient()
     QListWidgetItem * item = new QListWidgetItem(QString::number(SMLCListWidget->count() + 1), SMLCListWidget);
     current_db_clients.insert(item, client);
     client->setNumber(item->text().toInt());
-    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 connected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(item->text()));
+    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) connected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(item->text()).arg(clientConnection->peerAddress().toString()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush(QColor(197, 255, 120)));
     log_entry->setForeground(QBrush(QColor(0, 0, 0)));
