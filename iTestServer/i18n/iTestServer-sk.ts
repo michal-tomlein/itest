@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sk_SK">
+<TS version="2.1" language="sk_SK">
 <context>
     <name>AboutWidget</name>
     <message>
@@ -2695,23 +2695,23 @@ Chyba %2.</translation>
     </message>
     <message>
         <source>Session not found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sedenie nenájdené.</translation>
     </message>
     <message>
         <source>You are running the latest version of iTest.</source>
-        <translation type="unfinished"></translation>
+        <translation>Používate najnovšiu verziu programu iTest.</translation>
     </message>
     <message>
         <source>&amp;Download Update</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Stiahnuť aktualizáciu</translation>
     </message>
     <message>
         <source>Remind Me &amp;Later</source>
-        <translation type="unfinished"></translation>
+        <translation>Pripomenúť &amp;neskôr</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) connected</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 &gt; Klient #%2 (%3) pripojený</translation>
     </message>
 </context>
 <context>

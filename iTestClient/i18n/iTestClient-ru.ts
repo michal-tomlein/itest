@@ -96,7 +96,7 @@
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Доступна более новая версия iTest.
+        <translation type="obsolete">Доступна более новая версия iTest.
 Выбранный файл базы данных может быть открыт данной версией программы,
 но Вы можете пропустить большое количество новых возможностей.</translation>
     </message>

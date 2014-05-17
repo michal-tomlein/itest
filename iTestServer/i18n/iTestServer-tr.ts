@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="tr_TR">
+<TS version="2.1" language="tr_TR">
 <context>
     <name>AboutWidget</name>
     <message>
@@ -2711,7 +2711,7 @@ Hata: %2.</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) connected</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 &gt; İstemci #%2 (%3) bağlı</translation>
     </message>
 </context>
 <context>

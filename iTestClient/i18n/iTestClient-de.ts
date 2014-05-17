@@ -116,7 +116,7 @@
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Es ist eine neure Version von iTest verfügbar.
+        <translation type="obsolete">Es ist eine neure Version von iTest verfügbar.
 Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die Sie ausgewählt haben, aber Sie verpassen wahrscheinliche eine menge cooler, neuer Features.</translation>
     </message>
     <message>

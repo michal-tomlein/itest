@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="uk_UA" sourcelanguage="en_GB">
+<TS version="2.1" language="uk_UA" sourcelanguage="en_GB">
 <context>
     <name>AboutWidget</name>
     <message>
@@ -2710,7 +2710,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) connected</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 &gt; Клієнт №%2 (%3) під&apos;єднався</translation>
     </message>
 </context>
 <context>

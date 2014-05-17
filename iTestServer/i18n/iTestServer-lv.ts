@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="lv_LV">
+<TS version="2.1" language="lv_LV">
 <context>
     <name>AboutWidget</name>
     <message>
@@ -2710,7 +2710,7 @@ Kļūda %2.</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) connected</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 &gt; Klients Nr.%2 (%3) pieslēgts</translation>
     </message>
 </context>
 <context>

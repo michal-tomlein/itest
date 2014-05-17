@@ -115,7 +115,7 @@
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Van újabb iTest verzió. Ettől még a jelen verzió képes a kijelölt adatbázist megnyitni, de az új(abb) fejlesztések nem érhetők el.</translation>
+        <translation type="obsolete">Van újabb iTest verzió. Ettől még a jelen verzió képes a kijelölt adatbázist megnyitni, de az új(abb) fejlesztések nem érhetők el.</translation>
     </message>
     <message>
         <source>You need a newer version of iTest to open this database file.</source>

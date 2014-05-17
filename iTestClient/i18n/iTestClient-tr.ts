@@ -97,7 +97,7 @@
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>iTest uygulamasının yeni bir sürümü var.
+        <translation type="obsolete">iTest uygulamasının yeni bir sürümü var.
 Bu sürüm seçtiğiniz veritabanını açabilir,
 fakat siz muhtemelen birçok yeni özelliği kaçırıyorsunuz.</translation>
     </message>

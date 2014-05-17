@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="es_AR">
+<TS version="2.1" language="es_AR">
 <context>
     <name>AboutWidget</name>
     <message>
@@ -2708,7 +2708,7 @@ Error %2.</source>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) connected</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 &gt; Benutzer #%2 (%3) verbunden</translation>
     </message>
 </context>
 <context>
