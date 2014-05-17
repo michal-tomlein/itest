@@ -363,7 +363,7 @@
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
 This computer&apos;s archive will be updated.</source>
-        <translation>Jūs esat pārliecināts(-a), ka gribat mainīt datu bāzes nosaukumu?
+        <translation type="obsolete">Jūs esat pārliecināts(-a), ka gribat mainīt datu bāzes nosaukumu?
 Citi datori nevarēs ielādēt arhīvu sesijas, asociētas ar šo datu bāzi,
 līdzkamēr bāzei netiks atjaunots tās iepriekšējais nosaukums.
 Šī datora arhīvs tiks atjaunots.</translation>
@@ -406,7 +406,7 @@ līdzkamēr bāzei netiks atjaunots tās iepriekšējais nosaukums.
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Pieejama jaunāka iTest versija.
+        <translation type="obsolete">Pieejama jaunāka iTest versija.
 Izvēlētā datu bāzes datne var tikt atvērta ar šo programmas versiju,
 bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
@@ -472,7 +472,7 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
     <message>
         <source>Your iTest is up-to-date.</source>
-        <translation>Jums ir visjaunākā iTest versija.</translation>
+        <translation type="obsolete">Jums ir visjaunākā iTest versija.</translation>
     </message>
     <message>
         <source>iTest %1 is available now.</source>
@@ -684,31 +684,31 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Informācija par datu bāzi</translation>
+        <translation type="obsolete">Informācija par datu bāzi</translation>
     </message>
     <message>
         <source>Database name</source>
-        <translation>Datu bāzes nosaukums</translation>
+        <translation type="obsolete">Datu bāzes nosaukums</translation>
     </message>
     <message>
         <source>Date:</source>
-        <translation>Datums:</translation>
+        <translation type="obsolete">Datums:</translation>
     </message>
     <message>
         <source>Database date</source>
-        <translation>Datu bāzes datums</translation>
+        <translation type="obsolete">Datu bāzes datums</translation>
     </message>
     <message>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>yyyy.MM.dd - hh:mm</translation>
+        <translation type="obsolete">yyyy.MM.dd - hh:mm</translation>
     </message>
     <message>
         <source>Use last save date</source>
-        <translation>Izmantot pēdējās saglabāšanas datumu</translation>
+        <translation type="obsolete">Izmantot pēdējās saglabāšanas datumu</translation>
     </message>
     <message>
         <source>Show database information</source>
-        <translation>Rādīt informāciju par datu bāzi</translation>
+        <translation type="obsolete">Rādīt informāciju par datu bāzi</translation>
     </message>
     <message>
         <source>Close the open database</source>
@@ -960,7 +960,7 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
     <message>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Arhivētās sesijas:&lt;/b&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;Arhivētās sesijas:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&amp;Question</source>
@@ -1124,11 +1124,11 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
     <message>
         <source>Show database &amp;information</source>
-        <translation>Parādīt &amp;informāciju par datu bāzi</translation>
+        <translation type="obsolete">Parādīt &amp;informāciju par datu bāzi</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="obsolete">Ctrl+I</translation>
     </message>
     <message>
         <source>Show questions in the selected &amp;category only</source>
@@ -1168,7 +1168,7 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
     <message>
         <source>&amp;Use last save date</source>
-        <translation>&amp;Izmantot pēdējās saglabāšanas datumu</translation>
+        <translation type="obsolete">&amp;Izmantot pēdējās saglabāšanas datumu</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -1352,15 +1352,15 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
     <message>
         <source>&amp;Archive session</source>
-        <translation>&amp;Arhivēt sesiju</translation>
+        <translation type="obsolete">&amp;Arhivēt sesiju</translation>
     </message>
     <message>
         <source>Archive session</source>
-        <translation>Arhivēt sesiju</translation>
+        <translation type="obsolete">Arhivēt sesiju</translation>
     </message>
     <message>
         <source>Archive the selected session</source>
-        <translation>Arhivēt izvēlēto sesiju</translation>
+        <translation type="obsolete">Arhivēt izvēlēto sesiju</translation>
     </message>
     <message>
         <source>Documentation</source>
@@ -1416,11 +1416,11 @@ bet Jūs varat palaist garām daudz jaunu iespēju.</translation>
     </message>
     <message>
         <source>&amp;Restore session</source>
-        <translation>&amp;Atjaunot sesiju</translation>
+        <translation type="obsolete">&amp;Atjaunot sesiju</translation>
     </message>
     <message>
         <source>Restore the selected session from the archive</source>
-        <translation>Atjaunot izvēlēto sesiju no arhīva</translation>
+        <translation type="obsolete">Atjaunot izvēlēto sesiju no arhīva</translation>
     </message>
     <message>
         <source>Colour mode:</source>
@@ -1854,7 +1854,7 @@ lai gan ieteikts dot vismaz stundu.</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; Klients Nr.%2 pieslēgts</translation>
+        <translation type="obsolete">%1 &gt; Klients Nr.%2 pieslēgts</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 identified as %3</source>
@@ -1974,23 +1974,23 @@ lai gan ieteikts dot vismaz stundu.</translation>
     </message>
     <message>
         <source>Save a backup</source>
-        <translation>Saglabāt rezerves kopiju</translation>
+        <translation type="obsolete">Saglabāt rezerves kopiju</translation>
     </message>
     <message>
         <source>Copy to archive</source>
-        <translation>Nokopēt arhīvā</translation>
+        <translation type="obsolete">Nokopēt arhīvā</translation>
     </message>
     <message>
         <source>Copy the selected session to the archive</source>
-        <translation>Nokopēt izvēlēto sesiju arhīvā</translation>
+        <translation type="obsolete">Nokopēt izvēlēto sesiju arhīvā</translation>
     </message>
     <message>
         <source>Copy from archive</source>
-        <translation>Nokopēt no arhīva</translation>
+        <translation type="obsolete">Nokopēt no arhīva</translation>
     </message>
     <message>
         <source>Copy the selected session from the archive</source>
-        <translation>Nokopēt izvēlēto sesiju no arhīva</translation>
+        <translation type="obsolete">Nokopēt izvēlēto sesiju no arhīva</translation>
     </message>
     <message>
         <source>Save a copy of the database</source>
@@ -1998,7 +1998,7 @@ lai gan ieteikts dot vismaz stundu.</translation>
     </message>
     <message>
         <source>Save a backup copy of the database with all the archived sessions</source>
-        <translation>Saglabāt datu bāzes rezerves kopiju ar visām arhivētajām sesijām</translation>
+        <translation type="obsolete">Saglabāt datu bāzes rezerves kopiju ar visām arhivētajām sesijām</translation>
     </message>
     <message>
         <source>Error opening database.</source>
@@ -2308,7 +2308,7 @@ Lūdzu, izvēlieties citu grupu.</translation>
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
-        <translation>Sesija nav atrast. Šī sesija var būt arhivēta citā datorā.</translation>
+        <translation type="obsolete">Sesija nav atrast. Šī sesija var būt arhivēta citā datorā.</translation>
     </message>
     <message>
         <source>List of classes</source>
@@ -2690,6 +2690,26 @@ Kļūda %2.</translation>
     </message>
     <message>
         <source>CSV files (*.csv)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running the latest version of iTest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Download Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remind Me &amp;Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 &gt; Client #%2 (%3) connected</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

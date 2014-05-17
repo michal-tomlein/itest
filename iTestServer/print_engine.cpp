@@ -33,6 +33,7 @@
 #include <QPrintDialog>
 #include <QSettings>
 #include <QSvgRenderer>
+#include <QUrl>
 
 PrintQuestionsDialogue::PrintQuestionsDialogue(MainWindow * parent):
 QWidget(parent, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/)

@@ -23,6 +23,7 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QTextDocument>
 
 #include "defs.h"
 #include "flowlayout.h"

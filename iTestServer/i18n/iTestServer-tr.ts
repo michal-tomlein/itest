@@ -363,7 +363,7 @@
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
 This computer&apos;s archive will be updated.</source>
-        <translation>Veritabanının adını değiştirmek istediğinizden emin misiniz?
+        <translation type="obsolete">Veritabanının adını değiştirmek istediğinizden emin misiniz?
 Eğer bunu yaparsanız diğer bilgisayarlarda bu veritabanı ile
 ilişkilendirilmiş olan hiçbir arşivlenmiş oturum, eğer adını eski
 haline getirmezseniz, yüklenmeyecek.
@@ -408,7 +408,7 @@ Bu bilgisayarın arşivi yüklenecek.
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>iTest&apos;in daha yeni bir sürümü var.
+        <translation type="obsolete">iTest&apos;in daha yeni bir sürümü var.
 Uygulamanın bu sürümü seçtiğiniz veritabanı dosyasını açabilir ama
 büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</translation>
     </message>
@@ -474,7 +474,7 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
     </message>
     <message>
         <source>Your iTest is up-to-date.</source>
-        <translation>iTest uygulamanız güncel.</translation>
+        <translation type="obsolete">iTest uygulamanız güncel.</translation>
     </message>
     <message>
         <source>iTest %1 is available now.</source>
@@ -686,31 +686,31 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
     </message>
     <message>
         <source>Database information</source>
-        <translation>Veritabanı bilgileri</translation>
+        <translation type="obsolete">Veritabanı bilgileri</translation>
     </message>
     <message>
         <source>Database name</source>
-        <translation>Veritabanının adı</translation>
+        <translation type="obsolete">Veritabanının adı</translation>
     </message>
     <message>
         <source>Date:</source>
-        <translation>Tarihi:</translation>
+        <translation type="obsolete">Tarihi:</translation>
     </message>
     <message>
         <source>Database date</source>
-        <translation>Veritabanının tarihi</translation>
+        <translation type="obsolete">Veritabanının tarihi</translation>
     </message>
     <message>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>yyyy.MM.dd - hh:mm</translation>
+        <translation type="obsolete">yyyy.MM.dd - hh:mm</translation>
     </message>
     <message>
         <source>Use last save date</source>
-        <translation>Son kaydetme tarihini kullan</translation>
+        <translation type="obsolete">Son kaydetme tarihini kullan</translation>
     </message>
     <message>
         <source>Show database information</source>
-        <translation>Veritabanı bilgilerini göster</translation>
+        <translation type="obsolete">Veritabanı bilgilerini göster</translation>
     </message>
     <message>
         <source>Close the open database</source>
@@ -962,7 +962,7 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
     </message>
     <message>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Arşivlenmiş oturumlar:&lt;/b&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;Arşivlenmiş oturumlar:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&amp;Question</source>
@@ -1126,11 +1126,11 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
     </message>
     <message>
         <source>Show database &amp;information</source>
-        <translation>Veritabanı bilgilerini g&amp;öster</translation>
+        <translation type="obsolete">Veritabanı bilgilerini g&amp;öster</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+Ö</translation>
+        <translation type="obsolete">Ctrl+Ö</translation>
     </message>
     <message>
         <source>Show questions in the selected &amp;category only</source>
@@ -1170,7 +1170,7 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
     </message>
     <message>
         <source>&amp;Use last save date</source>
-        <translation>&amp;Son kaydetme tarihini kullan</translation>
+        <translation type="obsolete">&amp;Son kaydetme tarihini kullan</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -1354,15 +1354,15 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
     </message>
     <message>
         <source>&amp;Archive session</source>
-        <translation>&amp;Oturumu arşivle</translation>
+        <translation type="obsolete">&amp;Oturumu arşivle</translation>
     </message>
     <message>
         <source>Archive session</source>
-        <translation>Oturumu arşivle</translation>
+        <translation type="obsolete">Oturumu arşivle</translation>
     </message>
     <message>
         <source>Archive the selected session</source>
-        <translation>Seçilen oturumu arşivle</translation>
+        <translation type="obsolete">Seçilen oturumu arşivle</translation>
     </message>
     <message>
         <source>Documentation</source>
@@ -1418,11 +1418,11 @@ büyük olasılıkla bir çok yeni özelliği kaçırmış olacaksınız.</trans
     </message>
     <message>
         <source>&amp;Restore session</source>
-        <translation>&amp;Oturumu yeniden yükle</translation>
+        <translation type="obsolete">&amp;Oturumu yeniden yükle</translation>
     </message>
     <message>
         <source>Restore the selected session from the archive</source>
-        <translation>Seçilen oturumu arşivden yeniden yükle</translation>
+        <translation type="obsolete">Seçilen oturumu arşivden yeniden yükle</translation>
     </message>
     <message>
         <source>Colour mode:</source>
@@ -1855,7 +1855,7 @@ aslında sınav için bir saat tavsiye edilir.</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; İstemci #%2 bağlı</translation>
+        <translation type="obsolete">%1 &gt; İstemci #%2 bağlı</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 identified as %3</source>
@@ -1975,23 +1975,23 @@ aslında sınav için bir saat tavsiye edilir.</translation>
     </message>
     <message>
         <source>Save a backup</source>
-        <translation>Bir yedek kaydet</translation>
+        <translation type="obsolete">Bir yedek kaydet</translation>
     </message>
     <message>
         <source>Copy to archive</source>
-        <translation>Arşive kopyala</translation>
+        <translation type="obsolete">Arşive kopyala</translation>
     </message>
     <message>
         <source>Copy the selected session to the archive</source>
-        <translation>Seçilen oturumu arşive kaydet</translation>
+        <translation type="obsolete">Seçilen oturumu arşive kaydet</translation>
     </message>
     <message>
         <source>Copy from archive</source>
-        <translation>Arşivden kopyala</translation>
+        <translation type="obsolete">Arşivden kopyala</translation>
     </message>
     <message>
         <source>Copy the selected session from the archive</source>
-        <translation>Seçilen oturumu arşivden kopyala</translation>
+        <translation type="obsolete">Seçilen oturumu arşivden kopyala</translation>
     </message>
     <message>
         <source>Save a copy of the database</source>
@@ -1999,7 +1999,7 @@ aslında sınav için bir saat tavsiye edilir.</translation>
     </message>
     <message>
         <source>Save a backup copy of the database with all the archived sessions</source>
-        <translation>Veritabanını arşivlenmiş tüm oturumlarla birlikte yedekle</translation>
+        <translation type="obsolete">Veritabanını arşivlenmiş tüm oturumlarla birlikte yedekle</translation>
     </message>
     <message>
         <source>Error opening database.</source>
@@ -2309,7 +2309,7 @@ Lütfen başka bir grup seçin.</translation>
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
-        <translation>Oturum bulunamadı. Bu oturum başka bir bilgisayara arşivlenmiş olabilir.</translation>
+        <translation type="obsolete">Oturum bulunamadı. Bu oturum başka bir bilgisayara arşivlenmiş olabilir.</translation>
     </message>
     <message>
         <source>List of classes</source>
@@ -2691,6 +2691,26 @@ Hata: %2.</translation>
     </message>
     <message>
         <source>CSV files (*.csv)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running the latest version of iTest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Download Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remind Me &amp;Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 &gt; Client #%2 (%3) connected</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

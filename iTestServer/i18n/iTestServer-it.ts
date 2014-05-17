@@ -394,7 +394,7 @@
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
-        <translation>Sessione non trovata. Questa sessione potrebbe essere stata archiviata in un computer differente.</translation>
+        <translation type="obsolete">Sessione non trovata. Questa sessione potrebbe essere stata archiviata in un computer differente.</translation>
     </message>
     <message>
         <source>&amp;Save</source>
@@ -456,14 +456,14 @@
     </message>
     <message>
         <source>Save a backup</source>
-        <translation>Salva Backup</translation>
+        <translation type="obsolete">Salva Backup</translation>
     </message>
     <message>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
 This computer&apos;s archive will be updated.</source>
-        <translation>Sei sicuro di voler cambiare il nome del Database?
+        <translation type="obsolete">Sei sicuro di voler cambiare il nome del Database?
 Se lo farai ogni precendete sessione salvata non potrà
 essere apertasu nessun altro computer fino a che non
 ripristinerai il nome precedente.
@@ -507,7 +507,7 @@ L&apos;Archivio su questo Computer verrà aggiornato.</translation>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>E&apos; Disponibile una versione aggiornata di iTest.
+        <translation type="obsolete">E&apos; Disponibile una versione aggiornata di iTest.
 In ogni modo questa versione aprirà il file che hai selezionato,
 ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
@@ -597,7 +597,7 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
     <message>
         <source>Your iTest is up-to-date.</source>
-        <translation>Versione Aggiornata.</translation>
+        <translation type="obsolete">Versione Aggiornata.</translation>
     </message>
     <message>
         <source>iTest %1 is available now.</source>
@@ -725,7 +725,7 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
     <message>
         <source>Show database information</source>
-        <translation>Mostra informazioni Database</translation>
+        <translation type="obsolete">Mostra informazioni Database</translation>
     </message>
     <message>
         <source>Close the open database</source>
@@ -733,27 +733,27 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Informazioni Database</translation>
+        <translation type="obsolete">Informazioni Database</translation>
     </message>
     <message>
         <source>Database name</source>
-        <translation>Nome Database</translation>
+        <translation type="obsolete">Nome Database</translation>
     </message>
     <message>
         <source>Date:</source>
-        <translation>Data:</translation>
+        <translation type="obsolete">Data:</translation>
     </message>
     <message>
         <source>Database date</source>
-        <translation>Data Database</translation>
+        <translation type="obsolete">Data Database</translation>
     </message>
     <message>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>aaaa.MM.gg - hh:mm</translation>
+        <translation type="obsolete">aaaa.MM.gg - hh:mm</translation>
     </message>
     <message>
         <source>Use last save date</source>
-        <translation>Usa Ultima Data Utile</translation>
+        <translation type="obsolete">Usa Ultima Data Utile</translation>
     </message>
     <message>
         <source>List of questions</source>
@@ -1121,7 +1121,7 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
     <message>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Sessioni Archiviate:&lt;/b&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;Sessioni Archiviate:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Selected session</source>
@@ -1437,11 +1437,11 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
     <message>
         <source>Show database &amp;information</source>
-        <translation>Mostra &amp;informazioni Database</translation>
+        <translation type="obsolete">Mostra &amp;informazioni Database</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="obsolete">Ctrl+I</translation>
     </message>
     <message>
         <source>Show questions in the selected &amp;category only</source>
@@ -1481,7 +1481,7 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
     <message>
         <source>&amp;Use last save date</source>
-        <translation>&amp;Usa Data Ultima Modifica</translation>
+        <translation type="obsolete">&amp;Usa Data Ultima Modifica</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -1645,15 +1645,15 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
     <message>
         <source>&amp;Archive session</source>
-        <translation>&amp;Archivio sessioni</translation>
+        <translation type="obsolete">&amp;Archivio sessioni</translation>
     </message>
     <message>
         <source>Archive session</source>
-        <translation>Archivio sessioni</translation>
+        <translation type="obsolete">Archivio sessioni</translation>
     </message>
     <message>
         <source>Archive the selected session</source>
-        <translation>Archivia la sessione selezionata</translation>
+        <translation type="obsolete">Archivia la sessione selezionata</translation>
     </message>
     <message>
         <source>Documentation</source>
@@ -1721,27 +1721,27 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
     <message>
         <source>&amp;Restore session</source>
-        <translation>&amp;Ripristina Sessione</translation>
+        <translation type="obsolete">&amp;Ripristina Sessione</translation>
     </message>
     <message>
         <source>Restore the selected session from the archive</source>
-        <translation>Ripristina Sessione da Archivio</translation>
+        <translation type="obsolete">Ripristina Sessione da Archivio</translation>
     </message>
     <message>
         <source>Copy to archive</source>
-        <translation>Copia in Archivio</translation>
+        <translation type="obsolete">Copia in Archivio</translation>
     </message>
     <message>
         <source>Copy the selected session to the archive</source>
-        <translation>Copia Sessione selezionata in Archivio</translation>
+        <translation type="obsolete">Copia Sessione selezionata in Archivio</translation>
     </message>
     <message>
         <source>Copy from archive</source>
-        <translation>Copia da Archivio</translation>
+        <translation type="obsolete">Copia da Archivio</translation>
     </message>
     <message>
         <source>Copy the selected session from the archive</source>
-        <translation>Copia Sessione Selezionata da Archivio</translation>
+        <translation type="obsolete">Copia Sessione Selezionata da Archivio</translation>
     </message>
     <message>
         <source>Save a copy of the database</source>
@@ -1749,7 +1749,7 @@ ma perderai in ongi caso una serie di succulente novità.</translation>
     </message>
     <message>
         <source>Save a backup copy of the database with all the archived sessions</source>
-        <translation>Salva una Copia del Database incluse tutte le sessioni arichiviate</translation>
+        <translation type="obsolete">Salva una Copia del Database incluse tutte le sessioni arichiviate</translation>
     </message>
     <message>
         <source>Show hidden questions</source>
@@ -2323,7 +2323,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; Client #%2 connesso</translation>
+        <translation type="obsolete">%1 &gt; Client #%2 connesso</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 identified as %3</source>
@@ -2688,6 +2688,26 @@ Error %2.</source>
     </message>
     <message>
         <source>CSV files (*.csv)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running the latest version of iTest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Download Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remind Me &amp;Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 &gt; Client #%2 (%3) connected</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -21,6 +21,7 @@
 #define STUDENT_H
 
 #include <QObject>
+#include <QMap>
 
 class Client;
 class QuestionAnswer;

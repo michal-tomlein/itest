@@ -394,7 +394,7 @@
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
-        <translation>Сесію не знайдено. Ця сесія могла бути заархівованою на іншому комп&apos;ютері.</translation>
+        <translation type="obsolete">Сесію не знайдено. Ця сесія могла бути заархівованою на іншому комп&apos;ютері.</translation>
     </message>
     <message>
         <source>Add selected session</source>
@@ -484,14 +484,14 @@
     </message>
     <message>
         <source>Save a backup</source>
-        <translation>Зберегти резервну копію</translation>
+        <translation type="obsolete">Зберегти резервну копію</translation>
     </message>
     <message>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
 This computer&apos;s archive will be updated.</source>
-        <translation>Ви впевнені, що бажаєте змінити назву бази даних?
+        <translation type="obsolete">Ви впевнені, що бажаєте змінити назву бази даних?
 Інші комп&apos;ютери не зможуть завантажити асоційовані із цією базою даних
 архівні сесії, допоки базі не буде повернена її початкова назва.
 Архів даного комп&apos;ютера буде поновлено.</translation>
@@ -534,7 +534,7 @@ This computer&apos;s archive will be updated.</source>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Доступна більш нова версія програми iTest.
+        <translation type="obsolete">Доступна більш нова версія програми iTest.
 Ця версія може відкрити файл бази даних обраний вами,
 але, не оновившись, ви проґавите багато нових можливостей.</translation>
     </message>
@@ -634,7 +634,7 @@ Error %2.</source>
     </message>
     <message>
         <source>Your iTest is up-to-date.</source>
-        <translation>У Вас остання версія iTest.</translation>
+        <translation type="obsolete">У Вас остання версія iTest.</translation>
     </message>
     <message>
         <source>iTest %1 is available now.</source>
@@ -750,27 +750,27 @@ Error %2.</source>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Інформація про базу даних</translation>
+        <translation type="obsolete">Інформація про базу даних</translation>
     </message>
     <message>
         <source>Database name</source>
-        <translation>Ім&apos;я бази даних</translation>
+        <translation type="obsolete">Ім&apos;я бази даних</translation>
     </message>
     <message>
         <source>Date:</source>
-        <translation>Дата:</translation>
+        <translation type="obsolete">Дата:</translation>
     </message>
     <message>
         <source>Database date</source>
-        <translation>Дата бази даних</translation>
+        <translation type="obsolete">Дата бази даних</translation>
     </message>
     <message>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>рррр.ММ.дд - гг:хх</translation>
+        <translation type="obsolete">рррр.ММ.дд - гг:хх</translation>
     </message>
     <message>
         <source>Use last save date</source>
-        <translation>Використовувати дату останнього збереження</translation>
+        <translation type="obsolete">Використовувати дату останнього збереження</translation>
     </message>
     <message>
         <source>List of questions</source>
@@ -1258,7 +1258,7 @@ Error %2.</source>
     </message>
     <message>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Архівні сессии:&lt;/b&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;Архівні сессии:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Selected session</source>
@@ -1610,15 +1610,15 @@ Error %2.</source>
     </message>
     <message>
         <source>Show database &amp;information</source>
-        <translation>Показати &amp;інформацію про базу даних</translation>
+        <translation type="obsolete">Показати &amp;інформацію про базу даних</translation>
     </message>
     <message>
         <source>Show database information</source>
-        <translation>Відображати інформацію про базу даних</translation>
+        <translation type="obsolete">Відображати інформацію про базу даних</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="obsolete">Ctrl+I</translation>
     </message>
     <message>
         <source>Show questions in the selected &amp;category only</source>
@@ -1658,7 +1658,7 @@ Error %2.</source>
     </message>
     <message>
         <source>&amp;Use last save date</source>
-        <translation>Використовувати &amp;дату останнього збереження</translation>
+        <translation type="obsolete">Використовувати &amp;дату останнього збереження</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -1826,15 +1826,15 @@ Error %2.</source>
     </message>
     <message>
         <source>&amp;Archive session</source>
-        <translation>&amp;Архівувати сесію</translation>
+        <translation type="obsolete">&amp;Архівувати сесію</translation>
     </message>
     <message>
         <source>Archive session</source>
-        <translation>Архівувати сесію</translation>
+        <translation type="obsolete">Архівувати сесію</translation>
     </message>
     <message>
         <source>Archive the selected session</source>
-        <translation>Архівувати обрану сесію</translation>
+        <translation type="obsolete">Архівувати обрану сесію</translation>
     </message>
     <message>
         <source>Documentation</source>
@@ -1886,27 +1886,27 @@ Error %2.</source>
     </message>
     <message>
         <source>&amp;Restore session</source>
-        <translation>&amp;Відновити сесію</translation>
+        <translation type="obsolete">&amp;Відновити сесію</translation>
     </message>
     <message>
         <source>Restore the selected session from the archive</source>
-        <translation>Відновити обрану сесію із архіву</translation>
+        <translation type="obsolete">Відновити обрану сесію із архіву</translation>
     </message>
     <message>
         <source>Copy to archive</source>
-        <translation>Копіювати в архів</translation>
+        <translation type="obsolete">Копіювати в архів</translation>
     </message>
     <message>
         <source>Copy the selected session to the archive</source>
-        <translation>Копіювати обрану сесію в архів</translation>
+        <translation type="obsolete">Копіювати обрану сесію в архів</translation>
     </message>
     <message>
         <source>Copy from archive</source>
-        <translation>Копіювати із архіву</translation>
+        <translation type="obsolete">Копіювати із архіву</translation>
     </message>
     <message>
         <source>Copy the selected session from the archive</source>
-        <translation>Копіювати обрану сесію із архіву</translation>
+        <translation type="obsolete">Копіювати обрану сесію із архіву</translation>
     </message>
     <message>
         <source>Save a copy of the database</source>
@@ -1914,7 +1914,7 @@ Error %2.</source>
     </message>
     <message>
         <source>Save a backup copy of the database with all the archived sessions</source>
-        <translation>Зберегти резервну копію бази даних зі всіма архівними сесіями</translation>
+        <translation type="obsolete">Зберегти резервну копію бази даних зі всіма архівними сесіями</translation>
     </message>
     <message>
         <source>Show hidden questions</source>
@@ -2534,7 +2534,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; Клієнт №%2 під&apos;єднався</translation>
+        <translation type="obsolete">%1 &gt; Клієнт №%2 під&apos;єднався</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 identified as %3</source>
@@ -2690,6 +2690,26 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>CSV files (*.csv)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running the latest version of iTest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Download Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remind Me &amp;Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 &gt; Client #%2 (%3) connected</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

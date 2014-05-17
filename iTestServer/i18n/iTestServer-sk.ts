@@ -446,7 +446,7 @@
     </message>
     <message>
         <source>Your iTest is up-to-date.</source>
-        <translation>Táto verzia programu iTest je aktuálna.</translation>
+        <translation type="obsolete">Táto verzia programu iTest je aktuálna.</translation>
     </message>
     <message>
         <source>iTest %1 is available now.</source>
@@ -646,31 +646,31 @@
     </message>
     <message>
         <source>Database information</source>
-        <translation>Informácie o databáze</translation>
+        <translation type="obsolete">Informácie o databáze</translation>
     </message>
     <message>
         <source>Database name</source>
-        <translation>Meno databázy</translation>
+        <translation type="obsolete">Meno databázy</translation>
     </message>
     <message>
         <source>Date:</source>
-        <translation>Dátum:</translation>
+        <translation type="obsolete">Dátum:</translation>
     </message>
     <message>
         <source>Database date</source>
-        <translation>Dátum</translation>
+        <translation type="obsolete">Dátum</translation>
     </message>
     <message>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>yyyy.MM.dd - hh:mm</translation>
+        <translation type="obsolete">yyyy.MM.dd - hh:mm</translation>
     </message>
     <message>
         <source>Use last save date</source>
-        <translation>Použiť dátum posledného uloženia</translation>
+        <translation type="obsolete">Použiť dátum posledného uloženia</translation>
     </message>
     <message>
         <source>Show database information</source>
-        <translation>Zobraziť informácie o databáze</translation>
+        <translation type="obsolete">Zobraziť informácie o databáze</translation>
     </message>
     <message>
         <source>Close the open database</source>
@@ -1074,11 +1074,11 @@
     </message>
     <message>
         <source>Show database &amp;information</source>
-        <translation>Zobraziť &amp;informácie o databáze</translation>
+        <translation type="obsolete">Zobraziť &amp;informácie o databáze</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="obsolete">Ctrl+I</translation>
     </message>
     <message>
         <source>Show questions in the selected &amp;category only</source>
@@ -1118,7 +1118,7 @@
     </message>
     <message>
         <source>&amp;Use last save date</source>
-        <translation>Použiť dátum posledného &amp;uloženia</translation>
+        <translation type="obsolete">Použiť dátum posledného &amp;uloženia</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -1754,7 +1754,7 @@ ale doporučuje sa im dať hodinu času.</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; Klient #%2 pripojený</translation>
+        <translation type="obsolete">%1 &gt; Klient #%2 pripojený</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 identified as %3</source>
@@ -1884,7 +1884,7 @@ ale doporučuje sa im dať hodinu času.</translation>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Je dostupná nová verzia iTest.
+        <translation type="obsolete">Je dostupná nová verzia iTest.
 Napriek tomu však táto verzia vie otvoriť vybraný databázový súbor,
 ale pravdepodobne prichádzate o množstvo nových možností.</translation>
     </message>
@@ -1894,30 +1894,30 @@ ale pravdepodobne prichádzate o množstvo nových možností.</translation>
     </message>
     <message>
         <source>&amp;Archive session</source>
-        <translation>&amp;Archivovať sedenie</translation>
+        <translation type="obsolete">&amp;Archivovať sedenie</translation>
     </message>
     <message>
         <source>Archive session</source>
-        <translation>Archivovať sedenie</translation>
+        <translation type="obsolete">Archivovať sedenie</translation>
     </message>
     <message>
         <source>Archive the selected session</source>
-        <translation>Archivovať vybrané sedenie</translation>
+        <translation type="obsolete">Archivovať vybrané sedenie</translation>
     </message>
     <message>
         <source>&amp;Restore session</source>
-        <translation>&amp;Obnoviť sedenie</translation>
+        <translation type="obsolete">&amp;Obnoviť sedenie</translation>
     </message>
     <message>
         <source>Restore the selected session from the archive</source>
-        <translation>Obnoviť vybrané sedenie z archívu</translation>
+        <translation type="obsolete">Obnoviť vybrané sedenie z archívu</translation>
     </message>
     <message>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
 This computer&apos;s archive will be updated.</source>
-        <translation>Naozaj chcete zmeniť meno databázy?
+        <translation type="obsolete">Naozaj chcete zmeniť meno databázy?
 Ak tak urobíte, akékoľvek archivované sedenia
 asociované s touto databázou na iných počítačoch
 sa nenačítajú, kým meno nezmeníte naspäť.
@@ -1933,7 +1933,7 @@ Archív na tomto počítači bude aktualizovaný.</translation>
     </message>
     <message>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Archivované sedenia:&lt;/b&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;Archivované sedenia:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>This new name has been used before.
@@ -1975,23 +1975,23 @@ Všetky budú aktualizované.</translation>
     </message>
     <message>
         <source>Save a backup</source>
-        <translation>Uložiť zálohu</translation>
+        <translation type="obsolete">Uložiť zálohu</translation>
     </message>
     <message>
         <source>Copy to archive</source>
-        <translation>Kopírovať do archívu</translation>
+        <translation type="obsolete">Kopírovať do archívu</translation>
     </message>
     <message>
         <source>Copy the selected session to the archive</source>
-        <translation>Kopírovať vybrané sedenie do archívu</translation>
+        <translation type="obsolete">Kopírovať vybrané sedenie do archívu</translation>
     </message>
     <message>
         <source>Copy from archive</source>
-        <translation>Kopírovať z archívu</translation>
+        <translation type="obsolete">Kopírovať z archívu</translation>
     </message>
     <message>
         <source>Copy the selected session from the archive</source>
-        <translation>Kopírovať vybrané sedenie z archívu</translation>
+        <translation type="obsolete">Kopírovať vybrané sedenie z archívu</translation>
     </message>
     <message>
         <source>Save a copy of the database</source>
@@ -1999,7 +1999,7 @@ Všetky budú aktualizované.</translation>
     </message>
     <message>
         <source>Save a backup copy of the database with all the archived sessions</source>
-        <translation>Uložiť záložnú kópiu databázy so všetkými archivovanými sedeniami</translation>
+        <translation type="obsolete">Uložiť záložnú kópiu databázy so všetkými archivovanými sedeniami</translation>
     </message>
     <message>
         <source>Error opening database.</source>
@@ -2309,7 +2309,7 @@ Prosím zvoľte inú skupinu.</translation>
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
-        <translation>Sedenie nenájdené. Toto sedenie mohlo byť archivované na inom počítači.</translation>
+        <translation type="obsolete">Sedenie nenájdené. Toto sedenie mohlo byť archivované na inom počítači.</translation>
     </message>
     <message>
         <source>List of classes</source>
@@ -2692,6 +2692,26 @@ Chyba %2.</translation>
     <message>
         <source>CSV files (*.csv)</source>
         <translation>CSV súbory (*.csv)</translation>
+    </message>
+    <message>
+        <source>Session not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running the latest version of iTest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Download Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remind Me &amp;Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 &gt; Client #%2 (%3) connected</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

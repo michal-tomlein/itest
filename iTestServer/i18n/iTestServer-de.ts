@@ -372,14 +372,14 @@
     </message>
     <message>
         <source>Save a backup</source>
-        <translation>Backup speichern</translation>
+        <translation type="obsolete">Backup speichern</translation>
     </message>
     <message>
         <source>Are you sure you want to change the database name?
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
 This computer&apos;s archive will be updated.</source>
-        <translation>Sind Sie sicher, dass Sie den Namen der Datenbank ändern wollen?
+        <translation type="obsolete">Sind Sie sicher, dass Sie den Namen der Datenbank ändern wollen?
 Wenn Sie das tun, werden gespeicherte Sessions dieser Datenbank 
 auf anderen Computern nicht mehr geladen, bis Sie es wieder zurück ändern.
 Das Archiv dieses Computers wird aktualisiert.</translation>
@@ -422,7 +422,7 @@ Das Archiv dieses Computers wird aktualisiert.</translation>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Es ist eine neuere Version von iTest verfügbar.
+        <translation type="obsolete">Es ist eine neuere Version von iTest verfügbar.
 Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die Sie ausgewählt haben, aber Sie verpassen wahrscheinliche eine menge cooler, neuer Features.</translation>
     </message>
     <message>
@@ -503,7 +503,7 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
     </message>
     <message>
         <source>Your iTest is up-to-date.</source>
-        <translation>Ihr iTest ist aktuell.</translation>
+        <translation type="obsolete">Ihr iTest ist aktuell.</translation>
     </message>
     <message>
         <source>iTest %1 is available now.</source>
@@ -731,31 +731,31 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
     </message>
     <message>
         <source>Database information</source>
-        <translation>Informationen über die Datenbank</translation>
+        <translation type="obsolete">Informationen über die Datenbank</translation>
     </message>
     <message>
         <source>Database name</source>
-        <translation>Name der Datenbank</translation>
+        <translation type="obsolete">Name der Datenbank</translation>
     </message>
     <message>
         <source>Date:</source>
-        <translation>Datum:</translation>
+        <translation type="obsolete">Datum:</translation>
     </message>
     <message>
         <source>Database date</source>
-        <translation>Datum der Datenbank</translation>
+        <translation type="obsolete">Datum der Datenbank</translation>
     </message>
     <message>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>yyyy.MM.dd - hh:mm</translation>
+        <translation type="obsolete">yyyy.MM.dd - hh:mm</translation>
     </message>
     <message>
         <source>Use last save date</source>
-        <translation>Verwende letztes Speicherdatum</translation>
+        <translation type="obsolete">Verwende letztes Speicherdatum</translation>
     </message>
     <message>
         <source>Show database information</source>
-        <translation>Zeige Datenbankinformationen</translation>
+        <translation type="obsolete">Zeige Datenbankinformationen</translation>
     </message>
     <message>
         <source>Close the open database</source>
@@ -1031,7 +1031,7 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
     </message>
     <message>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Gespeicherte Sessions:&lt;/b&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;Gespeicherte Sessions:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&amp;Help</source>
@@ -1195,11 +1195,11 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
     </message>
     <message>
         <source>Show database &amp;information</source>
-        <translation>Zeige &amp;Datenbankinformationen</translation>
+        <translation type="obsolete">Zeige &amp;Datenbankinformationen</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="obsolete">Ctrl+I</translation>
     </message>
     <message>
         <source>Show questions in the selected &amp;category only</source>
@@ -1239,7 +1239,7 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
     </message>
     <message>
         <source>&amp;Use last save date</source>
-        <translation>&amp;Verwende letztes Speicherdatum</translation>
+        <translation type="obsolete">&amp;Verwende letztes Speicherdatum</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -1423,15 +1423,15 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
     </message>
     <message>
         <source>&amp;Archive session</source>
-        <translation>&amp;Archiviere die Session</translation>
+        <translation type="obsolete">&amp;Archiviere die Session</translation>
     </message>
     <message>
         <source>Archive session</source>
-        <translation>Archiviere die Session</translation>
+        <translation type="obsolete">Archiviere die Session</translation>
     </message>
     <message>
         <source>Archive the selected session</source>
-        <translation>Archiviere die gewählte Session</translation>
+        <translation type="obsolete">Archiviere die gewählte Session</translation>
     </message>
     <message>
         <source>Documentation</source>
@@ -1487,27 +1487,27 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
     </message>
     <message>
         <source>&amp;Restore session</source>
-        <translation>&amp;Session wiederherstellen</translation>
+        <translation type="obsolete">&amp;Session wiederherstellen</translation>
     </message>
     <message>
         <source>Restore the selected session from the archive</source>
-        <translation>Stelle die gewählte Session aus dem Archiv wieder her</translation>
+        <translation type="obsolete">Stelle die gewählte Session aus dem Archiv wieder her</translation>
     </message>
     <message>
         <source>Copy to archive</source>
-        <translation>Kopiere ins Archiv</translation>
+        <translation type="obsolete">Kopiere ins Archiv</translation>
     </message>
     <message>
         <source>Copy the selected session to the archive</source>
-        <translation>Kopiere die gewählte Session ins Archiv</translation>
+        <translation type="obsolete">Kopiere die gewählte Session ins Archiv</translation>
     </message>
     <message>
         <source>Copy from archive</source>
-        <translation>Kopiere aus dem Archiv</translation>
+        <translation type="obsolete">Kopiere aus dem Archiv</translation>
     </message>
     <message>
         <source>Copy the selected session from the archive</source>
-        <translation>Kopiere die gewählte Session aus dem Archiv</translation>
+        <translation type="obsolete">Kopiere die gewählte Session aus dem Archiv</translation>
     </message>
     <message>
         <source>Save a copy of the database</source>
@@ -1515,7 +1515,7 @@ Trotzdem ist diese Version weiterhin in der Lage die Datenbank zu öffnen, die S
     </message>
     <message>
         <source>Save a backup copy of the database with all the archived sessions</source>
-        <translation>Speiche eine Sicherungskopie der Datenbank mit alles archivierten Sessions</translation>
+        <translation type="obsolete">Speiche eine Sicherungskopie der Datenbank mit alles archivierten Sessions</translation>
     </message>
     <message>
         <source>Show hidden questions</source>
@@ -1991,7 +1991,7 @@ obwohl es empfehlenswert ist, ihnen eine Stunde zu geben.</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; Benutzer #%2 verbunden</translation>
+        <translation type="obsolete">%1 &gt; Benutzer #%2 verbunden</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 identified as %3</source>
@@ -2307,7 +2307,7 @@ obwohl es empfehlenswert ist, ihnen eine Stunde zu geben.</translation>
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
-        <translation>Session konnte nicht gefunden werden. Vielleicht wurde sie auf einem anderen Computer gesichert.</translation>
+        <translation type="obsolete">Session konnte nicht gefunden werden. Vielleicht wurde sie auf einem anderen Computer gesichert.</translation>
     </message>
     <message>
         <source>List of classes</source>
@@ -2688,6 +2688,26 @@ Error %2.</source>
     </message>
     <message>
         <source>CSV files (*.csv)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running the latest version of iTest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Download Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remind Me &amp;Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 &gt; Client #%2 (%3) connected</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

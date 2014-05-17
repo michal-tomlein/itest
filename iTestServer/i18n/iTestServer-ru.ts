@@ -363,7 +363,7 @@
 If you do so, any archived sessions associated to this database
 on other computers will not load, unless you change it back.
 This computer&apos;s archive will be updated.</source>
-        <translation>Вы уверены, что хотите изменить имя базы данных?
+        <translation type="obsolete">Вы уверены, что хотите изменить имя базы данных?
 Другие компьютеры не смогут загрузить ассоциированные с этой базой данных
 архивные сессии, пока базе не будет возвращено её текущее имя.
 Архив данного компьютера будет обновлён.</translation>
@@ -406,7 +406,7 @@ This computer&apos;s archive will be updated.</source>
         <source>There is a newer version of iTest available.
 Nonetheless, this version is able to open the database file you selected,
 but you are most probably missing a whole bunch of cool new features.</source>
-        <translation>Доступна более новая версия iTest.
+        <translation type="obsolete">Доступна более новая версия iTest.
 Выбранный файл базы данных может быть открыт данной версией программы,
 но Вы можете пропустить большое количество новых возможностей.</translation>
     </message>
@@ -472,7 +472,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>Your iTest is up-to-date.</source>
-        <translation>У Вас наиболее новая версия iTest.</translation>
+        <translation type="obsolete">У Вас наиболее новая версия iTest.</translation>
     </message>
     <message>
         <source>iTest %1 is available now.</source>
@@ -684,31 +684,31 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>Database information</source>
-        <translation>Информация о базе данных</translation>
+        <translation type="obsolete">Информация о базе данных</translation>
     </message>
     <message>
         <source>Database name</source>
-        <translation>Имя базы данных</translation>
+        <translation type="obsolete">Имя базы данных</translation>
     </message>
     <message>
         <source>Date:</source>
-        <translation>Дата:</translation>
+        <translation type="obsolete">Дата:</translation>
     </message>
     <message>
         <source>Database date</source>
-        <translation>Дата базы данных</translation>
+        <translation type="obsolete">Дата базы данных</translation>
     </message>
     <message>
         <source>yyyy.MM.dd - hh:mm</source>
-        <translation>yyyy.MM.dd - hh:mm</translation>
+        <translation type="obsolete">yyyy.MM.dd - hh:mm</translation>
     </message>
     <message>
         <source>Use last save date</source>
-        <translation>Использовать дату последнего сохранения</translation>
+        <translation type="obsolete">Использовать дату последнего сохранения</translation>
     </message>
     <message>
         <source>Show database information</source>
-        <translation>Показывать информацию о базе данных</translation>
+        <translation type="obsolete">Показывать информацию о базе данных</translation>
     </message>
     <message>
         <source>Close the open database</source>
@@ -960,7 +960,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>&lt;b&gt;Archived sessions:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Архивные сессии:&lt;/b&gt;</translation>
+        <translation type="obsolete">&lt;b&gt;Архивные сессии:&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&amp;Question</source>
@@ -1124,11 +1124,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>Show database &amp;information</source>
-        <translation>Показать &amp;информацию о базе данных</translation>
+        <translation type="obsolete">Показать &amp;информацию о базе данных</translation>
     </message>
     <message>
         <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
+        <translation type="obsolete">Ctrl+I</translation>
     </message>
     <message>
         <source>Show questions in the selected &amp;category only</source>
@@ -1168,7 +1168,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>&amp;Use last save date</source>
-        <translation>Использовать &amp;дату последнего сохранения</translation>
+        <translation type="obsolete">Использовать &amp;дату последнего сохранения</translation>
     </message>
     <message>
         <source>&amp;Add</source>
@@ -1352,15 +1352,15 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>&amp;Archive session</source>
-        <translation>&amp;Архивировать сессию</translation>
+        <translation type="obsolete">&amp;Архивировать сессию</translation>
     </message>
     <message>
         <source>Archive session</source>
-        <translation>Архивировать сессию</translation>
+        <translation type="obsolete">Архивировать сессию</translation>
     </message>
     <message>
         <source>Archive the selected session</source>
-        <translation>Архивировать выбранную сессию</translation>
+        <translation type="obsolete">Архивировать выбранную сессию</translation>
     </message>
     <message>
         <source>Documentation</source>
@@ -1416,11 +1416,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>&amp;Restore session</source>
-        <translation>&amp;Восстановить сессию</translation>
+        <translation type="obsolete">&amp;Восстановить сессию</translation>
     </message>
     <message>
         <source>Restore the selected session from the archive</source>
-        <translation>Восстановить выбранную сессию из архива</translation>
+        <translation type="obsolete">Восстановить выбранную сессию из архива</translation>
     </message>
     <message>
         <source>Colour mode:</source>
@@ -1854,7 +1854,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>%1 &gt; Client #%2 connected</source>
-        <translation>%1 &gt; Подключён клиент №%2</translation>
+        <translation type="obsolete">%1 &gt; Подключён клиент №%2</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 identified as %3</source>
@@ -1974,23 +1974,23 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>Save a backup</source>
-        <translation>Сохранить резервную копию</translation>
+        <translation type="obsolete">Сохранить резервную копию</translation>
     </message>
     <message>
         <source>Copy to archive</source>
-        <translation>Копировать в архив</translation>
+        <translation type="obsolete">Копировать в архив</translation>
     </message>
     <message>
         <source>Copy the selected session to the archive</source>
-        <translation>Копировать выбранную сессию в архив</translation>
+        <translation type="obsolete">Копировать выбранную сессию в архив</translation>
     </message>
     <message>
         <source>Copy from archive</source>
-        <translation>Копировать из архива</translation>
+        <translation type="obsolete">Копировать из архива</translation>
     </message>
     <message>
         <source>Copy the selected session from the archive</source>
-        <translation>Копировать выбранную сессию из архива</translation>
+        <translation type="obsolete">Копировать выбранную сессию из архива</translation>
     </message>
     <message>
         <source>Save a copy of the database</source>
@@ -1998,7 +1998,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>Save a backup copy of the database with all the archived sessions</source>
-        <translation>Сохранить резервную копию базы данных со всеми архивными сессиями</translation>
+        <translation type="obsolete">Сохранить резервную копию базы данных со всеми архивными сессиями</translation>
     </message>
     <message>
         <source>Error opening database.</source>
@@ -2308,7 +2308,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
-        <translation>Сессия не найдена. Эта сессия могла быть заархивирована на другом компьютере.</translation>
+        <translation type="obsolete">Сессия не найдена. Эта сессия могла быть заархивирована на другом компьютере.</translation>
     </message>
     <message>
         <source>List of classes</source>
@@ -2690,6 +2690,26 @@ Error %2.</source>
     </message>
     <message>
         <source>CSV files (*.csv)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are running the latest version of iTest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Download Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remind Me &amp;Later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 &gt; Client #%2 (%3) connected</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
