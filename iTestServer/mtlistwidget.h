@@ -30,13 +30,13 @@ class MTListWidget : public QListWidget
     Q_OBJECT
 
 public:
-    MTListWidget(QWidget * parent = 0):
+    MTListWidget(QWidget *parent = 0):
     QListWidget(parent) {
         QObject::connect(this, SIGNAL(currentTextChanged(QString)), this, SLOT(emitCurrentIndexAvailabilityChanged()));
-    };
+    }
 
 public slots:
-    int filterItems(QLineEdit * le, const QString & keyword) {
+    int filterItems(QLineEdit *le, const QString &keyword) {
         if (keyword.isEmpty()) {
             le->setPalette(((QWidget *)(parent()))->palette());
         } else {
@@ -45,17 +45,24 @@ public slots:
         int n = 0;
         for (int i = 0; i < count(); ++i) {
             if (item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
-                item(i)->setHidden(false); n++;
-            } else { item(i)->setHidden(true); }
+                item(i)->setHidden(false);
+                n++;
+            } else {
+                item(i)->setHidden(true);
+            }
         }
         if ((!keyword.isEmpty()) && count() != 0 && n == 0) {
             le->setPalette(searchLineEditPalettes.search_noresults_palette);
         }
         return n;
-    };
-    void highlightItem(int i) { highlightItem(item(i)); };
-    static void highlightItem(QListWidgetItem * item) {
-        if (item == NULL) { return; }
+    }
+    void highlightItem(int i) {
+        highlightItem(item(i));
+    }
+    static void highlightItem(QListWidgetItem *item) {
+        if (item == NULL)
+            return;
+
         for (int i = 0; i < item->listWidget()->count(); ++i) {
             item->listWidget()->item(i)->setBackground(QBrush(QColor(255, 255, 255)));
             item->listWidget()->item(i)->setForeground(QBrush(QColor(0, 0, 0)));
@@ -63,24 +70,31 @@ public slots:
         item->setBackground(QBrush(QColor(197, 255, 120)));
         item->setForeground(QBrush(QColor(0, 0, 0)));
         item->listWidget()->clearSelection();
-    };
-    bool isItemHighlighted(int i) { return isItemHighlighted(item(i)); };
-    static bool isItemHighlighted(QListWidgetItem * item) {
-        if (item == NULL) { return false; }
+    }
+    bool isItemHighlighted(int i) {
+        return isItemHighlighted(item(i));
+    }
+    static bool isItemHighlighted(QListWidgetItem *item) {
+        if (item == NULL)
+            return false;
+
         return (item->background() == QBrush(QColor(197, 255, 120)));
-    };
-    int highlightedRow() { return row(highlightedItem()); };
-    QListWidgetItem * highlightedItem() {
+    }
+    int highlightedRow() {
+        return row(highlightedItem());
+    }
+    QListWidgetItem *highlightedItem() {
         for (int i = 0; i < count(); ++i) {
-            if (isItemHighlighted(i)) { return item(i); }
+            if (isItemHighlighted(i))
+                return item(i);
         }
         return NULL;
-    };
+    }
 
 private slots:
     void emitCurrentIndexAvailabilityChanged() {
         emit currentIndexAvailabilityChanged(currentIndex().isValid());
-    };
+    }
 
 signals:
     void currentIndexAvailabilityChanged(bool);

@@ -89,10 +89,12 @@ int PassMark::qnum(int i)
 }*/
 
 #ifdef ITESTSERVER
-bool PassMark::check(QMap<QString, QuestionAnswer> * answers, QMap<QListWidgetItem *, QuestionItem *> * questions, ScoringSystem sys)
+bool PassMark::check(QMap<QString, QuestionAnswer> *answers, QMap<QListWidgetItem *, QuestionItem *> *questions, ScoringSystem sys)
 {
-    QuestionItem * item = NULL; QuestionAnswer ans;
-    int c_ans_count = 0; QMap<int, int> c_ans;
+    QuestionItem *item = NULL;
+    QuestionAnswer ans;
+    int c_ans_count = 0;
+    QMap<int, int> c_ans;
     QMapIterator<QString, QuestionAnswer> i(*answers);
     while (i.hasNext()) { i.next();
         item = NULL;
@@ -102,16 +104,21 @@ bool PassMark::check(QMap<QString, QuestionAnswer> * answers, QMap<QListWidgetIt
                 item = q.value(); break;
             }
         }
-        if (item == NULL) { continue; }
+        if (item == NULL)
+            continue;
         ans = i.value();
         if (ans.score(sys) > 0.0) {
             c_ans_count++;
-            if (item->category() >= 0) { c_ans[item->category()]++; }
+            if (item->category() >= 0) {
+                c_ans[item->category()]++;
+            }
         }
     }
-    if (c_ans_count < pm_mark) { return false; }
+    if (c_ans_count < pm_mark)
+        return false;
     for (int i = 0; i < pm_conditions.count(); ++i) {
-        if (c_ans[pm_conditions.at(i)] < pm_values.at(i)) { return false; }
+        if (c_ans[pm_conditions.at(i)] < pm_values.at(i))
+            return false;
     }
     return true;
 }
@@ -120,16 +127,20 @@ bool PassMark::check(QMap<QString, QuestionAnswer> * answers, QMap<QListWidgetIt
 #ifdef ITESTCLIENT
 bool PassMark::check(QList<QuestionItem *> questions)
 {
-    int c_ans_count = 0; QMap<int, int> c_ans;
+    int c_ans_count = 0;
+    QMap<int, int> c_ans;
     for (int i = 0; i < questions.count(); ++i) {
         if (questions.at(i)->score() > 0.0) {
             c_ans_count++;
-            if (questions.at(i)->category() >= 0) { c_ans[questions.at(i)->category()]++; }
+            if (questions.at(i)->category() >= 0) {
+                c_ans[questions.at(i)->category()]++;
+            }
         }
     }
     if (c_ans_count < pm_mark) { return false; }
     for (int i = 0; i < pm_conditions.count(); ++i) {
-        if (c_ans[pm_conditions.at(i)] < pm_values.at(i)) { return false; }
+        if (c_ans[pm_conditions.at(i)] < pm_values.at(i))
+            return false;
     }
     return true;
 }
@@ -166,7 +177,8 @@ QString PassMark::archiveData()
 void PassMark::loadData(QString str)
 {
     QTextStream in(&str);
-    if (in.readLine() != "[PASSMARK]") { return; }
+    if (in.readLine() != "[PASSMARK]")
+        return;
     clear();
     pm_mark = in.readLine().toInt();
     int c = in.readLine().toInt();

@@ -19,7 +19,7 @@
 
 #include "question_item.h"
 
-QuestionItem::QuestionItem(const QString & name)
+QuestionItem::QuestionItem(const QString &name)
 {
      q_name = name;
      q_category = -1;
@@ -28,7 +28,9 @@ QuestionItem::QuestionItem(const QString & name)
      q_answers << "" << "" << "" << "";
      q_correctanswers = Question::None;
      q_answer = Question::None;
-     for (int i = 0; i < 9; ++i) { q_ans_order << i; }
+     for (int i = 0; i < 9; ++i) {
+         q_ans_order << i;
+     }
 }
 
 void QuestionItem::shuffleAnswers()
@@ -49,7 +51,7 @@ Question::Answers QuestionItem::answered() { return q_answer; }
 
 void QuestionItem::setAnswered(Question::Answers ans) { q_answer = ans; }
 
-void QuestionItem::addSvgItem(const QString & name, const QString & svg)
+void QuestionItem::addSvgItem(const QString &name, const QString &svg)
 {
     q_svglist << name;
     q_svgmap.insert(name, svg);

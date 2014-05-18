@@ -26,9 +26,9 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-AnswerView::AnswerView(int i, AnswersView * parent):
+AnswerView::AnswerView(int i, AnswersView *parent):
 QWidget(parent) {
-    QHBoxLayout * hlayout = new QHBoxLayout(this);
+    QHBoxLayout *hlayout = new QHBoxLayout(this);
     hlayout->setContentsMargins(0, 0, 0, 0); hlayout->setSpacing(6);
     ans_radiobutton = new QRadioButton(Question::indexToLabel(i), this);
     ans_checkbox = new QCheckBox(Question::indexToLabel(i), this);
@@ -41,9 +41,9 @@ QWidget(parent) {
     hlayout->addWidget(ans_text);
 }
 
-AnswersView::AnswersView(QWidget * parent):
+AnswersView::AnswersView(QWidget *parent):
 QWidget(parent) {
-    QVBoxLayout * vlayout = new QVBoxLayout(this);
+    QVBoxLayout *vlayout = new QVBoxLayout(this);
     vlayout->setContentsMargins(0, 0, 0, 0);
 #ifndef Q_OS_MAC
     vlayout->setSpacing(6);
@@ -54,8 +54,10 @@ QWidget(parent) {
     av_grp_checkboxes->setExclusive(false);
     av_grp_radiobuttons = new QButtonGroup(this);
     for (int i = 0; i < 9; ++i) {
-        AnswerView * ans = new AnswerView(i + 1, this);
-        if (i >= 4) { ans->setVisible(false); }
+        AnswerView *ans = new AnswerView(i + 1, this);
+        if (i >= 4) {
+            ans->setVisible(false);
+        }
         av_answers << ans;
         av_grp_checkboxes->addButton(ans->ans_checkbox);
         av_grp_radiobuttons->addButton(ans->ans_radiobutton);
@@ -65,12 +67,12 @@ QWidget(parent) {
     QObject::connect(av_grp_radiobuttons, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(emitButtonReleased(QAbstractButton *)));
 }
 
-void AnswersView::setAnswers(const QStringList & answers, Question::Answers selected_answers, Question::SelectionType selectiontype, QList<int> ans_order)
+void AnswersView::setAnswers(const QStringList &answers, Question::Answers selected_answers, Question::SelectionType selectiontype, QList<int> ans_order)
 {
     av_ans_order = ans_order;
     av_grp_radiobuttons->setExclusive(false);
     for (int i = 0; i < 9; ++i) {
-        AnswerView * ans = av_answers.at(i);
+        AnswerView *ans = av_answers.at(i);
         ans->ans_radiobutton->setVisible(selectiontype == Question::SingleSelection);
         ans->ans_checkbox->setVisible(selectiontype == Question::MultiSelection);
         if (i < answers.count()) {
@@ -90,7 +92,7 @@ void AnswersView::setAnswers(const QStringList & answers, Question::Answers sele
 
 Question::Answers AnswersView::selectedAnswers()
 {
-    Question::Answers selected_answers; AnswerView * ans;
+    Question::Answers selected_answers; AnswerView *ans;
     for (int i = 0; i < 9; ++i) {
         ans = av_answers.at(i);
         if (ans->isVisible() && ((ans->ans_checkbox->isVisible() && ans->ans_checkbox->isChecked()) || (ans->ans_radiobutton->isVisible() && ans->ans_radiobutton->isChecked()))) {
@@ -104,7 +106,7 @@ void AnswersView::clear()
 {
     av_grp_radiobuttons->setExclusive(false);
     for (int i = 0; i < 9; ++i) {
-        AnswerView * ans = av_answers.at(i);
+        AnswerView *ans = av_answers.at(i);
         ans->ans_text->clear();
         ans->ans_checkbox->setChecked(false);
         ans->ans_radiobutton->setChecked(false);

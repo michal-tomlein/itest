@@ -28,23 +28,37 @@
 
 void MainWindow::addQuestion()
 {
-    bool ok; bool allright = true; addQuestion_start:
+    bool ok;
+    bool allright = true;
+addQuestion_start:
     QString q_name;
-    if (allright) {q_name = QInputDialog::getText(this, tr("Add question"), tr("Question name:"), QLineEdit::Normal, tr("### New question"), &ok);
-    } else {q_name = QInputDialog::getText(this, tr("Add question"), tr("A question with this name already exists.\nPlease choose a different name:"), QLineEdit::Normal, tr("### Another question"), &ok);}
-    if (!ok || q_name.isEmpty()) { return; }
+    if (allright) {
+        q_name = QInputDialog::getText(this, tr("Add question"), tr("Question name:"), QLineEdit::Normal, tr("### New question"), &ok);
+    } else {
+        q_name = QInputDialog::getText(this, tr("Add question"), tr("A question with this name already exists.\nPlease choose a different name:"), QLineEdit::Normal, tr("### Another question"), &ok);
+    }
+    if (!ok || q_name.isEmpty())
+        return;
     QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
     while (q.hasNext()) { q.next();
-        if (q.value()->name() == q_name) { allright = false; goto addQuestion_start; break; }
+        if (q.value()->name() == q_name) {
+            allright = false;
+            goto addQuestion_start;
+            break;
+        }
     }
-    QuestionItem * item = new QuestionItem (q_name);
-    QListWidgetItem * q_item = new QListWidgetItem (q_name);
+    QuestionItem *item = new QuestionItem (q_name);
+    QListWidgetItem *q_item = new QListWidgetItem (q_name);
     current_db_questions.insert(q_item, item);
     q_item->setIcon(QIcon(QString::fromUtf8(":/images/images/easy.png")));
     LQListWidget->addItem(q_item);
     setDatabaseModified();
     int numcategories = 0;
-    for (int i = 0; i < current_db_categories.size(); ++i) { if (current_db_categories_enabled[i]) { numcategories++; } }
+    for (int i = 0; i < current_db_categories.size(); ++i) {
+        if (current_db_categories_enabled[i]) {
+            numcategories++;
+        }
+    }
     if (numcategories > 0) {
         item->setCategory(SQCategoryComboBox->itemData(0).toInt());
         setQuestionItemColour(q_item, item->category());
@@ -65,16 +79,19 @@ void MainWindow::deleteQuestion()
         delete LQListWidget->currentItem();
         setCurrentQuestion();
         setDatabaseModified();
-    } else {QMessageBox::information(this, tr("Delete question"), tr("Select a question to be deleted first."));}
+    } else {
+        QMessageBox::information(this, tr("Delete question"), tr("Select a question to be deleted first."));
+    }
 }
 
 void MainWindow::duplicateQuestion()
 {
     if (LQListWidget->currentIndex().isValid()) {
         QString q_name = current_db_question;
-        QuestionItem * item = current_db_questions.value(LQListWidget->currentItem());
+        QuestionItem *item = current_db_questions.value(LQListWidget->currentItem());
         QStringList bufferlist = q_name.split(" ");
-        int copynum = 0; QString buffer = bufferlist.at(bufferlist.count()-1);
+        int copynum = 0;
+        QString buffer = bufferlist.at(bufferlist.count()-1);
         if ((buffer.at(0) == '[') && (buffer.at(buffer.length()-1) == ']')) {
             bool isInt;
             buffer.remove(0, 1);
@@ -86,46 +103,57 @@ void MainWindow::duplicateQuestion()
                 q_name = bufferlist.join(" ");
             }
         }
-        bool ok; bool allright = true; addQuestion_start:
+        bool ok;
+        bool allright = true;
+    addQuestion_start:
         QString new_q_name;
-        if (allright) {new_q_name = QInputDialog::getText(this, tr("Duplicate question"), tr("Question name:"), QLineEdit::Normal, QString("%1 [%2]").arg(q_name).arg(copynum), &ok);
-        } else {new_q_name = QInputDialog::getText(this, tr("Duplicate question"), tr("A question with this name already exists.\nPlease choose a different name:"), QLineEdit::Normal, QString("%1 [%2]").arg(q_name).arg(copynum), &ok);}
-        if (ok && !new_q_name.isEmpty())
-        {   
-             QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
-             while (q.hasNext()) { q.next();
-                 if (q.value()->name() == new_q_name) { allright = false; copynum++; goto addQuestion_start; break; }
-             }
-             QuestionItem * new_item = new QuestionItem(new_q_name,
-                                                    item->category(),
-                                                    item->group(),
-                                                    item->difficulty(),
-                                                    item->text(),
-                                                    item->answers(),
-                                                    item->correctAnswers(),
-                                                    item->selectionType(),
-                                                    item->explanation(),
-                                                    item->incorrectAnsCount(),
-                                                    item->correctAnsCount(),
-                                                    item->isHidden(),
-                                                    item->svgItems(), true);
-             QListWidgetItem * new_q_item = new QListWidgetItem(new_item->group().isEmpty() ? new_q_name : QString("[%1] %2").arg(new_item->group()).arg(new_q_name));
-             current_db_questions.insert(new_q_item, new_item);
-             setQuestionItemIcon(new_q_item, new_item->difficulty());
-             setQuestionItemColour(new_q_item, new_item->category());
-             hideQuestion(new_q_item, new_item);
-             LQListWidget->insertItem(LQListWidget->currentRow()+1, new_q_item);
-             LQListWidget->setCurrentRow(LQListWidget->currentRow()+1);
-             setDatabaseModified();
+        if (allright) {
+            new_q_name = QInputDialog::getText(this, tr("Duplicate question"), tr("Question name:"), QLineEdit::Normal, QString("%1 [%2]").arg(q_name).arg(copynum), &ok);
+        } else {
+            new_q_name = QInputDialog::getText(this, tr("Duplicate question"), tr("A question with this name already exists.\nPlease choose a different name:"), QLineEdit::Normal, QString("%1 [%2]").arg(q_name).arg(copynum), &ok);
         }
-    } else {QMessageBox::information(this, tr("Duplicate question"), tr("Select a question to be duplicated first."));}
+        if (ok && !new_q_name.isEmpty()) {
+            QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
+            while (q.hasNext()) { q.next();
+                if (q.value()->name() == new_q_name) {
+                    allright = false;
+                    copynum++;
+                    goto addQuestion_start;
+                    break;
+                }
+            }
+            QuestionItem *new_item = new QuestionItem(new_q_name,
+                                                      item->category(),
+                                                      item->group(),
+                                                      item->difficulty(),
+                                                      item->text(),
+                                                      item->answers(),
+                                                      item->correctAnswers(),
+                                                      item->selectionType(),
+                                                      item->explanation(),
+                                                      item->incorrectAnsCount(),
+                                                      item->correctAnsCount(),
+                                                      item->isHidden(),
+                                                      item->svgItems(), true);
+            QListWidgetItem *new_q_item = new QListWidgetItem(new_item->group().isEmpty() ? new_q_name : QString("[%1] %2").arg(new_item->group()).arg(new_q_name));
+            current_db_questions.insert(new_q_item, new_item);
+            setQuestionItemIcon(new_q_item, new_item->difficulty());
+            setQuestionItemColour(new_q_item, new_item->category());
+            hideQuestion(new_q_item, new_item);
+            LQListWidget->insertItem(LQListWidget->currentRow()+1, new_q_item);
+            LQListWidget->setCurrentRow(LQListWidget->currentRow()+1);
+            setDatabaseModified();
+        }
+    } else {
+        QMessageBox::information(this, tr("Duplicate question"), tr("Select a question to be duplicated first."));
+    }
 }
 
 void MainWindow::setCurrentQuestion()
 {
     if (LQListWidget->currentIndex().isValid()) {
         setSQEnabled(true); clearSQNoCategories(); setLQToolsEnabled(true);
-        QuestionItem * item = current_db_questions.value(LQListWidget->currentItem());
+        QuestionItem *item = current_db_questions.value(LQListWidget->currentItem());
         SQQuestionNameLineEdit->setText(item->name());
         SQGroupLineEdit->setText(item->group());
         SQCategoryComboBox->setCurrentIndex(current_db_categoryentries.value(item->category()));
@@ -160,15 +188,18 @@ void MainWindow::setCurrentQuestion()
 
 void MainWindow::applyQuestionChanges()
 {
-    if (!LQListWidget->currentIndex().isValid()) { return; }
-    QListWidgetItem * q_item = LQListWidget->currentItem();
-    QuestionItem * item = current_db_questions.value(q_item);
+    if (!LQListWidget->currentIndex().isValid())
+        return;
+    QListWidgetItem *q_item = LQListWidget->currentItem();
+    QuestionItem *item = current_db_questions.value(q_item);
     // CHECK GROUP
     QString q_group = removeLineBreaks(SQGroupLineEdit->text());
     int q_category;
     if (SQCategoryComboBox->count() != 0) {
         q_category = SQCategoryComboBox->itemData(SQCategoryComboBox->currentIndex()).toInt();
-    } else { q_category = -1; }
+    } else {
+        q_category = -1;
+    }
     if (!q_group.isEmpty()) {
         QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
         while (q.hasNext()) { q.next();
@@ -197,9 +228,14 @@ void MainWindow::applyQuestionChanges()
         int n = 0;
         QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
         while (q.hasNext()) { q.next();
-            if (q.value()->name() == q_name) { n++; }
+            if (q.value()->name() == q_name) {
+                n++;
+            }
         }
-        if (n > 0) { QMessageBox::critical(this, tr("Apply changes"), tr("A question with this name already exists.\nPlease choose a different name.")); return; }
+        if (n > 0) {
+            QMessageBox::critical(this, tr("Apply changes"), tr("A question with this name already exists.\nPlease choose a different name."));
+            return;
+        }
         uint num_old = numOccurrences(current_db_question);
         uint num_new = numOccurrences(q_name);
         if (num_new != 0) {
@@ -239,7 +275,7 @@ void MainWindow::applyQuestionChanges()
     for (int i = 0; i < item->numSvgItems();) {
         item->removeSvgItem(i);
     }
-    SvgItem * svg_item;
+    SvgItem *svg_item;
     for (int i = 0; i < SQSVGListWidget->count(); ++i) {
         svg_item = (SvgItem *)SQSVGListWidget->item(i);
         item->addSvgItem(new SvgItem(svg_item->text(), svg_item->svg()));
@@ -262,15 +298,17 @@ void MainWindow::discardQuestionChanges()
 
 void MainWindow::hideQuestion()
 {
-    if (!LQListWidget->currentIndex().isValid()) { return; }
-    QuestionItem * item = NULL; item = current_db_questions.value(LQListWidget->currentItem());
-    if (item == NULL) { return; }
+    if (!LQListWidget->currentIndex().isValid())
+        return;
+    QuestionItem *item = NULL; item = current_db_questions.value(LQListWidget->currentItem());
+    if (item == NULL)
+        return;
     item->setHidden(actionHide->isChecked());
     hideQuestion(LQListWidget->currentItem(), item);
     setDatabaseModified();
 }
 
-void MainWindow::hideQuestion(QListWidgetItem * q_item, QuestionItem * item)
+void MainWindow::hideQuestion(QListWidgetItem *q_item, QuestionItem *item)
 {
     q_item->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
     q_item->setForeground(QBrush(foregroundColourForCategory(item->category(), item->isHidden())));
@@ -283,7 +321,7 @@ void MainWindow::hideQuestion(QListWidgetItem * q_item, QuestionItem * item)
     }
 }
 
-void MainWindow::setQuestionItemIcon(QListWidgetItem * q_item, int q_difficulty_i)
+void MainWindow::setQuestionItemIcon(QListWidgetItem *q_item, int q_difficulty_i)
 {
     q_item->setIcon(iconForDifficulty(q_difficulty_i));
 }
@@ -299,14 +337,15 @@ QIcon MainWindow::iconForDifficulty(int q_difficulty_i)
     return QIcon(QString::fromUtf8(":/images/images/easy.png"));
 }
 
-void MainWindow::setQuestionItemColour(QListWidgetItem * q_item, int q_category_i)
+void MainWindow::setQuestionItemColour(QListWidgetItem *q_item, int q_category_i)
 {
     q_item->setBackground(QBrush(backgroundColourForCategory(q_category_i)));
     q_item->setForeground(QBrush(foregroundColourForCategory(q_category_i)));
 }
 
 void MainWindow::searchByGroup() {
-    if (SQGroupLineEdit->text().isEmpty()) { return; }
+    if (SQGroupLineEdit->text().isEmpty())
+        return;
     LQSearchLineEdit->setText(QString("[%1]").arg(SQGroupLineEdit->text()));
     filterLQSearch();
 }
@@ -315,10 +354,12 @@ void MainWindow::filterLQSearch() { filterLQ(rbtngrpFilterLQ->checkedButton()); 
 
 void MainWindow::filterLQCategoryChanged()
 {
-    if (LQCategoryRadioButton->isChecked()) {filterLQ(LQCategoryRadioButton);}
+    if (LQCategoryRadioButton->isChecked()) {
+        filterLQ(LQCategoryRadioButton);
+    }
 }
 
-void MainWindow::filterLQAction(QAction * act)
+void MainWindow::filterLQAction(QAction *act)
 {
     if (act == actionShow_all) {
         filterLQ(LQAllRadioButton); LQAllRadioButton->setChecked(true);
@@ -333,9 +374,10 @@ void MainWindow::filterLQAction(QAction * act)
     }
 }
 
-void MainWindow::filterLQ(QAbstractButton * rbtn)
+void MainWindow::filterLQ(QAbstractButton *rbtn)
 {
-    QuestionItem * item; QString keyword = LQSearchLineEdit->text();
+    QuestionItem *item;
+    QString keyword = LQSearchLineEdit->text();
     if (keyword.isEmpty()) {
         LQSearchLineEdit->setPalette(qApp->palette());
     } else {
@@ -347,9 +389,14 @@ void MainWindow::filterLQ(QAbstractButton * rbtn)
             item = current_db_questions.value(LQListWidget->item(i));
             if (!keyword.isEmpty()) {
                 if (LQListWidget->item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
-                    LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); n++;
-                } else { LQListWidget->item(i)->setHidden(true); }
-            } else { LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); }
+                    LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+                    n++;
+                } else {
+                    LQListWidget->item(i)->setHidden(true);
+                }
+            } else {
+                LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+            }
         }
     } else if (rbtn == LQEasyRadioButton) {
         for (int i = 0; i < LQListWidget->count(); ++i) {
@@ -357,10 +404,17 @@ void MainWindow::filterLQ(QAbstractButton * rbtn)
             if (item->difficulty() <= 0) {
                 if (!keyword.isEmpty()) {
                     if (LQListWidget->item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
-                        LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); n++;
-                    } else { LQListWidget->item(i)->setHidden(true); }
-                } else { LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); }
-            } else { LQListWidget->item(i)->setHidden(true); }
+                        LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+                        n++;
+                    } else {
+                        LQListWidget->item(i)->setHidden(true);
+                    }
+                } else {
+                    LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+                }
+            } else {
+                LQListWidget->item(i)->setHidden(true);
+            }
         }
     } else if (rbtn == LQMediumRadioButton) {
         for (int i = 0; i < LQListWidget->count(); ++i) {
@@ -368,10 +422,17 @@ void MainWindow::filterLQ(QAbstractButton * rbtn)
             if (item->difficulty() == 1) {
                 if (!keyword.isEmpty()) {
                     if (LQListWidget->item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
-                        LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); n++;
-                    } else { LQListWidget->item(i)->setHidden(true); }
-                } else { LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); }
-            } else { LQListWidget->item(i)->setHidden(true); }
+                        LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+                        n++;
+                    } else {
+                        LQListWidget->item(i)->setHidden(true);
+                    }
+                } else {
+                    LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+                }
+            } else {
+                LQListWidget->item(i)->setHidden(true);
+            }
         }
     } else if (rbtn == LQDifficultRadioButton) {
         for (int i = 0; i < LQListWidget->count(); ++i) {
@@ -379,10 +440,17 @@ void MainWindow::filterLQ(QAbstractButton * rbtn)
             if (item->difficulty() == 2) {
                 if (!keyword.isEmpty()) {
                     if (LQListWidget->item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
-                        LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); n++;
-                    } else { LQListWidget->item(i)->setHidden(true); }
-                } else { LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); }
-            } else { LQListWidget->item(i)->setHidden(true); }
+                        LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+                        n++;
+                    } else {
+                        LQListWidget->item(i)->setHidden(true);
+                    }
+                } else {
+                    LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+                }
+            } else {
+                LQListWidget->item(i)->setHidden(true);
+            }
         }
     } else if (rbtn == LQCategoryRadioButton) {
         for (int i = 0; i < LQListWidget->count(); ++i) {
@@ -390,10 +458,17 @@ void MainWindow::filterLQ(QAbstractButton * rbtn)
             if (current_db_categoryentries.value(item->category()) == LQCategoryComboBox->currentIndex()) {
                 if (!keyword.isEmpty()) {
                     if (LQListWidget->item(i)->text().contains(keyword, Qt::CaseInsensitive)) {
-                        LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); n++;
-                    } else { LQListWidget->item(i)->setHidden(true); }
-                } else { LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked()); }
-            } else { LQListWidget->item(i)->setHidden(true); }
+                        LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+                        n++;
+                    } else {
+                        LQListWidget->item(i)->setHidden(true);
+                    }
+                } else {
+                    LQListWidget->item(i)->setHidden(item->isHidden() && !actionShow_hidden->isChecked());
+                }
+            } else {
+                LQListWidget->item(i)->setHidden(true);
+            }
         }
     }
     if ((!keyword.isEmpty()) && LQListWidget->count() != 0 && n == 0) {
@@ -421,8 +496,10 @@ void MainWindow::sortQuestions(Qt::SortOrder order, bool by_category)
 {
     setDatabaseModified();
 
-    QStringList list; QMap<QString, QListWidgetItem *> map;
-    QListWidgetItem * item; QString item_text;
+    QStringList list;
+    QMap<QString, QListWidgetItem *> map;
+    QListWidgetItem *item;
+    QString item_text;
     int l = QString::number(current_db_categories.size()).length();
 
     for (int i = 0; i < LQListWidget->count();) {
@@ -445,8 +522,10 @@ void MainWindow::moveToTop() { moveQuestion(-2); }
 
 void MainWindow::moveUp()
 {
-    if (!LQAllRadioButton->isChecked()) 
-        { filterLQ(LQAllRadioButton); LQAllRadioButton->setChecked(true); }
+    if (!LQAllRadioButton->isChecked()) {
+        filterLQ(LQAllRadioButton);
+        LQAllRadioButton->setChecked(true);
+    }
     moveQuestion(-1);
 }
 
@@ -462,7 +541,8 @@ void MainWindow::moveToBottom() { moveQuestion(2); }
 void MainWindow::moveQuestion(int move)
 {
     if (LQListWidget->currentIndex().isValid()) {
-        QListWidgetItem * item; int row = LQListWidget->currentRow();
+        QListWidgetItem *item;
+        int row = LQListWidget->currentRow();
         if (move == -1) {
             if (row > 0) {
                 item = LQListWidget->takeItem(LQListWidget->currentRow());
@@ -490,8 +570,9 @@ void MainWindow::moveQuestion(int move)
 
 void MainWindow::adjustQuestionDifficulty()
 {
-    if (!LQListWidget->currentIndex().isValid()) { return; }
-    QuestionItem * item = current_db_questions.value(LQListWidget->currentItem());
+    if (!LQListWidget->currentIndex().isValid())
+        return;
+    QuestionItem *item = current_db_questions.value(LQListWidget->currentItem());
     int rdif = item->recommendedDifficulty();
     if (rdif >= 0 && rdif <= 2) {
         item->setDifficulty(rdif);
@@ -501,19 +582,21 @@ void MainWindow::adjustQuestionDifficulty()
     }
 }
 
-uint MainWindow::numOccurrences(const QString & qname)
+uint MainWindow::numOccurrences(const QString &qname)
 {
     uint n = 0;
     QMapIterator<QDateTime, Session *> i(current_db_sessions);
     while (i.hasNext()) { i.next();
         for (int s = 0; s < i.value()->numStudents(); ++s) {
-            if (i.value()->student(s)->wasAsked(qname)) { n++; }
+            if (i.value()->student(s)->wasAsked(qname)) {
+                n++;
+            }
         }
     }
     return n;
 }
 
-uint MainWindow::replaceAllOccurrences(const QString & old_qname, const QString & new_qname)
+uint MainWindow::replaceAllOccurrences(const QString &old_qname, const QString &new_qname)
 {
     uint n = 0;
     QMapIterator<QDateTime, Session *> i(current_db_sessions);
@@ -527,26 +610,36 @@ uint MainWindow::replaceAllOccurrences(const QString & old_qname, const QString 
 
 void MainWindow::addSvg()
 {
-    if (!LQListWidget->currentIndex().isValid()) { return; }
+    if (!LQListWidget->currentIndex().isValid())
+        return;
     QString file_name = QFileDialog::getOpenFileName(this, tr("Add SVG"), "", tr("Scalable Vector Graphics (*.svg);;All files (*.*)"));
-    if (file_name.isEmpty()) { return; }
+    if (file_name.isEmpty())
+        return;
     QFile file(file_name);
-    if (!file.open(QFile::ReadOnly | QFile::Text))
-    { QMessageBox::critical(this, tr("Add SVG"), tr("Cannot read file %1:\n%2.").arg(file_name).arg(file.errorString())); return; }
-    QFileInfo file_info(file_name); bool ok;
+    if (!file.open(QFile::ReadOnly | QFile::Text)) {
+        QMessageBox::critical(this, tr("Add SVG"), tr("Cannot read file %1:\n%2.").arg(file_name).arg(file.errorString()));
+        return;
+    }
+    QFileInfo file_info(file_name);
+    bool ok;
     QString svg_name = QInputDialog::getText(this, tr("Add SVG"), tr("Attachment name:"), QLineEdit::Normal, file_info.baseName(), &ok);
-    if (!ok || svg_name.isEmpty()) { return; }
+    if (!ok || svg_name.isEmpty())
+        return;
     QTextStream in(&file);
-    SvgItem * svg = new SvgItem(svg_name, in.readAll());
-    if (!svg->isValid()) { QMessageBox::critical(this, tr("Add SVG"), tr("Unable to parse file %1.").arg(file_name)); }
+    SvgItem *svg = new SvgItem(svg_name, in.readAll());
+    if (!svg->isValid()) {
+        QMessageBox::critical(this, tr("Add SVG"), tr("Unable to parse file %1.").arg(file_name));
+    }
     SQSVGListWidget->addItem(svg);
 }
 
 void MainWindow::removeSvg()
 {
-    if (!LQListWidget->currentIndex().isValid()) { return; }
-    if (!SQSVGListWidget->currentIndex().isValid()) { return; }
-    SvgItem * svg_item = (SvgItem *)SQSVGListWidget->currentItem();
+    if (!LQListWidget->currentIndex().isValid())
+        return;
+    if (!SQSVGListWidget->currentIndex().isValid())
+        return;
+    SvgItem *svg_item = (SvgItem *)SQSVGListWidget->currentItem();
     switch (QMessageBox::information(this, tr("Remove SVG"), tr("Are you sure you want to remove attachment \"%1\"?").arg(svg_item->text()), tr("&Remove"), tr("Cancel"), 0, 1)) {
         case 0: // Remove
             break;
@@ -558,10 +651,12 @@ void MainWindow::removeSvg()
 
 void MainWindow::editSvg()
 {
-    if (!LQListWidget->currentIndex().isValid()) { return; }
-    if (!SQSVGListWidget->currentIndex().isValid()) { return; }
-    SvgItem * svg_item = (SvgItem *)SQSVGListWidget->currentItem();
-    QWidget * editsvg_widget = new QWidget(this, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/);
+    if (!LQListWidget->currentIndex().isValid())
+        return;
+    if (!SQSVGListWidget->currentIndex().isValid())
+        return;
+    SvgItem *svg_item = (SvgItem *)SQSVGListWidget->currentItem();
+    QWidget *editsvg_widget = new QWidget(this, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/);
     editsvg_widget->setWindowModality(Qt::WindowModal);
     editsvg_widget->setAttribute(Qt::WA_DeleteOnClose);
 #ifdef Q_OS_MAC
@@ -570,19 +665,19 @@ void MainWindow::editSvg()
     editsvg_widget->setWindowTitle(tr("%1 - Edit SVG - iTest").arg(svg_item->text()));
 #endif
     editsvg_widget->setMinimumSize(QSize(200, 100));
-    QGridLayout * editsvg_glayout = new QGridLayout(editsvg_widget);
+    QGridLayout *editsvg_glayout = new QGridLayout(editsvg_widget);
     editsvg_glayout->setMargin(6); editsvg_glayout->setSpacing(6);
-        QLabel * editsvg_label_name = new QLabel(tr("Attachment name:"), editsvg_widget);
+        QLabel *editsvg_label_name = new QLabel(tr("Attachment name:"), editsvg_widget);
     editsvg_glayout->addWidget(editsvg_label_name, 0, 0);
         editsvg_lineedit_name = new QLineEdit(editsvg_widget);
         editsvg_lineedit_name->setText(svg_item->text());
     editsvg_glayout->addWidget(editsvg_lineedit_name, 0, 1, 1, 2);
-        QLabel * editsvg_label_svg = new QLabel(tr("Change SVG:"), editsvg_widget);
+        QLabel *editsvg_label_svg = new QLabel(tr("Change SVG:"), editsvg_widget);
     editsvg_glayout->addWidget(editsvg_label_svg, 1, 0);
-        QPushButton * editsvg_btn_change = new QPushButton(tr("Browse"), editsvg_widget);
+        QPushButton *editsvg_btn_change = new QPushButton(tr("Browse"), editsvg_widget);
         QObject::connect(editsvg_btn_change, SIGNAL(released()), this, SLOT(browseForSvg()));
     editsvg_glayout->addWidget(editsvg_btn_change, 1, 1);
-        QDialogButtonBox * editsvg_buttonbox = new QDialogButtonBox(editsvg_widget);
+        QDialogButtonBox *editsvg_buttonbox = new QDialogButtonBox(editsvg_widget);
         editsvg_buttonbox->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
         QObject::connect(editsvg_buttonbox, SIGNAL(accepted()), this, SLOT(applySvgChanges()));
         QObject::connect(editsvg_buttonbox, SIGNAL(rejected()), editsvg_widget, SLOT(close()));
@@ -597,32 +692,42 @@ void MainWindow::browseForSvg()
 
 void MainWindow::applySvgChanges()
 {
-    if (editsvg_lineedit_name == NULL) { return; }
-    if (!LQListWidget->currentIndex().isValid()) { return; }
-    if (!SQSVGListWidget->currentIndex().isValid()) { return; }
-    SvgItem * svg_item = (SvgItem *)SQSVGListWidget->currentItem();
+    if (editsvg_lineedit_name == NULL)
+        return;
+    if (!LQListWidget->currentIndex().isValid())
+        return;
+    if (!SQSVGListWidget->currentIndex().isValid())
+        return;
+    SvgItem *svg_item = (SvgItem *)SQSVGListWidget->currentItem();
     if (!editsvg_svgpath.isEmpty()) {
         QFile file(editsvg_svgpath);
-        if (!file.open(QFile::ReadOnly | QFile::Text))
-        { QMessageBox::critical(this, tr("Change SVG"), tr("Cannot read file %1:\n%2.").arg(editsvg_svgpath).arg(file.errorString())); return; }
+        if (!file.open(QFile::ReadOnly | QFile::Text)) {
+            QMessageBox::critical(this, tr("Change SVG"), tr("Cannot read file %1:\n%2.").arg(editsvg_svgpath).arg(file.errorString()));
+            return;
+        }
         QTextStream in(&file);
         svg_item->setSvg(in.readAll());
     }
     svg_item->setText(editsvg_lineedit_name->text());
-    QWidget * editsvg_widget = (QWidget *)editsvg_lineedit_name->parent();
+    QWidget *editsvg_widget = (QWidget *)editsvg_lineedit_name->parent();
     editsvg_widget->close();
 }
 
 void MainWindow::exportSvg()
 {
-    if (!LQListWidget->currentIndex().isValid()) { return; }
-    if (!SQSVGListWidget->currentIndex().isValid()) { return; }
-    SvgItem * svg_item = (SvgItem *)SQSVGListWidget->currentItem();
+    if (!LQListWidget->currentIndex().isValid())
+        return;
+    if (!SQSVGListWidget->currentIndex().isValid())
+        return;
+    SvgItem *svg_item = (SvgItem *)SQSVGListWidget->currentItem();
     QString file_name = QFileDialog::getSaveFileName(this, tr("Export SVG"), QString("%1.svg").arg(svg_item->text()), tr("Scalable Vector Graphics (*.svg)"));
-    if (file_name.isEmpty()) { return; }
+    if (file_name.isEmpty())
+        return;
     QFile file(file_name);
-    if (!file.open(QFile::WriteOnly | QFile::Text))
-    { QMessageBox::critical(this, tr("Export SVG"), tr("Cannot write file %1:\n%2.").arg(file_name).arg(file.errorString())); return; }
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        QMessageBox::critical(this, tr("Export SVG"), tr("Cannot write file %1:\n%2.").arg(file_name).arg(file.errorString()));
+        return;
+    }
     QTextStream out(&file);
     out << svg_item->svg();
 }

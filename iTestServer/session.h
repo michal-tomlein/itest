@@ -77,7 +77,7 @@ public slots:
     void deleteLog();
     void addStudent(Student *);
     int numStudents();
-    Student * student(int);
+    Student *student(int);
     long double maximumScore();
     long double score();
     int average();

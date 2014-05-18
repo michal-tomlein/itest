@@ -51,24 +51,32 @@ protected:
             agb_checkbox->setChecked(false);
             QObject::connect(agb_checkbox, SIGNAL(clicked(bool)), this, SLOT(setChecked(bool)));
         agb_vlayout->addWidget(agb_checkbox);
-    };
+    }
 
 public:
-    MTAdvancedGroupBox(QWidget * parent = 0):
-    QWidget(parent) { init(); };
-    MTAdvancedGroupBox(const QString & title, QWidget * parent = 0):
-    QWidget(parent) { init(); setTitle(title); };
-    
-    bool isChecked() { return agb_checkbox->isChecked(); };
-    void addLayout(QLayout * layout, int row, int column, Qt::Alignment alignment = 0)
-    { agb_glayout->addLayout(layout, row, column, alignment); };
-    void addLayout(QLayout * layout, int row, int column, int rowSpan, int columnSpan, Qt::Alignment alignment = 0)
-    { agb_glayout->addLayout(layout, row, column, rowSpan, columnSpan, alignment); };
-    void addWidget(QWidget * widget, int row, int column, Qt::Alignment alignment = 0)
-    { agb_glayout->addWidget(widget, row, column, alignment); };
-    void addWidget(QWidget * widget, int fromRow, int fromColumn, int rowSpan, int columnSpan, Qt::Alignment alignment = 0)
-    { agb_glayout->addWidget(widget, fromRow, fromColumn, rowSpan, columnSpan, alignment); };
-    QGridLayout * gridLayout() { return agb_glayout; };
+    MTAdvancedGroupBox(QWidget *parent = 0):
+    QWidget(parent) { init(); }
+    MTAdvancedGroupBox(const QString &title, QWidget *parent = 0):
+    QWidget(parent) { init(); setTitle(title); }
+
+    bool isChecked() {
+        return agb_checkbox->isChecked();
+    }
+    void addLayout(QLayout *layout, int row, int column, Qt::Alignment alignment = 0) {
+        agb_glayout->addLayout(layout, row, column, alignment);
+    }
+    void addLayout(QLayout *layout, int row, int column, int rowSpan, int columnSpan, Qt::Alignment alignment = 0) {
+        agb_glayout->addLayout(layout, row, column, rowSpan, columnSpan, alignment);
+    }
+    void addWidget(QWidget *widget, int row, int column, Qt::Alignment alignment = 0) {
+        agb_glayout->addWidget(widget, row, column, alignment);
+    }
+    void addWidget(QWidget *widget, int fromRow, int fromColumn, int rowSpan, int columnSpan, Qt::Alignment alignment = 0) {
+        agb_glayout->addWidget(widget, fromRow, fromColumn, rowSpan, columnSpan, alignment);
+    }
+    QGridLayout *gridLayout() {
+        return agb_glayout;
+    }
 
 public slots:
     void setChecked(bool checked) {
@@ -76,21 +84,21 @@ public slots:
         agb_groupbox->setChecked(checked);
         agb_checkbox->setVisible(!checked);
         agb_groupbox->setVisible(checked);
-    };
-    void setTitle(const QString & title) {
+    }
+    void setTitle(const QString &title) {
         agb_checkbox->setText(title);
         agb_groupbox->setTitle(title);
-    };
-    void setStatusTip(const QString & statustip) {
+    }
+    void setStatusTip(const QString &statustip) {
         agb_checkbox->setStatusTip(statustip);
         agb_groupbox->setStatusTip(statustip);
-    };
+    }
 
 private:
-    QGridLayout * agb_glayout;
-    QVBoxLayout * agb_vlayout;
-    QGroupBox * agb_groupbox;
-    QCheckBox * agb_checkbox;
+    QGridLayout *agb_glayout;
+    QVBoxLayout *agb_vlayout;
+    QGroupBox *agb_groupbox;
+    QCheckBox *agb_checkbox;
 };
 
 #endif // MTADVANCEDGROUPBOX_H

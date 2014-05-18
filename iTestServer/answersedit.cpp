@@ -26,10 +26,10 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-AnswerEdit::AnswerEdit(int i, AnswersEdit * parent):
+AnswerEdit::AnswerEdit(int i, AnswersEdit *parent):
 QWidget(parent) {
     ans_visible = this->QWidget::isVisible();
-    QHBoxLayout * hlayout = new QHBoxLayout(this);
+    QHBoxLayout *hlayout = new QHBoxLayout(this);
     hlayout->setContentsMargins(0, 0, 0, 0); hlayout->setSpacing(6);
     ans_text = new QLineEdit(this);
     ans_text->setStatusTip(tr("Answer %1 of the selected question").arg(Question::indexToLabel(i + 1)));
@@ -57,16 +57,16 @@ void AnswerEdit::setVisible(bool visible)
 
 bool AnswerEdit::isVisible() { return ans_visible; }
 
-AnswersEdit::AnswersEdit(QWidget * parent):
+AnswersEdit::AnswersEdit(QWidget *parent):
 QWidget(parent) {
-    QVBoxLayout * vlayout = new QVBoxLayout(this);
+    QVBoxLayout *vlayout = new QVBoxLayout(this);
     vlayout->setContentsMargins(0, 0, 0, 0);
 #ifndef Q_OS_MAC
     vlayout->setSpacing(6);
 #else
     vlayout->setSpacing(3);
 #endif
-    QHBoxLayout * hlayout = new QHBoxLayout;
+    QHBoxLayout *hlayout = new QHBoxLayout;
     hlayout->setContentsMargins(0, 0, 0, 0); hlayout->setSpacing(6);
     ae_add_button = new QToolButton(this);
     ae_add_button->setText(tr("Add answer"));
@@ -94,13 +94,15 @@ QWidget(parent) {
     hlayout->addWidget(ae_correct_label);
     vlayout->addLayout(hlayout);
 #ifdef Q_OS_MAC
-    QVBoxLayout * vlayout2 = new QVBoxLayout;
+    QVBoxLayout *vlayout2 = new QVBoxLayout;
     vlayout2->setContentsMargins(0, 0, 0, 0); vlayout2->setSpacing(0);
     vlayout->addLayout(vlayout2);
 #endif
     for (int i = 0; i < 9; ++i) {
-        AnswerEdit * ans = new AnswerEdit(i, this);
-        if (i >= 4) { ans->setVisible(false); }
+        AnswerEdit *ans = new AnswerEdit(i, this);
+        if (i >= 4) {
+            ans->setVisible(false);
+        }
         ae_answers << ans;
 #ifndef Q_OS_MAC
         vlayout->addWidget(ans);
@@ -112,10 +114,10 @@ QWidget(parent) {
     ae_add_button->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 }
 
-void AnswersEdit::setAnswers(const QStringList & answers)
+void AnswersEdit::setAnswers(const QStringList &answers)
 {
     for (int i = 0; i < 9; ++i) {
-        AnswerEdit * ans = ae_answers.at(i);
+        AnswerEdit *ans = ae_answers.at(i);
         if (i < answers.count()) {
             ans->ans_text->setText(answers.at(i));
             ans->setVisible(true);
@@ -127,10 +129,10 @@ void AnswersEdit::setAnswers(const QStringList & answers)
     enableAddAnswerButton();
 }
 
-void AnswersEdit::setAnswers(const QStringList & answers, Question::Answers correct_answers, Question::SelectionType selectiontype)
+void AnswersEdit::setAnswers(const QStringList &answers, Question::Answers correct_answers, Question::SelectionType selectiontype)
 {
     for (int i = 0; i < 9; ++i) {
-        AnswerEdit * ans = ae_answers.at(i);
+        AnswerEdit *ans = ae_answers.at(i);
         if (i < answers.count()) {
             ans->ans_text->setText(answers.at(i));
             ans->ans_correct->setChecked(correct_answers.testFlag(Question::indexToAnswer(i + 1)));
@@ -149,7 +151,9 @@ QStringList AnswersEdit::answers()
 {
     QStringList answers;
     for (int i = 0; i < 9; ++i) {
-        if (ae_answers.at(i)->isVisible()) { answers << removeLineBreaks(ae_answers.at(i)->ans_text->text()); }
+        if (ae_answers.at(i)->isVisible()) {
+            answers << removeLineBreaks(ae_answers.at(i)->ans_text->text());
+        }
     }
     return answers;
 }
@@ -172,16 +176,18 @@ Question::Answers AnswersEdit::correctAnswers()
     return correct_answers;
 }
 
-void AnswersEdit::replaceAnswer(int i, const QString & text)
+void AnswersEdit::replaceAnswer(int i, const QString &text)
 {
-    if (i < 0 || i > 8) { return; }
+    if (i < 0 || i > 8)
+        return;
     ae_answers.at(i)->ans_text->setText(text);
     ae_answers.at(i)->setVisible(true);
 }
 
 QString AnswersEdit::answer(int i)
 {
-    if (i < 0 || i > 8) { return QString(); }
+    if (i < 0 || i > 8)
+        return QString();
     return removeLineBreaks(ae_answers.at(i)->ans_text->text());
 }
 
@@ -203,7 +209,9 @@ int AnswersEdit::count()
 {
     int n = 0;
     for (int i = 0; i < 9; ++i) {
-        if (ae_answers.at(i)->isVisible()) { n++; }
+        if (ae_answers.at(i)->isVisible()) {
+            n++;
+        }
     }
     return n;
 }
@@ -221,16 +229,20 @@ void AnswersEdit::addAnswer()
     }
 }
 
-void AnswersEdit::removeAnswer(const QString & id)
+void AnswersEdit::removeAnswer(const QString &id)
 {
-    bool ok; int i = id.toInt(&ok);
-    if (ok) { removeAnswer(i); }
+    bool ok;
+    int i = id.toInt(&ok);
+    if (ok) {
+        removeAnswer(i);
+    }
 }
 
 void AnswersEdit::removeAnswer(int i)
 {
-    if (i < 0 || i > 8) { return; }
-    AnswerEdit * prev_ans = ae_answers.at(i);
+    if (i < 0 || i > 8)
+        return;
+    AnswerEdit *prev_ans = ae_answers.at(i);
     for (int n = i + 1; n < 9; ++n) {
         if (ae_answers.at(n)->isVisible()) {
             prev_ans->ans_text->setText(ae_answers.at(n)->ans_text->text());
@@ -247,7 +259,7 @@ void AnswersEdit::removeAnswer(int i)
 void AnswersEdit::clear()
 {
     for (int i = 0; i < 9; ++i) {
-        AnswerEdit * ans = ae_answers.at(i);
+        AnswerEdit *ans = ae_answers.at(i);
         ans->ans_text->clear();
         ans->ans_correct->setChecked(false);
         ans->setVisible(i < 4);
@@ -257,6 +269,11 @@ void AnswersEdit::clear()
 
 void AnswersEdit::enableAddAnswerButton()
 {
-    int n = 0; for (int i = 0; i < 9; ++i) { if (ae_answers.at(i)->isVisible()) { n++; } }
+    int n = 0;
+    for (int i = 0; i < 9; ++i) {
+        if (ae_answers.at(i)->isVisible()) {
+            n++;
+        }
+    }
     ae_add_button->setEnabled(n < 9);
 }

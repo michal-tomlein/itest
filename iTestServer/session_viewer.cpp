@@ -49,7 +49,7 @@ void MainWindow::setupSessionViewer()
     }
 }
 
-void MainWindow::searchSVLS(const QString & keyword)
+void MainWindow::searchSVLS(const QString &keyword)
 {
     if (keyword.isEmpty()) {
         SVLSSearchLineEdit->setPalette(qApp->palette());
@@ -61,11 +61,12 @@ void MainWindow::searchSVLS(const QString & keyword)
     }
 }
 
-void MainWindow::setCurrentSession(QListWidgetItem * item)
+void MainWindow::setCurrentSession(QListWidgetItem *item)
 {
-    if (item == NULL) { return; }
+    if (item == NULL)
+        return;
     selectSessionItem(item);
-    Session * session = current_db_sessions.value(item->data(Qt::UserRole).toDateTime());
+    Session *session = current_db_sessions.value(item->data(Qt::UserRole).toDateTime());
     current_db_session = session;
     SVSelectedSessionWidget->setEnabled(true);
     SVNameLabel->setText(session->name());
@@ -77,13 +78,13 @@ void MainWindow::setCurrentSession(QListWidgetItem * item)
     current_db_students.clear();
     SVLCListWidget->clear(); SVLogListWidget->clear();
     for (int i = 0; i < session->numLogEntries(); ++i) {
-        QListWidgetItem * log_entry = new QListWidgetItem (session->logEntry(i).entryText(), SVLogListWidget);
+        QListWidgetItem *log_entry = new QListWidgetItem (session->logEntry(i).entryText(), SVLogListWidget);
         log_entry->setBackground(QBrush(session->logEntry(i).entryBackgroundColour()));
         log_entry->setForeground(QBrush(session->logEntry(i).entryForegroundColour()));
     }
     SVLogGroupBox->setVisible(session->numLogEntries() > 0);
     for (int i = 0; i < session->numStudents(); ++i) {
-        QListWidgetItem * item = new QListWidgetItem(session->student(i)->name(), SVLCListWidget);
+        QListWidgetItem *item = new QListWidgetItem(session->student(i)->name(), SVLCListWidget);
         current_db_students.insert(item, session->student(i));
         if (session->student(i)->passed()) {
             item->setBackground(QBrush(QColor(197, 255, 120)));
@@ -95,10 +96,12 @@ void MainWindow::setCurrentSession(QListWidgetItem * item)
     SVPassMarkTableWidget->clearContents();
     SVPassMarkTableWidget->verticalHeader()->hide();
     if (session->passMark().count() > 0) {
-        passMarkDetailsTab->setEnabled(true); QTableWidgetItem * item;
+        passMarkDetailsTab->setEnabled(true);
+        QTableWidgetItem *item;
         SVPassMarkTableWidget->setRowCount(session->passMark().count());
         for (int i = 0; i < session->passMark().count(); ++i) {
-            if (session->passMark().condition(i) < 0 || session->passMark().condition(i) >= current_db_categories.size()) { continue; }
+            if (session->passMark().condition(i) < 0 || session->passMark().condition(i) >= current_db_categories.size())
+                continue;
             item = new QTableWidgetItem(QString("%1 - %2").arg(session->passMark().condition(i) + 1).arg(current_db_categories[session->passMark().condition(i)]));
             item->setBackground(QBrush(backgroundColourForCategory(session->passMark().condition(i))));
             item->setForeground(QBrush(foregroundColourForCategory(session->passMark().condition(i))));
@@ -130,7 +133,7 @@ void MainWindow::setCurrentStudent()
     if (SVLCListWidget->currentIndex().isValid()) {
         selectedStudentTab->setEnabled(true); clearSVSC(); togglePrintEnabled();
         SVStudentTabWidget->setCurrentIndex(0);
-        Student * student = current_db_students.value(SVLCListWidget->currentItem());
+        Student *student = current_db_students.value(SVLCListWidget->currentItem());
         SVStudentNameLabel->setText(student->name());
         if (student->isReady()) {
             if (current_db_session != NULL) {
@@ -152,8 +155,10 @@ void MainWindow::showSelectedStudentTab()
 
 void MainWindow::deleteLog()
 {
-    if (!SVSelectedSessionWidget->isEnabled()) { return; }
-    if (current_db_session == NULL) { return; }
+    if (!SVSelectedSessionWidget->isEnabled())
+        return;
+    if (current_db_session == NULL)
+        return;
     switch (QMessageBox::information(this, tr("Delete log"), tr("Are you sure you want to delete the log for session \"%1 - %2\"?").arg(current_db_session->dateTimeToString()).arg(current_db_session->name()), tr("&Delete"), tr("Cancel"), 0, 1)) {
         case 0: // Delete
             break;
@@ -167,8 +172,10 @@ void MainWindow::deleteLog()
 
 /*void MainWindow::deleteSession()
 {
-    if (!SVSelectedSessionWidget->isEnabled()) { return; }
-    if (current_db_session == NULL) { return; }
+    if (!SVSelectedSessionWidget->isEnabled())
+        return;
+    if (current_db_session == NULL)
+        return;
     switch (QMessageBox::information(this, tr("Delete session"), tr("Are you sure you want to delete session \"%1 - %2\"?").arg(current_db_session->dateTimeToString()).arg(current_db_session->name()), tr("&Delete"), tr("Cancel"), 0, 1)) {
         case 0: // Delete
             break;
@@ -185,15 +192,16 @@ void MainWindow::deleteLog()
     SVSelectedClientGroupBox->setEnabled(false); clearSVSC();
     togglePrintEnabled(); enableSVTools();
     for (int i = 0; i < SVLSListWidget->count(); ++i) {
-        if (SVLSListWidget->item(i)->data(Qt::UserRole).toDateTime() == current_db_session->dateTime())
-            { delete SVLSListWidget->item(i); }
+        if (SVLSListWidget->item(i)->data(Qt::UserRole).toDateTime() == current_db_session->dateTime()) {
+            delete SVLSListWidget->item(i);
+        }
     }
     current_db_sessions.remove(current_db_session->dateTime());
     delete current_db_session;
     setDatabaseModified();
 }*/
 
-void MainWindow::loadStudentResults(QMap<QString, QuestionAnswer> * results)
+void MainWindow::loadStudentResults(QMap<QString, QuestionAnswer> *results)
 {
     if (current_db_session == NULL) {
         ScoringSystem sys;
@@ -203,7 +211,7 @@ void MainWindow::loadStudentResults(QMap<QString, QuestionAnswer> * results)
     }
 }
 
-void MainWindow::selectSessionItem(QListWidgetItem * item)
+void MainWindow::selectSessionItem(QListWidgetItem *item)
 {
     for (int i = 0; i < SVLSListWidget->count(); ++i) {
         SVLSListWidget->item(i)->setBackground(QBrush(QColor(255, 255, 255)));

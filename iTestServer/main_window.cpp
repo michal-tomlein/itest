@@ -36,7 +36,7 @@
 #include <QTimer>
 #include <QTranslator>
 
-void MainWindow::errorInvalidDBFile(const QString & title, const QString & file, int error)
+void MainWindow::errorInvalidDBFile(const QString &title, const QString &file, int error)
 {
     QMessageBox::critical(this, title, tr("Invalid database file: %1\nError %2.").arg(file).arg(error));
     this->setEnabled(true);
@@ -46,7 +46,10 @@ void MainWindow::setProgress(int progress)
 {
     if (progress < 0) {
        QTimer::singleShot(2500, this, SLOT(setNullProgress()));
-    } else { progressBar->setVisible(true); progressBar->setValue(progress); }
+    } else {
+        progressBar->setVisible(true);
+        progressBar->setValue(progress);
+    }
 }
 
 void MainWindow::setNullProgress()
@@ -62,14 +65,18 @@ void MainWindow::clearCurrentValues()
     current_db_categories_enabled.clear(); current_db_categories_enabled.resize(20);
     current_db_categories.clear(); current_db_categories.resize(20);
     QMapIterator<QListWidgetItem *, QuestionItem *> i(current_db_questions);
-    while (i.hasNext()) { i.next(); delete i.value(); }
+    while (i.hasNext()) { i.next();
+        delete i.value();
+    }
     current_db_questions.clear();
     current_db_students.clear();
     QMapIterator<QDateTime, Session *> n(current_db_sessions);
     while (n.hasNext()) { n.next(); if (n.value()) delete n.value(); }
     current_db_sessions.clear();
     QMapIterator<QListWidgetItem *, Class *> c(current_db_classes);
-    while (c.hasNext()) { c.next(); delete c.value(); }
+    while (c.hasNext()) { c.next();
+        delete c.value();
+    }
     current_db_classes.clear();
     current_db_categoryentries.clear();
 }
@@ -136,7 +143,10 @@ void MainWindow::setAllEnabled(bool enabled)
 
 //  setSQEnabled(true);
 //  setLQToolsEnabled(true);
-    if (!enabled) { setSQEnabled(enabled); setLQToolsEnabled(enabled); }
+    if (!enabled) {
+        setSQEnabled(enabled);
+        setLQToolsEnabled(enabled);
+    }
 }
 
 void MainWindow::setEQToolsEnabled(bool enabled)
@@ -153,10 +163,13 @@ void MainWindow::setEQToolsEnabled(bool enabled)
 //  actionShow_category->setEnabled(enabled);
     menuFilter_LQ->setEnabled(enabled);
     if (enabled) {
-        if (LQListWidget->currentIndex().isValid())
-            { setLQToolsEnabled(enabled); setSQEnabled(enabled); }
+        if (LQListWidget->currentIndex().isValid()) {
+            setLQToolsEnabled(enabled);
+            setSQEnabled(enabled);
+        }
     } else {
-        setLQToolsEnabled(enabled); setSQEnabled(enabled);
+        setLQToolsEnabled(enabled);
+        setSQEnabled(enabled);
     }
 }
 
@@ -209,7 +222,11 @@ void MainWindow::enableSMTools()
     actionExport_test->setEnabled(i == SM);
     actionAdd_offline_client->setEnabled(i == SM);
     actionAdd_offline_clients->setEnabled(i == SM);
-    if (i == SM) { toggleSaveSessionEnabled(); } else { actionSave_session->setEnabled(false); }
+    if (i == SM) {
+        toggleSaveSessionEnabled();
+    } else {
+        actionSave_session->setEnabled(false);
+    }
 }
 
 void MainWindow::enableSVTools()
@@ -253,7 +270,9 @@ void MainWindow::clearLQ()
 MainWindow::MainWindow()
 {
     // User interface ----------------------------------------------------------
-    if (tr("LTR") == "RTL") { qApp->setLayoutDirection(Qt::RightToLeft); }
+    if (tr("LTR") == "RTL") {
+        qApp->setLayoutDirection(Qt::RightToLeft);
+    }
     setupUi(this);
     network_access_manager = new QNetworkAccessManager(this);
     default_printer = NULL;
@@ -439,7 +458,7 @@ MainWindow::MainWindow()
 #endif
 }
 
-void MainWindow::openFile(const QString & file)
+void MainWindow::openFile(const QString &file)
 {
     QFileInfo file_info(file);
     if (file_info.exists() && !saveChangesBeforeProceeding(tr("Open database"), true)) {
@@ -463,7 +482,9 @@ void MainWindow::loadSettings()
 {
     QSettings settings("Michal Tomlein", "iTest");
     QStringList recent = settings.value("editor/recentDatabases").toStringList();
-    if (!recent.isEmpty()) { recentDBsListWidget->addItems(recent); }
+    if (!recent.isEmpty()) {
+        recentDBsListWidget->addItems(recent);
+    }
     this->move(settings.value("editor/pos", this->pos()).toPoint());
     this->resize(settings.value("editor/size", this->size()).toSize());
     actionShow_hidden->setChecked(settings.value("editor/showHidden", false).toBool());
@@ -476,8 +497,9 @@ void MainWindow::saveSettings()
 {
     QSettings settings("Michal Tomlein", "iTest");
     QStringList recent;
-    for (int i = 0; i < recentDBsListWidget->count(); ++i)
-    { recent << recentDBsListWidget->item(i)->text(); }
+    for (int i = 0; i < recentDBsListWidget->count(); ++i) {
+        recent << recentDBsListWidget->item(i)->text();
+    }
     settings.setValue("editor/recentDatabases", recent);
     settings.setValue("editor/pos", this->pos());
     settings.setValue("editor/size", this->size());
@@ -487,12 +509,14 @@ void MainWindow::saveSettings()
     settings.setValue("editor/customServerPort", TSCustomServerPortSpinBox->value());
 }
 
-void MainWindow::addRecent(const QString & name)
+void MainWindow::addRecent(const QString &name)
 {
     for (int i = 0; i < recentDBsListWidget->count();) {
         if (recentDBsListWidget->item(i)->text() == name) {
             delete recentDBsListWidget->item(i);
-        } else {i++;}
+        } else {
+            i++;
+        }
     }
     recentDBsListWidget->insertItem(0, name);
     recentDBsListWidget->setCurrentRow(0);
@@ -507,7 +531,7 @@ void MainWindow::currentPageChanged(int i)
     }
 }
 
-void MainWindow::setPage(QAction * act)
+void MainWindow::setPage(QAction *act)
 {
     if (act == actionEdit_questions) {
         mainStackedWidget->setCurrentIndex(1);
@@ -526,7 +550,10 @@ void MainWindow::setPage(QAction * act)
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    if (mainStackedWidget->currentIndex() == 5) {event->ignore(); return;}
+    if (mainStackedWidget->currentIndex() == 5) {
+        event->ignore();
+        return;
+    }
     
     // Save changes before proceeding?
     bool cancelled = saveChangesBeforeProceeding(tr("Quit iTest"), true);
@@ -534,7 +561,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
     // Quit
        saveSettings();
        event->accept();
-    } else {event->ignore();}
+    } else {
+        event->ignore();
+    }
 }
 
 void MainWindow::setDatabaseModified() { this->setWindowModified(true); }
@@ -570,7 +599,9 @@ void MainWindow::httpRequestFinished(QNetworkReply *reply)
     if (in.readLine() != "[iTest.release-notes]")
         return httpRequestFailed(silent);
     QString release_notes;
-    while (!in.atEnd()) { release_notes.append(in.readLine()); }
+    while (!in.atEnd()) {
+        release_notes.append(in.readLine());
+    }
 
     if (f_current_ver <= F_ITEST_VERSION) {
         if (!silent) {
@@ -626,8 +657,9 @@ void MainWindow::openDocumentation()
 
 void MainWindow::overallStatistics()
 {
-    QuestionItem * q_item; QTableWidgetItem * tw_item;
-    QWidget * stats_widget = new QWidget(this, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/);
+    QuestionItem *q_item;
+    QTableWidgetItem *tw_item;
+    QWidget *stats_widget = new QWidget(this, Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/);
     stats_widget->setWindowModality(Qt::WindowModal);
     stats_widget->setAttribute(Qt::WA_DeleteOnClose);
 #ifdef Q_OS_MAC
@@ -636,27 +668,27 @@ void MainWindow::overallStatistics()
     stats_widget->setWindowTitle(tr("%1 - Overall statistics - iTest").arg(currentDatabaseName()));
 #endif
     stats_widget->setMinimumSize(QSize(300, 200));
-    QGridLayout * stats_glayout = new QGridLayout(stats_widget);
-    QLabel * stats_label = new QLabel(stats_widget);
+    QGridLayout *stats_glayout = new QGridLayout(stats_widget);
+    QLabel *stats_label = new QLabel(stats_widget);
     stats_glayout->addWidget(stats_label, 0, 0);
-    QHBoxLayout * stats_hlayout_search = new QHBoxLayout(stats_widget);
-    QLabel * stats_label_search = new QLabel(stats_widget);
+    QHBoxLayout *stats_hlayout_search = new QHBoxLayout(stats_widget);
+    QLabel *stats_label_search = new QLabel(stats_widget);
     stats_label_search->setText(tr("Search:"));
     stats_hlayout_search->addWidget(stats_label_search);
-    ExtendedLineEdit * stats_search = new ExtendedLineEdit(stats_widget);
+    ExtendedLineEdit *stats_search = new ExtendedLineEdit(stats_widget);
     stats_hlayout_search->addWidget(stats_search);
     stats_glayout->addLayout(stats_hlayout_search, 1, 0);
     stats_tw = new MTTableWidget(stats_widget);
     QObject::connect(stats_search, SIGNAL(textChanged(QLineEdit *, const QString &)), stats_tw, SLOT(filterItems(QLineEdit *, const QString &)));
     stats_glayout->addWidget(stats_tw, 2, 0);
-    QHBoxLayout * stats_hlayout = new QHBoxLayout(stats_widget);
+    QHBoxLayout *stats_hlayout = new QHBoxLayout(stats_widget);
     stats_hlayout->setMargin(0); stats_hlayout->setSpacing(6);
     stats_hlayout->addStretch();
     stats_btn_adjustall = new QPushButton (tr("Adjust all"), stats_widget);
     QObject::connect(stats_btn_adjustall, SIGNAL(released()), this, SLOT(statsAdjustAll()));
     stats_btn_adjustall->setEnabled(false);
     stats_hlayout->addWidget(stats_btn_adjustall);
-    QPushButton * stats_btn_close = new QPushButton (tr("Close"), stats_widget);
+    QPushButton *stats_btn_close = new QPushButton (tr("Close"), stats_widget);
     QObject::connect(stats_btn_close, SIGNAL(released()), stats_widget, SLOT(close()));
     QObject::connect(stats_widget, SIGNAL(destroyed()), this, SLOT(statsWidgetClosed()));
     stats_hlayout->addWidget(stats_btn_close);
@@ -664,12 +696,18 @@ void MainWindow::overallStatistics()
     stats_glayout->setMargin(6); stats_glayout->setSpacing(6);
     btngrpStatsAdjust = new QButtonGroup(stats_widget);
     QObject::connect(btngrpStatsAdjust, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(statsAdjust(QAbstractButton *)));
-    int rows = 0; int row = 0;
+    int rows = 0;
+    int row = 0;
     for (int i = 0; i < LQListWidget->count(); ++i) {
-        if (current_db_questions.value(LQListWidget->item(i))->recommendedDifficulty() != -1) { rows++; }
+        if (current_db_questions.value(LQListWidget->item(i))->recommendedDifficulty() != -1) {
+            rows++;
+        }
     }
     stats_label->setText(tr("<b>%1 questions with statistics found</b>").arg(rows));
-    if (rows == 0) { stats_widget->show(); return; }
+    if (rows == 0) {
+        stats_widget->show();
+        return;
+    }
     stats_tw->setRowCount(rows);
     stats_tw->setColumnCount(6);
     tw_item = new QTableWidgetItem(tr("Question name"));
@@ -688,7 +726,8 @@ void MainWindow::overallStatistics()
     QFont font; font.setBold(true);
     for (int i = 0; i < LQListWidget->count(); ++i) {
         q_item = current_db_questions.value(LQListWidget->item(i));
-        if (q_item->recommendedDifficulty() == -1) { continue; }
+        if (q_item->recommendedDifficulty() == -1)
+            continue;
         tw_item = new QTableWidgetItem(q_item->group().isEmpty() ? q_item->name() : QString("[%1] %2").arg(q_item->group()).arg(q_item->name()));
         tw_item->setBackground(QBrush(backgroundColourForCategory(q_item->category())));
         tw_item->setForeground(QBrush(foregroundColourForCategory(q_item->category())));
@@ -737,7 +776,7 @@ void MainWindow::overallStatistics()
         tw_item->setFont(font); tw_item->setForeground(QBrush(QColor(204, 109, 0)));
         stats_tw->setItem(row, 4, tw_item);
         tw_item = new QTableWidgetItem;
-        QPushButton * stats_btn_adjust = new QPushButton(tr("Adjust difficulty"), stats_tw);
+        QPushButton *stats_btn_adjust = new QPushButton(tr("Adjust difficulty"), stats_tw);
         stats_tw->setCellWidget(row, 5, stats_btn_adjust);
         stats_btn_adjust->setEnabled(false);
         stats_qmap.insert(stats_btn_adjust, q_item);
@@ -757,27 +796,35 @@ void MainWindow::overallStatistics()
 
 void MainWindow::statsAdjustAll()
 {
-    if (stats_tw == NULL) { return; }
-    QAbstractButton * btn;
+    if (stats_tw == NULL)
+        return;
+    QAbstractButton *btn;
     for (int i = 0; i < stats_tw->rowCount(); ++i) {
         btn = (QAbstractButton *)stats_tw->cellWidget(i, 5);
-        if (btn == NULL) { continue; }
-        if (!btn->isEnabled()) { continue; }
+        if (btn == NULL)
+            continue;
+        if (!btn->isEnabled())
+            continue;
         statsAdjust(btn);
     }
-    if (stats_btn_adjustall == NULL) { return; }
+    if (stats_btn_adjustall == NULL)
+        return;
     stats_btn_adjustall->setEnabled(false);
 }
 
-void MainWindow::statsAdjust(QAbstractButton * btn)
+void MainWindow::statsAdjust(QAbstractButton *btn)
 {
-    QuestionItem * q_item = stats_qmap.value(btn);
-    if (q_item == NULL) { return; }
-    if (stats_tw == NULL) { return; }
+    QuestionItem *q_item = stats_qmap.value(btn);
+    if (q_item == NULL)
+        return;
+    if (stats_tw == NULL)
+        return;
     int row = stats_twmap.value(btn, -1);
-    if (row == -1) { return; }
-    QTableWidgetItem * tw_item = stats_tw->item(row, 1);
-    if (tw_item == NULL) { return; }
+    if (row == -1)
+        return;
+    QTableWidgetItem *tw_item = stats_tw->item(row, 1);
+    if (tw_item == NULL)
+        return;
     int rdif = q_item->recommendedDifficulty();
     switch (rdif) {
         case -1: break;
@@ -797,13 +844,16 @@ void MainWindow::statsAdjust(QAbstractButton * btn)
     }
     if (rdif >= 0 && rdif <= 2) {
         q_item->setDifficulty(rdif);
-        if (current_db_questions.value(LQListWidget->currentItem()) == q_item)
-            { SQDifficultyComboBox->setCurrentIndex(rdif); }
+        if (current_db_questions.value(LQListWidget->currentItem()) == q_item) {
+            SQDifficultyComboBox->setCurrentIndex(rdif);
+        }
         setDatabaseModified(); btn->setEnabled(false);
         int i = stats_lwmap.value(btn, -1);
-        if (i == -1) { return; }
-        QListWidgetItem * lw_item = LQListWidget->item(i);
-        if (lw_item == NULL) { return; }
+        if (i == -1)
+            return;
+        QListWidgetItem *lw_item = LQListWidget->item(i);
+        if (lw_item == NULL)
+            return;
         setQuestionItemIcon(lw_item, rdif);
     }
 }
@@ -822,7 +872,7 @@ void MainWindow::showPrintQuestionsDialogue()
 
 void MainWindow::changeLanguage()
 {
-    QWidget * lang_widget = new QWidget(this, Qt::Dialog);
+    QWidget *lang_widget = new QWidget(this, Qt::Dialog);
     lang_widget->setWindowModality(Qt::WindowModal);
     lang_widget->setAttribute(Qt::WA_DeleteOnClose);
 #ifdef Q_OS_MAC
@@ -830,19 +880,21 @@ void MainWindow::changeLanguage()
 #else
     lang_widget->setWindowTitle(tr("Change language - iTest"));
 #endif
-    QGridLayout * lang_glayout = new QGridLayout(lang_widget);
+    QGridLayout *lang_glayout = new QGridLayout(lang_widget);
     lang_glayout->setMargin(6); lang_glayout->setSpacing(6);
-    QLabel * lang_label = new QLabel(lang_widget);
+    QLabel *lang_label = new QLabel(lang_widget);
     lang_label->setText(tr("Select your preferred language"));
     lang_glayout->addWidget(lang_label, 0, 0);
     langComboBox = new QComboBox(lang_widget);
     QStringList langs(itest_i18n.keys()); langs.sort();
     for (int i = 0; i < langs.count(); ++i) {
         langComboBox->addItem(langs.at(i));
-        if (langs.at(i) == "English") { langComboBox->setCurrentIndex(i); }
+        if (langs.at(i) == "English") {
+            langComboBox->setCurrentIndex(i);
+        }
     }
     lang_glayout->addWidget(langComboBox, 1, 0);
-    QDialogButtonBox * lang_buttonbox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, lang_widget);
+    QDialogButtonBox *lang_buttonbox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, lang_widget);
     QObject::connect(lang_buttonbox, SIGNAL(accepted()), this, SLOT(langChanged()));
     QObject::connect(lang_buttonbox, SIGNAL(rejected()), lang_widget, SLOT(close()));
     lang_glayout->addWidget(lang_buttonbox, 2, 0);
@@ -851,7 +903,8 @@ void MainWindow::changeLanguage()
 
 void MainWindow::langChanged()
 {
-    if (langComboBox == NULL) { return; }
+    if (langComboBox == NULL)
+        return;
     QString lang = itest_i18n.value(langComboBox->currentText(), langComboBox->currentText());
     QSettings settings("Michal Tomlein", "iTest");
     QString current_lang = settings.value("lang", "English").toString();
@@ -859,16 +912,18 @@ void MainWindow::langChanged()
         settings.setValue("lang", lang);
         QMessageBox::information(this, tr("iTest"), tr("You need to restart iTest for the changes to apply."));
     }
-    if (langComboBox->parent() == NULL) { return; }
-    QWidget * lang_widget = (QWidget *)langComboBox->parent();
+    if (langComboBox->parent() == NULL)
+        return;
+    QWidget *lang_widget = (QWidget *)langComboBox->parent();
     lang_widget->close();
 }
 
-void MainWindow::previewSvg(QListWidgetItem * item)
+void MainWindow::previewSvg(QListWidgetItem *item)
 {
-    SvgItem * svg_item = (SvgItem *)item;
-    if (!svg_item->isValid()) { return; }
-    QSvgWidget * svg_widget = new QSvgWidget;
+    SvgItem *svg_item = (SvgItem *)item;
+    if (!svg_item->isValid())
+        return;
+    QSvgWidget *svg_widget = new QSvgWidget;
     svg_widget->setAttribute(Qt::WA_DeleteOnClose);
     svg_widget->setWindowTitle(svg_item->text());
     svg_widget->load(svg_item->svg().toUtf8());
@@ -882,7 +937,7 @@ void MainWindow::previewSvg(QListWidgetItem * item)
 
 void MainWindow::about()
 {
-    AboutWidget * itest_about = new AboutWidget;
+    AboutWidget *itest_about = new AboutWidget;
     itest_about->setParent(this);
     itest_about->setWindowFlags(Qt::Dialog /*| Qt::WindowMaximizeButtonHint*/ | Qt::WindowStaysOnTopHint);
     itest_about->show();

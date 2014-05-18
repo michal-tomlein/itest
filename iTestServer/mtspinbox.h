@@ -28,19 +28,19 @@ class MTSpinBox : public QSpinBox
     Q_OBJECT
 
 public:
-    MTSpinBox(QWidget * parent = 0):
+    MTSpinBox(QWidget *parent = 0):
     QSpinBox(parent) {};
 
 public slots:
     void setMinimum(int value) {
         this->QSpinBox::setMinimum(value);
-    };
+    }
     void setMaximum(int value) {
         this->QSpinBox::setMaximum(value);
-    };
+    }
     void setMaximumValue() {
         setValue(maximum());
-    };
+    }
 };
 
 class MTDoubleSpinBox : public QDoubleSpinBox
@@ -48,19 +48,19 @@ class MTDoubleSpinBox : public QDoubleSpinBox
     Q_OBJECT
 
 public:
-    MTDoubleSpinBox(QWidget * parent = 0):
+    MTDoubleSpinBox(QWidget *parent = 0):
     QDoubleSpinBox(parent) {};
 
 public slots:
     void setMinimum(double value) {
         this->QDoubleSpinBox::setMinimum(value);
-    };
+    }
     void setMaximum(double value) {
         this->QDoubleSpinBox::setMaximum(value);
-    };
+    }
     void setMaximumValue() {
         setValue(maximum());
-    };
+    }
 };
 
 #endif // MTSPINBOX_H

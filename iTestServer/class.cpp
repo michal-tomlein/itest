@@ -26,12 +26,12 @@ ClassMember::ClassMember()
     ms_name = "";
 }
 
-ClassMember::ClassMember(const QString & name)
+ClassMember::ClassMember(const QString &name)
 {
     ms_name = name;
 }
 
-void ClassMember::setName(const QString & name) { ms_name = name; }
+void ClassMember::setName(const QString &name) { ms_name = name; }
 
 QString ClassMember::name() { return ms_name; }
 
@@ -43,7 +43,7 @@ void ClassMember::addSession(QDateTime date, int num)
     ms_sessions << se;
 }
 
-void ClassMember::addSession(const QString & date, int num)
+void ClassMember::addSession(const QString &date, int num)
 {
     SessionEntry se;
     se.session = QDateTime::fromString(date, "yyyy.MM.dd-hh:mm");
@@ -58,7 +58,7 @@ void ClassMember::removeSession(QDateTime date)
     }
 }
 
-void ClassMember::removeSession(const QString & date)
+void ClassMember::removeSession(const QString &date)
 {
     removeSession(QDateTime::fromString(date, "yyyy.MM.dd-hh:mm"));
 }
@@ -76,24 +76,30 @@ int ClassMember::numSessionEntries() { return ms_sessions.count(); }
 bool ClassMember::hasSession(QDateTime session)
 {
     for (int i = 0; i < ms_sessions.count(); ++i) {
-        if (ms_sessions.at(i).session == session) { return true; }
+        if (ms_sessions.at(i).session == session)
+            return true;
     }
     return false;
 }
 
-int ClassMember::average(QMap<QDateTime, Session *> * sessions)
+int ClassMember::average(QMap<QDateTime, Session *> *sessions)
 {
-    long double score = 0.0; long double maxscore = 0.0;
+    long double score = 0.0;
+    long double maxscore = 0.0;
     for (int i = 0; i < ms_sessions.count(); ++i) {
-        Session * session = sessions->value(ms_sessions.at(i).session, NULL);
-        if (session == NULL) { continue; }
-        if (ms_sessions.at(i).member_num < 0 || ms_sessions.at(i).member_num >= session->numStudents()) { continue; }
-        Student * student = session->student(ms_sessions.at(i).member_num);
+        Session *session = sessions->value(ms_sessions.at(i).session, NULL);
+        if (session == NULL)
+            continue;
+        if (ms_sessions.at(i).member_num < 0 || ms_sessions.at(i).member_num >= session->numStudents())
+            continue;
+        Student *student = session->student(ms_sessions.at(i).member_num);
         score += student->score();
         maxscore += student->maximumScore();
     }
-    if (score == 0.0) { return 0; }
-    if (maxscore == 0.0) { return 100; }
+    if (score == 0.0)
+        return 0;
+    if (maxscore == 0.0)
+        return 100;
     return (int)(100.0 * score / maxscore);
 }
 
@@ -121,7 +127,7 @@ Class::Class()
     cl_lastyear = QDate::currentDate().year() + 4;
 }
 
-Class::Class(const QString & name)
+Class::Class(const QString &name)
 {
     cl_name = name;
     cl_firstyear = QDate::currentDate().year();
@@ -135,7 +141,7 @@ Class::~Class()
     }
 }
 
-void Class::setName(const QString & name) { cl_name = name; }
+void Class::setName(const QString &name) { cl_name = name; }
 
 QString Class::name() { return cl_name; }
 
@@ -147,29 +153,29 @@ void Class::setLastYear(int year) { cl_lastyear = year; }
 
 int Class::lastYear() { return cl_lastyear; }
 
-int Class::addMember(ClassMember * mem) { cl_members << mem; return updateAddedMemberPosition(); }
+int Class::addMember(ClassMember *mem) { cl_members << mem; return updateAddedMemberPosition(); }
 
-int Class::addMember(const QString & name) { cl_members << new ClassMember(name); return updateAddedMemberPosition(); }
+int Class::addMember(const QString &name) { cl_members << new ClassMember(name); return updateAddedMemberPosition(); }
 
-int Class::removeMember(ClassMember * mem) { delete mem; return cl_members.removeAll(mem); }
+int Class::removeMember(ClassMember *mem) { delete mem; return cl_members.removeAll(mem); }
 
 void Class::removeMember(int i) { delete cl_members.takeAt(i); }
 
 int Class::numMembers() { return cl_members.count(); }
 
-int Class::memberPosition(ClassMember * mem) { return cl_members.indexOf(mem); }
+int Class::memberPosition(ClassMember *mem) { return cl_members.indexOf(mem); }
 
-ClassMember * Class::member(int i) { return cl_members.at(i); }
+ClassMember *Class::member(int i) { return cl_members.at(i); }
 
-ClassMember * Class::takeMember(int i) { return cl_members.takeAt(i); }
+ClassMember *Class::takeMember(int i) { return cl_members.takeAt(i); }
 
 void Class::addSession(QDateTime session) { cl_sessions << session; }
 
-void Class::addSession(const QString & session) { cl_sessions << QDateTime::fromString(session, "yyyy.MM.dd-hh:mm"); }
+void Class::addSession(const QString &session) { cl_sessions << QDateTime::fromString(session, "yyyy.MM.dd-hh:mm"); }
 
 int Class::removeSession(QDateTime session) { return cl_sessions.removeAll(session); }
 
-int Class::removeSession(const QString & session) { return cl_sessions.removeAll(QDateTime::fromString(session, "yyyy.MM.dd-hh:mm")); }
+int Class::removeSession(const QString &session) { return cl_sessions.removeAll(QDateTime::fromString(session, "yyyy.MM.dd-hh:mm")); }
 
 void Class::removeSession(int i) { cl_sessions.removeAt(i); }
 
@@ -179,16 +185,19 @@ QDateTime Class::session(int i) { return cl_sessions.at(i); }
 
 QString Class::sessionToString(int i) { return cl_sessions.at(i).toString("yyyy.MM.dd-hh:mm"); }
 
-int Class::average(QMap<QDateTime, Session *> * sessions)
+int Class::average(QMap<QDateTime, Session *> *sessions)
 {
-    long double score = 0.0; int n = 0;
+    long double score = 0.0;
+    int n = 0;
     for (int i = 0; i < cl_members.count(); ++i) {
         if (cl_members.at(i)->numSessionEntries() > 0) {
             score += cl_members.at(i)->average(sessions);
             n++;
         }
     }
-    if (n != 0) { return (int)(score / (long double)n); }
+    if (n != 0) {
+        return (int)(score / (long double)n);
+    }
     return 100;
 }
 
@@ -217,8 +226,10 @@ QString Class::classData()
 int Class::updateAddedMemberPosition()
 {
     for (int i = 0; i < cl_members.count() - 1; ++i) {
-        if (cl_members.at(i)->name().toLower() > cl_members.last()->name().toLower())
-            { cl_members.move(cl_members.count() - 1, i); return i; }
+        if (cl_members.at(i)->name().toLower() > cl_members.last()->name().toLower()) {
+            cl_members.move(cl_members.count() - 1, i);
+            return i;
+        }
     }
     return cl_members.count() - 1;
 }

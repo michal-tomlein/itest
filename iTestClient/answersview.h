@@ -40,9 +40,9 @@ public:
     AnswerView(int, AnswersView *);
 
 private:
-    QTextBrowser * ans_text;
-    QCheckBox * ans_checkbox;
-    QRadioButton * ans_radiobutton;
+    QTextBrowser *ans_text;
+    QCheckBox *ans_checkbox;
+    QRadioButton *ans_radiobutton;
     friend class AnswersView;
 };
 
@@ -68,8 +68,8 @@ protected slots:
 private:
     QList<AnswerView *> av_answers;
     QList<int> av_ans_order;
-    QButtonGroup * av_grp_checkboxes;
-    QButtonGroup * av_grp_radiobuttons;
+    QButtonGroup *av_grp_checkboxes;
+    QButtonGroup *av_grp_radiobuttons;
 };
 
 #endif // ANSWERSVIEW_H

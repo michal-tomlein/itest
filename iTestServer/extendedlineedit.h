@@ -11,7 +11,7 @@ class ExtendedLineEdit : public QLineEdit
     Q_OBJECT
 
 public:
-    ExtendedLineEdit(QWidget * parent = 0):
+    ExtendedLineEdit(QWidget *parent = 0):
     QLineEdit(parent) {
         xle_btn_clear = new QToolButton(this);
         if (layoutDirection() == Qt::LeftToRight) {
@@ -31,7 +31,7 @@ public:
         QSize minsize = minimumSizeHint();
         setMinimumSize(qMax(minsize.width(), xle_btn_clear->sizeHint().height() + frameWidth * 2 + 2),
                         qMax(minsize.height(), xle_btn_clear->sizeHint().height() + frameWidth * 2 + 2));
-    };
+    }
 
 protected:
     void resizeEvent(QResizeEvent *) {
@@ -42,21 +42,21 @@ protected:
         } else {
             xle_btn_clear->move(frameWidth, (rect().bottom() + 1 - s.height())/2);
         }
-    };
+    }
 
 private slots:
-    void setClearButtonVisible(const QString & text) {
+    void setClearButtonVisible(const QString &text) {
         xle_btn_clear->setVisible(!text.isEmpty());
-    };
-    void emitExtendedTextChanged(const QString & text) {
+    }
+    void emitExtendedTextChanged(const QString &text) {
         emit textChanged((QLineEdit *)this, text);
-    };
+    }
 
 signals:
     void textChanged(QLineEdit *, const QString &);
 
 private:
-    QToolButton * xle_btn_clear;
+    QToolButton *xle_btn_clear;
 };
 
 #endif // EXTENDEDLINEEDIT_H

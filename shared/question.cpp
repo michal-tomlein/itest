@@ -39,7 +39,7 @@ int pow(int base, int exp)
     return result;
 }
 
-Question::Question(const QString & name)
+Question::Question(const QString &name)
 {
     q_name = name;
     q_category = -1;
@@ -51,7 +51,7 @@ Question::Question(const QString & name)
 
 QString Question::name() { return q_name; }
 
-void Question::setName(const QString & name) { q_name = name; }
+void Question::setName(const QString &name) { q_name = name; }
 
 int Question::category() { return q_category; }
 
@@ -59,7 +59,7 @@ void Question::setCategory(int category) { q_category = category; }
 
 QString Question::group() { return q_group; }
 
-void Question::setGroup(const QString & group) { q_group = group; }
+void Question::setGroup(const QString &group) { q_group = group; }
 
 int Question::difficulty() { return q_difficulty; }
 
@@ -67,13 +67,19 @@ void Question::setDifficulty(int difficulty) { q_difficulty = difficulty; }
 
 QString Question::text() { return q_text; }
 
-void Question::setText(const QString & text)
+void Question::setText(const QString &text)
 {
-    QTextDocument doc; doc.setHtml(text); QString final = text; QString lastgood; QTextDocument testdoc;
-    QStringList before; QString after = "font-size:10pt;";
+    QTextDocument doc;
+    doc.setHtml(text);
+    QString final = text;
+    QString lastgood;
+    QTextDocument testdoc;
+    QString after = "font-size:10pt;";
+    QStringList before;
     before << "font-size:8.25pt;" << "font-size:8pt;" << "font-size:9pt;";
     for (int b = 0; b < before.count(); ++b) {
-        int skip = 0; int c = text.count(before.at(b), Qt::CaseInsensitive);
+        int skip = 0;
+        int c = text.count(before.at(b), Qt::CaseInsensitive);
         for (int i = 0; i < c; ++i) {
             lastgood = final;
             if (final.contains(before.at(b), Qt::CaseInsensitive)) {
@@ -91,7 +97,7 @@ void Question::setText(const QString & text)
 
 QString Question::explanation() { return q_explanation; }
 
-void Question::setExplanation(const QString & explanation) { q_explanation = explanation; }
+void Question::setExplanation(const QString &explanation) { q_explanation = explanation; }
 
 Question::SelectionType Question::selectionType() { return q_selectiontype; }
 
@@ -99,23 +105,28 @@ void Question::setSelectionType(Question::SelectionType type) { q_selectiontype 
 
 QString Question::answer(Question::Answer i) { return q_answers.at(answerToIndex(i) - 1); }
 
-void Question::setAnswer(Question::Answer i, const QString & ans)
+void Question::setAnswer(Question::Answer i, const QString &ans)
 {
     setAnswerAtIndex(answerToIndex(i), ans);
 }
 
 QString Question::answerAtIndex(int i) { return q_answers.at(i - 1); }
 
-void Question::setAnswerAtIndex(int i, const QString & ans)
+void Question::setAnswerAtIndex(int i, const QString &ans)
 {
     i--;
-    if (i >= 0 && i < q_answers.count()) { q_answers.replace(i, ans); }
-    else if (i >= q_answers.count() && i < 9) { q_answers.append(ans); }
+    if (i >= 0 && i < q_answers.count()) {
+        q_answers.replace(i, ans);
+    } else if (i >= q_answers.count() && i < 9) {
+        q_answers.append(ans);
+    }
 }
 
-void Question::addAnswer(const QString & ans)
+void Question::addAnswer(const QString &ans)
 {
-    if (q_answers.count() < 9) { q_answers.append(ans); }
+    if (q_answers.count() < 9) {
+        q_answers.append(ans);
+    }
 }
 
 int Question::numAnswers() { return q_answers.count(); }
@@ -137,13 +148,16 @@ bool Question::isAnswerCorrect(Question::Answer ans)
 
 void Question::setAnswerCorrect(Question::Answers ans, bool correct)
 {
-    if (correct) { q_correctanswers |= ans; }
-    else { q_correctanswers &= ~ans; }
+    if (correct) {
+        q_correctanswers |= ans;
+    } else {
+        q_correctanswers &= ~ans;
+    }
 }
 
 QStringList Question::answers() { return q_answers; }
 
-void Question::setAnswers(const QStringList & answers) { q_answers = answers; }
+void Question::setAnswers(const QStringList &answers) { q_answers = answers; }
 
 Question::Answer Question::correctAnswer() { return Question::Answer((int)q_correctanswers); }
 
@@ -170,11 +184,13 @@ int Question::answerToIndex(Question::Answer ans)
 
 Question::Answer Question::indexToAnswer(int i)
 {
-    if (i == 0) { return Question::None; }
+    if (i == 0) {
+        return Question::None;
+    }
     return (Question::Answer)pow(2, i - 1);
 }
 
-int Question::labelToIndex(const QString & label)
+int Question::labelToIndex(const QString &label)
 {
     if (label == QObject::tr("a)")) { return 1; }
     else if (label == QObject::tr("b)")) { return 2; }
@@ -209,9 +225,13 @@ QString Question::answerToString(Question::Answer ans)
 {
     QStringList ans_list; Answers a(ans);
     for (int i = 1; i <= 9; ++i) {
-        if (a.testFlag(indexToAnswer(i))) { ans_list << indexToLabel(i); }
+        if (a.testFlag(indexToAnswer(i))) {
+            ans_list << indexToLabel(i);
+        }
     }
-    if (ans_list.count() == 0) { ans_list << indexToLabel(0); }
+    if (ans_list.count() == 0) {
+        ans_list << indexToLabel(0);
+    }
     return ans_list.join(", ");
 }
 
@@ -251,12 +271,15 @@ void ScoringSystem::init()
 
 ScoringSystem::ScoringSystem() { init(); }
 
-ScoringSystem::ScoringSystem(const QString & str) { loadData(str); }
+ScoringSystem::ScoringSystem(const QString &str) { loadData(str); }
 
 void ScoringSystem::loadData(QString str)
 {
     QTextStream in(&str);
-    if (in.readLine() != "[SCORSYS]") { init(); return; }
+    if (in.readLine() != "[SCORSYS]") {
+        init();
+        return;
+    }
     allowIncompleteAnswers = in.readLine() == "true";
     QStringList bufferlist = in.readLine().split(";");
     for (int i = 0; i < 3; ++i) {
@@ -276,7 +299,9 @@ QString ScoringSystem::data()
         out.append(QString("%1;").arg(correctAnswer[i]));
         out.append(QString("%1;").arg(incorrectAnswer[i]));
         out.append(QString("%1").arg(missingAnswer[i]));
-        if (i < 2) { out.append(";"); }
+        if (i < 2) {
+            out.append(";");
+        }
     }
     return out;
 }
@@ -336,11 +361,14 @@ double QuestionItem::maximumScore()
     return q_scoringsystem.correctAnswer[q_difficulty];
 }
 
-QList<int> Question::randomise(QList<Question *> questions, PassMark passmark, bool use_groups, int qnum, quint32 id, QProgressDialog * progress, QApplication * app)
+QList<int> Question::randomise(QList<Question *> questions, PassMark passmark, bool use_groups, int qnum, quint32 id, QProgressDialog *progress, QApplication *app)
 {
-    QList<int> final_randlist; QList<QString> groups;
+    QList<int> final_randlist;
+    QList<QString> groups;
     if (passmark.count() <= 0) {
-        if (progress != NULL) { progress->setMaximum(qnum); }
+        if (progress != NULL) {
+            progress->setMaximum(qnum);
+        }
         int rand;
         for (int i = 0; i < qnum; ++i) {
             random_0:
@@ -349,31 +377,46 @@ QList<int> Question::randomise(QList<Question *> questions, PassMark passmark, b
             } while (final_randlist.contains(rand));
             if (use_groups) {
                 if (!questions.at(rand)->group().isEmpty()) {
-                    if (groups.contains(questions.at(rand)->group())) { goto random_0; }
-                    else { groups << questions.at(rand)->group(); }
+                    if (groups.contains(questions.at(rand)->group())) {
+                        goto random_0;
+                    } else {
+                        groups << questions.at(rand)->group();
+                    }
                 }
             }
             final_randlist << rand;
-            if (progress != NULL) { progress->setValue(i + 1); } // PROGRESS >>>>>>>
-            if (app != NULL) { app->processEvents(); }
+            if (progress != NULL) {
+                progress->setValue(i + 1); // PROGRESS >>>>>>>
+            }
+            if (app != NULL) {
+                app->processEvents();
+            }
         }
     } else {
-        if (progress != NULL) { progress->setMaximum(questions.size() + passmark.count()); }
+        if (progress != NULL) {
+            progress->setMaximum(questions.size() + passmark.count());
+        }
         QVector<QList<Question *> > qflist(passmark.count());
-        QList<Question *> unusedqlist; int x;
+        QList<Question *> unusedqlist;
+        int x;
         for (int i = 0; i < questions.size(); ++i) {
             if (passmark.conditionIndex(questions.at(i)->category()) != -1) {
                 qflist[passmark.conditionIndex(questions.at(i)->category())] << questions.at(i);
             } else {
                 unusedqlist << questions.at(i);
             }
-            if (progress != NULL) { progress->setValue(i + 1); } // PROGRESS >>>>>>>
-            if (app != NULL) { app->processEvents(); }
+            if (progress != NULL) {
+                progress->setValue(i + 1); // PROGRESS >>>>>>>
+            }
+            if (app != NULL) {
+                app->processEvents();
+            }
         }
         int y = qnum;
         for (int c = 0; c < passmark.count(); ++c) {
             y -= passmark.qnum(c);
-            int rand; QList<int> randlist;
+            int rand;
+            QList<int> randlist;
             x = passmark.conditionIndex(passmark.condition(c));
             for (int i = 0; i < passmark.qnum(c); ++i) {
                 random_1:
@@ -382,23 +425,35 @@ QList<int> Question::randomise(QList<Question *> questions, PassMark passmark, b
                 } while (randlist.contains(rand));
                 if (use_groups) {
                     if (!qflist[x].at(rand)->group().isEmpty()) {
-                        if (groups.contains(qflist[x].at(rand)->group())) { goto random_1; }
-                        else { groups << qflist[x].at(rand)->group(); }
+                        if (groups.contains(qflist[x].at(rand)->group())) {
+                            goto random_1;
+                        } else {
+                            groups << qflist[x].at(rand)->group();
+                        }
                     }
                 }
                 randlist << rand;
-                if (app != NULL) { app->processEvents(); }
+                if (app != NULL) {
+                    app->processEvents();
+                }
             }
             for (int i = 0; i < qflist[x].size(); ++i) {
-                if (!randlist.contains(i)) { unusedqlist << qflist[x].at(i); }
+                if (!randlist.contains(i)) {
+                    unusedqlist << qflist[x].at(i);
+                }
             }
             for (int i = 0; i < randlist.count(); ++i) {
                 final_randlist << questions.indexOf(qflist[x].at(randlist.at(i)));
             }
-            if (progress != NULL) { progress->setValue(c + questions.size() + 1); } // PROGRESS
-            if (app != NULL) { app->processEvents(); }
+            if (progress != NULL) {
+                progress->setValue(c + questions.size() + 1); // PROGRESS
+            }
+            if (app != NULL) {
+                app->processEvents();
+            }
         }
-        int rand; QList<int> randlist;
+        int rand;
+        QList<int> randlist;
         int z = questions.size() + passmark.count();
         for (int i = 0; i < y; ++i) {
             random_2:
@@ -407,13 +462,20 @@ QList<int> Question::randomise(QList<Question *> questions, PassMark passmark, b
             } while (randlist.contains(rand));
             if (use_groups) {
                 if (!unusedqlist.at(rand)->group().isEmpty()) {
-                    if (groups.contains(unusedqlist.at(rand)->group())) { goto random_2; }
-                    else { groups << unusedqlist.at(rand)->group(); }
+                    if (groups.contains(unusedqlist.at(rand)->group())) {
+                        goto random_2;
+                    } else {
+                        groups << unusedqlist.at(rand)->group();
+                    }
                 }
             }
             randlist << rand;
-            if (progress != NULL) { progress->setValue(i + z + 1); } // PROGRESS >>>
-            if (app != NULL) { app->processEvents(); }
+            if (progress != NULL) {
+                progress->setValue(i + z + 1); // PROGRESS >>>
+            }
+            if (app != NULL) {
+                app->processEvents();
+            }
         }
         for (int i = 0; i < randlist.count(); ++i) {
             final_randlist << questions.indexOf(unusedqlist.at(randlist.at(i)));

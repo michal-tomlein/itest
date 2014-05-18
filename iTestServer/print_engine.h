@@ -40,7 +40,7 @@ class PrintQuestionsDialogue : public QWidget
 public:
     PrintQuestionsDialogue(MainWindow *);
 
-    MTTableWidget * includeTableWidget() const;
+    MTTableWidget *includeTableWidget() const;
     bool categoriesSelected() const;
     bool questionsSelected() const;
     bool printStatistics() const;
@@ -67,21 +67,21 @@ private slots:
 private:
     void addQuestionToPrint(int);
 
-    MTListWidget * printq_excludelist;
-    MTTableWidget * printq_includelist;
-    QPushButton * printq_btn_print;
-    QButtonGroup * rbtngrpPrintqSelect;
-    QCheckBox * printq_advanced_statistics;
-    QCheckBox * printq_advanced_formatting;
-    QCheckBox * printq_advanced_test;
-    QCheckBox * printq_advanced_key;
-    QCheckBox * printq_advanced_explanations;
-    QCheckBox * printq_advanced_graphics;
-    QCheckBox * printq_advanced_randomise;
-    QSpinBox * printq_advanced_numprintouts;
-    QCheckBox * printq_advanced_usegroups;
-    MTSpinBox * printq_advanced_numquestions;
-    MainWindow * printq_parent;
+    MTListWidget *printq_excludelist;
+    MTTableWidget *printq_includelist;
+    QPushButton *printq_btn_print;
+    QButtonGroup *rbtngrpPrintqSelect;
+    QCheckBox *printq_advanced_statistics;
+    QCheckBox *printq_advanced_formatting;
+    QCheckBox *printq_advanced_test;
+    QCheckBox *printq_advanced_key;
+    QCheckBox *printq_advanced_explanations;
+    QCheckBox *printq_advanced_graphics;
+    QCheckBox *printq_advanced_randomise;
+    QSpinBox *printq_advanced_numprintouts;
+    QCheckBox *printq_advanced_usegroups;
+    MTSpinBox *printq_advanced_numquestions;
+    MainWindow *printq_parent;
 };
 
 #endif // PRINT_ENGINE_H

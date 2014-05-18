@@ -28,14 +28,15 @@ class MTToolButton : public QToolButton
     Q_OBJECT
 
 public:
-    MTToolButton(QWidget * parent = 0, const QString & id = ""):
+    MTToolButton(QWidget *parent = 0, const QString &id = ""):
     QToolButton(parent) {
         tb_id = id;
         QObject::connect(this, SIGNAL(released()), this, SLOT(emitReleased()));
-    };
+    }
 
-    void setAction(QAction * action, bool copy_properties = false) {
-        if (action == NULL) { return; }
+    void setAction(QAction *action, bool copy_properties = false) {
+        if (action == NULL)
+            return;
         tb_action = action;
         if (copy_properties) {
             setIcon(action->icon());
@@ -56,7 +57,7 @@ public:
         //QObject::connect(this, SIGNAL(pressed()), action, SLOT(trigger()));
         QObject::connect(this, SIGNAL(released()), action, SLOT(trigger()));
         QObject::connect(action, SIGNAL(changed()), this, SLOT(updateProperties()));
-    };
+    }
 
 signals:
     void released(const QString &);
@@ -64,11 +65,13 @@ signals:
 protected slots:
     void updateProperties() {
         setEnabled(tb_action->isEnabled());
-    };
-    void emitReleased() { emit released(tb_id); };
+    }
+    void emitReleased() {
+        emit released(tb_id);
+    }
 
 private:
-    QAction * tb_action;
+    QAction *tb_action;
     QString tb_id;
 };
 

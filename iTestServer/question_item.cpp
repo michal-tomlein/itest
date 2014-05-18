@@ -20,20 +20,20 @@
 #include "question_item.h"
 #include "svg_item.h"
 
-QuestionItem::QuestionItem(const QString & name,
-                            int category,
-                            const QString & group,
-                            int difficulty,
-                            const QString & text,
-                            const QStringList & answers,
-                            Question::Answers correctanswers,
-                            Question::SelectionType selectiontype,
-                            const QString & explanation,
-                            unsigned int inccount,
-                            unsigned int ccount,
-                            bool hidden,
-                            QList<SvgItem *> svgs,
-                            bool copysvgs)
+QuestionItem::QuestionItem(const QString &name,
+                           int category,
+                           const QString &group,
+                           int difficulty,
+                           const QString &text,
+                           const QStringList &answers,
+                           Question::Answers correctanswers,
+                           Question::SelectionType selectiontype,
+                           const QString &explanation,
+                           unsigned int inccount,
+                           unsigned int ccount,
+                           bool hidden,
+                           QList<SvgItem *> svgs,
+                           bool copysvgs)
 {
     q_name = name;
     q_category = category;
@@ -79,26 +79,33 @@ void QuestionItem::addIncorrectAns() { q_incorrectanscount++; }
 
 void QuestionItem::addCorrectAns() { q_correctanscount++; }
 
-void QuestionItem::addSvgItem(SvgItem * svg) { q_svgitems << svg; }
+void QuestionItem::addSvgItem(SvgItem *svg) { q_svgitems << svg; }
 
-bool QuestionItem::removeSvgItem(SvgItem * svg) { return q_svgitems.removeAll(svg) > 0; }
+bool QuestionItem::removeSvgItem(SvgItem *svg) { return q_svgitems.removeAll(svg) > 0; }
 
-SvgItem * QuestionItem::removeSvgItem(int i) { return q_svgitems.takeAt(i); }
+SvgItem *QuestionItem::removeSvgItem(int i) { return q_svgitems.takeAt(i); }
 
 int QuestionItem::numSvgItems() { return q_svgitems.count(); }
 
-SvgItem * QuestionItem::svgItem(int i) { return q_svgitems.at(i); }
+SvgItem *QuestionItem::svgItem(int i) { return q_svgitems.at(i); }
 
 QList<SvgItem *> QuestionItem::svgItems() { return q_svgitems; }
 
 int QuestionItem::recommendedDifficulty()
 {
-    if (q_correctanscount == 0 && q_incorrectanscount == 0) { return -1; }
-    else if (q_correctanscount == 0 && q_incorrectanscount > 0) { return 2; }
+    if (q_correctanscount == 0 && q_incorrectanscount == 0) {
+        return -1;
+    } else if (q_correctanscount == 0 && q_incorrectanscount > 0) {
+        return 2;
+    }
     long double ansratio = (long double)q_incorrectanscount / (long double)q_correctanscount;
-    if (ansratio <= 0.5) { return 0; }
-    else if (ansratio > 0.5 && ansratio < 2.0) { return 1; }
-    else if (ansratio >= 2.0) { return 2; }
+    if (ansratio <= 0.5) {
+        return 0;
+    } else if (ansratio > 0.5 && ansratio < 2.0) {
+        return 1;
+    } else if (ansratio >= 2.0) {
+        return 2;
+    }
     return -1;
 }
 
@@ -194,7 +201,7 @@ QString QuestionItem::allPublicProperties()
     return out;
 }
 
-QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int num_answers, int category, int difficulty, Question::SelectionType type, const QString & explanation)
+QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int num_answers, int category, int difficulty, Question::SelectionType type, const QString &explanation)
 {
     qa_answered = ans;
     qa_correct_answer = correct;
@@ -236,6 +243,6 @@ void QuestionAnswer::setSelectionType(Question::SelectionType type) { q_selectio
 
 Question::SelectionType QuestionAnswer::selectionType() { return q_selectiontype; }
 
-void QuestionAnswer::setExplanation(const QString & explanation) { qa_explanation = explanation; }
+void QuestionAnswer::setExplanation(const QString &explanation) { qa_explanation = explanation; }
 
 QString QuestionAnswer::explanation() { return qa_explanation; }

@@ -46,10 +46,10 @@ public slots:
     bool isVisible();
 
 private:
-    QLineEdit * ans_text;
-    QCheckBox * ans_correct;
-    MTToolButton * ans_remove;
-    QLabel * ans_label;
+    QLineEdit *ans_text;
+    QCheckBox *ans_correct;
+    MTToolButton *ans_remove;
+    QLabel *ans_label;
     bool ans_visible;
     friend class AnswersEdit;
 };
@@ -83,11 +83,11 @@ protected:
 
 private:
     QList<AnswerEdit *> ae_answers;
-    QToolButton * ae_add_button;
-    QRadioButton * ae_singleselection;
-    QRadioButton * ae_multiselection;
-    QLabel * ae_answers_label;
-    QLabel * ae_correct_label;
+    QToolButton *ae_add_button;
+    QRadioButton *ae_singleselection;
+    QRadioButton *ae_multiselection;
+    QLabel *ae_answers_label;
+    QLabel *ae_correct_label;
 };
 
 #endif // ANSWERSEDIT_H

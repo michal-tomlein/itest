@@ -129,7 +129,7 @@ void MainWindow::reloadAvailableItems()
             TSIncludeTableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
             TSIncludeTableWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
             TSIncludeTableWidget->horizontalHeader()->show();
-            QListWidgetItem * item;
+            QListWidgetItem *item;
             for (int i = 0; i < current_db_categories.size(); ++i) {
                 if (current_db_categories_enabled[i]) {
                     item = new QListWidgetItem (QString("%1 - %2").arg(i+1).arg(current_db_categories[i]), TSExcludeListWidget);
@@ -142,7 +142,8 @@ void MainWindow::reloadAvailableItems()
             // QUESTIONS -------------------------------------------------------
             TSIncludeTableWidget->setColumnCount(1);
             TSIncludeTableWidget->horizontalHeader()->hide();
-            QListWidgetItem * item; QuestionItem * q_item;
+            QListWidgetItem *item;
+            QuestionItem *q_item;
             for (int i = 0; i < LQListWidget->count(); ++i) {
                 item = new QListWidgetItem (*LQListWidget->item(i));
                 q_item = NULL; q_item = current_db_questions.value(LQListWidget->item(i));
@@ -170,48 +171,79 @@ void MainWindow::updateTestQnum()
                     TSIncludeTableWidget);
 }
 
-void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool categories_selected, QSpinBox * spb_qnum, QTableWidget * tw_include)
+void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool categories_selected, QSpinBox *spb_qnum, QTableWidget *tw_include)
 {
-    int db_qnum = 0; int min_qnum = 0; int total_passmark = 0; QuestionItem * item; bool server_mode = tw_include == TSIncludeTableWidget;
+    int db_qnum = 0;
+    int min_qnum = 0;
+    int total_passmark = 0;
+    QuestionItem *item;
+    bool server_mode = tw_include == TSIncludeTableWidget;
     if (!advanced) {
         if (use_groups) {
             QSet<QString> groups;
             for (int q = 0; q < LQListWidget->count(); ++q) {
                 item = NULL; item = current_db_questions.value(LQListWidget->item(q));
-                if (item == NULL) { continue; }
-                if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
+                if (item == NULL)
+                    continue;
+                if (item->isHidden()) {
+                    if (server_mode || !actionShow_hidden->isChecked())
+                        continue;
+                }
                 if (server_mode && !isDifficultyIncluded(item->difficulty())) continue;
-                if (item->group().isEmpty()) { db_qnum++; }
-                else { groups << item->group(); }
+                if (item->group().isEmpty()) {
+                    db_qnum++;
+                } else {
+                    groups << item->group();
+                }
             }
             db_qnum += groups.count();
         } else {
             for (int q = 0; q < LQListWidget->count(); ++q) {
                 item = NULL; item = current_db_questions.value(LQListWidget->item(q));
-                if (item == NULL) { continue; }
-                if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
-                if (server_mode && !isDifficultyIncluded(item->difficulty())) continue;
+                if (item == NULL)
+                    continue;
+                if (item->isHidden()) {
+                    if (server_mode || !actionShow_hidden->isChecked())
+                        continue;
+                }
+                if (server_mode && !isDifficultyIncluded(item->difficulty()))
+                    continue;
                 db_qnum++;
             }
         }
     } else if (categories_selected) {
-        QSet<QString> groups; QList<int> used_items;
+        QSet<QString> groups;
+        QList<int> used_items;
         int include_count = tw_include->rowCount();
-        QVector<int> max(include_count); QVector<QSet<QString> > groups_i(include_count);
+        QVector<int> max(include_count);
+        QVector<QSet<QString> > groups_i(include_count);
         for (int i = 0; i < include_count; ++i) {
             used_items << tw_include->item(i, 0)->data(Qt::UserRole).toInt();
             max[i] = 0;
         }
         for (int i = 0; i < LQListWidget->count(); ++i) {
             item = NULL; item = current_db_questions.value(LQListWidget->item(i));
-            if (item == NULL) { continue; }
-            if (item->isHidden()) { if (server_mode || !actionShow_hidden->isChecked()) continue; }
-            if (server_mode && !isDifficultyIncluded(item->difficulty())) continue;
+            if (item == NULL)
+                continue;
+            if (item->isHidden()) {
+                if (server_mode || !actionShow_hidden->isChecked())
+                    continue;
+            }
+            if (server_mode && !isDifficultyIncluded(item->difficulty()))
+                continue;
             if (used_items.contains(item->category())) {
                 if (use_groups) {
-                    if (item->group().isEmpty()) { db_qnum++; max[used_items.indexOf(item->category())]++; }
-                    else { groups << item->group(); groups_i[used_items.indexOf(item->category())] << item->group(); }
-                } else { db_qnum++; max[used_items.indexOf(item->category())]++; }
+                    if (item->group().isEmpty()) {
+                        db_qnum++;
+                        max[used_items.indexOf(item->category())]++;
+                    } else {
+                        groups << item->group();
+                        groups_i[used_items.indexOf(item->category())] << item->group();
+                    }
+                } else {
+                    db_qnum++;
+                    max[used_items.indexOf(item->category())]++;
+                }
             }
         }
         db_qnum += groups.count();
@@ -226,14 +258,19 @@ void MainWindow::updateTestQnum(bool advanced, bool use_groups, bool categories_
         }
     } else {
         if (use_groups) {
-            QSet<QString> groups; int x = 0;
+            QSet<QString> groups;
+            int x = 0;
             int include_count = tw_include->rowCount();
             for (int q = 0; q < include_count; ++q) {
                 x = tw_include->item(q, 0)->data(Qt::UserRole).toInt();
                 item = NULL; item = current_db_questions.value(LQListWidget->item(x));
-                if (item == NULL) { continue; }
-                if (item->group().isEmpty()) { db_qnum++; }
-                else { groups << item->group(); }
+                if (item == NULL)
+                    continue;
+                if (item->group().isEmpty()) {
+                    db_qnum++;
+                } else {
+                    groups << item->group();
+                }
             }
             db_qnum += groups.count();
         } else {
@@ -259,12 +296,14 @@ void MainWindow::updateTestTime()
         if (TSQnumSpinBox->value() == 0) {
             TSQuestionTimeEdit->setTime(QTime(0, 0));
         } else {
-            QTime time = TSTestTimeEdit->time(); QTime nulltime (0, 0);
+            QTime time = TSTestTimeEdit->time();
+            QTime nulltime (0, 0);
             QTime qtime = nulltime.addSecs(((time.hour() * 60 * 60) + (time.minute() * 60)) / TSQnumSpinBox->value());
             TSQuestionTimeEdit->setTime(qtime);
         }
     } else if (rbtnQuestionTime->isChecked()) {
-        QTime time = TSQuestionTimeEdit->time(); QTime nulltime (0, 0);
+        QTime time = TSQuestionTimeEdit->time();
+        QTime nulltime (0, 0);
         while ((((time.hour() * 60 * 60) + (time.minute() * 60)) * TSQnumSpinBox->value()) > 86340) {
             time = time.addSecs(-60); qApp->processEvents();
         }
@@ -274,19 +313,21 @@ void MainWindow::updateTestTime()
     }
 }
 
-QTableWidgetItem * MainWindow::toTableItem(QListWidgetItem * lw_item, bool delete_lw_item)
+QTableWidgetItem *MainWindow::toTableItem(QListWidgetItem *lw_item, bool delete_lw_item)
 {
-    QTableWidgetItem * item = new QTableWidgetItem(lw_item->icon(), lw_item->text());
+    QTableWidgetItem *item = new QTableWidgetItem(lw_item->icon(), lw_item->text());
     item->setBackground(lw_item->background());
     item->setForeground(lw_item->foreground());
     item->setData(Qt::UserRole, lw_item->data(Qt::UserRole));
-    if (delete_lw_item) { delete lw_item; }
+    if (delete_lw_item) {
+        delete lw_item;
+    }
     return item;
 }
 
-QListWidgetItem * MainWindow::toListItem(QTableWidgetItem * tw_item)
+QListWidgetItem *MainWindow::toListItem(QTableWidgetItem *tw_item)
 {
-    QListWidgetItem * item = new QListWidgetItem(tw_item->icon(), tw_item->text());
+    QListWidgetItem *item = new QListWidgetItem(tw_item->icon(), tw_item->text());
     item->setBackground(tw_item->background());
     item->setForeground(tw_item->foreground());
     item->setData(Qt::UserRole, tw_item->data(Qt::UserRole));
@@ -297,16 +338,16 @@ void MainWindow::addToList()
 {
     if (TSExcludeListWidget->currentIndex().isValid()) {
         TSIncludeTableWidget->setRowCount(TSIncludeTableWidget->rowCount() + 1);
-        QTableWidgetItem * item = toTableItem(TSExcludeListWidget->takeItem(TSExcludeListWidget->currentRow()), true);
+        QTableWidgetItem *item = toTableItem(TSExcludeListWidget->takeItem(TSExcludeListWidget->currentRow()), true);
         TSIncludeTableWidget->setItem(TSIncludeTableWidget->rowCount() - 1, 0, item);
         if (rbtnSelectCategories->isChecked()) {
             int max = qnumForCategory(item->data(Qt::UserRole).toInt(), TSGroupsCheckBox->isChecked());
-            MTSpinBox * spb_qnum = new MTSpinBox(this);
+            MTSpinBox *spb_qnum = new MTSpinBox(this);
             TSIncludeTableWidget->setCellWidget(TSIncludeTableWidget->rowCount() - 1, 1, spb_qnum);
             spb_qnum->setMaximum(max);
             spb_qnum->setFixedHeight(20);
             QObject::connect(spb_qnum, SIGNAL(valueChanged(int)), this, SLOT(updateTestQnum()));
-            QSpinBox * spb_passmark = new QSpinBox(this);
+            QSpinBox *spb_passmark = new QSpinBox(this);
             TSIncludeTableWidget->setCellWidget(TSIncludeTableWidget->rowCount() - 1, 2, spb_passmark);
             spb_passmark->setMaximum(max);
             spb_passmark->setFixedHeight(20);
@@ -340,12 +381,19 @@ void MainWindow::startServer()
         }
     }
 
-    if (TSCustomTestNameCheckBox->isChecked() && TSTestNameLineEdit->text().isEmpty())
-        { QMessageBox::critical(this, tr("iTestServer"), tr("Invalid test name.")); return; }
-    QTime time = TSTestTimeEdit->time(); if (!time.isValid())
-        { QMessageBox::critical(this, tr("iTestServer"), tr("Invalid exam time.")); return; }
-    if ((time.hour() == 0) && (time.minute() == 0) && (time.second() == 0))
-        { QMessageBox::critical(this, tr("iTestServer"), tr("Students will need at least one minute for the exam,\nalthough it is recommended to give them an hour.")); return; }
+    if (TSCustomTestNameCheckBox->isChecked() && TSTestNameLineEdit->text().isEmpty()) {
+        QMessageBox::critical(this, tr("iTestServer"), tr("Invalid test name."));
+        return;
+    }
+    QTime time = TSTestTimeEdit->time();
+    if (!time.isValid()) {
+        QMessageBox::critical(this, tr("iTestServer"), tr("Invalid exam time."));
+        return;
+    }
+    if ((time.hour() == 0) && (time.minute() == 0) && (time.second() == 0)) {
+        QMessageBox::critical(this, tr("iTestServer"), tr("Students will need at least one minute for the exam,\nalthough it is recommended to give them an hour."));
+        return;
+    }
 
     if (!tcpServer->listen(QHostAddress::Any, TSCustomServerPortCheckBox->isChecked() ? TSCustomServerPortSpinBox->value() : 0) && !tcpServer->isListening()) {
         QMessageBox::critical(this, tr("iTestServer"), tr("Unable to start the server: %1.")
@@ -360,18 +408,32 @@ void MainWindow::startServer()
         if (!loadPrinterSettings()) {
             switch (QMessageBox::information(this, tr("iTestServer"), tr("You have not configured the printer yet. Would you like to configure it now?"), tr("Con&figure"), tr("Cancel"), 0, 0)) {
                 case 0: // Configure
-                    if (!configurePrinter(false)) { setProgress(-1); return; } break;
+                    if (!configurePrinter(false)) {
+                        setProgress(-1);
+                        return;
+                    }
+                    break;
                 case 1: // Cancel
-                    setProgress(-1); return; break;
+                    setProgress(-1);
+                    return;
+                    break;
             }
         } else {
             QString printer_config;
             if (printerConfiguration(printer_config)) {
                 switch (QMessageBox::information(this, tr("iTestServer"), tr("%1Current printer configuration:%2Would you like to review the configuration?%3").arg("<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body><p>").arg(printer_config).arg("</p></body></html>"), tr("&Review configuration"), tr("&Continue"), 0, 0)) {
                     case 0: // Review configuration
-                        if (!configurePrinter(true)) { setProgress(-1); return; } break;
+                        if (!configurePrinter(true)) {
+                            setProgress(-1);
+                            return;
+                        }
+                        break;
                     case 1: // Continue
-                        if (!loadPrinterConfiguration()) { setProgress(-1); return; } break;
+                        if (!loadPrinterConfiguration()) {
+                            setProgress(-1);
+                            return;
+                        }
+                        break;
                 }
             } else {
                 QMessageBox::critical(this, tr("iTestServer"), tr("Unable to start the server: Invalid printer configuration.")); setProgress(-1); return;
@@ -414,25 +476,35 @@ void MainWindow::startServer()
     current_db_scoringsystem.incorrectAnswer[2] = separate_levels ? TSDifficultIncorrectAnswerSpinBox->value() : TSEasyIncorrectAnswerSpinBox->value();
     current_db_scoringsystem.missingAnswer[2] = separate_levels ? TSDifficultMissingAnswerSpinBox->value() : TSEasyMissingAnswerSpinBox->value();
     // ADVANCED SETUP
-    QList<int> used_items; int db_qnum = 0; QuestionItem * item;
+    QList<int> used_items;
+    int db_qnum = 0;
+    QuestionItem *item;
     for (int i = 0; i < TSIncludeTableWidget->rowCount(); ++i) {
         used_items << TSIncludeTableWidget->item(i, 0)->data(Qt::UserRole).toInt();
     }
     if (!TSAdvancedSetupGroupBox->isChecked()) {
         for (int q = 0; q < LQListWidget->count(); ++q) {
             item = NULL; item = current_db_questions.value(LQListWidget->item(q));
-            if (item == NULL) { continue; }
-            if (item->isHidden()) { continue; }
-            if (!isDifficultyIncluded(item->difficulty())) continue;
+            if (item == NULL)
+                continue;
+            if (item->isHidden())
+                continue;
+            if (!isDifficultyIncluded(item->difficulty()))
+                continue;
             db_qnum++;
         }
     } else if (rbtnSelectCategories->isChecked()) {
         for (int i = 0; i < LQListWidget->count(); ++i) {
             item = NULL; item = current_db_questions.value(LQListWidget->item(i));
-            if (item == NULL) { continue; }
-            if (item->isHidden()) { continue; }
-            if (!isDifficultyIncluded(item->difficulty())) continue;
-            if (used_items.contains(item->category())) { db_qnum++; }
+            if (item == NULL)
+                continue;
+            if (item->isHidden())
+                continue;
+            if (!isDifficultyIncluded(item->difficulty()))
+                continue;
+            if (used_items.contains(item->category())) {
+                db_qnum++;
+            }
         }
     } else if (rbtnSelectQuestions->isChecked()) {
         db_qnum = TSIncludeTableWidget->rowCount();
@@ -440,7 +512,9 @@ void MainWindow::startServer()
         QMessageBox::critical(this, tr("iTestServer"), tr("Unable to start the server: Invalid server settings.")); setProgress(-1); return;
     }
     // -------------------------------------------------------------------------
-    current_db_test.clear(); QByteArray ba; bool ok;
+    current_db_test.clear();
+    QByteArray ba;
+    bool ok;
     QDataStream out(&ba, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_4_2);
     out << (quint64)0;
@@ -464,9 +538,13 @@ void MainWindow::startServer()
     out << QString("\n[DB_COMMENTS]\n") << current_db_comments << QString("\n");
     out << QString("[DB_QNUM]\n") << QString("%1\n").arg(db_qnum);
     out << QString("[DB_FLAGS]\n");
-    for (int i = 0; i < current_db_categories.size(); ++i) { out << QString(current_db_categories_enabled[i] ? "+" : "-"); }
+    for (int i = 0; i < current_db_categories.size(); ++i) {
+        out << QString(current_db_categories_enabled[i] ? "+" : "-");
+    }
     out << QString("\n");
-    for (int i = 0; i < current_db_categories.size(); ++i) { out << QString("[DB_F%1]\n%2\n").arg(i).arg(current_db_categories[i]); }
+    for (int i = 0; i < current_db_categories.size(); ++i) {
+        out << QString("[DB_F%1]\n%2\n").arg(i).arg(current_db_categories[i]);
+    }
     out << QString("[DB_FLAGS_END]\n");
     out << current_db_passmark.data() << QString("\n");
     setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -540,12 +618,14 @@ void MainWindow::stopServer()
     tcpServer->close();
     // -------------------------------------------------------------------------
     if (actionSave_session->isChecked() && (numIdentifiedClients() > 0)) {
-        Session * session = new Session;
+        Session *session = new Session;
         session->setName(current_db_testname);
         session->setDateTimeFromString(current_db_testdate);
         PassMark passmark(current_db_passmark.passMark());
         for (int i = 0; i < current_db_passmark.count(); ++i) {
-            if (current_db_passmark.value(i) > 0) { passmark.addCondition(current_db_passmark.condition(i), current_db_passmark.value(i), current_db_passmark.value(i)); }
+            if (current_db_passmark.value(i) > 0) {
+                passmark.addCondition(current_db_passmark.condition(i), current_db_passmark.value(i), current_db_passmark.value(i));
+            }
         }
         session->setPassMark(passmark);
         current_db_passmark.clear();
@@ -560,12 +640,12 @@ void MainWindow::stopServer()
         }
         for (int i = 0; i < SMLCListWidget->count(); ++i) {
             if (SMLCListWidget->item(i)->isHidden()) continue;
-            Student * student = new Student(current_db_clients.value(SMLCListWidget->item(i)));
+            Student *student = new Student(current_db_clients.value(SMLCListWidget->item(i)));
             session->addStudent(student);
         }
         session->setScoringSystem(current_db_scoringsystem);
         current_db_sessions.insert(session->dateTime(), session);
-        QListWidgetItem * item = new QListWidgetItem (QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name()));
+        QListWidgetItem *item = new QListWidgetItem (QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name()));
         SVLSListWidget->insertItem(0, item);
         item->setData(Qt::UserRole, session->dateTime());
     }
@@ -582,8 +662,8 @@ void MainWindow::stopServer()
 
 void MainWindow::addClient()
 {
-    QTcpSocket * clientConnection = tcpServer->nextPendingConnection();
-    Client * client = new Client(this, clientConnection);
+    QTcpSocket *clientConnection = tcpServer->nextPendingConnection();
+    Client *client = new Client(this, clientConnection);
     /*QObject::connect(clientConnection, SIGNAL(disconnected()),
                   clientConnection, SLOT(deleteLater()));*/
     QObject::connect(clientConnection, SIGNAL(readyRead()), client, SLOT(readClientFeedback()));
@@ -598,10 +678,10 @@ void MainWindow::addClient()
     QObject::connect(client, SIGNAL(disconnected(Client *)),
                   this, SLOT(clientDisconnected(Client *)));
 
-    QListWidgetItem * item = new QListWidgetItem(QString::number(SMLCListWidget->count() + 1), SMLCListWidget);
+    QListWidgetItem *item = new QListWidgetItem(QString::number(SMLCListWidget->count() + 1), SMLCListWidget);
     current_db_clients.insert(item, client);
     client->setNumber(item->text().toInt());
-    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) connected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(item->text()).arg(clientConnection->peerAddress().toString()));
+    QListWidgetItem *log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) connected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(item->text()).arg(clientConnection->peerAddress().toString()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush(QColor(197, 255, 120)));
     log_entry->setForeground(QBrush(QColor(0, 0, 0)));
@@ -623,42 +703,44 @@ void MainWindow::addClient()
     //clientConnection->disconnectFromHost();
 }
 
-void MainWindow::clientIdentified(Client * client)
+void MainWindow::clientIdentified(Client *client)
 {
-    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 identified as %3").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+    QListWidgetItem *log_entry = new QListWidgetItem(tr("%1 > Client #%2 identified as %3").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush(QColor(17, 120, 122)));
     log_entry->setForeground(QBrush(QColor(255, 255, 255)));
-    if (current_db_clients.value(SMLCListWidget->currentItem()) == client)
-    { setCurrentClient(); }
+    if (current_db_clients.value(SMLCListWidget->currentItem()) == client) {
+        setCurrentClient();
+    }
     updateLC(client); toggleSaveSessionEnabled();
 }
 
-void MainWindow::clientFinished(Client * client)
+void MainWindow::clientFinished(Client *client)
 {
-    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) finished the exam").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+    QListWidgetItem *log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) finished the exam").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush(QColor(255, 251, 0)));
     log_entry->setForeground(QBrush(QColor(0, 0, 0)));
 }
 
-void MainWindow::clientResultsLoaded(Client * client)
+void MainWindow::clientResultsLoaded(Client *client)
 {
-    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) submitted results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+    QListWidgetItem *log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) submitted results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush(QColor(221, 255, 0)));
     log_entry->setForeground(QBrush(QColor(0, 0, 0)));
-    if (current_db_clients.value(SMLCListWidget->currentItem()) == client)
-    { setCurrentClient(); }
+    if (current_db_clients.value(SMLCListWidget->currentItem()) == client) {
+        setCurrentClient();
+    }
     updateLC(client); sendCorrectAnswers(client);
     if (!TSDoNotPrintResultsCheckBox->isChecked()) {
         if (!printClientResults(client, default_printer)) {
-            QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+            QListWidgetItem *log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > failed to print the client's results").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
             SMSLListWidget->insertItem(0, log_entry);
             log_entry->setBackground(QBrush(QColor(255, 0, 0)));
             log_entry->setForeground(QBrush(QColor(0, 0, 0)));
         } else {
-            QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+            QListWidgetItem *log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) > results printed successfully").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
             SMSLListWidget->insertItem(0, log_entry);
             log_entry->setBackground(QBrush(QColor(221, 255, 0)));
             log_entry->setForeground(QBrush(QColor(0, 0, 0)));
@@ -666,9 +748,9 @@ void MainWindow::clientResultsLoaded(Client * client)
     }
 }
 
-void MainWindow::clientDisconnected(Client * client)
+void MainWindow::clientDisconnected(Client *client)
 {
-    QListWidgetItem * log_entry = new QListWidgetItem;
+    QListWidgetItem *log_entry = new QListWidgetItem;
     SMSLListWidget->insertItem(0, log_entry);
     if (client->isIdentified()) {
        log_entry->setText(tr("%1 > Client #%2 (%3) disconnected").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
@@ -677,39 +759,54 @@ void MainWindow::clientDisconnected(Client * client)
     }
     log_entry->setBackground(QBrush(QColor(204, 109, 0)));
     log_entry->setForeground(QBrush(QColor(0, 0, 0)));
-    if (current_db_clients.value(SMLCListWidget->currentItem()) == client)
-    { setCurrentClient(); }
+    if (current_db_clients.value(SMLCListWidget->currentItem()) == client) {
+        setCurrentClient();
+    }
     updateLC(client);
 }
 
 void MainWindow::setCurrentClient()
 {
     if (SMLCListWidget->currentIndex().isValid()) {
-        if (SMLCListWidget->currentItem()->isHidden())
-        { setSMSCEnabled(false); clearSMSC(); togglePrintEnabled(); return; }
-        setSMSCEnabled(true); clearSMSC(); togglePrintEnabled();
-        Client * client = current_db_clients.value(SMLCListWidget->currentItem());
-        if (client->isIdentified()) { SMSCNameLabel->setText(client->name()); }
-        else { SMSCNameLabel->setText(tr("Not identified yet")); }
+        if (SMLCListWidget->currentItem()->isHidden()) {
+            setSMSCEnabled(false);
+            clearSMSC();
+            togglePrintEnabled();
+            return;
+        }
+        setSMSCEnabled(true);
+        clearSMSC();
+        togglePrintEnabled();
+        Client *client = current_db_clients.value(SMLCListWidget->currentItem());
+        if (client->isIdentified()) {
+            SMSCNameLabel->setText(client->name());
+        } else {
+            SMSCNameLabel->setText(tr("Not identified yet"));
+        }
         setClientStatus(client->socket()->state());
         if (client->isReady()) {
             SMSCScoreLabel->setText(tr("%1 out of %2 (%3)").arg(client->score()).arg(client->maximumScore()).arg(client->passed() ? tr("PASSED") : tr("FAILED")));
             loadClientResults(client->results());
         }
     } else {
-        setSMSCEnabled(false); clearSMSC(); togglePrintEnabled();
+        setSMSCEnabled(false);
+        clearSMSC();
+        togglePrintEnabled();
     }
 }
 
-void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> * results)
+void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> *results)
 {
     loadClientResults(results, SMSCResultsTableWidget, current_db_scoringsystem);
 }
 
-void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> * results, QTableWidget * tw, ScoringSystem sys)
+void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> *results, QTableWidget *tw, ScoringSystem sys)
 {
-    QMapIterator<QString, QuestionAnswer> i(*results); int row = 0;
-    QTableWidgetItem * item; QuestionAnswer qans; QuestionItem * q_item;
+    QMapIterator<QString, QuestionAnswer> i(*results);
+    int row = 0;
+    QTableWidgetItem *item;
+    QuestionAnswer qans;
+    QuestionItem *q_item;
     tw->setRowCount(results->count());
     while (i.hasNext()) {
         i.next();
@@ -717,7 +814,10 @@ void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> * results, QTab
         q_item = NULL;
         QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
         while (q.hasNext()) { q.next();
-            if (q.value()->name() == i.key()) { q_item = q.value(); break; }
+            if (q.value()->name() == i.key()) {
+                q_item = q.value();
+                break;
+            }
         }
         if (q_item != NULL) {
             item->setText(q_item->group().isEmpty() ? q_item->name() : QString("[%1] %2").arg(q_item->group()).arg(q_item->name()));
@@ -747,15 +847,16 @@ void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> * results, QTab
     tw->resizeColumnsToContents(); tw->resizeRowsToContents();
 }
 
-void MainWindow::sendCorrectAnswers(Client * client)
+void MainWindow::sendCorrectAnswers(Client *client)
 {
-    QMap<QString, QuestionAnswer> * results = client->results();
+    QMap<QString, QuestionAnswer> *results = client->results();
     QByteArray correct_answers;
     QDataStream out(&correct_answers, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_4_2);
     out << (quint64)0;
     // -------------------------------------------------------------------------
-    QMapIterator<QString, QuestionAnswer> i(*results); QuestionAnswer qans;
+    QMapIterator<QString, QuestionAnswer> i(*results);
+    QuestionAnswer qans;
     while (i.hasNext()) {
         i.next(); qans = i.value();
         out << QString("[Q_NAME]\n") << i.key() << QString("\n[Q_C_ANS]\n");
@@ -768,35 +869,37 @@ void MainWindow::sendCorrectAnswers(Client * client)
     client->socket()->write(correct_answers);
 }
 
-void MainWindow::updateLC(Client * client)
+void MainWindow::updateLC(Client *client)
 {
     QList<QListWidgetItem *> client_items = current_db_clients.keys(client);
     for (int i = 0; i < client_items.count(); ++i) {
-       if ((!client->isIdentified()) &&
-          (client->socket()->state() == QAbstractSocket::UnconnectedState)) {
-             client_items.at(i)->setHidden(true);
-       } else {client_items.at(i)->setHidden(false);}
-       if (client->isIdentified())
-          client_items.at(i)->setText(client->name());
-       switch (client->socket()->state()) {
-          case QAbstractSocket::UnconnectedState:
-             client_items.at(i)->setBackground(QBrush(QColor(204, 109, 0)));
-             client_items.at(i)->setForeground(QBrush(QColor(0, 0, 0)));
-             break;
-          case QAbstractSocket::ConnectedState:
-             client_items.at(i)->setBackground(QBrush(QColor(197, 255, 120)));
-             client_items.at(i)->setForeground(QBrush(QColor(0, 0, 0)));
-             break;
-          case QAbstractSocket::HostLookupState:
-          case QAbstractSocket::ConnectingState:
-          case QAbstractSocket::BoundState:
-          case QAbstractSocket::ClosingState:
-          case QAbstractSocket::ListeningState:
-          default:
-             client_items.at(i)->setBackground(QBrush(QColor(201, 204, 0)));
-             client_items.at(i)->setForeground(QBrush(QColor(0, 0, 0)));
-             break;
-       }
+        if ((!client->isIdentified()) &&
+            (client->socket()->state() == QAbstractSocket::UnconnectedState)) {
+            client_items.at(i)->setHidden(true);
+        } else {
+            client_items.at(i)->setHidden(false);
+        }
+        if (client->isIdentified())
+            client_items.at(i)->setText(client->name());
+        switch (client->socket()->state()) {
+            case QAbstractSocket::UnconnectedState:
+                client_items.at(i)->setBackground(QBrush(QColor(204, 109, 0)));
+                client_items.at(i)->setForeground(QBrush(QColor(0, 0, 0)));
+                break;
+            case QAbstractSocket::ConnectedState:
+                client_items.at(i)->setBackground(QBrush(QColor(197, 255, 120)));
+                client_items.at(i)->setForeground(QBrush(QColor(0, 0, 0)));
+                break;
+            case QAbstractSocket::HostLookupState:
+            case QAbstractSocket::ConnectingState:
+            case QAbstractSocket::BoundState:
+            case QAbstractSocket::ClosingState:
+            case QAbstractSocket::ListeningState:
+            default:
+                client_items.at(i)->setBackground(QBrush(QColor(201, 204, 0)));
+                client_items.at(i)->setForeground(QBrush(QColor(0, 0, 0)));
+                break;
+        }
     }
 }
 
@@ -804,49 +907,52 @@ int MainWindow::numIdentifiedClients()
 {
     int num = 0;
     QMapIterator<QListWidgetItem *, Client *> i(current_db_clients);
-    while (i.hasNext()) { i.next(); if (i.value()->isIdentified()) { num++; } }
+    while (i.hasNext()) { i.next();
+        if (i.value()->isIdentified()) {
+            num++;
+        }
+    }
     return num;
 }
 
 void MainWindow::toggleSaveSessionEnabled()
 {
-    if ((mainStackedWidget->currentIndex() == 5) && (numIdentifiedClients() > 0)) {
-        actionSave_session->setEnabled(true);
-    } else { actionSave_session->setEnabled(false); }
+    actionSave_session->setEnabled((mainStackedWidget->currentIndex() == 5) && (numIdentifiedClients() > 0));
 }
 
 void MainWindow::setClientStatus(QAbstractSocket::SocketState socketState)
 {
     switch (socketState) {
-       case QAbstractSocket::UnconnectedState:
-          SMSCStatusLabel->setText(tr("Disconnected")); break;
-       case QAbstractSocket::HostLookupState:
-          SMSCStatusLabel->setText(tr("Performing a host name lookup")); break;
-       case QAbstractSocket::ConnectingState:
-          SMSCStatusLabel->setText(tr("Connecting")); break;
-       case QAbstractSocket::ConnectedState:
-          SMSCStatusLabel->setText(tr("Connected")); break;
-       case QAbstractSocket::BoundState:
-          SMSCStatusLabel->setText(tr("Bound to an address and port")); break;
-       case QAbstractSocket::ClosingState:
-          SMSCStatusLabel->setText(tr("Closing")); break;
-       case QAbstractSocket::ListeningState:
-          SMSCStatusLabel->setText(tr("Listening")); break;
-       default:
-          SMSCStatusLabel->setText(tr("Unknown")); break;
+        case QAbstractSocket::UnconnectedState:
+            SMSCStatusLabel->setText(tr("Disconnected")); break;
+        case QAbstractSocket::HostLookupState:
+            SMSCStatusLabel->setText(tr("Performing a host name lookup")); break;
+        case QAbstractSocket::ConnectingState:
+            SMSCStatusLabel->setText(tr("Connecting")); break;
+        case QAbstractSocket::ConnectedState:
+            SMSCStatusLabel->setText(tr("Connected")); break;
+        case QAbstractSocket::BoundState:
+            SMSCStatusLabel->setText(tr("Bound to an address and port")); break;
+        case QAbstractSocket::ClosingState:
+            SMSCStatusLabel->setText(tr("Closing")); break;
+        case QAbstractSocket::ListeningState:
+            SMSCStatusLabel->setText(tr("Listening")); break;
+        default:
+            SMSCStatusLabel->setText(tr("Unknown")); break;
     }
 }
 
 void MainWindow::addOfflineClient()
 {
     QString file_name = QFileDialog::getOpenFileName(this, tr("Add off-line client"), "", tr("iTest off-line client logs (*.itcl);;All files (*.*)"));
-    if (file_name.isEmpty()) { return; }
+    if (file_name.isEmpty())
+        return;
     if (!addOfflineClient(file_name)) {
         QMessageBox::critical(this, tr("Add off-line client"), tr("Failed to add off-line client. Either this file contains client data of a different test session or it contains invalid data."));
     }
 }
 
-bool MainWindow::addOfflineClient(const QString & file_name)
+bool MainWindow::addOfflineClient(const QString &file_name)
 {
     if (file_name.isEmpty()) return false;
     QFile file(file_name);
@@ -864,11 +970,11 @@ bool MainWindow::addOfflineClient(const QString & file_name)
     if (rfile.readLine() != "[TIME_FINISHED]") return false;
     rfile.readLine();
     if (rfile.readLine() != "[CLIENT_NAME]") return false;
-    Client * client = new Client (this, rfile.readLine());
-    QListWidgetItem * item = new QListWidgetItem(QString::number(SMLCListWidget->count() + 1), SMLCListWidget);
+    Client *client = new Client (this, rfile.readLine());
+    QListWidgetItem *item = new QListWidgetItem(QString::number(SMLCListWidget->count() + 1), SMLCListWidget);
     current_db_clients.insert(item, client);
     client->setNumber(item->text().toInt()); item->setText(client->name());
-    QListWidgetItem * log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) added").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
+    QListWidgetItem *log_entry = new QListWidgetItem(tr("%1 > Client #%2 (%3) added").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")).arg(client->number()).arg(client->name()));
     SMSLListWidget->insertItem(0, log_entry);
     log_entry->setBackground(QBrush(QColor(0, 125, 163)));
     log_entry->setForeground(QBrush(QColor(255, 255, 255)));
@@ -886,14 +992,17 @@ void MainWindow::addOfflineClients()
 #else
     QString dir_path = QFileDialog::getExistingDirectory(this, tr("Add off-line clients"), "", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 #endif
-    if (dir_path.isEmpty()) { return; }
+    if (dir_path.isEmpty())
+        return;
     QDir dir (dir_path);
     QStringList filter; filter << "*.itcl";
     QFileInfoList client_logs = dir.entryInfoList(filter, QDir::Files, QDir::Time);
-    if (client_logs.count() == 0) { QMessageBox::information(this, tr("Add off-line clients"), tr("No iTest client logs found in the folder you selected.")); }
+    if (client_logs.count() == 0) {
+        QMessageBox::information(this, tr("Add off-line clients"), tr("No iTest client logs found in the folder you selected."));
+    }
     for (int i = 0; i < client_logs.count(); ++i) {
         if (!addOfflineClient(client_logs.at(i).absoluteFilePath())) {
-            QListWidgetItem * log_entry = new QListWidgetItem (tr("%1 > Failed to add off-line client").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")));
+            QListWidgetItem *log_entry = new QListWidgetItem (tr("%1 > Failed to add off-line client").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm:ss")));
             SMSLListWidget->insertItem(0, log_entry);
             log_entry->setBackground(QBrush(QColor(204, 109, 0)));
             log_entry->setForeground(QBrush(QColor(0, 0, 0)));
@@ -905,7 +1014,8 @@ void MainWindow::exportTest()
 {
     QString datetime = current_db_testdate; datetime.replace(13, 1, '.');
     QString save_file_name = QFileDialog::getSaveFileName(this, tr("Export test"), QString("%1-%2.itos").arg(current_db_testname).arg(datetime), tr("iTest off-line test sessions (*.itos)"));
-    if (save_file_name.isNull() || save_file_name.isEmpty()) { return; }
+    if (save_file_name.isNull() || save_file_name.isEmpty())
+        return;
     QFile file(save_file_name);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         QMessageBox::critical(this, tr("Export test"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
@@ -916,7 +1026,9 @@ void MainWindow::exportTest()
     for (int i = 0; i < current_db_test.count(); ++i) {
         QDataStream in(current_db_test.at(i));
         in.setVersion(QDataStream::Qt_4_2);
-        quint64 num; in >> num; QString buffer;
+        quint64 num;
+        in >> num;
+        QString buffer;
         do {
             in >> buffer; sfile << buffer;
         } while (!in.atEnd());
@@ -937,19 +1049,27 @@ Text
 </div>
 </body></html>
 */
-    QListWidget * lw; QString testname; QString datetime;
+    QListWidget *lw;
+    QString testname;
+    QString datetime;
     if (mainStackedWidget->currentIndex() == 5) {
-        lw = SMSLListWidget; testname = current_db_testname;
+        lw = SMSLListWidget;
+        testname = current_db_testname;
         datetime = QDateTime::currentDateTime().toString("yyyy.MM.dd-hh.mm");
     } else if (mainStackedWidget->currentIndex() == 6) {
-        if (current_db_session == NULL) { return; }
-        lw = SVLogListWidget; testname = current_db_session->name();
+        if (current_db_session == NULL)
+            return;
+        lw = SVLogListWidget;
+        testname = current_db_session->name();
         datetime = current_db_session->dateTimeToString();
         datetime.replace(13, 1, '.');
-    } else { return; }
+    } else {
+        return;
+    }
     QString timestamp = datetime; timestamp.replace(13, 1, ':');
     QString save_file_name = QFileDialog::getSaveFileName(this, tr("Export server log"), QString("%1-%2.html").arg(testname).arg(datetime), tr("iTest Server logs (*.html)"));
-    if (save_file_name.isNull() || save_file_name.isEmpty()) { return; }
+    if (save_file_name.isNull() || save_file_name.isEmpty())
+        return;
     QFile file(save_file_name);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         QMessageBox::critical(this, tr("Export server log"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
@@ -989,7 +1109,7 @@ void MainWindow::runTestWriter()
     itw_file_name.replace(itw_file_name.lastIndexOf("iTestServer"), 11, "iTestClient");
 #endif
     QStringList arguments; arguments << "-port" << QString::number(tcpServer->serverPort());
-    QProcess * itw = new QProcess;
+    QProcess *itw = new QProcess;
     itw->start(itw_file_name, arguments);
 }
 

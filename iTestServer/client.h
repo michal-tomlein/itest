@@ -45,11 +45,11 @@ public slots:
     void setNumber(int);
     int number();
     void setSocket(QTcpSocket *);
-    QTcpSocket * socket();
+    QTcpSocket *socket();
     double score();
     double maximumScore();
     bool isReady();
-    QMap<QString, QuestionAnswer> * results();
+    QMap<QString, QuestionAnswer> *results();
     void setPassed(bool);
     bool passed();
     void loadResults(QString);
@@ -66,15 +66,15 @@ signals:
 
 private:
     QString c_name;
-    QTcpSocket * c_socket;
+    QTcpSocket *c_socket;
     double c_score;
     double c_maxscore;
     bool c_ready;
-    QMap<QString, QuestionAnswer> * c_results;
+    QMap<QString, QuestionAnswer> *c_results;
     bool c_passed;
     quint64 c_blocksize;
     bool c_identified;
-    MainWindow * c_parent;
+    MainWindow *c_parent;
     int c_number;
     bool c_test_sent;
 };

@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     if (lang.isEmpty())
         lang = QLocale::system().name().split('_').first();
     if (lang != "en") {
-        QTranslator * translator = new QTranslator;
+        QTranslator *translator = new QTranslator;
         translator->load(QString("iTestServer-%1.qm").arg(lang), ":/i18n");
         app.installTranslator(translator);
     }

@@ -23,7 +23,7 @@
 #include "session.h"
 #include "student.h"
 
-SessionWizard::SessionWizard(Session * session, Class * cl, QWidget * parent, Qt::WindowFlags f):
+SessionWizard::SessionWizard(Session *session, Class *cl, QWidget *parent, Qt::WindowFlags f):
 QDialog(parent, f)
 {
     setupUi(this);
@@ -40,16 +40,18 @@ QDialog(parent, f)
     lblSessionName->setText(QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name()));
     lblClassName->setText(cl->name());
     for (int i = 0; i < session->numStudents(); ++i) {
-        QListWidgetItem * item = new QListWidgetItem(session->student(i)->name());
+        QListWidgetItem *item = new QListWidgetItem(session->student(i)->name());
         item->setData(Qt::UserRole, i);
         lwSessionStudents->addItem(item);
     }
     for (int i = 0; i < cl->numMembers(); ++i) {
-        QListWidgetItem * item = new QListWidgetItem(cl->member(i)->name());
+        QListWidgetItem *item = new QListWidgetItem(cl->member(i)->name());
         item->setData(Qt::UserRole, i);
         lwClassStudents->addItem(item);
     }
-    QString str1; QString str2; bool found = false;
+    QString str1;
+    QString str2;
+    bool found = false;
     for (int i = 0; i < lwSessionStudents->count();) {
         for (int j = 0; j < lwClassStudents->count();) {
             str1 = lwSessionStudents->item(i)->text().toLower().simplified();
@@ -65,7 +67,11 @@ QDialog(parent, f)
                 j++;
             }
         }
-        if (!found) { i++; } else { found = false; }
+        if (!found) {
+            i++;
+        } else {
+            found = false;
+        }
     }
 }
 
@@ -77,10 +83,12 @@ int SessionWizard::studentNumberInClass(int i) { return twMatchedPairs->item(i, 
 
 void SessionWizard::match()
 {
-    if (!lwSessionStudents->currentIndex().isValid()) { return; }
-    if (!lwClassStudents->currentIndex().isValid()) { return; }
+    if (!lwSessionStudents->currentIndex().isValid())
+        return;
+    if (!lwClassStudents->currentIndex().isValid())
+        return;
     twMatchedPairs->setRowCount(twMatchedPairs->rowCount() + 1);
-    QTableWidgetItem * item = new QTableWidgetItem(lwSessionStudents->currentItem()->text());
+    QTableWidgetItem *item = new QTableWidgetItem(lwSessionStudents->currentItem()->text());
     item->setData(Qt::UserRole, lwSessionStudents->currentItem()->data(Qt::UserRole));
     twMatchedPairs->setItem(twMatchedPairs->rowCount() - 1, 0, item);
     delete lwSessionStudents->takeItem(lwSessionStudents->currentRow());
@@ -92,8 +100,9 @@ void SessionWizard::match()
 
 void SessionWizard::split()
 {
-    if (twMatchedPairs->currentRow() < 0) { return; }
-    QListWidgetItem * item = new QListWidgetItem(twMatchedPairs->item(twMatchedPairs->currentRow(), 0)->text());
+    if (twMatchedPairs->currentRow() < 0)
+        return;
+    QListWidgetItem *item = new QListWidgetItem(twMatchedPairs->item(twMatchedPairs->currentRow(), 0)->text());
     item->setData(Qt::UserRole, twMatchedPairs->item(twMatchedPairs->currentRow(), 0)->data(Qt::UserRole));
     lwSessionStudents->addItem(item);
     item = new QListWidgetItem(twMatchedPairs->item(twMatchedPairs->currentRow(), 1)->text());

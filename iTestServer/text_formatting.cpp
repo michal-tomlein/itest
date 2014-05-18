@@ -21,7 +21,7 @@
 
 #include <QColorDialog>
 
-MTTextEdit::MTTextEdit(QWidget * parent):
+MTTextEdit::MTTextEdit(QWidget *parent):
 QWidget(parent)
 {
     setupUi(this);
@@ -74,14 +74,14 @@ void MTTextEdit::textItalic()
     mergeFormatOnWordOrSelection(fmt);
 }
 
-void MTTextEdit::textFamily(const QString & f)
+void MTTextEdit::textFamily(const QString &f)
 {
     QTextCharFormat fmt;
     fmt.setFontFamily(f);
     mergeFormatOnWordOrSelection(fmt);
 }
 
-void MTTextEdit::textSize(const QString & p)
+void MTTextEdit::textSize(const QString &p)
 {
     QTextCharFormat fmt;
     fmt.setFontPointSize(p.toDouble());
@@ -99,7 +99,7 @@ void MTTextEdit::textColor()
     colorChanged(col);
 }
 
-void MTTextEdit::textAlign(QAbstractButton * b)
+void MTTextEdit::textAlign(QAbstractButton *b)
 {
     if (b == tbtnAlignLeft)
         theTextEdit->setAlignment(Qt::AlignLeft);
@@ -111,7 +111,7 @@ void MTTextEdit::textAlign(QAbstractButton * b)
         theTextEdit->setAlignment(Qt::AlignJustify);
 }
 
-void MTTextEdit::mergeFormatOnWordOrSelection(const QTextCharFormat & format)
+void MTTextEdit::mergeFormatOnWordOrSelection(const QTextCharFormat &format)
 {
     QTextCursor cursor = theTextEdit->textCursor();
     if (!cursor.hasSelection())
@@ -120,7 +120,7 @@ void MTTextEdit::mergeFormatOnWordOrSelection(const QTextCharFormat & format)
     theTextEdit->mergeCurrentCharFormat(format);
 }
 
-void MTTextEdit::fontChanged(const QFont & f)
+void MTTextEdit::fontChanged(const QFont &f)
 {
     fontComboBox->setCurrentIndex(fontComboBox->findText(QFontInfo(f).family()));
     sizeComboBox->setCurrentIndex(sizeComboBox->findText(QString::number(f.pointSize())));
@@ -129,7 +129,7 @@ void MTTextEdit::fontChanged(const QFont & f)
     tbtnUnderlined->setChecked(f.underline());
 }
 
-void MTTextEdit::colorChanged(const QColor & c)
+void MTTextEdit::colorChanged(const QColor &c)
 {
     QPixmap pix(14, 14);
     pix.fill(c);
@@ -149,7 +149,7 @@ void MTTextEdit::alignmentChanged(Qt::Alignment a)
     }
 }
 
-void MTTextEdit::currentCharFormatChanged(const QTextCharFormat & format)
+void MTTextEdit::currentCharFormatChanged(const QTextCharFormat &format)
 {
     fontChanged(format.font());
     colorChanged(format.foreground().color());

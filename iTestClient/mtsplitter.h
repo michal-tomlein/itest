@@ -27,27 +27,27 @@ class MTSplitter : public QSplitter
     Q_OBJECT
 
 public:
-    MTSplitter(QWidget * parent = 0):
-    QSplitter(parent) {};
-    MTSplitter(Qt::Orientation orientation, QWidget * parent = 0):
-    QSplitter(orientation, parent) {};
+    MTSplitter(QWidget *parent = 0):
+    QSplitter(parent) {}
+    MTSplitter(Qt::Orientation orientation, QWidget *parent = 0):
+    QSplitter(orientation, parent) {}
 
 public slots:
-    void moveSplitter(int pos) { QSplitter::moveSplitter(pos, 1); };
-    void moveSplitter(int pos, int index) { QSplitter::moveSplitter(pos, index); };
-    void moveLeft() { moveSplitter(0); };
+    void moveSplitter(int pos) { QSplitter::moveSplitter(pos, 1); }
+    void moveSplitter(int pos, int index) { QSplitter::moveSplitter(pos, index); }
+    void moveLeft() { moveSplitter(0); }
     void moveRight() {
         switch (orientation()) {
             case Qt::Horizontal: moveSplitter(width()); break;
             case Qt::Vertical: moveSplitter(height()); break;
         }
-    };
+    }
     void moveToCentre() {
         switch (orientation()) {
             case Qt::Horizontal: moveSplitter(width()/2); break;
             case Qt::Vertical: moveSplitter(height()/2); break;
         }
-    };
+    }
 };
 
 #endif // MTSPLITTER_H

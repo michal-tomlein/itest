@@ -29,16 +29,16 @@ class MTTextEdit : public QWidget, private Ui::MTTextEdit
     Q_OBJECT
 
 public:
-    MTTextEdit(QWidget * parent = 0);
+    MTTextEdit(QWidget *parent = 0);
 
-    inline void setTitle(const QString & title) { nameLabel->setText(title); }
-    inline QTextEdit * textEdit() { return theTextEdit; }
+    inline void setTitle(const QString &title) { nameLabel->setText(title); }
+    inline QTextEdit *textEdit() { return theTextEdit; }
 
     inline QString toHtml() const { return theTextEdit->toHtml(); }
     inline QString toPlainText() const { return theTextEdit->toPlainText(); }
-    inline void setHtml(const QString & text) { theTextEdit->setHtml(text); }
-    inline void setPlainText(const QString & text) { theTextEdit->setPlainText(text); }
-    inline void setText(const QString & text) { theTextEdit->setText(text); }
+    inline void setHtml(const QString &text) { theTextEdit->setHtml(text); }
+    inline void setPlainText(const QString &text) { theTextEdit->setPlainText(text); }
+    inline void setText(const QString &text) { theTextEdit->setText(text); }
     inline void clear() { theTextEdit->clear(); }
 
 signals:
@@ -61,7 +61,7 @@ private:
     void colorChanged(const QColor &c);
     void alignmentChanged(Qt::Alignment a);
 
-    QButtonGroup * tbtngrpAlign;
+    QButtonGroup *tbtngrpAlign;
 };
 
 #endif // MTTEXTEDIT_H

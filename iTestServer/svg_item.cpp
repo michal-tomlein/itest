@@ -26,11 +26,11 @@ SvgItem::SvgItem():
 QListWidgetItem(0, QListWidgetItem::UserType)
 { si_valid = false; }
 
-SvgItem::SvgItem(const QString & text):
+SvgItem::SvgItem(const QString &text):
 QListWidgetItem(0, QListWidgetItem::UserType)
 { si_valid = false; setText(text); }
 
-SvgItem::SvgItem(const QString & text, const QString & svg):
+SvgItem::SvgItem(const QString &text, const QString &svg):
 QListWidgetItem(0, QListWidgetItem::UserType)
 { si_valid = false; setText(text); setSvg(svg); }
 
@@ -38,8 +38,11 @@ bool SvgItem::setSvg(QString svg)
 {
     svg.remove("\n");
     QSvgRenderer svgrenderer(svg.toUtf8());
-    if (!svgrenderer.isValid()) { return false; }
-    else { si_valid = true; }
+    if (!svgrenderer.isValid()) {
+        return false;
+    } else {
+        si_valid = true;
+    }
     QPixmap pixmap(64, 64);
     QPainter painter(&pixmap);
     painter.save();

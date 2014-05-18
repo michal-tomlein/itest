@@ -77,7 +77,8 @@ void MainWindow::readIncomingData()
         current_entry++; progress_dialog->setValue(current_entry);
     }
 
-    QString received_string; QString buffer;
+    QString received_string;
+    QString buffer;
     do {
         in >> buffer; received_string.append(buffer);
     } while (!in.atEnd());
@@ -131,7 +132,8 @@ void MainWindow::sendResults()
     } else {
         save_file_name = savePathLineEdit->text();
     }
-    if (save_file_name.isNull() || save_file_name.isEmpty()) { return; }
+    if (save_file_name.isNull() || save_file_name.isEmpty())
+        return;
     QFile file(save_file_name);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         QMessageBox::critical(this, tr("Save answer log"), tr("Cannot write file %1:\n%2.").arg(save_file_name).arg(file.errorString()));
@@ -158,17 +160,26 @@ void MainWindow::sendResults()
 
 void MainWindow::readResults(QString input)
 {
-    QTextStream in(&input); QString buffer; QuestionItem * item; double maxscore = 0.0;
+    QTextStream in(&input);
+    QString buffer;
+    QuestionItem *item;
+    double maxscore = 0.0;
     do {
-        if (in.readLine() != "[Q_NAME]") { return; }
+        if (in.readLine() != "[Q_NAME]")
+            return;
         buffer = in.readLine(); item = NULL;
         for (int i = 0; i < LQListWidget->count(); ++i) {
             if (current_test_questions.value(LQListWidget->item(i))->name() == buffer) {
                 item = current_test_questions.value(LQListWidget->item(i)); break;
             }
         }
-        if (item == NULL) { in.readLine(); in.readLine(); continue; }
-        if (in.readLine() != "[Q_C_ANS]") { return; }
+        if (item == NULL) {
+            in.readLine();
+            in.readLine();
+            continue;
+        }
+        if (in.readLine() != "[Q_C_ANS]")
+            return;
         if (current_db_multiple_ans_support) {
             item->setCorrectAnswers((Question::Answer)in.readLine().toInt());
         } else {
@@ -177,7 +188,8 @@ void MainWindow::readResults(QString input)
         current_test_score += item->score();
         maxscore += item->maximumScore();
         if (current_db_itdb1_4_support) {
-            if (in.readLine() != "[Q_EXPL]") { return; }
+            if (in.readLine() != "[Q_EXPL]")
+                return;
             item->setExplanation(in.readLine());
         }
     } while (!in.atEnd());
@@ -185,7 +197,7 @@ void MainWindow::readResults(QString input)
     loadResults(resultsTableWidget);
 }
 
-void MainWindow::loadResults(QTableWidget * tw)
+void MainWindow::loadResults(QTableWidget *tw)
 {
     int count = current_test_questions.count();
     tw->setRowCount(count);

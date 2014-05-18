@@ -39,14 +39,14 @@ protected:
         msw_flayout->setSpacing(6);
     }
 public:
-    MTMultiSvgWidget(QWidget * parent = 0):
+    MTMultiSvgWidget(QWidget *parent = 0):
     QWidget(parent) { init(); }
     
-    void addWidget(QWidget * w) { msw_flayout->addWidget(w); }
-    void addWidget(QWidget * w, const QString & title, bool link = false) {
-        QWidget * widget = new QWidget;
-        QVBoxLayout * vlayout = new QVBoxLayout(widget);
-        QLabel * label = new QLabel(widget);
+    void addWidget(QWidget *w) { msw_flayout->addWidget(w); }
+    void addWidget(QWidget *w, const QString &title, bool link = false) {
+        QWidget *widget = new QWidget;
+        QVBoxLayout *vlayout = new QVBoxLayout(widget);
+        QLabel *label = new QLabel(widget);
         if (!link) {
             label->setText(title);
         } else {
@@ -69,13 +69,13 @@ public slots:
     }
 
 private slots:
-    void emitTitleClicked(const QString & text) { emit titleClicked(text); }
+    void emitTitleClicked(const QString &text) { emit titleClicked(text); }
 
 signals:
     void titleClicked(const QString &);
 
 private:
-    FlowLayout * msw_flayout;
+    FlowLayout *msw_flayout;
 };
 
 #endif // MTMULTISVGWIDGET_H

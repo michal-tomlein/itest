@@ -175,8 +175,8 @@ private slots:
     void toggleStartServerEnabled();
     void toggleSaveSessionEnabled();
     void resetScoringSystemValues(bool);
-    static QTableWidgetItem * toTableItem(QListWidgetItem *, bool = false);
-    static QListWidgetItem * toListItem(QTableWidgetItem *);
+    static QTableWidgetItem *toTableItem(QListWidgetItem *, bool = false);
+    static QListWidgetItem *toListItem(QTableWidgetItem *);
     void addToList();
     void removeFromList();
     void startServer();
@@ -244,7 +244,7 @@ private slots:
     void toggleAddSessionToMemberEnabled();
     void addSessionToMember();
     void removeSessionFromMember();
-    QDialog * createAddSessionDialogue(const QString &, MTListWidget * = NULL);
+    QDialog *createAddSessionDialogue(const QString &, MTListWidget * = NULL);
     // ERROR MESSAGES
     void errorInvalidDBFile(const QString &, const QString &, int);
 
@@ -259,8 +259,8 @@ private:
     QMap<QListWidgetItem *, Class *> current_db_classes;
     QMap<QListWidgetItem *, Student *> current_db_students;
     QMap<int, int> current_db_categoryentries;
-    Session * current_db_session;
-    Class * current_db_class;
+    Session *current_db_session;
+    Class *current_db_class;
     PassMark current_db_passmark;
     // CATEGORIES
     QVector<bool> current_db_categories_enabled;
@@ -269,14 +269,14 @@ private:
     void closeEvent(QCloseEvent *);
     QNetworkAccessManager *network_access_manager;
     // SERVER-RELATED
-    QTcpServer * tcpServer;
+    QTcpServer *tcpServer;
     QMap<QListWidgetItem *, Client *> current_db_clients;
     QList<QByteArray> current_db_test;
     QString current_db_testdate;
     QString current_db_testname;
     ScoringSystem current_db_scoringsystem;
     // PRINTER-RELATED
-    QPrinter * default_printer;
+    QPrinter *default_printer;
     bool printer_configured;
     int printer_colorMode;
     bool printer_doubleSidedPrinting;
@@ -292,26 +292,26 @@ private:
     QString printer_printerName;
     int printer_resolution;
     // WIDGETS
-    QProgressBar * progressBar;
-    QButtonGroup * rbtngrpFilterLQ;
-    QActionGroup * actgrpFilterLQ;
-    QActionGroup * actgrpPage;
-    QButtonGroup * rbtngrpAdvSelect;
-    QButtonGroup * rbtngrpTestTime;
-    QPushButton * btnApply;
-    QPushButton * btnDiscard;
+    QProgressBar *progressBar;
+    QButtonGroup *rbtngrpFilterLQ;
+    QActionGroup *actgrpFilterLQ;
+    QActionGroup *actgrpPage;
+    QButtonGroup *rbtngrpAdvSelect;
+    QButtonGroup *rbtngrpTestTime;
+    QPushButton *btnApply;
+    QPushButton *btnDiscard;
     // STATS
-    MTTableWidget * stats_tw;
-    QPushButton * stats_btn_adjustall;
+    MTTableWidget *stats_tw;
+    QPushButton *stats_btn_adjustall;
     QMap<QAbstractButton *, QuestionItem *> stats_qmap;
     QMap<QAbstractButton *, int> stats_twmap;
     QMap<QAbstractButton *, int> stats_lwmap;
-    QButtonGroup * btngrpStatsAdjust;
+    QButtonGroup *btngrpStatsAdjust;
     // EDIT SVG
-    QLineEdit * editsvg_lineedit_name;
+    QLineEdit *editsvg_lineedit_name;
     QString editsvg_svgpath;
     // LANG
-    QComboBox * langComboBox;
+    QComboBox *langComboBox;
     // FLAG-WIDGETS
     QVector<QLineEdit *> EFCategoryLineEdit;
     // PALETTES

@@ -38,7 +38,7 @@ QString MainWindow::currentDatabaseName()
     return databaseNameForFilePath(current_db_file);
 }
 
-bool MainWindow::saveChangesBeforeProceeding(const QString & title, bool close)
+bool MainWindow::saveChangesBeforeProceeding(const QString &title, bool close)
 {
     if (current_db_open && this->isWindowModified()) {
         QMessageBox message(this);
@@ -54,11 +54,18 @@ bool MainWindow::saveChangesBeforeProceeding(const QString & title, bool close)
         switch (message.exec()) {
             case 0: // Save
                 current_db_open = false;
-                save(); if (close) { closeDB(); } return false;
+                save();
+                if (close) {
+                    closeDB();
+                }
+                return false;
                 break;
             case 1: // Discard
                 current_db_open = false;
-                if (close) { closeDB(); } return false;
+                if (close) {
+                    closeDB();
+                }
+                return false;
                 break;
             case 2: // Cancel
                 return true;
@@ -75,18 +82,27 @@ void MainWindow::newDB()
     this->setEnabled(false);
     // Save changes before proceeding?
     bool cancelled = saveChangesBeforeProceeding(tr("New database"), true);
-    if (cancelled) { this->setEnabled(true); return; }
+    if (cancelled) {
+        this->setEnabled(true);
+        return;
+    }
     // Creating database -------------------------------------------------------
     bool ok;
     QString db_name = QInputDialog::getText(this, tr("New database"), tr("Database name:"), QLineEdit::Normal, tr("Untitled database"), &ok);
     QString saveDBName;
-    if (!ok) { this->setEnabled(true); return; }
+    if (!ok) {
+        this->setEnabled(true);
+        return;
+    }
     if (!db_name.isEmpty()) {
         saveDBName = QFileDialog::getSaveFileName(this, tr("Create database file"), tr("%1.itdb").arg(db_name), tr("iTest databases (*.itdb)"));
     } else {
         saveDBName = QFileDialog::getSaveFileName(this, tr("Create database file"), tr("untitled.itdb"), tr("iTest databases (*.itdb)"));
     }
-    if (saveDBName.isNull() || saveDBName.isEmpty()) { this->setEnabled(true); return; }
+    if (saveDBName.isNull() || saveDBName.isEmpty()) {
+        this->setEnabled(true);
+        return;
+    }
     QFile file(saveDBName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         QMessageBox::critical(this, tr("Create database file"), tr("Cannot write file %1:\n%2.").arg(saveDBName).arg(file.errorString()));
@@ -109,7 +125,9 @@ void MainWindow::newDB()
     if (!itdb1_3) sfile << "[DB_CNUM]\n0" << endl;
     sfile << "[DB_FLAGS]" << endl;
     sfile << "--------------------\n";
-    for (int i = 0; i < current_db_categories.size(); ++i) { sfile << "[DB_F" << i << "]\n" << endl; }
+    for (int i = 0; i < current_db_categories.size(); ++i) {
+        sfile << "[DB_F" << i << "]\n" << endl;
+    }
     sfile << "[DB_FLAGS_END]";
     setProgress(50); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     // APPLY
@@ -138,7 +156,10 @@ void MainWindow::saveAs()
     QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save database"),
                                                       QFileInfo(current_db_file).fileName(),
                                                       tr("iTest databases (*.itdb)"));
-    if (!saveDBName.isNull() || !saveDBName.isEmpty()) { addRecent(saveDBName); saveDB(saveDBName); }
+    if (!saveDBName.isNull() || !saveDBName.isEmpty()) {
+        addRecent(saveDBName);
+        saveDB(saveDBName);
+    }
 }
 
 void MainWindow::saveCopy()
@@ -154,11 +175,13 @@ void MainWindow::saveCopy()
     QString saveDBName = QFileDialog::getSaveFileName(this, tr("Save a copy"),
                                                       QFileInfo(current_db_file).fileName(),
                                                       tr("iTest databases (*.itdb);;iTest 1.3 databases (*.it13.itdb)"));
-    if (!saveDBName.isNull() || !saveDBName.isEmpty())
-    { addRecent(saveDBName); saveDB(saveDBName, true); }
+    if (!saveDBName.isNull() || !saveDBName.isEmpty()) {
+        addRecent(saveDBName);
+        saveDB(saveDBName, true);
+    }
 }
 
-void MainWindow::saveDB(const QString & db_file_name, bool savecopy)
+void MainWindow::saveDB(const QString &db_file_name, bool savecopy)
 {
     this->setEnabled(false); qApp->processEvents();
     // Prepare
@@ -190,7 +213,9 @@ void MainWindow::saveDB(const QString & db_file_name, bool savecopy)
     sfile << "[DB_FLAGS]" << endl;
     int num_categories = current_db_categories.size();
     if (num_categories > 20 && !current_db_categories_enabled[num_categories - 1]) num_categories--;
-    for (int i = 0; i < num_categories; ++i) { sfile << (current_db_categories_enabled[i] ? "+" : "-"); }
+    for (int i = 0; i < num_categories; ++i) {
+        sfile << (current_db_categories_enabled[i] ? "+" : "-");
+    }
     sfile << endl;
     for (int i = 0; i < num_categories; ++i) {
         sfile << "[DB_F" << i << "]\n" << current_db_categories[i] << endl;
@@ -241,7 +266,10 @@ void MainWindow::open()
     if (!cancelled) {
         // Opening database --------------------------------------------------------
         QString openDBName = QFileDialog::getOpenFileName(this, tr("Open database file"), "", tr("iTest databases (*.itdb);;All files (*.*)"));
-        if (!openDBName.isNull()) { addRecent(openDBName); openDB(openDBName); }
+        if (!openDBName.isNull()) {
+            addRecent(openDBName);
+            openDB(openDBName);
+        }
     }
 }
 
@@ -253,16 +281,17 @@ void MainWindow::openRecent()
     }
 }
 
-void MainWindow::openRecent(QListWidgetItem * item)
+void MainWindow::openRecent(QListWidgetItem *item)
 {
     QString buffer = item->text();
     addRecent(buffer);
     openDB(buffer);
 }
 
-void MainWindow::openDB(const QString & openDBName, bool useCP1250)
+void MainWindow::openDB(const QString &openDBName, bool useCP1250)
 {
-    if (openDBName.isNull()) { return; }
+    if (openDBName.isNull())
+        return;
     this->setEnabled(false); qApp->processEvents();
     try {
         QFile file(openDBName);
@@ -272,10 +301,14 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         }
         setProgress(3); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         QTextStream rfile(&file);
-        if (useCP1250) { rfile.setCodec("CP 1250"); }
-        else { rfile.setCodec("UTF-8"); }
+        if (useCP1250) {
+            rfile.setCodec("CP 1250");
+        } else {
+            rfile.setCodec("UTF-8");
+        }
 
-        QString db_buffer; QStringList bufferlist;
+        QString db_buffer;
+        QStringList bufferlist;
         // ---------------------------------------------------------------------
         if (rfile.readLine() != "[ITEST_VERSION]") { throw xInvalidDBFile(0); }
         rfile.readLine();
@@ -287,7 +320,10 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
             return;
         }
         if (!useCP1250) {
-            if (db_version == 1.0) { openDB(openDBName, true); return; }
+            if (db_version == 1.0) {
+                openDB(openDBName, true);
+                return;
+            }
         }
 
         if (rfile.readLine() != "[DB_NAME]") { throw xInvalidDBFile(10); }
@@ -320,8 +356,13 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         db_buffer = rfile.readLine();
         QVector<bool> db_categories_enabled(db_buffer.length());
         for (int i = 0; i < db_categories_enabled.size(); ++i) {
-            if (db_buffer.at(i) == '+') { db_categories_enabled[i] = true; } else if (db_buffer.at(i) == '-')
-            { db_categories_enabled[i] = false; } else { throw xInvalidDBFile(52); }
+            if (db_buffer.at(i) == '+') {
+                db_categories_enabled[i] = true;
+            } else if (db_buffer.at(i) == '-') {
+                db_categories_enabled[i] = false;
+            } else {
+                throw xInvalidDBFile(52);
+            }
         }
         // Categories
         QVector<QString> db_categories(db_buffer.length());
@@ -334,7 +375,8 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
         setProgress(10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         int count = db_qnum + db_snum;
         // Questions
-        QuestionItem * item; QStringList answers;
+        QuestionItem *item;
+        QStringList answers;
         for (int i = 0; i < db_qnum; ++i) {
             answers.clear();
             // Question name
@@ -349,8 +391,11 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                 item->setGroup(rfile.readLine());
             }
             // Difficulty
-            if (db_version >= 1.2) { if (rfile.readLine() != "[Q_DIF]") { throw xInvalidDBFile(106); } }
-            else { if (rfile.readLine() != "[Q_DIFFICULTY]") { throw xInvalidDBFile(108); } }
+            if (db_version >= 1.2) {
+                if (rfile.readLine() != "[Q_DIF]") { throw xInvalidDBFile(106); }
+            } else {
+                if (rfile.readLine() != "[Q_DIFFICULTY]") { throw xInvalidDBFile(108); }
+            }
             item->setDifficulty(rfile.readLine().toInt());
             // Question text
             if (rfile.readLine() != "[Q_TEXT]") { throw xInvalidDBFile(110); }
@@ -369,29 +414,42 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                 // Answer A
                 if (rfile.readLine() != "[Q_ANSA]") { throw xInvalidDBFile(116); }
                 answers << rfile.readLine();
-                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSA_C]") { throw xInvalidDBFile(118); } }
+                if (db_version < 1.2) {
+                    if (rfile.readLine() != "[Q_ANSA_C]") { throw xInvalidDBFile(118); }
+                }
                 item->setAnswerCorrect(Question::A, rfile.readLine() == "true");
                 // Answer B
                 if (rfile.readLine() != "[Q_ANSB]") { throw xInvalidDBFile(120); }
                 answers << rfile.readLine();
-                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSB_C]") { throw xInvalidDBFile(122); } }
+                if (db_version < 1.2) {
+                    if (rfile.readLine() != "[Q_ANSB_C]") { throw xInvalidDBFile(122); }
+                }
                 item->setAnswerCorrect(Question::B, rfile.readLine() == "true");
                 // Answer C
                 if (rfile.readLine() != "[Q_ANSC]") { throw xInvalidDBFile(124); }
                 answers << rfile.readLine();
-                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSC_C]") { throw xInvalidDBFile(126); } }
+                if (db_version < 1.2) {
+                    if (rfile.readLine() != "[Q_ANSC_C]") { throw xInvalidDBFile(126); }
+                }
                 item->setAnswerCorrect(Question::C, rfile.readLine() == "true");
                 // Answer D
                 if (rfile.readLine() != "[Q_ANSD]") { throw xInvalidDBFile(128); }
                 answers << rfile.readLine();
-                if (db_version < 1.2) { if (rfile.readLine() != "[Q_ANSD_C]") { throw xInvalidDBFile(130); } }
+                if (db_version < 1.2) {
+                    if (rfile.readLine() != "[Q_ANSD_C]") { throw xInvalidDBFile(130); }
+                }
                 item->setAnswerCorrect(Question::D, rfile.readLine() == "true");
             }
             // Statistics
-            if (db_version < 1.2) { if (rfile.readLine() != "[Q_ICNT]") { throw xInvalidDBFile(132); } }
-            else { if (rfile.readLine() != "[Q_ICCNT]") { throw xInvalidDBFile(134); } }
+            if (db_version < 1.2) {
+                if (rfile.readLine() != "[Q_ICNT]") { throw xInvalidDBFile(132); }
+            } else {
+                if (rfile.readLine() != "[Q_ICCNT]") { throw xInvalidDBFile(134); }
+            }
             item->setIncorrectAnsCount(rfile.readLine().toUInt());
-            if (db_version < 1.2) { if (rfile.readLine() != "[Q_CCNT]") { throw xInvalidDBFile(136); } }
+            if (db_version < 1.2) {
+                if (rfile.readLine() != "[Q_CCNT]") { throw xInvalidDBFile(136); }
+            }
             item->setCorrectAnsCount(rfile.readLine().toUInt());
             // Hidden
             if (db_version >= 1.2) {
@@ -413,7 +471,7 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
             }
             // Add map entry
             item->setAnswers(answers);
-            QListWidgetItem * q_item = new QListWidgetItem (item->group().isEmpty() ? item->name() : QString("[%1] %2").arg(item->group()).arg(item->name()));
+            QListWidgetItem *q_item = new QListWidgetItem (item->group().isEmpty() ? item->name() : QString("[%1] %2").arg(item->group()).arg(item->name()));
             LQListWidget->addItem(q_item);
             current_db_questions.insert(q_item, item);
             setQuestionItemIcon(q_item, item->difficulty());
@@ -422,19 +480,24 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
             setProgress((85/(i+1)*count)+10); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>
         }
         // Saved sessions
-        int ans_category = -1; int ans_dif = 0;
-        Question::Answer c_ans; Question::Answer ans;
+        int ans_category = -1;
+        int ans_dif = 0;
+        Question::Answer c_ans;
+        Question::Answer ans;
         Question::SelectionType ans_selectiontype = Question::SingleSelection;
         for (int i = 0; i < db_snum; ++i) {
-            if (rfile.atEnd()) { break; }
-            if (rfile.readLine() != "[SESSION]") { continue; }
-            Session * session = new Session;
+            if (rfile.atEnd())
+                break;
+            if (rfile.readLine() != "[SESSION]")
+                continue;
+            Session *session = new Session;
             session->setName(rfile.readLine());
             session->setDateTimeFromString(rfile.readLine());
             if (db_version >= 1.2) {
                 if (rfile.readLine() != "[PASSMARK]") { throw xInvalidDBFile(202); }
                 PassMark pm(rfile.readLine().toInt());
-                int pm_count = rfile.readLine().toInt(); int pm_c, pm_v;
+                int pm_count = rfile.readLine().toInt();
+                int pm_c, pm_v;
                 for (int i = 0; i < pm_count; ++i) {
                     pm_c = rfile.readLine().toInt();
                     pm_v = rfile.readLine().toInt();
@@ -469,27 +532,34 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                 }
             }
             for (int s = 0; s < s_snum; ++s) {
-                if (rfile.atEnd()) { break; }
-                if (rfile.readLine() != "[STUDENT]") { continue; }
-                Student * student = new Student(rfile.readLine());
+                if (rfile.atEnd())
+                    break;
+                if (rfile.readLine() != "[STUDENT]")
+                    continue;
+                Student *student = new Student(rfile.readLine());
                 student->setReady(rfile.readLine() == "true");
                 if (db_version >= 1.2) {
                     student->setPassed(rfile.readLine() == "true");
                 }
                 student->setNumber(rfile.readLine().toInt());
-                if (db_version < 1.35) { rfile.readLine(); } // SCORE
+                if (db_version < 1.35) {
+                    rfile.readLine(); // SCORE
+                }
                 int numresults = rfile.readLine().toInt();
-                QMap<QString, QuestionAnswer> * results = new QMap<QString, QuestionAnswer>;
+                QMap<QString, QuestionAnswer> *results = new QMap<QString, QuestionAnswer>;
                 for (int a = 0; a < numresults; ++a) {
                     db_buffer = rfile.readLine();
                     if (db_version >= 1.2) {
                         ans_category = rfile.readLine().toInt();
                     }
 
-                    QuestionItem * item = NULL;
+                    QuestionItem *item = NULL;
                     QMapIterator<QListWidgetItem *, QuestionItem *> q(current_db_questions);
                     while (q.hasNext()) { q.next();
-                        if (q.value()->name() == db_buffer) { item = q.value(); break; }
+                        if (q.value()->name() == db_buffer) {
+                            item = q.value();
+                            break;
+                        }
                     }
 
                     if (db_version >= 1.35) {
@@ -497,11 +567,21 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                         ans_selectiontype = (Question::SelectionType)rfile.readLine().toInt();
                     } else {
                         if (item == NULL) {
-                            if (db_version < 1.2) { ans_category = -1; }
-                            if (db_version < 1.35) { ans_dif = 0; ans_selectiontype = Question::SingleSelection; }
+                            if (db_version < 1.2) {
+                                ans_category = -1;
+                            }
+                            if (db_version < 1.35) {
+                                ans_dif = 0;
+                                ans_selectiontype = Question::SingleSelection;
+                            }
                         } else {
-                            if (db_version < 1.2) { ans_category = item->category(); }
-                            if (db_version < 1.35) { ans_dif = item->difficulty(); ans_selectiontype = item->selectionType(); }
+                            if (db_version < 1.2) {
+                                ans_category = item->category();
+                            }
+                            if (db_version < 1.35) {
+                                ans_dif = item->difficulty();
+                                ans_selectiontype = item->selectionType();
+                            }
                         }
                     }
 
@@ -525,16 +605,18 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
             }
             session->setScoringSystem(sys);
             current_db_sessions.insert(session->dateTime(), session);
-            QListWidgetItem * item = new QListWidgetItem (QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name()));
+            QListWidgetItem *item = new QListWidgetItem (QString("%1 - %2").arg(session->dateTimeToString()).arg(session->name()));
             SVLSListWidget->insertItem(0, item);
             item->setData(Qt::UserRole, session->dateTime());
             setProgress((85/(db_qnum+i+1)*count)+10); // PROGRESS >>>>>>>>>>>>>>
         }
         // Classes
         for (int i = 0; i < db_cnum; ++i) {
-            if (rfile.atEnd()) { break; }
-            if (rfile.readLine() != "[CLASS]") { continue; }
-            Class * cl = new Class(rfile.readLine());
+            if (rfile.atEnd())
+                break;
+            if (rfile.readLine() != "[CLASS]")
+                continue;
+            Class *cl = new Class(rfile.readLine());
             bufferlist = rfile.readLine().split("-", QString::SkipEmptyParts);
             cl->setFirstYear(bufferlist.at(0).toInt());
             cl->setLastYear(bufferlist.at(1).toInt());
@@ -544,8 +626,9 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
             }
             int mnum = rfile.readLine().toInt();
             for (int m = 0; m < mnum; ++m) {
-                if (rfile.readLine() != "[MEM]") { continue; }
-                ClassMember * mem = new ClassMember(rfile.readLine());
+                if (rfile.readLine() != "[MEM]")
+                    continue;
+                ClassMember *mem = new ClassMember(rfile.readLine());
                 int msnum = rfile.readLine().toInt();
                 for (int ms = 0; ms < msnum; ++ms) {
                     db_buffer = rfile.readLine();
@@ -553,7 +636,7 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
                 }
                 cl->addMember(mem);
             }
-            QListWidgetItem * cl_item = new QListWidgetItem(QString("%1-%2: %3").arg(cl->firstYear()).arg(cl->lastYear()).arg(cl->name()), CLLCListWidget);
+            QListWidgetItem *cl_item = new QListWidgetItem(QString("%1-%2: %3").arg(cl->firstYear()).arg(cl->lastYear()).arg(cl->name()), CLLCListWidget);
             current_db_classes.insert(cl_item, cl);
         }
 
@@ -601,7 +684,8 @@ void MainWindow::openDB(const QString & openDBName, bool useCP1250)
 void MainWindow::closeDB()
 {
     // Save changes before proceeding?
-    if (saveChangesBeforeProceeding(tr("Close database"), false)) { return; }
+    if (saveChangesBeforeProceeding(tr("Close database"), false))
+        return;
     // Closing database --------------------------------------------------------
     clearAll(); setAllEnabled(false); current_db_open = false;
     this->setWindowTitle(tr("iTestServer"));
@@ -639,7 +723,7 @@ void MainWindow::exportCSV()
 
     QTextDocument doc;
     for (int i = 0; i < LQListWidget->count(); ++i) {
-        QuestionItem * item = current_db_questions.value(LQListWidget->item(i));
+        QuestionItem *item = current_db_questions.value(LQListWidget->item(i));
         out << quoteForCSV(item->name()) << separator;
         out << QString::number(item->category()) << separator;
         out << quoteForCSV(item->group()) << separator;
@@ -647,7 +731,7 @@ void MainWindow::exportCSV()
         out << quoteForCSV(doc.toPlainText()) << separator;
         out << quoteForCSV(item->explanation()) << separator;
         out << QString::number(item->correctAnswers());
-        foreach (const QString & answer, item->answers())
+        foreach (const QString &answer, item->answers())
             out << separator << quoteForCSV(answer);
         out << endl;
     }

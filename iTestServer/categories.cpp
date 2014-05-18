@@ -21,7 +21,7 @@
 
 void MainWindow::addCategoryItem(int i)
 {
-    QLineEdit * le = new QLineEdit(this);
+    QLineEdit *le = new QLineEdit(this);
     le->setStatusTip(tr("Type a name for category %1").arg(i + 1));
     QPalette palette;
     palette.setColor(QPalette::Active, QPalette::Base, backgroundColourForCategory(i));
@@ -30,7 +30,7 @@ void MainWindow::addCategoryItem(int i)
     palette.setColor(QPalette::Inactive, QPalette::Text, foregroundColourForCategory(i));
     le->setPalette(palette);
     EFCategoryLineEdit << le;
-    QTreeWidgetItem * item = new QTreeWidgetItem(EFTreeWidget);
+    QTreeWidgetItem *item = new QTreeWidgetItem(EFTreeWidget);
     item->setText(0, QString::number(i + 1));
     item->setCheckState(0, Qt::Unchecked);
     item->setStatusTip(0, tr("Check or uncheck this checkbox to enable or disable category %1").arg(i + 1));
@@ -54,7 +54,7 @@ void MainWindow::setupCategoriesPage()
     QObject::connect(EFButtonBox, SIGNAL(clicked(QAbstractButton *)), this, SLOT(updateCategories(QAbstractButton *)));
 }
 
-void MainWindow::setCategoryEnabled(QTreeWidgetItem * item)
+void MainWindow::setCategoryEnabled(QTreeWidgetItem *item)
 {
     int i = item->text(0).toInt() - 1;
     if (i >= 0 && i < EFCategoryLineEdit.size()) {
@@ -84,7 +84,9 @@ void MainWindow::setCategories()
 void MainWindow::loadCategories()
 {
     for (int i = 0; i < current_db_categories.size(); ++i) {
-        if (i >= EFTreeWidget->topLevelItemCount()) { addCategoryItem(i); }
+        if (i >= EFTreeWidget->topLevelItemCount()) {
+            addCategoryItem(i);
+        }
         EFTreeWidget->topLevelItem(i)->setCheckState(0, current_db_categories_enabled[i] ? Qt::Checked : Qt::Unchecked);
         EFCategoryLineEdit[i]->setText(current_db_categories[i]);
     }
@@ -102,7 +104,9 @@ void MainWindow::applyCategories()
     for (int i = EFTreeWidget->topLevelItemCount() - 1; i > 19; --i) {
         if (EFTreeWidget->topLevelItem(i - 1)->checkState(0) == Qt::Unchecked && EFTreeWidget->topLevelItem(i)->checkState(0) == Qt::Unchecked) {
             removeCategoryItem(i);
-        } else { break; }
+        } else {
+            break;
+        }
     }
     current_db_categories.resize(EFCategoryLineEdit.size());
     current_db_categories_enabled.resize(EFCategoryLineEdit.size());
@@ -121,10 +125,13 @@ void MainWindow::discardCategories()
     loadCategories(); statusBar()->showMessage(tr("Categories discarded"), 10000);
 }
 
-void MainWindow::updateCategories(QAbstractButton * btn)
+void MainWindow::updateCategories(QAbstractButton *btn)
 {
-    if (btn == EFButtonBox->button(EFButtonBox->Apply)) {applyCategories();}
-    else if (btn == EFButtonBox->button(EFButtonBox->Discard)) {discardCategories();}
+    if (btn == EFButtonBox->button(EFButtonBox->Apply)) {
+        applyCategories();
+    } else if (btn == EFButtonBox->button(EFButtonBox->Discard)) {
+        discardCategories();
+    }
 }
 
 void MainWindow::updateCategoryQnums()
@@ -132,7 +139,9 @@ void MainWindow::updateCategoryQnums()
     QMap<int, int> category_qnum;
     QMapIterator<QListWidgetItem *, QuestionItem *> i(current_db_questions);
     while (i.hasNext()) { i.next();
-        if (i.value()->category() >= 0) { category_qnum[i.value()->category()]++; }
+        if (i.value()->category() >= 0) {
+            category_qnum[i.value()->category()]++;
+        }
     }
     for (int i = 0; i < EFTreeWidget->topLevelItemCount(); ++i) {
         EFTreeWidget->topLevelItem(i)->setText(2, QString::number(category_qnum[i]));
@@ -143,8 +152,13 @@ void MainWindow::updateCategoryQnums()
 
 void MainWindow::checkForUncategorisedQuestions()
 {
-    int numcategories = 0; QuestionItem * item;
-    for (int i = 0; i < current_db_categories.size(); ++i) { if (current_db_categories_enabled[i]) { numcategories++; } }
+    int numcategories = 0;
+    QuestionItem *item;
+    for (int i = 0; i < current_db_categories.size(); ++i) {
+        if (current_db_categories_enabled[i]) {
+            numcategories++;
+        }
+    }
     if (numcategories > 0) {
         for (int i = 0; i < LQListWidget->count(); ++i) {
             item = current_db_questions.value(LQListWidget->item(i));
@@ -163,14 +177,21 @@ void MainWindow::checkForUncategorisedQuestions()
 
 int MainWindow::qnumForCategory(int category, bool use_groups)
 {
-    QuestionItem * qi; int qnum = 0; QSet<QString> groups;
+    QuestionItem *qi;
+    int qnum = 0;
+    QSet<QString> groups;
     for (int i = 0; i < LQListWidget->count(); ++i) {
         qi = current_db_questions.value(LQListWidget->item(i));
         if (qi->category() == category) {
             if (use_groups) {
-                if (qi->group().isEmpty()) { qnum++; }
-                else { groups << qi->group(); }
-            } else { qnum++; }
+                if (qi->group().isEmpty()) {
+                    qnum++;
+                } else {
+                    groups << qi->group();
+                }
+            } else {
+                qnum++;
+            }
         }
     }
     qnum += groups.count();
@@ -243,8 +264,11 @@ QColor MainWindow::foregroundColourForCategory(int category, bool hidden)
         case 17: // 17: 201 204 0 - 0 0 0
         case 18: // 18: 255 251 0 - 0 0 0
         case 19: // 19: 221 255 0 - 0 0 0
-            if (hidden) { return QColor(100, 100, 100); }
-            else { return QColor(0, 0, 0); }
+            if (hidden) {
+                return QColor(100, 100, 100);
+            } else {
+                return QColor(0, 0, 0);
+            }
             break;
         case 3: // 3: 69 110 14 - 255 255 255
         case 4: // 4: 17 120 122 - 255 255 255
@@ -254,12 +278,18 @@ QColor MainWindow::foregroundColourForCategory(int category, bool hidden)
         case 10: // 10: 0 11 163 - 255 255 255
         case 11: // 11: 139 0 163 - 255 255 255
         case 12: // 12: 163 0 79 - 255 255 255
-            if (hidden) { return QColor(200, 200, 200); }
-            else { return QColor(255, 255, 255); }
+            if (hidden) {
+                return QColor(200, 200, 200);
+            } else {
+                return QColor(255, 255, 255);
+            }
             break;
         default:
-            if (hidden) { return QColor(100, 100, 100); }
-            else { return QColor(0, 0, 0); }
+            if (hidden) {
+                return QColor(100, 100, 100);
+            } else {
+                return QColor(0, 0, 0);
+            }
             break;
     }
     return QColor(0, 0, 0);

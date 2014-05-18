@@ -29,7 +29,7 @@ LogEntry::LogEntry()
     le_text = "";
 }
 
-LogEntry::LogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, const QString & text)
+LogEntry::LogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, const QString &text)
 {
     le_bgr = bgr; le_bgg = bgg; le_bgb = bgb;
     le_fgr = fgr; le_fgg = fgg; le_fgb = fgb;
@@ -66,7 +66,7 @@ Session::Session()
     s_score = 0.0;
 }
 
-Session::Session(Session * session)
+Session::Session(Session *session)
 {
     s_name = session->s_name;
     s_datetime = session->s_datetime;
@@ -92,11 +92,11 @@ void Session::destroy()
     s_students.clear();
 }
 
-void Session::setName(const QString & name) { s_name = name; }
+void Session::setName(const QString &name) { s_name = name; }
 
 QString Session::name() { return s_name; }
 
-void Session::setDateTimeFromString(const QString & date)
+void Session::setDateTimeFromString(const QString &date)
 {
     s_datetime = QDateTime::fromString(date, "yyyy.MM.dd-hh:mm");
 }
@@ -110,7 +110,7 @@ QString Session::dateTimeToString()
 
 QDateTime Session::dateTime() { return s_datetime; }
 
-void Session::addLogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, const QString & text)
+void Session::addLogEntry(int bgr, int bgg, int bgb, int fgr, int fgg, int fgb, const QString &text)
 {
     s_log << LogEntry(bgr, bgg, bgb, fgr, fgg, fgb, text);
 }
@@ -121,11 +121,11 @@ LogEntry Session::logEntry(int i) { return s_log.at(i); }
 
 void Session::deleteLog() { s_log.clear(); }
 
-void Session::addStudent(Student * student) { s_students << student; }
+void Session::addStudent(Student *student) { s_students << student; }
 
 int Session::numStudents() { return s_students.count(); }
 
-Student * Session::student(int i) { return s_students.at(i); }
+Student *Session::student(int i) { return s_students.at(i); }
 
 long double Session::maximumScore() { return s_maxscore; }
 
@@ -137,7 +137,7 @@ void Session::setPassMark(PassMark passmark) { s_passmark = passmark; }
 
 PassMark Session::passMark() { return s_passmark; }
 
-void Session::loadPassMark(const QString & str) { s_passmark.loadData(str); }
+void Session::loadPassMark(const QString &str) { s_passmark.loadData(str); }
 
 void Session::setScoringSystem(const ScoringSystem &sys)
 {
@@ -183,7 +183,9 @@ bool Session::mostPassed()
 {
     int numpassed = 0;
     for (int i = 0; i < s_students.count(); ++i) {
-        if (s_students.at(i)->passed()) { numpassed++; }
+        if (s_students.at(i)->passed()) {
+            numpassed++;
+        }
     }
     return numpassed >= (s_students.count() - numpassed);
 }

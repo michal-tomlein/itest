@@ -32,7 +32,9 @@ public:
 public slots:
     bool setSvg(QString);
     QString svg();
-    void setText(QString str) { QListWidgetItem::setText(str.remove("\n")); };
+    void setText(QString str) {
+        QListWidgetItem::setText(str.remove("\n"));
+    }
     bool isValid();
 
 private:

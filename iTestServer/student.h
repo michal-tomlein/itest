@@ -49,7 +49,7 @@ public slots:
     bool isReady();
     void setResults(QMap<QString, QuestionAnswer> *);
     void updateScore(const ScoringSystem &);
-    QMap<QString, QuestionAnswer> * results();
+    QMap<QString, QuestionAnswer> *results();
     void setPassed(bool);
     bool passed();
     QString studentData();
@@ -62,7 +62,7 @@ private:
     double s_score;
     double s_maxscore;
     bool s_ready;
-    QMap<QString, QuestionAnswer> * s_results;
+    QMap<QString, QuestionAnswer> *s_results;
     int s_number;
     bool s_passed;
 };

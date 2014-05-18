@@ -33,7 +33,7 @@ public:
                    int category = -1,
                    int difficulty = 0,
                    Question::SelectionType type = Question::SingleSelection,
-                   const QString & explanation = QString());
+                   const QString &explanation = QString());
     void setAnswered(Question::Answer);
     Question::Answer answered();
     void setCorrectAnswer(Question::Answer);
@@ -64,20 +64,20 @@ private:
 class QuestionItem : public Question
 {
 public:
-    QuestionItem(const QString & name = QString(),
-                int category = -1,
-                const QString & group = QString(),
-                int difficulty = 0,
-                const QString & text = QString(),
-                const QStringList & answers = QStringList() << QString() << QString() << QString() << QString(),
-                Answers correctanswers = None,
-                SelectionType selectiontype = SingleSelection,
-                const QString & explanation = QString(),
-                unsigned int inccount = 0,
-                unsigned int ccount = 0,
-                bool hidden = false,
-                QList<SvgItem *> svgs = QList<SvgItem *>(),
-                bool copysvgs = true);
+    QuestionItem(const QString &name = QString(),
+                 int category = -1,
+                 const QString &group = QString(),
+                 int difficulty = 0,
+                 const QString &text = QString(),
+                 const QStringList &answers = QStringList() << QString() << QString() << QString() << QString(),
+                 Answers correctanswers = None,
+                 SelectionType selectiontype = SingleSelection,
+                 const QString &explanation = QString(),
+                 unsigned int inccount = 0,
+                 unsigned int ccount = 0,
+                 bool hidden = false,
+                 QList<SvgItem *> svgs = QList<SvgItem *>(),
+                 bool copysvgs = true);
     ~QuestionItem();
 
 public slots:
@@ -91,9 +91,9 @@ public slots:
     void addCorrectAns();
     void addSvgItem(SvgItem *);
     bool removeSvgItem(SvgItem *);
-    SvgItem * removeSvgItem(int);
+    SvgItem *removeSvgItem(int);
     int numSvgItems();
-    SvgItem * svgItem(int);
+    SvgItem *svgItem(int);
     QList<SvgItem *> svgItems();
     int recommendedDifficulty();
     QString allProperties(bool = false);

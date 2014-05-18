@@ -77,8 +77,8 @@ public:
     void removeMember(int);
     int numMembers();
     int memberPosition(ClassMember *);
-    ClassMember * member(int);
-    ClassMember * takeMember(int);
+    ClassMember *member(int);
+    ClassMember *takeMember(int);
     void addSession(QDateTime);
     void addSession(const QString &);
     int removeSession(QDateTime);

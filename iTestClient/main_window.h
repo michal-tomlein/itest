@@ -102,11 +102,11 @@ private:
     // UI-RELATED
     QTimer timer;
     void closeEvent(QCloseEvent*);
-    QButtonGroup * rbtngrpInputType;
-    QProgressDialog * progress_dialog;
-    QButtonGroup * rbtngrpAnswer;
+    QButtonGroup *rbtngrpInputType;
+    QProgressDialog *progress_dialog;
+    QButtonGroup *rbtngrpAnswer;
     // SOCKET-RELATED
-    QTcpSocket * tcpSocket;
+    QTcpSocket *tcpSocket;
     quint64 blocksize;
     quint32 client_number;
     bool test_loaded;
@@ -114,15 +114,15 @@ private:
     quint64 current_entry;
     QString received_data;
     // INFOTABLEWIDGET CELL POINTERS
-    QTableWidgetItem * ITW_test_name;
-    QTableWidgetItem * ITW_test_date;
-    QTableWidgetItem * ITW_test_timestamp;
-    QTableWidgetItem * ITW_test_time;
-    QTableWidgetItem * ITW_test_qnum;
-    QTableWidgetItem * ITW_test_fnum;
-    QTableWidgetItem * ITW_test_categories;
-    QTableWidgetItem * ITW_test_passmark;
-    QTextBrowser * ITW_test_comments;
+    QTableWidgetItem *ITW_test_name;
+    QTableWidgetItem *ITW_test_date;
+    QTableWidgetItem *ITW_test_timestamp;
+    QTableWidgetItem *ITW_test_time;
+    QTableWidgetItem *ITW_test_qnum;
+    QTableWidgetItem *ITW_test_fnum;
+    QTableWidgetItem *ITW_test_categories;
+    QTableWidgetItem *ITW_test_passmark;
+    QTextBrowser *ITW_test_comments;
 };
 
 #endif // MAIN_WINDOW_H

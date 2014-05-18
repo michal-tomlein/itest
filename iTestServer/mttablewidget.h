@@ -31,13 +31,13 @@ class MTTableWidget : public QTableWidget
     Q_OBJECT
 
 public:
-    MTTableWidget(QWidget * parent = 0):
+    MTTableWidget(QWidget *parent = 0):
     QTableWidget(parent) {
         QObject::connect(this, SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)), this, SLOT(emitCurrentIndexAvailabilityChanged()));
-    };
+    }
 
 public slots:
-    int filterItems(QLineEdit * le, const QString & keyword) {
+    int filterItems(QLineEdit *le, const QString &keyword) {
         if (keyword.isEmpty()) {
             le->setPalette(((QWidget *)(parent()))->palette());
         } else {
@@ -46,19 +46,22 @@ public slots:
         int n = 0;
         for (int i = 0; i < rowCount(); ++i) {
             if (item(i, 0) && item(i, 0)->text().contains(keyword, Qt::CaseInsensitive)) {
-                showRow(i); n++;
-            } else { hideRow(i); }
+                showRow(i);
+                n++;
+            } else {
+                hideRow(i);
+            }
         }
         if ((!keyword.isEmpty()) && rowCount() != 0 && n == 0) {
             le->setPalette(searchLineEditPalettes.search_noresults_palette);
         }
         return n;
-    };
+    }
 
 private slots:
     void emitCurrentIndexAvailabilityChanged() {
         emit currentIndexAvailabilityChanged(currentIndex().isValid());
-    };
+    }
 
 signals:
     void currentIndexAvailabilityChanged(bool);

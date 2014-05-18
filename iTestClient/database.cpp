@@ -45,14 +45,17 @@ void MainWindow::loadTest(QString input)
 
     QTextStream in(&input);
 
-    QString db_buffer; QStringList db_bufferlist;
+    QString db_buffer;
+    QStringList db_bufferlist;
     // ------------------------------------------------------------------------
     if (in.readLine() != "[ITEST_VERSION]") { errorInvalidData(); return; }
     double version = in.readLine().toDouble();
     if (in.readLine() != "[ITEST_DB_VERSION]") { errorInvalidData(); return; }
     double db_version = in.readLine().toDouble();
-    if ((version > F_ITEST_VERSION) && (db_version > F_ITOS_VERSION))
-    { QMessageBox::critical(this, tr("iTest version notice"), tr("You need a newer version of iTest to open this database file.")); return; }
+    if ((version > F_ITEST_VERSION) && (db_version > F_ITOS_VERSION)) {
+        QMessageBox::critical(this, tr("iTest version notice"), tr("You need a newer version of iTest to open this database file."));
+        return;
+    }
     if (db_version == 1.0) { errorInvalidData(); return; }
     current_db_multiple_ans_support = db_version >= 1.27;
     current_db_itdb1_4_support = db_version >= 1.35;
@@ -127,8 +130,14 @@ void MainWindow::loadTest(QString input)
     db_buffer = in.readLine();
     QVector<bool> db_categories_enabled(db_buffer.length());
     for (int i = 0; i < db_categories_enabled.size(); ++i) {
-        if (db_buffer.at(i) == '+') { db_categories_enabled[i] = true; } else if (db_buffer.at(i) == '-')
-        { db_categories_enabled[i] = false; } else { errorInvalidData(); return; }
+        if (db_buffer.at(i) == '+') {
+            db_categories_enabled[i] = true;
+        } else if (db_buffer.at(i) == '-') {
+            db_categories_enabled[i] = false;
+        } else {
+            errorInvalidData();
+            return;
+        }
     }
     // Categories
     QVector<QString> db_categories(db_buffer.length());
@@ -142,7 +151,8 @@ void MainWindow::loadTest(QString input)
     if (db_version >= 1.2) {
         if (in.readLine() != "[PASSMARK]") { errorInvalidData(); return; }
         current_test_passmark.setPassMark(in.readLine().toInt());
-        int pm_count = in.readLine().toInt(); int pm_c, pm_v;
+        int pm_count = in.readLine().toInt();
+        int pm_c, pm_v;
         for (int i = 0; i < pm_count; ++i) {
             pm_c = in.readLine().toInt();
             pm_v = in.readLine().toInt();
@@ -150,7 +160,8 @@ void MainWindow::loadTest(QString input)
         }
     }
     // Questions
-    QuestionItem * item; QStringList answers;
+    QuestionItem *item;
+    QStringList answers;
     for (int i = 0; i < db_qnum; ++i) {
         answers.clear();
         // Question name
@@ -165,8 +176,11 @@ void MainWindow::loadTest(QString input)
             item->setGroup(in.readLine());
         }
         // Difficulty
-        if (db_version >= 1.2) { if (in.readLine() != "[Q_DIF]") { errorInvalidData(); return; } }
-        else { if (in.readLine() != "[Q_DIFFICULTY]") { errorInvalidData(); return; } }
+        if (db_version >= 1.2) {
+            if (in.readLine() != "[Q_DIF]") { errorInvalidData(); return; }
+        } else {
+            if (in.readLine() != "[Q_DIFFICULTY]") { errorInvalidData(); return; }
+        }
         item->setDifficulty(in.readLine().toInt());
         // Question text
         if (in.readLine() != "[Q_TEXT]") { errorInvalidData(); return; }
@@ -176,7 +190,9 @@ void MainWindow::loadTest(QString input)
             if (in.readLine() != "[Q_ANS]") { errorInvalidData(); return; }
             item->setSelectionType((Question::SelectionType)in.readLine().toInt());
             int numanswers = in.readLine().toInt();
-            for (int a = 0; a < numanswers; ++a) { answers << in.readLine(); }
+            for (int a = 0; a < numanswers; ++a) {
+                answers << in.readLine();
+            }
         } else {
             // Answer A
             if (in.readLine() != "[Q_ANSA]") { errorInvalidData(); return; }
@@ -236,7 +252,9 @@ void MainWindow::loadTest(QString input)
     QString pm_str = tr("Total");
     pm_str.append(QString(": %1;").arg(current_test_passmark.passMark()));
     for (int i = 0; i < current_test_passmark.count(); ++i) {
-        if (current_test_passmark.condition(i) < 0 && current_test_passmark.condition(i) >= current_db_categories.size()) { continue; }
+        if (current_test_passmark.condition(i) < 0 && current_test_passmark.condition(i) >= current_db_categories.size())
+            continue;
+
         pm_str.append(QString(" %1: %2;").arg(current_db_categories[current_test_passmark.condition(i)]).arg(current_test_passmark.value(i)));
     }
     ITW_test_passmark->setText(pm_str);
@@ -254,11 +272,12 @@ void MainWindow::loadTest(QString input)
 void MainWindow::loadFile()
 {
     QString file_name = DBPathLineEdit->text();
-    if (file_name.isEmpty()) { return; }
+    if (file_name.isEmpty())
+        return;
     loadFile(file_name);
 }
 
-void MainWindow::loadFile(const QString & file_name)
+void MainWindow::loadFile(const QString &file_name)
 {
     QProgressDialog progress(this);
     progress.setLabelText(tr("Reading database file..."));
@@ -267,7 +286,8 @@ void MainWindow::loadFile(const QString & file_name)
     progress.setMinimumDuration(0);
     progress.setWindowModality(Qt::WindowModal);
 
-    if (file_name.isEmpty()) { return; }
+    if (file_name.isEmpty())
+        return;
 
     progress.setValue(0); // PROGRESS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     qApp->processEvents();
@@ -303,14 +323,18 @@ void MainWindow::randomlySelectQuestions()
     progress.setWindowModality(Qt::WindowModal);
 
     QList<Question *> questions;
-    for (int i = 0; i < current_db_questions.count(); ++i) { questions << current_db_questions.at(i); }
+    for (int i = 0; i < current_db_questions.count(); ++i) {
+        questions << current_db_questions.at(i);
+    }
     QList<int> randlist = Question::randomise(questions, current_test_passmark, current_test_use_groups, current_test_qnum, client_number, &progress, qApp);
     if (!current_test_shuffle_questions)
         qSort(randlist);
     QStringList categories;
     for (int i = 0; i < randlist.count(); ++i) {
-        if (current_test_shuffle_answers) { current_db_questions.at(randlist.at(i))->shuffleAnswers(); }
-        QListWidgetItem * q_item = new QListWidgetItem;
+        if (current_test_shuffle_answers) {
+            current_db_questions.at(randlist.at(i))->shuffleAnswers();
+        }
+        QListWidgetItem *q_item = new QListWidgetItem;
         if (hideQuestionNamesCheckBox->isChecked()) {
             q_item->setText(QString("%1").arg(LQListWidget->count() + 1));
         } else {
@@ -320,8 +344,9 @@ void MainWindow::randomlySelectQuestions()
         LQListWidget->addItem(q_item);
         current_test_questions.insert(q_item, current_db_questions.at(randlist.at(i)));
         if ((current_db_questions.at(randlist.at(i))->category() >= 0) && (current_db_questions.at(randlist.at(i))->category() < current_db_categories.size())) {
-            if (!categories.contains(current_db_categories[current_db_questions.at(randlist.at(i))->category()]))
-                { categories << current_db_categories[current_db_questions.at(randlist.at(i))->category()]; }
+            if (!categories.contains(current_db_categories[current_db_questions.at(randlist.at(i))->category()])) {
+                categories << current_db_categories[current_db_questions.at(randlist.at(i))->category()];
+            }
         }
     }
     ITW_test_fnum->setText(QString("%1").arg(categories.count()));

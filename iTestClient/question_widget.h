@@ -37,16 +37,16 @@ protected:
     void init(QuestionItem *, bool);
 
 public:
-    QuestionWidget(QuestionItem * item, bool highlight_correct_answers = true, QWidget * parent = 0):
-    QWidget(parent) { init(item, highlight_correct_answers); };
+    QuestionWidget(QuestionItem *item, bool highlight_correct_answers = true, QWidget *parent = 0):
+    QWidget(parent) { init(item, highlight_correct_answers); }
 
 private:
-    QLabel * qw_lbl_icon;
-    QLabel * qw_lbl_score;
-    QLabel * qw_lbl_question;
+    QLabel *qw_lbl_icon;
+    QLabel *qw_lbl_score;
+    QLabel *qw_lbl_question;
     QList<QLabel *> qw_lbl_answers;
-    QLabel * qw_lbl_explanation;
-    MTMultiSvgWidget * qw_msw_svgs;
+    QLabel *qw_lbl_explanation;
+    MTMultiSvgWidget *qw_msw_svgs;
 };
 
 #endif // QUESTION_WIDGET_H

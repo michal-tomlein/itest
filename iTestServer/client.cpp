@@ -22,7 +22,7 @@
 
 #include <QMessageBox>
 
-void Client::init(MainWindow * parent)
+void Client::init(MainWindow *parent)
 {
     c_score = 0;
     c_maxscore = 0;
@@ -36,7 +36,7 @@ void Client::init(MainWindow * parent)
     QObject::connect(c_socket, SIGNAL(disconnected()), this, SLOT(socketDisconnected()));
 }
 
-Client::Client(MainWindow * parent, QString name, int number)
+Client::Client(MainWindow *parent, QString name, int number)
 {
     c_name = name;
     c_identified = true;
@@ -46,7 +46,7 @@ Client::Client(MainWindow * parent, QString name, int number)
     init(parent);
 }
 
-Client::Client(MainWindow * parent, QTcpSocket * socket, int number)
+Client::Client(MainWindow *parent, QTcpSocket *socket, int number)
 {
     c_name = tr("Unknown");
     c_identified = false;
@@ -62,7 +62,7 @@ Client::~Client()
     delete c_results;
 }
 
-void Client::setName(const QString & name) { c_name = name; }
+void Client::setName(const QString &name) { c_name = name; }
 
 QString Client::name() { return c_name; }
 
@@ -70,15 +70,17 @@ void Client::setNumber(int number) { c_number = number; }
 
 int Client::number() { return c_number; }
 
-void Client::setSocket(QTcpSocket * socket)
+void Client::setSocket(QTcpSocket *socket)
 {
     delete c_socket;
     c_socket = socket;
 }
 
-QTcpSocket * Client::socket()
+QTcpSocket *Client::socket()
 {
-    if (c_socket == NULL) {c_socket = new QTcpSocket;}
+    if (c_socket == NULL) {
+        c_socket = new QTcpSocket;
+    }
     return c_socket;
 }
 
@@ -88,7 +90,7 @@ double Client::maximumScore() { return c_maxscore; }
 
 bool Client::isReady() { return c_ready; }
 
-QMap<QString, QuestionAnswer> * Client::results() { return c_results; }
+QMap<QString, QuestionAnswer> *Client::results() { return c_results; }
 
 void Client::setPassed(bool passed) { c_passed = passed; }
 
@@ -96,26 +98,42 @@ bool Client::passed() { return c_passed; }
 
 void Client::loadResults(QString input)
 {
-    QTextStream in(&input); QString buffer; QuestionItem * item;
-    Question::Answer ans; c_score = 0; c_maxscore = 0;
+    QTextStream in(&input);
+    QString buffer;
+    QuestionItem *item;
+    Question::Answer ans;
+    c_score = 0;
+    c_maxscore = 0;
 
     do {
         item = NULL;
-        if (in.readLine() != "[Q_NAME]") { return; }
+        if (in.readLine() != "[Q_NAME]")
+            return;
         buffer = in.readLine();
         QMapIterator<QListWidgetItem *, QuestionItem *> i(c_parent->current_db_questions);
         while (i.hasNext()) { i.next();
-            if (i.value()->name() == buffer) { item = i.value(); break; }
+            if (i.value()->name() == buffer) {
+                item = i.value();
+                break;
+            }
         }
-        if (item == NULL) { in.readLine(); in.readLine(); continue; }
-        if (in.readLine() != "[Q_ANSWERED]") { return; }
+        if (item == NULL) {
+            in.readLine();
+            in.readLine();
+            continue;
+        }
+        if (in.readLine() != "[Q_ANSWERED]")
+            return;
         ans = (Question::Answer)in.readLine().toInt();
         QuestionAnswer qans(item->correctAnswer(), ans, item->numAnswers(), item->category(), item->difficulty(), item->selectionType(), item->explanation());
         c_results->insert(item->name(), qans);
         c_score += qans.score(c_parent->current_db_scoringsystem);
         c_maxscore += qans.maximumScore(c_parent->current_db_scoringsystem);
-        if (c_score > 0.0) { item->addCorrectAns(); }
-        else { item->addIncorrectAns(); }
+        if (c_score > 0.0) {
+            item->addCorrectAns();
+        } else {
+            item->addIncorrectAns();
+        }
     } while (!in.atEnd());
 
     c_passed = c_parent->current_db_passmark.check(c_results, &c_parent->current_db_questions, c_parent->current_db_scoringsystem);
@@ -151,9 +169,12 @@ void Client::readClientFeedback()
     if ((quint64)c_socket->bytesAvailable() < c_blocksize)
         return;
 
-    if (c_test_sent) { c_blocksize = 0; }
+    if (c_test_sent) {
+        c_blocksize = 0;
+    }
 
-    QString received_string; QString buffer;
+    QString received_string;
+    QString buffer;
     do {
         in >> buffer; received_string.append(buffer);
     } while (!in.atEnd());
