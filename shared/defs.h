@@ -1,6 +1,6 @@
 /*******************************************************************
  This file is part of iTest
- Copyright (C) 2005-2014 Michal Tomlein
+ Copyright (C) 2005-2016 Michal Tomlein
 
  iTest is free software; you can redistribute it and/or
  modify it under the terms of the GNU General Public Licence
@@ -24,7 +24,7 @@
 #define F_ITEST_VERSION 1.9
 #define ITDB_VERSION "1.4"
 #define F_ITDB_VERSION 1.4
-#define ITOS_VERSION "1.42"
+#define ITOS_VERSION "1.4.2"
 #define F_ITOS_VERSION 1.42
 
 #define ITEST_URL "itest.sourceforge.net"
