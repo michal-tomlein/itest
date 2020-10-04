@@ -205,6 +205,9 @@ private slots:
     bool configurePrinter(bool);
     bool loadPrinterConfiguration();
     bool printClientResults(Client *, QPrinter *);
+    QString getStudentResultsHtml(Student *, const QString &, ScoringSystem);
+    QString getStudentResultsHeader(const QString *, Student *);
+    QString getStudentResultsHtmlHeadSection(const QString &);
     bool printStudentResults(Student *, QPrinter *, const QString &, ScoringSystem);
     void print();
     void quickPrint();

@@ -629,28 +629,13 @@ bool MainWindow::printClientResults(Client *client, QPrinter *printer)
     return ok;
 }
 
-bool MainWindow::printStudentResults(Student *student, QPrinter *printer, const QString &session_name, ScoringSystem sys)
+QString MainWindow::getStudentResultsHtml(Student *student, const QString &session_name, ScoringSystem sys)
 {
-    if (!student->isReady()) return false;
-    QTextDocument doc;
     QString html;
     QTextStream out(&html);
     QuestionItem *item;
     QTextDocument qdoc;
-    QString header = tr("Exam results");
-    header.append(QString(" - %1 - %2 - %3").arg(Qt::escape(session_name)).arg(Qt::escape(student->name())).arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm")));
-    out << "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
-    out << header << endl << "</title><style type=\"text/css\">" << endl;
-    out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
-    out << ".default_text { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
-    out << ".bold_text { font-family: sans-serif; font-size: 7pt; color: black; font-weight: bold; }" << endl;
-    out << ".correct_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(69, 110, 14); }" << endl;
-    out << ".incorrect_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(204, 109, 0); }" << endl;
-    out << ".question { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
-    out << ".answer { font-family: sans-serif; font-size: 7pt; font-style: italic; color: black; }" << endl;
-    out << ".answered { text-decoration: underline; }" << endl;
-    out << ".correct { font-weight: bold; }" << endl;
-    out << "</style></head><body>" << endl;
+    QString header = getStudentResultsHeader(&session_name, student);
     out << "<p class=\"heading\" align=\"center\">" << endl << header << endl << "</p>" << endl;
     QMapIterator<QString, QuestionAnswer> i(*(student->results()));
     QuestionAnswer qans;
@@ -709,8 +694,58 @@ bool MainWindow::printStudentResults(Student *student, QPrinter *printer, const 
     out << "<b>" << tr("Total score:") << "</b> ";
     out << tr("%1 out of %2").arg(student->score()).arg(student->maximumScore());
     out << QString(" (%3)").arg(student->passed() ? tr("PASSED") : tr("FAILED"));
-    out << endl << "</p></body></html>" << endl;
-    doc.setHtml(html); printer->setDocName(header); doc.print(printer);
+    out << endl << "</p>" << endl;
+    return html;
+}
+
+QString MainWindow::getStudentResultsHeader(const QString *session_name, Student *student)
+{
+    QString header = tr("Exam results");
+    if (session_name != NULL) {
+        header.append(QString(" - %1").arg(Qt::escape(*session_name)));
+    }
+    if (student != NULL) {
+        header.append(QString(" - %1").arg(Qt::escape(student->name())));
+    }
+    header.append(QString(" - %1").arg(QDateTime::currentDateTime().toString("yyyy.MM.dd-hh:mm")));
+    return header;
+}
+
+QString MainWindow::getStudentResultsHtmlHeadSection(const QString &header)
+{
+    QString html;
+    QTextStream out(&html);
+    out << "<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>" << endl;
+    out << header << endl << "</title><style type=\"text/css\">" << endl;
+    out << ".heading { font-family: sans-serif; font-size: medium; font-weight: bold; color: black; }" << endl;
+    out << ".default_text { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
+    out << ".bold_text { font-family: sans-serif; font-size: 7pt; color: black; font-weight: bold; }" << endl;
+    out << ".correct_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(69, 110, 14); }" << endl;
+    out << ".incorrect_qname { font-family: sans-serif; font-size: 7pt; font-weight: bold; color: rgb(204, 109, 0); }" << endl;
+    out << ".question { font-family: sans-serif; font-size: 7pt; color: black; }" << endl;
+    out << ".answer { font-family: sans-serif; font-size: 7pt; font-style: italic; color: black; }" << endl;
+    out << ".answered { text-decoration: underline; }" << endl;
+    out << ".correct { font-weight: bold; }" << endl;
+    out << "</style></head>" << endl;
+    return html;
+}
+
+bool MainWindow::printStudentResults(Student *student, QPrinter *printer, const QString &session_name, ScoringSystem sys)
+{
+    if (!student->isReady()) return false;
+    QTextDocument doc;
+    QString html;
+    QTextStream out(&html);
+    QTextDocument qdoc;
+    QString header = getStudentResultsHeader(&session_name, student);
+    out << "<html>" << endl;
+    out << getStudentResultsHtmlHeadSection(header) << endl;
+    out << "<body>" << endl;
+    out << getStudentResultsHtml(student, session_name, sys);
+    out << "</body>" << endl << "</html>" << endl;
+    doc.setHtml(html);
+    printer->setDocName(header);
+    doc.print(printer);
     return true;
 }
 
@@ -829,13 +864,38 @@ void MainWindow::printAll()
             statusBar()->showMessage(tr("Failed to print the summary"), 10000);
         }
         int numfailed = 0, numsuccessful = 0;
+
+        QTextDocument doc;
+        QString html;
+        QTextStream out(&html);
+        QString session_name = current_db_session->name();
+        QString header = getStudentResultsHeader(&session_name, NULL);
+
+        out << "<html>" << endl;
+        out << getStudentResultsHtmlHeadSection(header) << endl;
+        out << "<body>" << endl;
+        
         for (int i = 0; i < current_db_session->numStudents(); ++i) {
-            if (printStudentResults(current_db_session->student(i), printer, current_db_session->name(), current_db_session->scoringSystem())) {
-                numsuccessful++;
-            } else {
-                numfailed++;
+            Student *student = current_db_session->student(i);
+            if (!student->isReady()) {
+                ++numfailed;
+                continue;
             }
+            QString student_results = getStudentResultsHtml(
+                student,
+                session_name,
+                current_db_session->scoringSystem()
+            );
+            ++numsuccessful;
+            out << student_results << endl;
         }
+
+        out << "</body>" << endl << "</html>" << endl;
+
+        doc.setHtml(html);
+        printer->setDocName(header);
+        doc.print(printer);
+
         statusBar()->showMessage(tr("%1 results printed successfully; %2 failed").arg(numsuccessful).arg(numfailed), 10000);
 
         delete printer;

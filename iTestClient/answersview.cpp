@@ -33,9 +33,9 @@ QWidget(parent) {
     ans_radiobutton = new QRadioButton(Question::indexToLabel(i), this);
     ans_checkbox = new QCheckBox(Question::indexToLabel(i), this);
     ans_text = new QTextBrowser(this);
-    ans_text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    ans_text->setMaximumSize(16777215, 59);
+    ans_text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     ans_text->setFontPointSize(15);
+    ans_text->setMaximumSize(16777215, 15 * 5);
     hlayout->addWidget(ans_radiobutton);
     hlayout->addWidget(ans_checkbox);
     hlayout->addWidget(ans_text);
@@ -77,6 +77,7 @@ void AnswersView::setAnswers(const QStringList &answers, Question::Answers selec
         ans->ans_checkbox->setVisible(selectiontype == Question::MultiSelection);
         if (i < answers.count()) {
             ans->ans_text->setText(answers.at(av_ans_order.at(i)));
+            ans->ans_text->setFixedHeight(ans->ans_text->document()->size().height());
             ans->ans_checkbox->setChecked(selected_answers.testFlag(Question::indexToAnswer(av_ans_order.at(i) + 1)));
             ans->ans_radiobutton->setChecked(selected_answers.testFlag(Question::indexToAnswer(av_ans_order.at(i) + 1)));
             ans->setVisible(true);
