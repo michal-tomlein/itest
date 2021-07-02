@@ -21,6 +21,7 @@
 #include "main_window.h"
 #include "question_item.h"
 
+#include <QButtonGroup>
 #include <QCloseEvent>
 #include <QDateTime>
 #include <QFileInfo>

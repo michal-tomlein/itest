@@ -24,6 +24,7 @@
 #include "session.h"
 #include "svg_item.h"
 
+#include <QButtonGroup>
 #include <QDesktopServices>
 #include <QFileInfo>
 #include <QMessageBox>
