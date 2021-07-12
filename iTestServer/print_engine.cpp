@@ -26,6 +26,7 @@
 #include "svg_item.h"
 #include "mtadvancedgroupbox.h"
 
+#include <QButtonGroup>
 #include <QDir>
 #include <QFileInfo>
 #include <QPainter>

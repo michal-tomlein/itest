@@ -23,6 +23,7 @@
 #include "student.h"
 #include "svg_item.h"
 
+#include <QButtonGroup>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QProcess>
