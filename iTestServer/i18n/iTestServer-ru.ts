@@ -2178,7 +2178,7 @@ iTestServer во время тестирования!</translation>
     </message>
     <message>
         <source>Scalable Vector Graphics (*.svg);;All files (*.*)</source>
-        <translation>Scalable Vector Graphics (*.svg);;Все файлы (*.*)</translation>
+        <translation>Файл масштабируемой векторной графики (*.svg);;Все файлы (*.*)</translation>
     </message>
     <message>
         <source>Attachment name:</source>
@@ -2214,7 +2214,7 @@ iTestServer во время тестирования!</translation>
     </message>
     <message>
         <source>Scalable Vector Graphics (*.svg)</source>
-        <translation>Scalable Vector Graphics (*.svg)</translation>
+        <translation>Файл масштабируемой векторной графики (*.svg)</translation>
     </message>
     <message>
         <source>Apply</source>
