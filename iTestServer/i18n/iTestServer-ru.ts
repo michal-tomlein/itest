@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>The program is provided AS IS with ABSOLUTELY NO WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</source>
-        <translation>перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Константин Макшин, Евгений Бурмистров&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется &quot;как есть&quot; без каких-либо гарантий.</translation>
+        <translation>перевод: &lt;span style=&quot;font-style:italic;&quot;&gt;Константин Макшин, Евгений Бурмистров&lt;/span&gt;&lt;br&gt;&lt;br&gt;Данная программа предоставляется «как есть» без каких-либо гарантий.</translation>
     </message>
     <message>
         <source>iTest</source>
@@ -113,47 +113,47 @@
     <name>LanguageNames</name>
     <message>
         <source>Slovak</source>
-        <translation></translation>
+        <translation>Словацкий</translation>
     </message>
     <message>
         <source>Russian</source>
-        <translation></translation>
+        <translation>Русский</translation>
     </message>
     <message>
         <source>Turkish</source>
-        <translation></translation>
+        <translation>Турецкий</translation>
     </message>
     <message>
         <source>Portuguese</source>
-        <translation></translation>
+        <translation>Португальский</translation>
     </message>
     <message>
         <source>Spanish</source>
-        <translation></translation>
+        <translation>Испанский</translation>
     </message>
     <message>
         <source>Italian</source>
-        <translation></translation>
+        <translation>Итальянский</translation>
     </message>
     <message>
         <source>Latvian</source>
-        <translation></translation>
+        <translation>Латышский</translation>
     </message>
     <message>
         <source>Ukrainian</source>
-        <translation></translation>
+        <translation>Украинский</translation>
     </message>
     <message>
         <source>Czech</source>
-        <translation></translation>
+        <translation>Чешский</translation>
     </message>
     <message>
         <source>Hungarian</source>
-        <translation></translation>
+        <translation>Венгерский</translation>
     </message>
     <message>
         <source>German</source>
-        <translation></translation>
+        <translation>Германский</translation>
     </message>
 </context>
 <context>
@@ -412,7 +412,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>You need a newer version of iTest to open this database file.</source>
-        <translation>Чтобы открыть этот файл базы данных, Вам требуется более новая версия iTest.</translation>
+        <translation>Для чтения этого файла базы данных необходима более новая версия iTest.</translation>
     </message>
     <message>
         <source>Database open</source>
@@ -536,7 +536,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>Change language - iTest</source>
-        <translation>Сменить язык - iTest</translation>
+        <translation>Сменить язык — iTest</translation>
     </message>
     <message>
         <source>Select your preferred language</source>
@@ -568,7 +568,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>Open other...</source>
-        <translation>Открыть другую...</translation>
+        <translation>Открыть другую…</translation>
     </message>
     <message>
         <source>Open the selected database from the list above</source>
@@ -716,7 +716,7 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>Use this field for your comments, notes, reminders...</source>
-        <translation>Используйте это поле для комментариев, заметок, напоминаний...</translation>
+        <translation>Используйте это поле для комментариев, заметок, напоминаний…</translation>
     </message>
     <message>
         <source>Advanced</source>
@@ -1260,11 +1260,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>&amp;Add off-line client</source>
-        <translation>Добавить off-line &amp;клиента</translation>
+        <translation>Добавить автономного &amp;клиента</translation>
     </message>
     <message>
         <source>Add off-line client</source>
-        <translation>Добавить off-line клиента</translation>
+        <translation>Добавить автономного клиента</translation>
     </message>
     <message>
         <source>Stop se&amp;rver</source>
@@ -1328,15 +1328,15 @@ but you are most probably missing a whole bunch of cool new features.</source>
     </message>
     <message>
         <source>Export off-line test session</source>
-        <translation>Экспортировать off-line сессию теста</translation>
+        <translation>Экспортировать автономную сессию теста</translation>
     </message>
     <message>
         <source>Add off-line client&amp;s</source>
-        <translation>Добавить результаты off-line клиент&amp;а</translation>
+        <translation>Добавить результаты автономного клиент&amp;а</translation>
     </message>
     <message>
         <source>Add off-line clients</source>
-        <translation>Добавить результаты off-line клиентов</translation>
+        <translation>Добавить результаты автономных клиентов</translation>
     </message>
     <message>
         <source>Save&amp;d sessions</source>
@@ -1461,7 +1461,7 @@ To print more copies, click &apos;Review configuration&apos; and set the&lt;br&g
 number of copies each time you start the server.</source>
         <translation>Примечание: В Windows и Mac OS X вышеуказанное число всегда равно 1,&lt;br&gt;
 так как эти операционные системы имеют внутренние механизмы работы с копиями.&lt;br&gt;
-Для печать большего количество копий нажимайте &apos;Пересмотреть настройки&apos; и устанавливайте&lt;br&gt;
+Для печати большего количества копий нажмите «Пересмотреть» и устанавливайте&lt;br&gt;
 количество копий при каждом запуске сервера.</translation>
     </message>
     <message>
@@ -1486,7 +1486,7 @@ number of copies each time you start the server.</source>
     </message>
     <message>
         <source>Native</source>
-        <translation>&quot;родной&quot;</translation>
+        <translation>Собственный</translation>
     </message>
     <message>
         <source>PDF</source>
@@ -1546,7 +1546,7 @@ number of copies each time you start the server.</source>
     </message>
     <message>
         <source>Tractor</source>
-        <translation>трактор</translation>
+        <translation>Ленточная подача</translation>
     </message>
     <message>
         <source>Small format</source>
@@ -1570,7 +1570,7 @@ number of copies each time you start the server.</source>
     </message>
     <message>
         <source>Print range:</source>
-        <translation>Печать диапазона:</translation>
+        <translation>Диапазон печати:</translation>
     </message>
     <message>
         <source>All pages</source>
@@ -1586,7 +1586,7 @@ number of copies each time you start the server.</source>
     </message>
     <message>
         <source>Printer name:</source>
-        <translation>Принтер:</translation>
+        <translation>Имя принтера:</translation>
     </message>
     <message>
         <source>Resolution:</source>
@@ -1658,7 +1658,7 @@ number of copies each time you start the server.</source>
     </message>
     <message>
         <source>%1 results printed successfully; %2 failed</source>
-        <translation>%1 результатов успешно выведены на печать; %2 не выведены</translation>
+        <translation>Количество результатов успешно выведенное на печать: %1; не выведенное: %2</translation>
     </message>
     <message>
         <source>Session statistics and summary</source>
@@ -1716,7 +1716,7 @@ Please choose a different name:</source>
     </message>
     <message>
         <source>Are you sure you want to delete question &quot;%1&quot;?</source>
-        <translation>Вы уверены, что хотите удалить вопрос &quot;%1&quot;?</translation>
+        <translation>Вы уверены, что хотите удалить вопрос «%1»?</translation>
     </message>
     <message>
         <source>Select a question to be deleted first.</source>
@@ -1758,7 +1758,7 @@ Please choose a different name:</source>
         <source>A question with this name already exists.
 Please choose a different name.</source>
         <translation>Вопрос с таким названием уже существует.
-Пожалуйста, выберите другое название.</translation>
+Выберите другое название.</translation>
     </message>
     <message>
         <source>This new name has been used before.
@@ -1767,20 +1767,21 @@ Changing the name to this one will cause that this question will be used
 instead of the no longer existent old one.
 %2 occurrences of the old name will also be updated.
 Are you sure you want to change the name?</source>
-        <translation>Новое имя уже используется.
-В сохранённых сессиях найдено %1 вопросов с таким именем.
-Изменение имени данного вопроса приведёт к использованию
-этого вопроса вместо старого.
-%2 вопросов со старым именем также будут обновлены.
-Вы уверены, что хотите изменить название?</translation>
+        <translation>Это название ранее уже использовалось.
+Количество вопросов, найденных с таким названием в сохранённых
+сессиях: %1. Изменение названия данного вопроса приведёт
+к тому, что оно будет использоваться вместо существующего старого.
+Количество вопросов со старым именем, которые также будут
+изменены: %2.
+Изменить название?</translation>
     </message>
     <message>
         <source>Are you sure you want to change the name of the question?
 %1 occurrences of this question found in the saved sessions.
 All occurrences will be updated.</source>
-        <translation>Вы уверены, что хотите изменить название вопроса?
-В сохранённых сессиях найдено %1 экземляров этого вопроса.
-Они все будут обновлены.</translation>
+        <translation>Изменить название вопроса?
+Экземпляров данного вопроса в сохранённых сессиях обнаружено: %1.
+Все эти экземпляры будут изменены.</translation>
     </message>
     <message>
         <source>Data saved</source>
@@ -1818,7 +1819,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>You have not configured the printer yet. Would you like to configure it now?</source>
-        <translation>Принтер не был настроен. Вы хотите настроить его сейчас?</translation>
+        <translation>Принтер не был настроен. Настроить его сейчас?</translation>
     </message>
     <message>
         <source>Con&amp;figure</source>
@@ -1826,7 +1827,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>%1Current printer configuration:%2Would you like to review the configuration?%3</source>
-        <translation>%1Текущие настройки принтера:%2Вы хотите пересмотреть настройки?%3</translation>
+        <translation>%1Текущие настройки принтера:%2Пересмотреть настройки?%3</translation>
     </message>
     <message>
         <source>&amp;Review configuration</source>
@@ -1846,7 +1847,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>Are you sure you want to stop the server?</source>
-        <translation>Вы уверены, что хотите остановить сервер?</translation>
+        <translation>Остановить сервер?</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
@@ -1910,11 +1911,11 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>iTest off-line client logs (*.itcl);;All files (*.*)</source>
-        <translation>Журналы off-line клиентов iTest (*.itcl);;Все файлы (*.*)</translation>
+        <translation>Журналы автономных клиентов iTest (*.itcl);;Все файлы (*.*)</translation>
     </message>
     <message>
         <source>Failed to add off-line client. Either this file contains client data of a different test session or it contains invalid data.</source>
-        <translation>Невозможно добавить off-line клиента. Либо данный файл содержит данные клиента другой сессии, либо он содержит неправильные данные.</translation>
+        <translation>Невозможно добавить автономного клиента. Либо данный файл содержит данные клиента другой сессии, либо он содержит неправильные данные.</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) added</source>
@@ -1926,7 +1927,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>%1 &gt; Failed to add off-line client</source>
-        <translation>%1 &gt; Невозможно добавить off-line клиента</translation>
+        <translation>%1 &gt; Невозможно добавить автономного клиента</translation>
     </message>
     <message>
         <source>Export test</source>
@@ -1934,7 +1935,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>iTest off-line test sessions (*.itos)</source>
-        <translation>Сессии off-line тестирования iTest (*.itos)</translation>
+        <translation>Сессии автономного тестирования iTest (*.itos)</translation>
     </message>
     <message>
         <source>Test exported</source>
@@ -1958,7 +1959,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>Are you sure you want to delete the log for session &quot;%1 - %2&quot;?</source>
-        <translation>Вы уверены, что хотите удалить журнал сессии &quot;%1 - %2&quot;?</translation>
+        <translation>Удалить журнал сессии «%1 — %2»?</translation>
     </message>
     <message>
         <source>Type a name for category %1</source>
@@ -2062,7 +2063,7 @@ although it is recommended to give them an hour.</source>
     </message>
     <message>
         <source>Allow one question per group to appear in one test only, i.e. choose one of the group randomly</source>
-        <translation>Использовать по одному вопросу из группы в тестировании, т.е. выбрать случайный вопрос из группы</translation>
+        <translation>Использовать по одному вопросу из группы в тестировании, то есть выбрать случайный вопрос из группы</translation>
     </message>
     <message>
         <source>Allow one question per group only</source>
@@ -2072,7 +2073,7 @@ although it is recommended to give them an hour.</source>
         <source>This group is used by one or more questions in a different category.
 Please choose a different group.</source>
         <translation>В этой группе содержится один или более вопросов другой категории.
-Пожалуйста, выберете другую группу.</translation>
+Выберете другую группу.</translation>
     </message>
     <message>
         <source>iTestServer</source>
@@ -2088,11 +2089,12 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>The server is running on port &lt;b&gt;%1&lt;/b&gt;. You may now run iTestClient on each client PC. Do not quit iTestServer while testing!</source>
-        <translation>Сервер использует порт &lt;b&gt;%1&lt;/b&gt;. Теперь Вы можете запустить iTestClient на клиентксих компьютерах. Не закрывайте iTestServer во время тестирования!</translation>
+        <translation>Сервер использует порт &lt;b&gt;%1&lt;/b&gt;. Теперь Вы можете запустить iTestClient на клиентских компьютерах. Не закрывайте
+iTestServer во время тестирования!</translation>
     </message>
     <message>
         <source>iTestServer - Stop server</source>
-        <translation>iTestServer - Остановка сервера</translation>
+        <translation>iTestServer — Остановка сервера</translation>
     </message>
     <message>
         <source>Attachments (SVG):</source>
@@ -2124,7 +2126,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>Edit the selected attachment</source>
-        <translation>Отредактировать выделенное приложение</translation>
+        <translation>Отредактировать выбранное приложение</translation>
     </message>
     <message>
         <source>Edit</source>
@@ -2188,7 +2190,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>Are you sure you want to remove attachment &quot;%1&quot;?</source>
-        <translation>Вы уверены, что хотите удалить приложение &quot;%1&quot;?</translation>
+        <translation>Удалить приложение «%1»?</translation>
     </message>
     <message>
         <source>&amp;Remove</source>
@@ -2196,7 +2198,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>%1 - Edit SVG - iTest</source>
-        <translation>%1 - Правка SVG - iTest</translation>
+        <translation>%1 — Правка SVG — iTest</translation>
     </message>
     <message>
         <source>Change SVG:</source>
@@ -2228,7 +2230,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>Use a custom server port (if unchecked, a random port will be chosen)</source>
-        <translation>Задействовать пользователькие настройки порта (если снято - порт выбирается случайно)</translation>
+        <translation>Задействовать пользователькие настройки порта (если параметр выключен, то порт выбирается случайно)</translation>
     </message>
     <message>
         <source>Specify a custom server port</source>
@@ -2256,7 +2258,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>A class with this name already exists. Please choose a different name.</source>
-        <translation>Класс с этим названием уже существует. Пожалуйста, выберите другое название.</translation>
+        <translation>Класс с этим названием уже существует. Выберите другое название.</translation>
     </message>
     <message>
         <source>Delete class</source>
@@ -2264,7 +2266,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>Are you sure you want to delete class &quot;%1&quot;?</source>
-        <translation>Вы уверены, что хотите удалить класс &quot;%1&quot;?</translation>
+        <translation>Удалить класс «%1»?</translation>
     </message>
     <message>
         <source>Add student</source>
@@ -2280,7 +2282,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>A student with the name &quot;%1&quot; already exists in the selected class. Would you like to choose a different name?</source>
-        <translation>Студент с именем &quot;%1&quot; уже присутствует в выбранном классе. Хотите выбрать другое имя?</translation>
+        <translation>Студент с именем «%1» уже присутствует в выбранном классе. Выбрать другое имя?</translation>
     </message>
     <message>
         <source>&amp;Use this name anyway</source>
@@ -2296,7 +2298,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>Are you sure you want to delete student &quot;%1&quot;?</source>
-        <translation>Вы уверены, что хотите удалить студента &quot;%1&quot;?</translation>
+        <translation>Удалить студента «%1»?</translation>
     </message>
     <message>
         <source>Delete session</source>
@@ -2304,7 +2306,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>Are you sure you want to delete session &quot;%1&quot; from this class? The session will not be deleted from the database.</source>
-        <translation>Вы уверены, что хотите удалить сессию &quot;%1&quot; из этого класса? Сессия не будет удалена из базы данных.</translation>
+        <translation>Удалить сессию «%1» из этого класса? Сессия не будет удалена из базы данных.</translation>
     </message>
     <message>
         <source>Session not found. This session might have been archived on a different computer.</source>
@@ -2432,27 +2434,27 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>%1 - Overall statistics</source>
-        <translation>%1 - Общая статистика</translation>
+        <translation>%1 — Общая статистика</translation>
     </message>
     <message>
         <source>Name of the selected class (if you change this name, do not forget to click the Apply button on the right)</source>
-        <translation>Название выбранного класса (после изменения не забудьте нажать на кнопку &quot;Применить&quot; справа)</translation>
+        <translation>Название выбранного класса (после изменения не забудьте нажать на кнопку «Применить» справа)</translation>
     </message>
     <message>
         <source>The first year of the selected class (if you change this year, do not forget to click the Apply button on the right)</source>
-        <translation>Первый год выбранного класса (после изменения не забудьте нажать на кнопку &quot;Применить&quot; справа)</translation>
+        <translation>Первый год выбранного класса (после изменения не забудьте нажать на кнопку «Применить» справа)</translation>
     </message>
     <message>
         <source>The last year of the selected class (if you change this year, do not forget to click the Apply button on the right)</source>
-        <translation>Последний год выбранного класса (после изменения не забудьте нажать на кнопку &quot;Применить&quot; справа)</translation>
+        <translation>Последний год выбранного класса (после изменения не забудьте нажать на кнопку «Применить» справа)</translation>
     </message>
     <message>
         <source>Name of the selected student (if you change this name, do not forget to click the Apply button on the right)</source>
-        <translation>Имя выбранного студента (после изменения не забудьте нажать на кнопку &quot;Применить&quot; справа)</translation>
+        <translation>Имя выбранного студента (после изменения не забудьте нажать на кнопку «Применить» справа)</translation>
     </message>
     <message>
         <source>%1 - Edit SVG</source>
-        <translation>%1 - Правка SVG</translation>
+        <translation>%1 — Правка SVG</translation>
     </message>
     <message>
         <source>Remove session</source>
@@ -2460,7 +2462,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>Are you sure you want to remove session &quot;%1&quot; from the table of results of the selected student? The session will not be deleted from the database.</source>
-        <translation>Вы уверены, что хотите удалить сессию &quot;%1&quot; из таблицы результатов выбранного студента? Сессия не будет удалена из базы данных.</translation>
+        <translation>Удалить сессию «%1» из таблицы результатов выбранного студента? Сессия не будет удалена из базы данных.</translation>
     </message>
     <message>
         <source>Explanation:</source>
@@ -2480,7 +2482,7 @@ Please choose a different group.</source>
     </message>
     <message>
         <source>Statistics for %1</source>
-        <translation>Статистика - %1</translation>
+        <translation>Статистика — %1</translation>
     </message>
     <message>
         <source>Statistics printed successfully</source>
@@ -2633,7 +2635,7 @@ Please choose a different group.</source>
     <message>
         <source>Invalid database file: %1
 Error %2.</source>
-        <translation>Неправильный файл базы данных: %1
+        <translation>Недопустимый файл базы данных: %1
 Ошибка: %2.</translation>
     </message>
     <message>
@@ -2646,67 +2648,67 @@ Error %2.</source>
     </message>
     <message>
         <source>Include easy questions in the test</source>
-        <translation type="unfinished"></translation>
+        <translation>Включить в тест простые вопросы</translation>
     </message>
     <message>
         <source>Include questions with medium difficulty in the test</source>
-        <translation type="unfinished"></translation>
+        <translation>Включить в тест вопросы средней сложности</translation>
     </message>
     <message>
         <source>Include difficult questions in the test</source>
-        <translation type="unfinished"></translation>
+        <translation>Включить в тест сложные вопросы</translation>
     </message>
     <message>
         <source>iTest databases (*.itdb);;iTest 1.3 databases (*.it13.itdb)</source>
-        <translation type="unfinished"></translation>
+        <translation>Базы даных iTest (*.itdb);;Базы данных iTest 1.3 (*.it13.itdb)</translation>
     </message>
     <message>
         <source>Reorder questions randomly</source>
-        <translation type="unfinished"></translation>
+        <translation>Задать порядок следования вопросов в случайном порядке</translation>
     </message>
     <message>
         <source>Shuffle questions</source>
-        <translation type="unfinished"></translation>
+        <translation>Расположить вопросы в случайном порядке</translation>
     </message>
     <message>
         <source>Show the New test button at the end of the test session</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать кнопку «Новый тест» при завершении сессии</translation>
     </message>
     <message>
         <source>Show the New test button</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать кнопку «Новый тест»</translation>
     </message>
     <message>
         <source>CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>CSV</translation>
     </message>
     <message>
         <source>Export all questions as a CSV file</source>
-        <translation type="unfinished"></translation>
+        <translation>Экспортировать все вопросы в файл CSV</translation>
     </message>
     <message>
         <source>Export as CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Экспортиировать в виде CSV</translation>
     </message>
     <message>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлы CSV (*.csv)</translation>
     </message>
     <message>
         <source>Session not found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Сессии не найдены.</translation>
     </message>
     <message>
         <source>You are running the latest version of iTest.</source>
-        <translation type="unfinished"></translation>
+        <translation>На компьютрере установлена последняя версия iTest.</translation>
     </message>
     <message>
         <source>&amp;Download Update</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Загрузить обновление</translation>
     </message>
     <message>
         <source>Remind Me &amp;Later</source>
-        <translation type="unfinished"></translation>
+        <translation>Напомнить &amp;позже</translation>
     </message>
     <message>
         <source>%1 &gt; Client #%2 (%3) connected</source>
@@ -2717,11 +2719,11 @@ Error %2.</source>
     <name>PrintQuestionsDialogue</name>
     <message>
         <source>%1 - Print questions</source>
-        <translation>%1 - Печать вопросов</translation>
+        <translation>%1 — Печать вопросов</translation>
     </message>
     <message>
         <source>%1 - Print questions - iTest</source>
-        <translation>%1 - Печать вопросов - iTest</translation>
+        <translation>%1 — Печать вопросов — iTest</translation>
     </message>
     <message>
         <source>Select:</source>
@@ -2821,7 +2823,7 @@ Error %2.</source>
     </message>
     <message>
         <source>Include explanations on the answer key</source>
-        <translation type="unfinished"></translation>
+        <translation>Включить объяснения по правильным ответам</translation>
     </message>
 </context>
 <context>
@@ -2878,7 +2880,7 @@ Error %2.</source>
     <name>SessionWizard</name>
     <message>
         <source>Add session - iTestServer</source>
-        <translation>Добавление сессии - iTestServer</translation>
+        <translation>Добавление сессии — iTestServer</translation>
     </message>
     <message>
         <source>&lt;b&gt;Session:&lt;/b&gt;</source>
