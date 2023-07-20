@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Answers:</source>
-        <translation>Atbildes:</translation>
+        <translation type="vanished">Atbildes:</translation>
     </message>
     <message>
         <source>Correct:</source>
@@ -84,6 +84,10 @@
     <message>
         <source>Multiple choice questions allow selecting more answers</source>
         <translation>Daudzvariantu jautājumu izvēle ļauj izvēlēties daudzas atbildes</translation>
+    </message>
+    <message>
+        <source>Question type:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

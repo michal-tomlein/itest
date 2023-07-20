@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Answers:</source>
-        <translation>Respostas:</translation>
+        <translation type="vanished">Respostas:</translation>
     </message>
     <message>
         <source>Correct:</source>
@@ -84,6 +84,10 @@
     <message>
         <source>Multiple choice questions allow selecting more answers</source>
         <translation>As questões de escolha múltipla permitem seleccionar mais respostas</translation>
+    </message>
+    <message>
+        <source>Question type:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

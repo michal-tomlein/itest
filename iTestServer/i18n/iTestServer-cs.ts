@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Answers:</source>
-        <translation>Odpovědi:</translation>
+        <translation type="vanished">Odpovědi:</translation>
     </message>
     <message>
         <source>Correct:</source>
@@ -84,6 +84,10 @@
     <message>
         <source>Multiple choice questions allow selecting more answers</source>
         <translation>Otázky s více volbami umožňují vybrat víc odpovědí</translation>
+    </message>
+    <message>
+        <source>Question type:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

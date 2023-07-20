@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Answers:</source>
-        <translation>Yanıtlar:</translation>
+        <translation type="vanished">Yanıtlar:</translation>
     </message>
     <message>
         <source>Correct:</source>
@@ -84,6 +84,10 @@
     <message>
         <source>Multiple choice questions allow selecting more answers</source>
         <translation>Çok şık seçilebilen sorular birden fazla yanıt seçmenize izin verir</translation>
+    </message>
+    <message>
+        <source>Question type:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

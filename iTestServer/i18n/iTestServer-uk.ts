@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Answers:</source>
-        <translation>Відповіді:</translation>
+        <translation type="vanished">Відповіді:</translation>
     </message>
     <message>
         <source>Single choice</source>
@@ -84,6 +84,10 @@
     <message>
         <source>Correct:</source>
         <translation>Правильний:</translation>
+    </message>
+    <message>
+        <source>Question type:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

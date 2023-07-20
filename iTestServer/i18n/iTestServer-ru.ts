@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Answers:</source>
-        <translation>Ответы:</translation>
+        <translation type="vanished">Ответы:</translation>
     </message>
     <message>
         <source>Correct:</source>
@@ -84,6 +84,10 @@
     <message>
         <source>Multiple choice questions allow selecting more answers</source>
         <translation>Вопросы с множественным выбором позволяют выбирать несколько ответов</translation>
+    </message>
+    <message>
+        <source>Question type:</source>
+        <translation>Тип вопроса:</translation>
     </message>
 </context>
 <context>

@@ -73,10 +73,12 @@ QWidget(parent) {
     ae_add_button->setIcon(QIcon(QString::fromUtf8(":/images/images/list-add.png")));
     QObject::connect(ae_add_button, SIGNAL(released()), this, SLOT(addAnswer()));
     hlayout->addWidget(ae_add_button);
-    hlayout->addStretch();
-    ae_answers_label = new QLabel(tr("Answers:"), this);
+    //hlayout->addStretch();
+    hlayout->addSpacerItem(
+                new QSpacerItem(20,40, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred));
+    ae_answers_label = new QLabel(tr("Question type:"), this);
     hlayout->addWidget(ae_answers_label);
-    hlayout->addStretch();
+    //hlayout->addStretch();
     ae_singleselection = new QRadioButton(tr("Single choice"), this);
     ae_singleselection->setStatusTip(tr("Single choice questions allow selecting one answer only, even if the question has more correct answers"));
     ae_singleselection->setChecked(true);
