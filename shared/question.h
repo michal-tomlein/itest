@@ -37,7 +37,7 @@ class Question: public QObject
 public:
     enum Answer { None = 0, A = 1, B = 2, C = 4, D = 8, E = 16, F = 32, G = 64, H = 128, I = 256 };
     Q_DECLARE_FLAGS(Answers, Answer)
-    enum SelectionType { SingleSelection = 0, MultiSelection = 1 };
+    enum SelectionType { SingleSelection = 0, MultiSelection = 1, OpenQuestion = 2 };
     Q_DECLARE_FLAGS(SelectionTypeFlag, SelectionType)
 
     Question(const QString & = QString());

@@ -89,6 +89,14 @@
         <source>Question type:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Open question</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open questions allow enter the answer manually</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Client</name>

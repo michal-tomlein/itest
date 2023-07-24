@@ -86,6 +86,7 @@ private:
     QToolButton *ae_add_button;
     QRadioButton *ae_singleselection;
     QRadioButton *ae_multiselection;
+    QRadioButton *ae_openquestion;
     QLabel *ae_answers_label;
     QLabel *ae_correct_label;
 };

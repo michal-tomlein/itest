@@ -91,6 +91,14 @@ QWidget(parent) {
     ae_multiselection = new QRadioButton(tr("Multiple choice"), this);
     ae_multiselection->setStatusTip(tr("Multiple choice questions allow selecting more answers"));
     hlayout->addWidget(ae_multiselection);
+    ae_openquestion = new QRadioButton(tr("Open question"), this);
+    ae_openquestion->setStatusTip(tr("Open questions allow enter the answer manually"));
+    hlayout->addWidget(ae_openquestion);
+#ifdef Q_OS_MAC
+#if QT_VERSION < 0x040400
+    hlayout->addSpacing(6);
+#endif
+#endif
     hlayout->addStretch();
     ae_correct_label = new QLabel(tr("Correct:"), this);
     hlayout->addWidget(ae_correct_label);
