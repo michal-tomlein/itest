@@ -78,6 +78,12 @@ public slots:
     void removeAnswer(int);
     void clear();
 
+protected slots:
+    //------set answersEdit view for each answer type------//
+    void setSingleSelectionView(bool check);
+    void setMultiSelectionView(bool check);
+    void setOpenQuestionView(bool check);
+
 protected:
     void enableAddAnswerButton();
 
@@ -89,6 +95,8 @@ private:
     QRadioButton *ae_openquestion;
     QLabel *ae_answers_label;
     QLabel *ae_correct_label;
+    QLabel *ae_openanswer_label;
+
 };
 
 #endif // ANSWERSEDIT_H

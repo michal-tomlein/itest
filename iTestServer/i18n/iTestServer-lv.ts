@@ -97,6 +97,10 @@
         <source>Open questions allow enter the answer manually</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Valid answers:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Client</name>

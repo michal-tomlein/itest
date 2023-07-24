@@ -97,6 +97,10 @@
         <source>Question type:</source>
         <translation>Тип вопроса:</translation>
     </message>
+    <message>
+        <source>Valid answers:</source>
+        <translation>Допустимые варианты ответов:</translation>
+    </message>
 </context>
 <context>
     <name>Client</name>

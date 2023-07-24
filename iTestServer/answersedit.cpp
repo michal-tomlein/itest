@@ -68,14 +68,9 @@ QWidget(parent) {
 #endif
     QHBoxLayout *hlayout = new QHBoxLayout;
     hlayout->setContentsMargins(0, 0, 0, 0); hlayout->setSpacing(6);
-    ae_add_button = new QToolButton(this);
-    ae_add_button->setText(tr("Add answer"));
-    ae_add_button->setIcon(QIcon(QString::fromUtf8(":/images/images/list-add.png")));
-    QObject::connect(ae_add_button, SIGNAL(released()), this, SLOT(addAnswer()));
-    hlayout->addWidget(ae_add_button);
+    QHBoxLayout *hlayout2 = new QHBoxLayout;
+    hlayout2->setContentsMargins(0, 0, 0, 0); hlayout2->setSpacing(6);
     //hlayout->addStretch();
-    hlayout->addSpacerItem(
-                new QSpacerItem(20,40, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred));
     ae_answers_label = new QLabel(tr("Question type:"), this);
     hlayout->addWidget(ae_answers_label);
     //hlayout->addStretch();
@@ -83,6 +78,7 @@ QWidget(parent) {
     ae_singleselection->setStatusTip(tr("Single choice questions allow selecting one answer only, even if the question has more correct answers"));
     ae_singleselection->setChecked(true);
     hlayout->addWidget(ae_singleselection);
+    connect(ae_singleselection, SIGNAL(toggled(bool)), this, SLOT(setSingleSelectionView(bool)));
 #ifdef Q_OS_MAC
 #if QT_VERSION < 0x040400
     hlayout->addSpacing(6);
@@ -91,23 +87,30 @@ QWidget(parent) {
     ae_multiselection = new QRadioButton(tr("Multiple choice"), this);
     ae_multiselection->setStatusTip(tr("Multiple choice questions allow selecting more answers"));
     hlayout->addWidget(ae_multiselection);
+    connect(ae_multiselection, SIGNAL(toggled(bool)), this, SLOT(setMultiSelectionView(bool)));
     ae_openquestion = new QRadioButton(tr("Open question"), this);
     ae_openquestion->setStatusTip(tr("Open questions allow enter the answer manually"));
     hlayout->addWidget(ae_openquestion);
+    connect(ae_openquestion, SIGNAL(toggled(bool)), this, SLOT(setOpenQuestionView(bool)));
 #ifdef Q_OS_MAC
 #if QT_VERSION < 0x040400
     hlayout->addSpacing(6);
 #endif
 #endif
     hlayout->addStretch();
+    ae_openanswer_label = new QLabel(tr("Valid answers:"), this);
+    hlayout2->addWidget(ae_openanswer_label);
+    hlayout2->addSpacerItem(
+                new QSpacerItem(20,40, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred));
     ae_correct_label = new QLabel(tr("Correct:"), this);
-    hlayout->addWidget(ae_correct_label);
+    hlayout2->addWidget(ae_correct_label);
     vlayout->addLayout(hlayout);
 #ifdef Q_OS_MAC
     QVBoxLayout *vlayout2 = new QVBoxLayout;
     vlayout2->setContentsMargins(0, 0, 0, 0); vlayout2->setSpacing(0);
     vlayout->addLayout(vlayout2);
 #endif
+    vlayout->addLayout(hlayout2);
     for (int i = 0; i < 9; ++i) {
         AnswerEdit *ans = new AnswerEdit(i, this);
         if (i >= 4) {
@@ -120,6 +123,11 @@ QWidget(parent) {
         vlayout2->addWidget(ans);
 #endif
     }
+    ae_add_button = new QToolButton(this);
+    ae_add_button->setText(tr("Add answer"));
+    ae_add_button->setIcon(QIcon(QString::fromUtf8(":/images/images/list-add.png")));
+    QObject::connect(ae_add_button, SIGNAL(released()), this, SLOT(addAnswer()));
+    vlayout->addWidget(ae_add_button);
     ae_add_button->setMaximumSize(16777215, ae_answers.at(0)->ans_text->sizeHint().height());
     ae_add_button->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 }
@@ -201,18 +209,76 @@ QString AnswersEdit::answer(int i)
     return removeLineBreaks(ae_answers.at(i)->ans_text->text());
 }
 
+void AnswersEdit::setSingleSelectionView(bool check)
+{
+    if (check)
+    {
+        ae_correct_label->setVisible(true);
+        ae_openanswer_label->setVisible(false);
+        for (int i = 0; i < 9; ++i)
+            ae_answers.at(i)->ans_correct->setVisible(true);
+    }
+}
+
+void AnswersEdit::setMultiSelectionView(bool check)
+{
+    if (check)
+    {
+        ae_correct_label->setVisible(true);
+        ae_openanswer_label->setVisible(false);
+        for (int i = 0; i < 9; ++i)
+            ae_answers.at(i)->ans_correct->setVisible(true);
+    }
+}
+
+void AnswersEdit::setOpenQuestionView(bool check)
+{
+    if (check)
+    {
+        ae_correct_label->setVisible(false);
+        ae_openanswer_label->setVisible(true);
+        for (int i = 0; i < 9; ++i)
+            ae_answers.at(i)->ans_correct->setVisible(false);
+    }
+}
+
 void AnswersEdit::setSelectionType(Question::SelectionType type)
 {
     switch (type) {
-        case Question::SingleSelection: ae_singleselection->setChecked(true); break;
-        case Question::MultiSelection: ae_multiselection->setChecked(true); break;
-        default: ae_singleselection->setChecked(true); break;
+        case Question::SingleSelection:
+        {
+            ae_singleselection->setChecked(true);
+            setSingleSelectionView(true);
+            break;
+        }
+        case Question::MultiSelection:
+        {
+            ae_multiselection->setChecked(true);
+            setMultiSelectionView(true);
+            break;
+        }
+        case Question::OpenQuestion:
+        {
+            ae_openquestion->setChecked(true);
+            setOpenQuestionView(true);
+            break;
+        }
+        default:
+        {
+            ae_singleselection->setChecked(true);
+            setSingleSelectionView(true);
+            break;
+        }
     }
 }
 
 Question::SelectionType AnswersEdit::selectionType()
 {
-    return ae_multiselection->isChecked() ? Question::MultiSelection : Question::SingleSelection;
+    if(ae_multiselection->isChecked())
+        return Question::MultiSelection;
+    if(ae_openquestion->isChecked())
+        return Question::OpenQuestion;
+    return Question::SingleSelection;
 }
 
 int AnswersEdit::count()
