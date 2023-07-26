@@ -77,6 +77,7 @@ QWidget(parent) {
     }
     QObject::connect(av_grp_checkboxes, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(emitButtonReleased(QAbstractButton *)));
     QObject::connect(av_grp_radiobuttons, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(emitButtonReleased(QAbstractButton *)));
+    QObject::connect(av_input_text, SIGNAL(textChanged()), this, SLOT(emitInputReleased()));
 }
 
 void AnswersView::setAnswers(const QStringList &answers, Question::Answers selected_answers, Question::SelectionType selectiontype, QList<int> ans_order)
@@ -145,4 +146,9 @@ void AnswersView::clear()
 void AnswersView::emitButtonReleased(QAbstractButton *)
 {
     emit buttonReleased(selectedAnswers());
+}
+
+void AnswersView::emitInputReleased()
+{
+    emit inputReleased(av_input_text->toPlainText());
 }

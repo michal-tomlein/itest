@@ -62,9 +62,11 @@ public slots:
 
 signals:
     void buttonReleased(Question::Answers);
+    void inputReleased(QString answer);
 
 protected slots:
     void emitButtonReleased(QAbstractButton *);
+    void emitInputReleased();
 
 private:
     QList<AnswerView *> av_answers;

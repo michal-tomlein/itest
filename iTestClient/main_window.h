@@ -73,6 +73,7 @@ private slots:
     void nextQuestion();
     void lastQuestion();
     void setQuestionAnswered(Question::Answers);
+    void setQuestionAnswered(QString answer);
     void previewSvg(const QString &);
 
 private:

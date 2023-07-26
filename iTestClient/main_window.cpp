@@ -85,6 +85,7 @@ MainWindow::MainWindow()
     QObject::connect(rbtngrpInputType, SIGNAL(buttonReleased(QAbstractButton *)), this, SLOT(toggleInputType(QAbstractButton *)));
 
     QObject::connect(answersView, SIGNAL(buttonReleased(Question::Answers)), this, SLOT(setQuestionAnswered(Question::Answers)));
+    QObject::connect(answersView, SIGNAL(inputReleased(QString)), this, SLOT(setQuestionAnswered(QString)));
 
     for (int i = 0; i < 8; ++i) {
         infoTableWidget->setItem(i, 0, new QTableWidgetItem);
@@ -155,6 +156,28 @@ void MainWindow::setQuestionAnswered(Question::Answers selected_answers)
     QuestionItem *item = current_test_questions.value(LQListWidget->currentItem());
     item->setAnswered(selected_answers);
     if (selected_answers == Question::None) {
+        LQListWidget->currentItem()->setBackground(QBrush(QColor(255, 255, 255)));
+        LQListWidget->currentItem()->setForeground(QBrush(QColor(0, 0, 0)));
+    } else {
+        LQListWidget->currentItem()->setBackground(QBrush(QColor(197, 255, 120)));
+        LQListWidget->currentItem()->setForeground(QBrush(QColor(0, 0, 0)));
+        int progress = 0;
+        for (int i = 0; i < LQListWidget->count(); ++i) {
+            if (current_test_questions.value(LQListWidget->item(i))->answered() != Question::None) {
+                progress++;
+            }
+        }
+        progressBar->setValue(progress);
+    }
+}
+
+void MainWindow::setQuestionAnswered(QString answer)
+{
+    if (!LQListWidget->currentIndex().isValid())
+        return;
+    //QuestionItem *item = current_test_questions.value(LQListWidget->currentItem());
+    //item->setAnswered(selected_answers);
+    if (answer.length() == 0) {
         LQListWidget->currentItem()->setBackground(QBrush(QColor(255, 255, 255)));
         LQListWidget->currentItem()->setForeground(QBrush(QColor(0, 0, 0)));
     } else {
