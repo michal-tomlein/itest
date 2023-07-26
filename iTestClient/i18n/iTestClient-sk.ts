@@ -41,6 +41,13 @@
     </message>
 </context>
 <context>
+    <name>AnswersView</name>
+    <message>
+        <source>Enter your answer:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <source>Cannot write file %1:

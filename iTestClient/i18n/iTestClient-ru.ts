@@ -41,6 +41,13 @@
     </message>
 </context>
 <context>
+    <name>AnswersView</name>
+    <message>
+        <source>Enter your answer:</source>
+        <translation>Введите свой ответ:</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <source>Retrieving test data...</source>
@@ -411,13 +418,6 @@ but you are most probably missing a whole bunch of cool new features.</source>
     <message>
         <source>%1 out of %2</source>
         <translation>%1 из %2</translation>
-    </message>
-</context>
-<context>
-    <name>AnswersView</name>
-    <message>
-        <source>Enter your answer:</source>
-        <translation>Введите свой ответ:</translation>
     </message>
 </context>
 </TS>
