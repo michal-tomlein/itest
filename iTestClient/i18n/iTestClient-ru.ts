@@ -413,4 +413,11 @@ but you are most probably missing a whole bunch of cool new features.</source>
         <translation>%1 из %2</translation>
     </message>
 </context>
+<context>
+    <name>AnswersView</name>
+    <message>
+        <source>Enter your answer:</source>
+        <translation>Введите свой ответ:</translation>
+    </message>
+</context>
 </TS>

@@ -25,6 +25,7 @@
 #include <QTextBrowser>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QLabel>
 
 AnswerView::AnswerView(int i, AnswersView *parent):
 QWidget(parent) {
@@ -50,6 +51,17 @@ QWidget(parent) {
 #else
     vlayout->setSpacing(0);
 #endif
+    av_inputanswer_label = new QLabel(tr("Enter your answer:"), this);
+    av_input_text = new QTextBrowser(this);
+    av_input_text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    av_input_text->setFontPointSize(15);
+    av_inputanswer_label->setFont(av_input_text->font());
+    av_input_text->setMaximumSize(16777215, 15 * 5);
+    av_input_text->setReadOnly(false);
+    vlayout->addSpacerItem(
+                new QSpacerItem(20,40, QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Expanding));
+    vlayout->addWidget(av_inputanswer_label);
+    vlayout->addWidget(av_input_text);
     av_grp_checkboxes = new QButtonGroup(this);
     av_grp_checkboxes->setExclusive(false);
     av_grp_radiobuttons = new QButtonGroup(this);
@@ -69,6 +81,19 @@ QWidget(parent) {
 
 void AnswersView::setAnswers(const QStringList &answers, Question::Answers selected_answers, Question::SelectionType selectiontype, QList<int> ans_order)
 {
+    if (selectiontype == Question::OpenQuestion)
+    {
+        av_inputanswer_label->setVisible(true);
+        av_input_text->setVisible(true);
+        for (int i = 0; i < 9; ++i)
+        {
+            AnswerView *ans = av_answers.at(i);
+            ans->setVisible(false);
+        }
+    } else
+    {
+        av_inputanswer_label->setVisible(false);
+        av_input_text->setVisible(false);
     av_ans_order = ans_order;
     av_grp_radiobuttons->setExclusive(false);
     for (int i = 0; i < 9; ++i) {
@@ -89,6 +114,7 @@ void AnswersView::setAnswers(const QStringList &answers, Question::Answers selec
         }
     }
     av_grp_radiobuttons->setExclusive(true);
+    }
 }
 
 Question::Answers AnswersView::selectedAnswers()
