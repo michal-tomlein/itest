@@ -60,6 +60,21 @@ void QuestionWidget::init(QuestionItem *item, bool highlight_correct_answers)
                 QVBoxLayout *vlayout2 = new QVBoxLayout;
                 vlayout2->setContentsMargins(0, 0, 0, 0);
                 vlayout2->setSpacing(6);
+                if (item->selectionType() == Question::OpenQuestion)
+                {
+                    QLabel *lbl1 = new QLabel(this);
+                    lbl1->setWordWrap(true);
+                    vlayout1->addWidget(lbl1);
+                    qw_lbl_answers << lbl1;
+                    for (int i = 0; i < item->numAnswers(); ++i)
+                    {
+                        QLabel *lbl = new QLabel(this);
+                        lbl->setWordWrap(true);
+                        vlayout2->addWidget(lbl);
+                        qw_lbl_answers << lbl;
+                    }
+                } else
+                {
                     for (int i = 0; i < item->numAnswers(); ++i) {
                         QLabel *lbl = new QLabel(this);
                         lbl->setWordWrap(true);
@@ -73,6 +88,7 @@ void QuestionWidget::init(QuestionItem *item, bool highlight_correct_answers)
                     if (item->numAnswers() % 2 != 0) {
                         vlayout2->addStretch();
                     }
+                }
             hlayout->addLayout(vlayout1);
             hlayout->addLayout(vlayout2);
         vlayout->addLayout(hlayout);
@@ -93,11 +109,23 @@ void QuestionWidget::init(QuestionItem *item, bool highlight_correct_answers)
     QList<int> ans_order = item->answerOrder();
     QFont font;
     font.setPointSize(14);
-    for (int i = 0; i < qw_lbl_answers.count(); ++i) {
-        qw_lbl_answers.at(i)->setText(QString("%1 %2").arg(Question::indexToLabel(i + 1)).arg(item->answerAtIndex(ans_order.at(i) + 1)));
-        font.setBold(item->isAnswerAtIndexCorrect(ans_order.at(i) + 1) && highlight_correct_answers);
-        font.setUnderline(item->answered().testFlag(Question::indexToAnswer(ans_order.at(i) + 1)));
-        qw_lbl_answers.at(i)->setFont(font);
+    if (item->selectionType() == Question::OpenQuestion)
+    {
+        qw_lbl_answers.at(0)->setText(item->str_answered());
+        qw_lbl_answers.at(0)->setFont(font);
+        for (int i = 1; i < qw_lbl_answers.count(); ++i) {
+            qw_lbl_answers.at(i)->setText(QString("%1").arg(item->answerAtIndex(ans_order.at(i-1) + 1)));
+            font.setUnderline(item->isAnswerWasEntered(ans_order.at(i-1), item->str_answered()));
+            qw_lbl_answers.at(i)->setFont(font);
+        }
+    } else
+    {
+        for (int i = 0; i < qw_lbl_answers.count(); ++i) {
+            qw_lbl_answers.at(i)->setText(QString("%1 %2").arg(Question::indexToLabel(i + 1)).arg(item->answerAtIndex(ans_order.at(i) + 1)));
+            font.setBold(item->isAnswerAtIndexCorrect(ans_order.at(i) + 1) && highlight_correct_answers);
+            font.setUnderline(item->answered().testFlag(Question::indexToAnswer(ans_order.at(i) + 1)));
+            qw_lbl_answers.at(i)->setFont(font);
+        }
     }
     for (int i = 0; i < item->numSvgItems(); ++i) {
         QSvgWidget *svg_widget = new QSvgWidget;

@@ -33,6 +33,7 @@ public slots:
     void shuffleAnswers();
     QList<int> answerOrder();
     Answers answered();
+    QString str_answered();
     void setAnswered(Answers);
     void setAnswered(QString);
     double score();

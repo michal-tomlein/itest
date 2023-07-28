@@ -49,6 +49,8 @@ QList<int> QuestionItem::answerOrder() { return q_ans_order; }
 
 Question::Answers QuestionItem::answered() { return q_answer; }
 
+QString QuestionItem::str_answered() { return q_str_answer; }
+
 bool QuestionItem::isAnswered()
 {
     if (q_answer != Question::None) return true;

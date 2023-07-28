@@ -141,6 +141,12 @@ bool Question::isAnswerAtIndexCorrect(int i)
     return q_correctanswers.testFlag(indexToAnswer(i));
 }
 
+
+bool Question::isAnswerWasEntered(int i, QString ans)
+{
+    return q_answers.at(i).toLower() == ans.toLower();
+}
+
 bool Question::isAnswerCorrect(Question::Answer ans)
 {
     return q_correctanswers.testFlag(ans);

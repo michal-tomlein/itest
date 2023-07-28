@@ -76,6 +76,7 @@ public slots:
     bool hasCorrectAnswer();
     bool isAnswerAtIndexCorrect(int);
     bool isAnswerCorrect(Answer);
+    bool isAnswerWasEntered(int, QString);
     void setAnswerCorrect(Answers, bool);
     QStringList answers();
     void setAnswers(const QStringList &);
