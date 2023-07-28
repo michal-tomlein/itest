@@ -141,6 +141,7 @@ void AnswersView::clear()
         ans->setVisible(i < 4);
     }
     av_grp_radiobuttons->setExclusive(true);
+    av_input_text->setText("");
 }
 
 void AnswersView::emitButtonReleased(QAbstractButton *)
