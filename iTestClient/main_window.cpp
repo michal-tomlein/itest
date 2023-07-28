@@ -163,7 +163,7 @@ void MainWindow::setQuestionAnswered(Question::Answers selected_answers)
         LQListWidget->currentItem()->setForeground(QBrush(QColor(0, 0, 0)));
         int progress = 0;
         for (int i = 0; i < LQListWidget->count(); ++i) {
-            if (current_test_questions.value(LQListWidget->item(i))->answered() != Question::None) {
+            if (current_test_questions.value(LQListWidget->item(i))->isAnswered()) {
                 progress++;
             }
         }
@@ -175,8 +175,8 @@ void MainWindow::setQuestionAnswered(QString answer)
 {
     if (!LQListWidget->currentIndex().isValid())
         return;
-    //QuestionItem *item = current_test_questions.value(LQListWidget->currentItem());
-    //item->setAnswered(selected_answers);
+    QuestionItem *item = current_test_questions.value(LQListWidget->currentItem());
+    item->setAnswered(answer);
     if (answer.length() == 0) {
         LQListWidget->currentItem()->setBackground(QBrush(QColor(255, 255, 255)));
         LQListWidget->currentItem()->setForeground(QBrush(QColor(0, 0, 0)));
@@ -185,7 +185,7 @@ void MainWindow::setQuestionAnswered(QString answer)
         LQListWidget->currentItem()->setForeground(QBrush(QColor(0, 0, 0)));
         int progress = 0;
         for (int i = 0; i < LQListWidget->count(); ++i) {
-            if (current_test_questions.value(LQListWidget->item(i))->answered() != Question::None) {
+            if (current_test_questions.value(LQListWidget->item(i))->isAnswered()) {
                 progress++;
             }
         }
