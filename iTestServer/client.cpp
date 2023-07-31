@@ -140,7 +140,7 @@ void Client::loadResults(QString input)
             }
             item->setCorrectAnswers(correct_answers);
         }
-        QuestionAnswer qans(item->correctAnswer(), ans, item->numAnswers(), item->category(), item->difficulty(), item->selectionType(), item->explanation());
+        QuestionAnswer qans(item->correctAnswer(), ans, buffer, item->numAnswers(), item->category(), item->difficulty(), item->selectionType(), item->explanation());
         c_results->insert(item->name(), qans);
         c_score += qans.score(c_parent->current_db_scoringsystem);
         c_maxscore += qans.maximumScore(c_parent->current_db_scoringsystem);

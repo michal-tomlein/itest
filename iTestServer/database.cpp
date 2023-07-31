@@ -593,7 +593,7 @@ void MainWindow::openDB(const QString &openDBName, bool useCP1250)
                         c_ans = (Question::Answer)rfile.readLine().toInt();
                     }
 
-                    QuestionAnswer qans(c_ans, ans, item ? item->numAnswers() : 9, ans_category, ans_dif, ans_selectiontype);
+                    QuestionAnswer qans(c_ans, ans,"rfile.readLine()", item ? item->numAnswers() : 9, ans_category, ans_dif, ans_selectiontype);
                     results->insert(db_buffer, qans);
                 }
                 student->setResults(results);

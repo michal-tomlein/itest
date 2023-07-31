@@ -201,10 +201,11 @@ QString QuestionItem::allPublicProperties()
     return out;
 }
 
-QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, int num_answers, int category, int difficulty, Question::SelectionType type, const QString &explanation)
+QuestionAnswer::QuestionAnswer(Question::Answer correct, Question::Answer ans, QString n_str_answered, int num_answers, int category, int difficulty, Question::SelectionType type, const QString &explanation)
 {
     qa_answered = ans;
     qa_correct_answer = correct;
+    qa_str_answered = n_str_answered;
     qa_num_answers = num_answers;
     qa_category = category;
     q_difficulty = difficulty;
@@ -246,3 +247,10 @@ Question::SelectionType QuestionAnswer::selectionType() { return q_selectiontype
 void QuestionAnswer::setExplanation(const QString &explanation) { qa_explanation = explanation; }
 
 QString QuestionAnswer::explanation() { return qa_explanation; }
+
+void QuestionAnswer::setStrAnswered(QString n_str_answered)
+{
+    qa_str_answered = n_str_answered;
+}
+
+QString QuestionAnswer::str_answered() {return qa_str_answered;}

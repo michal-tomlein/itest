@@ -838,10 +838,24 @@ void MainWindow::loadClientResults(QMap<QString, QuestionAnswer> *results, QTabl
         }
         tw->setItem(row, 1, item);
         item = new QTableWidgetItem;
-        item->setText(Question::answerToString(qans.answered()));
+        if(qans.selectionType() == Question::OpenQuestion)
+        {
+            item->setText(qans.str_answered());
+        } else
+            item->setText(Question::answerToString(qans.answered()));
         tw->setItem(row, 2, item);
         item = new QTableWidgetItem;
-        item->setText(Question::answerToString(qans.correctAnswer()));
+        if(qans.selectionType() == Question::OpenQuestion)
+        {
+            QString answString = "";
+            QStringList answs = q_item->answers();
+            for(int i = 0; i < answs.count(); ++i)
+            {
+                answString+= QString("%1\n").arg(answs.at(i));
+            }
+            item->setText(answString);
+        } else
+            item->setText(Question::answerToString(qans.correctAnswer()));
         tw->setItem(row, 3, item);
         row++;
     }

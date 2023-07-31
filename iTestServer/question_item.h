@@ -29,6 +29,7 @@ class QuestionAnswer
 public:
     QuestionAnswer(Question::Answer correct = Question::None,
                    Question::Answer ans = Question::None,
+                   QString n_str_answered = "",
                    int num_answers = 9,
                    int category = -1,
                    int difficulty = 0,
@@ -36,6 +37,8 @@ public:
                    const QString &explanation = QString());
     void setAnswered(Question::Answer);
     Question::Answer answered();
+    void setStrAnswered(QString);
+    QString str_answered();
     void setCorrectAnswer(Question::Answer);
     Question::Answer correctAnswer();
     void setNumAnswers(int);
@@ -54,6 +57,7 @@ public:
 private:
     Question::Answer qa_answered;
     Question::Answer qa_correct_answer;
+    QString qa_str_answered;
     int qa_num_answers;
     int qa_category;
     int q_difficulty;
