@@ -113,6 +113,7 @@ void QuestionWidget::init(QuestionItem *item, bool highlight_correct_answers)
     {
         qw_lbl_answers.at(0)->setText(item->str_answered());
         qw_lbl_answers.at(0)->setFont(font);
+        if (highlight_correct_answers)
         for (int i = 1; i < qw_lbl_answers.count(); ++i) {
             qw_lbl_answers.at(i)->setText(QString("%1").arg(item->answerAtIndex(ans_order.at(i-1) + 1)));
             font.setUnderline(item->isAnswerWasEntered(ans_order.at(i-1), item->str_answered()));
