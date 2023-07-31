@@ -108,6 +108,7 @@ void MainWindow::sendResults()
         QDataStream out(&results, QIODevice::WriteOnly);
         out.setVersion(QDataStream::Qt_4_2);
         out << (quint64)0;
+
         // ---------------------------------------------------------------------
         for (int i = 0; i < LQListWidget->count(); ++i) {
             out << QString("[Q_NAME]\n");
@@ -118,6 +119,8 @@ void MainWindow::sendResults()
             } else {
                 out << QString("%1\n").arg(Question::convertToOldAnsNumber(current_test_questions.value(LQListWidget->item(i))->answered()));
             }
+            out << QString("[Q_STR_ANSWERED]\n");
+            out << QString("%1\n").arg(current_test_questions.value(LQListWidget->item(i))->str_answered());
         }
         // ---------------------------------------------------------------------
         out.device()->seek(0);
@@ -154,6 +157,8 @@ void MainWindow::sendResults()
         } else {
             sfile << Question::convertToOldAnsNumber(current_test_questions.value(LQListWidget->item(i))->answered());
         }
+        sfile << QString("\n[Q_STR_ANSWERED]\n");
+        sfile << current_test_questions.value(LQListWidget->item(i))->str_answered();
         sfile << endl;
     }
 }
@@ -184,6 +189,12 @@ void MainWindow::readResults(QString input)
             item->setCorrectAnswers((Question::Answer)in.readLine().toInt());
         } else {
             item->setCorrectAnswers(Question::convertOldAnsNumber(in.readLine().toInt()));
+        }
+        QStringList answer_tamples = item->answers();
+        for (int i =0; i < answer_tamples.count(); ++i)
+        {
+            if (item->str_answered() == answer_tamples.at(i))
+                item->setAnswered((Question::Answer)(i+1));
         }
         current_test_score += item->score();
         maxscore += item->maximumScore();

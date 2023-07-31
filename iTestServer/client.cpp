@@ -125,6 +125,21 @@ void Client::loadResults(QString input)
         if (in.readLine() != "[Q_ANSWERED]")
             return;
         ans = (Question::Answer)in.readLine().toInt();
+        if (in.readLine() != "[Q_STR_ANSWERED]")
+            return;
+        buffer = in.readLine();
+        if(item->selectionType() == Question::OpenQuestion)
+        {
+            QStringList answer_tamples = item->answers();
+            Question::Answers correct_answers;
+            for (int i =0; i < answer_tamples.count(); ++i)
+            {
+                if (buffer == answer_tamples.at(i))
+                    ans = (Question::Answer)(i+1);
+                correct_answers.setFlag((Question::Answer)(i+1));
+            }
+            item->setCorrectAnswers(correct_answers);
+        }
         QuestionAnswer qans(item->correctAnswer(), ans, item->numAnswers(), item->category(), item->difficulty(), item->selectionType(), item->explanation());
         c_results->insert(item->name(), qans);
         c_score += qans.score(c_parent->current_db_scoringsystem);
