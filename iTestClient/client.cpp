@@ -190,11 +190,14 @@ void MainWindow::readResults(QString input)
         } else {
             item->setCorrectAnswers(Question::convertOldAnsNumber(in.readLine().toInt()));
         }
-        QStringList answer_tamples = item->answers();
-        for (int i =0; i < answer_tamples.count(); ++i)
+        if (item->selectionType() == Question::OpenQuestion)
         {
-            if (item->str_answered() == answer_tamples.at(i))
-                item->setAnswered((Question::Answer)(i+1));
+            QStringList answer_tamples = item->answers();
+            for (int i =0; i < answer_tamples.count(); ++i)
+            {
+                if (item->str_answered() == answer_tamples.at(i))
+                    item->setAnswered((Question::Answer)(i+1));
+            }
         }
         current_test_score += item->score();
         maxscore += item->maximumScore();
